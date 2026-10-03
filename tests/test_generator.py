@@ -47,10 +47,13 @@ def test_direction_reverses_physical_order(toy_source):
 
 
 def test_length_distribution_matches_targets():
-    L = draw_lengths(np.random.default_rng(0), 20000, 4.4)
-    assert abs(L.mean() - 4.4) < 0.1
-    assert np.median(L) == 4
-    assert 13 <= L.max() <= 21
+    from ibdb import config
+    tg = config.targets()["targets"]
+    m = tg["mean_length"]["value"]
+    L = draw_lengths(np.random.default_rng(0), int(tg["n_texts"]["value"]), m)
+    assert abs(L.mean() - m) < 0.1
+    assert abs(np.median(L) - tg["median_length"]["value"]) <= tg["median_length"]["tolerance"]
+    assert abs(L.max() - tg["max_length"]["value"]) <= tg["max_length"]["tolerance"]
 
 
 def test_lengths_hit_target_exactly(toy_source):

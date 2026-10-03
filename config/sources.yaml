@@ -40,10 +40,13 @@ languages:
     url: https://github.com/cdli-gh/data
     file_url: https://media.githubusercontent.com/media/cdli-gh/data/master/cdliatf_unblocked.atf
     method: http
-    license: "CC BY 4.0 (CDLI statement 'licensed under CC BY 4.0 except when noted otherwise')"
+    license: "CDLI terms of use: free copying, aggregation and re-use 'according to common and fair academic practice', with citation of CDLI (not a Creative Commons license)"
     license_evidence: >-
-      PARTIALLY VERIFIED. The statement appears on CDLI's published pages (cdli.mpiwg-berlin.mpg.de/articles).
-      The dump repository itself carries no LICENSE file. Check cdli.earth terms before redistributing.
+      VERIFIED 2026-10-03 at https://cdli.earth/terms-of-use: "Text in the pages of CDLI may be freely
+      copied, aggregated and re-used according to common and fair academic practice"; substantial reuse
+      should cite CDLI and its web address. NO formal open license (CC0/CC BY) is stated for text data.
+      An earlier note here wrongly said CC BY 4.0, which applies to CDLI's journal articles, not the data.
+      The dump repository carries no LICENSE file. Raw text is never redistributed by IBDB.
     approx_size_mb: 87
     notes: >-
       ETCSL (brief's suggestion) asserts copyright with no open license. ORACC was

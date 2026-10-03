@@ -79,8 +79,8 @@ reference corpus it was measured on, and whether we verified the number in the s
 
 | Statistic | Target | Source (verified?) |
 |---|---|---|
-| Texts | 5,500 (band 1,548-5,500 in plots) | project brief (**no**); M77: 2,906 texts / 3,573 lines (yes, via Yadav et al. 2010) |
-| Mean length | 4.4 ± 0.25 | brief (**no**); derived from M77: 13,372 signs / 2,906 texts = 4.60 (yes, Rao 2018 + Yadav et al. 2010); FSW 2004: "under 4.6" (yes) |
+| Texts | 2,906 (band 1,548-5,500 in plots) | M77: 2,906 texts / 3,573 lines (yes, via Yadav et al. 2010). An earlier brief value of 5,500 was unverified and is superseded |
+| Mean length | 4.60 ± 0.25 | derived from M77: 13,372 signs / 2,906 texts = 4.60 (yes, Rao 2018 + Yadav et al. 2010); FSW 2004: "under 4.6" (yes) |
 | Median length | 4 ± 1 | brief (**no**) |
 | Longest text | 17 ± 4 | Farmer, Sproat & Witzel 2004 (yes) |
 | Sign inventory | 400-700 | Mahadevan 1977: 417 (yes); Possehl 2002: 419; Wells 2015: ~694 (both via Wikipedia, **not checked**) |
@@ -100,7 +100,7 @@ Size-dependent statistics are computed on random subsamples of the reference siz
 - Sanskrit: Rāmāyaṇa from the Digital Corpus of Sanskrit (CC BY 4.0), chosen because GRETIL's epic
   files are "for reference purposes only".
 - Old Tamil: 17 Sangam root texts from Project Madurai.
-- Sumerian: the CDLI ATF dump, including 19,076 intact Ur III seal inscriptions.
+- Sumerian: the CDLI ATF dump, including 19,076 intact Ur III seal inscriptions (CDLI terms: academic reuse with citation; no formal open license).
 - Latin: Caesar and Vergil from Project Gutenberg.
 - Finnish: Kalevala from Project Gutenberg.
 
@@ -125,7 +125,7 @@ Units map to random sign IDs. Optional phenomena:
 - reading direction.
 
 **Text sampling.** Target lengths are drawn from a discretized log-normal. Sigma is set so that the
-expected maximum of 5,500 draws is 17, and mu so that the mean is 4.4; this also yields median 4.
+expected maximum of 2,906 draws is 17, and mu so that the mean is 4.60; the median comes out at 4.
 For each target length, a contiguous window of words with exactly that encoded length is drawn.
 Windows are weighted by word frequency, final-word frequency, first-word frequency and genre.
 A small share of texts duplicate a few popular texts, modelling the repeated seals of M77.
@@ -172,8 +172,8 @@ reference's own bigram mutual information.
 ## 6. Evaluation protocol
 
 *Corpora.*
-- Size sweep: 500-50,000 texts at mean length 4.4.
-- Length sweep: mean 3-20 at 5,500 texts.
+- Size sweep: 500-50,000 texts at mean length 4.60.
+- Length sweep: mean 3-20 at 2,906 texts.
 - Each sweep covers 5 languages × 4 script types plus 7 controls, with 3 seeds.
 - Regimes `holdout` and `wrong_prior` at the Indus point.
 - 120 feasibility scenarios at the Indus point, with random allography, homophony, polyvalence,
@@ -210,7 +210,7 @@ version.)*
    reported with every table.
 3. **Inventory calibration** removes the information that inventory-based script typology uses.
 4. **Text selection is tuned**, not modelled on what Indus seals said; `holdout` quantifies the effect.
-5. **Unverified targets** (5,500 texts, mean 4.4, median 4) come from the brief; plots use a band.
+5. **Median length (4) is unverified**; texts (2,906) and mean (4.60) are verified against Mahadevan (1977) via Yadav et al. (2010) and Rao (2018). An earlier draft used unverified brief values (5,500; 4.4); all results were regenerated.
 6. **The Luo-style matcher is not neural**; neural models could do better.
 7. **Plug-in entropy is biased at Indus scale.** An i.i.d. 420-sign source measures about 0.59
    of its true conditional/unigram entropy ratio on ~15k bigrams, so entropy cut-offs depend on

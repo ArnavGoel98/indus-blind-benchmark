@@ -151,8 +151,10 @@ def decipherability(agg: dict, profile: dict, out_dir: Path | None = None) -> li
                                   "D  Sign values, no relative among candidates\n(Indus-relevant)")):
             _panel(ax, points, sweep, D_NAMES, lambda n, tier=tier: _get(["D", tier, n], "token"), ttl,
                    "share of sign tokens read correctly", None, ip, band)
-        what = "corpus size (mean length 4.4 signs)" if sweep == "size" else "mean text length (5,500 texts)"
-        fig.suptitle(f"Decipherability vs {what}. Shaded: 95% CI. Gray band: Indus corpus size range (1,548–5,500 texts).",
+        what = (f"corpus size (mean length {ip['mean_length']} signs)" if sweep == "size"
+                else f"mean text length ({ip['n_texts']:,} texts)")
+        fig.suptitle(f"Decipherability vs {what}. Shaded: 95% CI. Dashed line: Mahadevan (1977) corpus, {ip['n_texts']:,} texts. "
+                     "Gray band: 1,548 (EBUDS) to ~5,500 texts.",
                      x=0.01, ha="left", fontsize=11, color=INK)
         fig.tight_layout(rect=(0, 0, 1, 0.96))
         for ext in ("png", "svg"):
@@ -194,7 +196,7 @@ def headline(agg: dict, profile: dict, out_dir: Path | None = None) -> Path:
     ax.text(ip["n_texts"], 1.02, " Indus", transform=ax.get_xaxis_transform(), fontsize=8, color=INK2)
     _size_axis(ax)
     ax.set_ylim(-0.02, 1.05)
-    _style(ax, "texts in corpus (log scale; mean 4.4 signs/text)", "score (chance differs by task: A 0.5, B 0.25)",
+    _style(ax, f"texts in corpus (log scale; mean {ip['mean_length']} signs/text)", "score (chance differs by task: A 0.5, B 0.25)",
            "Decipherability curve: best method per task")
     ax.legend(frameon=False, fontsize=8, loc="upper left")
     fig.tight_layout()

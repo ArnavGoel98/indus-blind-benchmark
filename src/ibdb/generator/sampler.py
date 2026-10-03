@@ -28,9 +28,9 @@ def lognormal_params(mean: float, median: float, max_len: int, ref_max: float, r
 
     sigma is set so the expected maximum of ``ref_n`` draws equals ``ref_max``
     (sigma = (ln ref_max - ln median) / z, z the 1 - 1/ref_n normal quantile). mu is then
-    bisected so the mean of the discretized distribution equals ``mean``. With the Indus
-    targets (mean 4.4, median 4, max 17 over 5,500 texts) this gives sigma ~ 0.40, and all
-    three statistics hold at once.
+    bisected so the mean of the discretized distribution equals ``mean``. With the verified
+    Indus targets (mean 4.60, max 17 over 2,906 texts; median 4 unverified) this gives
+    sigma ~ 0.43.
     """
     from scipy.stats import norm
 
@@ -48,10 +48,17 @@ def lognormal_params(mean: float, median: float, max_len: int, ref_max: float, r
 
 
 def draw_lengths(rng: np.random.Generator, n: int, mean: float, median: float | None = None,
-                 max_len: int | None = None, ref_mean: float = 4.4, ref_median: float = 4.0,
-                 ref_max: int = 17, ref_n: int = 5500) -> np.ndarray:
-    """Target lengths. When the mean is swept, the Indus shape is stretched by mean/ref_mean
-    (median and maximum scale with it)."""
+                 max_len: int | None = None, ref_mean: float | None = None, ref_median: float | None = None,
+                 ref_max: float | None = None, ref_n: int | None = None) -> np.ndarray:
+    """Target lengths. The reference shape comes from config/indus_targets.yaml. When the mean
+    is swept, that shape is stretched by mean/ref_mean (median and maximum scale with it)."""
+    if None in (ref_mean, ref_median, ref_max, ref_n):
+        from .. import config
+        tg = config.targets()["targets"]
+        ref_mean = tg["mean_length"]["value"] if ref_mean is None else ref_mean
+        ref_median = tg["median_length"]["value"] if ref_median is None else ref_median
+        ref_max = tg["max_length"]["value"] if ref_max is None else ref_max
+        ref_n = tg["n_texts"]["value"] if ref_n is None else ref_n
     scale = mean / ref_mean
     med = (median if median is not None else ref_median * scale)
     mx = ref_max * scale

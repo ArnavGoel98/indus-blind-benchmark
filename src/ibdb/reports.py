@@ -117,9 +117,9 @@ def calibration_report(profile_name: str) -> str:
               "leaves these untuned. Section 2 shows how far each corpus drifts without them.",
               "- **Duplicate cap.** The calibrator is not allowed to exceed a 40% duplicate-text share. That number "
               "is our design choice, not a published Indus statistic.",
-              "- **Unverified targets.** `n_texts` = 5,500, `mean_length` = 4.4 and `median_length` = 4 come from the "
-              "project brief, not from a source we checked. The verified neighbours are 2,906 texts (M77) and "
-              "4.60 signs/text (derived). Results are plotted across a band of corpus sizes so they do not hinge on 5,500.",
+              "- **Corrected targets.** An earlier version calibrated to 5,500 texts and mean 4.4 from the project "
+              "brief (unverified). All corpora now use the verified M77 figures: 2,906 texts and 4.60 signs per text. "
+              "`median_length` = 4 is still unverified (tolerance ±1). Plots also shade 1,548-5,500 texts.",
               ""]
     return "\n".join(lines)
 
@@ -191,12 +191,12 @@ def results_report(agg: dict, profile_name: str) -> str:
                         f"{c[1]:.2f} | " + " | ".join(f"{d[1]:.3f} ({LABEL.get(d[0], d[0])})" for d in ds) + " |")
         return rows
 
-    L += ["## 2. Size sweep (mean length 4.4)", ""] + sweep_table(size_pts, "texts", "n_texts")
-    L += ["", "## 3. Length sweep (5,500 texts)", ""] + sweep_table(len_pts, "mean signs/text", "mean_length")
+    L += [f"## 2. Size sweep (mean length {ip['mean_length']})", ""] + sweep_table(size_pts, "texts", "n_texts")
+    L += ["", f"## 3. Length sweep ({ip['n_texts']:,} texts)", ""] + sweep_table(len_pts, "mean signs/text", "mean_length")
 
     # Minimum data to beat chance (Judge fix #5)
     L += ["", "## 4. Smallest corpus where a method beats chance (lower 95% bound above chance)", "",
-          "Size sweep at mean length 4.4. `never` = not reached by 50,000 texts.", "",
+          f"Size sweep at mean length {ip['mean_length']}. `never` = not reached by 50,000 texts.", "",
           "| Task | Method | Smallest size | Smallest size for ≥50% success |", "|---|---|---|---|"]
     for M in A_METHODS:
         first = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["A"] and

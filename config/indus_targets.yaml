@@ -40,29 +40,30 @@ references:
 
 targets:
   n_texts:
-    value: 5500
+    value: 2906
     tolerance: 0
     role: hard
-    citation: BRIEF
-    verified: false
+    citation: [YADAV2010, M77]
+    verified: true
     notes: >-
-      UNVERIFIED. Verified alternatives: 2,906 texts / 3,573 lines in M77 (YADAV2010, p.2,
-      citing M77); 1,548 texts in the pruned EBUDS set (YADAV2010). Wikipedia reports
-      "around 5,000 inscriptions" (2025 news report, secondary). The decipherability curve
-      therefore marks an Indus BAND from 1,548 to 5,500 texts, not a single point.
-    alternatives: {M77_texts: 2906, M77_lines: 3573, EBUDS_texts: 1548}
+      VERIFIED: "417 unique signs in 3573 lines of 2906 texts" (YADAV2010 p.2, describing the
+      electronic concordance of M77). The earlier project brief gave ~5,500 (unverified, now
+      dropped). Other sizes: 1,548 texts in the pruned EBUDS set (YADAV2010); "around 5,000
+      inscriptions" known today (Wikipedia, citing a 2025 news report, secondary). Plots mark
+      the Indus point at 2,906 and shade the band 1,548-5,500.
+    alternatives: {M77_lines: 3573, EBUDS_texts: 1548, brief_superseded: 5500}
 
   mean_length:
-    value: 4.4
+    value: 4.60
     tolerance: 0.25
     role: hard
-    citation: BRIEF
-    verified: false
+    citation: [RAO2018, YADAV2010, FSW2004]
+    verified: true
     notes: >-
-      UNVERIFIED as 4.4. Verified neighbours: M77 has 13,372 sign occurrences (RAO2018) over
-      2,906 texts (YADAV2010), i.e. 4.60 signs/text, or 3.74 signs/line. FSW2004 states the
-      average is "under 4.6". Mahadevan (M77, p.9, VIA Wikipedia) gives "around five".
-    alternatives: {M77_derived_per_text: 4.60, M77_derived_per_line: 3.74}
+      VERIFIED (derived): M77 has 13,372 sign occurrences (RAO2018) over 2,906 texts (YADAV2010),
+      i.e. 4.60 signs per text (3.74 per line). FSW2004 independently states the average is
+      "under 4.6". The earlier brief value of 4.4 is superseded.
+    alternatives: {M77_derived_per_line: 3.74, brief_superseded: 4.4}
 
   median_length:
     value: 4
@@ -71,8 +72,8 @@ targets:
     citation: BRIEF
     verified: false
     notes: >-
-      UNVERIFIED. YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes of EBUDS; we did not
-      find a published median.
+      UNVERIFIED (from the earlier brief). YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes
+      of EBUDS; we did not find a published median. The tolerance of 1 admits 3-5.
 
   max_length:
     value: 17

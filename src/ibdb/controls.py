@@ -186,7 +186,7 @@ class Adversarial(MarkovEmblem):
             out.append(x)
         return [f"a{v}" for v in out]
 
-    def tune_mix(self, target_ratio: float, ratio_fn, n: int = 3000, mean_len: float = 4.4):
+    def tune_mix(self, target_ratio: float, ratio_fn, n: int = 3000, mean_len: float = 4.6):
         lo, hi = 0.0, 1.0
         rng = np.random.default_rng(self.seed + 7)
         for _ in range(12):

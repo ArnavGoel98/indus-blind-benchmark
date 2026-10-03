@@ -93,11 +93,13 @@ def build_round(round_id: str, tier: str, n_corpora: int = 24, out_root: Path | 
            [(c, "emblem") for c in prof["controls"]]
     for i in range(n_corpora):
         src, st = pool[int(rng.integers(len(pool)))]
-        n = int(rng.choice([1500, 5500, 5500, 20000]))
+        ip = prof["indus_point"]
+        n = int(rng.choice([1548, ip["n_texts"], ip["n_texts"], 20000]))
         knobs, spec = load_knobs("full", src, st)
         gen_src = disguise(src, secret) if src in gbuild.LANGUAGES else src
         cid = f"{tier[0]}{round_id}-{i:03d}-" + hashlib.sha1(f"{secret}-{i}".encode()).hexdigest()[:6]
-        corpus, key, _ = gbuild.make_corpus(gen_src, spec, n, 4.4, int(rng.integers(1 << 30)), knobs, corpus_id=cid)
+        corpus, key, _ = gbuild.make_corpus(gen_src, spec, n, ip["mean_length"], int(rng.integers(1 << 30)), knobs,
+                                           corpus_id=cid)
         key.source = src
         key.family = gbuild.source_family(src)
         key.kind = gbuild.source_kind(src)

@@ -81,8 +81,12 @@ coordinate in a space we defined.* The fixes are built in:
 - **Segment selection is tuned.** Positional and frequency targets are hit by preferring
   certain windows of real text, not by modelling what seals actually said. The `holdout`
   regime shows the effect.
-- **Unverified targets.** 5,500 texts, mean 4.4 and median 4 come from the project brief.
-  Verified neighbours: 2,906 texts / 13,372 signs in Mahadevan (1977), i.e. 4.60 signs per text.
+- **Calibration numbers were corrected.** An earlier version used 5,500 texts and mean 4.4 from
+  the project brief; neither was verified. All results now use the verified Mahadevan (1977)
+  figures: 2,906 texts and 13,372 sign occurrences, i.e. 4.60 signs per text. The median of 4 is
+  still unverified (tolerance ±1). Plots also shade 1,548 (EBUDS) to ~5,500 texts.
+- **CDLI (Sumerian) has no formal open license.** Its terms allow reuse "according to common and
+  fair academic practice" with citation. Check before publishing derived Sumerian material.
 - **Luo-style matcher is not neural.** It keeps the matching and assignment structure of
   Luo, Cao & Barzilay (2019) but uses a table instead of an LSTM. Treat it as a lower bound.
 - **Small-sample entropy bias.** With about 400 signs and about 20k bigrams, plug-in
