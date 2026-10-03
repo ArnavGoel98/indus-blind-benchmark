@@ -121,6 +121,12 @@ source is 122 MB.
    rounds, send the file to the maintainer, who runs `ibdb-score sub.json --round r1 --tier hidden --record`
    and rebuilds the static page with `ibdb leaderboard`.
 
+**Maintainer: create hidden rounds only on a machine you control.** Run
+`ibdb challenge build --round h1 --tier hidden` locally, then commit `challenge/hidden/h1/`
+(corpora, manifest, commitments). Never commit `private/`: it holds the round secret and the keys.
+A hidden round generated anywhere else, such as a shared or cloud session, should be treated as
+compromised.
+
 Sign values are compared as transliterated unit strings. The unit conventions are in
 `ibdb/phonology.py`: IAST for Sanskrit, ISO-15919-style for Tamil, CDLI readings for Sumerian.
 

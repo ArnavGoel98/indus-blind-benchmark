@@ -40,6 +40,13 @@ B_METHODS = [InventoryRule, ScriptTypeLR, BranchingSegmentation]
 D_METHODS = [FrequencyRankBaseline, KnightEM, LuoLite]
 
 
+def _single_thread_blas() -> None:
+    """Worker processes inherit this: one BLAS thread each, so N workers use N cores."""
+    import os
+    for v in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS"):
+        os.environ.setdefault(v, "1")
+
+
 def all_methods() -> list:
     return [m() for m in A_METHODS + B_METHODS + D_METHODS]
 
@@ -172,6 +179,7 @@ def load_records(profile_name: str) -> list[dict]:
 def run(profile_name: str, workers: int = 4, log=print) -> None:
     from concurrent.futures import ProcessPoolExecutor, as_completed
     from multiprocessing import get_context
+    _single_thread_blas()
     prof = config.experiment()["profiles"][profile_name]
     jobs = build_jobs(prof)
     done = {json.dumps(r["job"], sort_keys=True) for r in load_records(profile_name) if "error" not in r}

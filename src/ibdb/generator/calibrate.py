@@ -28,6 +28,13 @@ from .script import ScriptSpec
 DUP_CAP = 0.40
 
 
+def _single_thread_blas() -> None:
+    """Worker processes inherit this: one BLAS thread each, so N workers use N cores."""
+    import os
+    for v in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS"):
+        os.environ.setdefault(v, "1")
+
+
 def knob_box(source: str, script_type: str) -> dict[str, tuple[float, float, str]]:
     box: dict[str, tuple[float, float, str]] = {
         "rho": (0.0, 0.15, "lin"),
@@ -184,6 +191,7 @@ def language_entropy_ratio(regime: str, languages, script_types) -> float:
 def _run_pool(jobs, workers, log):
     from concurrent.futures import ProcessPoolExecutor, as_completed
     from multiprocessing import get_context
+    _single_thread_blas()
     todo = [j for j in jobs if not calibration_path(j[2], j[0], j[1]).exists()]
     for attempt in range(3):  # retry jobs lost to a dead worker
         if not todo:
