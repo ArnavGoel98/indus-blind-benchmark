@@ -19,13 +19,14 @@ INK, INK2, GRID, BAND = "#0b0b0b", "#52514e", "#e4e3df", "#d9d8d3"
 
 A_NAMES = ["rao2009_entropy", "yadav2010_markov", "fuls_positional", "lee2010_tree", "ling_classifier_lr"]
 B_NAMES = ["script_type_inventory_rule", "script_type_lr", "segmentation_branching"]
-D_NAMES = ["baseline_frequency_rank", "knight2006_em", "luo2019_lite"]
+D_NAMES = ["baseline_frequency_rank", "knight2006_em", "knight2006_em_original", "em_cognate_matcher"]
 LABEL = {
     "rao2009_entropy": "Rao 2009 entropy", "yadav2010_markov": "Yadav 2010 n-gram", "fuls_positional": "Positional",
     "lee2010_tree": "Lee 2010 tree", "ling_classifier_lr": "Multi-feature LR",
     "script_type_inventory_rule": "Inventory rule", "script_type_lr": "Inventory/freq. LR",
     "segmentation_branching": "Segment length",
-    "baseline_frequency_rank": "Frequency-rank baseline", "knight2006_em": "Knight-style EM", "luo2019_lite": "Luo-style matcher (lite)",
+    "baseline_frequency_rank": "Frequency-rank baseline", "knight2006_em": "Knight-style EM (revised rule)",
+    "knight2006_em_original": "Knight-style EM (original rule)", "em_cognate_matcher": "EM cognate-matcher",
 }
 COLOR = {n: SERIES[i % len(SERIES)] for i, n in enumerate(A_NAMES)}
 COLOR.update({n: SERIES[i] for i, n in enumerate(B_NAMES)})
@@ -141,12 +142,12 @@ def decipherability(agg: dict, profile: dict, out_dir: Path | None = None) -> li
     for sweep, points in (("size", size_pts), ("length", len_pts)):
         fig, axes = plt.subplots(2, 3, figsize=(15, 8.6), dpi=150)
         _panel(axes[0, 0], points, sweep, A_NAMES, _get_balanced,
-               "A  Language vs non-language", "balanced accuracy", 0.5, ip, band)
+               "A  Language vs non-language (UNRESOLVED)", "balanced accuracy", 0.5, ip, band)
         _panel(axes[0, 1], points, sweep, B_NAMES, lambda n: _get(["B", n]), "B  Script type", "accuracy", 0.25, ip, band)
         _panel(axes[0, 2], points, sweep, D_NAMES, lambda n: _get(["C", "candidates", n]),
                "C  Language family (candidates tier)", "accuracy", _chance(points, "candidates"), ip, band)
         for ax, tier, ttl in zip(axes[1], ("related", "candidates", "none"),
-                                 ("D  Sign values, close relative known\n(NOT the Indus situation)",
+                                 ("D  Sign values, close relative known\n(UPPER BOUND; not the Indus situation)",
                                   "D  Sign values, candidate languages\n(Indus-relevant)",
                                   "D  Sign values, no relative among candidates\n(Indus-relevant)")):
             _panel(ax, points, sweep, D_NAMES, lambda n, tier=tier: _get(["D", tier, n], "token"), ttl,
@@ -185,21 +186,23 @@ def headline(agg: dict, profile: dict, out_dir: Path | None = None) -> Path:
         ("B  script type (best accuracy)", lambda t: max([v["rate"] for v in t["B"].values()] or [np.nan])),
         ("C  family, candidates tier (best acc.)", lambda t: max([v["rate"] for v in t["C"].get("candidates", {}).values()] or [np.nan])),
         ("D  sign values, candidates tier (best token acc.)", lambda t: max([v["mean_token_acc"] for v in t["D"].get("candidates", {}).values()] or [np.nan])),
-        ("D  sign values, close relative known (best token acc.)", lambda t: max([v["mean_token_acc"] for v in t["D"].get("related", {}).values()] or [np.nan])),
+        ("D  sign values, no relative among candidates (best token acc.)", lambda t: max([v["mean_token_acc"] for v in t["D"].get("none", {}).values()] or [np.nan])),
     ]
     for i, (lab, f) in enumerate(rows):
         xs = [p["n_texts"] for p in pts]
         ys = [f(p["tables"]) for p in pts]
-        ax.plot(xs, ys, color=SERIES[i], lw=2, marker="o", ms=5, label=lab, ls="--" if i == 4 else "-")
+        ax.plot(xs, ys, color=SERIES[i], lw=2, marker="o", ms=5, label=lab)
     ax.axvspan(1548, 5500, color=BAND, alpha=0.6, lw=0, zorder=0)
     ax.axvline(ip["n_texts"], color=INK2, lw=1, ls="--")
     ax.text(ip["n_texts"], 1.02, " Indus", transform=ax.get_xaxis_transform(), fontsize=8, color=INK2)
     _size_axis(ax)
     ax.set_ylim(-0.02, 1.05)
     _style(ax, f"texts in corpus (log scale; mean {ip['mean_length']} signs/text)", "score (chance differs by task: A 0.5, B 0.25)",
-           "Decipherability curve: best method per task")
+           "Decipherability curve, Indus-relevant settings only (best method per task)")
     ax.legend(frameon=False, fontsize=8, loc="upper left")
-    fig.tight_layout()
+    fig.text(0.01, 0.005, "Task A is labelled unresolved: see per-family false-positive rates. Close-relative (upper-bound) "
+             "decipherment results are deliberately excluded here.", fontsize=7, color=INK2)
+    fig.tight_layout(rect=(0, 0.03, 1, 1))
     p = out_dir / "decipherability_headline.png"
     fig.savefig(p, facecolor="white")
     fig.savefig(out_dir / "decipherability_headline.svg", facecolor="white")
@@ -224,7 +227,8 @@ def control_fp(agg: dict, profile: dict, out_dir: Path | None = None) -> Path:
     ax.set_xticklabels(["languages\n(want 1)", "heraldry", "admin tags", "Markov\nemblems", "adversarial\n(entropy-matched)",
                         "Rao type 1", "Rao type 2", "kamon text\n(NL-derived)"], fontsize=8)
     ax.set_ylim(0, 1.05)
-    _style(ax, "", "share classified as 'linguistic'", "Task A at the Indus point: which systems get called language?")
+    _style(ax, "", "share classified as 'linguistic'",
+           "Language detection (Task A) is UNRESOLVED: false-positive rate per control family at the Indus point")
     ax.legend(frameon=False, fontsize=8, ncol=5, loc="upper center", bbox_to_anchor=(0.5, -0.18))
     fig.tight_layout()
     p = out_dir / "taskA_by_family.png"
@@ -235,3 +239,34 @@ def control_fp(agg: dict, profile: dict, out_dir: Path | None = None) -> Path:
 
 def save_json(obj: Any, path: Path) -> None:
     path.write_text(json.dumps(obj, indent=1, default=float))
+
+
+def sister_sweep(agg: dict, out_dir: Path | None = None) -> Path | None:
+    """Task D token accuracy vs sister-language distance (reviewer fix 1)."""
+    out_dir = ensure(out_dir or reports_dir() / "figures")
+    levels = sorted(agg.get("sister", {}).values(), key=lambda v: v["sound_change_rate"])
+    if not levels:
+        return None
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.6), dpi=150)
+    xs = np.arange(len(levels))
+    labels = [f"{v['sound_change_rate']:.2f} / {v['lexical_replacement']:.2f}" for v in levels]
+    for ax, tier, ttl in zip(axes, ("related", "candidates"),
+                             ("Close relative known (upper bound)", "Relative among candidates (Indus-relevant)")):
+        for n in D_NAMES:
+            ys = [v["tables"]["D"].get(tier, {}).get(n, {}).get("mean_token_acc", np.nan) for v in levels]
+            lo = [v["tables"]["D"].get(tier, {}).get(n, {}).get("ci_lo", np.nan) for v in levels]
+            hi = [v["tables"]["D"].get(tier, {}).get(n, {}).get("ci_hi", np.nan) for v in levels]
+            ax.plot(xs, ys, color=COLOR[n], lw=2, marker="o", ms=5, label=LABEL[n])
+            ax.fill_between(xs, lo, hi, color=COLOR[n], alpha=0.10, lw=0)
+        ax.set_xticks(xs)
+        ax.set_xticklabels(labels, fontsize=8)
+        ax.set_ylim(-0.02, 1.05)
+        _style(ax, "sister distance: sound-change rate / lexical replacement", "share of sign tokens read correctly", ttl)
+        ax.legend(frameon=False, fontsize=7.5, loc="upper right")
+    fig.suptitle("Task D at the Indus point depends on how close the known relative is "
+                 "(95% cluster-bootstrap CI over source languages)", x=0.01, ha="left", fontsize=10.5, color=INK)
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
+    p = out_dir / "taskD_sister_distance.png"
+    fig.savefig(p, facecolor="white")
+    plt.close(fig)
+    return p

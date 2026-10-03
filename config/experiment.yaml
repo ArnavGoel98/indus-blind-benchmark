@@ -15,6 +15,9 @@ profiles:
     controls: [heraldry, admin_tags, emblem_markov, adversarial, rao_type1, rao_type2, kamon]
     knowledge_tiers: [related, candidates, none]
     feasibility_scenarios: 120     # random generator-parameter draws at the Indus point
+    # Sister-language distance (sound_change_rate, lexical_replacement), Indus point, tiers related +
+    # candidates. Level 2 is the default used everywhere else (sister_language below).
+    sister_sweep: [[0.10, 0.05], [0.30, 0.20], [0.50, 0.35], [0.70, 0.50]]
     regimes: [full, holdout, wrong_prior]
     em_restarts: 3
     em_iterations: 60
@@ -28,6 +31,7 @@ profiles:
     controls: [heraldry, admin_tags, emblem_markov]
     knowledge_tiers: [related, candidates, none]
     feasibility_scenarios: 3
+    sister_sweep: [[0.10, 0.05], [0.50, 0.35]]
     regimes: [full]
     em_restarts: 1
     em_iterations: 20
@@ -41,6 +45,7 @@ profiles:
     controls: [heraldry, admin_tags, emblem_markov, adversarial, rao_type1, rao_type2, kamon]
     knowledge_tiers: [related, candidates, none]
     feasibility_scenarios: 16
+    sister_sweep: [[0.10, 0.05], [0.30, 0.20], [0.50, 0.35], [0.70, 0.50]]
     regimes: [full, holdout, wrong_prior]
     em_restarts: 2
     em_iterations: 40
@@ -60,3 +65,9 @@ generator:
 sister_language:
   sound_change_rate: 0.30     # fraction of phonemes rewritten by regular correspondences
   lexical_replacement: 0.20   # fraction of word types replaced by unrelated forms
+
+# Blind challenge. Sumerian stays in internal experiments (with CDLI citation) but is excluded from
+# every published challenge round until CDLI confirms its reuse terms cover redistribution of
+# derived material (see DATA_LICENSES.md).
+challenge:
+  exclude_sources: [sumerian]

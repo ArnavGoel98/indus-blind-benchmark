@@ -33,12 +33,12 @@ writing-system knobs are calibrated until the corpus matches every Indus target 
 [config/indus_targets.yaml](config/indus_targets.yaml), each of which carries a citation and
 a verified/unverified flag. Eight method families run on every corpus: Rao-style entropy,
 Yadav-style n-grams, positional histograms, segmentation, script-type estimation,
-language/non-language classifiers, Knight-style EM, and a Luo-style matcher. Four tasks are
-scored separately:
+language/non-language classifiers, Knight-style EM (under its original and revised
+candidate-selection rules), and an EM cognate-matcher. Four tasks are scored separately:
 
 | Task | Question | Chance |
 |---|---|---|
-| A | Is it language at all? | 0.50 balanced accuracy |
+| A | Is it language at all? **Status: unresolved** (see per-family false-positive rates) | 0.50 balanced accuracy |
 | B | Which script type? | 0.25 |
 | C | Which language family? | ~0.25 (depends on candidates) |
 | D | What does each sign stand for? (token accuracy vs key) | ≈ frequency-rank baseline |
@@ -87,11 +87,30 @@ coordinate in a space we defined.* The fixes are built in:
   still unverified (tolerance ±1). Plots also shade 1,548 (EBUDS) to ~5,500 texts.
 - **CDLI (Sumerian) has no formal open license.** Its terms allow reuse "according to common and
   fair academic practice" with citation. Check before publishing derived Sumerian material.
-- **Luo-style matcher is not neural.** It keeps the matching and assignment structure of
-  Luo, Cao & Barzilay (2019) but uses a table instead of an LSTM. Treat it as a lower bound.
+- **No neural decipherment is evaluated.** The "EM cognate-matcher" borrows the one-to-one
+  assignment idea of Luo, Cao & Barzilay (2019) but contains no neural network. Its results say
+  nothing about neural methods.
 - **Small-sample entropy bias.** With about 400 signs and about 20k bigrams, plug-in
   conditional entropy is biased low (an i.i.d. 420-sign source measures about 0.59 of its
   true ratio). Entropy thresholds learned at one corpus size do not transfer to another.
+
+## How results are reported (after an adversarial review of the first draft)
+
+- **Methods were frozen before the final run** at git tag `frozen-v1`.
+- **Task D headlines use only the Indus-relevant knowledge tiers** (`candidates`, `none`). The
+  close-relative tier is shown separately as an upper bound, with the sister-language distance
+  swept over 4 levels, and with a run where the script type is predicted instead of given.
+- **Both EM selection rules are reported.** The revised rule was adopted during development after
+  the original one picked Sumerian for almost every corpus.
+- **The `holdout` calibration regime leads**, and every table is repeated on the corpora that
+  meet all calibration targets.
+- **Confidence intervals resample whole source languages** (cluster bootstrap), because corpora
+  from one language are not independent.
+- **Language detection is labelled unresolved.** Read the false-positive rate per control
+  family, not just the average.
+- **Sumerian is excluded from published challenge rounds** until CDLI confirms its reuse terms.
+  It stays in internal experiments, with citation: Cuneiform Digital Library Initiative,
+  https://cdli.mpiwg-berlin.mpg.de.
 
 ## Install and reproduce
 

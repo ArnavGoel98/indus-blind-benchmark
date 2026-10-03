@@ -27,17 +27,18 @@ from . import config, ml
 from .generator.build import LANGUAGES, make_corpus
 from .generator.calibrate import load_knobs
 from .knowledge import knowledge_for
-from .methods.decipher import FrequencyRankBaseline, KnightEM, LuoLite
+from .methods.decipher import CognateMatcher, FrequencyRankBaseline, KnightEM, KnightEMOriginal
 from .methods.descriptive import FulsPositional, RaoEntropy, YadavMarkov
 from .methods.structural import (BranchingSegmentation, InventoryRule, LeeTree, MultiFeatureClassifier,
                                  ScriptTypeLR)
 from .paths import ensure, runs_dir
-from .scoring import bootstrap_ci, score_sign_values, segmentation_f1, summarize_binary
+from .scoring import (cluster_bootstrap, score_sign_values, segmentation_f1, summarize_binary,
+                      summarize_clustered)
 from .stats import check_targets, corpus_stats
 
 A_METHODS = [RaoEntropy, YadavMarkov, FulsPositional, LeeTree, MultiFeatureClassifier]
 B_METHODS = [InventoryRule, ScriptTypeLR, BranchingSegmentation]
-D_METHODS = [FrequencyRankBaseline, KnightEM, LuoLite]
+D_METHODS = [FrequencyRankBaseline, KnightEM, KnightEMOriginal, CognateMatcher]
 
 
 def _single_thread_blas() -> None:
@@ -53,7 +54,7 @@ def all_methods() -> list:
 
 @dataclass(frozen=True)
 class Job:
-    sweep: str            # size | length | regime | feasibility
+    sweep: str            # size | length | regime | feasibility | sister | predicted
     source: str
     script_type: str      # 'emblem' for controls
     seed: int
@@ -62,6 +63,8 @@ class Job:
     regime: str = "full"
     scenario: int = -1    # feasibility scenario id
     tiers: tuple = ("related", "candidates", "none")
+    sister: tuple = ()    # (sound_change_rate, lexical_replacement); () = config default
+    pred_script: str = "" # predicted script type used for the solver's unit level ("" = oracle)
 
     def key(self) -> str:
         return json.dumps(asdict(self), sort_keys=True)
@@ -85,6 +88,14 @@ def build_jobs(profile: dict) -> list[Job]:
                     spec = config.regime_targets(reg)
                     jobs.append(Job("regime", s, st, seed, int(spec["n_texts"]["value"]),
                                     float(spec["mean_length"]["value"]), regime=reg, tiers=("related",)))
+        # Sister-language distance sweep (Indus point, C/D only): how much of Task D is the free
+        # distance parameter?
+        for (s, st) in srcs:
+            if st == "emblem":
+                continue
+            for lvl in profile.get("sister_sweep", []):
+                jobs.append(Job("sister", s, st, seed, ip["n_texts"], ip["mean_length"],
+                                tiers=("related", "candidates"), sister=tuple(lvl)))
     rng = np.random.default_rng(config.experiment()["master_seed"])
     for i in range(profile["feasibility_scenarios"]):
         lang = profile["languages"][int(rng.integers(len(profile["languages"])))]
@@ -122,13 +133,14 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60) -> dict[str
         "calibration": {k: v["ok"] for k, v in check_targets(st, regime_t).items()},
         "A": {}, "B": {}, "CD": {}, "timing": {},
     }
-    for M in A_METHODS:
+    cd_only = job.sweep in ("sister", "predicted")
+    for M in ([] if cd_only else A_METHODS):
         m = M()
         t = time.time()
         p = m.analyze(corpus)
         rec["A"][m.name] = {"score": p.ling_score, "vector": p.extra.get("vector"), "features": p.features}
         rec["timing"][m.name] = time.time() - t
-    for M in B_METHODS:
+    for M in ([] if cd_only else B_METHODS):
         m = M()
         t = time.time()
         p = m.analyze(corpus)
@@ -137,13 +149,15 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60) -> dict[str
             rec["seg_f1"] = segmentation_f1(p.segmentation, key)
         rec["timing"][m.name] = time.time() - t
     if key.kind == "language":
+        unit_script = job.pred_script or job.script_type
+        sis = {"sound_change_rate": job.sister[0], "lexical_replacement": job.sister[1]} if job.sister else {}
         for tier in job.tiers:
-            kn = knowledge_for(job.source, job.script_type, tier, job.seed,
-                               logogram_vocab=spec.logogram_vocab)
+            kn = knowledge_for(job.source, unit_script, tier, job.seed,
+                               logogram_vocab=spec.logogram_vocab, **sis)
             fams = sorted({r.family for r in kn.references})
             rec["CD"][tier] = {"_families": fams}
             for M in D_METHODS:
-                m = KnightEM(restarts=em_restarts, iterations=em_iterations) if M is KnightEM else M()
+                m = M(restarts=em_restarts, iterations=em_iterations) if issubclass(M, KnightEM) else M()
                 t = time.time()
                 p = m.analyze(corpus, kn)
                 s = score_sign_values(p.sign_values, key, logical)
@@ -176,17 +190,18 @@ def load_records(profile_name: str) -> list[dict]:
     return [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
 
 
-def run(profile_name: str, workers: int = 4, log=print) -> None:
+def _execute(jobs: list[Job], profile_name: str, workers: int, log) -> None:
     from concurrent.futures import ProcessPoolExecutor, as_completed
     from multiprocessing import get_context
     _single_thread_blas()
     prof = config.experiment()["profiles"][profile_name]
-    jobs = build_jobs(prof)
     done = {json.dumps(r["job"], sort_keys=True) for r in load_records(profile_name) if "error" not in r}
     todo = [j for j in jobs if j.key() not in done]
     # Expensive jobs first so the pool finishes evenly.
     todo.sort(key=lambda j: -(j.n_texts * j.mean_length * (3 if j.script_type != "emblem" else 1)))
     log(f"[run] {profile_name}: {len(jobs)} jobs, {len(todo)} to do, {workers} workers")
+    if not todo:
+        return
     path = results_path(profile_name)
     args = [(j, path, prof["em_restarts"], prof["em_iterations"]) for j in todo]
     t0 = time.time()
@@ -200,6 +215,38 @@ def run(profile_name: str, workers: int = 4, log=print) -> None:
                 continue
             if i % 20 == 0 or r[-1]:
                 log(f"[run] {i}/{len(todo)} {time.time() - t0:.0f}s last={r}")
+
+
+def predicted_script_jobs(profile_name: str) -> list[Job]:
+    """Stage 2: re-run C/D at the Indus point with the PREDICTED script type (no oracle).
+
+    The prediction is the leave-one-source-out output of script_type_lr from stage 1, so the
+    solver's unit level comes from a classifier that never saw the corpus's source language.
+    """
+    prof = config.experiment()["profiles"][profile_name]
+    ip = prof["indus_point"]
+    recs = [r for r in load_records(profile_name) if "error" not in r and r["job"]["sweep"] == "size"
+            and r["job"]["n_texts"] == ip["n_texts"] and r["job"]["regime"] == "full"]
+    if not recs:
+        return []
+    loso_predictions(recs)
+    jobs = []
+    for r in recs:
+        if r["truth"]["kind"] != "language":
+            continue
+        pred = r["B_pred"].get(ScriptTypeLR.name)
+        if not pred:
+            continue
+        j = r["job"]
+        jobs.append(Job("predicted", j["source"], j["script_type"], j["seed"], j["n_texts"], j["mean_length"],
+                        tiers=tuple(prof["knowledge_tiers"]), pred_script=pred))
+    return jobs
+
+
+def run(profile_name: str, workers: int = 4, log=print) -> None:
+    prof = config.experiment()["profiles"][profile_name]
+    _execute(build_jobs(prof), profile_name, workers, log)
+    _execute(predicted_script_jobs(profile_name), profile_name, workers, log)
 
 
 # --------------------------------------------------------------------------- aggregation
@@ -278,28 +325,19 @@ def loso_predictions(records: list[dict], train_pool: list[dict] | None = None) 
                 r["B_pred"][M.name] = p
 
 
-def task_tables(records: list[dict]) -> dict[str, Any]:
-    """Success rates per method for one group of records (already LOSO-predicted)."""
-    out: dict[str, Any] = {"A": {}, "A_by_kind": {}, "B": {}, "C": {}, "D": {}}
-    a_recs = [r for r in records if r["truth"]["kind"] in A_ELIGIBLE]
-    for M in A_METHODS:
-        ys = [(r["truth"]["is_linguistic"], r["A_pred"].get(M.name)) for r in a_recs if M.name in r.get("A_pred", {})]
-        if not ys:
-            continue
-        y = np.array([a for a, _ in ys])
-        p = np.array([b for _, b in ys])
-        out["A"][M.name] = {"balanced_acc": ml.balanced_accuracy(y, p),
-                            "ling_recall": summarize_binary(list(p[y])), "nonling_specificity": summarize_binary(list(~p[~y]))}
-        kinds = defaultdict(list)
-        for r in records:
-            if M.name in r.get("A_pred", {}):
-                kinds[r["truth"]["source"] if r["truth"]["kind"] != "language" else "language"].append(r["A_pred"][M.name])
-        out["A_by_kind"][M.name] = {k: summarize_binary(v) for k, v in kinds.items()}  # share called 'linguistic'
+def _ba_stat(items) -> float:
+    y = np.array([a for a, _ in items], bool)
+    p = np.array([b for _, b in items], bool)
+    if y.all() or (~y).all():
+        raise ValueError("one class missing in resample")
+    return ml.balanced_accuracy(y, p)
+
+
+def cd_tables(records: list[dict]) -> dict[str, Any]:
+    """Tasks C and D. Intervals: cluster bootstrap over source languages (corpora from one
+    language are not independent)."""
+    out: dict[str, Any] = {"C": {}, "D": {}}
     b_recs = [r for r in records if r["truth"]["kind"] == "language"]
-    for name in (InventoryRule.name, ScriptTypeLR.name, BranchingSegmentation.name):
-        c = [r["B_pred"].get(name) == r["truth"]["script_type"] for r in b_recs if name in r.get("B_pred", {})]
-        if c:
-            out["B"][name] = summarize_binary(c)
     for tier in ("related", "candidates", "none"):
         out["C"][tier], out["D"][tier] = {}, {}
         recs = [r for r in b_recs if tier in r.get("CD", {})]
@@ -307,17 +345,59 @@ def task_tables(records: list[dict]) -> dict[str, Any]:
             continue
         chance = float(np.mean([1.0 / len(r["CD"][tier]["_families"]) for r in recs]))
         for M in D_METHODS:
-            vals = [r["CD"][tier][M.name] for r in recs if M.name in r["CD"][tier]]
-            if not vals:
+            sel = [r for r in recs if M.name in r["CD"][tier]]
+            if not sel:
                 continue
+            vals = [r["CD"][tier][M.name] for r in sel]
+            cl = [r["truth"]["source"] for r in sel]
             if tier != "related":
-                out["C"][tier][M.name] = {**summarize_binary([v["family_correct"] for v in vals]), "chance": chance}
+                out["C"][tier][M.name] = {**summarize_clustered([v["family_correct"] for v in vals], cl), "chance": chance}
             acc = np.array([v["token_acc"] for v in vals])
-            lo, hi = bootstrap_ci(acc)
+            lo, hi = cluster_bootstrap(acc, cl)
             out["D"][tier][M.name] = {"mean_token_acc": float(acc.mean()), "ci_lo": lo, "ci_hi": hi,
-                                      "success50": summarize_binary(list(acc >= 0.5)),
-                                      "mean_type_acc": float(np.mean([v["type_acc"] for v in vals]))}
+                                      "success50": summarize_clustered(list(acc >= 0.5), cl),
+                                      "mean_type_acc": float(np.mean([v["type_acc"] for v in vals])),
+                                      "n": len(vals)}
     return out
+
+
+def task_tables(records: list[dict]) -> dict[str, Any]:
+    """Success rates per method for one group of records (already LOSO-predicted).
+
+    Task A per-family rates use Wilson intervals (one family = one source). Every pooled rate
+    uses a cluster bootstrap over sources.
+    """
+    out: dict[str, Any] = {"A": {}, "A_by_kind": {}, "B": {}}
+    a_recs = [r for r in records if r["truth"]["kind"] in A_ELIGIBLE]
+    for M in A_METHODS:
+        sel = [r for r in a_recs if M.name in r.get("A_pred", {})]
+        if not sel:
+            continue
+        y = np.array([r["truth"]["is_linguistic"] for r in sel])
+        p = np.array([r["A_pred"][M.name] for r in sel])
+        cl = [r["truth"]["source"] for r in sel]
+        lo, hi = cluster_bootstrap(list(zip(y, p)), cl, stat=_ba_stat, n_boot=500)
+        cl_arr = np.array(cl, dtype=object)
+        out["A"][M.name] = {"balanced_acc": ml.balanced_accuracy(y, p), "ci_lo": lo, "ci_hi": hi,
+                            "ling_recall": summarize_clustered(list(p[y]), list(cl_arr[y])),
+                            "nonling_specificity": summarize_clustered(list(~p[~y]), list(cl_arr[~y]))}
+        kinds = defaultdict(list)
+        for r in records:
+            if M.name in r.get("A_pred", {}):
+                kinds[r["truth"]["source"] if r["truth"]["kind"] != "language" else "language"].append(r["A_pred"][M.name])
+        out["A_by_kind"][M.name] = {k: summarize_binary(v) for k, v in kinds.items()}  # share called 'linguistic'
+    b_recs = [r for r in records if r["truth"]["kind"] == "language"]
+    for name in (InventoryRule.name, ScriptTypeLR.name, BranchingSegmentation.name):
+        sel = [r for r in b_recs if name in r.get("B_pred", {})]
+        if sel:
+            out["B"][name] = summarize_clustered([r["B_pred"][name] == r["truth"]["script_type"] for r in sel],
+                                                 [r["truth"]["source"] for r in sel])
+    out.update(cd_tables(records))
+    return out
+
+
+def _passes(r: dict) -> bool:
+    return bool(r.get("calibration")) and all(r["calibration"].values())
 
 
 def aggregate(profile_name: str) -> dict[str, Any]:
@@ -325,25 +405,46 @@ def aggregate(profile_name: str) -> dict[str, Any]:
     errors = [r for r in load_records(profile_name) if "error" in r]
     groups: dict[tuple, list[dict]] = defaultdict(list)
     for r in recs:
-        if r["job"]["sweep"] != "feasibility":
+        if r["job"]["sweep"] in ("size", "length", "regime"):
             groups[_point(r)].append(r)
-    # The Indus point appears in the size sweep; the length sweep shares it.
     prof = config.experiment()["profiles"][profile_name]
     ip = prof["indus_point"]
     indus_key = ("size", ip["n_texts"], ip["mean_length"], "full")
-    for k, g in groups.items():
+    out: dict[str, Any] = {"profile": profile_name, "n_records": len(recs), "n_errors": len(errors),
+                           "points": {}, "feasibility": None, "sister": {}, "predicted": None}
+    for k, g in sorted(groups.items(), key=lambda kv: (kv[0][0], kv[0][3], kv[0][1], kv[0][2])):
         loso_predictions(g)
+        entry = {"sweep": k[0], "n_texts": k[1], "mean_length": k[2], "regime": k[3],
+                 "n_corpora": len(g), "tables": task_tables(g),
+                 "seg_f1": float(np.mean([r["seg_f1"] for r in g if "seg_f1" in r] or [np.nan]))}
+        # Robustness (reviewer fix 3): only corpora that meet EVERY target of their regime,
+        # with the leave-one-source-out rules re-learned inside that subset.
+        passing = [dict(r, A_pred={}, B_pred={}) for r in g if _passes(r)]
+        entry["n_passing"] = len(passing)
+        entry["n_passing_languages"] = sum(r["truth"]["kind"] == "language" for r in passing)
+        if passing:
+            loso_predictions(passing)
+            entry["tables_passing"] = task_tables(passing)
+        out["points"][json.dumps(k)] = entry
     feas = [r for r in recs if r["job"]["sweep"] == "feasibility"]
     if feas and indus_key in groups:
         loso_predictions(feas, train_pool=groups[indus_key])
-    out: dict[str, Any] = {"profile": profile_name, "n_records": len(recs), "n_errors": len(errors),
-                           "points": {}, "feasibility": None}
-    for k, g in sorted(groups.items(), key=lambda kv: (kv[0][0], kv[0][3], kv[0][1], kv[0][2])):
-        out["points"][json.dumps(k)] = {"sweep": k[0], "n_texts": k[1], "mean_length": k[2], "regime": k[3],
-                                        "n_corpora": len(g), "tables": task_tables(g),
-                                        "seg_f1": float(np.mean([r["seg_f1"] for r in g if "seg_f1" in r] or [np.nan]))}
-    if feas:
         out["feasibility"] = {"n_scenarios": len(feas), "tables": task_tables(feas),
                               "calibration_pass_rate": float(np.mean([np.mean(list(r["calibration"].values())) for r in feas]))}
+    sis = defaultdict(list)
+    for r in recs:
+        if r["job"]["sweep"] == "sister":
+            sis[tuple(r["job"]["sister"])].append(r)
+    for lvl, g in sorted(sis.items()):
+        out["sister"][json.dumps(list(lvl))] = {"sound_change_rate": lvl[0], "lexical_replacement": lvl[1],
+                                                "n_corpora": len(g), "tables": cd_tables(g)}
+    pred = [r for r in recs if r["job"]["sweep"] == "predicted"]
+    if pred:
+        keyf = lambda j: (j["source"], j["script_type"], j["seed"])  # noqa: E731
+        oracle_by = {keyf(r["job"]): r for r in groups.get(indus_key, [])}
+        oracle = [oracle_by[keyf(r["job"])] for r in pred if keyf(r["job"]) in oracle_by]
+        out["predicted"] = {"n_corpora": len(pred),
+                            "script_type_correct": float(np.mean([r["job"]["pred_script"] == r["truth"]["script_type"] for r in pred])),
+                            "tables": cd_tables(pred), "oracle_tables": cd_tables(oracle)}
     out["errors"] = [e["error"][-500:] for e in errors[:5]]
     return out

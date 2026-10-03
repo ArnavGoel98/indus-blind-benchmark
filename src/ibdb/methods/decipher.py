@@ -72,6 +72,8 @@ class KnightEM(Method):
                   "candidate languages, a short screening run picks the reference, then a full fit runs on it. "
                   "No null emissions, so determinatives and word dividers cannot be modelled.")
 
+    rule = "revised"
+
     def __init__(self, restarts: int = 3, iterations: int = 60, max_units: int = 250, max_signs: int = 350, seed: int = 0):
         self.restarts, self.iterations = restarts, iterations
         self.max_units, self.max_signs, self.seed = max_units, max_signs, seed
@@ -99,10 +101,11 @@ class KnightEM(Method):
             np.add.at(J, (seq[:-1], seq[1:]), 1)
         J[u_b, u_b] = 0.0
         J /= J.sum()
+        revised = self.rule == "revised"
         # Pin the pooled-rare-unit mass to the same share for every reference, so model
         # comparison across candidate languages is not decided by how heavy each tail is.
         p_o = J[u_other].sum()
-        if p_o > 0:
+        if revised and p_o > 0:
             f = OTHER_MASS / p_o
             J[u_other] *= f
             J[:, u_other] *= f
@@ -138,7 +141,8 @@ class KnightEM(Method):
         nz = B > 0
         for r in range(restarts):
             E = init(r)
-            E[u_other] = uniform
+            if revised:
+                E[u_other] = uniform
             E[u_b] = 0.0
             E[u_b, s_b] = 1.0
             ll = -np.inf
@@ -150,7 +154,8 @@ class KnightEM(Method):
                 C[:, s_b] = 0.0
                 rows = C.sum(axis=1, keepdims=True)
                 E = np.where(rows > 0, C / np.maximum(rows, 1e-300), E)
-                E[u_other] = uniform
+                if revised:
+                    E[u_other] = uniform
                 E[u_b] = 0.0
                 E[u_b, s_b] = 1.0
                 new_ll = float((B[nz] * np.log(np.maximum(M[nz], 1e-300))).sum())
@@ -179,8 +184,11 @@ class KnightEM(Method):
             # Model selection with short runs (frequency-informed start only), full fit on the winner.
             for ref in refs:
                 lb, _, mi = self._fit(corpus, ref, rng, 1, 25)
-                lu = self._fit(corpus, ref, rng, 1, 25, unigram_only=True)[0]
-                scores[ref.name] = (lb - lu) / max(mi, 1e-9)
+                if self.rule == "revised":
+                    lu = self._fit(corpus, ref, rng, 1, 25, unigram_only=True)[0]
+                    scores[ref.name] = (lb - lu) / max(mi, 1e-9)
+                else:  # original rule: raw log-likelihood per sign bigram
+                    scores[ref.name] = lb
             ref = max(refs, key=lambda r: scores[r.name])
         else:
             ref = refs[0]
@@ -190,19 +198,34 @@ class KnightEM(Method):
                           family=ref.family, family_scores=scores, extra={"reference": ref.name})
 
 
-class LuoLite(Method):
-    name = "luo2019_lite"
+class KnightEMOriginal(KnightEM):
+    """The EM solver exactly as first written, before the two corrections made during development.
+
+    Reported side by side with the revised rule (reviewer request): the corrections were made
+    after seeing the original rule pick Sumerian for almost every corpus, so readers must be able
+    to see both.
+    """
+
+    name = "knight2006_em_original"
+    rule = "original"
+    deviations = ("ORIGINAL selection rule, kept for transparency: the pooled rare-unit state (OTHER) has "
+                  "learned emissions and unpinned mass, and the candidate language is chosen by raw "
+                  "log-likelihood per sign bigram. Otherwise identical to knight2006_em.")
+
+
+class CognateMatcher(Method):
+    name = "em_cognate_matcher"
     tasks = ("C", "D")
     needs_knowledge = True
-    paper = ("Luo, J., Cao, Y., Barzilay, R. (2019). Neural decipherment via minimum-cost flow: from Ugaritic "
-             "to Linear B. Proc. ACL 2019. Predecessor: Snyder, B., Barzilay, R., Knight, K. (2010). "
-             "A statistical model for lost language decipherment. Proc. ACL 2010.")
-    deviations = ("NOT NEURAL. Keeps Luo et al.'s alternation between (i) a character mapping model and (ii) a "
-                  "one-to-one lost-word/known-word matching solved as an assignment problem (the min-cost-flow "
-                  "step). Replaces their character-level LSTM sequence-to-sequence model with a categorical "
-                  "P(unit|sign) table and compares only equal-length words. So it cannot learn context-dependent "
-                  "sound changes. Lost-language words come from branching-entropy segmentation, because Indus has "
-                  "no agreed word divider. Treat results as a lower bound on what the full neural model might do.")
+    paper = ("Word-level cognate matching with EM-style alternation. The matching step borrows the "
+             "one-to-one assignment idea of Luo, J., Cao, Y., Barzilay, R. (2019), Neural decipherment via "
+             "minimum-cost flow, ACL 2019, and the cognate framing of Snyder, B., Barzilay, R., Knight, K. (2010), "
+             "ACL 2010.")
+    deviations = ("This is NOT Luo et al.'s model and contains NO neural network. Its results say nothing "
+                  "about neural decipherment. It alternates (i) a categorical P(unit|sign) table and (ii) a "
+                  "one-to-one assignment between frequent lost-language words and known-language words of equal "
+                  "length. Lost-language words come from branching-entropy segmentation, because Indus has no "
+                  "agreed word divider.")
 
     def __init__(self, iterations: int = 6, n_lost: int = 400, n_known: int = 1500, keep_frac: float = 0.5):
         self.iterations, self.n_lost, self.n_known, self.keep_frac = iterations, n_lost, n_known, keep_frac

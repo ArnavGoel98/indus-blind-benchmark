@@ -56,6 +56,9 @@ def cmd_report(a):
     paths += figures.decipherability(agg, prof)
     paths.append(figures.headline(agg, prof))
     paths.append(figures.control_fp(agg, prof))
+    sp = figures.sister_sweep(agg)
+    if sp:
+        paths.append(sp)
     for p in paths:
         print(f"[report] wrote {p}")
 

@@ -131,7 +131,53 @@ def _best(d: dict, key) -> tuple[str, float]:
     return (k, key(d[k]))
 
 
+def _tok(d: dict | None) -> str:
+    return f"{d['mean_token_acc']:.3f}" if d else "-"
+
+
+def _rate(v: dict) -> str:
+    return f"{v['rate']:.2f}{_ci(v['ci_lo'], v['ci_hi'])}"
+
+
+def _a_table(t: dict) -> list[str]:
+    rows = ["| Method | Balanced acc. | Recall on languages | Specificity on controls |", "|---|---|---|---|"]
+    for M in A_METHODS:
+        a = t["A"].get(M.name)
+        if a:
+            rows.append(f"| {LABEL[M.name]} | {a['balanced_acc']:.2f}{_ci(a.get('ci_lo'), a.get('ci_hi'))} | "
+                        f"{_rate(a['ling_recall'])} | {_rate(a['nonling_specificity'])} |")
+    return rows
+
+
+def _fpr_table(t: dict) -> list[str]:
+    fams = ["heraldry", "admin_tags", "emblem_markov", "adversarial", "rao_type1", "rao_type2", "kamon"]
+    rows = ["| Method | " + " | ".join(fams) + " | languages (recall) |", "|---|" + "---|" * (len(fams) + 1)]
+    for M in A_METHODS:
+        d = t["A_by_kind"].get(M.name, {})
+        cells = [f"{d[f]['rate']:.2f}{_ci(d[f]['ci_lo'], d[f]['ci_hi'])}" if f in d else "-" for f in fams]
+        lang = f"{d['language']['rate']:.2f}" if "language" in d else "-"
+        rows.append(f"| {LABEL[M.name]} | " + " | ".join(cells) + f" | {lang} |")
+    return rows
+
+
+def _cd_table(t: dict, tiers=("candidates", "none", "related")) -> list[str]:
+    rows = ["| Tier | Method | Task C acc. (chance) | Task D mean token acc. | D: corpora ≥50% | D: sign-type acc. |",
+            "|---|---|---|---|---|---|"]
+    for tier in tiers:
+        tag = " (upper bound)" if tier == "related" else ""
+        for M in D_METHODS:
+            d = t["D"].get(tier, {}).get(M.name)
+            if not d:
+                continue
+            c = t["C"].get(tier, {}).get(M.name)
+            cs = f"{c['rate']:.2f}{_ci(c['ci_lo'], c['ci_hi'])} ({c['chance']:.2f})" if c else "n/a"
+            rows.append(f"| {tier}{tag} | {LABEL[M.name]} | {cs} | {d['mean_token_acc']:.3f}{_ci(d['ci_lo'], d['ci_hi'])} | "
+                        f"{_rate(d['success50'])} | {d['mean_type_acc']:.3f} |")
+    return rows
+
+
 def results_report(agg: dict, profile_name: str) -> str:
+    import subprocess
     prof = config.experiment()["profiles"][profile_name]
     ip = prof["indus_point"]
     sis = config.experiment()["sister_language"]
@@ -139,82 +185,177 @@ def results_report(agg: dict, profile_name: str) -> str:
     size_pts = sorted([p for p in pts if p["sweep"] == "size" and p["regime"] == "full"], key=lambda p: p["n_texts"])
     indus = next((p for p in size_pts if p["n_texts"] == ip["n_texts"]), None)
     len_pts = sorted([p for p in pts if p["sweep"] == "length"] + ([indus] if indus else []), key=lambda p: p["mean_length"])
+    try:
+        frozen = subprocess.run(["git", "rev-list", "-n", "1", "frozen-v1"], capture_output=True, text=True,
+                                cwd=str(reports_dir())).stdout.strip()[:10]
+    except OSError:
+        frozen = ""
     L = ["# Results", "",
-         f"Profile `{profile_name}`: {agg['n_records']} corpora evaluated, {agg['n_errors']} failed runs "
-         f"(listed at the end if any). Seeds: {prof['seeds']}. Intervals: Wilson 95% for rates, bootstrap 95% for "
-         "mean accuracies. Task A and B decision rules are learned leave-one-source-out.",
-         "", f"Sister-language distance used in knowledge tiers: sound-change rate {sis['sound_change_rate']}, "
-         f"lexical replacement {sis['lexical_replacement']}. **Task D numbers in the `related` tier depend directly on this choice.**", ""]
+         f"Profile `{profile_name}`: {agg['n_records']} runs, {agg['n_errors']} failed (listed at the end if any). "
+         f"Seeds: {prof['seeds']}. Indus point: {ip['n_texts']:,} texts, mean {ip['mean_length']} signs "
+         "(Mahadevan 1977, verified).",
+         "",
+         f"**Methods were frozen before this run** at git tag `frozen-v1`{f' (commit {frozen})' if frozen else ''}. "
+         "No method code changed afterwards.",
+         "",
+         "**Intervals.** Pooled rates and means carry 95% *cluster-bootstrap* intervals: whole source languages "
+         "or control families are resampled, then corpora within them. Corpora from one source are not "
+         "independent, so these intervals are wider than Wilson intervals (Wilson bounds are kept in "
+         "`aggregate.json`). Per-family rates use Wilson intervals. Task A and B decision rules are learned "
+         "leave-one-source-out.",
+         "",
+         "**How to read Task D.** Solvers are given the true script type (an oracle; Section 6 removes it). The "
+         "`related` tier gives them a close synthetic relative, which is **not** the Indus situation: treat it as "
+         "an upper bound. The Indus-relevant tiers are `candidates` and `none`. "
+         f"Default sister distance: sound change {sis['sound_change_rate']}, lexical replacement "
+         f"{sis['lexical_replacement']}. Section 5 varies it.", ""]
+
+    # 1. Holdout first (reviewer fix 3)
+    reg_pts = {p["regime"]: p for p in pts if p["sweep"] == "regime"}
+    if indus:
+        reg_pts["full"] = indus
+    if reg_pts:
+        order = [r for r in ("holdout", "full", "wrong_prior") if r in reg_pts]
+        L += ["## 1. Leading result: the `holdout` regime", "",
+              "Under `holdout` only size, length and inventory are calibrated. The frequency and positional "
+              "statistics that methods 1-3 measure are left free, so methods cannot be rewarded for "
+              "statistics we injected. `full` tunes them too. `wrong_prior` calibrates to deliberately wrong "
+              "targets. A conclusion that holds only under `full` is suspect.", "",
+              "| Task | Method | " + " | ".join(f"`{r}`" for r in order) + " |", "|---|---|" + "---|" * len(order)]
+        for M in A_METHODS:
+            vals = [reg_pts[r]["tables"]["A"].get(M.name, {}) for r in order]
+            L.append(f"| A | {LABEL[M.name]} | " + " | ".join(f"{v['balanced_acc']:.2f}{_ci(v.get('ci_lo'), v.get('ci_hi'))}" if v else "-" for v in vals) + " |")
+        for name in [m.name for m in B_METHODS]:
+            vals = [reg_pts[r]["tables"]["B"].get(name) for r in order]
+            L.append(f"| B | {LABEL[name]} | " + " | ".join(_rate(v) if v else "-" for v in vals) + " |")
+        for M in D_METHODS:
+            vals = [reg_pts[r]["tables"]["D"].get("related", {}).get(M.name) for r in order]
+            L.append(f"| D (related, upper bound) | {LABEL[M.name]} | " + " | ".join(
+                f"{v['mean_token_acc']:.3f}{_ci(v['ci_lo'], v['ci_hi'])}" if v else "-" for v in vals) + " |")
+        a_full = [indus["tables"]["A"].get(M.name, {}).get("balanced_acc", np.nan) for M in A_METHODS] if indus else []
+        L += ["", "Kendall's tau between Task A method rankings under `full` and each other regime:", ""]
+        for r in ("holdout", "wrong_prior"):
+            if r in reg_pts and a_full:
+                other = [reg_pts[r]["tables"]["A"].get(M.name, {}).get("balanced_acc", np.nan) for M in A_METHODS]
+                L.append(f"- `{r}`: tau = {kendalltau(a_full, other, nan_policy='omit').statistic:.2f}")
+        L.append("")
+
     if indus:
         t = indus["tables"]
-        L += [f"## 1. At the Indus point ({ip['n_texts']} texts, mean {ip['mean_length']} signs, {indus['n_corpora']} corpora)", "",
-              "### Task A: language vs non-language (chance = 0.50 balanced accuracy)", "",
-              "| Method | Balanced acc. | Recall on languages | Specificity on non-linguistic controls |", "|---|---|---|---|"]
-        for M in A_METHODS:
-            a = t["A"].get(M.name)
-            if a:
-                L.append(f"| {LABEL[M.name]} | {a['balanced_acc']:.2f} | {a['ling_recall']['rate']:.2f}{_ci(a['ling_recall']['ci_lo'], a['ling_recall']['ci_hi'])} "
-                         f"| {a['nonling_specificity']['rate']:.2f}{_ci(a['nonling_specificity']['ci_lo'], a['nonling_specificity']['ci_hi'])} |")
-        L += ["", "Share of each family classified as *linguistic* (controls should be 0; kamon descriptions are "
-              "Japanese text, so 'linguistic' is defensible there):", "",
-              "| Method | " + " | ".join(sorted(next(iter(t["A_by_kind"].values()), {}).keys())) + " |",
-              "|---|" + "---|" * len(next(iter(t["A_by_kind"].values()), {}))]
-        for M in A_METHODS:
-            d = t["A_by_kind"].get(M.name, {})
-            L.append(f"| {LABEL[M.name]} | " + " | ".join(f"{d[k]['rate']:.2f}" for k in sorted(d)) + " |")
-        L += ["", "### Task B: script type (chance = 0.25)", "", "| Method | Accuracy |", "|---|---|"]
+        L += [f"## 2. Indus point, regime `full` ({indus['n_corpora']} corpora)", "",
+              "### Task A: language vs non-language. **Status: UNRESOLVED**", "",
+              "We label language detection unresolved. Balanced accuracy averages over control families "
+              "we built ourselves, and a method can score well on average while misclassifying a whole family. "
+              "The false-positive rates per family below are the result to cite. The adversarial "
+              "control is tuned to imitate language entropy (Sproat 2014).", ""] + _a_table(t)
+        L += ["", "**False-positive rate per control family** (share classified as linguistic; 0 is correct for "
+              "every control. Kamon descriptions are Japanese text, so a high rate there is defensible):", ""] + _fpr_table(t)
+        L += ["", "### Task B: script type (chance 0.25)", "", "| Method | Accuracy |", "|---|---|"]
         for name, v in t["B"].items():
-            L.append(f"| {LABEL[name]} | {v['rate']:.2f}{_ci(v['ci_lo'], v['ci_hi'])} (n={v['n']}) |")
-        L += ["", "### Task C: language family", "", "| Tier | Method | Accuracy | Chance |", "|---|---|---|---|"]
-        for tier in ("candidates", "none"):
-            for name, v in t["C"].get(tier, {}).items():
-                L.append(f"| {tier} | {LABEL[name]} | {v['rate']:.2f}{_ci(v['ci_lo'], v['ci_hi'])} | {v['chance']:.2f} |")
-        L += ["", "### Task D: sign values (share of tokens read correctly; success = at least 50%)", "",
-              "| Tier | Method | Mean token acc. | Corpora with ≥50% | Mean sign-type acc. |", "|---|---|---|---|---|"]
-        for tier in ("related", "candidates", "none"):
-            for name, v in t["D"].get(tier, {}).items():
-                s = v["success50"]
-                L.append(f"| {tier} | {LABEL[name]} | {v['mean_token_acc']:.3f}{_ci(v['ci_lo'], v['ci_hi'])} | "
-                         f"{s['rate']:.2f}{_ci(s['ci_lo'], s['ci_hi'])} | {v['mean_type_acc']:.3f} |")
+            L.append(f"| {LABEL[name]} | {_rate(v)} (n={v['n']}, {v.get('n_clusters', '?')} languages) |")
+        L += ["", "The inventory rule is defeated by construction: every corpus is calibrated to 400-700 signs.", "",
+              "### Tasks C and D: family and sign values (Indus-relevant tiers first)", "",
+              "Both EM selection rules are reported. The *revised* rule was adopted during development after the "
+              "*original* rule picked Sumerian for almost every corpus. Readers should compare both.", ""] + _cd_table(t)
         L += ["", f"Segmentation boundary F1 (branching entropy vs true word starts): {indus['seg_f1']:.2f}", ""]
 
-    def sweep_table(points, xname, xkey):
-        rows = [f"| {xname} | A best bal. acc. | B best acc. | C best acc. (candidates) | D best token acc. (related) | D best token acc. (candidates) | D best token acc. (none) |",
+        # 3. Passing-only robustness
+        tp = indus.get("tables_passing")
+        L += ["## 3. Robustness: only corpora that meet every calibration target", "",
+              f"At the Indus point, {indus.get('n_passing', 0)} of {indus['n_corpora']} corpora meet every hard "
+              f"target ({indus.get('n_passing_languages', 0)} of them languages). Rules are re-learned inside this subset.", ""]
+        if tp:
+            L += ["| Task | Method | All corpora | Passing only |", "|---|---|---|---|"]
+            for M in A_METHODS:
+                a, b = t["A"].get(M.name), tp["A"].get(M.name)
+                L.append(f"| A | {LABEL[M.name]} | {a['balanced_acc']:.2f} | {b['balanced_acc']:.2f} |" if a and b else f"| A | {LABEL[M.name]} | - | - |")
+            for name in [m.name for m in B_METHODS]:
+                a, b = t["B"].get(name), tp["B"].get(name)
+                L.append(f"| B | {LABEL[name]} | {_rate(a) if a else '-'} | {_rate(b) if b else '-'} |")
+            for tier in ("candidates", "none", "related"):
+                for M in D_METHODS:
+                    a, b = t["D"].get(tier, {}).get(M.name), tp["D"].get(tier, {}).get(M.name)
+                    if a:
+                        L.append(f"| D ({tier}) | {LABEL[M.name]} | {a['mean_token_acc']:.3f} | "
+                                 f"{_tok(b)} |")
+        else:
+            L.append("No corpus at the Indus point meets every target, so no passing-only analysis is possible.")
+        L.append("")
+
+    # 4/5. Sister distance
+    if agg.get("sister"):
+        L += ["## 4. Task D vs sister-language distance (Indus point)", "",
+              "| Sound change / lexical repl. | Tier | Method | Mean token acc. | Task C acc. |", "|---|---|---|---|---|"]
+        for v in sorted(agg["sister"].values(), key=lambda v: v["sound_change_rate"]):
+            for tier in ("related", "candidates"):
+                for M in D_METHODS:
+                    d = v["tables"]["D"].get(tier, {}).get(M.name)
+                    if not d:
+                        continue
+                    c = v["tables"]["C"].get(tier, {}).get(M.name)
+                    L.append(f"| {v['sound_change_rate']:.2f} / {v['lexical_replacement']:.2f} | {tier} | {LABEL[M.name]} | "
+                             f"{d['mean_token_acc']:.3f}{_ci(d['ci_lo'], d['ci_hi'])} | {(_rate(c) if c else 'n/a')} |")
+        L.append("")
+
+    # 6. Predicted script type
+    pr = agg.get("predicted")
+    if pr:
+        L += ["## 5. Removing the script-type oracle (Indus point)", "",
+              f"The solver's unit level comes from the leave-one-source-out prediction of `script_type_lr`, which is "
+              f"correct for {pr['script_type_correct']:.0%} of these corpora.", "",
+              "| Tier | Method | Mean token acc. (oracle script type) | Mean token acc. (predicted) | Task C (oracle → predicted) |",
+              "|---|---|---|---|---|"]
+        for tier in ("candidates", "none", "related"):
+            for M in D_METHODS:
+                o = pr["oracle_tables"]["D"].get(tier, {}).get(M.name)
+                q = pr["tables"]["D"].get(tier, {}).get(M.name)
+                if not (o and q):
+                    continue
+                oc = pr["oracle_tables"]["C"].get(tier, {}).get(M.name)
+                qc = pr["tables"]["C"].get(tier, {}).get(M.name)
+                cc = f"{oc['rate']:.2f} → {qc['rate']:.2f}" if oc and qc else "n/a"
+                L.append(f"| {tier} | {LABEL[M.name]} | {o['mean_token_acc']:.3f}{_ci(o['ci_lo'], o['ci_hi'])} | "
+                         f"{q['mean_token_acc']:.3f}{_ci(q['ci_lo'], q['ci_hi'])} | {cc} |")
+        L.append("")
+
+    def sweep_table(points, xname, xkey, key="tables"):
+        rows = [f"| {xname} | A best bal. acc. | B best acc. | C best acc. (candidates) | D best (candidates) | D best (none) | D best (related, upper bound) |",
                 "|---|---|---|---|---|---|---|"]
         for p in points:
-            t = p["tables"]
+            t = p.get(key)
+            if not t:
+                continue
             a = _best(t["A"], lambda v: v["balanced_acc"])
             b = _best(t["B"], lambda v: v["rate"])
             c = _best(t["C"].get("candidates", {}), lambda v: v["rate"])
-            ds = [_best(t["D"].get(tr, {}), lambda v: v["mean_token_acc"]) for tr in ("related", "candidates", "none")]
+            ds = [_best(t["D"].get(tr, {}), lambda v: v["mean_token_acc"]) for tr in ("candidates", "none", "related")]
             rows.append(f"| {p[xkey]} | {a[1]:.2f} ({LABEL.get(a[0], a[0])}) | {b[1]:.2f} ({LABEL.get(b[0], b[0])}) | "
-                        f"{c[1]:.2f} | " + " | ".join(f"{d[1]:.3f} ({LABEL.get(d[0], d[0])})" for d in ds) + " |")
+                        f"{c[1]:.2f} ({LABEL.get(c[0], c[0])}) | " + " | ".join(f"{d[1]:.3f} ({LABEL.get(d[0], d[0])})" for d in ds) + " |")
         return rows
 
-    L += [f"## 2. Size sweep (mean length {ip['mean_length']})", ""] + sweep_table(size_pts, "texts", "n_texts")
-    L += ["", f"## 3. Length sweep ({ip['n_texts']:,} texts)", ""] + sweep_table(len_pts, "mean signs/text", "mean_length")
+    L += [f"## 6. Size sweep (mean length {ip['mean_length']})", ""] + sweep_table(size_pts, "texts", "n_texts")
+    L += ["", "Same sweep, only corpora meeting every target:", ""] + sweep_table(size_pts, "texts", "n_texts", "tables_passing")
+    L += ["", f"## 7. Length sweep ({ip['n_texts']:,} texts)", ""] + sweep_table(len_pts, "mean signs/text", "mean_length")
 
-    # Minimum data to beat chance (Judge fix #5)
-    L += ["", "## 4. Smallest corpus where a method beats chance (lower 95% bound above chance)", "",
+    L += ["", "## 8. Smallest corpus where a method beats chance (lower 95% cluster bound above chance)", "",
           f"Size sweep at mean length {ip['mean_length']}. `never` = not reached by 50,000 texts.", "",
-          "| Task | Method | Smallest size | Smallest size for ≥50% success |", "|---|---|---|---|"]
+          "| Task | Method | Smallest size | Smallest size for a strong result |", "|---|---|---|---|"]
     for M in A_METHODS:
-        first = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["A"] and
-                      0.5 * (p["tables"]["A"][M.name]["ling_recall"]["ci_lo"] + p["tables"]["A"][M.name]["nonling_specificity"]["ci_lo"]) > 0.5), "never")
+        first = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["A"] and (p["tables"]["A"][M.name].get("ci_lo") or 0) > 0.5), "never")
         good = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["A"] and p["tables"]["A"][M.name]["balanced_acc"] >= 0.9), "never")
         L.append(f"| A | {LABEL[M.name]} | {first} | {good} (bal. acc. ≥ 0.9) |")
     for name in [m.name for m in B_METHODS]:
         first = next((p["n_texts"] for p in size_pts if name in p["tables"]["B"] and p["tables"]["B"][name]["ci_lo"] > 0.25), "never")
         good = next((p["n_texts"] for p in size_pts if name in p["tables"]["B"] and p["tables"]["B"][name]["rate"] >= 0.5), "never")
-        L.append(f"| B | {LABEL[name]} | {first} | {good} |")
+        L.append(f"| B | {LABEL[name]} | {first} | {good} (acc. ≥ 0.5) |")
     for tier in ("candidates", "none"):
         for M in D_METHODS:
             first = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["C"].get(tier, {}) and
                           p["tables"]["C"][tier][M.name]["ci_lo"] > p["tables"]["C"][tier][M.name]["chance"]), "never")
             good = next((p["n_texts"] for p in size_pts if M.name in p["tables"]["C"].get(tier, {}) and
                          p["tables"]["C"][tier][M.name]["rate"] >= 0.5), "never")
-            L.append(f"| C ({tier}) | {LABEL[M.name]} | {first} | {good} |")
-    for tier in ("related", "candidates", "none"):
+            L.append(f"| C ({tier}) | {LABEL[M.name]} | {first} | {good} (acc. ≥ 0.5) |")
+    for tier in ("candidates", "none", "related"):
         for M in D_METHODS:
             if M.name == "baseline_frequency_rank":
                 continue
@@ -226,56 +367,28 @@ def results_report(agg: dict, profile_name: str) -> str:
                     first = p["n_texts"]
                 if M.name in d and good == "never" and d[M.name]["success50"]["rate"] >= 0.5:
                     good = p["n_texts"]
-            L.append(f"| D ({tier}) | {LABEL[M.name]} | {first} (vs frequency baseline) | {good} (half of corpora ≥50% tokens) |")
+            L.append(f"| D ({tier}{', upper bound' if tier == 'related' else ''}) | {LABEL[M.name]} | {first} (vs baseline) | {good} (half of corpora ≥50% tokens) |")
 
-    # Feasibility region (Judge fix #1)
     fe = agg.get("feasibility")
     if fe:
         t = fe["tables"]
-        L += ["", f"## 5. Feasibility region at the Indus point ({fe['n_scenarios']} random writing-system scenarios)", "",
+        L += ["", f"## 9. Feasibility region at the Indus point ({fe['n_scenarios']} random writing-system scenarios)", "",
               "Each scenario draws allograph, homophony and polyvalence rates, determinatives, word dividers and "
-              "direction at random around a calibrated script (language and script type also random). These "
-              f"scenarios are perturbations, not re-calibrated: mean share of targets still met = {fe['calibration_pass_rate']:.0%}.", "",
+              "direction at random around a calibrated script. Language and script type are also random. "
+              f"Scenarios are perturbations, not re-calibrated: mean share of targets still met = {fe['calibration_pass_rate']:.0%}.", "",
               "| Task | Method | Share of scenarios where the method succeeds |", "|---|---|---|"]
         for M in A_METHODS:
             a = t["A"].get(M.name)
             if a:
-                L.append(f"| A (languages called languages) | {LABEL[M.name]} | {a['ling_recall']['rate']:.2f}{_ci(a['ling_recall']['ci_lo'], a['ling_recall']['ci_hi'])} |")
+                L.append(f"| A (languages called languages) | {LABEL[M.name]} | {_rate(a['ling_recall'])} |")
         for name, v in t["B"].items():
-            L.append(f"| B | {LABEL[name]} | {v['rate']:.2f}{_ci(v['ci_lo'], v['ci_hi'])} |")
+            L.append(f"| B | {LABEL[name]} | {_rate(v)} |")
         for tier in ("candidates", "none"):
             for name, v in t["C"].get(tier, {}).items():
-                L.append(f"| C ({tier}) | {LABEL[name]} | {v['rate']:.2f}{_ci(v['ci_lo'], v['ci_hi'])} |")
-        for tier in ("related", "candidates", "none"):
+                L.append(f"| C ({tier}) | {LABEL[name]} | {_rate(v)} |")
+        for tier in ("candidates", "none", "related"):
             for name, v in t["D"].get(tier, {}).items():
-                s = v["success50"]
-                L.append(f"| D ≥50% tokens ({tier}) | {LABEL[name]} | {s['rate']:.2f}{_ci(s['ci_lo'], s['ci_hi'])} |")
-
-    # Regime stability (Judge fix #2)
-    reg_pts = {p["regime"]: p for p in pts if p["sweep"] == "regime"}
-    if indus and reg_pts:
-        reg_pts["full"] = indus
-        L += ["", "## 6. Does the calibration regime change the conclusions?", "",
-              "Same sources and seeds, generated under three calibration regimes. If method rankings change, "
-              "results depend on the generator, so treat them with caution.", "",
-              "| Task | Method | full | holdout | wrong_prior |", "|---|---|---|---|---|"]
-        order = ["full", "holdout", "wrong_prior"]
-        for M in A_METHODS:
-            vals = [reg_pts[r]["tables"]["A"].get(M.name, {}).get("balanced_acc", float("nan")) if r in reg_pts else float("nan") for r in order]
-            L.append(f"| A | {LABEL[M.name]} | " + " | ".join(f"{v:.2f}" for v in vals) + " |")
-        for name in [m.name for m in B_METHODS]:
-            vals = [reg_pts[r]["tables"]["B"].get(name, {}).get("rate", float("nan")) if r in reg_pts else float("nan") for r in order]
-            L.append(f"| B | {LABEL[name]} | " + " | ".join(f"{v:.2f}" for v in vals) + " |")
-        for M in D_METHODS:
-            vals = [reg_pts[r]["tables"]["D"].get("related", {}).get(M.name, {}).get("mean_token_acc", float("nan")) if r in reg_pts else float("nan") for r in order]
-            L.append(f"| D (related) | {LABEL[M.name]} | " + " | ".join(f"{v:.3f}" for v in vals) + " |")
-        L += ["", "Kendall's tau between the method ranking under `full` and under each other regime (Task A):", ""]
-        a_full = [indus["tables"]["A"].get(M.name, {}).get("balanced_acc", np.nan) for M in A_METHODS]
-        for r in ("holdout", "wrong_prior"):
-            if r in reg_pts:
-                other = [reg_pts[r]["tables"]["A"].get(M.name, {}).get("balanced_acc", np.nan) for M in A_METHODS]
-                tau = kendalltau(a_full, other, nan_policy="omit").statistic
-                L.append(f"- `{r}`: tau = {tau:.2f}")
+                L.append(f"| D ≥50% tokens ({tier}{', upper bound' if tier == 'related' else ''}) | {LABEL[name]} | {_rate(v['success50'])} |")
     if agg.get("errors"):
         L += ["", "## Failed runs", ""] + [f"```\n{e}\n```" for e in agg["errors"]]
     return "\n".join(L) + "\n"

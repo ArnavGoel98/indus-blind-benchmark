@@ -127,12 +127,15 @@ def build_reference(lang: str, script_type: str, sister: bool, seed: int, logogr
 
 
 def knowledge_for(hidden_lang: str, script_type: str, tier: str, seed: int,
-                  languages=LANGUAGES, logogram_vocab: int = 250) -> Knowledge:
+                  languages=LANGUAGES, logogram_vocab: int = 250, sound_change_rate: float | None = None,
+                  lexical_replacement: float | None = None) -> Knowledge:
     others = [l for l in languages if l != hidden_lang]
+    sister = lambda: build_reference(hidden_lang, script_type, True, seed, logogram_vocab,  # noqa: E731
+                                     sound_change_rate, lexical_replacement)
     if tier == "related":
-        refs = [build_reference(hidden_lang, script_type, True, seed, logogram_vocab)]
+        refs = [sister()]
     elif tier == "candidates":
-        refs = [build_reference(hidden_lang, script_type, True, seed, logogram_vocab)] + \
+        refs = [sister()] + \
                [build_reference(l, script_type, False, seed, logogram_vocab) for l in others]
     elif tier == "none":
         refs = [build_reference(l, script_type, False, seed, logogram_vocab) for l in others]

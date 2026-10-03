@@ -1,0 +1,133 @@
+{
+ "round": "r1",
+ "tier": "public",
+ "created_utc": "2026-10-03T08:48:09Z",
+ "tasks": {
+  "A": "is_linguistic (bool)",
+  "B": "script_type in logographic|syllabic|logosyllabic|alphabetic",
+  "C": "family in indo-european|dravidian|isolate|uralic",
+  "D": "sign_values: {sign_id: value}"
+ },
+ "corpora": [
+  {
+   "corpus_id": "pr1-000-e48452",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-001-b6130b",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-002-ab0e9f",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-003-74762f",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-004-c31fb8",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-005-ecc30b",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-006-5771db",
+   "n_texts": 20000,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-007-40242a",
+   "n_texts": 20000,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-008-ec8d62",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-009-5caf19",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-010-410216",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-011-969cc5",
+   "n_texts": 20000,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-012-9b5bdd",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-013-fd2224",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-014-f920ef",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-015-6e7c77",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-016-3e549b",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-017-83ec31",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-018-100a53",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-019-0e6117",
+   "n_texts": 2906,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-020-55bf5d",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-021-538c65",
+   "n_texts": 20000,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-022-4af9d6",
+   "n_texts": 1548,
+   "direction": "rtl"
+  },
+  {
+   "corpus_id": "pr1-023-7dff52",
+   "n_texts": 20000,
+   "direction": "rtl"
+  }
+ ]
+}

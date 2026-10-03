@@ -41,3 +41,14 @@ def test_answer_keys_are_gitignored():
     from ibdb.paths import project_root
     gi = (project_root() / ".gitignore").read_text()
     assert "private/" in gi
+
+
+def test_sumerian_excluded_from_challenge_until_cdli_confirms():
+    assert "sumerian" in config.experiment()["challenge"]["exclude_sources"]
+
+
+def test_em_has_original_and_revised_rules_and_matcher_is_not_called_neural():
+    from ibdb.methods.decipher import CognateMatcher, KnightEM, KnightEMOriginal
+    assert KnightEM.rule == "revised" and KnightEMOriginal.rule == "original"
+    assert CognateMatcher.name == "em_cognate_matcher"
+    assert "NO neural network" in CognateMatcher.deviations

@@ -24,7 +24,7 @@ Tamil, Sumerian, Latin, Finnish) and non-linguistic sign systems. Each is calibr
 Indus summary statistics, and its answer key is hidden. We evaluate eight method families on four
 tasks: language vs non-language (A), script type (B), language family (C), and sign values (D).
 We sweep corpus size from 500 to 50,000 texts and mean length from 3 to 20 signs, over three
-calibration regimes and three levels of solver knowledge. We report a "decipherability curve" with
+calibration regimes and three levels of solver knowledge. Language detection (Task A) is reported per control family and labelled unresolved. We report a "decipherability curve" with
 the Indus corpus marked as a band, the smallest corpus at which each method beats chance, and the
 share of randomly drawn writing systems in which each method succeeds at Indus scale. The headline
 results are summarized in Section 7. All code, configurations, and calibration evidence are
@@ -100,7 +100,7 @@ Size-dependent statistics are computed on random subsamples of the reference siz
 - Sanskrit: Rāmāyaṇa from the Digital Corpus of Sanskrit (CC BY 4.0), chosen because GRETIL's epic
   files are "for reference purposes only".
 - Old Tamil: 17 Sangam root texts from Project Madurai.
-- Sumerian: the CDLI ATF dump, including 19,076 intact Ur III seal inscriptions (CDLI terms: academic reuse with citation; no formal open license).
+- Sumerian: the CDLI ATF dump, including 19,076 intact Ur III seal inscriptions (CDLI terms: academic reuse with citation; no formal open license). Used in internal experiments only; excluded from published challenge rounds until CDLI confirms its terms.
 - Latin: Caesar and Vergil from Project Gutenberg.
 - Finnish: Kalevala from Project Gutenberg.
 
@@ -159,7 +159,8 @@ deviations are printed by `ibdb methods` and stored with each method class.
 | 6a | Two-parameter tree | A | Lee, Jonathan & Ziman 2010 | cuts learned leave-one-source-out; a = 7 |
 | 6b | Multi-feature classifier | A | in the spirit of Sproat 2014 | LR over 11 features |
 | 7 | HMM/EM substitution solver | C, D | Knight et al. 2006; Berg-Kirkpatrick & Klein 2013 | bigram-count EM, 3 restarts, 250 units / 350 signs, OTHER emits uniformly; candidate selection by MI-normalized bigram gain |
-| 8 | Lost-language matcher | C, D | Luo, Cao & Barzilay 2019 | **not neural**: categorical P(unit\|sign) table + assignment matching on equal-length words |
+| 7b | HMM/EM, original rule | C, D | as 7 | rule as first written: learned OTHER emissions, raw-likelihood candidate selection; reported side by side with 7 |
+| 8 | EM cognate-matcher | C, D | assignment idea from Luo, Cao & Barzilay 2019 | **contains no neural network; says nothing about neural decipherment**: categorical P(unit\|sign) table + one-to-one assignment of equal-length words |
 | - | Frequency-rank baseline | C, D | classical frequency analysis | - |
 
 **Two corrections to EM made during development**, reported because both change results:
@@ -195,8 +196,21 @@ are given to the solver, an optimistic oracle.
 
 *Scores.* A: balanced accuracy. B: accuracy. C: accuracy vs chance (1/number of candidate
 families). D: share of sign tokens whose predicted value equals the token's true value;
-"success" = at least 50%. Rates carry Wilson 95% intervals; mean accuracies carry bootstrap 95%
-intervals.
+"success" = at least 50%. Pooled rates and means carry 95% cluster-bootstrap intervals: source
+languages or control families are resampled, then corpora within them, because corpora from
+one source are not independent. Per-family false-positive rates carry Wilson intervals.
+
+*Freeze.* All method code was frozen at git tag `frozen-v1` before the final run.
+
+*Reviewer-requested analyses:*
+- Task D reported first in the Indus-relevant tiers; `related` as an upper bound;
+- sister distance swept over (sound change, lexical replacement) = (0.10, 0.05), (0.30, 0.20),
+  (0.50, 0.35), (0.70, 0.50);
+- a second stage in which the solver's unit level comes from the leave-one-source-out script-type
+  prediction instead of the oracle;
+- both EM selection rules;
+- the `holdout` regime first;
+- every table repeated on corpora meeting all calibration targets.
 
 ## 7. Results
 
@@ -211,7 +225,7 @@ version.)*
 3. **Inventory calibration** removes the information that inventory-based script typology uses.
 4. **Text selection is tuned**, not modelled on what Indus seals said; `holdout` quantifies the effect.
 5. **Median length (4) is unverified**; texts (2,906) and mean (4.60) are verified against Mahadevan (1977) via Yadav et al. (2010) and Rao (2018). An earlier draft used unverified brief values (5,500; 4.4); all results were regenerated.
-6. **The Luo-style matcher is not neural**; neural models could do better.
+6. **No neural decipherment model is evaluated.** The EM cognate-matcher contains no neural network.
 7. **Plug-in entropy is biased at Indus scale.** An i.i.d. 420-sign source measures about 0.59
    of its true conditional/unigram entropy ratio on ~15k bigrams, so entropy cut-offs depend on
    corpus size.
@@ -221,7 +235,7 @@ version.)*
 
 ## 9. Blind challenge
 
-Public rounds release corpora and keys. Hidden rounds release corpora and SHA-256 commitments of
+Sumerian-derived corpora are excluded from all published rounds. Public rounds release corpora and keys. Hidden rounds release corpora and SHA-256 commitments of
 keys. Challenge corpora are written from *secretly disguised* sister languages, so they cannot be
 matched against the public source texts. One scored submission per team per hidden round. The
 static leaderboard (`leaderboard/index.html`) marks entries whose authors claim a real Indus
@@ -236,6 +250,7 @@ next to every downloaded file.
 ## References
 
 - Berg-Kirkpatrick, T., & Klein, D. (2013). Decipherment with a million random restarts. *EMNLP 2013*.
+- CDLI (Cuneiform Digital Library Initiative). Bulk ATF data dump, August 2022. https://github.com/cdli-gh/data; https://cdli.mpiwg-berlin.mpg.de. Reused under CDLI terms of use (academic reuse with citation).
 - Chao, A. (1984). Nonparametric estimation of the number of classes in a population. *Scandinavian Journal of Statistics* 11, 265-270.
 - Farmer, S., Sproat, R., & Witzel, M. (2004). The collapse of the Indus-script thesis: the myth of a literate Harappan civilization. *Electronic Journal of Vedic Studies* 11(2).
 - Harris, Z. S. (1955). From phoneme to morpheme. *Language* 31(2), 190-222.

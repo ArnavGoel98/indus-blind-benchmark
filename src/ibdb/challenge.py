@@ -89,8 +89,9 @@ def build_round(round_id: str, tier: str, n_corpora: int = 24, out_root: Path | 
     ensure(root / "corpora")
     key_dir = ensure(root / "keys") if tier == "public" else ensure(private_dir() / "challenge" / round_id)
     manifest, commitments = [], {}
-    pool = [(l, st) for l in prof["languages"] for st in prof["script_types"]] + \
-           [(c, "emblem") for c in prof["controls"]]
+    excluded = set(config.experiment().get("challenge", {}).get("exclude_sources", []))
+    pool = [(l, st) for l in prof["languages"] if l not in excluded for st in prof["script_types"]] + \
+           [(c, "emblem") for c in prof["controls"] if c not in excluded]
     for i in range(n_corpora):
         src, st = pool[int(rng.integers(len(pool)))]
         ip = prof["indus_point"]
