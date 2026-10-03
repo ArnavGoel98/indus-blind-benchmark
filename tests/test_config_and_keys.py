@@ -52,3 +52,19 @@ def test_em_has_original_and_revised_rules_and_matcher_is_not_called_neural():
     assert KnightEM.rule == "revised" and KnightEMOriginal.rule == "original"
     assert CognateMatcher.name == "em_cognate_matcher"
     assert "NO neural network" in CognateMatcher.deviations
+
+
+def test_package_sources_are_not_gitignored():
+    """Regression: an unanchored 'data/' rule once hid src/ibdb/data/ from git."""
+    import shutil
+    import subprocess
+
+    from ibdb.paths import project_root
+    root = project_root()
+    if shutil.which("git") is None or not (root / ".git").exists():
+        return
+    for rel in ("src/ibdb/data/prepare.py", "src/ibdb/data/fetch.py", "src/ibdb/data/__init__.py"):
+        r = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
+        assert r.returncode != 0, f"{rel} is git-ignored"
+    for rel in ("data/raw/x", "private/x", "runs/x"):
+        assert subprocess.run(["git", "check-ignore", "-q", rel], cwd=root).returncode == 0, rel

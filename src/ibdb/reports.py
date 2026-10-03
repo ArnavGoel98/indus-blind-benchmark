@@ -394,8 +394,8 @@ def results_report(agg: dict, profile_name: str) -> str:
     return "\n".join(L) + "\n"
 
 
-def write_all(profile_name: str, agg: dict) -> list:
-    out = ensure(reports_dir())
+def write_all(profile_name: str, agg: dict, out_dir=None) -> list:
+    out = ensure(out_dir or reports_dir())
     p1 = out / "calibration_report.md"
     p1.write_text(calibration_report(profile_name))
     p2 = out / "results" / "results.md"

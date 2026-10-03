@@ -52,11 +52,14 @@ def cmd_report(a):
     from .evaluate import aggregate
     agg = aggregate(a.profile)
     prof = config.experiment()["profiles"][a.profile]
-    paths = reports.write_all(a.profile, agg)
-    paths += figures.decipherability(agg, prof)
-    paths.append(figures.headline(agg, prof))
-    paths.append(figures.control_fp(agg, prof))
-    sp = figures.sister_sweep(agg)
+    from pathlib import Path
+    out = Path(a.out_dir) if getattr(a, "out_dir", None) else None
+    fig_dir = out / "figures" if out else None
+    paths = reports.write_all(a.profile, agg, out)
+    paths += figures.decipherability(agg, prof, fig_dir)
+    paths.append(figures.headline(agg, prof, fig_dir))
+    paths.append(figures.control_fp(agg, prof, fig_dir))
+    sp = figures.sister_sweep(agg, fig_dir)
     if sp:
         paths.append(sp)
     for p in paths:
@@ -105,6 +108,7 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--profile", default="full")
         p.add_argument("--workers", type=int, default=None)
         p.add_argument("--allow-large", action="store_true")
+        p.add_argument("--out-dir", default=None, help="report: write reports/figures here instead of reports/")
         if names:
             p.add_argument("names", nargs="*")
         else:
