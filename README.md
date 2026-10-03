@@ -90,9 +90,11 @@ coordinate in a space we defined.* The fixes are built in:
 - **No neural decipherment is evaluated.** The "EM cognate-matcher" borrows the one-to-one
   assignment idea of Luo, Cao & Barzilay (2019) but contains no neural network. Its results say
   nothing about neural methods.
-- **Small-sample entropy bias.** With about 400 signs and about 20k bigrams, plug-in
-  conditional entropy is biased low (an i.i.d. 420-sign source measures about 0.59 of its
-  true ratio). Entropy thresholds learned at one corpus size do not transfer to another.
+- **Small-sample entropy bias.** On the final run, an i.i.d. 420-sign control (true
+  H(X2|X1)/H(X1) = 1) measures 0.47 at the Indus point (2,906 texts) with the full alphabet, and
+  0.70 with Rao's top-100 merge. It reaches 0.83 at 50,000 texts. Synthetic languages at the Indus
+  point average 0.48 on the same statistic, which is indistinguishable from the i.i.d. control. An
+  earlier draft quoted ~0.59 from a unit-test setting (18k tokens); that figure is superseded.
 
 ## How results are reported (after an adversarial review of the first draft)
 
