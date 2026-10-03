@@ -483,3 +483,126 @@ def generator_comparison(profile_v1: str = "full", profile_v2: str = "generator_
                              f"(≥50%: {x['success50']['rate']:.2f}) | {y['mean_token_acc']:.3f}{_ci(y['ci_lo'], y['ci_hi'])} "
                              f"(≥50%: {y['success50']['rate']:.2f}) |")
     return "\n".join(L) + "\n"
+
+
+# --------------------------------------------------------------------------- sensitivity map
+
+def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
+    """reports/sensitivity/sensitivity.md: the decipherability map as tables with clustered CIs."""
+    refs = config.targets().get("reference_points", {})
+    cites = config.targets()["references"]
+    dups, invs, tiers, methods = agg["dup_grid"], agg["inventory_grid"], agg["tiers"], agg["methods"]
+    L: list[str] = []
+    L += ["# Sensitivity: duplicate-text rate x sign inventory at the Indus point", "",
+          "Methods frozen at `frozen-v1`; generator-v1 with `full`-regime knobs. Each corpus has 2,906 texts with "
+          "mean length 4.6. Two properties that published Indus statistics leave open are set exactly: the share of "
+          "texts that repeat an earlier text, and the number of sign types (reached by adding allographs). "
+          "Everything else is unchanged. Accuracy is Task D token accuracy. "
+          "The 95% intervals resample whole source languages (cluster bootstrap).", "",
+          "**Nothing here is a measurement of the Indus script.** The map shows how much the difficulty of our "
+          "synthetic Indus-like corpora depends on two properties the published Indus statistics do not pin down.",
+          ""]
+    sc = agg["status_counts"]
+    L += ["## Coverage", "",
+          f"Records: {agg['n_records']}. Status counts (after the validity rule): "
+          + ", ".join(f"{k} {v}" for k, v in sorted(sc.items())) + ".", "",
+          "* `unreachable_low`: the script has more sign types than the target even with no allographs.",
+          "* `unreachable_high`: even ~400 variants per sign do not reach the target. The variant weights are "
+          "1/(j+1)^2, so rare variants hardly occur.",
+          "* `unreachable_dup`: too few distinct texts for so low a duplicate rate.",
+          "* `length_distorted`: more than 10% of texts needed a substitute length.",
+          "* `tolerance_miss`: bisection ended outside +/-3% (min 10 signs) of the target.", "",
+          f"**Balanced panel** (the primary panel): the {len(agg['balanced_combos'])} language x script combinations "
+          "that are valid in every cell, so all cells have the same composition: "
+          + ", ".join(f"{a}/{b}" for a, b in agg["balanced_combos"]) + ".", "",
+          "Combinations missing from the balanced panel: "
+          + (", ".join(f"{a}/{b}" for a, b in agg["combos"] if [a, b] not in agg["balanced_combos"]) or "none")
+          + ". The `all` panel uses every valid corpus, so its cell composition varies.", ""]
+    L += ["## Published reference points", "", "| Quantity | Label | Value | Source | Verified |", "|---|---|---|---|---|"]
+    for q in ("duplicate_text_fraction", "sign_inventory"):
+        for r in refs.get(q, []):
+            L.append(f"| {q} | {r['label']} | {r['value']} | {r['citation']} | {r.get('verified')} |")
+    L += ["", refs.get("notes", ""), "",
+          "Duplicate-rate method (M77): " + " ".join(str(r.get("method", "")) for r in refs.get("duplicate_text_fraction", [])[:1]),
+          "", "Caveat: " + " ".join(str(r.get("caveats", "")) for r in refs.get("duplicate_text_fraction", [])[:1]), ""]
+
+    def grid(panel: str, key: str, ci: bool = True) -> list[str]:
+        cells = {(c["dup"], c["inventory"]): c for c in agg["panels"][panel]}
+        out = ["| duplicates \\ inventory | " + " | ".join(str(i) for i in invs) + " |",
+               "|---|" + "---|" * len(invs)]
+        for d in dups:
+            row = []
+            for i in invs:
+                c = cells.get((float(d), int(i)))
+                if not c or not c["n"]:
+                    row.append("n/a")
+                elif ci:
+                    v = c[key]
+                    row.append(f"{100 * v['mean']:.1f} [{100 * v['ci_lo']:.1f}, {100 * v['ci_hi']:.1f}]")
+                else:
+                    row.append(_fmt(c[key]))
+            out.append(f"| {d:.1f} | " + " | ".join(row) + " |")
+        return out
+
+    def span(panel: str, key: str, box=None) -> tuple[float, float, tuple, tuple]:
+        cs = [c for c in agg["panels"][panel] if c["n"]
+              and (box is None or (box[0][0] <= c["dup"] <= box[0][1] and box[1][0] <= c["inventory"] <= box[1][1]))]
+        if not cs:
+            return float("nan"), float("nan"), (), ()
+        lo = min(cs, key=lambda c: c[key]["mean"])
+        hi = max(cs, key=lambda c: c[key]["mean"])
+        return lo[key]["mean"], hi[key]["mean"], (lo["dup"], lo["inventory"]), (hi["dup"], hi["inventory"])
+
+    box = ((0.2, 0.4), (400, 700))
+    L += ["## How much does difficulty move?", "",
+          f"The **plausible box** is duplicates {box[0][0]}-{box[0][1]} by inventory {box[1][0]}-{box[1][1]}. "
+          "It brackets the published duplicate rates (0.24-0.35) and the sign-list sizes (386 to ~700). "
+          "Lowest and highest cell means, balanced panel:", "",
+          "| Tier | Method | Whole grid: min -> max (cells) | Plausible box: min -> max (cells) |", "|---|---|---|---|"]
+    for t in tiers:
+        for m in methods:
+            k = f"{t}:{m}"
+            a = span("balanced", k)
+            b = span("balanced", k, box)
+            L.append(f"| {t} | {LABEL.get(m, m)} | {100 * a[0]:.1f}% -> {100 * a[1]:.1f}% ({a[2]} -> {a[3]}) | "
+                     f"{100 * b[0]:.1f}% -> {100 * b[1]:.1f}% ({b[2]} -> {b[3]}) |")
+    L += ["", "Cells are (duplicates, inventory). The interval for each cell is in the tables below.", ""]
+    for panel in ("balanced", "all"):
+        L += [f"## Token accuracy, % [95% cluster CI], {panel} panel", ""]
+        for t in tiers:
+            for m in methods:
+                L += [f"### {LABEL.get(m, m)}, {t} tier", ""] + grid(panel, f"{t}:{m}") + [""]
+        L += ["Corpora per cell:", ""] + grid(panel, "n", ci=False) + [""]
+    L += ["## Other statistics drift (not re-calibrated), balanced panel", "",
+          "Only the two knobs were set. These statistics move as a side effect and are reported, not corrected.", ""]
+    for key in ("realized_dup", "realized_inventory", "mean_length", "top1_share", "hapax_fraction", "beginners80_signs"):
+        L += [f"**{key}**", ""] + grid("balanced", key, ci=False) + [""]
+    L += ["## Per script type, revised EM, candidates tier (balanced panel)", ""]
+    sts = sorted({st for c in agg["panels"]["balanced"] if c["n"] for st in c["by_script"]})
+    L += ["| cell (dup, inv) | " + " | ".join(sts) + " |", "|---|" + "---|" * len(sts)]
+    for c in agg["panels"]["balanced"]:
+        if c["n"] and c["inventory"] in (invs[0], invs[len(invs) // 2], invs[-1]) and c["dup"] in (dups[0], dups[len(dups) // 2], dups[-1]):
+            L.append(f"| ({c['dup']:.1f}, {c['inventory']}) | " + " | ".join(
+                f"{100 * c['by_script'][st]['candidates:knight2006_em']:.1f}" if st in c["by_script"] else "n/a"
+                for st in sts) + " |")
+    L += ["", "## Design choices that could make this map misleading", "",
+          "* **Inventory is reached only through allographs.** Other ways to add sign types (more logograms, "
+          "more homophones, compound signs) would change difficulty differently. Alphabetic and syllabic corpora "
+          "reach 700-800 types only with dozens of variants per value. That may be unrealistic, and it is "
+          "maximally hard for solvers that do not merge variants.",
+          "* **No tested method merges allographs.** A method that clusters graphic variants first would be hurt "
+          "less by large inventories. The map measures these solvers, not decipherability in general.",
+          "* **Copies follow plaintext popularity.** Real duplicates (for example moulded tablets) may cluster differently.",
+          "* **Sign-list sizes are catalogue sizes**, not types observed in 2,906 texts. Only M77 (417) is "
+          "like-for-like. M77's 0.354 duplicate rate is computed on the 2,591 texts plotted in Yadav et al. "
+          "(2010), Fig. 2.",
+          "* **Other targets are not re-fit per cell** (see the drift tables), so a cell's difficulty mixes the "
+          "direct effect of the knob with these side effects.", "",
+          "## References", ""]
+    for k in ("M77", "YADAV2010", "NAIR2026", "PARPOLA1994", "RAO2018", "WELLS2006", "WELLS2015", "FULS2023"):
+        if k in cites:
+            L.append(f"* **{k}**: {' '.join(cites[k].split())}")
+    d = ensure(out_dir or reports_dir() / "sensitivity")
+    p = d / "sensitivity.md"
+    p.write_text("\n".join(L) + "\n")
+    return p

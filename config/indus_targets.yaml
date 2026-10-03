@@ -33,8 +33,23 @@ references:
     Possehl, G. L. (2002). The Indus Civilization: A Contemporary Perspective. AltaMira.
     pp. 132-133. (Read VIA the English Wikipedia article "Indus script", accessed 2026-10-03.)
   WELLS2015: >-
-    Wells, B. K. (2015). (Cited as "Wells 2015, p. 13" for ~694 signs. Read VIA the English
-    Wikipedia article "Indus script", accessed 2026-10-03. Full bibliographic entry not checked.)
+    Wells, B. K. (2015). The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress.
+    (Bibliographic entry as given in RAO2018; 694 signs read VIA RAO2018 and VIA the English
+    Wikipedia article "Indus script", accessed 2026-10-03.)
+  WELLS2006: >-
+    Wells, B. K. (2006). Epigraphic Approaches to Indus Writing. PhD thesis, Harvard University.
+    (676 signs read VIA YADAV2010, ref. [4].)
+  PARPOLA1994: >-
+    Parpola, A. (1994). Deciphering the Indus Script. Cambridge University Press.
+    (386 signs read VIA RAO2018.)
+  FULS2023: >-
+    Fuls, A. (2023). A Catalog of Indus Signs. Self-published (ISBN 9798398422306).
+    ("More than 700 distinct signs" read only in the book's publisher/retailer description via a
+    web search summary, 2026-10-03; exact count NOT verified.)
+  NAIR2026: >-
+    Nair, A. (2026). How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline
+    Scorecard. arXiv:2604.17828 (preprint, not peer reviewed). Corpus: ICIT as extracted from
+    the "Yajnadevam digital corpus"; data available only on request.
   BRIEF: >-
     Project brief supplied by the benchmark owner (no primary source attached).
 
@@ -158,13 +173,56 @@ targets:
 
   duplicate_text_fraction:
     role: report_only
-    citation: YADAV2010
-    verified: true
+    citation: [YADAV2010, NAIR2026]
+    verified: partial
     notes: >-
-      NO NUMBER PUBLISHED that we found. YADAV2010 Fig. 2 notes that raw M77 contains four
-      texts of length 2-3 occurring "in unusually large numbers". We report the fraction of
-      texts that duplicate an earlier text, without a target.
+      Not calibrated (no target). Measured values are listed under reference_points below:
+      M77 0.354 (0.281 without its four outlier texts), read from the vector data of
+      YADAV2010 Fig. 2; ICIT 0.237 per a preprint (NAIR2026, unverified). Our statistic is
+      the fraction of texts identical to an earlier text, which is the same definition.
 
+
+# Published reference points marked on the sensitivity map (reports/sensitivity). NOT targets:
+# nothing is calibrated to them.
+reference_points:
+  duplicate_text_fraction:
+    - label: "M77 raw (Yadav 2010 Fig. 2)"
+      value: 0.354
+      citation: YADAV2010
+      verified: true
+      method: >-
+        Exact series values read from the vector drawing commands of Fig. 2 in arXiv:0901.3017
+        (page 3), not by eye. Texts by length 1..14: M77 raw = 177, 608, 473, 429, 368, 225, 169,
+        74, 29, 24, 11, 1, 1, 2 (sum 2,591); M77-unique = 82, 215, 309, 292, 308, 209, 136, 60,
+        27, 22, 9, 1, 1, 2 (sum 1,673). Check: the EBUDS series from the same figure sums to
+        1,548, the published EBUDS size. Duplicate fraction = 1 - 1673/2591 = 0.354.
+      caveats: >-
+        The plotted raw M77 holds 2,591 texts, not the 2,906 of M77; the paper does not say which
+        315 are left out (we guess multi-line or unmeasurable texts, but this is NOT verified).
+        Identity is identity of M77 sign readings, so allograph decisions in M77's sign list
+        affect the count.
+    - label: "M77 without 4 outlier texts"
+      value: 0.281
+      citation: YADAV2010
+      verified: true
+      method: "Same figure: 'M77, without 4 most frequent texts' sums to 2,328; 1 - 1673/2328."
+    - label: "ICIT (Nair 2026, preprint)"
+      value: 0.237
+      citation: NAIR2026
+      verified: false
+      method: "'The raw corpus contains 2,511 inscriptions, of which 595 (24%) are exact duplicates.'"
+      caveats: Preprint; corpus not public; extraction pipeline unknown.
+  sign_inventory:
+    - {label: "Parpola 1994", value: 386, citation: PARPOLA1994, verified: "VIA RAO2018"}
+    - {label: "Mahadevan 1977", value: 417, citation: M77, verified: "VIA YADAV2010 and RAO2018"}
+    - {label: "Wells 2006", value: 676, citation: WELLS2006, verified: "VIA YADAV2010"}
+    - {label: "Wells 2015", value: 694, citation: WELLS2015, verified: "VIA RAO2018"}
+    - {label: "Fuls 2023 (>700, unverified)", value: 700, citation: FULS2023, verified: false}
+  notes: >-
+    Sign-list sizes are catalogue sizes over each author's whole corpus (ICIT-based lists cover
+    more texts than M77's 2,906). The map's inventory axis counts sign types observed in a
+    2,906-text corpus, so only M77 is like-for-like. The others show where lumping vs splitting
+    of variants would place the corpus, approximately and probably too high.
 # Calibration regimes (Judge fix #2: make circularity measurable instead of hidden).
 regimes:
   full:

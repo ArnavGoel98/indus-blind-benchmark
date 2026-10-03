@@ -79,6 +79,17 @@ profiles:
     em_restarts: 2
     em_iterations: 40
 
+  sensitivity:   # duplicate rate x sign inventory at the Indus point; methods frozen (see ibdb/sensitivity.py)
+    seeds: [0, 1, 2]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    knowledge_tiers: [candidates, none]
+    dup_grid: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+    inventory_grid: [400, 500, 600, 700, 800]
+    em_restarts: 3
+    em_iterations: 60
+
 # Generator defaults (overridden per scenario in the feasibility sweep).
 generator:
   allograph_rate: 0.25        # fraction of values that get graphic variants

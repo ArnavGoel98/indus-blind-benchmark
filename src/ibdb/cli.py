@@ -10,6 +10,7 @@
     ibdb challenge baseline --round R --tier public|hidden [--record]
     ibdb leaderboard                        rebuild leaderboard/index.html from leaderboard/data.json
     ibdb methods                            print each method's paper and documented deviations
+    ibdb sensitivity run|report             duplicate-rate x sign-inventory map at the Indus point
     ibdb-score submission.json --round R --tier hidden [--record]
 """
 
@@ -98,6 +99,18 @@ def cmd_leaderboard(a):
     print(f"[leaderboard] wrote {build_page()}")
 
 
+def cmd_sensitivity(a):
+    from . import sensitivity
+    if a.action == "run":
+        sensitivity.run(a.profile, workers=_workers(a.workers), limit=a.limit)
+    else:
+        from . import figures, reports
+        agg = sensitivity.aggregate(a.profile)
+        for p in [sensitivity.write_aggregate(a.profile), *figures.sensitivity_maps(agg),
+                  reports.sensitivity_report(agg)]:
+            print(f"[sensitivity] wrote {p}")
+
+
 def cmd_methods(a):
     from .evaluate import all_methods
     for m in all_methods():
@@ -133,6 +146,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--record", action="store_true")
     p.add_argument("--profile", default="full")
     p.set_defaults(func=cmd_challenge)
+    p = sp.add_parser("sensitivity")
+    p.add_argument("action", choices=["run", "report"])
+    p.add_argument("--profile", default="sensitivity")
+    p.add_argument("--workers", type=int, default=None)
+    p.add_argument("--limit", type=int, default=None)
+    p.set_defaults(func=cmd_sensitivity)
     return ap
 
 

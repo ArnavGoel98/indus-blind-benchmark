@@ -348,3 +348,135 @@ def sister_sweep(agg: dict, out_dir: Path | None = None) -> Path | None:
     fig.savefig(p, facecolor="white")
     plt.close(fig)
     return p
+
+
+# --------------------------------------------------------------------------- sensitivity map
+
+def _ref_points() -> dict:
+    from . import config
+    return config.targets().get("reference_points", {})
+
+
+REF_ABBR = {"Parpola 1994": "P94", "Mahadevan 1977": "M77", "Wells 2006": "W06", "Wells 2015": "W15",
+            "Fuls 2023 (>700, unverified)": "F23?", "M77 raw (Yadav 2010 Fig. 2)": "M77",
+            "M77 without 4 outlier texts": "M77-4", "ICIT (Nair 2026, preprint)": "ICIT?"}
+
+
+def _grouped_ticks(items: list[dict], min_gap: float) -> tuple[list[float], list[str]]:
+    """Merge reference values closer than min_gap into one tick so labels never overlap."""
+    groups: list[list[dict]] = []
+    for r in sorted(items, key=lambda r: r["value"]):
+        if groups and r["value"] - groups[-1][-1]["value"] < min_gap:
+            groups[-1].append(r)
+        else:
+            groups.append([r])
+    pos = [float(np.mean([r["value"] for r in g])) for g in groups]
+    lab = [",".join(REF_ABBR.get(r["label"], r["label"]) for r in g) for g in groups]
+    return pos, lab
+
+
+def _ref_lines(ax, refs: dict, label: bool):
+    """Published duplicate rates (horizontal) and sign-list sizes (vertical); solid = verified,
+    dotted = unverified. Labels go on secondary axes, never inside the data area."""
+    for r in refs.get("duplicate_text_fraction", []):
+        ax.axhline(r["value"], color=INK, lw=0.7, ls="-" if r.get("verified") is True else ":", alpha=0.7, zorder=2)
+    for r in refs.get("sign_inventory", []):
+        ax.axvline(r["value"], color=INK, lw=0.7, ls=":" if r.get("verified") is False else "-", alpha=0.7, zorder=2)
+    if not label:
+        return
+    xp, xl = _grouped_ticks(refs.get("sign_inventory", []), 45)
+    top = ax.secondary_xaxis("top")
+    top.set_xticks(xp, xl, fontsize=6, color=INK2)
+    top.tick_params(length=2, pad=1)
+    yp, yl = _grouped_ticks(refs.get("duplicate_text_fraction", []), 0.03)
+    right = ax.secondary_yaxis("right")
+    right.set_yticks(yp, yl, fontsize=6, color=INK2)
+    right.tick_params(length=2, pad=1)
+
+
+def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
+    d = ensure(out_dir or reports_dir() / "sensitivity")
+    refs = _ref_points()
+    dups, invs = agg["dup_grid"], agg["inventory_grid"]
+    dx = (invs[1] - invs[0]) / 2
+    dy = (dups[1] - dups[0]) / 2
+    extent = (invs[0] - dx, invs[-1] + dx, dups[0] - dy, dups[-1] + dy)
+    paths = []
+    for panel in ("balanced", "all"):
+        cells = {(c["dup"], c["inventory"]): c for c in agg["panels"][panel]}
+        tiers, methods = agg["tiers"], agg["methods"]
+        vmax = max([c[f"{t}:{m}"]["mean"] for c in cells.values() if c["n"] for t in tiers for m in methods] + [0.05])
+        fig, axes = plt.subplots(len(tiers), len(methods), figsize=(3.3 * len(methods), 3.0 * len(tiers) + 0.6),
+                                 sharex=True, sharey=True, squeeze=False)
+        for i, t in enumerate(tiers):
+            for j, m in enumerate(methods):
+                ax = axes[i][j]
+                z = np.full((len(dups), len(invs)), np.nan)
+                for a, dv in enumerate(dups):
+                    for b, iv in enumerate(invs):
+                        c = cells.get((float(dv), int(iv)))
+                        if c and c["n"]:
+                            z[a, b] = c[f"{t}:{m}"]["mean"]
+                im = ax.imshow(z, origin="lower", extent=extent, aspect="auto", cmap="Blues", vmin=0, vmax=vmax,
+                               interpolation="nearest")
+                for a, dv in enumerate(dups):
+                    for b, iv in enumerate(invs):
+                        if not np.isnan(z[a, b]):
+                            ax.text(iv, dv, f"{100 * z[a, b]:.1f}", ha="center", va="center", fontsize=7,
+                                    color=INK, zorder=3,
+                                    bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.75))
+                _ref_lines(ax, refs, label=True)
+                ax.set_title(f"{LABEL[m]}\n{'candidates' if t == 'candidates' else 'no relative'} tier",
+                             loc="left", fontsize=8.5, color=INK, pad=14)
+                if i == len(tiers) - 1:
+                    ax.set_xlabel("sign inventory (types observed)", fontsize=8, color=INK2)
+                if j == 0:
+                    ax.set_ylabel("duplicate-text fraction", fontsize=8, color=INK2)
+                ax.tick_params(labelsize=7)
+        fig.subplots_adjust(hspace=0.5, wspace=0.35)
+        fig.colorbar(im, ax=axes, shrink=0.6, label="Task D token accuracy (cell mean)")
+        n_combo = len(agg["balanced_combos"]) if panel == "balanced" else len(agg["combos"])
+        fig.suptitle(f"Decipherability map at the Indus point (2,906 texts x 4.6 signs), methods frozen. "
+                     f"Numbers: % tokens. Panel: {panel} ({n_combo} language x script combinations). "
+                     f"Lines: published values (solid verified, dotted unverified).\n"
+                     f"Top: sign lists P94 Parpola 386, M77 Mahadevan 417, W06/W15 Wells 676/694, F23? Fuls >700. "
+                     f"Right: duplicate rate, M77 raw 0.354, M77-4 without 4 outlier texts 0.281, "
+                     f"ICIT? preprint 0.237. Empty cell: unreachable.", fontsize=8.5, x=0.01, ha="left", y=1.03)
+        p = d / f"sensitivity_map_{panel}.png"
+        fig.savefig(p, dpi=150, bbox_inches="tight")
+        fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
+        plt.close(fig)
+        paths.append(p)
+    # Slices with clustered CIs (balanced panel): accuracy vs duplicates, one line per inventory level.
+    cells = {(c["dup"], c["inventory"]): c for c in agg["panels"]["balanced"]}
+    fig, axes = plt.subplots(len(agg["tiers"]), 2, figsize=(10, 3.3 * len(agg["tiers"])), squeeze=False)
+    m = "knight2006_em"
+    cmap = plt.get_cmap("viridis")
+    for i, t in enumerate(agg["tiers"]):
+        for k, (xs, other, xlabel) in enumerate(((dups, invs, "duplicate-text fraction"),
+                                                 (invs, dups, "sign inventory"))):
+            ax = axes[i][k]
+            for q, ov in enumerate(other):
+                pts = [(x, cells.get((float(x), int(ov)) if k == 0 else (float(ov), int(x)))) for x in xs]
+                pts = [(x, c[f"{t}:{m}"]) for x, c in pts if c and c["n"]]
+                if not pts:
+                    continue
+                xv = np.array([p[0] for p in pts], float) + (q - len(other) / 2) * (0.004 if k == 0 else 4)
+                mv = np.array([p[1]["mean"] for p in pts])
+                lo = np.array([p[1]["ci_lo"] for p in pts])
+                hi = np.array([p[1]["ci_hi"] for p in pts])
+                ax.errorbar(xv, mv, yerr=[mv - lo, hi - mv], marker="o", ms=3, lw=1, capsize=2,
+                            color=cmap(q / max(len(other) - 1, 1)),
+                            label=(f"inventory {ov}" if k == 0 else f"duplicates {ov:.1f}"))
+            _style(ax, xlabel, "token accuracy", f"{LABEL[m]}, {t} tier (95% cluster CI)")
+            if ax.get_legend_handles_labels()[0]:
+                ax.legend(fontsize=6.5, frameon=False, ncol=2)
+            for r in refs.get("duplicate_text_fraction" if k == 0 else "sign_inventory", []):
+                ax.axvline(r["value"], color=INK, lw=0.7, ls=":" if r.get("verified") is False else "-", alpha=0.5)
+    fig.tight_layout()
+    p = d / "sensitivity_slices.png"
+    fig.savefig(p, dpi=150, bbox_inches="tight")
+    fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
+    plt.close(fig)
+    paths.append(p)
+    return paths
