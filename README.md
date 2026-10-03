@@ -96,6 +96,19 @@ coordinate in a space we defined.* The fixes are built in:
   point average 0.48 on the same statistic, which is indistinguishable from the i.i.d. control. An
   earlier draft quoted ~0.59 from a unit-test setting (18k tokens); that figure is superseded.
 
+## Known limitations and future work
+
+- **The sister-language distance sweep does not measure distance.** A regular, bijective sound
+  change is a relabelling of units, which a substitution solver absorbs completely. Combined with
+  credit for cognate readings, this means that varying the sound-change rate barely moves Task D
+  (close-relative recovery 0.28 → 0.24 from the nearest to the farthest level). Only lexical
+  replacement bites. *Future work:* rebuild the synthetic relative with mergers, splits,
+  conditioned (context-dependent) changes and different phonotactics, then rerun the sweep.
+  Until then, `related`-tier numbers are an upper bound whose dependence on distance is unknown.
+- **Text-beginner calibration.** Most generator-v1 corpora miss the Indus text-beginner target
+  (82 signs cover 80% of text openings). Generator-v2 (a two-stage window sampler) is an
+  attempted fix and is reported side by side with v1.
+
 ## How results are reported (after an adversarial review of the first draft)
 
 - **Methods were frozen before the final run** at git tag `frozen-v1`.

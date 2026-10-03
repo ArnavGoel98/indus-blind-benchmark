@@ -184,3 +184,50 @@ def pick_windows(wi: WindowIndex, targets: np.ndarray, logits: np.ndarray, mask:
         for i, c in zip(idxs, picks.tolist()):
             out[i] = (int(wi.start[c]), int(wi.nwords[c]), trunc)
     return out
+
+
+def pick_windows_v2(wi: WindowIndex, targets: np.ndarray, logits_rest: np.ndarray, mask: np.ndarray,
+                    rng: np.random.Generator, first_word_exponent: float) -> list[tuple[int, int, int]]:
+    """Generator-v2 window choice: two stages, so text beginnings can be made diverse.
+
+    Stage 1 draws the FIRST WORD TYPE with probability proportional to n_t ** first_word_exponent,
+    where n_t is the number of candidate windows starting with type t. Exponent 1 reproduces
+    token-frequency sampling, 0 makes every first-word type equally likely, and negative values
+    favour rare openers. Stage 2 draws a window that starts with that type, weighted by the
+    remaining v1 preferences (alpha, beta, kappa). In v1 a single softmax over all windows made
+    strong first-word preferences collapse onto a few windows, so the Indus text-beginner
+    target (82 signs for 80% of openings) was rarely met.
+    """
+    out: list[tuple[int, int, int]] = [None] * len(targets)  # type: ignore[list-item]
+    valid = np.flatnonzero(mask)
+    lens = wi.length[valid]
+    by_len_targets: dict[int, list[int]] = {}
+    for i, L in enumerate(targets.tolist()):
+        by_len_targets.setdefault(L, []).append(i)
+    avail = np.unique(lens)
+    for L, idxs in by_len_targets.items():
+        trunc = 0
+        if L in set(avail.tolist()):
+            cand = valid[lens == L]
+        else:
+            longer = avail[avail > L]
+            if len(longer) == 0:
+                for i in idxs:
+                    out[i] = (-1, 0, int(L))
+                continue
+            cand = valid[lens == longer[0]]
+            trunc = int(L)
+        first = wi.flat[wi.start[cand]]
+        types, inv, counts = np.unique(first, return_inverse=True, return_counts=True)
+        tw = counts.astype(float) ** first_word_exponent
+        tw /= tw.sum()
+        chosen = rng.choice(len(types), size=len(idxs), p=tw)
+        order = np.argsort(inv, kind="stable")
+        bounds = np.concatenate([[0], np.cumsum(counts)])
+        for i, t in zip(idxs, chosen.tolist()):
+            members = cand[order[bounds[t]:bounds[t + 1]]]
+            lg = logits_rest[members]
+            p = np.exp(lg - lg.max())
+            c = int(rng.choice(members, p=p / p.sum()))
+            out[i] = (int(wi.start[c]), int(wi.nwords[c]), trunc)
+    return out

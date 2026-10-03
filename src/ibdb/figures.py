@@ -100,15 +100,20 @@ def _size_axis(ax):
     ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v / 1000:g}k" if v >= 1000 else f"{v:g}"))
 
 
+def _indus_label(ax, x):
+    ax.text(x, 0.985, " Indus (M77)", transform=ax.get_xaxis_transform(), fontsize=7.5, color=INK2,
+            va="top", ha="left", bbox=dict(boxstyle="square,pad=0.15", fc="white", ec="none", alpha=0.85), zorder=4)
+
+
 def _indus(ax, sweep: str, ip: dict, band: tuple[float, float]):
     if sweep == "size":
         ax.axvspan(band[0], band[1], color=BAND, alpha=0.6, lw=0, zorder=0)
         ax.axvline(ip["n_texts"], color=INK2, lw=1, ls="--", zorder=1)
-        ax.text(ip["n_texts"], 1.02, " Indus", transform=ax.get_xaxis_transform(), fontsize=8, color=INK2, va="bottom")
+        _indus_label(ax, ip["n_texts"])
         _size_axis(ax)
     else:
         ax.axvline(ip["mean_length"], color=INK2, lw=1, ls="--", zorder=1)
-        ax.text(ip["mean_length"], 1.02, " Indus", transform=ax.get_xaxis_transform(), fontsize=8, color=INK2, va="bottom")
+        _indus_label(ax, ip["mean_length"])
 
 
 def _panel(ax, points, sweep, names, getter_fn, title, ylabel, chance=None, ip=None, band=None):
@@ -174,38 +179,111 @@ def _chance(points, tier):
     return None
 
 
-def headline(agg: dict, profile: dict, out_dir: Path | None = None) -> Path:
-    """One panel: best method per task vs corpus size, Indus marked. The README figure."""
+def headline(agg: dict, profile: dict, out_dir: Path | None = None, tier: str = "candidates") -> Path:
+    """README figure: Task D in an Indus-relevant tier, one line per method (no best-of selection).
+
+    Left: vs corpus size at Indus mean length. Middle: vs mean text length at Indus corpus size.
+    Right: vs total sign tokens, both sweeps overlaid, so "more text" can be separated from
+    "longer texts".
+    """
     out_dir = ensure(out_dir or reports_dir() / "figures")
     ip = profile["indus_point"]
-    pts = [p for p in agg["points"].values() if p["sweep"] == "size" and p["regime"] == "full"]
-    pts.sort(key=lambda p: p["n_texts"])
-    fig, ax = plt.subplots(figsize=(8.5, 5.2), dpi=150)
-    rows = [
-        ("A  language vs not (best balanced acc.)", lambda t: max([v["balanced_acc"] for v in t["A"].values()] or [np.nan])),
-        ("B  script type (best accuracy)", lambda t: max([v["rate"] for v in t["B"].values()] or [np.nan])),
-        ("C  family, candidates tier (best acc.)", lambda t: max([v["rate"] for v in t["C"].get("candidates", {}).values()] or [np.nan])),
-        ("D  sign values, candidates tier (best token acc.)", lambda t: max([v["mean_token_acc"] for v in t["D"].get("candidates", {}).values()] or [np.nan])),
-        ("D  sign values, no relative among candidates (best token acc.)", lambda t: max([v["mean_token_acc"] for v in t["D"].get("none", {}).values()] or [np.nan])),
-    ]
-    for i, (lab, f) in enumerate(rows):
-        xs = [p["n_texts"] for p in pts]
-        ys = [f(p["tables"]) for p in pts]
-        ax.plot(xs, ys, color=SERIES[i], lw=2, marker="o", ms=5, label=lab)
-    ax.axvspan(1548, 5500, color=BAND, alpha=0.6, lw=0, zorder=0)
-    ax.axvline(ip["n_texts"], color=INK2, lw=1, ls="--")
-    ax.text(ip["n_texts"], 1.02, " Indus", transform=ax.get_xaxis_transform(), fontsize=8, color=INK2)
-    _size_axis(ax)
-    ax.set_ylim(-0.02, 1.05)
-    _style(ax, f"texts in corpus (log scale; mean {ip['mean_length']} signs/text)", "score (chance differs by task: A 0.5, B 0.25)",
-           "Decipherability curve, Indus-relevant settings only (best method per task)")
-    ax.legend(frameon=False, fontsize=8, loc="upper left")
-    fig.text(0.01, 0.005, "Task A is labelled unresolved: see per-family false-positive rates. Close-relative (upper-bound) "
-             "decipherment results are deliberately excluded here.", fontsize=7, color=INK2)
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    pts = list(agg["points"].values())
+    size_pts = sorted([p for p in pts if p["sweep"] == "size" and p["regime"] == "full"], key=lambda p: p["n_texts"])
+    indus = [p for p in size_pts if p["n_texts"] == ip["n_texts"]]
+    len_pts = sorted([p for p in pts if p["sweep"] == "length" and p["regime"] == "full"] + indus, key=lambda p: p["mean_length"])
+    fig, axes = plt.subplots(1, 3, figsize=(15.5, 4.9), dpi=150)
+    for n in D_NAMES:
+        for ax, points, xkey in ((axes[0], size_pts, "n_texts"), (axes[1], len_pts, "mean_length")):
+            got = [(p[xkey], p["tables"]["D"].get(tier, {}).get(n)) for p in points]
+            got = [(x, d) for x, d in got if d]
+            if not got:
+                continue
+            xs = np.array([x for x, _ in got], float)
+            ax.plot(xs, [d["mean_token_acc"] for _, d in got], color=COLOR[n], lw=2, marker="o", ms=4.5, label=LABEL[n], zorder=3)
+            ax.fill_between(xs, [d["ci_lo"] for _, d in got], [d["ci_hi"] for _, d in got], color=COLOR[n], alpha=0.10, lw=0)
+        for points, ls, mk in ((size_pts, "-", "o"), (len_pts, "--", "s")):
+            got = [(p["n_texts"] * p["mean_length"], p["tables"]["D"].get(tier, {}).get(n)) for p in points]
+            got = sorted([(x, d) for x, d in got if d], key=lambda v: v[0])
+            if got:
+                axes[2].plot([x for x, _ in got], [d["mean_token_acc"] for _, d in got], color=COLOR[n], lw=2, ls=ls,
+                             marker=mk, ms=4.5, zorder=3)
+    his = [d["ci_hi"] for p in size_pts + len_pts for d in p["tables"]["D"].get(tier, {}).values()
+           if np.isfinite(d.get("ci_hi", np.nan))]
+    top = min(1.02, max([0.6] + his) + 0.05)
+    for ax in axes:
+        ax.set_ylim(-0.01, top)
+    axes[0].axvspan(1548, 5500, color=BAND, alpha=0.6, lw=0, zorder=0)
+    axes[0].axvline(ip["n_texts"], color=INK2, lw=1, ls="--")
+    _indus_label(axes[0], ip["n_texts"])
+    _size_axis(axes[0])
+    axes[1].axvline(ip["mean_length"], color=INK2, lw=1, ls="--")
+    _indus_label(axes[1], ip["mean_length"])
+    axes[2].set_xscale("log")
+    _style(axes[0], "texts in corpus (log; mean %s signs/text)" % ip["mean_length"], "share of sign tokens read correctly",
+           "More texts of Indus length")
+    _style(axes[1], "mean signs per text (%s texts)" % f"{ip['n_texts']:,}", "", "Longer texts, same number")
+    _style(axes[2], "total sign tokens in corpus (log)", "", "Same tokens: longer texts win?")
+    axes[0].legend(frameon=False, fontsize=7.5, loc="upper left")
+    from matplotlib.lines import Line2D
+    axes[2].legend([Line2D([], [], color=INK2, lw=2, ls="-", marker="o"), Line2D([], [], color=INK2, lw=2, ls="--", marker="s")],
+                   ["size sweep (4.6 signs/text)", "length sweep (2,906 texts)"], frameon=False, fontsize=7.5, loc="upper left")
+    fig.suptitle(f"Task D, `{tier}` knowledge tier (a relative is among the candidate languages; script type given). "
+                 "One line per method; 95% cluster-bootstrap CI.", x=0.01, ha="left", fontsize=10.5, color=INK)
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
     p = out_dir / "decipherability_headline.png"
     fig.savefig(p, facecolor="white")
     fig.savefig(out_dir / "decipherability_headline.svg", facecolor="white")
+    plt.close(fig)
+    return p
+
+
+def entropy_bias(records: list[dict], out_dir: Path | None = None, ip_n: int = 2906) -> Path | None:
+    """Plug-in H(X2|X1)/H(X1): i.i.d. control (true value 1) vs synthetic languages, by corpus size."""
+    out_dir = ensure(out_dir or reports_dir() / "figures")
+    from collections import defaultdict
+    series = {"i.i.d. control (Rao type 2), full sign set": defaultdict(list),
+              "i.i.d. control, Rao top-100 merge": defaultdict(list),
+              "synthetic languages, full sign set": defaultdict(list),
+              "synthetic languages, Rao top-100 merge": defaultdict(list)}
+    keys = list(series)
+    for r in records:
+        if "error" in r or r["job"]["sweep"] != "size" or r["job"]["regime"] != "full" or not r.get("B"):
+            continue
+        n = r["job"]["n_texts"]
+        full = r["B"]["script_type_lr"]["features"]["cond_ratio_full"]
+        top = r["A"]["rao2009_entropy"]["features"]["rao_ratio"]
+        if r["truth"]["source"] == "rao_type2":
+            series[keys[0]][n].append(full)
+            series[keys[1]][n].append(top)
+        elif r["truth"]["kind"] == "language":
+            series[keys[2]][n].append(full)
+            series[keys[3]][n].append(top)
+    if not series[keys[0]]:
+        return None
+    fig, ax = plt.subplots(figsize=(8.6, 4.8), dpi=150)
+    styles = [(SERIES[1], "-"), (SERIES[1], "--"), (SERIES[0], "-"), (SERIES[0], "--")]
+    for (lab, d), (c, ls) in zip(series.items(), styles):
+        xs = sorted(d)
+        m = [np.mean(d[x]) for x in xs]
+        lo = [np.percentile(d[x], 10) for x in xs]
+        hi = [np.percentile(d[x], 90) for x in xs]
+        ax.plot(xs, m, color=c, lw=2, ls=ls, marker="o", ms=4.5, label=lab)
+        if "languages" in lab:
+            ax.fill_between(xs, lo, hi, color=c, alpha=0.10, lw=0)
+    ax.axhline(1.0, color=INK2, lw=1, ls=":")
+    ax.text(0.01, 1.0, " true value for the i.i.d. control", transform=ax.get_yaxis_transform(), fontsize=7.5,
+            color=INK2, va="bottom")
+    ax.axvline(ip_n, color=INK2, lw=1, ls="--")
+    _indus_label(ax, ip_n)
+    _size_axis(ax)
+    ax.set_ylim(0, 1.08)
+    _style(ax, "texts in corpus (log; mean 4.6 signs/text)", "plug-in H(X2|X1) / H(X1)",
+           "Entropy ratio: random signs vs synthetic languages (band: 10th-90th percentile of languages)")
+    ax.legend(frameon=False, fontsize=7.5, loc="lower right")
+    fig.tight_layout()
+    p = out_dir / "entropy_bias.png"
+    fig.savefig(p, facecolor="white")
     plt.close(fig)
     return p
 

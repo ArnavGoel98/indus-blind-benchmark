@@ -80,3 +80,24 @@ def test_rao_controls_are_extremes():
     # full alphabet (no UNK merging): rigid successor = zero conditional entropy
     assert ratio_from_token_texts(t1, top_k=None) < 0.05
     assert ratio_from_token_texts(t2, top_k=None) > 0.9
+
+
+def test_generator_v2_flattens_text_beginnings(toy_source):
+    """v2 first-word exponent 0 must give more diverse openings than exponent 1 (token sampling)."""
+    from collections import Counter
+    from dataclasses import replace as dc_replace
+    spec = ScriptSpec(script_type="logographic", allograph_rate=0, homophony_rate=0, polyvalence_rate=0)
+    k = Knobs(rho=0)
+    a, _, _ = make_corpus(toy_source, spec, 1500, 4.4, 5, dc_replace(k, first_word_exponent=1.0), generator_version="v2")
+    b, _, _ = make_corpus(toy_source, spec, 1500, 4.4, 5, dc_replace(k, first_word_exponent=0.0), generator_version="v2")
+    n_open = lambda c: len(Counter(t.tolist()[0] for t in c.logical()))  # noqa: E731
+    assert n_open(b) > n_open(a)
+
+
+def test_generator_v1_unchanged_by_v2_code(toy_source):
+    """Default (v1) output must not depend on the v2 knob."""
+    from dataclasses import replace as dc_replace
+    spec = ScriptSpec(script_type="syllabic")
+    a, _, _ = make_corpus(toy_source, spec, 300, 4.4, 9, Knobs())
+    b, _, _ = make_corpus(toy_source, spec, 300, 4.4, 9, dc_replace(Knobs(), first_word_exponent=-1.0))
+    assert [t.tolist() for t in a.texts] == [t.tolist() for t in b.texts]

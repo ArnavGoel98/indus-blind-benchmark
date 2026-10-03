@@ -39,7 +39,8 @@ def cmd_calibrate(a):
     from . import config
     from .generator.calibrate import calibrate_all
     p = config.experiment()["profiles"][a.profile]
-    calibrate_all(p["languages"], p["script_types"], p["controls"], p["regimes"], workers=_workers(a.workers))
+    calibrate_all(p["languages"], p["script_types"], p["controls"], p["regimes"], workers=_workers(a.workers),
+                  generator_version=p.get("generator_version", "v1"))
 
 
 def cmd_run(a):
@@ -59,6 +60,10 @@ def cmd_report(a):
     paths += figures.decipherability(agg, prof, fig_dir)
     paths.append(figures.headline(agg, prof, fig_dir))
     paths.append(figures.control_fp(agg, prof, fig_dir))
+    from .evaluate import load_records
+    eb = figures.entropy_bias(load_records(a.profile), fig_dir, prof["indus_point"]["n_texts"])
+    if eb:
+        paths.append(eb)
     sp = figures.sister_sweep(agg, fig_dir)
     if sp:
         paths.append(sp)

@@ -114,19 +114,19 @@ def feasibility_spec(spec, scenario: int):
                    word_divider=bool(r.random() < 0.3), direction="rtl" if r.random() < 0.7 else "ltr")
 
 
-def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60) -> dict[str, Any]:
+def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_version: str = "v1") -> dict[str, Any]:
     t0 = time.time()
-    knobs, spec = load_knobs(job.regime, job.source, job.script_type)
+    knobs, spec = load_knobs(job.regime, job.source, job.script_type, generator_version)
     if job.sweep == "feasibility":
         spec = feasibility_spec(spec, job.scenario)
     regime_t = config.regime_targets(job.regime)
     median = float(regime_t["median_length"]["value"]) if job.sweep == "regime" else None
     corpus, key, info = make_corpus(job.source, spec, job.n_texts, job.mean_length, job.seed, knobs,
-                                    median_length=median)
+                                    median_length=median, generator_version=generator_version)
     logical = [t.tolist() for t in corpus.logical()]
     st = corpus_stats(logical, config.targets()["targets"], seed=job.seed)
     rec: dict[str, Any] = {
-        "job": asdict(job),
+        "job": asdict(job), "generator_version": generator_version,
         "truth": {"source": key.source, "family": key.family, "kind": key.kind,
                   "is_linguistic": key.is_linguistic, "script_type": key.script_type},
         "stats": st, "gen": info,
@@ -169,9 +169,9 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60) -> dict[str
 
 
 def _worker(args):
-    job, path, er, ei = args
+    job, path, er, ei, gv = args
     try:
-        rec = run_job(job, er, ei)
+        rec = run_job(job, er, ei, gv)
     except Exception:  # noqa: BLE001 - record and continue; failures are reported, not hidden
         rec = {"job": asdict(job), "error": traceback.format_exc()}
     with open(path, "a", encoding="utf-8") as fh:
@@ -203,7 +203,7 @@ def _execute(jobs: list[Job], profile_name: str, workers: int, log) -> None:
     if not todo:
         return
     path = results_path(profile_name)
-    args = [(j, path, prof["em_restarts"], prof["em_iterations"]) for j in todo]
+    args = [(j, path, prof["em_restarts"], prof["em_iterations"], prof.get("generator_version", "v1")) for j in todo]
     t0 = time.time()
     with ProcessPoolExecutor(workers, mp_context=get_context("spawn")) as ex:
         futs = [ex.submit(_worker, a) for a in args]

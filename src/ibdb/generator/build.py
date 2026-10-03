@@ -36,6 +36,7 @@ class Knobs:
     vocab_cap: int | None = None        # only windows whose words are all within this frequency rank
     concentration: float = 1.0          # controls: Zipf exponent multiplier
     adv_target_ratio: float = 0.55      # adversarial control: target H(X2|X1)/H(X1)
+    first_word_exponent: float = 1.0    # generator-v2 only: first-word-type sampling exponent
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -134,7 +135,8 @@ def corpus_id_for(params: dict[str, Any]) -> str:
 
 def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float, seed: int,
                 knobs: Knobs | None = None, corpus_id: str | None = None,
-                median_length: float | None = None, adv_ratio_fn=None) -> tuple[Corpus, AnswerKey, dict]:
+                median_length: float | None = None, adv_ratio_fn=None,
+                generator_version: str = "v1") -> tuple[Corpus, AnswerKey, dict]:
     knobs = knobs or Knobs()
     spec = replace(spec)
     if knobs.allograph_rate is not None:
@@ -160,7 +162,11 @@ def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float,
             mask &= wi.maxrank <= knobs.vocab_cap
         if not mask.any():
             mask[:] = True
-        picks = sampler.pick_windows(wi, targets, logits, mask, r_pick)
+        if generator_version == "v2":
+            rest = sampler.window_logits(wi, knobs.alpha, knobs.beta, knobs.kappa, 0.0)
+            picks = sampler.pick_windows_v2(wi, targets, rest, mask, r_pick, knobs.first_word_exponent)
+        else:
+            picks = sampler.pick_windows(wi, targets, logits, mask, r_pick)
         valid = np.flatnonzero(mask)
         for (start, nw, trunc), L in zip(picks, targets.tolist()):
             if start >= 0:

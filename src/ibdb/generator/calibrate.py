@@ -35,15 +35,18 @@ def _single_thread_blas() -> None:
         os.environ.setdefault(v, "1")
 
 
-def knob_box(source: str, script_type: str) -> dict[str, tuple[float, float, str]]:
+def knob_box(source: str, script_type: str, generator_version: str = "v1") -> dict[str, tuple[float, float, str]]:
     box: dict[str, tuple[float, float, str]] = {
         "rho": (0.0, 0.15, "lin"),
         "allograph_rate": (0.0, 1.0, "lin"),
         "allograph_extra_mean": (1.0, 10.0, "lin"),
     }
     if source in LANGUAGES or source == "kamon":
-        box.update({"alpha": (0.0, 2.0, "lin"), "beta": (0.0, 3.0, "lin"), "kappa": (0.0, 2.0, "lin"),
-                    "gamma": (-2.0, 1.0, "lin")})
+        box.update({"alpha": (0.0, 2.0, "lin"), "beta": (0.0, 3.0, "lin"), "kappa": (0.0, 2.0, "lin")})
+        if generator_version == "v2":   # two-stage sampler: first-word-type exponent replaces gamma
+            box["first_word_exponent"] = (-1.0, 1.5, "lin")
+        else:
+            box["gamma"] = (-2.0, 1.0, "lin")
         if script_type == "logographic" or source == "kamon":
             box["vocab_cap"] = (60.0, 3000.0, "log")
     else:
@@ -74,9 +77,9 @@ def default_spec(script_type: str, gen_cfg: dict | None = None) -> ScriptSpec:
 
 
 def evaluate(source: str, spec: ScriptSpec, knobs: Knobs, specs: dict, n_texts: int, mean_len: float,
-             median_len: float | None, seed: int) -> tuple[float, dict, dict]:
+             median_len: float | None, seed: int, generator_version: str = "v1") -> tuple[float, dict, dict]:
     corpus, _, info = make_corpus(source, spec, n_texts, mean_len, seed, knobs, median_length=median_len,
-                                  adv_ratio_fn=ratio_from_token_texts)
+                                  adv_ratio_fn=ratio_from_token_texts, generator_version=generator_version)
     st = corpus_stats(corpus.logical(), config.targets()["targets"], seed=seed)
     chk = check_targets(st, specs)
     obj = sum(min(c["dev"], 20.0) ** 2 for c in chk.values() if not c["ok"])
@@ -87,13 +90,14 @@ def evaluate(source: str, spec: ScriptSpec, knobs: Knobs, specs: dict, n_texts: 
 
 
 def calibrate(source: str, script_type: str, regime: str = "full", seed: int = 0, budget_random: int = 24,
-              refine_rounds: int = 4, log=None, adv_target_ratio: float | None = None) -> dict[str, Any]:
+              refine_rounds: int = 4, log=None, adv_target_ratio: float | None = None,
+              generator_version: str = "v1") -> dict[str, Any]:
     specs = config.regime_targets(regime)
     n_texts = int(specs["n_texts"]["value"])
     mean_len = float(specs["mean_length"]["value"])
     median_len = float(specs["median_length"]["value"])
     spec = default_spec(script_type)
-    box = knob_box(source, script_type)
+    box = knob_box(source, script_type, generator_version)
     rng = np.random.default_rng([seed, abs(hash_str(source + script_type + regime)) % (2**31)])
     best = (np.inf, None, None, None, None)
 
@@ -102,7 +106,7 @@ def calibrate(source: str, script_type: str, regime: str = "full", seed: int = 0
         k = _decode(np.clip(x, 0, 1), box)
         if adv_target_ratio is not None:
             k.adv_target_ratio = adv_target_ratio
-        obj, st, chk = evaluate(source, spec, k, specs, n_texts, mean_len, median_len, seed)
+        obj, st, chk = evaluate(source, spec, k, specs, n_texts, mean_len, median_len, seed, generator_version)
         if obj < best[0]:
             best = (obj, np.clip(x, 0, 1).copy(), k, st, chk)
         return obj
@@ -134,6 +138,7 @@ def calibrate(source: str, script_type: str, regime: str = "full", seed: int = 0
         step = step if improved else step / 2
     obj, x, knobs, st, chk = best
     result = {"source": source, "script_type": script_type, "regime": regime, "seed": seed,
+              "generator_version": generator_version,
               "objective": obj, "all_pass": all(c["ok"] for c in chk.values()),
               "knobs": knobs.to_dict(), "spec": spec.to_dict(), "stats": st, "checks": chk}
     if log:
@@ -147,17 +152,18 @@ def hash_str(s: str) -> int:
     return zlib.crc32(s.encode())
 
 
-def calibration_path(regime: str, source: str, script_type: str):
-    return ensure(runs_dir() / "calibration" / regime) / f"{source}__{script_type}.json"
+def calibration_path(regime: str, source: str, script_type: str, generator_version: str = "v1"):
+    base = "calibration" if generator_version == "v1" else f"calibration_{generator_version}"
+    return ensure(runs_dir() / base / regime) / f"{source}__{script_type}.json"
 
 
 def save(result: dict) -> None:
-    calibration_path(result["regime"], result["source"], result["script_type"]).write_text(
-        json.dumps(result, indent=1, default=float))
+    calibration_path(result["regime"], result["source"], result["script_type"],
+                     result.get("generator_version", "v1")).write_text(json.dumps(result, indent=1, default=float))
 
 
-def load_knobs(regime: str, source: str, script_type: str) -> tuple[Knobs, ScriptSpec]:
-    d = json.loads(calibration_path(regime, source, script_type).read_text())
+def load_knobs(regime: str, source: str, script_type: str, generator_version: str = "v1") -> tuple[Knobs, ScriptSpec]:
+    d = json.loads(calibration_path(regime, source, script_type, generator_version).read_text())
     return Knobs(**d["knobs"]), ScriptSpec(**d["spec"])
 
 
@@ -166,23 +172,23 @@ def with_overrides(spec: ScriptSpec, **kw) -> ScriptSpec:
 
 
 def _job(args):
-    source, script_type, regime, adv = args
-    res = calibrate(source, script_type, regime, adv_target_ratio=adv)
+    source, script_type, regime, adv, gv = args
+    res = calibrate(source, script_type, regime, adv_target_ratio=adv, generator_version=gv)
     save(res)
     return f"{regime:11s} {source:13s} {script_type:12s} pass {sum(c['ok'] for c in res['checks'].values())}/{len(res['checks'])}"
 
 
-def language_entropy_ratio(regime: str, languages, script_types) -> float:
+def language_entropy_ratio(regime: str, languages, script_types, generator_version: str = "v1") -> float:
     """Median H(X2|X1)/H(X1) of the calibrated linguistic corpora (seed 0); target for the
     adversarial control so it imitates language on exactly the statistic Rao (2009) used."""
     from ..stats import conditional_entropy
     ratios = []
     for src in languages:
         for st in script_types:
-            k, sp = load_knobs(regime, src, st)
+            k, sp = load_knobs(regime, src, st, generator_version)
             sp_n = config.regime_targets(regime)
             c, _, _ = make_corpus(src, sp, int(sp_n["n_texts"]["value"]), float(sp_n["mean_length"]["value"]), 0, k,
-                                  median_length=float(sp_n["median_length"]["value"]))
+                                  median_length=float(sp_n["median_length"]["value"]), generator_version=generator_version)
             h1, h2 = conditional_entropy(c.logical(), 100)
             ratios.append(h2 / h1)
     return float(np.median(ratios))
@@ -192,7 +198,7 @@ def _run_pool(jobs, workers, log):
     from concurrent.futures import ProcessPoolExecutor, as_completed
     from multiprocessing import get_context
     _single_thread_blas()
-    todo = [j for j in jobs if not calibration_path(j[2], j[0], j[1]).exists()]
+    todo = [j for j in jobs if not calibration_path(j[2], j[0], j[1], j[4]).exists()]
     for attempt in range(3):  # retry jobs lost to a dead worker
         if not todo:
             return
@@ -206,15 +212,17 @@ def _run_pool(jobs, workers, log):
                         log(f"[calibrate] FAILED {futs[f]}: {e!r}")
         except Exception as e:  # noqa: BLE001 - BrokenProcessPool: retry the remainder
             log(f"[calibrate] pool error: {e!r}")
-        todo = [j for j in todo if not calibration_path(j[2], j[0], j[1]).exists()]
+        todo = [j for j in todo if not calibration_path(j[2], j[0], j[1], j[4]).exists()]
     if todo:
         raise RuntimeError(f"calibration failed for {todo}")
 
 
-def calibrate_all(languages, script_types, controls, regimes, workers: int = 4, log=print) -> None:
+def calibrate_all(languages, script_types, controls, regimes, workers: int = 4, log=print,
+                  generator_version: str = "v1") -> None:
     """Resumable: configurations with a saved result are skipped."""
+    gv = generator_version
     for regime in regimes:
-        _run_pool([(s, st, regime, None) for s in languages for st in script_types], workers, log)
-        adv = language_entropy_ratio(regime, languages, script_types)
-        log(f"[calibrate] {regime}: adversarial control target entropy ratio = {adv:.3f}")
-        _run_pool([(c, "emblem", regime, adv) for c in controls], workers, log)
+        _run_pool([(s, st, regime, None, gv) for s in languages for st in script_types], workers, log)
+        adv = language_entropy_ratio(regime, languages, script_types, gv)
+        log(f"[calibrate] {regime} ({gv}): adversarial control target entropy ratio = {adv:.3f}")
+        _run_pool([(c, "emblem", regime, adv, gv) for c in controls], workers, log)
