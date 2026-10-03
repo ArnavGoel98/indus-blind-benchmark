@@ -316,18 +316,25 @@ def aggregate(name: str = "sensitivity") -> dict[str, Any]:
     for r in ok:
         reach[(r["job"]["source"], r["job"]["script_type"])].add((r["job"]["dup"], r["job"]["inventory"]))
     balanced = sorted(c for c in combos if all(cell in reach[c] for cell in cells))
+    # Plausible box (fixed in the profile before results): the cells bracketing the published duplicate rates
+    # and sign-list sizes. Its own balanced panel keeps composition fixed without needing the grid edges.
+    bx = prof["plausible_box"]
+    box_cells = [(d, i) for d, i in cells if bx["dup"][0] <= d <= bx["dup"][1] and bx["inventory"][0] <= i <= bx["inventory"][1]]
+    box_combos = sorted(c for c in combos if all(cell in reach[c] for cell in box_cells))
     methods = [M.name for M in D_METHODS]
     out: dict[str, Any] = {"profile": name, "dup_grid": prof["dup_grid"], "inventory_grid": prof["inventory_grid"],
                            "tiers": prof["knowledge_tiers"], "methods": methods,
                            "n_records": len(recs), "status_counts": dict(Counter(r["status"] for r in recs)),
                            "combos": [list(c) for c in combos], "balanced_combos": [list(c) for c in balanced],
+                           "plausible_box": bx, "box_combos": [list(c) for c in box_combos],
                            "excluded": sorted({(r["job"]["source"], r["job"]["script_type"], r["job"]["dup"],
                                                  r["job"]["inventory"], r["status"]) for r in recs
                                                 if r["status"] != "ok"}),
                            "panels": {}}
-    for panel, keep in (("all", None), ("balanced", set(balanced))):
+    for panel, keep, pcells in (("all", None, cells), ("balanced", set(balanced), cells),
+                                ("box", set(box_combos), box_cells)):
         cells_out = []
-        for d, inv in cells:
+        for d, inv in pcells:
             rs = [r for r in ok if r["job"]["dup"] == d and r["job"]["inventory"] == inv
                   and (keep is None or (r["job"]["source"], r["job"]["script_type"]) in keep)]
             cell: dict[str, Any] = {"dup": d, "inventory": inv, "n": len(rs)}
@@ -352,7 +359,37 @@ def aggregate(name: str = "sensitivity") -> dict[str, Any]:
                                              for t in prof["knowledge_tiers"] for m in methods} | {"n": len(sub)}
             cells_out.append(cell)
         out["panels"][panel] = cells_out
+    out["box_spread"] = box_spread(ok, box_combos, box_cells, prof["knowledge_tiers"], methods)
     out["timing_mean_s"] = float(np.mean([r["timing"]["total"] for r in ok])) if ok else None
+    return out
+
+
+def box_spread(ok: list[dict], combos, box_cells, tiers, methods) -> dict[str, Any]:
+    """Within one language x script combination, how far does accuracy move across the plausible box?
+    Per combination: seed-averaged accuracy in each box cell, spread = max - min. Composition is fixed
+    by construction (each spread compares a combination only with itself)."""
+    out: dict[str, Any] = {}
+    for t in tiers:
+        for m in methods:
+            rows = []
+            for c in combos:
+                per_cell = []
+                for d, i in box_cells:
+                    xs = [r["CD"][t][m]["token_acc"] for r in ok if (r["job"]["source"], r["job"]["script_type"]) == c
+                          and r["job"]["dup"] == d and r["job"]["inventory"] == i]
+                    if xs:
+                        per_cell.append((float(np.mean(xs)), d, i))
+                if len(per_cell) == len(box_cells):
+                    lo, hi = min(per_cell), max(per_cell)
+                    rows.append({"source": c[0], "script_type": c[1], "min": lo[0], "min_cell": [lo[1], lo[2]],
+                                 "max": hi[0], "max_cell": [hi[1], hi[2]], "spread": hi[0] - lo[0]})
+            if not rows:
+                continue
+            sp = np.array([r["spread"] for r in rows])
+            ci = cluster_bootstrap(sp, [r["source"] for r in rows])
+            out[f"{t}:{m}"] = {"n_combos": len(rows), "median_spread": float(np.median(sp)),
+                               "mean_spread": float(sp.mean()), "ci_lo": ci[0], "ci_hi": ci[1],
+                               "share_spread_ge_10pts": float(np.mean(sp >= 0.10)), "rows": rows}
     return out
 
 

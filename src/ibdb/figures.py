@@ -394,16 +394,22 @@ def _ref_lines(ax, refs: dict, label: bool):
     right.tick_params(length=2, pad=1)
 
 
+ALLOGRAPH_NOTE = ("LIMITATION: inventory is raised only by adding allographs (graphic variants of one value), and no "
+                  "tested method merges allographs. High-inventory cells therefore measure these solvers' failure to "
+                  "merge variants, not decipherability in general.")
+
+
 def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
     d = ensure(out_dir or reports_dir() / "sensitivity")
     refs = _ref_points()
-    dups, invs = agg["dup_grid"], agg["inventory_grid"]
-    dx = (invs[1] - invs[0]) / 2
-    dy = (dups[1] - dups[0]) / 2
-    extent = (invs[0] - dx, invs[-1] + dx, dups[0] - dy, dups[-1] + dy)
     paths = []
-    for panel in ("balanced", "all"):
+    for panel in ("balanced", "box", "all"):
         cells = {(c["dup"], c["inventory"]): c for c in agg["panels"][panel]}
+        dups = sorted({d for d, _ in cells})
+        invs = sorted({i for _, i in cells})
+        dx = (invs[1] - invs[0]) / 2 if len(invs) > 1 else 50
+        dy = (dups[1] - dups[0]) / 2 if len(dups) > 1 else 0.05
+        extent = (invs[0] - dx, invs[-1] + dx, dups[0] - dy, dups[-1] + dy)
         tiers, methods = agg["tiers"], agg["methods"]
         vmax = max([c[f"{t}:{m}"]["mean"] for c in cells.values() if c["n"] for t in tiers for m in methods] + [0.05])
         fig, axes = plt.subplots(len(tiers), len(methods), figsize=(3.3 * len(methods), 3.0 * len(tiers) + 0.6),
@@ -435,19 +441,21 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                 ax.tick_params(labelsize=7)
         fig.subplots_adjust(hspace=0.5, wspace=0.35)
         fig.colorbar(im, ax=axes, shrink=0.6, label="Task D token accuracy (cell mean)")
-        n_combo = len(agg["balanced_combos"]) if panel == "balanced" else len(agg["combos"])
+        n_combo = {"balanced": len(agg["balanced_combos"]), "box": len(agg["box_combos"])}.get(panel, len(agg["combos"]))
         fig.suptitle(f"Decipherability map at the Indus point (2,906 texts x 4.6 signs), methods frozen. "
                      f"Numbers: % tokens. Panel: {panel} ({n_combo} language x script combinations). "
                      f"Lines: published values (solid verified, dotted unverified).\n"
                      f"Top: sign lists P94 Parpola 386, M77 Mahadevan 417, W06/W15 Wells 676/694, F23? Fuls >700. "
                      f"Right: duplicate rate, M77 raw 0.354, M77-4 without 4 outlier texts 0.281, "
                      f"ICIT? preprint 0.237. Empty cell: unreachable.", fontsize=8.5, x=0.01, ha="left", y=1.03)
+        fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
         p = d / f"sensitivity_map_{panel}.png"
         fig.savefig(p, dpi=150, bbox_inches="tight")
         fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
         plt.close(fig)
         paths.append(p)
     # Slices with clustered CIs (balanced panel): accuracy vs duplicates, one line per inventory level.
+    dups, invs = agg["dup_grid"], agg["inventory_grid"]
     cells = {(c["dup"], c["inventory"]): c for c in agg["panels"]["balanced"]}
     fig, axes = plt.subplots(len(agg["tiers"]), 2, figsize=(10, 3.3 * len(agg["tiers"])), squeeze=False)
     m = "knight2006_em"
@@ -468,12 +476,14 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                 ax.errorbar(xv, mv, yerr=[mv - lo, hi - mv], marker="o", ms=3, lw=1, capsize=2,
                             color=cmap(q / max(len(other) - 1, 1)),
                             label=(f"inventory {ov}" if k == 0 else f"duplicates {ov:.1f}"))
-            _style(ax, xlabel, "token accuracy", f"{LABEL[m]}, {t} tier (95% cluster CI)")
+            _style(ax, xlabel, "token accuracy",
+                   f"{LABEL[m]}, {t} tier (95% cluster CI), strict panel ({len(agg['balanced_combos'])} combos)")
             if ax.get_legend_handles_labels()[0]:
                 ax.legend(fontsize=6.5, frameon=False, ncol=2)
             for r in refs.get("duplicate_text_fraction" if k == 0 else "sign_inventory", []):
                 ax.axvline(r["value"], color=INK, lw=0.7, ls=":" if r.get("verified") is False else "-", alpha=0.5)
     fig.tight_layout()
+    fig.text(0.01, -0.01, ALLOGRAPH_NOTE, fontsize=8, color="#a3271f", ha="left", va="top", wrap=True)
     p = d / "sensitivity_slices.png"
     fig.savefig(p, dpi=150, bbox_inches="tight")
     fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")

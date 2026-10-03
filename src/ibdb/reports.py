@@ -502,6 +502,8 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
           "**Nothing here is a measurement of the Indus script.** The map shows how much the difficulty of our "
           "synthetic Indus-like corpora depends on two properties the published Indus statistics do not pin down.",
           ""]
+    from .figures import ALLOGRAPH_NOTE
+    L += [f"> **{ALLOGRAPH_NOTE}**", ""]
     sc = agg["status_counts"]
     L += ["## Coverage", "",
           f"Records: {agg['n_records']}. Status counts (after the validity rule): "
@@ -512,9 +514,14 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
           "* `unreachable_dup`: too few distinct texts for so low a duplicate rate.",
           "* `length_distorted`: more than 10% of texts needed a substitute length.",
           "* `tolerance_miss`: bisection ended outside +/-3% (min 10 signs) of the target.", "",
-          f"**Balanced panel** (the primary panel): the {len(agg['balanced_combos'])} language x script combinations "
-          "that are valid in every cell, so all cells have the same composition: "
+          f"**Strict panel** (every cell has the same composition): the {len(agg['balanced_combos'])} of "
+          f"{len(agg['combos'])} language x script combinations that are valid in all "
+          f"{len(agg['dup_grid']) * len(agg['inventory_grid'])} cells: "
           + ", ".join(f"{a}/{b}" for a, b in agg["balanced_combos"]) + ".", "",
+          f"**Plausible-box panel**: the {len(agg['box_combos'])} combinations valid in every cell of the plausible "
+          f"box (duplicates {agg['plausible_box']['dup'][0]}-{agg['plausible_box']['dup'][1]}, inventory "
+          f"{agg['plausible_box']['inventory'][0]}-{agg['plausible_box']['inventory'][1]}; fixed in the profile "
+          "before results): " + ", ".join(f"{a}/{b}" for a, b in agg["box_combos"]) + ".", "",
           "Combinations missing from the balanced panel: "
           + (", ".join(f"{a}/{b}" for a, b in agg["combos"] if [a, b] not in agg["balanced_combos"]) or "none")
           + ". The `all` panel uses every valid corpus, so its cell composition varies.", ""]
@@ -528,11 +535,13 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
 
     def grid(panel: str, key: str, ci: bool = True) -> list[str]:
         cells = {(c["dup"], c["inventory"]): c for c in agg["panels"][panel]}
-        out = ["| duplicates \\ inventory | " + " | ".join(str(i) for i in invs) + " |",
-               "|---|" + "---|" * len(invs)]
-        for d in dups:
+        p_dups = sorted({d for d, _ in cells})
+        p_invs = sorted({i for _, i in cells})
+        out = ["| duplicates \\ inventory | " + " | ".join(str(i) for i in p_invs) + " |",
+               "|---|" + "---|" * len(p_invs)]
+        for d in p_dups:
             row = []
-            for i in invs:
+            for i in p_invs:
                 c = cells.get((float(d), int(i)))
                 if not c or not c["n"]:
                     row.append("n/a")
@@ -553,11 +562,31 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
         hi = max(cs, key=lambda c: c[key]["mean"])
         return lo[key]["mean"], hi[key]["mean"], (lo["dup"], lo["inventory"]), (hi["dup"], hi["inventory"])
 
-    box = ((0.2, 0.4), (400, 700))
-    L += ["## How much does difficulty move?", "",
+    box = (tuple(agg["plausible_box"]["dup"]), tuple(agg["plausible_box"]["inventory"]))
+    L += ["## Within one language and script: spread across the plausible box", "",
+          "For each combination in the plausible-box panel: seed-averaged accuracy in each box cell, then spread "
+          "= best cell - worst cell. Each spread compares a combination with itself, so composition cannot cause "
+          "it. The 95% CI of the mean spread resamples source languages.", "",
+          "| Tier | Method | Combos | Median spread | Mean spread [95% CI] | Share with spread >= 10 points |",
+          "|---|---|---|---|---|---|"]
+    for t in tiers:
+        for m in methods:
+            v = agg["box_spread"].get(f"{t}:{m}")
+            if v:
+                L.append(f"| {t} | {LABEL.get(m, m)} | {v['n_combos']} | {100 * v['median_spread']:.1f} | "
+                         f"{100 * v['mean_spread']:.1f} [{100 * v['ci_lo']:.1f}, {100 * v['ci_hi']:.1f}] | "
+                         f"{100 * v['share_spread_ge_10pts']:.0f}% |")
+    v = agg["box_spread"].get("candidates:knight2006_em")
+    if v:
+        L += ["", "Per combination, revised EM, candidates tier (accuracy %, cells as (duplicates, inventory)):", "",
+              "| Combination | Worst cell | Best cell | Spread |", "|---|---|---|---|"]
+        for r in sorted(v["rows"], key=lambda r: -r["spread"]):
+            L.append(f"| {r['source']}/{r['script_type']} | {100 * r['min']:.1f} {tuple(r['min_cell'])} | "
+                     f"{100 * r['max']:.1f} {tuple(r['max_cell'])} | {100 * r['spread']:.1f} |")
+    L += ["", "## How much does difficulty move? (strict panel)", "",
           f"The **plausible box** is duplicates {box[0][0]}-{box[0][1]} by inventory {box[1][0]}-{box[1][1]}. "
           "It brackets the published duplicate rates (0.24-0.35) and the sign-list sizes (386 to ~700). "
-          "Lowest and highest cell means, balanced panel:", "",
+          "Lowest and highest cell means, strict panel:", "",
           "| Tier | Method | Whole grid: min -> max (cells) | Plausible box: min -> max (cells) |", "|---|---|---|---|"]
     for t in tiers:
         for m in methods:
@@ -567,11 +596,13 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
             L.append(f"| {t} | {LABEL.get(m, m)} | {100 * a[0]:.1f}% -> {100 * a[1]:.1f}% ({a[2]} -> {a[3]}) | "
                      f"{100 * b[0]:.1f}% -> {100 * b[1]:.1f}% ({b[2]} -> {b[3]}) |")
     L += ["", "Cells are (duplicates, inventory). The interval for each cell is in the tables below.", ""]
-    for panel in ("balanced", "all"):
+    for panel in ("box", "balanced", "all"):
         L += [f"## Token accuracy, % [95% cluster CI], {panel} panel", ""]
         for t in tiers:
             for m in methods:
-                L += [f"### {LABEL.get(m, m)}, {t} tier", ""] + grid(panel, f"{t}:{m}") + [""]
+                L += [f"### {LABEL.get(m, m)}, {t} tier", "",
+                      "*Inventory raised only via allographs; no tested method merges allographs.*", ""] \
+                    + grid(panel, f"{t}:{m}") + [""]
         L += ["Corpora per cell:", ""] + grid(panel, "n", ci=False) + [""]
     L += ["## Other statistics drift (not re-calibrated), balanced panel", "",
           "Only the two knobs were set. These statistics move as a side effect and are reported, not corrected.", ""]

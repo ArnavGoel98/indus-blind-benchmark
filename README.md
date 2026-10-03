@@ -17,6 +17,27 @@ synthetic data. That is a necessary condition for a credible decipherment, not e
 
 ## Results at a glance
 
+All numbers are for synthetic Indus-like corpora (2,906 texts, mean 4.6 signs). None of them
+measures the Indus script itself.
+
+1. **Indus decipherability is underdetermined.** Two corpus properties that published Indus
+   statistics leave open dominate difficulty: the share of duplicate texts and the number of
+   sign variants. Inside the range bracketed by published values (duplicates 0.2-0.4,
+   inventory 400-700), with a related language among the candidates, the best method recovers
+   8.7% to 21.8% of sign tokens depending on the cell. Within one language and script, accuracy
+   moves by up to 62 points, and by 10 points or more for 4 of 10 combinations. Any single
+   difficulty number is unreliable. This dependence appears only when a relative is available
+   (see 3). Inventory is varied only through allographs, and no tested method merges allographs.
+   See [`reports/sensitivity/sensitivity.md`](reports/sensitivity/sensitivity.md).
+2. **Entropy statistics do not separate synthetic languages from i.i.d. signs at Indus scale**
+   (plug-in entropy ratio about 0.47 for both). Under the holdout calibration regime, the Rao-style
+   entropy classifier is not distinguishable from chance: balanced accuracy 0.57 [0.32, 0.81],
+   and 0.49 on fresh seeds.
+3. **Without a related language among the candidates, no tested method exceeds about 5% of
+   tokens.** This holds across the published range. The best cell anywhere on the
+   sensitivity grid reaches 7.1%, and no corpus reaches 50%.
+4. **More texts barely help.** Whether longer texts help depends on the generator.
+
 Read [`reports/results/results.md`](reports/results/results.md) for all numbers with
 confidence intervals, and [`reports/calibration_report.md`](reports/calibration_report.md)
 for how closely the synthetic corpora match the Indus targets. The draft paper is
@@ -108,6 +129,12 @@ coordinate in a space we defined.* The fixes are built in:
 - **Text-beginner calibration.** Most generator-v1 corpora miss the Indus text-beginner target
   (82 signs cover 80% of text openings). Generator-v2 (a two-stage window sampler) is an
   attempted fix and is reported side by side with v1.
+- **Sensitivity map: allographs are the only way inventory grows, and no method merges them.**
+  High-inventory cells measure these solvers' failure to merge graphic variants, not
+  decipherability in general. *Future work:* add an allograph-clustering step or method, and
+  other ways of growing the inventory. Only 5 of 20 language x script combinations are valid in
+  every grid cell (strict panel), and 10 of 20 inside the published-value box. Cells at the grid
+  edges are unreachable for some scripts.
 
 ## How results are reported (after an adversarial review of the first draft)
 

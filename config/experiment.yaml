@@ -87,6 +87,8 @@ profiles:
     knowledge_tiers: [candidates, none]
     dup_grid: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
     inventory_grid: [400, 500, 600, 700, 800]
+    # Fixed before results: brackets the published duplicate rates (0.24-0.35) and sign-list sizes (386 to ~700).
+    plausible_box: {dup: [0.2, 0.4], inventory: [400, 700]}
     em_restarts: 3
     em_iterations: 60
 
