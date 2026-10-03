@@ -1,0 +1,188 @@
+# Indus calibration targets.
+#
+# Every number carries:
+#   value / range      what we calibrate to
+#   tolerance          accepted deviation (absolute, same unit as value)
+#   reference_n_texts  the corpus size the published number was measured on. Size-dependent
+#                      statistics (coverage counts, beginner/ender counts, hapax fraction) are
+#                      computed on a random subsample of exactly this many texts, so the
+#                      comparison is like-for-like.
+#   citation           the source. "VIA" means we read it in a secondary source, not the original.
+#   verified           true  = we read the number in the cited source ourselves
+#                      false = from the project brief or a secondary source; CHECK BEFORE CITING
+#   role               hard        = calibrator must hit it (in the 'full' regime)
+#                      report_only = measured and reported, never tuned
+#
+# Nothing here was invented. Where no published number was found, the entry says so and
+# is report_only.
+
+references:
+  M77: >-
+    Mahadevan, I. (1977). The Indus Script: Texts, Concordance and Tables.
+    Memoirs of the Archaeological Survey of India 77. New Delhi.
+  YADAV2010: >-
+    Yadav, N., Joglekar, H., Rao, R. P. N., Vahia, M. N., Adhikari, R., Mahadevan, I. (2010).
+    Statistical analysis of the Indus script using n-grams. PLoS ONE. arXiv:0901.3017.
+  FSW2004: >-
+    Farmer, S., Sproat, R., Witzel, M. (2004). The collapse of the Indus-script thesis:
+    the myth of a literate Harappan civilization. Electronic Journal of Vedic Studies 11(2).
+  RAO2018: >-
+    Rao, R. P. N. (2018). The Indus script and economics. In: Walking with the Unicorn
+    (Kenoyer felicitation volume), Archaeopress, pp. 518-525. arXiv:1812.00049.
+  POSSEHL2002: >-
+    Possehl, G. L. (2002). The Indus Civilization: A Contemporary Perspective. AltaMira.
+    pp. 132-133. (Read VIA the English Wikipedia article "Indus script", accessed 2026-10-03.)
+  WELLS2015: >-
+    Wells, B. K. (2015). (Cited as "Wells 2015, p. 13" for ~694 signs. Read VIA the English
+    Wikipedia article "Indus script", accessed 2026-10-03. Full bibliographic entry not checked.)
+  BRIEF: >-
+    Project brief supplied by the benchmark owner (no primary source attached).
+
+targets:
+  n_texts:
+    value: 5500
+    tolerance: 0
+    role: hard
+    citation: BRIEF
+    verified: false
+    notes: >-
+      UNVERIFIED. Verified alternatives: 2,906 texts / 3,573 lines in M77 (YADAV2010, p.2,
+      citing M77); 1,548 texts in the pruned EBUDS set (YADAV2010). Wikipedia reports
+      "around 5,000 inscriptions" (2025 news report, secondary). The decipherability curve
+      therefore marks an Indus BAND from 1,548 to 5,500 texts, not a single point.
+    alternatives: {M77_texts: 2906, M77_lines: 3573, EBUDS_texts: 1548}
+
+  mean_length:
+    value: 4.4
+    tolerance: 0.25
+    role: hard
+    citation: BRIEF
+    verified: false
+    notes: >-
+      UNVERIFIED as 4.4. Verified neighbours: M77 has 13,372 sign occurrences (RAO2018) over
+      2,906 texts (YADAV2010), i.e. 4.60 signs/text, or 3.74 signs/line. FSW2004 states the
+      average is "under 4.6". Mahadevan (M77, p.9, VIA Wikipedia) gives "around five".
+    alternatives: {M77_derived_per_text: 4.60, M77_derived_per_line: 3.74}
+
+  median_length:
+    value: 4
+    tolerance: 1
+    role: hard
+    citation: BRIEF
+    verified: false
+    notes: >-
+      UNVERIFIED. YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes of EBUDS; we did not
+      find a published median.
+
+  max_length:
+    value: 17
+    tolerance: 4
+    role: hard
+    citation: FSW2004
+    verified: true
+    notes: >-
+      "The longest Indus inscription is only 17 symbols long" (FSW2004). Single-line EBUDS
+      texts are at most 14 signs (YADAV2010). Used as a long-tail check, scaled with the
+      mean during length sweeps.
+
+  sign_inventory:
+    range: [400, 700]
+    role: hard
+    citation: [M77, POSSEHL2002, WELLS2015]
+    verified: partial
+    notes: >-
+      M77 lists 417 signs (verified in YADAV2010). Possehl (VIA Wikipedia) gives 419;
+      Wells (VIA Wikipedia) ~694. Counted as distinct sign types observed in the corpus.
+
+  coverage80_signs:
+    value: 69
+    tolerance: 15
+    reference_n_texts: 1548
+    role: hard
+    citation: YADAV2010
+    verified: true
+    notes: >-
+      "about 69 signs account for 80% of the total data" (EBUDS, YADAV2010 Sec. 2.2).
+      Possehl (VIA Wikipedia) gives 67 signs for M77.
+
+  top1_share:
+    value: 0.10
+    tolerance: 0.03
+    reference_n_texts: 1548
+    role: hard
+    citation: YADAV2010
+    verified: true
+    notes: "the most frequent sign (342) alone accounts for 10% of the complete EBUDS"
+
+  hapax_fraction:
+    value: 0.27
+    tolerance: 0.10
+    reference_n_texts: 2906
+    role: hard
+    citation: POSSEHL2002
+    verified: false
+    notes: >-
+      113 of 419 signs occur only once (POSSEHL2002 VIA Wikipedia) = 0.27 of sign types.
+      Secondary source; check Possehl p.132 before citing.
+
+  enders80_signs:
+    value: 23
+    tolerance: 8
+    reference_n_texts: 1548
+    role: hard
+    citation: YADAV2010
+    verified: true
+    notes: "only 23 text enders are needed to account for 80% of text ender usage"
+
+  beginners80_signs:
+    value: 82
+    tolerance: 20
+    reference_n_texts: 1548
+    role: hard
+    citation: YADAV2010
+    verified: true
+    notes: "Approximately 82 text beginners account for 80% of the text beginner usage"
+
+  zipf_mandelbrot:
+    params: {a: 15.39, b: 2.59, c: 44.47}
+    form: "log f_r = a - b log(r + c)"
+    reference_n_texts: 1548
+    role: report_only
+    citation: YADAV2010
+    verified: true
+    notes: >-
+      Reported, not tuned: a, b and c are strongly correlated in the fit, so matching
+      them adds little beyond the coverage targets. The log base is not stated in the
+      paper; we assume natural log, which reproduces the paper's Fig. 4 axis range.
+
+  duplicate_text_fraction:
+    role: report_only
+    citation: YADAV2010
+    verified: true
+    notes: >-
+      NO NUMBER PUBLISHED that we found. YADAV2010 Fig. 2 notes that raw M77 contains four
+      texts of length 2-3 occurring "in unusually large numbers". We report the fraction of
+      texts that duplicate an earlier text, without a target.
+
+# Calibration regimes (Judge fix #2: make circularity measurable instead of hidden).
+regimes:
+  full:
+    description: All 'hard' targets above.
+    targets: [n_texts, mean_length, median_length, max_length, sign_inventory,
+              coverage80_signs, top1_share, hapax_fraction, enders80_signs, beginners80_signs]
+  holdout:
+    description: >-
+      Only size, length and inventory are calibrated. Frequency-concentration and positional
+      statistics (what methods 1-3 measure) are left free, so methods cannot be "rewarded"
+      for statistics we injected.
+    targets: [n_texts, mean_length, median_length, max_length, sign_inventory]
+  wrong_prior:
+    description: >-
+      Deliberately mismatched targets (longer texts, smaller inventory). If method
+      rankings flip under this regime, rankings are generator-dependent.
+    targets: [n_texts, mean_length, median_length, max_length, sign_inventory]
+    overrides:
+      mean_length: {value: 8.0, tolerance: 0.5}
+      median_length: {value: 8, tolerance: 1}
+      max_length: {value: 25, tolerance: 6}
+      sign_inventory: {range: [150, 260]}

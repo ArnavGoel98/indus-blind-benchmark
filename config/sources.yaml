@@ -1,0 +1,116 @@
+# Plaintext and control sources. `ibdb fetch` downloads these into data/raw/ (git-ignored).
+# Raw and derived text is never committed. Each corpus keeps its own license.
+# The fetcher refuses any single download over max_download_mb and asks the operator first.
+max_download_mb: 500
+
+languages:
+  sanskrit:
+    family: indo-european
+    branch: indo-aryan
+    source: Digital Corpus of Sanskrit (DCS), Ramayana CoNLL-U files
+    url: https://github.com/OliverHellwig/sanskrit
+    path_in_repo: dcs/data/conllu/files/Rāmāyaṇa
+    method: git-sparse
+    license: CC BY 4.0
+    license_evidence: "dcs/data/readme.md, section 'License' (read 2026-10-03)"
+    approx_size_mb: 60
+    notes: >-
+      GRETIL was the brief's suggestion, but its Mahabharata file says "(C) Bhandarkar
+      Oriental Research Institute ... FOR REFERENCE PURPOSES ONLY". That is not an open
+      license, so we use DCS instead. DCS gives lemma, POS and unsandhied forms.
+  tamil:
+    family: dravidian
+    branch: south-dravidian
+    source: Project Madurai, Sangam anthologies (Ettuttokai and Pattuppattu, root texts only)
+    url: https://www.projectmadurai.org/pmworks.html
+    files: [pmuni0028, pmuni0038, pmuni0057, pmuni0087, pmuni0110, pmuni0221, pmuni0229,
+            pmuni0296, pmuni0063, pmuni0064, pmuni0067, pmuni0069, pmuni0070, pmuni0071,
+            pmuni0073, pmuni0077, pmuni0078]
+    url_pattern: https://www.projectmadurai.org/pm_etexts/utf8/{file}.html
+    method: http
+    license: "Project Madurai terms: free distribution with header intact; underlying texts public domain"
+    license_evidence: >-
+      File header: "You are welcome to freely distribute this file, provided this header page
+      is kept intact." FAQ 3.3: works are public domain or used with consent. (Read 2026-10-03.)
+    approx_size_mb: 4
+  sumerian:
+    family: isolate
+    branch: sumerian
+    source: Cuneiform Digital Library Initiative (CDLI) bulk ATF dump (Aug 2022), lang=sux only
+    url: https://github.com/cdli-gh/data
+    file_url: https://media.githubusercontent.com/media/cdli-gh/data/master/cdliatf_unblocked.atf
+    method: http
+    license: "CC BY 4.0 (CDLI statement 'licensed under CC BY 4.0 except when noted otherwise')"
+    license_evidence: >-
+      PARTIALLY VERIFIED. The statement appears on CDLI's published pages (cdli.mpiwg-berlin.mpg.de/articles).
+      The dump repository itself carries no LICENSE file. Check cdli.earth terms before redistributing.
+    approx_size_mb: 87
+    notes: >-
+      ETCSL (brief's suggestion) asserts copyright with no open license. ORACC was
+      unreachable from our build environment (TLS chain error). CDLI includes real Ur III seal
+      inscriptions (@seal sections), the closest genre match to Indus seals.
+  latin:
+    family: indo-european
+    branch: italic
+    source: "Project Gutenberg #218 (Caesar, De Bello Gallico I-IV), #229 (Vergil, Eclogues), #231 (Vergil, Georgics)"
+    url_pattern: https://www.gutenberg.org/cache/epub/{id}/pg{id}.txt
+    ids: [218, 229, 231]
+    method: http
+    license: Public domain in the USA (Project Gutenberg License)
+    license_evidence: Gutenberg file headers (read 2026-10-03)
+    approx_size_mb: 1
+    role: "control language (same family as Sanskrit; lets Task C test a distant relative)"
+  finnish:
+    family: uralic
+    branch: finnic
+    source: "Project Gutenberg #7000 (Kalevala, 1849 edition)"
+    url_pattern: https://www.gutenberg.org/cache/epub/{id}/pg{id}.txt
+    ids: [7000]
+    method: http
+    license: Public domain in the USA (Project Gutenberg License)
+    license_evidence: Gutenberg file header (read 2026-10-03)
+    approx_size_mb: 1
+    role: control language (agglutinative, formulaic oral epic with stock epithets)
+
+controls:
+  kamon:
+    kind: nl_derived
+    source: Sakana AI Kamon dataset, synthetic_examples.zip (10,000 synthetic kamon descriptions)
+    url: https://huggingface.co/datasets/SakanaAI/Kamon
+    file_url: https://huggingface.co/datasets/SakanaAI/Kamon/resolve/main/synthetic_examples.zip
+    method: http
+    license: CC BY-SA 4.0
+    license_evidence: dataset card front matter (read 2026-10-03)
+    approx_size_mb: 122
+    notes: >-
+      CONTAMINATED CONTROL (Skeptic point 4). These are Japanese natural-language
+      descriptions of crests, so they inherit linguistic statistics. Reported as their own
+      family and excluded from the main Task A score. They test whether classifiers detect
+      language in a description rather than in a sign system.
+  heraldry:
+    kind: structural
+    source: built-in generative model of armorial bearings (field, ordinary, charges, rule of tincture)
+    license: MIT (generated)
+    notes: >-
+      Emits one sign per visual element, never per word of a blazon. Real blazon text would
+      be English or French jargon, i.e. language-derived.
+  admin_tags:
+    kind: structural
+    source: built-in slot grammar [office][commodity][numeral strokes][place][period]
+    license: MIT (generated)
+  emblem_markov:
+    kind: structural
+    source: built-in sparse first-order Markov chain with positional start/end constraints
+    license: MIT (generated)
+  adversarial:
+    kind: adversarial
+    source: built-in Markov chain whose conditional-entropy ratio is tuned to match natural-language corpora (Sproat-style counterexample)
+    license: MIT (generated)
+  rao_type1:
+    kind: trivial
+    source: Rao et al. 2009 'Type 1' rigid (deterministic successor) control
+    license: MIT (generated)
+  rao_type2:
+    kind: trivial
+    source: Rao et al. 2009 'Type 2' i.i.d. equiprobable control
+    license: MIT (generated)

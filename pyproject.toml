@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ibdb"
+version = "0.1.0"
+description = "Indus Blind Decipherment Benchmark: synthetic, Indus-calibrated fake scripts with hidden keys for testing decipherment methods"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "MIT" }
+authors = [{ name = "IBDB contributors" }]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "matplotlib>=3.8",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+ibdb = "ibdb.cli:main"
+ibdb-fetch = "ibdb.cli:fetch_main"
+ibdb-score = "ibdb.challenge:score_main"
+ibdb-reproduce = "ibdb.cli:reproduce_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ibdb = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
