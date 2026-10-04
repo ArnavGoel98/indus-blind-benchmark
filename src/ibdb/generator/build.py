@@ -89,7 +89,19 @@ def split_clauses(source: str, d: dict, half: str) -> list:
     would contain the very phrases it is asked to decipher.
     """
     want = 0 if half == "hidden" else 1
+    if sister_version() == "v2":
+        # sister-v2: split by clause CONTENT, so identical clauses always fall in the same half
+        # (sister-v1 split by position, which put repeated clauses in both halves).
+        return [c for c in d["clauses"]
+                if zlib.crc32(f"{base_source(source)}:{' '.join(map(str, c[1]))}".encode()) % 2 == want]
     return [c for i, c in enumerate(d["clauses"]) if zlib.crc32(f"{source}:{i}".encode()) % 2 == want]
+
+
+def sister_version() -> str:
+    """'v1' (split by clause position, the frozen-v1 runs) or 'v2' (split by clause content).
+    Set per run via the IBDB_SISTER_VERSION environment variable (profiles set it)."""
+    import os
+    return os.environ.get("IBDB_SISTER_VERSION", "v1")
 
 
 @dataclass
@@ -105,7 +117,7 @@ _PLAN_CACHE: dict[tuple, Plan] = {}
 
 
 def language_plan(source: str, spec: ScriptSpec, seed: int, max_len: int) -> Plan:
-    key = (source, spec.script_type, spec.determinatives, spec.word_divider, spec.logogram_vocab,
+    key = (sister_version(), source, spec.script_type, spec.determinatives, spec.word_divider, spec.logogram_vocab,
            spec.sem_rate, spec.n_sem_classes, seed, max_len)
     if key in _PLAN_CACHE:
         return _PLAN_CACHE[key]

@@ -127,6 +127,7 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
     st = corpus_stats(logical, config.targets()["targets"], seed=job.seed)
     rec: dict[str, Any] = {
         "job": asdict(job), "generator_version": generator_version,
+        "sister_version": __import__("os").environ.get("IBDB_SISTER_VERSION", "v1"),
         "truth": {"source": key.source, "family": key.family, "kind": key.kind,
                   "is_linguistic": key.is_linguistic, "script_type": key.script_type},
         "stats": st, "gen": info,
@@ -163,6 +164,15 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
                 s = score_sign_values(p.sign_values, key, logical)
                 rec["CD"][tier][m.name] = {"family": p.family, "reference": p.extra.get("reference"),
                                            "family_correct": p.family == key.family, **s}
+                ref = next((r for r in kn.references if r.name == p.extra.get("reference")), None)
+                if ref is not None and ref.to_hidden and p.sign_values:
+                    # Score BEFORE the solver's cognate step (harness-side; the method is unchanged):
+                    # undo the sister->hidden translation and score the raw sister units.
+                    inv: dict[str, str] = {}
+                    for a, b in ref.to_hidden.items():
+                        inv.setdefault(b, a)
+                    raw = {sg: inv.get(v, v) for sg, v in p.sign_values.items()}
+                    rec["CD"][tier][m.name]["token_acc_before_cognate"] = score_sign_values(raw, key, logical)["token_acc"]
                 rec["timing"][f"{m.name}:{tier}"] = time.time() - t
     rec["timing"]["total"] = time.time() - t0
     return rec
@@ -244,9 +254,12 @@ def predicted_script_jobs(profile_name: str) -> list[Job]:
 
 
 def run(profile_name: str, workers: int = 4, log=print) -> None:
+    import os
     prof = config.experiment()["profiles"][profile_name]
+    os.environ["IBDB_SISTER_VERSION"] = prof.get("sister_version", "v1")   # inherited by spawned workers
     _execute(build_jobs(prof), profile_name, workers, log)
-    _execute(predicted_script_jobs(profile_name), profile_name, workers, log)
+    if prof.get("predicted_run", True):
+        _execute(predicted_script_jobs(profile_name), profile_name, workers, log)
 
 
 # --------------------------------------------------------------------------- aggregation

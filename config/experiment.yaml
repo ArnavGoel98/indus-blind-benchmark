@@ -92,6 +92,74 @@ profiles:
     em_restarts: 3
     em_iterations: 60
 
+  sister_v2_main:   # sister-v2 (clause split by content); related + candidates tiers only; methods frozen
+    sister_version: v2
+    generator_version: v1
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [500, 1000, 2000, 2906, 5500, 10000, 20000, 50000]
+    length_sweep: [3.0, 4.6, 6.0, 10.0, 20.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v2_repl:   # sister-v2 (clause split by content); related + candidates tiers only; methods frozen
+    sister_version: v2
+    generator_version: v1
+    predicted_run: false
+    seeds: [3, 4, 5]
+    size_sweep: [500, 1000, 2000, 2906, 5500, 10000, 20000, 50000]
+    length_sweep: [3.0, 4.6, 6.0, 10.0, 20.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v2_gen2:   # sister-v2 (clause split by content); related + candidates tiers only; methods frozen
+    sister_version: v2
+    generator_version: v2
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [500, 2906, 50000]
+    length_sweep: [3.0, 4.6, 6.0, 10.0, 20.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v2_gen2_repl:   # sister-v2 (clause split by content); related + candidates tiers only; methods frozen
+    sister_version: v2
+    generator_version: v2
+    predicted_run: false
+    seeds: [3, 4, 5]
+    size_sweep: [500, 2906, 50000]
+    length_sweep: [3.0, 4.6, 6.0, 10.0, 20.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
 # Generator defaults (overridden per scenario in the feasibility sweep).
 generator:
   allograph_rate: 0.25        # fraction of values that get graphic variants
