@@ -398,7 +398,9 @@ ALLOGRAPH_NOTE = ("LIMITATION: inventory is raised only by adding allographs (gr
                   "tested method merges allographs. High-inventory cells therefore measure these solvers' failure to "
                   "merge variants, not decipherability in general.")
 SUBSET_COLOR = {"S": "#1baf7a", "T": "#eb6834", "P": "#4a3aa7"}
-SUBSET_NOTE = ("Hatched = predicted positions of archaeological subsets, ALL ESTIMATES (config/indus_targets.yaml): "
+PREDICTION = "prediction, not measurement"
+SUBSET_NOTE = ("Hatched regions S, T, P: PREDICTION, NOT MEASUREMENT. Predicted positions of archaeological subsets, "
+               "all estimates (config/indus_targets.yaml): "
                "S seals only, duplicates 0-0.05 (seals 'almost all unique', Kenoyer & Meadow 2010); "
                "T tablets only, duplicates >= 0.354 (derived lower bound; copies and same-mold duplicates, ibid.); "
                "P single period, inventory below 400-450 ('considerably less', Kenoyer 2020b), off the measured grid. "
@@ -420,11 +422,17 @@ def _subset_overlay(ax, refs: dict, letters: bool = True):
         ax.add_patch(plt.Rectangle((x0, y0), x1 - x0, y1 - y0, fill=False, hatch="////", edgecolor=col,
                                    lw=0.8, alpha=0.55, zorder=2.5))
         if letters:
-            # S/T at the right edge of their band; P halfway up its strip, between rows of numbers.
-            tx, ty = (x1 - 0.03 * (xl[1] - xl[0]), 0.5 * (y0 + y1)) if s["letter"] != "P" else \
-                     (0.5 * (x0 + x1), yl[1] - 0.17 * (yl[1] - yl[0]))
-            ax.text(tx, ty, s["letter"], ha="center", va="center", fontsize=7.5, fontweight="bold", color=col,
-                    zorder=4, bbox=dict(boxstyle="round,pad=0.12", fc="white", ec=col, lw=0.6))
+            # Every region carries its full label, horizontally, in a gap between rows of cell numbers
+            # (rows sit at multiples of 0.1): S on its top edge, T just above its bottom edge, P in the
+            # gap above the lowest row, with an arrow-like "<-" pointing at its strip on the left.
+            name = {"S": "seals only", "T": "tablets only", "P": "single period"}.get(s["letter"], "")
+            txt = f'{"<- " if s["letter"] == "P" else ""}{s["letter"]} {name}: {PREDICTION}'
+            kw = dict(fontsize=5.5, fontweight="bold", color=col, zorder=4,
+                      bbox=dict(boxstyle="round,pad=0.12", fc="white", ec=col, lw=0.5, alpha=0.9))
+            span = yl[1] - yl[0]
+            ty = {"S": y1, "T": y0 + 0.023 * span / 0.6, "P": yl[0] + span / 3}[s["letter"]]
+            if yl[0] < ty < yl[1]:
+                ax.text(0.5 * (xl[0] + xl[1]), ty, txt, ha="center", va="center", **kw)
     ax.set_xlim(xl)
     ax.set_ylim(yl)
 
@@ -559,22 +567,23 @@ def archaeology_map(agg: dict, refs: dict, d: Path) -> Path:
         for s in refs.get("archaeological_subsets", []):
             col = SUBSET_COLOR.get(s["letter"], INK)
             if s["letter"] == "P":
-                ax.text(invs[0] - dx - 75, 0.25, "P: single\nperiod\n< 400-450\n(estimate)", ha="center",
+                ax.text(invs[0] - dx - 75, 0.25, "P: single\nperiod\n< 400-450\nprediction,\nnot\nmeasurement", ha="center",
                         va="center", fontsize=7, color=col, fontweight="bold", zorder=5,
                         bbox=dict(boxstyle="round,pad=0.2", fc="white", ec=col, lw=0.7))
             else:
                 ymid = 0.5 * (s["dup_range"][0] + min(s["dup_range"][1], dups[-1] + dy))
-                short = {"S": "S: seals only\n(estimate)", "T": "T: tablets only\n(estimate)"}[s["letter"]]
+                short = {"S": "S: seals only\nprediction,\nnot measurement",
+                         "T": "T: tablets only\nprediction,\nnot measurement"}[s["letter"]]
                 ax.annotate(short, xy=(1.0, ymid), xycoords=("axes fraction", "data"),
                             xytext=(1.03, ymid), textcoords=("axes fraction", "data"), ha="left", va="center",
                             fontsize=7, color=col, fontweight="bold",
                             arrowprops=dict(arrowstyle="-", color=col, lw=0.8))
-        ax.set_title(f"{LABEL[m]}, {'candidates' if t == 'candidates' else 'no relative'} tier, all corpora (% tokens)",
+        ax.set_title(f"{LABEL[m]}\n{'candidates' if t == 'candidates' else 'no relative'} tier, all corpora (% tokens)",
                      loc="left", fontsize=10, color=INK, pad=16)
         ax.set_xlabel("sign inventory (types observed)", fontsize=9, color=INK2)
         ax.set_ylabel("duplicate-text fraction", fontsize=9, color=INK2)
-    fig.subplots_adjust(wspace=0.45)
-    fig.colorbar(im, ax=axes, shrink=0.7, pad=0.09, label="Task D token accuracy")
+    fig.subplots_adjust(wspace=0.5)
+    fig.colorbar(im, ax=axes, shrink=0.7, pad=0.16, label="Task D token accuracy")
     fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
     fig.text(0.01, -0.09, SUBSET_NOTE, fontsize=8, color=INK2, ha="left", va="top", wrap=True)
     p = d / "sensitivity_archaeology.png"

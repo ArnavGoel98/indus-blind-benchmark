@@ -496,17 +496,19 @@ Only the two knobs were set. These statistics move as a side effect and are repo
 | (0.5, 600) | 0.0 | 6.6 | 6.7 |
 | (0.5, 800) | 0.0 | 5.7 | 5.9 |
 
-## Archaeological subsets: predicted positions (estimates)
+## Archaeological subsets: predicted positions (prediction, not measurement)
+
+> **Every region in this section is a prediction, not a measurement.** No corpus of seals only, tablets only or a single period was generated or tested.
 
 Kenoyer & Meadow (2010) report that seals are almost all unique while tablets are often copied or molded in duplicate. Kenoyer (2020b) notes that each sub-period may have used considerably fewer than 400-450 signs. The regions below are where subsets defined by object type or period would fall on the map. **Every region is an estimate**: the sources give qualitative statements and raw counts, not subset rates. See `config/indus_targets.yaml` -> `reference_points.archaeological_subsets`. The map holds N at 2,906 texts, and every subset is smaller (main size sweep, revised EM, candidates tier: 10.2% at 500 texts vs 14.6% at 2,906).
 
 | Subset | Region on map | Basis | Revised EM, candidates (all panel, cells in region, inventory 400-700) | Same, strict panel (fixed composition) | Revised EM, no relative (all panel) |
 |---|---|---|---|---|---|
-| S: Seals only (low duplication) | duplicates 0.0-0.05, inventory: any | KENOYER_MEADOW2010 p. 6: seals, "almost all of which are unique". "Almost all" is placed at 0-5% duplicates; that cut-off is OUR ESTIMATE, not a published number. | 18.0-38.6% (4 cells) | 21.1-41.7% (4 cells) | 3.4-7.1% (4 cells) |
-| T: Tablets only (high duplication) | duplicates 0.354-0.5, inventory: any | KENOYER_MEADOW2010 pp. 6-7: tablets have numerous copies and same-mold duplicates (22 incised copies; 31 molded duplicates in two Harappa instances). The counts have no denominators, so no rate can be computed. DERIVED LOWER BOUND: the pooled M77 rate is 0.354 (YADAV2010 Fig. 2). If seals are nearly unique, the non-seal remainder must duplicate at least as often as the pool, i.e. >= 0.354. The upper edge (0.5) is just the edge of our grid. | 4.2-17.3% (8 cells) | 2.6-15.7% (8 cells) | 1.3-3.6% (8 cells) |
-| P: Single period (smaller inventory) | duplicates: any, inventory < 400 | KENOYER2020B p. 249: "considerably less" than 400-450 discrete symbols per sub-period. No number is published; the region is drawn left of 400 and is OUTSIDE the measured grid (400-800). | outside the grid (not measured) | outside the grid (not measured) | outside the grid (not measured) |
+| S: Seals only (low duplication): prediction, not measurement | duplicates 0.0-0.05, inventory: any | KENOYER_MEADOW2010 p. 6: seals, "almost all of which are unique". "Almost all" is placed at 0-5% duplicates; that cut-off is OUR ESTIMATE, not a published number. | 18.0-38.6% (4 cells) | 21.1-41.7% (4 cells) | 3.4-7.1% (4 cells) |
+| T: Tablets only (high duplication): prediction, not measurement | duplicates 0.354-0.5, inventory: any | KENOYER_MEADOW2010 pp. 6-7: tablets have numerous copies and same-mold duplicates (22 incised copies; 31 molded duplicates in two Harappa instances). The counts have no denominators, so no rate can be computed. DERIVED LOWER BOUND: the pooled M77 rate is 0.354 (YADAV2010 Fig. 2). If seals are nearly unique, the non-seal remainder must duplicate at least as often as the pool, i.e. >= 0.354. The upper edge (0.5) is just the edge of our grid. | 4.2-17.3% (8 cells) | 2.6-15.7% (8 cells) | 1.3-3.6% (8 cells) |
+| P: Single period (smaller inventory): prediction, not measurement | duplicates: any, inventory < 400 | KENOYER2020B p. 249: "considerably less" than 400-450 discrete symbols per sub-period. No number is published; the region is drawn left of 400 and is OUTSIDE the measured grid (400-800). | outside the grid (not measured) | outside the grid (not measured) | outside the grid (not measured) |
 
-Reading: with a relative among the candidates, the seals-only band (S) is the easiest part of the map and the tablets-only band (T) among the hardest. Without a relative, every band stays low. The single-period region (P) lies below the measured inventory range, so the map does not say how decipherable a single-period corpus would be. The gradient toward fewer signs points to easier, but that is an extrapolation and it ignores the smaller text count.
+Reading (prediction, not measurement): with a relative among the candidates, the seals-only band (S) is the easiest part of the map and the tablets-only band (T) among the hardest. Without a relative, every band stays low. The single-period region (P) lies below the measured inventory range, so the map does not say how decipherable a single-period corpus would be. The gradient toward fewer signs points to easier, but that is an extrapolation and it ignores the smaller text count.
 
 ## Design choices that could make this map misleading
 

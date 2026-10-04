@@ -616,7 +616,9 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
             L.append(f"| ({c['dup']:.1f}, {c['inventory']}) | " + " | ".join(
                 f"{100 * c['by_script'][st]['candidates:knight2006_em']:.1f}" if st in c["by_script"] else "n/a"
                 for st in sts) + " |")
-    L += ["", "## Archaeological subsets: predicted positions (estimates)", "",
+    L += ["", "## Archaeological subsets: predicted positions (prediction, not measurement)", "",
+          "> **Every region in this section is a prediction, not a measurement.** No corpus of seals only, "
+          "tablets only or a single period was generated or tested.", "",
           "Kenoyer & Meadow (2010) report that seals are almost all unique while tablets are often copied or "
           "molded in duplicate. Kenoyer (2020b) notes that each sub-period may have used considerably fewer than "
           "400-450 signs. The regions below are where subsets defined by object type or period would fall on "
@@ -644,7 +646,7 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
         L.append(f"| {s['letter']}: {s['label']} | {reg} | {' '.join(s['basis'].split())} | "
                  f"{region_range(s, 'candidates')} | {region_range(s, 'candidates', 'balanced')} | "
                  f"{region_range(s, 'none')} |")
-    L += ["", "Reading: with a relative among the candidates, the seals-only band (S) is the easiest part of the "
+    L += ["", "Reading (prediction, not measurement): with a relative among the candidates, the seals-only band (S) is the easiest part of the "
           "map and the tablets-only band (T) among the hardest. Without a relative, every band stays low. The "
           "single-period region (P) lies below the measured inventory range, so the map does not say how "
           "decipherable a single-period corpus would be. The gradient toward fewer signs points to easier, but "

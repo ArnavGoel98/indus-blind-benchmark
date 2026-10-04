@@ -268,13 +268,14 @@ reference_points:
     - {label: "Wells 2006", value: 676, citation: WELLS2006, verified: "VIA YADAV2010"}
     - {label: "Wells 2015", value: 694, citation: WELLS2015, verified: "VIA RAO2018"}
     - {label: "Fuls 2023 (>700, unverified)", value: 700, citation: FULS2023, verified: false}
-  # Predicted positions of archaeologically defined subsets (map overlay). ALL ARE ESTIMATES:
+  # Predicted positions of archaeologically defined subsets (map overlay): PREDICTION, NOT MEASUREMENT.
+  # ALL ARE ESTIMATES:
   # only the qualitative statements are published; no subset rate or count of sign types is.
   # null = not constrained by any source (drawn across the whole axis).
   archaeological_subsets:
     - key: seals_only
       letter: S
-      label: "Seals only (low duplication)"
+      label: "Seals only (low duplication): prediction, not measurement"
       dup_range: [0.0, 0.05]
       inventory_range: null
       verified: estimate
@@ -287,7 +288,7 @@ reference_points:
         candidates tier: 10.2% at 500 texts vs 14.6% at 2,906).
     - key: tablets_only
       letter: T
-      label: "Tablets only (high duplication)"
+      label: "Tablets only (high duplication): prediction, not measurement"
       dup_range: [0.354, 0.5]
       inventory_range: null
       verified: estimate
@@ -304,7 +305,7 @@ reference_points:
         from seal texts (not checked).
     - key: single_period
       letter: P
-      label: "Single period (smaller inventory)"
+      label: "Single period (smaller inventory): prediction, not measurement"
       dup_range: null
       inventory_range: [null, 400]
       verified: estimate

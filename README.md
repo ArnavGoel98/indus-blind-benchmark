@@ -139,7 +139,7 @@ coordinate in a space we defined.* The fixes are built in:
   years. Seals are almost all unique, while tablets are often copied or molded in duplicate
   (Kenoyer & Meadow 2010). Each sub-period may have used considerably fewer than 400-450 signs
   (Kenoyer 2020b). Subsets by object type or period would sit elsewhere on the sensitivity map;
-  their predicted positions are marked there as estimates. *Future work:* per-period and
+  their predicted positions are marked there, labelled "prediction, not measurement". *Future work:* per-period and
   per-object-type targets, which need a tagged corpus we have permission to use (see
   DATA_LICENSES.md).
 
