@@ -616,7 +616,40 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
             L.append(f"| ({c['dup']:.1f}, {c['inventory']}) | " + " | ".join(
                 f"{100 * c['by_script'][st]['candidates:knight2006_em']:.1f}" if st in c["by_script"] else "n/a"
                 for st in sts) + " |")
-    L += ["", "## Design choices that could make this map misleading", "",
+    L += ["", "## Archaeological subsets: predicted positions (estimates)", "",
+          "Kenoyer & Meadow (2010) report that seals are almost all unique while tablets are often copied or "
+          "molded in duplicate. Kenoyer (2020b) notes that each sub-period may have used considerably fewer than "
+          "400-450 signs. The regions below are where subsets defined by object type or period would fall on "
+          "the map. **Every region is an estimate**: the sources give qualitative statements and raw counts, "
+          "not subset rates. See `config/indus_targets.yaml` -> `reference_points.archaeological_subsets`. "
+          "The map holds N at 2,906 texts, and every subset is smaller (main size sweep, revised EM, candidates "
+          "tier: 10.2% at 500 texts vs 14.6% at 2,906).", "",
+          "| Subset | Region on map | Basis | Revised EM, candidates (all panel, cells in region, inventory 400-700) "
+          "| Same, strict panel (fixed composition) | Revised EM, no relative (all panel) |", "|---|---|---|---|---|---|"]
+
+    def region_range(s, tier, panel="all"):
+        dr, ir = s.get("dup_range"), s.get("inventory_range")
+        if ir and ir[1] is not None and ir[1] <= min(invs):
+            return "outside the grid (not measured)"
+        cs = [c for c in agg["panels"][panel] if c["n"]
+              and (not dr or dr[0] - 1e-9 <= c["dup"] <= dr[1] + 1e-9) and 400 <= c["inventory"] <= 700]
+        if not cs:
+            return "n/a"
+        v = [100 * c[f"{tier}:knight2006_em"]["mean"] for c in cs]
+        return f"{min(v):.1f}-{max(v):.1f}% ({len(cs)} cells)"
+
+    for s in refs.get("archaeological_subsets", []):
+        reg = (f"duplicates {s['dup_range'][0]}-{s['dup_range'][1]}" if s.get("dup_range") else "duplicates: any") + \
+              (f", inventory < {s['inventory_range'][1]}" if s.get("inventory_range") else ", inventory: any")
+        L.append(f"| {s['letter']}: {s['label']} | {reg} | {' '.join(s['basis'].split())} | "
+                 f"{region_range(s, 'candidates')} | {region_range(s, 'candidates', 'balanced')} | "
+                 f"{region_range(s, 'none')} |")
+    L += ["", "Reading: with a relative among the candidates, the seals-only band (S) is the easiest part of the "
+          "map and the tablets-only band (T) among the hardest. Without a relative, every band stays low. The "
+          "single-period region (P) lies below the measured inventory range, so the map does not say how "
+          "decipherable a single-period corpus would be. The gradient toward fewer signs points to easier, but "
+          "that is an extrapolation and it ignores the smaller text count.", "",
+          "## Design choices that could make this map misleading", "",
           "* **Inventory is reached only through allographs.** Other ways to add sign types (more logograms, "
           "more homophones, compound signs) would change difficulty differently. Alphabetic and syllabic corpora "
           "reach 700-800 types only with dozens of variants per value. That may be unrealistic, and it is "
@@ -630,7 +663,8 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
           "* **Other targets are not re-fit per cell** (see the drift tables), so a cell's difficulty mixes the "
           "direct effect of the knob with these side effects.", "",
           "## References", ""]
-    for k in ("M77", "YADAV2010", "NAIR2026", "PARPOLA1994", "RAO2018", "WELLS2006", "WELLS2015", "FULS2023"):
+    for k in ("M77", "YADAV2010", "NAIR2026", "PARPOLA1994", "RAO2018", "WELLS2006", "WELLS2015", "FULS2023",
+              "KENOYER_MEADOW2010", "KENOYER2020A", "KENOYER2020B", "MEADOW_KENOYER2000", "KENOYER_PC2026"):
         if k in cites:
             L.append(f"* **{k}**: {' '.join(cites[k].split())}")
     d = ensure(out_dir or reports_dir() / "sensitivity")

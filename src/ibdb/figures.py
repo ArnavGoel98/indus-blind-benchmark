@@ -397,6 +397,36 @@ def _ref_lines(ax, refs: dict, label: bool):
 ALLOGRAPH_NOTE = ("LIMITATION: inventory is raised only by adding allographs (graphic variants of one value), and no "
                   "tested method merges allographs. High-inventory cells therefore measure these solvers' failure to "
                   "merge variants, not decipherability in general.")
+SUBSET_COLOR = {"S": "#1baf7a", "T": "#eb6834", "P": "#4a3aa7"}
+SUBSET_NOTE = ("Hatched = predicted positions of archaeological subsets, ALL ESTIMATES (config/indus_targets.yaml): "
+               "S seals only, duplicates 0-0.05 (seals 'almost all unique', Kenoyer & Meadow 2010); "
+               "T tablets only, duplicates >= 0.354 (derived lower bound; copies and same-mold duplicates, ibid.); "
+               "P single period, inventory below 400-450 ('considerably less', Kenoyer 2020b), off the measured grid. "
+               "Subsets also have fewer than 2,906 texts; the map holds N fixed.")
+
+
+def _subset_overlay(ax, refs: dict, letters: bool = True):
+    """Hatched regions for the archaeological subsets. Drawn above the heatmap, below the numbers."""
+    xl, yl = ax.get_xlim(), ax.get_ylim()
+    for s in refs.get("archaeological_subsets", []):
+        dr, ir = s.get("dup_range"), s.get("inventory_range")
+        y0, y1 = (dr if dr else yl)
+        x0, x1 = ((ir[0] if ir[0] is not None else xl[0], ir[1]) if ir else xl)
+        y0, y1 = max(y0, yl[0]), min(y1 if s["letter"] != "T" else yl[1], yl[1])
+        x0, x1 = max(x0, xl[0]), min(x1, xl[1])
+        if y1 <= y0 or x1 <= x0:
+            continue   # region lies outside this panel
+        col = SUBSET_COLOR.get(s["letter"], INK)
+        ax.add_patch(plt.Rectangle((x0, y0), x1 - x0, y1 - y0, fill=False, hatch="////", edgecolor=col,
+                                   lw=0.8, alpha=0.55, zorder=2.5))
+        if letters:
+            # S/T at the right edge of their band; P halfway up its strip, between rows of numbers.
+            tx, ty = (x1 - 0.03 * (xl[1] - xl[0]), 0.5 * (y0 + y1)) if s["letter"] != "P" else \
+                     (0.5 * (x0 + x1), yl[1] - 0.17 * (yl[1] - yl[0]))
+            ax.text(tx, ty, s["letter"], ha="center", va="center", fontsize=7.5, fontweight="bold", color=col,
+                    zorder=4, bbox=dict(boxstyle="round,pad=0.12", fc="white", ec=col, lw=0.6))
+    ax.set_xlim(xl)
+    ax.set_ylim(yl)
 
 
 def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
@@ -432,6 +462,7 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                                     color=INK, zorder=3,
                                     bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.75))
                 _ref_lines(ax, refs, label=True)
+                _subset_overlay(ax, refs)
                 ax.set_title(f"{LABEL[m]}\n{'candidates' if t == 'candidates' else 'no relative'} tier",
                              loc="left", fontsize=8.5, color=INK, pad=14)
                 if i == len(tiers) - 1:
@@ -449,6 +480,7 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                      f"Right: duplicate rate, M77 raw 0.354, M77-4 without 4 outlier texts 0.281, "
                      f"ICIT? preprint 0.237. Empty cell: unreachable.", fontsize=8.5, x=0.01, ha="left", y=1.03)
         fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
+        fig.text(0.01, -0.075, SUBSET_NOTE, fontsize=8, color=INK2, ha="left", va="top", wrap=True)
         p = d / f"sensitivity_map_{panel}.png"
         fig.savefig(p, dpi=150, bbox_inches="tight")
         fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
@@ -489,4 +521,64 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
     fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
     plt.close(fig)
     paths.append(p)
+    paths.append(archaeology_map(agg, refs, d))
     return paths
+
+
+def archaeology_map(agg: dict, refs: dict, d: Path) -> Path:
+    """Revised EM on the 'all' panel, with the archaeological subsets labelled in full. The x-axis
+    extends below the grid to show where the single-period region lies (not measured)."""
+    cells = {(c["dup"], c["inventory"]): c for c in agg["panels"]["all"]}
+    dups, invs = agg["dup_grid"], agg["inventory_grid"]
+    dx, dy = (invs[1] - invs[0]) / 2, (dups[1] - dups[0]) / 2
+    m = "knight2006_em"
+    vmax = max(c[f"{t}:{m}"]["mean"] for c in cells.values() if c["n"] for t in agg["tiers"])
+    fig, axes = plt.subplots(1, len(agg["tiers"]), figsize=(7.2 * len(agg["tiers"]), 5.4), squeeze=False)
+    for j, t in enumerate(agg["tiers"]):
+        ax = axes[0][j]
+        z = np.full((len(dups), len(invs)), np.nan)
+        for a, dv in enumerate(dups):
+            for b, iv in enumerate(invs):
+                c = cells.get((float(dv), int(iv)))
+                if c and c["n"]:
+                    z[a, b] = c[f"{t}:{m}"]["mean"]
+        im = ax.imshow(z, origin="lower", extent=(invs[0] - dx, invs[-1] + dx, dups[0] - dy, dups[-1] + dy),
+                       aspect="auto", cmap="Blues", vmin=0, vmax=vmax, interpolation="nearest")
+        for a, dv in enumerate(dups):
+            for b, iv in enumerate(invs):
+                if not np.isnan(z[a, b]):
+                    ax.text(iv, dv, f"{100 * z[a, b]:.1f}", ha="center", va="center", fontsize=8, color=INK, zorder=3,
+                            bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.75))
+        ax.set_xlim(invs[0] - dx - 150, invs[-1] + dx)   # room for the unmeasured single-period region
+        ax.set_ylim(dups[0] - dy, dups[-1] + dy)
+        ax.axvspan(invs[0] - dx - 150, invs[0] - dx, color=GRID, alpha=0.6, zorder=1)
+        ax.text(invs[0] - dx - 75, dups[0] - dy + 0.02, "not measured\n(< 350 types)", ha="center", va="bottom",
+                fontsize=7.5, color=INK2, zorder=4)
+        _ref_lines(ax, refs, label=True)
+        _subset_overlay(ax, refs, letters=False)
+        for s in refs.get("archaeological_subsets", []):
+            col = SUBSET_COLOR.get(s["letter"], INK)
+            if s["letter"] == "P":
+                ax.text(invs[0] - dx - 75, 0.25, "P: single\nperiod\n< 400-450\n(estimate)", ha="center",
+                        va="center", fontsize=7, color=col, fontweight="bold", zorder=5,
+                        bbox=dict(boxstyle="round,pad=0.2", fc="white", ec=col, lw=0.7))
+            else:
+                ymid = 0.5 * (s["dup_range"][0] + min(s["dup_range"][1], dups[-1] + dy))
+                short = {"S": "S: seals only\n(estimate)", "T": "T: tablets only\n(estimate)"}[s["letter"]]
+                ax.annotate(short, xy=(1.0, ymid), xycoords=("axes fraction", "data"),
+                            xytext=(1.03, ymid), textcoords=("axes fraction", "data"), ha="left", va="center",
+                            fontsize=7, color=col, fontweight="bold",
+                            arrowprops=dict(arrowstyle="-", color=col, lw=0.8))
+        ax.set_title(f"{LABEL[m]}, {'candidates' if t == 'candidates' else 'no relative'} tier, all corpora (% tokens)",
+                     loc="left", fontsize=10, color=INK, pad=16)
+        ax.set_xlabel("sign inventory (types observed)", fontsize=9, color=INK2)
+        ax.set_ylabel("duplicate-text fraction", fontsize=9, color=INK2)
+    fig.subplots_adjust(wspace=0.45)
+    fig.colorbar(im, ax=axes, shrink=0.7, pad=0.09, label="Task D token accuracy")
+    fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
+    fig.text(0.01, -0.09, SUBSET_NOTE, fontsize=8, color=INK2, ha="left", va="top", wrap=True)
+    p = d / "sensitivity_archaeology.png"
+    fig.savefig(p, dpi=150, bbox_inches="tight")
+    fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
+    plt.close(fig)
+    return p

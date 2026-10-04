@@ -15,6 +15,17 @@ fetch time.
 
 **Before publishing anything derived from Sumerian:** CDLI permits academic reuse with citation but gives no formal open license. Publishing transformed sign-ID corpora for a research benchmark is plausibly within "common and fair academic practice". If you need certainty (for example for a Zenodo deposit under CC BY), ask CDLI or drop Sumerian from public rounds.
 
+## Indus period and object-type tags: checked, NOT used (2026-10-04)
+
+| Candidate source | What it holds | Terms we could establish | Status |
+|---|---|---|---|
+| CISI vol. 3, part 1 (Parpola, Pande & Koskikallio eds., 2010), data list | Per-object HARP designations; Kenoyer & Meadow (2010, p. 4 and fn. 4) state that each Harappa object was assigned a chronological period, and the catalogue records object type | Commercial, copyrighted book (Suomalainen Tiedeakatemia, ISBN 978-951-41-1040-5). No open license or data-reuse statement found. | Not used. Needs permission from the publisher and editors, or a tag list supplied by HARP. |
+| harappa.com (HARP) | Articles, slides, images; the two papers above are hosted there | We could not read the site's own terms page: its Cloudflare protection blocks this environment, and we did not try to get around it. Search summaries of harappa.com's "image rights" and credits pages say images are copyrighted by HARP or the photographers, that commercial use and any Internet use need permission first, and that non-commercial educational use is allowed. These are unverified summaries. No statement about data or tag reuse was found. | Not used. Treat as all rights reserved until HARP says otherwise. |
+| The two PDFs supplied by the project owner (Kenoyer & Meadow 2010; Kenoyer 2020a/b) | Text of the papers | Copyrighted publications | Read for citation only; short quotations with page references are used in configs and reports. The PDFs are not committed. |
+
+Recommended route: ask J. M. Kenoyer / HARP for a per-object table (CISI or HARP id, object type,
+period, sign sequence) with explicit permission to derive statistics and publish aggregates.
+
 Attribution required by CC BY / CC BY-SA applies to any redistribution of derived corpora.
 Synthetic corpora published in `challenge/` are transformed sign-ID sequences: a disguised sister
 language written in invented signs, not readable text. Their keys (in `challenge/public/*/keys/`)

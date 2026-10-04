@@ -50,6 +50,33 @@ references:
     Nair, A. (2026). How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline
     Scorecard. arXiv:2604.17828 (preprint, not peer reviewed). Corpus: ICIT as extracted from
     the "Yajnadevam digital corpus"; data available only on request.
+  KENOYER_MEADOW2010: >-
+    Kenoyer, J. M. & Meadow, R. H. (2010). Inscribed objects from Harappa excavations 1986-2007.
+    In: A. Parpola, B. M. Pande & P. Koskikallio (eds.), Corpus of Indus Seals and Inscriptions,
+    Vol. 3: New material, untraced objects, and collections outside India and Pakistan, Part 1:
+    Mohenjo-daro and Harappa (Annales Academiae Scientiarum Fennicae, Humaniora 359; Memoirs of
+    the Archaeological Survey of India 96). Helsinki: Suomalainen Tiedeakatemia. Introductory
+    essay, pp. xliv-lviii (front-matter pages as listed by harappa.com via a search result; the
+    PDF we read is paginated 1-15 and the page numbers we quote refer to that PDF).
+    READ IN FULL by us from a PDF supplied by the project owner, 2026-10-04.
+  KENOYER2020A: >-
+    Kenoyer, J. M. (2020). The origin and development of the Indus script: insights from Harappa
+    and other sites. In: K. Lashari (ed.), Studies on Indus Script. Karachi: National Fund for
+    Mohenjodaro, pp. 217-236. READ by us (PDF supplied by the project owner, 2026-10-04).
+  KENOYER2020B: >-
+    Kenoyer, J. M. (2020, in press at the time of the PDF). The Indus script: origins, use and
+    disappearance. In: H. Zhao (ed.), Dialogue of Civilisation: Comparing Multiple Centers.
+    Shanghai: Shanghai Guji Press, pp. 220-255. READ by us (same PDF as KENOYER2020A, second
+    article). Page numbers we quote are the printed numbers in that PDF (237-...), which may not
+    match the final published pagination.
+  MEADOW_KENOYER2000: >-
+    Meadow, R. H. & Kenoyer, J. M. (2000). The "tiny steatite seals" (incised steatite tablets) of
+    Harappa: some observations on their context and dating. In: M. Taddei & G. De Marco (eds.),
+    South Asian Archaeology 1997 (Serie Orientale Roma 90), pp. 321-340. Rome: IsIAO / Naples: IUO.
+    (Entry as given in KENOYER_MEADOW2010 and RAO2018; NOT read by us.)
+  KENOYER_PC2026: >-
+    J. M. Kenoyer (UW-Madison), comments relayed by the project owner, 2026-10-04. Used only
+    where the published papers above say the same thing.
   BRIEF: >-
     Project brief supplied by the benchmark owner (no primary source attached).
 
@@ -109,6 +136,14 @@ targets:
     notes: >-
       M77 lists 417 signs (verified in YADAV2010). Possehl (VIA Wikipedia) gives 419;
       Wells (VIA Wikipedia) ~694. Counted as distinct sign types observed in the corpus.
+      POOLING ACROSS TIME (KENOYER2020B, KENOYER_MEADOW2010): the inventory is pooled over
+      roughly 700 years of use. KENOYER2020B, p. 249: "In the past, most scholars assumed that there
+      were between 400 and 450 discrete symbols from the Harappan period (Parpola, 1994a), but it is
+      possible that there are considerably less during each of the sub periods." KENOYER_MEADOW2010,
+      p. 8: the script "did not appear fully formed and remain unchanged for more than 700 years."
+      No per-period sign count is published in these papers, so a single-period inventory is an
+      ESTIMATE (below 400-450, size unknown). The 400-700 calibration range therefore describes
+      the pooled corpus, not any one period.
 
   coverage80_signs:
     value: 69
@@ -180,6 +215,21 @@ targets:
       M77 0.354 (0.281 without its four outlier texts), read from the vector data of
       YADAV2010 Fig. 2; ICIT 0.237 per a preprint (NAIR2026, unverified). Our statistic is
       the fraction of texts identical to an earlier text, which is the same definition.
+      DEPENDS ON OBJECT TYPE (KENOYER_MEADOW2010, p. 6): "Unlike seals, almost all of which are
+      unique, an important aspect of tablets is that, at Harappa (as well as at Mohenjo-daro),
+      there are numerous instances of (1) incised steatite tablets with copies of the same signs
+      and/or motifs and (2) duplicate bas-relief tablets of faience or terracotta made from the same
+      mold." p. 7, two large instances at Harappa: "(1) script copies incised into 22 rectangular
+      steatite tablets ... from secondary deposits of Period 3B" and "(2) 31 duplicates bearing
+      iconography and script, made of rectangular molded terracotta" (the 22 also VIA RAO2018,
+      citing MEADOW_KENOYER2000). A pooled duplicate rate therefore mixes near-unique seals
+      with heavily copied tablets, and it moves with the corpus's mix of object types. No
+      per-object-type duplicate RATE is published in these sources: the counts lack denominators.
+      ARCHAEOLOGICAL CONTEXT: seals, tablets and other inscribed objects come from secondary
+      contexts (KENOYER_PC2026). KENOYER2020B, p. 251: inscribed objects "have been found
+      scattered throughout the debris of the ancient city and in the debris used to fill up empty
+      areas". KENOYER_MEADOW2010, p. 7: copies and duplicates "are always found in trash, fill, or
+      street deposits".
 
 
 # Published reference points marked on the sensitivity map (reports/sensitivity). NOT targets:
@@ -218,6 +268,54 @@ reference_points:
     - {label: "Wells 2006", value: 676, citation: WELLS2006, verified: "VIA YADAV2010"}
     - {label: "Wells 2015", value: 694, citation: WELLS2015, verified: "VIA RAO2018"}
     - {label: "Fuls 2023 (>700, unverified)", value: 700, citation: FULS2023, verified: false}
+  # Predicted positions of archaeologically defined subsets (map overlay). ALL ARE ESTIMATES:
+  # only the qualitative statements are published; no subset rate or count of sign types is.
+  # null = not constrained by any source (drawn across the whole axis).
+  archaeological_subsets:
+    - key: seals_only
+      letter: S
+      label: "Seals only (low duplication)"
+      dup_range: [0.0, 0.05]
+      inventory_range: null
+      verified: estimate
+      basis: >-
+        KENOYER_MEADOW2010 p. 6: seals, "almost all of which are unique". "Almost all" is placed at
+        0-5% duplicates; that cut-off is OUR ESTIMATE, not a published number.
+      caveats: >-
+        No published sign count for seals alone. A seals-only corpus is also smaller than 2,906
+        texts (the map holds N fixed); the main size sweep shows a modest effect (revised EM,
+        candidates tier: 10.2% at 500 texts vs 14.6% at 2,906).
+    - key: tablets_only
+      letter: T
+      label: "Tablets only (high duplication)"
+      dup_range: [0.354, 0.5]
+      inventory_range: null
+      verified: estimate
+      basis: >-
+        KENOYER_MEADOW2010 pp. 6-7: tablets have numerous copies and same-mold duplicates (22 incised
+        copies; 31 molded duplicates in two Harappa instances). The counts have no denominators, so
+        no rate can be computed. DERIVED LOWER BOUND: the pooled M77 rate is 0.354 (YADAV2010
+        Fig. 2). If seals are nearly unique, the non-seal remainder must duplicate at least as
+        often as the pool, i.e. >= 0.354. The upper edge (0.5) is just the edge of our grid.
+      caveats: >-
+        The bound assumes duplicates sit mainly in non-seal objects (supported qualitatively by
+        KENOYER_MEADOW2010) and that the M77 mix of object types resembles Harappa's. A
+        tablets-only corpus is smaller than 2,906 texts. Tablet texts may also differ in length
+        from seal texts (not checked).
+    - key: single_period
+      letter: P
+      label: "Single period (smaller inventory)"
+      dup_range: null
+      inventory_range: [null, 400]
+      verified: estimate
+      basis: >-
+        KENOYER2020B p. 249: "considerably less" than 400-450 discrete symbols per sub-period. No
+        number is published; the region is drawn left of 400 and is OUTSIDE the measured grid
+        (400-800).
+      caveats: >-
+        The map cannot say what happens below 400 types: most of our scripts cannot be built
+        with fewer than about 300-650 types even with no allographs. A single-period corpus also has
+        fewer texts than the pooled 2,906.
   notes: >-
     Sign-list sizes are catalogue sizes over each author's whole corpus (ICIT-based lists cover
     more texts than M77's 2,906). The map's inventory axis counts sign types observed in a

@@ -135,6 +135,13 @@ coordinate in a space we defined.* The fixes are built in:
   other ways of growing the inventory. Only 5 of 20 language x script combinations are valid in
   every grid cell (strict panel), and 10 of 20 inside the published-value box. Cells at the grid
   edges are unreachable for some scripts.
+- **The calibration targets describe a pooled corpus.** M77 mixes object types and roughly 700
+  years. Seals are almost all unique, while tablets are often copied or molded in duplicate
+  (Kenoyer & Meadow 2010). Each sub-period may have used considerably fewer than 400-450 signs
+  (Kenoyer 2020b). Subsets by object type or period would sit elsewhere on the sensitivity map;
+  their predicted positions are marked there as estimates. *Future work:* per-period and
+  per-object-type targets, which need a tagged corpus we have permission to use (see
+  DATA_LICENSES.md).
 
 ## How results are reported (after an adversarial review of the first draft)
 
