@@ -160,6 +160,75 @@ profiles:
     regimes: [full]
     em_restarts: 3
     em_iterations: 60
+  sister_v3_gen1:   # sister-v3 robustness check: v2 split + drop sister clauses containing any hidden-text word sequence; methods frozen
+    sister_version: v3
+    generator_version: v1
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [2906, 6317]
+    length_sweep: [10.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v3_gen2:   # sister-v3 robustness check: v2 split + drop sister clauses containing any hidden-text word sequence; methods frozen
+    sister_version: v3
+    generator_version: v2
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [2906, 6317]
+    length_sweep: [10.0]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v2_eqtok_gen1:   # sister-v2 baseline at the exact equal-token size point (6,317 texts x 4.6 = 29,058 tokens); methods frozen
+    sister_version: v2
+    generator_version: v1
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [6317]
+    length_sweep: []
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+  sister_v2_eqtok_gen2:   # sister-v2 baseline at the exact equal-token size point (6,317 texts x 4.6 = 29,058 tokens); methods frozen
+    sister_version: v2
+    generator_version: v2
+    predicted_run: false
+    seeds: [0, 1, 2]
+    size_sweep: [6317]
+    length_sweep: []
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    controls: []
+    knowledge_tiers: [related, candidates]
+    feasibility_scenarios: 0
+    sister_sweep: []
+    regimes: [full]
+    em_restarts: 3
+    em_iterations: 60
+
 # Generator defaults (overridden per scenario in the feasibility sweep).
 generator:
   allograph_rate: 0.25        # fraction of values that get graphic variants

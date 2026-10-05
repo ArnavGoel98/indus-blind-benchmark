@@ -89,8 +89,8 @@ def split_clauses(source: str, d: dict, half: str) -> list:
     would contain the very phrases it is asked to decipher.
     """
     want = 0 if half == "hidden" else 1
-    if sister_version() == "v2":
-        # sister-v2: split by clause CONTENT, so identical clauses always fall in the same half
+    if sister_version() in ("v2", "v3"):
+        # sister-v2 (and v3, which adds a per-corpus filter in knowledge.py): split by clause CONTENT, so identical clauses always fall in the same half
         # (sister-v1 split by position, which put repeated clauses in both halves).
         return [c for c in d["clauses"]
                 if zlib.crc32(f"{base_source(source)}:{' '.join(map(str, c[1]))}".encode()) % 2 == want]
@@ -98,7 +98,8 @@ def split_clauses(source: str, d: dict, half: str) -> list:
 
 
 def sister_version() -> str:
-    """'v1' (split by clause position, the frozen-v1 runs) or 'v2' (split by clause content).
+    """'v1' (split by clause position, the frozen-v1 runs), 'v2' (split by clause content) or 'v3'
+    (v2 plus: drop every sister clause that contains any hidden text's word sequence; robustness check).
     Set per run via the IBDB_SISTER_VERSION environment variable (profiles set it)."""
     import os
     return os.environ.get("IBDB_SISTER_VERSION", "v1")
@@ -165,6 +166,7 @@ def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float,
     texts_units: list[list[tuple[str, list[str], int | None]]] = []  # per text: (form, units, sem) words
     truncs: list[int] = []
     n_trunc = n_concat = 0
+    word_ids: list[tuple[tuple[int, ...], bool]] = []  # per language text: (word ids, truncated?)
     if kind in ("language", "nl_derived"):
         plan = language_plan(source, spec, seed, max_len)
         wi = plan.windows
@@ -195,6 +197,7 @@ def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float,
             if trunc:
                 n_trunc += 1
             truncs.append(int(trunc))
+            word_ids.append((tuple(ids), bool(trunc)))
             texts_units.append([(plan.words[i][0], plan.units[i], plan.sems[i]) for i in ids])
         script_type = spec.script_type if kind == "language" else "emblem"
         plaintext = [" ".join(w[0] for w in t) for t in texts_units]
@@ -262,4 +265,6 @@ def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float,
     key = AnswerKey(cid, source, source_family(source), kind, kind == "language", script_type,
                     sign_values, token_values, word_starts, params, plaintext)
     info = {"truncated": n_trunc, "concatenated": n_concat, "n_values": len(values)}
+    if sister_version() == "v3" and word_ids:
+        info["_word_ids"] = word_ids  # popped by the harness before recording; feeds the sister-v3 filter
     return corpus, key, info

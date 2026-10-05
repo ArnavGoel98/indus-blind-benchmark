@@ -1,4 +1,4 @@
-# DRAFT OUTLINE (revision 5): awaiting approval, no prose written
+# DRAFT OUTLINE (revision 6): awaiting approval, no prose written
 
 **Title:** A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics
 
@@ -26,10 +26,11 @@ One line: Rao and Yadav entropy/Markov studies, Farmer-Sproat-Witzel, Sproat's n
 ## 4. Results
 - **4.1 Entropy statistics fail at Indus scale (UNAFFECTED by the sister-tier defect: Task A uses no reference language):** same entropy ratio (about 0.47) for synthetic languages and i.i.d. signs; the classifier is at chance under holdout (0.57 [0.32, 0.81]; 0.49 on fresh seeds). Rule-independent.
 - **4.2 No related language (UNAFFECTED by the sister-tier defect: the hidden language and its sister are excluded from this tier):** "Without a related language among candidates, mean recovery stays at or below 4.8% in every run; no corpus reaches 50% of tokens; the best single corpus reaches 28%." Both rules, both generators, fresh seeds.
-- **4.3 Difficulty is underdetermined by published Indus statistics, mainly when a related language is available (wording proposed; final after your review):** primary evidence is the frozen original rule across generators at the Indus point, candidates tier. Sister-v2, before the cognate step: v1 2.4% [1.2, 3.8] -> v2 12.9% [7.8, 17.4] (fresh seeds: 2.7% -> 9.4%); with oracle sound correspondences: 2.8% -> 18.9% (fresh seeds 2.7% -> 13.8%). Upper bound (sister-v1, known overlap): 2.1% -> 15.0%. Corpora >=50% before the cognate step: 0 of 120 (v1) vs 6 of 120 (v2). Without a related language the contrast is small (4.2: means <=4.8% in every run). Within the v1 box the original rule stays at 3.5-5.1% (sister-v1 sweep; not rerun). Secondary, post hoc: the revised rule (sister-v2 before cognate 9.1% -> 25.1%; upper bound 14.6% -> 42.7%). Table: `reports/sister_v2/comparison.md`.
-- **4.4 Longer inscriptions vs more inscriptions:** "Under the frozen rule, longer inscriptions help more than more inscriptions in both generators", at equal total tokens with a related language among candidates. Holds under sister-v2 BEFORE the cognate step, in all four runs, at 10 and 20 signs per text (about 29k tokens: v1 18.0% vs 2.7%, v1 fresh seeds 17.7% vs 3.4%, v2 35.6% vs 14.5%, v2 fresh seeds 32.2% vs 11.8%). With oracle sound correspondences: v1 28.6% vs 2.8%, v2 54.9% vs 21.8%. Upper bound (sister-v1, known overlap): v1 32.6% vs 3.0%, v2 55.3% vs 19.7%. Without a relative, both stay at or below 6.5% (sister-v1 runs; this tier does not use the sister).
+- **4.3 Published Indus statistics do not fix how decipherable an Indus-scale corpus is (approved wording):** "Two generators that both match them differ roughly fivefold when a related language is available (2.4% vs 12.9% of sign tokens, frozen rule, no oracle correspondences; replicated 2.7% vs 9.4%)." Sister-v3 robustness: 2.6% vs 9.3% (3.7x; intervals do not overlap). Secondary: with oracle sound correspondences 2.8% vs 18.9%; revised rule post hoc.
+- **4.4 Longer inscriptions vs more inscriptions:** "Under the frozen rule, longer inscriptions help more than more inscriptions in both generators." At equal tokens (2,906 x 10 vs 6,317 x 4.6, run directly), candidates tier, primary: v1 18.0% vs 2.6% (difference 15.4 [5.8, 24.9]); v2 35.6% vs 18.3% (17.4 [8.5, 25.0]); interpolated on fresh seeds: v1 17.7% vs 3.4%, v2 32.2% vs 11.8%. Sister-v3: v1 17.5% vs 3.9%, v2 34.6% vs 10.5% (filter is corpus-dependent and favours the long-text corpus; check of survival, not of size). Without a relative, both <= 6.5%.
 - **4.5 Archaeological predictions (prediction, not measurement):** seals-only regions above tablets-only regions under both rules, testable once per-object data is available.
 
+- **4.6 Robustness: sister-v3** (new section): residual overlap, Indus point, headline 3 and 4 checks, and the corpus-dependence confound (`reports/sister_v2/robustness_sister_v3.md`).
 ## 5. Limitations
 - **5.1 Allograph merging:** inventory is raised only through allographs, and no tested method merges them.
 - **5.2 Sister-language distance:** a bijective sound change is absorbed by the solver; the distance dependence is unknown.
@@ -54,7 +55,6 @@ One line: any statement about Indus difficulty must name its corpus (object type
 - **Appendices:** one line on calibration, full tables, sensitivity tables, the rule comparison, the audit (`reports/audit_2026-10-04.md`) and method deviations.
 
 ## Open points before writing
-1. **Sister-v2 rerun done:** 2,280 jobs, 0 errors; tables in `reports/sister_v2/comparison.md`. Splitting by content moved no Indus-point mean outside its sister-v1 interval.
-2. **Before-cognate scores exist only for sister-v2.** Sister-v1 before-cognate needs a sister-v1 rerun (~4 h) if wanted; given point 1, probably not informative.
-3. **Residual verbatim overlap under sister-v2 is not near zero (38-82%).** Reaching near zero needs a different design (drop reference clauses containing any hidden-text word sequence, or a divergent sister). Needs your decision.
-4. **Headline 3 wording** proposed above; awaiting your review.
+1. Primary numbers everywhere: original (frozen) rule, before the cognate step; oracle-correspondence scores secondary and labelled.
+2. Sister-v3 robustness done (480 jobs, 0 errors after one config fix). Headlines 3 and 4 hold; headline 3's ratio falls from 5.3x to 3.7x.
+3. Prose: sections 1-3 drafted (`reports/drafts/paper_sections_1-3_DRAFT.md`); stopped for review.

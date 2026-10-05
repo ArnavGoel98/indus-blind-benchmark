@@ -73,15 +73,59 @@ def _word_units(word: list, script_type: str, logo: bool) -> list[str]:
     raise ValueError(script_type)
 
 
+def hidden_sequences(word_ids) -> set[tuple[int, ...]]:
+    """Word-ID sequences of a hidden corpus's texts. A truncated text also contributes its whole
+    words without the (possibly cut) last word, so a reference clause containing only the
+    visible part is caught too."""
+    seqs: set[tuple[int, ...]] = set()
+    for ids, trunc in word_ids:
+        if ids:
+            seqs.add(tuple(ids))
+        if trunc and len(ids) > 1:
+            seqs.add(tuple(ids[:-1]))
+    return seqs
+
+
+def drop_containing(clauses: list, seqs: set[tuple[int, ...]]) -> tuple[list, dict]:
+    """sister-v3 filter: drop every clause that contains any of `seqs` as a contiguous word sequence.
+    Returns the kept clauses and overlap diagnostics (hidden-text word bigrams found in the clauses
+    before and after the filter)."""
+    if not seqs:
+        return clauses, {}
+    lens = sorted({len(q) for q in seqs})
+    kept = []
+    for c in clauses:
+        ids = tuple(c[1])
+        n = len(ids)
+        if not any(ids[i:i + L] in seqs for L in lens if L <= n for i in range(n - L + 1)):
+            kept.append(c)
+    hb = {q[i:i + 2] for q in seqs for i in range(len(q) - 1)}
+    def share(cs):
+        found = {tuple(c[1][i:i + 2]) for c in cs for i in range(len(c[1]) - 1)} & hb
+        return len(found) / len(hb) if hb else 0.0
+    return kept, {"ref_clauses": len(clauses), "dropped": len(clauses) - len(kept), "hidden_seqs": len(seqs),
+                  "hidden_bigram_share_before": share(clauses), "hidden_bigram_share_after": share(kept)}
+
+
 @lru_cache(maxsize=64)
 def build_reference(lang: str, script_type: str, sister: bool, seed: int, logogram_vocab: int = 250,
                     sound_change_rate: float | None = None, lexical_replacement: float | None = None) -> Reference:
+    return _build_reference(lang, script_type, sister, seed, logogram_vocab, sound_change_rate, lexical_replacement)
+
+
+def _build_reference(lang: str, script_type: str, sister: bool, seed: int, logogram_vocab: int = 250,
+                     sound_change_rate: float | None = None, lexical_replacement: float | None = None,
+                     drop_seqs: set | None = None, diag: dict | None = None) -> Reference:
     sis_cfg = config.experiment()["sister_language"]
     rate = sis_cfg["sound_change_rate"] if sound_change_rate is None else sound_change_rate
     lex = sis_cfg["lexical_replacement"] if lexical_replacement is None else lexical_replacement
     d = _segments(lang)
     words, rank = d["words"], d["_rank"]
     clauses = split_clauses(lang, d, "reference")[:MAX_REF_CLAUSES]
+    if drop_seqs is not None:
+        clauses, info = drop_containing(clauses, drop_seqs)
+        if diag is not None:
+            diag.update(info)
     logo = rank <= logogram_vocab
     pmap = sound_change_map(lang, rate, seed) if sister else {}
 
@@ -128,10 +172,17 @@ def build_reference(lang: str, script_type: str, sister: bool, seed: int, logogr
 
 def knowledge_for(hidden_lang: str, script_type: str, tier: str, seed: int,
                   languages=LANGUAGES, logogram_vocab: int = 250, sound_change_rate: float | None = None,
-                  lexical_replacement: float | None = None) -> Knowledge:
+                  lexical_replacement: float | None = None, drop_seqs: set | None = None,
+                  diag: dict | None = None) -> Knowledge:
+    """drop_seqs (sister-v3 only): hidden-text word sequences; sister clauses containing any are dropped.
+    Only the sister is filtered; the other references are different languages."""
     others = [l for l in languages if l != hidden_lang]
-    sister = lambda: build_reference(hidden_lang, script_type, True, seed, logogram_vocab,  # noqa: E731
-                                     sound_change_rate, lexical_replacement)
+    if drop_seqs is not None:
+        sister = lambda: _build_reference(hidden_lang, script_type, True, seed, logogram_vocab,  # noqa: E731
+                                          sound_change_rate, lexical_replacement, drop_seqs, diag)
+    else:
+        sister = lambda: build_reference(hidden_lang, script_type, True, seed, logogram_vocab,  # noqa: E731
+                                         sound_change_rate, lexical_replacement)
     if tier == "related":
         refs = [sister()]
     elif tier == "candidates":

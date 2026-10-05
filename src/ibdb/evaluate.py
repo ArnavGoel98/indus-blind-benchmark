@@ -26,7 +26,7 @@ import numpy as np
 from . import config, ml
 from .generator.build import LANGUAGES, make_corpus
 from .generator.calibrate import load_knobs
-from .knowledge import knowledge_for
+from .knowledge import hidden_sequences, knowledge_for
 from .methods.decipher import CognateMatcher, FrequencyRankBaseline, KnightEM, KnightEMOriginal
 from .methods.descriptive import FulsPositional, RaoEntropy, YadavMarkov
 from .methods.structural import (BranchingSegmentation, InventoryRule, LeeTree, MultiFeatureClassifier,
@@ -123,6 +123,7 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
     median = float(regime_t["median_length"]["value"]) if job.sweep == "regime" else None
     corpus, key, info = make_corpus(job.source, spec, job.n_texts, job.mean_length, job.seed, knobs,
                                     median_length=median, generator_version=generator_version)
+    word_ids = info.pop("_word_ids", None)
     logical = [t.tolist() for t in corpus.logical()]
     st = corpus_stats(logical, config.targets()["targets"], seed=job.seed)
     rec: dict[str, Any] = {
@@ -152,6 +153,9 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
     if key.kind == "language":
         unit_script = job.pred_script or job.script_type
         sis = {"sound_change_rate": job.sister[0], "lexical_replacement": job.sister[1]} if job.sister else {}
+        if word_ids is not None:  # sister-v3: filter the sister against this corpus's hidden texts
+            sis["drop_seqs"] = hidden_sequences(word_ids)
+            sis["diag"] = rec.setdefault("sister_v3", {})
         for tier in job.tiers:
             kn = knowledge_for(job.source, unit_script, tier, job.seed,
                                logogram_vocab=spec.logogram_vocab, **sis)
