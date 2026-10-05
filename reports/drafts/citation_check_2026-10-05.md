@@ -16,7 +16,10 @@ was added from memory.
 | Parpola (1994) 386 signs; Wells (2006) 676 signs | **Secondary** | Via Rao (2018) and Yadav et al. (2010) respectively; marked "via" in the text. |
 | Fuls, A. (2023). *A Catalog of Indus Signs* (">700 signs") | **Not verified** | Retailer description only. Marked unverified. |
 | Nair, A. (2026). arXiv:2604.17828 (ICIT duplicate rate 0.237) | **Not verified (preprint)** | Quote read in the preprint; corpus not public; not peer reviewed. |
-| Median length target (4) | **Unsourced** | Introduced during project planning. See `median_assessment` in the review notes. |
+| Median length target (4) | **Derived** | From the M77 raw series in Yadav et al. 2010, Fig. 2 (2,591 texts, mean 3.92, max 14; not like-for-like). Originally unsourced (project brief). |
+| Nair, A. (2026). How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard. arXiv:2604.17828 (submitted 20 Apr 2026) | **Verified (abstract page)** | arxiv.org/abs/2604.17828. Abstract: 1,916 deduplicated ICIT/Yajnadevam inscriptions, heraldic and administrative baselines, seven attested non-linguistic corpora. NOTE: the abstract says "All code and data are publicly available"; our config says data on request only. Check the paper's data statement before citing either way. |
+| Tiwari, T. (2026). Statistical Structure in Indus Sign Sequences. Proc. 6th Int. Conf. on NLP for the Digital Humanities (NLP4DH), pp. 314-319 | **Verified (ACL Anthology page)** | aclanthology.org/2026.nlp4dh-1.28. Abstract read; paper body not read. |
+| Kenoyer (2020b), pp. 237, 240, 249, 254 (multiple languages; logosyllabic) and Kenoyer (2020a), p. 219 | **Verified** | Read in the supplied PDF; printed page numbers mapped per PDF page. |
 
 Not re-checked here (no "to verify" flag in the repository): Rao et al. 2009; Yadav et al. 2010;
 Farmer, Sproat & Witzel 2004; Mahadevan 1977; Knight et al. 2006; Berg-Kirkpatrick & Klein 2013;

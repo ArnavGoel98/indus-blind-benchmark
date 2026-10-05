@@ -4,6 +4,8 @@
 
 *This work does not decipher, and does not claim to decipher, the Indus script.*
 
+*Scope: in this paper "decipherment" means substitution-style recovery of sign values only.*
+
 Conventions used throughout. Unless a sentence says otherwise, a recovery number is Task D token
 accuracy under the **original (frozen) EM selection rule**, scored **before the cognate step**.
 Scores that include the solver's cognate step are secondary and are labelled "with oracle sound
@@ -41,8 +43,8 @@ Two kinds of argument have been made about this corpus. Some assign readings to 
 use corpus statistics to argue that the signs do, or do not, encode language: conditional entropy
 (Rao et al. 2009), n-gram models (Yadav et al. 2010), and, on the other side, text brevity (Farmer,
 Sproat & Witzel 2004) and the finding that entropy-type measures do not separate writing from
-non-linguistic symbol systems (Sproat 2010, 2014). Both kinds of argument depend on a question that
-is seldom tested: would the method work on a corpus of Indus size and shape whose answer is known?
+non-linguistic symbol systems (Sproat 2010, 2014). Both kinds of argument depend on a further question:
+would the method work on a corpus of Indus size and shape whose answer is known?
 
 We test that question directly. We write known languages, and sign systems that encode no
 language, in invented scripts. We calibrate each synthetic corpus to published Indus statistics,
@@ -50,6 +52,14 @@ hide its answer key, and measure what existing methods recover. The goal is a st
 form "on corpora that match the published Indus statistics, method M recovers X% of sign tokens
 under conditions K". Such a statement says what a method can do on Indus-like data. It says nothing
 about what the Indus signs mean.
+
+Two scope statements apply throughout. First, "decipherment" here means substitution-style
+recovery of sign values only: assigning each sign a sound, syllable or word of a known reference
+language. It does not cover grammar, meaning, or identifying an unknown language. Second, the
+benchmark languages (Sanskrit, Old Tamil, Sumerian, Latin, Finnish) were chosen for open or
+documented licences and for spread across language families and script types. Their use implies
+nothing about the language or languages of the Indus inscriptions, and how well any of them is
+recovered says nothing about Harappan.
 
 Defining "Indus-like" turned out to be the central difficulty. Published statistics fix the
 number of texts, their length, the sign inventory and several frequency and positional measures.
@@ -68,7 +78,7 @@ sister-v3, 3.7x). (4) Under the frozen rule, longer inscriptions help more than 
 inscriptions in both generators. (5) Archaeologically defined subsets of the corpus are predicted
 to sit at different points on the map; these are predictions, not measurements.
 
-**Contributions.** (i) A generator of synthetic scripts calibrated to published Indus statistics,
+**What this paper provides.** (i) A generator of synthetic scripts calibrated to published Indus statistics,
 with every target cited and flagged as verified or not. (ii) Eight method families behind one
 interface, frozen before the final runs. (iii) A protocol that scores four tasks separately,
 with intervals that resample whole source languages, three calibration regimes, three levels of
@@ -87,6 +97,19 @@ a writing system. Sproat (2010, 2014) showed that entropy-type statistics do not
 writing from non-linguistic symbol systems; Lee, Jonathan & Ziman (2010) proposed an entropy-based
 classifier for the Pictish symbols that we include as a method. Our Task A asks whether these
 statistics work at Indus scale when the answer is known.
+
+**Closest prior work.** Nair (2026, arXiv:2604.17828, a preprint) tests the observed Indus
+corpus (1,916 deduplicated ICIT inscriptions) against computer-generated non-linguistic baselines
+(a heraldic and an administrative generator) and seven attested non-linguistic corpora, on four
+properties from the Farmer-Sproat-Witzel critique, and places the corpus between the baselines.
+Tiwari (2026, NLP4DH, pp. 314-319) analyses 6,579 inscriptions with visual clustering of sign
+forms, entropy, Kullback-Leibler divergence and a BiLSTM, and reports directional asymmetry and
+structured combinatorial patterns. Both papers study the real corpus and ask what kind of sign
+system it is. This paper does not analyse the real corpus. It generates synthetic corpora with known
+answers at Indus scale, linguistic and non-linguistic, and measures what existing methods recover
+from them; its question is about the methods, not the Indus signs. Nair's synthetic baselines are
+compared with the real corpus; ours are scored against their own hidden keys. We use Nair's ICIT
+duplicate rate only as a reference point.
 
 **Computational decipherment.** Knight et al. (2006) framed decipherment as unsupervised learning
 of a substitution model with expectation-maximisation (EM); Berg-Kirkpatrick & Klein (2013) showed
@@ -139,8 +162,9 @@ Other targets are the longest text (commonly given as 17 signs on a single surfa
 Witzel 2004), the sign inventory (400-700),
 the number of signs covering 80% of tokens (69), the share of the most frequent sign (0.10), and
 the numbers of text-final and text-initial signs covering 80% of those positions (23 and 82), all
-from Yadav et al. (2010). The median length (4) is unsourced (introduced during project planning; not from a primary or
-secondary source). The hapax share of sign types (0.27, Possehl 2002) is read only via a secondary
+from Yadav et al. (2010). The median length (4) is derived from Yadav et al. 2010, Fig. 2 (2,591 texts, mean 3.92, max 14;
+not like-for-like with 2,906 texts at 4.6 signs). It was originally unsourced (Appendix: analysis
+history). The generator also uses it to set the spread of text lengths. The hapax share of sign types (0.27, Possehl 2002) is read only via a secondary
 source. Size-dependent statistics are computed on subsamples of the reference corpus size.
 
 The duplicate-text rate is not a target, because no source fixes it for the corpus as a whole. We
@@ -234,7 +258,8 @@ Decision rules for Tasks A and B are learned leave-one-source-out, so a Sanskrit
 a rule fitted only on other sources. Means carry 95% cluster-bootstrap intervals that resample
 source languages (or control families) and then corpora within them, because corpora from one
 source are not independent. A shuffled-prediction control checks that the Task D scorer is not
-generous: permuting a solver's predicted values across signs drops a 93% corpus to 0.9%.
+generous: permuting a solver's predicted values across signs drops a 93% corpus to 0.9%. Our
+reimplementations have not been shown to reproduce any published result (Section 5).
 
 Corpora are generated at three seeds per configuration (0-2) and replicated on fresh seeds (3-5).
 Two generators are used. Generator v2 differs from v1 only in how text windows are sampled (first
@@ -252,7 +277,11 @@ inventory is set through the allograph rate alone, by bisection. Because invento
 through allographs and no tested method merges allographs, the inventory axis measures robustness to
 unmerged variants, not to a larger underlying sign system; every map states this. A cell counts
 only if its corpora hit both settings within tolerance without distorting text lengths. The
-plausible box (duplicates 0.2-0.4, inventory 400-700) was fixed before results were seen. Published
+plausible box (duplicates 0.2-0.4, inventory 400-700) brackets the published duplicate rates and
+sign-list sizes. It was written into the run profile after the sweep had started, after a test
+rendering of the first 24 records and a count of which cells were reachable, but before recovery
+was tabulated for the sweep; it was first committed together with the results (Appendix: analysis
+history). Published
 duplicate rates and sign-list sizes are marked on the map as reference points, not targets.
 
 
@@ -316,7 +345,9 @@ that both match them differ roughly three- to fivefold when a related language i
 | Upper bound (sister-v1, known overlap), seeds 0-2 | 2.1% | 15.0% | |
 
 No generator-v1 corpus reaches 50% of tokens in either seed set (primary); 6 of 120 generator-v2
-corpora do. In the `related` tier the contrast is smaller in ratio but larger in points (primary,
+corpora do. For logo-syllabic corpora alone, the most Indus-relevant script type, the candidates-tier
+contrast is not resolved (0.6% vs 3.6%, and 0.9% vs 1.6% on fresh seeds, with overlapping intervals),
+while the `related`-tier contrast is (Section 4.7). In the `related` tier the contrast is smaller in ratio but larger in points (primary,
 seeds 0-2: 15.9% vs 30.2%).
 
 The two generators differ only in how text windows are sampled. Both meet the size and length
@@ -391,6 +422,53 @@ The original rule chose the sister about as often under sister-v3 as under siste
 20% of corpora; v2: 28% vs 33%), and `related`-tier scores fell by about 3 points. Most of what the
 solver recovers from the sister therefore does not come from shared exact phrases.
 
+### 4.7 Logo-syllabic corpora (most Indus-relevant script type)
+
+"It is generally agreed that the signs found on seals and pottery represent a logosyllabic
+(morphemic) system" (Kenoyer 2020b, p. 249). The headline numbers restricted to logo-syllabic
+corpora (5 languages x 3 seeds = 15 corpora per point; primary unless stated):
+
+| Headline | Generator v1 | Generator v2 | Holds for logo-syllabic? |
+|---|---|---|---|
+| 4.1 Entropy ratio, Rao top-100 merge (i.i.d. control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. control scores higher than the languages |
+| 4.2 No relative: mean, original / revised rule | 0.0% / 0.8% (fresh seeds 0.1% / 0.9%) | 0.3% / 1.1% | Yes: best single corpus 4.1%; none reaches 50% |
+| 4.3 `candidates`, seeds 0-2 | 0.6% [0.0, 1.5] | 3.6% [0.2, 9.3] | Not resolved: intervals overlap |
+| 4.3 `candidates`, seeds 3-5 | 0.9% [0.0, 2.6] | 1.6% [0.2, 3.9] | Not resolved |
+| 4.3 `candidates`, sister-v3 | 1.1% [0.0, 3.2] | 3.4% [0.2, 9.2] | Not resolved |
+| 4.3 `related`, seeds 0-2 | 3.6% [2.4, 4.7] | 18.8% [6.6, 31.0] | Yes |
+| 4.3 `related`, seeds 3-5 | 3.2% [2.0, 4.4] | 20.4% [8.3, 34.8] | Yes |
+| 4.4 Longer vs more at ~29k tokens, `candidates` | 12.7% vs 0.2% | 27.8% vs 6.4% | Yes |
+
+For logo-syllabic corpora, recovery in the `candidates` tier is near zero in both generators, because
+the original rule selects Sumerian for almost every logo-syllabic corpus: it chooses the sister for
+3 of 15 corpora (v1) and 4 of 15 (v2), mostly when the hidden language is Sumerian itself. The generator contrast appears only
+when the sister is the sole reference (`related`). With oracle sound correspondences the `related`
+contrast grows (5.7% vs 35.6%). Full table: `reports/sister_v2/logosyllabic_headlines.md`.
+
+### 4.8 Genre check: Sumerian seal inscriptions only
+
+Four of the five sources are literary. As a genre check, Sumerian corpora were built only from the
+19,076 Ur III seal inscriptions in the CDLI dump, for both the hidden corpus and its sister (Indus
+point, seeds 0-2, four script types, 12 corpora per generator), and compared with Sumerian corpora
+built from the full source.
+
+| Primary unless stated | v1, seal only | v1, full source | v2, seal only | v2, full source |
+|---|---|---|---|---|
+| `related` | 13.1% | 5.0% | 8.8% | 13.7% |
+| `candidates` | 9.0% | 5.0% | 7.7% | 13.7% |
+| `candidates`, with oracle sound correspondences | 26.1% | 6.8% | 22.8% | 17.2% |
+| `none`, original rule | 1.5% | 2.2% | 3.6% | 2.3% |
+
+Recovery from seal-only material is of the same order as from the full source, with no consistent
+direction across generators, and the no-relative tier stays low (means at most 3.6%; best single
+corpus 20.2%). The check is limited: seal texts are far more repetitive and use fewer sign types
+than the calibrated corpora (duplicate rate 0.51-0.59, about 340 sign types, 37 signs covering 80%
+of tokens, against targets of 400-700 types and 69), and no seal-only corpus meets every calibration
+target, because the knobs were calibrated on the full source. The oracle step also adds more on
+seal-only material (13-17 points) than on the full source. The comparison is consistent with the
+main conclusions not depending on literary genre for Sumerian, but it is not a calibrated Indus-point
+result and cannot settle the question. Full table: `reports/sister_v2/sumerian_seal_genre_check.md`.
+
 ## 5. Limitations
 
 1. **Allograph merging.** Sign inventory is raised only through allographs, and no tested method
@@ -400,27 +478,45 @@ solver recovers from the sister therefore does not come from shared exact phrase
    oracle sound correspondences. Its distance is a free parameter. Sister tiers are optimistic.
 3. **Oracle script type and unit level in Task D.** Solvers are told the script type; real
    decipherers are not.
-4. **Text-beginner calibration.** Most corpora miss the text-beginner target (35-37% meet it), and
+4. **No positive controls against published results.** Our reimplementations have not been shown to
+   reproduce any published number. The only checks are unit tests: EM recovers more than 80% of
+   tokens on a 12-symbol synthetic substitution cipher when given the exact plaintext model, and the
+   entropy statistic gives the expected extremes on rigid and i.i.d. sequences. A low score could
+   therefore reflect our implementation rather than the method.
+5. **Genre.** Four of the five sources are literary (an epic, classical poetry, Caesar and Vergil, an
+   oral epic), cut into short seal-like clauses. Only Sumerian includes real seal inscriptions. Indus
+   texts are mostly short inscriptions on seals and tablets. A genre check on Sumerian seal-only
+   corpora (Section 4.8) gives recovery of the same order as the full source, but those corpora miss
+   the calibration targets.
+6. **One language, one fixed script per corpus.** The Indus script was used for about 700 years and
+   changed over that time (Kenoyer & Meadow 2010, p. 8), and it may have been used to write more than
+   one language (Kenoyer 2020b, pp. 237, 240, 254). Every synthetic corpus encodes a single language in
+   a single fixed script. A pooled corpus that mixes languages or stages of the script is not modelled,
+   and could be harder than anything tested here.
+7. **Few clusters.** Intervals resample five source languages. With so few clusters a percentile
+   cluster bootstrap can produce intervals that are too narrow; we did not measure their coverage, so
+   every interval should be read as approximate. Logo-syllabic subsets (Section 4.7) have only 15
+   corpora per point.
+8. **Text-beginner calibration.** Most corpora miss the text-beginner target (35-37% meet it), and
    generator v2 did not fix this.
-5. **Median length is unsourced.** The target of 4 was introduced during project planning. It is
-   not only checked but also used: it sets the spread of the generated length distribution, through
-   sigma = (ln 17 - ln 4) / z. Removing it from the calibration objective would change nothing,
-   because every corpus already meets it and an unmet target is the only kind that enters the
+9. **Median length is derived, not published.** The target of 4 is derived from Yadav et al. 2010,
+   Fig. 2 (2,591 texts, mean 3.92, max 14), which is not like-for-like with 2,906 texts at 4.6 signs;
+   it was originally unsourced. It is used, not only checked: it sets the spread of the generated
+   length distribution, through sigma = (ln 17 - ln 4) / z. Removing it from the calibration objective
+   would change nothing, because every corpus already meets it and only unmet targets enter the
    objective. Removing it from the generator would require another assumption for the spread, whose
    effect is unknown without rerunning.
-6. **CDLI licence.** Academic reuse with citation, not an open licence; Sumerian is excluded from
-   published challenge rounds.
-7. **The 2,591 vs 2,906 discrepancy** in the source of the M77 duplicate rate.
-8. **Subset positions are estimated** from qualitative statements and raw counts.
-9. **The single-period subset cannot be placed**; every subset is smaller than 2,906 texts.
-10. **Post-hoc selection rule.** The revised rule was written after the original rule had run; the
-    original rule is primary throughout.
-11. **Sensitivity sweep under sister-v1.** The map and the archaeological predictions were run before
-    the sister split was corrected and have no before-cognate scores.
-12. **Plug-in entropy is biased at this scale**, so any fixed entropy cut-off depends on corpus size.
-13. **Five languages, one genre each; controls built by us.** A classifier is only as general as its
-    controls.
-14. **No neural decipherment model is evaluated.** The EM cognate-matcher contains no neural network.
+10. **CDLI licence.** Academic reuse with citation, not an open licence; Sumerian is excluded from
+    published challenge rounds.
+11. **The 2,591 vs 2,906 discrepancy** in the source of the M77 duplicate rate and the median.
+12. **Subset positions are estimated** from qualitative statements and raw counts.
+13. **The single-period subset cannot be placed**; every subset is smaller than 2,906 texts.
+14. **Post-hoc decisions.** The revised selection rule, generator v2, the sister corrections and
+    several analyses were added after results were seen. Every such decision is listed in the
+    analysis-history appendix. The original rule is primary throughout.
+15. **Plug-in entropy is biased at this scale**, so any fixed entropy cut-off depends on corpus size.
+16. **Controls built by us.** A classifier is only as general as its controls.
+17. **No neural decipherment model is evaluated.** The EM cognate-matcher contains no neural network.
 
 ## 6. Blind challenge and reproducibility
 
@@ -445,6 +541,36 @@ those statistics leave open. A statement about how hard the Indus script is to d
 to name its corpus (object types, period, duplication), its knowledge tier, and its selection rule.
 None of these results bears on what the Indus signs mean.
 
+
+## Appendix A. Analysis history
+
+Every decision taken after any result was seen, in order, with the commit that records it. Decisions
+taken before any result are marked "pre-results". Dates are 2026, UTC.
+
+| # | Date | Decision | Pre-results or post-results | Commit |
+|---|---|---|---|---|
+| 1 | 3 Oct | Adversarial design review (Believer, Skeptic, Investor, Judge) fixes six safeguards: band and feasibility reporting, three calibration regimes, structural controls, knowledge tiers, "no method succeeds" regions reported, probe-resistant challenge | Pre-results | b1194b0 |
+| 2 | 3 Oct | Calibration targets corrected from unverified project-brief values (5,500 texts, mean 4.4) to Mahadevan (1977) via Yadav et al. 2010 and Rao 2018 (2,906 texts, mean 4.60); all results regenerated. The median target (4) was kept from the brief, unsourced | Post-results (development runs) | 05b91d3 |
+| 3 | 3 Oct | Two EM corrections during development (pooled rare-unit state pinned; candidate selection by normalised bigram gain) produce the revised rule. The rule as first written is kept as the original rule and both are reported | Post-results (development runs) | e625f56 |
+| 4 | 3 Oct | Method code frozen at `frozen-v1`; Sumerian excluded from published challenge rounds pending CDLI terms | Pre-final-run | e625f56 |
+| 5 | 3 Oct | Final run, 1,554 corpora | - | b1f8704 |
+| 6 | 3 Oct | Length sweep added to the replication profile; fresh-seed replication (seeds 3-5) run | Post-results | bbd0e49, d997015 |
+| 7 | 3 Oct | Generator v2 written to fix the missed text-beginner target (did not fix it) | Post-results | 7246062, fde7031 |
+| 8 | 3 Oct | Sensitivity sweep over duplicate rate and inventory added; headline order changed to lead with generator dependence | Post-results | 4dcb9a1 |
+| 9 | 3 Oct | Plausible box (duplicates 0.2-0.4, inventory 400-700) written into the profile after a test rendering of the first 24 sweep records and a reachability count on 1,216 records, before sweep recovery was tabulated. First committed together with the sweep results, so the order rests on the session log, not on git | Partly pre-results (see text) | a0e1233 |
+| 10 | 3 Oct | M77 duplicate rate (0.354) measured from the vector data of Yadav et al. 2010, Fig. 2, and marked on the map as a reference point | Post-results | a0e1233 |
+| 11 | 4 Oct | After input from J. M. Kenoyer: "stray finds" and "secure context" wording removed; object-type and period notes added; archaeological subsets placed on the map as predictions | Post-results | 00f243f, 30a7ec5 |
+| 12 | 4 Oct | Original vs revised rule reanalysed (no new runs). The original rule made primary throughout; "original rule stays near 5% in the box" found to hold for generator v1 only | Post-results | 8007ed7 |
+| 13 | 4 Oct | Audit of the 93% corpus finds no key leak or scoring bug, but a sister clause-split defect and the size of the oracle cognate step | Post-results | 900d104 |
+| 14 | 4 Oct | Sister-v2 (split by clause content) and before-cognate scoring; sister-v1 numbers relabelled "upper bound (sister-v1, known overlap)"; primary redefined as original rule before the cognate step | Post-results | 0a5c913, 87d5706 |
+| 15 | 5 Oct | Sister-v3 robustness check and equal-token size points | Post-results | 1cb6faf |
+| 16 | 5 Oct | Headline 3 wording changed from "roughly fivefold" to "roughly three- to fivefold" after replication (3.5x) and sister-v3 (3.7x) | Post-results | 457be13 |
+| 17 | 5 Oct | Residual-overlap figure corrected from 38-82% (one script type and seed, estimated under the old split) to 30-56% (12 corpora per language, measured under sister-v2) | Post-results | 40acfba |
+| 18 | 5 Oct | Median target relabelled, first as "unsourced", then as "derived from Yadav et al. 2010, Fig. 2"; it was originally taken from the project brief without a source | Post-results | 40acfba, this revision |
+| 19 | 5 Oct | Sensitivity sweep rerun under sister-v2 with before-cognate scores | Post-results | this revision |
+| 20 | 5 Oct | Logo-syllabic headline split and Sumerian seal-only genre check added | Post-results | this revision |
+| 21 | 5 Oct | One configuration typo caused 60 failed jobs in an equal-token profile; fixed and rerun, failed records discarded | Operational | 1cb6faf |
+
 ---
 
 ## Back matter
@@ -459,7 +585,7 @@ repository under the tags above; no third-party text is redistributed.
 **References.** Only sources read, or marked "via". See `reports/drafts/citation_check_2026-10-05.md`
 for verification status.
 
-**Appendices.** Calibration, full result tables, sensitivity tables, the rule comparison, the audit,
+**Appendices.** Analysis history (Appendix A), calibration, full result tables, sensitivity tables, the rule comparison, the audit,
 the sister-v1/v2/v3 comparisons and method deviations.
 
 [Stop for review.]

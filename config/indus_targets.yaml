@@ -111,12 +111,14 @@ targets:
     value: 4
     tolerance: 1
     role: hard
-    citation: BRIEF
-    verified: unsourced
+    citation: YADAV2010
+    verified: derived
     notes: >-
-      UNSOURCED (introduced during project planning; not from a primary or secondary source).
-      YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes of EBUDS; we did not find a published
-      median. The tolerance of 1 admits 3-5. Used by the generator to set the spread of text lengths
+      DERIVED from YADAV2010 Fig. 2 (2,591 texts, mean 3.92, max 14; not like-for-like with 2,906
+      texts at 4.6 signs): the M77 raw series (by length 1..14: 177, 608, 473, 429, ...) has its
+      median at 4. HISTORY: the value 4 was originally taken from the project brief without a source
+      (labelled unsourced on 2026-10-05) and relabelled as derived the same day. No published median
+      was found. The tolerance of 1 admits 3-5. Used by the generator to set the spread of text lengths
       (sampler.lognormal_params), not only checked.
 
   max_length:

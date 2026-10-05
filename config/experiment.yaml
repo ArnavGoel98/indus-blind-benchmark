@@ -92,6 +92,20 @@ profiles:
     em_restarts: 3
     em_iterations: 60
 
+  sensitivity_sister_v2:   # same sweep as `sensitivity`, sister-v2 split, before-cognate scores recorded; methods frozen
+    sister_version: v2
+    seeds: [0, 1, 2]
+    indus_point: {n_texts: 2906, mean_length: 4.6}
+    languages: [sanskrit, tamil, sumerian, latin, finnish]
+    script_types: [logographic, syllabic, logosyllabic, alphabetic]
+    knowledge_tiers: [candidates, none]
+    dup_grid: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+    inventory_grid: [400, 500, 600, 700, 800]
+    # Same box as `sensitivity`, fixed before the first sweep's results were seen.
+    plausible_box: {dup: [0.2, 0.4], inventory: [400, 700]}
+    em_restarts: 3
+    em_iterations: 60
+
   sister_v2_main:   # sister-v2 (clause split by content); related + candidates tiers only; methods frozen
     sister_version: v2
     generator_version: v1

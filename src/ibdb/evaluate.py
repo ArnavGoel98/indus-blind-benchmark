@@ -114,6 +114,20 @@ def feasibility_spec(spec, scenario: int):
                    word_divider=bool(r.random() < 0.3), direction="rtl" if r.random() < 0.7 else "ltr")
 
 
+def token_acc_before_cognate(p, kn, key, logical) -> float | None:
+    """Score BEFORE the solver's cognate step (harness-side; the method is unchanged): if the chosen
+    reference carries sound correspondences, undo the sister->hidden translation and score the raw
+    sister units. None when no cognate step ran."""
+    ref = next((r for r in kn.references if r.name == p.extra.get("reference")), None)
+    if ref is None or not ref.to_hidden or not p.sign_values:
+        return None
+    inv: dict[str, str] = {}
+    for a, b in ref.to_hidden.items():
+        inv.setdefault(b, a)
+    raw = {sg: inv.get(v, v) for sg, v in p.sign_values.items()}
+    return score_sign_values(raw, key, logical)["token_acc"]
+
+
 def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_version: str = "v1") -> dict[str, Any]:
     t0 = time.time()
     knobs, spec = load_knobs(job.regime, job.source, job.script_type, generator_version)
@@ -168,15 +182,9 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
                 s = score_sign_values(p.sign_values, key, logical)
                 rec["CD"][tier][m.name] = {"family": p.family, "reference": p.extra.get("reference"),
                                            "family_correct": p.family == key.family, **s}
-                ref = next((r for r in kn.references if r.name == p.extra.get("reference")), None)
-                if ref is not None and ref.to_hidden and p.sign_values:
-                    # Score BEFORE the solver's cognate step (harness-side; the method is unchanged):
-                    # undo the sister->hidden translation and score the raw sister units.
-                    inv: dict[str, str] = {}
-                    for a, b in ref.to_hidden.items():
-                        inv.setdefault(b, a)
-                    raw = {sg: inv.get(v, v) for sg, v in p.sign_values.items()}
-                    rec["CD"][tier][m.name]["token_acc_before_cognate"] = score_sign_values(raw, key, logical)["token_acc"]
+                bc = token_acc_before_cognate(p, kn, key, logical)
+                if bc is not None:
+                    rec["CD"][tier][m.name]["token_acc_before_cognate"] = bc
                 rec["timing"][f"{m.name}:{tier}"] = time.time() - t
     rec["timing"]["total"] = time.time() - t0
     return rec

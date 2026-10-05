@@ -28,6 +28,7 @@ visible.
 from __future__ import annotations
 
 import json
+import os
 import math
 import time
 import traceback
@@ -44,6 +45,7 @@ from .evaluate import D_METHODS, KnightEM, _single_thread_blas
 from .generator import sampler
 from .generator.build import Knobs, make_corpus
 from .generator.calibrate import load_knobs
+from .evaluate import token_acc_before_cognate
 from .knowledge import knowledge_for
 from .paths import ensure, runs_dir
 from .scoring import cluster_bootstrap, score_sign_values
@@ -207,7 +209,8 @@ def run_sens_job(job: SensJob, em_restarts: int = 3, em_iterations: int = 60) ->
     t0 = time.time()
     knobs, spec = load_knobs("full", job.source, job.script_type)
     fit = fit_inventory(job, knobs, spec)
-    rec: dict[str, Any] = {"job": asdict(job), "status": fit["status"], "trace": fit["trace"], "CD": {}, "timing": {}}
+    rec: dict[str, Any] = {"job": asdict(job), "sister_version": os.environ.get("IBDB_SISTER_VERSION", "v1"),
+                           "status": fit["status"], "trace": fit["trace"], "CD": {}, "timing": {}}
     rec["timing"]["fit"] = time.time() - t0
     if fit["status"] not in ("ok", "tolerance_miss"):
         rec.update({k: v for k, v in fit.items() if k.startswith("inventory_at")})
@@ -226,7 +229,11 @@ def run_sens_job(job: SensJob, em_restarts: int = 3, em_iterations: int = 60) ->
             t = time.time()
             p = m.analyze(corpus, kn)
             s = score_sign_values(p.sign_values, key, logical)
-            rec["CD"][tier][m.name] = {"family": p.family, "family_correct": p.family == key.family, **s}
+            rec["CD"][tier][m.name] = {"family": p.family, "reference": p.extra.get("reference"),
+                                       "family_correct": p.family == key.family, **s}
+            bc = token_acc_before_cognate(p, kn, key, logical)
+            if bc is not None:
+                rec["CD"][tier][m.name]["token_acc_before_cognate"] = bc
             rec["timing"][f"{m.name}:{tier}"] = time.time() - t
     rec["timing"]["total"] = time.time() - t0
     return rec
@@ -270,6 +277,7 @@ def run(name: str = "sensitivity", workers: int = 4, limit: int | None = None, l
     from multiprocessing import get_context
     _single_thread_blas()
     prof = profile(name)
+    os.environ["IBDB_SISTER_VERSION"] = prof.get("sister_version", "v1")   # inherited by spawned workers
     jobs = build_sens_jobs(prof)
     done = {json.dumps(r["job"], sort_keys=True) for r in load_records(name) if r.get("status") != "error"}
     todo = [j for j in jobs if j.key() not in done]
