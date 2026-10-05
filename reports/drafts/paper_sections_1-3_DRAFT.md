@@ -48,9 +48,10 @@ fold. The paper therefore reports a map over them rather than a single Indus num
 identically distributed (i.i.d.) signs at Indus scale. (2) Without a related language among the
 candidates, mean recovery stays at or below 4.8% in every run; no corpus reaches 50% of tokens;
 the best single corpus reaches 28%. (3) Published Indus statistics do not fix how decipherable an
-Indus-scale corpus is. Two generators that both match them differ roughly fivefold when a related
-language is available (2.4% vs 12.9% of sign tokens, frozen rule, no oracle correspondences;
-replicated 2.7% vs 9.4%). (4) Under the frozen rule, longer inscriptions help more than more
+Indus-scale corpus is. Two generators that both match them differ roughly three- to fivefold when a
+related language is available (frozen rule, no oracle correspondences: 2.4% vs 12.9% of sign tokens
+on the main seeds, 5.3x; 2.7% vs 9.4% on fresh seeds, 3.5x; 2.6% vs 9.3% with the stricter
+sister-v3, 3.7x). (4) Under the frozen rule, longer inscriptions help more than more
 inscriptions in both generators. (5) Archaeologically defined subsets of the corpus are predicted
 to sit at different points on the map; these are predictions, not measurements.
 

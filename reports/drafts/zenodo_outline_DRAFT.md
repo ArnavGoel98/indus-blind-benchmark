@@ -26,7 +26,7 @@ One line: Rao and Yadav entropy/Markov studies, Farmer-Sproat-Witzel, Sproat's n
 ## 4. Results
 - **4.1 Entropy statistics fail at Indus scale (UNAFFECTED by the sister-tier defect: Task A uses no reference language):** same entropy ratio (about 0.47) for synthetic languages and i.i.d. signs; the classifier is at chance under holdout (0.57 [0.32, 0.81]; 0.49 on fresh seeds). Rule-independent.
 - **4.2 No related language (UNAFFECTED by the sister-tier defect: the hidden language and its sister are excluded from this tier):** "Without a related language among candidates, mean recovery stays at or below 4.8% in every run; no corpus reaches 50% of tokens; the best single corpus reaches 28%." Both rules, both generators, fresh seeds.
-- **4.3 Published Indus statistics do not fix how decipherable an Indus-scale corpus is (approved wording):** "Two generators that both match them differ roughly fivefold when a related language is available (2.4% vs 12.9% of sign tokens, frozen rule, no oracle correspondences; replicated 2.7% vs 9.4%)." Sister-v3 robustness: 2.6% vs 9.3% (3.7x; intervals do not overlap). Secondary: with oracle sound correspondences 2.8% vs 18.9%; revised rule post hoc.
+- **4.3 Published Indus statistics do not fix how decipherable an Indus-scale corpus is (approved wording):** "Two generators that both match them differ roughly three- to fivefold when a related language is available (frozen rule, no oracle correspondences: 2.4% vs 12.9% on the main seeds, 5.3x; 2.7% vs 9.4% on fresh seeds, 3.5x; 2.6% vs 9.3% with sister-v3, 3.7x)." Sister-v3 intervals do not overlap. Secondary: with oracle sound correspondences 2.8% vs 18.9%; revised rule post hoc.
 - **4.4 Longer inscriptions vs more inscriptions:** "Under the frozen rule, longer inscriptions help more than more inscriptions in both generators." At equal tokens (2,906 x 10 vs 6,317 x 4.6, run directly), candidates tier, primary: v1 18.0% vs 2.6% (difference 15.4 [5.8, 24.9]); v2 35.6% vs 18.3% (17.4 [8.5, 25.0]); interpolated on fresh seeds: v1 17.7% vs 3.4%, v2 32.2% vs 11.8%. Sister-v3: v1 17.5% vs 3.9%, v2 34.6% vs 10.5% (filter is corpus-dependent and favours the long-text corpus; check of survival, not of size). Without a relative, both <= 6.5%.
 - **4.5 Archaeological predictions (prediction, not measurement):** seals-only regions above tablets-only regions under both rules, testable once per-object data is available.
 
@@ -56,5 +56,5 @@ One line: any statement about Indus difficulty must name its corpus (object type
 
 ## Open points before writing
 1. Primary numbers everywhere: original (frozen) rule, before the cognate step; oracle-correspondence scores secondary and labelled.
-2. Sister-v3 robustness done (480 jobs, 0 errors after one config fix). Headlines 3 and 4 hold; headline 3's ratio falls from 5.3x to 3.7x.
+2. Sister-v3 robustness done (480 jobs, 0 errors after one config fix). Headlines 3 and 4 hold; headline 3 wording is now "roughly three- to fivefold" (5.3x main, 3.5x replication, 3.7x sister-v3).
 3. Prose: sections 1-3 drafted (`reports/drafts/paper_sections_1-3_DRAFT.md`); stopped for review.
