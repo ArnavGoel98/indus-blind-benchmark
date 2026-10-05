@@ -57,4 +57,4 @@ One line: any statement about Indus difficulty must name its corpus (object type
 ## Open points before writing
 1. Primary numbers everywhere: original (frozen) rule, before the cognate step; oracle-correspondence scores secondary and labelled.
 2. Sister-v3 robustness done (480 jobs, 0 errors after one config fix). Headlines 3 and 4 hold; headline 3 wording is now "roughly three- to fivefold" (5.3x main, 3.5x replication, 3.7x sister-v3).
-3. Prose: sections 1-3 drafted (`reports/drafts/paper_sections_1-3_DRAFT.md`); stopped for review.
+3. Prose: sections 1-7 drafted (`reports/drafts/paper_DRAFT.md`); stopped for review. Citation status: `reports/drafts/citation_check_2026-10-05.md`.

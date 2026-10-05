@@ -112,10 +112,12 @@ targets:
     tolerance: 1
     role: hard
     citation: BRIEF
-    verified: false
+    verified: unsourced
     notes: >-
-      UNVERIFIED (from the earlier brief). YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes
-      of EBUDS; we did not find a published median. The tolerance of 1 admits 3-5.
+      UNSOURCED (introduced during project planning; not from a primary or secondary source).
+      YADAV2010 Fig. 2 shows lengths 3 and 5 as the modes of EBUDS; we did not find a published
+      median. The tolerance of 1 admits 3-5. Used by the generator to set the spread of text lengths
+      (sampler.lognormal_params), not only checked.
 
   max_length:
     value: 17
