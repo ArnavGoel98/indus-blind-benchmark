@@ -15,7 +15,7 @@ statistics do not separate synthetic languages from random signs at Indus scale.
 language among the candidates, mean recovery of sign values stays at or below 4.8% in every run. At
 equal total size, longer inscriptions help more than more inscriptions, in both text samplers and in
 logo-syllabic corpora. And published Indus statistics do not fix how decipherable an Indus-scale
-corpus is: two samplers that both match them differ roughly three- to fivefold when a related
+corpus is: two samplers that the published statistics cannot tell apart differ roughly three- to fivefold when a related
 language is available, and for logo-syllabic corpora only when it is the sole reference. A fifth,
 archaeological result is a prediction, not a measurement. The main solver matches the best published
 accuracy on English substitution ciphers. All limitations, including an optimistic synthetic relative,
@@ -85,7 +85,7 @@ one sampler matter less under the frozen rule. So we report a map, not a single 
 3. Under the frozen rule, longer inscriptions help more than more inscriptions in both samplers,
    logo-syllabic corpora included (Table 6).
 4. Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two samplers
-   that both match them differ roughly three- to fivefold when a related language is available
+   that the published statistics cannot tell apart differ roughly three- to fivefold when a related language is available
    (Table 7). For logo-syllabic corpora, the most Indus-relevant type, this contrast appears only
    when the related language is the sole reference; among candidate languages it is unresolved.
 5. Archaeologically defined subsets of the corpus are predicted to sit at different points on the
@@ -307,7 +307,7 @@ The sensitivity sweep ran with both sister languages; the corrected one supplies
 
 The entropy result is the clearest, and it involves no reference language. At the Indus point the
 plug-in ratio of conditional to unigram entropy, over the full sign alphabet, is 0.470 for an i.i.d.
-420-sign control and 0.477 for the synthetic languages (Table 4, Figure 3). At this size the
+420-sign control and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
 statistic cannot tell language from independent signs. After Rao's merge to the 100 most frequent
 signs, the i.i.d. control even scores higher.
 
@@ -326,9 +326,9 @@ one structurally non-linguistic control family as language in all its corpora, t
 in the entropy classifier's case. Language detection at Indus scale is unresolved, and the `full`
 score is a product of calibration.
 
-![Figure 3](figures/fig3_entropy_ratio.png)
+![Figure 1](figures/fig1_entropy_ratio.png)
 
-*Figure 3. Entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
+*Figure 1. Entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
 calibration, seeds 0-2): full sign set (left) and Rao's merge to the 100 most frequent signs
 (right). Dots are corpora (60 synthetic-language corpora, 3 i.i.d.-control corpora); bars are means.
 Score label: not applicable, since Task A uses no reference language.*
@@ -382,8 +382,7 @@ intervals resampling whole source languages.*
 
 ### 4.4 Difficulty is not fixed by published Indus statistics
 
-Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two samplers that
-both match them differ roughly three- to fivefold when a related language is available. For
+Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two samplers that the published statistics cannot tell apart (neither meets every target in more than 13% of language corpora) differ roughly three- to fivefold when a related language is available. For
 logo-syllabic corpora, the most Indus-relevant type, this contrast appears only when the related
 language is the sole reference; among candidate languages it is unresolved.
 
@@ -407,7 +406,7 @@ every corpus and neither meets every target in more than 13% of language corpora
 cannot choose between them. They also respond differently to size: from 500 to 50,000 texts, sampler
 A rises only from 2.5% to 3.7%. Sampler B rises from 3.5% to 18.7%.
 
-Within one sampler, duplicate rate and inventory matter much less (Table 8, Figure 1). Across the
+Within one sampler, duplicate rate and inventory matter much less (Table 8, Figure 3). Across the
 plausible box, sampler A stays between 2.9% and 4.2% in the box panel (the 10 combinations valid in
 every box cell). The box does not bound recovery across samplers, though. The 37 sampler-B corpora
 whose measured duplicate rate and inventory fall inside it (seeds 0-5) average 11.9%, and the best
@@ -423,9 +422,9 @@ reaches 72.0%.
 | Revised rule (post hoc): range of cell means | 5.6-14.2% | 8.7-21.8% |
 | Revised rule: largest within-combination swing | 44 points | 62 points |
 
-![Figure 1](figures/fig1_sensitivity_map.png)
+![Figure 3](figures/fig3_sensitivity_map.png)
 
-*Figure 1. Sensitivity map, sampler A, `candidates` tier, original rule: mean % of sign tokens
+*Figure 3. Sensitivity map, sampler A, `candidates` tier, original rule: mean % of sign tokens
 recovered over all valid corpora in each cell. Score label: primary (no oracle sound
 correspondences). Orange: the plausible box. Lines: published sign-list sizes (top) and duplicate
 rates (right); solid lines are verified, dotted lines are read via a secondary source or come from an
@@ -642,7 +641,7 @@ licences and never redistributed.
 On synthetic corpora that match the published Indus statistics, mean recovery without a related
 language stays at or below 4.8% in every run, and longer inscriptions help more than more
 inscriptions. Published Indus statistics do not fix how decipherable an Indus-scale corpus is: two
-samplers that both match them differ roughly three- to fivefold when a related language is
+samplers that the published statistics cannot tell apart differ roughly three- to fivefold when a related language is
 available, and for logo-syllabic corpora, the most Indus-relevant type, this contrast appears only
 when the related language is the sole reference; among candidate languages it is unresolved. A
 statement about how hard the Indus script is to decipher therefore has to name its corpus (object
@@ -656,8 +655,8 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 
 | # | Date | Decision | Pre-results or post-results | Commit |
 |---|---|---|---|---|
-| 1 | 3 Oct | Adversarial design review (Believer, Skeptic, Investor, Judge) fixes six safeguards: band and feasibility reporting, three calibration regimes, structural controls, knowledge tiers, "no method succeeds" regions reported, probe-resistant challenge | Pre-results | b1194b0 |
-| 2 | 3 Oct | Calibration targets corrected from unverified project-brief values (5,500 texts, mean 4.4) to Mahadevan (1977) via Yadav et al. 2010 and Rao 2018 (2,906 texts, mean 4.60); all results regenerated. The median target (4) was kept from the brief, unsourced | Post-results (development runs) | 05b91d3 |
+| 1 | 3 Oct | Design review fixes six safeguards: band and feasibility reporting, three calibration regimes, structural controls, knowledge tiers, "no method succeeds" regions reported, probe-resistant challenge | Pre-results | b1194b0 |
+| 2 | 3 Oct | Calibration targets corrected from unverified initial planning values (5,500 texts, mean 4.4) to Mahadevan (1977) via Yadav et al. 2010 and Rao 2018 (2,906 texts, mean 4.60); all results regenerated. The median target (4) was kept from the initial planning values, unsourced | Post-results (development runs) | 05b91d3 |
 | 3 | 3 Oct | Two EM corrections during development (pooled rare-unit state pinned; candidate selection by normalised bigram gain) produce the revised rule. The rule as first written is kept as the original rule and both are reported | Post-results (development runs) | e625f56 |
 | 4 | 3 Oct | Method code frozen at `frozen-v1`; Sumerian excluded from published challenge rounds pending CDLI terms | Pre-final-run | e625f56 |
 | 5 | 3 Oct | Final run, 1,554 corpora | - | b1f8704 |
@@ -673,7 +672,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 15 | 5 Oct | Sister-v3 robustness check and equal-token size points | Post-results | 1cb6faf |
 | 16 | 5 Oct | Headline 3 wording changed from "roughly fivefold" to "roughly three- to fivefold" after replication (3.5x) and sister-v3 (3.7x) | Post-results | 457be13 |
 | 17 | 5 Oct | Residual-overlap figure corrected from 38-82% (one script type and seed, estimated under the old split) to 30-56% (12 corpora per language, measured under sister-v2) | Post-results | 40acfba |
-| 18 | 5 Oct | Median target relabelled, first as "unsourced", then as "derived from Yadav et al. 2010, Fig. 2"; it was originally taken from the project brief without a source | Post-results | 40acfba, this revision |
+| 18 | 5 Oct | Median target relabelled, first as "unsourced", then as "derived from Yadav et al. 2010, Fig. 2"; it was originally taken from the initial planning values without a source | Post-results | 40acfba, this revision |
 | 19 | 5 Oct | Sensitivity sweep rerun under sister-v2 with before-cognate scores | Post-results | this revision |
 | 20 | 5 Oct | Logo-syllabic headline split and Sumerian seal-only genre check added | Post-results | this revision |
 | 21 | 5 Oct | One configuration typo caused 60 failed jobs in an equal-token profile; fixed and rerun, failed records discarded | Operational | 1cb6faf |

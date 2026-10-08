@@ -1,7 +1,7 @@
 """The three figures embedded in the paper (from saved records and aggregates; analysis only).
-fig1_sensitivity_map.png  primary sensitivity map, sampler A, plausible box and published reference points
+fig3_sensitivity_map.png  primary sensitivity map, sampler A, plausible box and published reference points
 fig2_length_vs_size.png   longer vs more inscriptions at equal tokens, both samplers, primary, 95% intervals
-fig3_entropy_ratio.png    entropy ratio at the Indus point, synthetic languages vs i.i.d. control
+fig1_entropy_ratio.png    entropy ratio at the Indus point, synthetic languages vs i.i.d. control
 Usage: python scripts/paper_figures.py
 """
 import json
@@ -62,7 +62,7 @@ def fig1():
     ax.set_ylabel("duplicate-text rate")
     cb = fig.colorbar(im, ax=ax, pad=0.28, shrink=0.85)
     cb.set_label("% sign tokens recovered", color=INK)
-    fig.savefig(OUT / "fig1_sensitivity_map.png", dpi=200, bbox_inches="tight")
+    fig.savefig(OUT / "fig3_sensitivity_map.png", dpi=200, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -107,7 +107,7 @@ def fig3():
         ax.yaxis.grid(True, color=GRID, lw=0.6); ax.set_axisbelow(True)
     axes[0].set_ylabel("H(X2|X1) / H(X1)")
     fig.tight_layout()
-    fig.savefig(OUT / "fig3_entropy_ratio.png", dpi=200, bbox_inches="tight")
+    fig.savefig(OUT / "fig1_entropy_ratio.png", dpi=200, bbox_inches="tight")
     plt.close(fig)
 
 
