@@ -401,9 +401,8 @@ No sampler-A corpus reaches 50% of tokens in either seed set; 6 of 120 sampler-B
 logo-syllabic exception has a simple cause, given in Section 4.7. In the `related` tier the contrast
 is smaller in ratio but larger in points: 15.9% against 30.2%.
 
-The samplers differ only in how text windows are drawn. Both meet the size and length targets in
-every corpus and neither meets every target in more than 13% of language corpora, so the published statistics
-cannot choose between them. They also respond differently to size: from 500 to 50,000 texts, sampler
+The samplers differ only in how text windows are drawn, and both meet the size and length targets in
+every corpus. They also respond differently to size: from 500 to 50,000 texts, sampler
 A rises only from 2.5% to 3.7%. Sampler B rises from 3.5% to 18.7%.
 
 Within one sampler, duplicate rate and inventory matter much less (Table 8, Figure 3). Across the
