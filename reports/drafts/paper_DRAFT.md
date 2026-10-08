@@ -59,11 +59,14 @@ in invented scripts, calibrate each corpus to published Indus statistics, hide i
 measure what existing methods recover. The result is a statement about methods on Indus-like data.
 This work does not decipher the Indus script or say anything about what language it records, or whether it records a language at all. Nothing in it bears on what the signs mean.
 
-Two scope statements apply throughout. "Decipherment" here means substitution-style recovery of sign
+Three scope statements apply throughout. "Decipherment" here means substitution-style recovery of sign
 values only, not grammar, meaning or the identity of an unknown language. And the benchmark
 languages (Sanskrit, Old Tamil, Sumerian, Latin, Finnish) were chosen for licences and for spread
 across families and script types; they imply nothing about the language of the Indus inscriptions,
-and how well any of them is recovered says nothing about Harappan.
+and how well any of them is recovered says nothing about Harappan. Finally, the benchmark tests only
+automated methods, and its decipherment tasks only methods that compare an unknown script with known
+languages. Decipherment that analyses the script itself while reconstructing the language is not
+measured.
 
 Defining "Indus-like" turned out to be the hard part. Published statistics fix the number of texts,
 their length, the sign inventory and several frequency and positional measures. They do not fix how
@@ -123,6 +126,10 @@ about neural methods.
 **Script type and segmentation.** We estimate script type from inventory size with a Chao (1984)
 estimate, and segment with branching entropy (Harris 1955; Tanaka-Ishii 2005).
 
+**Sign lists.** Published sign lists differ mainly in how they group variants (Mahadevan 1977;
+Parpola 1994; Wells 2006, 2015). We have not read these works; their sign counts are taken from
+Yadav et al. (2010) and Rao (2018).
+
 **Archaeological context.** Kenoyer & Meadow (2010) and Kenoyer (2020a, 2020b) describe how
 inscribed objects at Harappa differ by type and period: seals are almost all unique, tablets often
 occur as copies or same-mold duplicates, and the script changed over roughly 700 years. We use these
@@ -177,7 +184,9 @@ The duplicate-text rate is not a target, because no source fixes it for the whol
 published values serve as reference points. For Mahadevan's concordance we read 0.354 from the
 vector data of Yadav et al. (2010, Fig. 2), or 0.281 without its four most repeated texts. For the
 ICIT corpus an unverified preprint gives 0.237 (Nair 2026). The Yadav et al. figure plots 2,591
-texts, not 2,906, without saying which are left out.
+texts, not 2,906, without saying which are left out. For scale, the ICIT corpus holds about 5,692
+texts on 4,705 artefacts (personal communication, 2026; unpublished). This is a reference point
+only; the calibration target stays Mahadevan's 2,906 texts.
 
 ### 3.4 Calibration regimes
 
@@ -437,7 +446,10 @@ unverified preprint. Inventory is raised by allographs only, and no tested metho
 
 No seals-only, tablets-only or single-period corpus was tested; the regions below place qualitative
 published statements on sampler A's map. S, seals only, is the column with no duplicates ("almost all
-... unique" seals; Kenoyer & Meadow 2010). T, tablets only, is the columns with duplicates 0.4-0.5, at
+... unique" seals; Kenoyer & Meadow 2010). That statement is about seals as objects, not
+necessarily seal texts. Each seal text was repeated whenever the seal was pressed into clay, but
+such sealings rarely survive; the main surviving group is 93 from Lothal (Frenez & Tosi 2005, via
+Kenoyer & Meadow 2010, p. 7). T, tablets only, is the columns with duplicates 0.4-0.5, at
 or above the pooled M77 rate of 0.354, a derived lower bound. Both span inventories 400-800.
 
 *Table 9. Predicted regions, `candidates` tier.*
@@ -447,7 +459,9 @@ or above the pooled M77 rate of 0.354, a derived lower bound. Both span inventor
 | S, seals only | 2.8-7.0% | 6.5-24.4% | 3.5-14.5% |
 | T, tablets only | 0.6-3.0% | 2.5-11.7% | 0.4-4.9% |
 
-S beats T at every inventory, under both rules. The strict panel (7 combinations valid in every
+S beats T at every inventory, under both rules. Because sealings duplicate seal texts, S is a best
+case for seal material: a corpus that includes surviving sealings would sit to the right of S, and
+the predicted seals-only advantage would shrink. The strict panel (7 combinations valid in every
 cell) is less clear-cut: S leads only at 400, 500 and 800 signs, most at 400 (4.3% against 0.6%),
 and is within 0.4 points of T at 600 and 700. Under the frozen rule the seals-only advantage is
 concentrated at small inventories. Without a related language every region stays at or below 6.3%;
@@ -667,6 +681,9 @@ unresolved. They add no new failure of the entropy statistic itself.
     Sproat's attested systems, used for Tasks A and B only, every control was built by us, and four
     of the six attested systems are much smaller than an Indus-scale corpus.
 17. **No neural decipherment model is evaluated.** The EM cognate-matcher contains no neural network.
+18. **Only automated, comparison-based decipherment.** The decipherment tasks score methods that
+    compare an unknown script with known languages. Decipherment that analyses the script itself while
+    reconstructing the language is not measured, and a low score here says nothing about it.
 
 ## 6. Blind challenge and reproducibility
 
@@ -710,7 +727,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 8 | 3 Oct | Sensitivity sweep over duplicate rate and inventory added; headline order changed to lead with generator dependence | Post-results | 4dcb9a1 |
 | 9 | 3 Oct | Plausible box (duplicates 0.2-0.4, inventory 400-700) written into the profile after a test rendering of the first 24 sweep records and a reachability count on 1,216 records, before sweep recovery was tabulated. First committed together with the sweep results, so the order rests on the session log, not on git | Partly pre-results (see text) | a0e1233 |
 | 10 | 3 Oct | M77 duplicate rate (0.354) measured from the vector data of Yadav et al. 2010, Fig. 2, and marked on the map as a reference point | Post-results | a0e1233 |
-| 11 | 4 Oct | After input from J. M. Kenoyer: "stray finds" and "secure context" wording removed; object-type and period notes added; archaeological subsets placed on the map as predictions | Post-results | 00f243f, 30a7ec5 |
+| 11 | 4 Oct | After reading Kenoyer & Meadow (2010) and Kenoyer (2020a, 2020b): "stray finds" and "secure context" wording removed; object-type and period notes added; archaeological subsets placed on the map as predictions | Post-results | 00f243f, 30a7ec5 |
 | 12 | 4 Oct | Original vs revised rule reanalysed (no new runs). The original rule made primary throughout; "original rule stays near 5% in the box" found to hold for generator v1 only | Post-results | 8007ed7 |
 | 13 | 4 Oct | Audit of the 93% corpus finds no key leak or scoring bug, but a sister clause-split defect and the size of the oracle cognate step | Post-results | 900d104 |
 | 14 | 4 Oct | Sister-v2 (split by clause content) and before-cognate scoring; sister-v1 numbers relabelled "upper bound (sister-v1, known overlap)"; primary redefined as original rule before the cognate step | Post-results | 0a5c913, 87d5706 |
@@ -726,6 +743,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 24 | 5 Oct | Sensitivity sweep aggregated with before-cognate scores. Seals-only and tablets-only regions defined as duplicates 0.0 and 0.4-0.5 at all inventories, for both sweeps; an earlier tablets-only range (1.4-4.9%) had used the 0.4 column only | Post-results | this revision |
 | 25 | 5 Oct | Nair (2026) availability checked: on request only, no public repository or licence | - | this revision |
 | 26 | 8 Oct | Sproat's attested non-linguistic corpora added, with the author's permission, as a held-out control family for Tasks A and B: frozen methods, rules fit on existing Indus-point runs, no retraining. Indus bar seals excluded; Pictish reported separately. Non-linguistic systems no longer described as random; scope sentence extended to whether the script records a language at all | Post-results | 2401ca1, this revision |
+| 27 | 8 Oct | After expert comment: scope narrowed to automated methods that compare a script with known languages (Section 1, limitation 18); seals-only prediction weakened because sealings duplicate seal texts (Section 4.5); ICIT corpus size added as an unpublished reference point, not a target (Section 3.3) | Post-results | this revision |
 
 ---
 
@@ -733,9 +751,9 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 
 **Data and code availability.** Code, configurations and run records are available from the author on request.
 
-**Acknowledgements.** Code was developed with AI coding assistance.
+**Acknowledgements.** I thank Richard Sproat for permission to use his non-linguistic symbol corpora. Code was developed with AI coding assistance.
 
-[Reviewer: names of J. M. Kenoyer, S. Houston or R. Sproat are added only after each confirms.]
+[Reviewer: names of J. M. Kenoyer or S. Houston are added only after each confirms.]
 
 
 **Appendices.** Analysis history (Appendix A); sweep maps and tables, primary (`reports/sensitivity/`) and upper bound (`reports/sensitivity/appendix_sister_v1/`); calibration, full result tables, sensitivity tables, the rule comparison, the audit,
@@ -744,7 +762,8 @@ the original, corrected and stricter sister comparisons, and method deviations.
 ## References
 
 Author-year style. Only sources cited in the text. "(not verified)" marks an entry, or the part of
-it in brackets, that we have not checked against the source itself.
+it in brackets, that we have not checked against the source itself. "(not read)" marks a work we have
+not read; what we use from it is taken from the secondary source named.
 
 Berg-Kirkpatrick, T., & Klein, D. (2013). Decipherment with a million random restarts. In
 *Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing* (pp. 874-878).
@@ -754,6 +773,11 @@ Journal of Statistics*, 11, 265-270. (not verified)
 
 Farmer, S., Sproat, R., & Witzel, M. (2004). The collapse of the Indus-script thesis: The myth of a
 literate Harappan civilization. *Electronic Journal of Vedic Studies*, 11(2) [pp. 19-57, not verified].
+
+Frenez, D., & Tosi, M. (2005). The Lothal sealings: Records from an Indus civilization town at the
+eastern end of the maritime trade circuits across the Arabian Sea. In M. Perna (Ed.), *Studi in Onore
+di Enrica Fiandra. Contributi di archeologia egea e vicinorientale* (pp. 65-103). Paris: Diffusion de
+Boccard. (not read; cited via Kenoyer & Meadow 2010)
 
 Harris, Z. S. (1955). From phoneme to morpheme. *Language*, 31(2), 190-222. (not verified)
 
@@ -783,17 +807,17 @@ Linear B. In *Proceedings of the 57th Annual Meeting of the Association for Comp
 Linguistics* (pp. 3146-3155).
 
 Mahadevan, I. (1977). *The Indus Script: Texts, Concordance and Tables* (Memoirs of the Archaeological
-Survey of India 77). New Delhi: Archaeological Survey of India. (not verified; figures read via Yadav
+Survey of India 77). New Delhi: Archaeological Survey of India. (not read; figures read via Yadav
 et al. 2010 and Rao 2018)
 
 Nair, A. (2026). How non-linguistic is the Indus sign system? A synthetic-baseline scorecard.
 arXiv:2604.17828 (preprint, not peer reviewed).
 
 Parpola, A. (1994). *Deciphering the Indus Script*. Cambridge: Cambridge University Press. (not
-verified; sign count read via Rao 2018)
+read; sign count read via Rao 2018)
 
 Possehl, G. L. (2002). *The Indus Civilization: A Contemporary Perspective*. Walnut Creek, CA:
-AltaMira. (not verified; figures read via a secondary source)
+AltaMira. (not read; figures read via a secondary source)
 
 Rao, R. P. N. (2018). The Indus script and economics. In *Walking with the Unicorn: Social
 Organization and Material Culture in Ancient South Asia* (pp. 518-525). Oxford: Archaeopress.
@@ -821,10 +845,10 @@ Tiwari, T. (2026). Statistical structure in Indus sign sequences. In *Proceeding
 International Conference on Natural Language Processing for the Digital Humanities* (pp. 314-319).
 
 Wells, B. K. (2006). *Epigraphic Approaches to Indus Writing* (PhD thesis). Harvard University. (not
-verified; sign count read via Yadav et al. 2010)
+read; sign count read via Yadav et al. 2010)
 
-Wells, B. K. (2015). *The Archaeology and Epigraphy of Indus Writing*. Oxford: Archaeopress. (sign
-count not verified; read via Rao 2018)
+Wells, B. K. (2015). *The Archaeology and Epigraphy of Indus Writing*. Oxford: Archaeopress. (not
+read; sign count read via Rao 2018)
 
 Wu, K., Solman, J., Linehan, R., & Sproat, R. (2012). Corpora of non-linguistic symbol systems.
 Linguistic Society of America, Portland, OR, January 2012.
