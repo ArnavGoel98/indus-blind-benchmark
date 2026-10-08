@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Plain summary</title>
+<style>
+@page { size: A4; margin: 13mm 15mm; }
+body { font-family: 'DejaVu Serif', Georgia, serif; font-size: 9.9pt; line-height: 1.35; color: #111; }
+h1 { font-size: 15pt; margin: 0 0 2pt; } .sub { color: #52514e; font-size: 9.5pt; margin: 0 0 10pt; }
+h2 { font-size: 11pt; margin: 10pt 0 3pt; color: #184f95; }
+p { margin: 3pt 0 6pt; } ul { margin: 2pt 0 6pt 16pt; padding: 0; } li { margin: 3pt 0; }
+.box { border-left: 3px solid #eb6834; padding: 4pt 8pt; background: #fbf3ef; margin: 8pt 0; font-size: 10pt; }
+.foot { color: #52514e; font-size: 8.5pt; margin-top: 8pt; }
+</style></head><body>
+<h1>Could computers read a script like the Indus script?</h1>
+<p class="sub">Plain summary of "A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics". Arnav [SURNAME], Woodstock School, Mussoorie, India. DRAFT.</p>
+
+<h2>The question</h2>
+<p>The Indus script was used in South Asia about 4,500 years ago and has never been read. Most inscriptions are tiny, often four or five signs on a seal, and no text gives the same message in a script we can read. People have argued for decades about whether computer methods can crack it, or even tell whether the signs record a language at all. We asked something we could actually test: <b>if we already knew the answer, would today's methods get it right on texts this short and this few?</b></p>
+
+<h2>What we did</h2>
+<p>We took five known languages (Sanskrit, Old Tamil, Sumerian, Latin and Finnish) and several sign systems that are not language, such as coats of arms. We wrote them in invented scripts and made each collection look like the Indus inscriptions: about 2,900 texts, averaging about 4.6 signs each, with similar sign counts and patterns. Then we hid the answer key and ran the published methods. Each method was given either a close relative of the hidden language, that relative mixed with unrelated languages, or unrelated languages only. We scored how many signs each method read correctly.</p>
+
+<h2>What we found</h2>
+<ul>
+<li><b>Popular "is it language?" statistics do not work at this size.</b> Random signs and real languages gave almost the same score.</li>
+<li><b>Without a related language, the methods fail.</b> On average they read about 5% of signs or fewer.</li>
+<li><b>Longer texts help more than more texts.</b> With the same total amount of writing, a few longer inscriptions taught the methods far more than many short ones.</li>
+<li><b>The published Indus numbers do not settle how hard the problem is.</b> Two ways of building collections that both match those numbers gave results three to five times apart when a relative was available. For the script type most like Indus, that gap appeared only when the relative was the only language offered.</li>
+<li><b>What kind of objects you study may matter.</b> Seals are almost never copied, while tablets often are. Our results predict that a seals-only collection would be easier than a tablets-only one. This is a prediction, not a measurement.</li>
+</ul>
+
+<div class="box"><b>What this does not show.</b> This work does not decipher the Indus script and says nothing about what the signs mean or which language they record. The five test languages were chosen for practical reasons, not as guesses. The "relative" we built is much closer to its partner than any real relative would be, so results with a relative are optimistic. Several choices were made after seeing results; the paper lists every one.</div>
+
+<h2>Why it matters</h2>
+<p>Any claim about how hard the Indus script is to read, or whether a method could read it, should say which inscriptions it means, whether a related language is assumed, and what kind of script is assumed. Without those details, the numbers can differ several times over.</p>
+
+<p class="foot">All figures are from synthetic test collections, not from the Indus inscriptions themselves. Full paper, data sources, code and limitations: Indus Blind Decipherment Benchmark repository.</p>
+</body></html>
