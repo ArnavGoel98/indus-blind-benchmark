@@ -90,7 +90,9 @@ _NOMINAL = {"NOUN", "PROPN", "ADJ", "NUM"}
 
 def prepare_sanskrit() -> Builder:
     b = Builder("sanskrit", config.sources()["languages"]["sanskrit"]["family"])
-    root = raw_dir() / "sanskrit" / "repo"
+    # Only the configured path (the Ramayana): the same checkout may also hold the Rig Veda, which is
+    # used only by the post-hoc entropy positive control (scripts/positive_control_rao_kn.py).
+    root = raw_dir() / "sanskrit" / "repo" / config.sources()["languages"]["sanskrit"]["path_in_repo"]
     files = sorted(root.rglob("*.conllu"))
     if not files:
         raise FileNotFoundError("run `ibdb fetch sanskrit` first")

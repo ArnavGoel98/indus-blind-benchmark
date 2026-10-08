@@ -138,3 +138,21 @@ controls:
     kind: trivial
     source: i.i.d. equiprobable (random-order) control. Rao et al. 2009 call this 'Type 1'; our key numbering is reversed
     license: MIT (generated)
+
+# Reference corpora for the post-hoc entropy positive control only (scripts/positive_control_rao_kn.py).
+# Never used to build benchmark corpora; not fetched by `ibdb fetch`.
+positive_controls:
+  brown:
+    source: Brown Corpus (Francis & Kucera 1964/1979), NLTK data package brown.zip
+    file_url: https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/brown.zip
+    sha256: 9b275f9b3b95d7bd66ccfb7cd259f445a13bbe5d1f4107aba09fd3e8364bafa6
+    license: "NLTK index: 'May be used for non-commercial purposes.' Corpus README: 'Distributed with the permission of the copyright holder, redistribution permitted.'"
+    license_evidence: nltk_data index.xml entry 'brown' and brown/README (read 2026-10-08)
+    notes: Non-commercial research use only; raw text never redistributed. Unpack to data/raw/brown/.
+  rigveda:
+    source: Digital Corpus of Sanskrit, Rgveda 1.1-1.100 CoNLL-U (same repository and commit as `sanskrit`)
+    url: https://github.com/OliverHellwig/sanskrit
+    path_in_repo: dcs/data/conllu/files/Ṛgveda
+    license: CC BY 4.0
+    license_evidence: "dcs/data/readme.md, section 'License' (read 2026-10-03)"
+    notes: Add with `git sparse-checkout add` in data/raw/sanskrit/repo. Rao et al. (2009) used the same 100 hymns from sacred-texts.com.

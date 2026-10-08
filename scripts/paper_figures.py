@@ -1,7 +1,7 @@
 """The three figures embedded in the paper (from saved records and aggregates; analysis only).
 fig3_sensitivity_map.png  primary sensitivity map, sampler A, plausible box and published reference points
 fig2_length_vs_size.png   longer vs more inscriptions at equal tokens, both samplers, primary, 95% intervals
-fig1_entropy_ratio.png    entropy ratio at the Indus point, synthetic languages vs i.i.d. random control
+fig1_entropy_ratio.png    plug-in conditional-to-unigram entropy ratio at the Indus point, synthetic languages vs i.i.d. random control
 Usage: python scripts/paper_figures.py
 """
 import json
@@ -96,7 +96,7 @@ def fig3():
     fig, axes = plt.subplots(1, 2, figsize=(6.4, 3.0), sharey=False)
     rng = np.random.default_rng(0)
     for ax, (title, get) in zip(axes, (("Full sign set", lambda r: r["B"]["script_type_lr"]["features"]["cond_ratio_full"]),
-                                       ("Rao's merge to top 100 signs", lambda r: r["A"]["rao2009_entropy"]["features"]["rao_ratio"]))):
+                                       ("Rarer signs merged, top 100 signs", lambda r: r["A"]["rao2009_entropy"]["features"]["rao_ratio"]))):
         for x, rs, col, name in ((0, lang, BLUE, f"synthetic languages (n={len(lang)})"), (1, iid, ORANGE, f"i.i.d. random control (n={len(iid)})")):
             ys = np.array([get(r) for r in rs])
             ax.scatter(x + rng.uniform(-0.12, 0.12, len(ys)), ys, s=14, color=col, alpha=0.75, edgecolor=SURF, lw=0.5, zorder=3)

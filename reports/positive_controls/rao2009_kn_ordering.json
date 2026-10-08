@@ -1,0 +1,79 @@
+{
+ "Type 1 (no order)": {
+  "lines": 10000,
+  "tokens_total": 200000,
+  "types_total": 417,
+  "N": 417,
+  "rao_N": 417,
+  "C_nats": 5.988001385131891,
+  "relative": 0.9925270690639214,
+  "relative_oov_merge": 0.9925270690639214,
+  "rao_fig1b": 1.0
+ },
+ "Sanskrit": {
+  "lines": 2154,
+  "tokens_total": 64087,
+  "types_total": 326,
+  "N": 326,
+  "rao_N": 388,
+  "C_nats": 3.1563638598233137,
+  "relative": 0.5454328376353317,
+  "relative_oov_merge": 0.5454328376353317,
+  "rao_fig1b": 0.66
+ },
+ "English words": {
+  "lines": 57340,
+  "tokens_total": 999057,
+  "types_total": 47118,
+  "N": 417,
+  "rao_N": 417,
+  "C_nats": 3.920140280900628,
+  "relative": 0.6497736211255098,
+  "relative_oov_merge": 0.5039421500820519,
+  "rao_fig1b": 0.64
+ },
+ "Sumerian": {
+  "lines": 250000,
+  "tokens_total": 1266837,
+  "types_total": 1857,
+  "N": 417,
+  "rao_N": 417,
+  "C_nats": 3.0868589330329974,
+  "relative": 0.5116550335182565,
+  "relative_oov_merge": 0.5263877886371587,
+  "rao_fig1b": 0.57
+ },
+ "Old Tamil": {
+  "lines": 33883,
+  "tokens_total": 663420,
+  "types_total": 234,
+  "N": 234,
+  "rao_N": 244,
+  "C_nats": 2.957534049061376,
+  "relative": 0.5421374812814209,
+  "relative_oov_merge": 0.5421374812814209,
+  "rao_fig1b": 0.56
+ },
+ "English chars": {
+  "lines": 57340,
+  "tokens_total": 6069734,
+  "types_total": 84,
+  "N": 84,
+  "rao_N": 128,
+  "C_nats": 2.3945104562015547,
+  "relative": 0.5404219052402829,
+  "relative_oov_merge": 0.5404219052402829,
+  "rao_fig1b": 0.51
+ },
+ "Type 2 (rigid)": {
+  "lines": 10000,
+  "tokens_total": 200000,
+  "types_total": 417,
+  "N": 417,
+  "rao_N": 417,
+  "C_nats": 0.041867554942159504,
+  "relative": 0.006939657979838458,
+  "relative_oov_merge": 0.006939657979838458,
+  "rao_fig1b": 0.0
+ }
+}

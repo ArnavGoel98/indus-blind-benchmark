@@ -184,7 +184,9 @@ The duplicate-text rate is not a target, because no source fixes it for the whol
 published values serve as reference points. For Mahadevan's concordance we read 0.354 from the
 vector data of Yadav et al. (2010, Fig. 2), or 0.281 without its four most repeated texts. For the
 ICIT corpus an unverified preprint gives 0.237 (Nair 2026). The Yadav et al. figure plots 2,591
-texts, not 2,906, without saying which are left out. For scale, the ICIT corpus holds about 5,692
+texts, not 2,906, without saying which are left out. Rao et al. (2009, supplement) used a deduplicated subset of Mahadevan's concordance, without texts
+with ambiguous or missing signs or several lines on one side: 1,548 lines and 7,000 sign
+occurrences. For scale, the ICIT corpus holds about 5,692
 texts on 4,705 artefacts (personal communication, 2026; unpublished). This is a reference point
 only; the calibration target stays Mahadevan's 2,906 texts.
 
@@ -253,8 +255,8 @@ any hidden text's word sequence.
 
 ### 3.7 Methods
 
-Eight method families run on every corpus behind one interface: conditional and block entropy (after
-Rao et al. 2009), a bigram Markov model (after Yadav et al. 2010), positional histograms,
+Eight method families run on every corpus behind one interface: a plug-in conditional-to-unigram
+entropy ratio and block entropy (after Rao et al. 2009, but not their estimator; Section 4.9), a bigram Markov model (after Yadav et al. 2010), positional histograms,
 segmentation, script-type estimation by rule and by classifier, a two-parameter tree (Lee, Jonathan
 & Ziman 2010), a multi-feature language classifier, Knight-style EM, an EM cognate-matcher and a
 frequency-rank baseline. Method code was frozen before the final runs (Section 6); later changes
@@ -316,19 +318,20 @@ The sensitivity sweep ran with both sister languages; the corrected one supplies
 ### 4.1 Entropy statistics fail at Indus scale
 
 The entropy result is the clearest, and it involves no reference language. At the Indus point the
-plug-in ratio of conditional to unigram entropy, over the full sign alphabet, is 0.470 for an i.i.d.
+plug-in conditional-to-unigram entropy ratio, over the full sign alphabet, is 0.470 for an i.i.d.
 random control (420 signs) and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
-statistic cannot tell synthetic languages apart from an i.i.d. random control. After Rao's merge to
-the 100 most frequent signs, the i.i.d. random control even scores higher. Structured non-linguistic
+statistic cannot tell synthetic languages apart from an i.i.d. random control. After merging all but
+the 100 most frequent signs into one, the i.i.d. random control even scores higher. Structured non-linguistic
 systems are not random, and are tested separately (attested systems in Section 4.10).
 
-*Table 4. Entropy ratio H(X2|X1)/H(X1) at the Indus point.*
+*Table 4. Plug-in conditional-to-unigram entropy ratio H(X2|X1)/H(X1) at the Indus point. This is
+not the estimator of Rao et al. (2009).*
 
 | Statistic | i.i.d. random control | Synthetic languages |
 |---|---|---|
 | Full sign set, seeds 0-2 | 0.470 | 0.477 (10th-90th percentile 0.35-0.67) |
 | Full sign set, fresh seeds | 0.467 | 0.476 |
-| Rao's merge to the top 100 signs | 0.696 | 0.605 |
+| Rarer signs merged, top 100 signs | 0.696 | 0.605 |
 
 A classifier built on the statistic reaches balanced accuracy 0.77 [0.57, 0.90] when the sampler
 is calibrated to every target (`full`). Under `holdout` it falls to 0.57 [0.32, 0.81], and on fresh
@@ -339,8 +342,8 @@ score is a product of calibration.
 
 ![Figure 1](figures/fig1_entropy_ratio.png)
 
-*Figure 1. Entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
-calibration, seeds 0-2): full sign set (left) and Rao's merge to the 100 most frequent signs
+*Figure 1. Plug-in conditional-to-unigram entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
+calibration, seeds 0-2): full sign set (left) and rarer signs merged, top 100 signs
 (right). Dots are corpora (60 synthetic-language corpora, 3 i.i.d. random-control corpora); bars are means.
 Score label: not applicable, since Task A uses no reference language.*
 
@@ -504,7 +507,7 @@ corpora (15 per point).
 
 | Headline | Sampler A | Sampler B | Holds? |
 |---|---|---|---|
-| 4.1 Entropy ratio, Rao top-100 merge (i.i.d. random control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. random control scores higher than the languages |
+| 4.1 Plug-in entropy ratio, top-100 merge (i.i.d. random control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. random control scores higher than the languages |
 | 4.2 No relative: mean, original / revised rule | 0.0% / 0.8% (fresh seeds 0.1% / 0.9%) | 0.3% / 1.1% | Yes: best single corpus 4.1%; none reaches 50% |
 | 4.3 Longer vs more at ~29k tokens, `candidates` | 12.7% vs 0.2% | 27.8% vs 6.4% | Yes |
 | 4.4 `candidates`, seeds 0-2 | 0.6% [0.0, 1.5] | 3.6% [0.2, 9.3] | Not resolved: intervals overlap |
@@ -609,11 +612,12 @@ samples of 2,906 whole texts each.
 
 *Table 16. Task A on attested non-linguistic systems: the methods that call each system language
 (rules fit on the main run). Every corpus here is non-linguistic, so every such call is a false
-positive. Entropy ratio after Rao's merge to the top 100 signs, the statistic the entropy rule uses;
+positive. Plug-in conditional-to-unigram entropy ratio with rarer signs merged (top 100 signs), the statistic
+the entropy rule uses;
 for reference, 0.61 for the synthetic languages and 0.70 for the i.i.d. random control. Counts only,
 no intervals.*
 
-| System | Texts | Signs | Entropy ratio | Methods calling it language (of 5) |
+| System | Texts | Signs | Plug-in entropy ratio | Methods calling it language (of 5) |
 |---|---|---|---|---|
 | Vinča signs | 591 | 804 | 0.36 | 3: positional, Lee tree, multi-feature |
 | Kudurru symbols | 69 | 939 | 0.62 | 2: entropy, Lee tree |
@@ -639,7 +643,7 @@ The script-type classifiers of Task B have no "not language" option, so they giv
 script type. Their outputs on these corpora are not meaningful and are not reported.
 
 These results support the conclusion of Section 4.1 that language detection at Indus scale is
-unresolved. They add no new failure of the entropy statistic itself.
+unresolved. They add no new failure of the plug-in entropy ratio itself.
 
 ## 5. Limitations
 
@@ -744,6 +748,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 25 | 5 Oct | Nair (2026) availability checked: on request only, no public repository or licence | - | this revision |
 | 26 | 8 Oct | Sproat's attested non-linguistic corpora added, with the author's permission, as a held-out control family for Tasks A and B: frozen methods, rules fit on existing Indus-point runs, no retraining. Indus bar seals excluded; Pictish reported separately. Non-linguistic systems no longer described as random; scope sentence extended to whether the script records a language at all | Post-results | 2401ca1, this revision |
 | 27 | 8 Oct | After expert comment: scope narrowed to automated methods that compare a script with known languages (Section 1, limitation 18); seals-only prediction weakened because sealings duplicate seal texts (Section 4.5); ICIT corpus size added as an unpublished reference point, not a target (Section 3.3) | Post-results | this revision |
+| 28 | 8 Oct | After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline wording pending review | Post-results | this revision |
 
 ---
 
@@ -824,7 +829,8 @@ Organization and Material Culture in Ancient South Asia* (pp. 518-525). Oxford: 
 arXiv:1812.00049.
 
 Rao, R. P. N., Yadav, N., Vahia, M. N., Joglekar, H., Adhikari, R., & Mahadevan, I. (2009). Entropic
-evidence for linguistic structure in the Indus script. *Science*, 324, 1165.
+evidence for linguistic structure in the Indus script. *Science*, 324, 1165. Supporting Online
+Material read from homes.cs.washington.edu/~rao/ScienceIndus.pdf.
 
 Snyder, B., Barzilay, R., & Knight, K. (2010). A statistical model for lost language decipherment. In
 *Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics* (pp.
