@@ -25,42 +25,36 @@ few source languages and post-hoc decisions, are listed.
 
 ## Plain-language summary
 
-[AUTHOR REWRITE. Current draft text, kept for reference:]
-
-The Indus script, used in South Asia about 4,500 years ago, has never been read. Its inscriptions
-are very short, and no text repeats an Indus message in a readable script. We asked: could today's
-computer methods read writing like this if the answer were known? We wrote five known languages in
-invented scripts, matched them to published Indus statistics, and hid the key. The main method,
-expectation-maximisation (EM), guesses what each sign stands for, checks how well the guesses fit a
-known language, and improves them. We score token accuracy: the share of all signs in the texts that
-a method reads correctly. Methods were given either a close relative of the hidden language
-(related), a relative mixed with unrelated languages (candidates), or unrelated languages only
-(none). Without a relative, methods read about 5% of signs or fewer on average. With one, results
-depended strongly on corpus properties that published statistics leave open.
+The Indus script was used about 4,500 years ago in South Asia, and nobody can read it. Most inscriptions are four or five signs long, and no bilingual text exists. We
+asked whether existing computer methods would work on texts like these if the answer were known. We
+wrote five known languages, and some sign systems that are not language, in made-up scripts matched
+to the published Indus figures, then hid the answers. Entropy statistics could not tell synthetic
+languages apart from an i.i.d. random control, in which every sign is drawn independently. Without a
+related language, the methods recovered about 5% of signs or fewer on average. Longer inscriptions
+helped more than more inscriptions. Two ways of building the collections that the published figures
+cannot tell apart gave results that differed three- to fivefold when a related language was
+available. This work does not decipher the Indus script or say anything about what language it
+records, or whether it records a language at all.
 
 ---
 
 ## 1. Introduction
 
-[AUTHOR REWRITE: the first two paragraphs. Current draft text, kept for reference:]
+The Indus inscriptions are short. Mahadevan's (1977) concordance holds 2,906 texts with 13,372 sign
+occurrences, about 4.6 signs per text (Yadav et al. 2010; Rao 2018), and the longest text is commonly
+given as 17 signs on a single surface (Farmer, Sproat & Witzel 2004). Even the number of signs is
+disputed: depending on how variants are grouped, published lists count from 386 to about 700 sign
+types (Parpola 1994 and Wells 2015, both via Rao 2018; Mahadevan 1977; Wells 2006 via Yadav et al.
+2010). No bilingual text is known, and no language of the Harappan civilisation is agreed.
 
-The Indus inscriptions are short. The concordance of Mahadevan (1977) holds 2,906 texts with 13,372
-sign occurrences, about 4.6 signs per text (Yadav et al. 2010; Rao 2018), and the longest text is
-commonly given as 17 signs on a single surface (Farmer, Sproat & Witzel 2004). Published sign lists
-count between 386 and about 700 sign types, depending on how variants are grouped (Parpola 1994 and
-Wells 2015, both via Rao 2018; Mahadevan 1977; Wells 2006 via Yadav et al. 2010). No bilingual text
-is known, and no language of the Harappan civilisation is agreed.
+Some proposals assign readings to the signs. Others use corpus statistics to argue that the signs
+encode language, through conditional entropy (Rao et al. 2009) or n-gram models (Yadav et al. 2010),
+or that they do not, from the brevity of the texts (Farmer, Sproat & Witzel 2004) and from the finding
+that entropy-type measures do not separate writing from non-linguistic symbol systems (Sproat 2010,
+2014). Both sides rely on methods that have never been tested on a corpus of Indus size and shape
+whose answer is known.
 
-Two kinds of argument have been made about this corpus. Some assign readings to the signs. Others
-use corpus statistics to argue that the signs do, or do not, encode language: conditional entropy
-(Rao et al. 2009), n-gram models (Yadav et al. 2010), and, on the other side, text brevity (Farmer,
-Sproat & Witzel 2004) and the finding that entropy-type measures do not separate writing from
-non-linguistic symbol systems (Sproat 2010, 2014). Both kinds of argument depend on a further
-question: would the method work on a corpus of Indus size and shape whose answer is known?
-
-[END AUTHOR REWRITE]
-
-We test that question directly. We write known languages, and sign systems that encode no language,
+We run that test. We write known languages, and sign systems that encode no language,
 in invented scripts, calibrate each corpus to published Indus statistics, hide its answer key, and
 measure what existing methods recover. The result is a statement about methods on Indus-like data.
 This work does not decipher the Indus script or say anything about what language it records, or whether it records a language at all. Nothing in it bears on what the signs mean.
@@ -193,14 +187,17 @@ deliberately wrong targets. Results lead with `holdout` wherever calibration cou
 
 ### 3.5 Non-linguistic controls
 
-The controls encode no language, and they are of two different kinds. Statistical baselines have no
+The controls encode no language, and they are of three kinds. *Statistical baselines* have no
 meaningful structure: the i.i.d. random control and the rigid control of Rao et al. (2009), and an
-adversarial Markov chain tuned to the entropy ratio of the language corpora. Structured
-non-linguistic systems are meaningful and structured but are not language: heraldic bearings built
-with the rule of tincture (one sign per visual element), administrative slot tags and sparse Markov
-emblems. Rao et al. call the i.i.d. random control type 1 and the rigid one type 2; our internal keys
-number them the other way round, so we name them by behaviour. Japanese kamon
-descriptions are text and are reported separately as a contaminated control.
+adversarial Markov chain tuned to the entropy ratio of the language corpora. *Synthetic structured
+non-linguistic systems* are meaningful and structured but are not language; we built them: heraldic
+bearings with the rule of tincture (one sign per visual element), administrative slot tags and
+sparse Markov emblems. *Attested non-linguistic systems* are Sproat's corpora of real symbol systems
+(Sproat 2014; Wu, Solman, Linehan & Sproat 2012), used with the author's permission as a held-out
+family for Tasks A and B only (Section 4.10). Rao et al. call the i.i.d. random control type 1 and
+the rigid one type 2; our internal keys number them the other way round, so we name them by
+behaviour. Japanese kamon descriptions are text and are reported separately as a contaminated
+control.
 
 ### 3.6 Knowledge tiers and the synthetic sister language
 
@@ -314,7 +311,7 @@ plug-in ratio of conditional to unigram entropy, over the full sign alphabet, is
 random control (420 signs) and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
 statistic cannot tell synthetic languages apart from an i.i.d. random control. After Rao's merge to
 the 100 most frequent signs, the i.i.d. random control even scores higher. Structured non-linguistic
-systems are not random, and are tested separately.
+systems are not random, and are tested separately (attested systems in Section 4.10).
 
 *Table 4. Entropy ratio H(X2|X1)/H(X1) at the Indus point.*
 
@@ -584,6 +581,52 @@ for us and lowest for Rao, and Sanskrit leads Sumerian in both, by different mar
 ETCSL and the Brown corpus), unit definitions and random reference all differ, and English characters
 have fewer than 400 types. This is a partial reproduction only.
 
+### 4.10 Attested non-linguistic systems (Sproat's corpora)
+
+Every other control in this paper was built by us. As a held-out test, we ran the frozen Task A and
+B methods on the real non-linguistic symbol systems collected by Sproat (2014; Wu, Solman, Linehan &
+Sproat 2012), used with the author's permission. Nothing was retrained: the Task A rules were fit on
+the Indus-point corpora of the main run and applied unchanged. Six systems were used. The Indus bar
+seals in the same collection were excluded, because they are the Indus script itself. Pictish
+symbols are reported separately, because whether they are writing is disputed (Lee, Jonathan & Ziman
+2010). Texts were extracted with Sproat's own settings. Each system was scored at its native size;
+weather icons and emoticons, the only two with more than 2,906 texts, were also scored on three
+samples of 2,906 whole texts each.
+
+*Table 16. Task A on attested non-linguistic systems: the methods that call each system language
+(rules fit on the main run). Every corpus here is non-linguistic, so every such call is a false
+positive. Entropy ratio after Rao's merge to the top 100 signs, the statistic the entropy rule uses;
+for reference, 0.61 for the synthetic languages and 0.70 for the i.i.d. random control. Counts only,
+no intervals.*
+
+| System | Texts | Signs | Entropy ratio | Methods calling it language (of 5) |
+|---|---|---|---|---|
+| Vinča signs | 591 | 804 | 0.36 | 3: positional, Lee tree, multi-feature |
+| Kudurru symbols | 69 | 939 | 0.62 | 2: entropy, Lee tree |
+| Barn stars | 310 | 963 | 0.39 | 4: entropy, Markov, Lee tree, multi-feature |
+| Totem poles | 325 | 1,798 | 0.65 | 2: entropy, positional |
+| Weather icons | 10,142 | 50,710 | 0.74 | 2: Markov, Lee tree |
+| Asian emoticons | 10,000 | 59,186 | 0.87 | 3: Markov, positional, Lee tree |
+| Weather icons, 3 samples | 2,906 each | | 0.74 | 2 in every sample: Markov, Lee tree |
+| Asian emoticons, 3 samples | 2,906 each | | 0.84 | 3 in every sample: Markov, positional, Lee tree |
+| Pictish (disputed, reported separately) | 283 | 984 | 0.45 | 2: entropy, positional |
+
+Every attested system is called language by at least two of the five methods. At native size this
+mixes two things: four of the six systems have fewer than 2,000 signs, against about 13,400 at the
+Indus point, so their false positives combine small-corpus effects with method failure. The
+Indus-size samples avoid that problem, and there the Markov model and the Lee tree call every sample
+language. The entropy rule rejects both large systems, as it rejects the i.i.d. random control,
+because their ratios lie above that control's; its false positives are all small systems whose ratios
+fall within the range of the synthetic languages. With rules fit on the fresh-seed run or under
+`holdout`, one call changes (the entropy rule no longer calls barn stars language), and Pictish is
+called language by one or two methods.
+
+The script-type classifiers of Task B have no "not language" option, so they give every corpus a
+script type. Their outputs on these corpora are not meaningful and are not reported.
+
+These results support the conclusion of Section 4.1 that language detection at Indus scale is
+unresolved. They add no new failure of the entropy statistic itself.
+
 ## 5. Limitations
 
 1. **Allograph merging.** Inventory rises only through allographs, which no tested method merges.
@@ -620,7 +663,9 @@ have fewer than 400 types. This is a partial reproduction only.
 14. **Post-hoc decisions.** The revised rule, sampler B, the sister corrections and several analyses
     followed results; Appendix A lists each. The original rule stays primary.
 15. **Plug-in entropy is biased at this scale**, so fixed entropy cut-offs depend on corpus size.
-16. **Controls built by us.** A classifier is only as general as its controls.
+16. **Controls mostly built by us.** A classifier is only as general as its controls. Apart from
+    Sproat's attested systems, used for Tasks A and B only, every control was built by us, and four
+    of the six attested systems are much smaller than an Indus-scale corpus.
 17. **No neural decipherment model is evaluated.** The EM cognate-matcher contains no neural network.
 
 ## 6. Blind challenge and reproducibility
@@ -640,18 +685,13 @@ licences and never redistributed.
 
 ## 7. Conclusion
 
-[AUTHOR REWRITE. Current draft text, kept for reference:]
-
-On synthetic corpora that match the published Indus statistics, mean recovery without a related
-language stays at or below 4.8% in every run, and longer inscriptions help more than more
-inscriptions. Published Indus statistics do not fix how decipherable an Indus-scale corpus is: two
-samplers that the published statistics cannot tell apart differ roughly three- to fivefold when a related language is
-available, and for logo-syllabic corpora, the most Indus-relevant type, this contrast appears only
-when the related language is the sole reference; among candidate languages it is unresolved. A
-statement about how hard the Indus script is to decipher therefore has to name its corpus (object
-types, period, duplication), its knowledge tier, its script type and its selection rule. None of
-these results deciphers the Indus script or says anything about what language it records, or
-whether it records a language at all.
+On synthetic corpora matched to the published Indus statistics, three results hold up best: entropy
+statistics cannot tell synthetic languages apart from an i.i.d. random control, methods without a
+related language recover about 5% of signs or fewer, and longer inscriptions help more than more
+inscriptions. Any claim about how hard the Indus script is to decipher should therefore name its
+corpus, the script type it assumes and whether it assumes a related language; otherwise the answer
+can change several times over. The most useful additions would be longer inscriptions and corpora
+separated by object type or period. This work does not decipher the Indus script or say anything about what language it records, or whether it records a language at all.
 
 ## Appendix A. Analysis history
 
@@ -685,6 +725,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 23 | 5 Oct | Positive controls added: frozen EM on English letter-substitution ciphers, and conditional-entropy ordering against Rao et al. (2009) figures. The latter showed that our control keys number Rao's type 1 and type 2 the other way round | Post-results | this revision |
 | 24 | 5 Oct | Sensitivity sweep aggregated with before-cognate scores. Seals-only and tablets-only regions defined as duplicates 0.0 and 0.4-0.5 at all inventories, for both sweeps; an earlier tablets-only range (1.4-4.9%) had used the 0.4 column only | Post-results | this revision |
 | 25 | 5 Oct | Nair (2026) availability checked: on request only, no public repository or licence | - | this revision |
+| 26 | 8 Oct | Sproat's attested non-linguistic corpora added, with the author's permission, as a held-out control family for Tasks A and B: frozen methods, rules fit on existing Indus-point runs, no retraining. Indus bar seals excluded; Pictish reported separately. Non-linguistic systems no longer described as random; scope sentence extended to whether the script records a language at all | Post-results | 2401ca1, this revision |
 
 ---
 
@@ -785,6 +826,9 @@ verified; sign count read via Yadav et al. 2010)
 Wells, B. K. (2015). *The Archaeology and Epigraphy of Indus Writing*. Oxford: Archaeopress. (sign
 count not verified; read via Rao 2018)
 
+Wu, K., Solman, J., Linehan, R., & Sproat, R. (2012). Corpora of non-linguistic symbol systems.
+Linguistic Society of America, Portland, OR, January 2012.
+
 Yadav, N., Joglekar, H., Rao, R. P. N., Vahia, M. N., Adhikari, R., & Mahadevan, I. (2010).
 Statistical analysis of the Indus script using n-grams. *PLoS ONE*. arXiv:0901.3017.
 
@@ -792,5 +836,6 @@ Statistical analysis of the Indus script using n-grams. *PLoS ONE*. arXiv:0901.3
 https://cdli.earth (reused under CDLI terms: academic reuse with citation). Digital Corpus of Sanskrit,
 O. Hellwig, https://github.com/OliverHellwig/sanskrit (CC BY 4.0). Project Madurai,
 https://www.projectmadurai.org. Project Gutenberg, https://www.gutenberg.org (texts 218, 229, 231,
-1228, 1342, 2701, 7000).
+1228, 1342, 2701, 7000). Non-linguistic symbol corpora, R. Sproat,
+https://richardsproat.com/data/non-linguistic-symbols (used with the author's permission).
 
