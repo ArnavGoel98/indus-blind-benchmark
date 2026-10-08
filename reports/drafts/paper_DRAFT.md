@@ -2,6 +2,8 @@
 
 **A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics**
 
+Arnav [SURNAME], Woodstock School, Mussoorie, India
+
 *This work does not decipher, and does not claim to decipher, the Indus script.*
 
 *Scope: in this paper "decipherment" means substitution-style recovery of sign values only.*
@@ -84,8 +86,9 @@ recovered says nothing about Harappan.
 Defining "Indus-like" turned out to be the central difficulty. Published statistics fix the
 number of texts, their length, the sign inventory and several frequency and positional measures.
 They do not fix how often texts repeat, how many sign types are variants of one another, or how
-text material is sampled. We find that these unconstrained properties change recovery several
-fold. The paper therefore reports a map over them rather than a single Indus number.
+text material is sampled. We find that choices these statistics leave open, here the way text is sampled, change recovery
+roughly three- to fivefold when a related language is available, while duplicate rate and inventory
+within one generator matter less under the frozen rule. The paper therefore reports a map over them rather than a single Indus number.
 
 **Findings.** (1) Entropy statistics do not separate synthetic languages from independent,
 identically distributed (i.i.d.) signs at Indus scale. (2) Without a related language among the
@@ -332,6 +335,15 @@ classifies at least one structurally non-linguistic control family as language i
 (for the entropy classifier, the rigid control of Rao et al. 2009). We therefore treat language
 detection at Indus scale as unresolved, and the `full` score as a product of calibration.
 
+![Figure 3](figures/fig3_entropy_ratio.png)
+
+*Figure 3. Entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
+calibration, seeds 0-2), left on the full sign set, right after Rao's merge to the 100 most frequent
+signs. Dots are corpora (60 synthetic-language corpora, 3 i.i.d.-control corpora); bars are means.
+Score label: not applicable; Task A uses no reference language, so no sister or cognate step is
+involved.*
+
+
 ### 4.2 Without a related language
 
 This result does not depend on the sister language: the hidden language and its sister are both
@@ -371,6 +383,14 @@ On fresh seeds (size interpolated on log tokens, no interval): v1 17.7% vs 3.4%,
 Without a relative, both stay at or below 6.5%, with a small edge for length. The result also holds
 for logo-syllabic corpora alone: 12.7% vs 0.2% (v1) and 27.8% vs 6.4% (v2), primary (Section 4.7).
 
+![Figure 2](figures/fig2_length_vs_size.png)
+
+*Figure 2. Longer vs more inscriptions at equal total tokens (about 29,000), candidates tier, original
+rule, both generators (sampler A = generator v1, sampler B = generator v2). Score label: primary
+(sister-v2, before the cognate step). Bars are means over 60 corpora; whiskers are 95% intervals
+resampling whole source languages.*
+
+
 ### 4.4 Difficulty is not fixed by published Indus statistics
 
 Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two generators that both match them differ roughly three- to fivefold when a related language is available. For logo-syllabic corpora, the most Indus-relevant type, this contrast appears only when the related language is the sole reference; among candidate languages it is unresolved.
@@ -403,6 +423,18 @@ within-combination spread is 2.1 points (maximum 7.5). Upper bound (sister-v1, k
 oracle sound correspondences: 3.5-5.1%, median spread 2.1, maximum 7.6. Generator-v2 corpora whose
 measured duplicate rate and inventory fall inside the same box (37 corpora, seeds 0-5) average 11.9%
 (primary; best 72.0%), so the box does not bound recovery across generators.
+
+![Figure 1](figures/fig1_sensitivity_map.png)
+
+*Figure 1. Sensitivity map, generator v1 (sampler A), candidates tier, original rule: mean % of sign
+tokens recovered over all valid corpora in each cell. Score label: primary (sister-v2, before the
+cognate step; no oracle sound correspondences). Orange: the plausible box. Lines: published sign-list
+sizes (top) and duplicate rates (right); solid lines are verified, dotted lines are read via a
+secondary source or come from an unverified preprint. Inventory is raised by allographs only, and no
+tested method merges them. The 2.9-4.2% range in the text is the box panel (the 10 combinations valid
+in every box cell); this figure shows all valid corpora. Upper-bound (sister-v1) maps:
+`reports/sensitivity/appendix_sister_v1/`.*
+
 
 *Secondary, post hoc (revised rule):* primary scores 9.1% (v1) vs 25.1% (v2); within the v1 box the
 revised rule ranges 5.6-14.2% (primary; upper bound 8.7-21.8%) and moves by up to 44 points within
@@ -668,10 +700,101 @@ repository under the tags above; no third-party text is redistributed.
 
 [Reviewer: names of J. M. Kenoyer, S. Houston or R. Sproat are added only after each confirms.]
 
-**References.** Only sources read, or marked "via". See `reports/drafts/citation_check_2026-10-05.md`
-for verification status.
 
 **Appendices.** Analysis history (Appendix A); sweep maps and tables, primary (`reports/sensitivity/`) and upper bound (`reports/sensitivity/appendix_sister_v1/`); calibration, full result tables, sensitivity tables, the rule comparison, the audit,
 the sister-v1/v2/v3 comparisons and method deviations.
 
-[Stop for review.]
+## References
+
+Author-year style. Only sources cited in the text. "(not verified)" marks an entry, or the part of
+it in brackets, that we have not checked against the source itself.
+
+Berg-Kirkpatrick, T., & Klein, D. (2013). Decipherment with a million random restarts. In
+*Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing* (pp. 874-878).
+
+Chao, A. (1984). Nonparametric estimation of the number of classes in a population. *Scandinavian
+Journal of Statistics*, 11, 265-270. (not verified)
+
+Farmer, S., Sproat, R., & Witzel, M. (2004). The collapse of the Indus-script thesis: The myth of a
+literate Harappan civilization. *Electronic Journal of Vedic Studies*, 11(2) [pp. 19-57, not verified].
+
+Harris, Z. S. (1955). From phoneme to morpheme. *Language*, 31(2), 190-222. (not verified)
+
+Kenoyer, J. M. (2020a). The origin and development of the Indus script: Insights from Harappa and
+other sites. In K. Lashari (Ed.), *Studies on Indus Script* (pp. 217-236). Karachi: National Fund for
+Mohenjodaro.
+
+Kenoyer, J. M. (2020b). The Indus script: Origins, use and disappearance. In H. Zhao (Ed.), *Dialogue
+of Civilisation: Comparing Multiple Centers* (pp. 220-255). Shanghai: Shanghai Guji Press. [Page
+numbers cited are those printed in the pre-publication PDF.]
+
+Kenoyer, J. M., & Meadow, R. H. (2010). Inscribed objects from Harappa excavations 1986-2007. In A.
+Parpola, B. M. Pande & P. Koskikallio (Eds.), *Corpus of Indus Seals and Inscriptions, Vol. 3: New
+Material, Untraced Objects, and Collections outside India and Pakistan, Part 1* (Annales Academiae
+Scientiarum Fennicae, Humaniora 359). Helsinki: Suomalainen Tiedeakatemia. [Page numbers cited are
+those of the PDF read.]
+
+Knight, K., Nair, A., Rathod, N., & Yamada, K. (2006). Unsupervised analysis for decipherment
+problems. In *Proceedings of the COLING/ACL 2006 Main Conference Poster Sessions* (pp. 499-506).
+
+Lee, R., Jonathan, P., & Ziman, P. (2010). Pictish symbols revealed as a written language through
+application of Shannon entropy. *Proceedings of the Royal Society A*. doi:10.1098/rspa.2010.0041
+[466(2121), 2545-2560, not verified].
+
+Luo, J., Cao, Y., & Barzilay, R. (2019). Neural decipherment via minimum-cost flow: From Ugaritic to
+Linear B. In *Proceedings of the 57th Annual Meeting of the Association for Computational
+Linguistics* (pp. 3146-3155).
+
+Mahadevan, I. (1977). *The Indus Script: Texts, Concordance and Tables* (Memoirs of the Archaeological
+Survey of India 77). New Delhi: Archaeological Survey of India. (not verified; figures read via Yadav
+et al. 2010 and Rao 2018)
+
+Nair, A. (2026). How non-linguistic is the Indus sign system? A synthetic-baseline scorecard.
+arXiv:2604.17828 (preprint, not peer reviewed).
+
+Parpola, A. (1994). *Deciphering the Indus Script*. Cambridge: Cambridge University Press. (not
+verified; sign count read via Rao 2018)
+
+Possehl, G. L. (2002). *The Indus Civilization: A Contemporary Perspective*. Walnut Creek, CA:
+AltaMira. (not verified; figures read via a secondary source)
+
+Rao, R. P. N. (2018). The Indus script and economics. In *Walking with the Unicorn: Social
+Organization and Material Culture in Ancient South Asia* (pp. 518-525). Oxford: Archaeopress.
+arXiv:1812.00049.
+
+Rao, R. P. N., Yadav, N., Vahia, M. N., Joglekar, H., Adhikari, R., & Mahadevan, I. (2009). Entropic
+evidence for linguistic structure in the Indus script. *Science*, 324, 1165.
+
+Snyder, B., Barzilay, R., & Knight, K. (2010). A statistical model for lost language decipherment. In
+*Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics* (pp.
+1048-1057).
+
+Sproat, R. (2010). Last words: Ancient symbols, computational linguistics, and the reviewing practices
+of the general science journals. *Computational Linguistics*, 36(3), 585-594.
+doi:10.1162/coli_a_00011
+
+Sproat, R. (2014). A statistical comparison of written language and nonlinguistic symbol systems.
+*Language*, 90 [(2), 457-481, not verified].
+
+Tanaka-Ishii, K. (2005). Entropy as an indicator of context boundaries: An experiment using a web
+search engine. In *Proceedings of the Second International Joint Conference on Natural Language
+Processing (IJCNLP 2005)* [pp. 93-105, not verified].
+
+Tiwari, T. (2026). Statistical structure in Indus sign sequences. In *Proceedings of the 6th
+International Conference on Natural Language Processing for the Digital Humanities* (pp. 314-319).
+
+Wells, B. K. (2006). *Epigraphic Approaches to Indus Writing* (PhD thesis). Harvard University. (not
+verified; sign count read via Yadav et al. 2010)
+
+Wells, B. K. (2015). *The Archaeology and Epigraphy of Indus Writing*. Oxford: Archaeopress. (sign
+count not verified; read via Rao 2018)
+
+Yadav, N., Joglekar, H., Rao, R. P. N., Vahia, M. N., Adhikari, R., & Mahadevan, I. (2010).
+Statistical analysis of the Indus script using n-grams. *PLoS ONE*. arXiv:0901.3017.
+
+**Data sources.** Cuneiform Digital Library Initiative (CDLI), bulk ATF data dump, August 2022,
+https://cdli.earth (reused under CDLI terms: academic reuse with citation). Digital Corpus of Sanskrit,
+O. Hellwig, https://github.com/OliverHellwig/sanskrit (CC BY 4.0). Project Madurai,
+https://www.projectmadurai.org. Project Gutenberg, https://www.gutenberg.org (texts 218, 229, 231,
+1228, 1342, 2701, 7000).
+

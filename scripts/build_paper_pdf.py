@@ -19,6 +19,8 @@ h1 { font-size: 17pt; margin: 0 0 6pt; } h2 { font-size: 13pt; margin: 16pt 0 6p
 h3 { font-size: 11pt; margin: 12pt 0 4pt; } p { margin: 4pt 0 7pt; text-align: justify; }
 table { border-collapse: collapse; margin: 6pt 0 10pt; font-size: 8.6pt; width: 100%; page-break-inside: avoid; }
 th, td { border: 1px solid #999; padding: 2.5pt 4pt; vertical-align: top; } th { background: #eee; }
+img { display: block; max-width: 100%; max-height: 92mm; margin: 8pt auto 2pt; page-break-inside: avoid; }
+p:has(> img) + p em, p > em:only-child { font-size: 9pt; }
 code { font-family: 'DejaVu Sans Mono', monospace; font-size: 8.8pt; } li { margin: 2pt 0; }
 """
 
