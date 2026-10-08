@@ -12,6 +12,7 @@ fetch time.
 | Project Gutenberg #218, #229, #231 | Latin control | Public domain (USA) | Gutenberg headers | |
 | Project Gutenberg #7000 (Kalevala) | Finnish control | Public domain (USA) | Gutenberg header | |
 | Sakana AI Kamon, synthetic_examples.zip | NL-derived control | CC BY-SA 4.0 | dataset card | 122 MB; only the parsed text descriptions are used |
+| Sproat non-linguistic symbol corpora, corpora.zip (richardsproat.com) | Held-out structured non-linguistic control family (Tasks A and B) | Used with the author's permission; XML files carry an Apache 2.0 header | data page (no licence stated); file headers (read 2026-10-08); author's permission | Cite Sproat (2014) and Wu, Solman, Linehan & Sproat (2012). IndusBarSeals not used; not redistributed |
 
 **Before publishing anything derived from Sumerian:** CDLI permits academic reuse with citation but gives no formal open license. Publishing transformed sign-ID corpora for a research benchmark is plausibly within "common and fair academic practice". If you need certainty (for example for a Zenodo deposit under CC BY), ask CDLI or drop Sumerian from public rounds.
 

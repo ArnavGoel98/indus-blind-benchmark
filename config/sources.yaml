@@ -90,6 +90,27 @@ controls:
       descriptions of crests, so they inherit linguistic statistics. Reported as their own
       family and excluded from the main Task A score. They test whether classifiers detect
       language in a description rather than in a sign system.
+  sproat_nonling:
+    kind: structural_heldout
+    source: >-
+      Sproat non-linguistic symbol corpora, corpora.zip (XML). Cite Sproat, R. (2014). A statistical
+      comparison of written language and nonlinguistic symbol systems. Language 90(2), 457-481; and
+      Wu, K., Solman, J., Linehan, R. & Sproat, R. (2012). Corpora of Non-Linguistic Symbol Systems.
+      Linguistic Society of America, Portland, OR, January 2012.
+    url: https://richardsproat.com/data/non-linguistic-symbols
+    file_url: https://richardsproat.com/data/non-linguistic-symbols/corpora.zip
+    method: http
+    license: Used with the author's permission (R. Sproat, 2026); XML files carry an Apache 2.0 header
+    license_evidence: >-
+      Data page states no licence ("(c) 2014 and onwards, Richard Sproat"); each XML file has an
+      Apache 2.0 header comment (read 2026-10-08); permission from the author relayed by the project owner.
+    approx_size_mb: 0.33
+    sha256: fb50ff5acb5221ba75e134cc7a36619e1d990b5680ad8681bcde5c447b6b8f73
+    notes: >-
+      Held-out control family for Tasks A and B only (no hidden language to recover). Real,
+      structured non-linguistic systems, not random. Never used to train or tune anything.
+      IndusBarSeals is excluded (it is the Indus script); Pictish is reported separately (status
+      disputed). Linearised with Sproat's own xtract.py defaults (scripts/sproat_controls.py).
   heraldry:
     kind: structural
     source: built-in generative model of armorial bearings (field, ordinary, charges, rule of tincture)

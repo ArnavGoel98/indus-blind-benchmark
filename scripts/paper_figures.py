@@ -1,7 +1,7 @@
 """The three figures embedded in the paper (from saved records and aggregates; analysis only).
 fig3_sensitivity_map.png  primary sensitivity map, sampler A, plausible box and published reference points
 fig2_length_vs_size.png   longer vs more inscriptions at equal tokens, both samplers, primary, 95% intervals
-fig1_entropy_ratio.png    entropy ratio at the Indus point, synthetic languages vs i.i.d. control
+fig1_entropy_ratio.png    entropy ratio at the Indus point, synthetic languages vs i.i.d. random control
 Usage: python scripts/paper_figures.py
 """
 import json
@@ -97,12 +97,12 @@ def fig3():
     rng = np.random.default_rng(0)
     for ax, (title, get) in zip(axes, (("Full sign set", lambda r: r["B"]["script_type_lr"]["features"]["cond_ratio_full"]),
                                        ("Rao's merge to top 100 signs", lambda r: r["A"]["rao2009_entropy"]["features"]["rao_ratio"]))):
-        for x, rs, col, name in ((0, lang, BLUE, f"synthetic languages (n={len(lang)})"), (1, iid, ORANGE, f"i.i.d. control (n={len(iid)})")):
+        for x, rs, col, name in ((0, lang, BLUE, f"synthetic languages (n={len(lang)})"), (1, iid, ORANGE, f"i.i.d. random control (n={len(iid)})")):
             ys = np.array([get(r) for r in rs])
             ax.scatter(x + rng.uniform(-0.12, 0.12, len(ys)), ys, s=14, color=col, alpha=0.75, edgecolor=SURF, lw=0.5, zorder=3)
             ax.hlines(ys.mean(), x - 0.25, x + 0.25, color=INK, lw=2, zorder=4)
             ax.text(x + 0.28, ys.mean(), f"{ys.mean():.3f}", va="center", fontsize=8, color=INK)
-        ax.set_xticks([0, 1]); ax.set_xticklabels(["synthetic\nlanguages", "i.i.d.\ncontrol"])
+        ax.set_xticks([0, 1]); ax.set_xticklabels(["synthetic\nlanguages", "i.i.d. random\ncontrol"])
         ax.set_xlim(-0.5, 1.7); ax.set_title(title, fontsize=9, color=INK)
         ax.yaxis.grid(True, color=GRID, lw=0.6); ax.set_axisbelow(True)
     axes[0].set_ylabel("H(X2|X1) / H(X1)")

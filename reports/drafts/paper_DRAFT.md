@@ -13,7 +13,7 @@ size and shape with a known answer. We write five known languages and
 several non-linguistic sign systems in invented scripts, calibrate them to published Indus
 statistics (2,906 texts, 4.6 signs per text), hide the answer keys, and test eight frozen method
 families at three levels of solver knowledge. Four results replicate on fresh seeds. Entropy
-statistics do not separate synthetic languages from random signs at Indus scale. Without a related
+statistics do not separate synthetic languages from an i.i.d. random control at Indus scale. Without a related
 language among the candidates, mean recovery of sign values stays at or below 4.8% in every run. At
 equal total size, longer inscriptions help more than more inscriptions, in both text samplers and in
 logo-syllabic corpora. And published Indus statistics do not fix how decipherable an Indus-scale
@@ -63,7 +63,7 @@ question: would the method work on a corpus of Indus size and shape whose answer
 We test that question directly. We write known languages, and sign systems that encode no language,
 in invented scripts, calibrate each corpus to published Indus statistics, hide its answer key, and
 measure what existing methods recover. The result is a statement about methods on Indus-like data.
-This work does not decipher the Indus script, and nothing in it bears on what the signs mean.
+This work does not decipher the Indus script or say anything about what language it records, or whether it records a language at all. Nothing in it bears on what the signs mean.
 
 Two scope statements apply throughout. "Decipherment" here means substitution-style recovery of sign
 values only, not grammar, meaning or the identity of an unknown language. And the benchmark
@@ -80,8 +80,8 @@ one sampler matter less under the frozen rule. So we report a map, not a single 
 
 **Findings.**
 
-1. Entropy statistics do not separate synthetic languages from independent, identically
-   distributed (i.i.d.) signs at Indus scale.
+1. Entropy statistics do not separate synthetic languages from an i.i.d. random control
+   (independent, identically distributed signs) at Indus scale.
 2. Without a related language among the candidates, mean recovery stays at or below 4.8% in every
    run. No corpus reaches 50% of tokens; the best reaches 28%.
 3. Under the frozen rule, longer inscriptions help more than more inscriptions in both samplers,
@@ -134,8 +134,8 @@ inscribed objects at Harappa differ by type and period: seals are almost all uni
 occur as copies or same-mold duplicates, and the script changed over roughly 700 years. We use these
 statements only qualitatively (Section 4.5).
 
-[Reviewer: see `reports/drafts/citation_check_2026-10-05.md`. Sproat (2010) verified; Sproat (2014)
-and Lee, Jonathan & Ziman (2010) partly verified (volume/pages still to verify). Rao (2010) not cited.]
+[Reviewer: see `reports/drafts/citation_check_2026-10-05.md`. Sproat (2010) and Sproat (2014) verified;
+Lee, Jonathan & Ziman (2010) partly verified (volume/pages still to verify). Rao (2010) not cited.]
 
 ## 3. Benchmark design
 
@@ -193,11 +193,13 @@ deliberately wrong targets. Results lead with `holdout` wherever calibration cou
 
 ### 3.5 Non-linguistic controls
 
-The controls encode no language: heraldic bearings built with the rule of tincture (one sign per
-visual element), administrative slot tags, sparse Markov emblems, the rigid and random-order
-controls of Rao et al. (2009), and an adversarial Markov chain tuned to the entropy ratio of the
-language corpora. Rao et al. call the random-order system type 1 and the rigid one type 2; our
-internal keys number them the other way round, so we name them by behaviour. Japanese kamon
+The controls encode no language, and they are of two different kinds. Statistical baselines have no
+meaningful structure: the i.i.d. random control and the rigid control of Rao et al. (2009), and an
+adversarial Markov chain tuned to the entropy ratio of the language corpora. Structured
+non-linguistic systems are meaningful and structured but are not language: heraldic bearings built
+with the rule of tincture (one sign per visual element), administrative slot tags and sparse Markov
+emblems. Rao et al. call the i.i.d. random control type 1 and the rigid one type 2; our internal keys
+number them the other way round, so we name them by behaviour. Japanese kamon
 descriptions are text and are reported separately as a contaminated control.
 
 ### 3.6 Knowledge tiers and the synthetic sister language
@@ -309,13 +311,14 @@ The sensitivity sweep ran with both sister languages; the corrected one supplies
 
 The entropy result is the clearest, and it involves no reference language. At the Indus point the
 plug-in ratio of conditional to unigram entropy, over the full sign alphabet, is 0.470 for an i.i.d.
-420-sign control and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
-statistic cannot tell language from independent signs. After Rao's merge to the 100 most frequent
-signs, the i.i.d. control even scores higher.
+random control (420 signs) and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
+statistic cannot tell synthetic languages apart from an i.i.d. random control. After Rao's merge to
+the 100 most frequent signs, the i.i.d. random control even scores higher. Structured non-linguistic
+systems are not random, and are tested separately.
 
 *Table 4. Entropy ratio H(X2|X1)/H(X1) at the Indus point.*
 
-| Statistic | i.i.d. control | Synthetic languages |
+| Statistic | i.i.d. random control | Synthetic languages |
 |---|---|---|
 | Full sign set, seeds 0-2 | 0.470 | 0.477 (10th-90th percentile 0.35-0.67) |
 | Full sign set, fresh seeds | 0.467 | 0.476 |
@@ -332,7 +335,7 @@ score is a product of calibration.
 
 *Figure 1. Entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; `full`
 calibration, seeds 0-2): full sign set (left) and Rao's merge to the 100 most frequent signs
-(right). Dots are corpora (60 synthetic-language corpora, 3 i.i.d.-control corpora); bars are means.
+(right). Dots are corpora (60 synthetic-language corpora, 3 i.i.d. random-control corpora); bars are means.
 Score label: not applicable, since Task A uses no reference language.*
 
 ### 4.2 Without a related language
@@ -490,7 +493,7 @@ corpora (15 per point).
 
 | Headline | Sampler A | Sampler B | Holds? |
 |---|---|---|---|
-| 4.1 Entropy ratio, Rao top-100 merge (i.i.d. control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. control scores higher than the languages |
+| 4.1 Entropy ratio, Rao top-100 merge (i.i.d. random control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. random control scores higher than the languages |
 | 4.2 No relative: mean, original / revised rule | 0.0% / 0.8% (fresh seeds 0.1% / 0.9%) | 0.3% / 1.1% | Yes: best single corpus 4.1%; none reaches 50% |
 | 4.3 Longer vs more at ~29k tokens, `candidates` | 12.7% vs 0.2% | 27.8% vs 6.4% | Yes |
 | 4.4 `candidates`, seeds 0-2 | 0.6% [0.0, 1.5] | 3.6% [0.2, 9.3] | Not resolved: intervals overlap |
@@ -567,7 +570,7 @@ random reference.
 
 | Corpus | Rao et al., Fig. 1B (by eye) | Ours, relative, 400 tokens | Ours, nats, 400 tokens |
 |---|---|---|---|
-| Random-order control (their type 1) | 1.00 | 1.00 | 5.45 |
+| i.i.d. random control (their type 1) | 1.00 | 1.00 | 5.45 |
 | Sanskrit | 0.66 | 0.75 | 3.35 |
 | English words | 0.64 | 0.81 | 3.31 |
 | Sumerian | 0.57 | 0.67 | 3.24 |
@@ -647,7 +650,8 @@ available, and for logo-syllabic corpora, the most Indus-relevant type, this con
 when the related language is the sole reference; among candidate languages it is unresolved. A
 statement about how hard the Indus script is to decipher therefore has to name its corpus (object
 types, period, duplication), its knowledge tier, its script type and its selection rule. None of
-these results bears on what the Indus signs mean.
+these results deciphers the Indus script or says anything about what language it records, or
+whether it records a language at all.
 
 ## Appendix A. Analysis history
 
@@ -766,7 +770,7 @@ of the general science journals. *Computational Linguistics*, 36(3), 585-594.
 doi:10.1162/coli_a_00011
 
 Sproat, R. (2014). A statistical comparison of written language and nonlinguistic symbol systems.
-*Language*, 90 [(2), 457-481, not verified].
+*Language*, 90(2), 457-481.
 
 Tanaka-Ishii, K. (2005). Entropy as an indicator of context boundaries: An experiment using a web
 search engine. In *Proceedings of the Second International Joint Conference on Natural Language

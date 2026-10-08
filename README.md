@@ -9,8 +9,8 @@ and *non-linguistic* sign systems in invented scripts. It calibrates those scrip
 Indus statistics and hides the answer key. Then it measures which methods recover what, at
 which corpus size.
 
-**What IBDB does not do.** It does not decipher the Indus script, and it makes no claim
-about the Indus language. A method that scores well here has shown it can read Indus-*like*
+**What IBDB does not do.** It does not decipher the Indus script or say anything about what language
+it records, or whether it records a language at all. A method that scores well here has shown it can read Indus-*like*
 synthetic data. That is a necessary condition for a credible decipherment, not evidence of one.
 
 ![Decipherability curve](reports/figures/decipherability_headline.png)

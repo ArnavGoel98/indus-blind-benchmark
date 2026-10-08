@@ -1,0 +1,1058 @@
+{
+ "systems": {
+  "Vinca": {
+   "n_texts": 591,
+   "n_tokens": 804,
+   "n_types": 185,
+   "mean_length": 1.3604060913705585,
+   "dup_rate": 0.5871404399323181,
+   "disputed": false
+  },
+  "Kudurrus": {
+   "n_texts": 69,
+   "n_tokens": 939,
+   "n_types": 64,
+   "mean_length": 13.608695652173912,
+   "dup_rate": 0.01449275362318836,
+   "disputed": false
+  },
+  "BarnStars": {
+   "n_texts": 310,
+   "n_tokens": 963,
+   "n_types": 32,
+   "mean_length": 3.106451612903226,
+   "dup_rate": 0.6451612903225806,
+   "disputed": false
+  },
+  "TotemPoles": {
+   "n_texts": 325,
+   "n_tokens": 1798,
+   "n_types": 477,
+   "mean_length": 5.532307692307692,
+   "dup_rate": 0.03692307692307695,
+   "disputed": false
+  },
+  "WeatherIcons": {
+   "n_texts": 10142,
+   "n_tokens": 50710,
+   "n_types": 16,
+   "mean_length": 5.0,
+   "dup_rate": 0.6038256754091895,
+   "disputed": false
+  },
+  "AsianEmoticons": {
+   "n_texts": 10000,
+   "n_tokens": 59186,
+   "n_types": 333,
+   "mean_length": 5.9186,
+   "dup_rate": 0.00770000000000004,
+   "disputed": false
+  },
+  "Pictish": {
+   "n_texts": 283,
+   "n_tokens": 984,
+   "n_types": 104,
+   "mean_length": 3.477031802120141,
+   "dup_rate": 0.20141342756183744,
+   "disputed": true
+  }
+ },
+ "pools": {
+  "full/full": {
+   "n_train": 81,
+   "train_entropy_ratio": {
+    "language": 0.6046616688767248,
+    "heraldry": 0.7086695695415246,
+    "emblem_markov": 0.6972882086886769,
+    "admin_tags": 0.6941462119509697,
+    "adversarial": 0.6987840433739483,
+    "rao_type1": 0.21431687483478676,
+    "rao_type2": 0.6959679111297783,
+    "kamon": 0.4946176300019278
+   },
+   "corpora": [
+    {
+     "system": "Vinca",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "logosyllabic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.3634192986505417
+    },
+    {
+     "system": "Kudurrus",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "syllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6212627038941865
+    },
+    {
+     "system": "BarnStars",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.3882066949490115
+    },
+    {
+     "system": "TotemPoles",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logographic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6509282587192392
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.742244917050841
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7421474297866738
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7437829794308656
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7394459941279202
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8679604421382134
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8360779770240429
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8324628620665394
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8389437023354964
+    },
+    {
+     "system": "Pictish",
+     "tag": "native",
+     "disputed": true,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.44983973366264907
+    }
+   ]
+  },
+  "full/holdout": {
+   "n_train": 81,
+   "train_entropy_ratio": {
+    "language": 0.621482468252196,
+    "heraldry": 0.7210303226128737,
+    "admin_tags": 0.7118874215530813,
+    "emblem_markov": 0.678935228045647,
+    "rao_type1": 0.40474084195527005,
+    "adversarial": 0.7243577947269011,
+    "rao_type2": 0.7588359027585527,
+    "kamon": 0.4974535766569943
+   },
+   "corpora": [
+    {
+     "system": "Vinca",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "logographic",
+      "segmentation_branching": "logosyllabic"
+     },
+     "entropy_ratio": 0.3634192986505417
+    },
+    {
+     "system": "Kudurrus",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "syllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6212627038941865
+    },
+    {
+     "system": "BarnStars",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "logosyllabic"
+     },
+     "entropy_ratio": 0.3882066949490115
+    },
+    {
+     "system": "TotemPoles",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logographic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6509282587192392
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.742244917050841
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7421474297866738
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7437829794308656
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7394459941279202
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8679604421382134
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8360779770240429
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8324628620665394
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8389437023354964
+    },
+    {
+     "system": "Pictish",
+     "tag": "native",
+     "disputed": true,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": false,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "logosyllabic"
+     },
+     "entropy_ratio": 0.44983973366264907
+    }
+   ]
+  },
+  "replication/full": {
+   "n_train": 81,
+   "train_entropy_ratio": {
+    "language": 0.6005973599612257,
+    "heraldry": 0.7165618331830362,
+    "admin_tags": 0.6887345036655868,
+    "emblem_markov": 0.7020826748554546,
+    "adversarial": 0.7122240460798207,
+    "rao_type1": 0.19731165342610565,
+    "rao_type2": 0.6956549173519843,
+    "kamon": 0.49271195632998516
+   },
+   "corpora": [
+    {
+     "system": "Vinca",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "logosyllabic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.3634192986505417
+    },
+    {
+     "system": "Kudurrus",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "syllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6212627038941865
+    },
+    {
+     "system": "BarnStars",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.3882066949490115
+    },
+    {
+     "system": "TotemPoles",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logographic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6509282587192392
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.742244917050841
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7421474297866738
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7437829794308656
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7394459941279202
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8679604421382134
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8360779770240429
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8324628620665394
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8389437023354964
+    },
+    {
+     "system": "Pictish",
+     "tag": "native",
+     "disputed": true,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "alphabetic"
+     },
+     "entropy_ratio": 0.44983973366264907
+    }
+   ]
+  },
+  "replication/holdout": {
+   "n_train": 81,
+   "train_entropy_ratio": {
+    "language": 0.6162336176080601,
+    "heraldry": 0.719893476115517,
+    "admin_tags": 0.7075543239748189,
+    "adversarial": 0.7337718947300779,
+    "rao_type1": 0.3765480907834928,
+    "emblem_markov": 0.6743116190818861,
+    "rao_type2": 0.7542456007737233,
+    "kamon": 0.47291895702616743
+   },
+   "corpora": [
+    {
+     "system": "Vinca",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "logographic",
+      "segmentation_branching": "logographic"
+     },
+     "entropy_ratio": 0.3634192986505417
+    },
+    {
+     "system": "Kudurrus",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "syllabic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6212627038941865
+    },
+    {
+     "system": "BarnStars",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "logographic"
+     },
+     "entropy_ratio": 0.3882066949490115
+    },
+    {
+     "system": "TotemPoles",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": true,
+      "lee2010_tree": false,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logographic",
+      "script_type_lr": "syllabic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.6509282587192392
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.742244917050841
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7421474297866738
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7437829794308656
+    },
+    {
+     "system": "WeatherIcons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": false,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "alphabetic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.7394459941279202
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "native",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8679604421382134
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus0",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8360779770240429
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus1",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8324628620665394
+    },
+    {
+     "system": "AsianEmoticons",
+     "tag": "indus2",
+     "disputed": false,
+     "A_pred": {
+      "rao2009_entropy": false,
+      "yadav2010_markov": true,
+      "fuls_positional": true,
+      "lee2010_tree": true,
+      "ling_classifier_lr": false
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "syllabic"
+     },
+     "entropy_ratio": 0.8389437023354964
+    },
+    {
+     "system": "Pictish",
+     "tag": "native",
+     "disputed": true,
+     "A_pred": {
+      "rao2009_entropy": true,
+      "yadav2010_markov": false,
+      "fuls_positional": false,
+      "lee2010_tree": false,
+      "ling_classifier_lr": true
+     },
+     "B_pred": {
+      "script_type_inventory_rule": "logosyllabic",
+      "script_type_lr": "alphabetic",
+      "segmentation_branching": "logographic"
+     },
+     "entropy_ratio": 0.44983973366264907
+    }
+   ]
+  }
+ }
+}
