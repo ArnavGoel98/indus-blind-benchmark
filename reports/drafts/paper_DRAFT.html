@@ -17,8 +17,7 @@ code { font-family: 'DejaVu Sans Mono', monospace; font-size: 8.8pt; } li { marg
 size and shape with a known answer. We write five known languages and
 several non-linguistic sign systems in invented scripts, calibrate them to published Indus
 statistics (2,906 texts, 4.6 signs per text), hide the answer keys, and test eight frozen method
-families at three levels of solver knowledge. Four results replicate on fresh seeds. Entropy
-statistics do not separate synthetic languages from an i.i.d. random control at Indus scale. Without a related
+families at three levels of solver knowledge. Four results replicate on fresh seeds. A plug-in entropy ratio cannot tell synthetic languages from an i.i.d. random control at Indus scale. Rao et al.'s smoothed estimator separates them clearly, but places structured non-linguistic systems, both synthetic and attested, within the range of the languages. Without a related
 language among the candidates, mean recovery of sign values stays at or below 4.8% in every run. At
 equal total size, longer inscriptions help more than more inscriptions, in both text samplers and in
 logo-syllabic corpora. And published Indus statistics do not fix how decipherable an Indus-scale
@@ -31,8 +30,10 @@ few source languages and post-hoc decisions, are listed.</p>
 <p>The Indus script was used about 4,500 years ago in South Asia, and nobody can read it. Most inscriptions are four or five signs long, and no bilingual text exists. We
 asked whether existing computer methods would work on texts like these if the answer were known. We
 wrote five known languages, and some sign systems that are not language, in made-up scripts matched
-to the published Indus figures, then hid the answers. Entropy statistics could not tell synthetic
-languages apart from an i.i.d. random control, in which every sign is drawn independently. Without a
+to the published Indus figures, then hid the answers. A simple entropy measure could not tell synthetic
+languages apart from an i.i.d. random control, in which every sign is drawn independently. The
+smoothed measure of Rao et al. (2009) could, but it placed structured non-linguistic systems among
+the languages. Without a
 related language, the methods recovered about 5% of signs or fewer on average. Longer inscriptions
 helped more than more inscriptions. Two ways of building the collections that the published figures
 cannot tell apart gave results that differed three- to fivefold when a related language was
@@ -72,8 +73,10 @@ three- to fivefold when a related language is available, while duplicate rate an
 one sampler matter less under the frozen rule. So we report a map, not a single Indus number.</p>
 <p><strong>Findings.</strong></p>
 <ol>
-<li>Entropy statistics do not separate synthetic languages from an i.i.d. random control
-   (independent, identically distributed signs) at Indus scale.</li>
+<li>A plug-in entropy ratio cannot tell synthetic languages from an i.i.d. random control
+   (independent, identically distributed signs) at Indus scale. Rao et al.'s smoothed estimator
+   separates them clearly, but places structured non-linguistic systems, both synthetic and
+   attested, within the range of the languages.</li>
 <li>Without a related language among the candidates, mean recovery stays at or below 4.8% in every
    run. No corpus reaches 50% of tokens; the best reaches 28%.</li>
 <li>Under the frozen rule, longer inscriptions help more than more inscriptions in both samplers,
@@ -368,13 +371,13 @@ Intervals are 95% and resample whole source languages.</em></p>
 </tbody>
 </table>
 <p>The sensitivity sweep ran with both sister languages; the corrected one supplies Sections 4.4-4.5.</p>
-<h3>4.1 Entropy statistics fail at Indus scale</h3>
-<p>The entropy result is the clearest, and it involves no reference language. At the Indus point the
+<h3>4.1 Entropy statistics at Indus scale: a plug-in ratio fails; a smoothed estimator separates only the i.i.d. random control</h3>
+<p>This result involves no reference language. At the Indus point the
 plug-in conditional-to-unigram entropy ratio, over the full sign alphabet, is 0.470 for an i.i.d.
 random control (420 signs) and 0.477 for the synthetic languages (Table 4, Figure 1). At this size the
 statistic cannot tell synthetic languages apart from an i.i.d. random control. After merging all but
 the 100 most frequent signs into one, the i.i.d. random control even scores higher. Structured non-linguistic
-systems are not random, and are tested separately (attested systems in Section 4.10).</p>
+systems are not random, and are tested separately below and in Section 4.10.</p>
 <p><em>Table 4. Plug-in conditional-to-unigram entropy ratio H(X2|X1)/H(X1) at the Indus point. This is
 not the estimator of Rao et al. (2009).</em></p>
 <table>
@@ -409,6 +412,61 @@ seeds to 0.49 [0.25, 0.75]; both include chance. Under <code>full</code>, every 
 one structurally non-linguistic control family as language in all its corpora, the rigid control
 in the entropy classifier's case. Language detection at Indus scale is unresolved, and the <code>full</code>
 score is a product of calibration.</p>
+<p>Rao et al.'s (2009) own estimator behaves differently. We implemented it post hoc from their
+supplement (Section 4.9); the frozen method is unchanged. It separates synthetic languages from the
+i.i.d. random control clearly: in both seed sets and both calibration regimes, every language corpus
+scores below every i.i.d. random-control corpus (Table 4b). But it places structured non-linguistic
+systems within the range of the languages. All our synthetic structured systems fall inside it, as
+do four of the six attested systems from Sproat's corpora (Section 4.10) and Pictish. Totem poles sit
+just above the languages' range and Vinča signs well above it. Several attested systems are small
+(Vinča has only 804 signs), so their values are less certain.</p>
+<p><em>Table 4b. Relative conditional entropy at the Indus point with Rao et al.'s estimator (modified
+Kneser-Ney bigrams; conditional entropy divided by that of a uniformly random sequence over the same
+number of signs), all signs. Post hoc. Ranges are minimum to maximum over corpora.</em></p>
+<table>
+<thead>
+<tr>
+<th>Corpora</th>
+<th>Seeds 0-2, <code>full</code></th>
+<th>Seeds 0-2, <code>holdout</code></th>
+<th>Seeds 3-5, <code>full</code></th>
+<th>Seeds 3-5, <code>holdout</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synthetic languages (60), mean and range</td>
+<td>0.53 (0.33-0.69)</td>
+<td>0.54 (0.28-0.72)</td>
+<td>0.53 (0.32-0.69)</td>
+<td>0.54 (0.34-0.71)</td>
+</tr>
+<tr>
+<td>i.i.d. random control (3)</td>
+<td>0.90-0.92</td>
+<td>0.92-0.94</td>
+<td>0.90</td>
+<td>0.92-0.93</td>
+</tr>
+<tr>
+<td>Rigid control (3)</td>
+<td>0.10</td>
+<td>0.10-0.16</td>
+<td>0.10</td>
+<td>0.14-0.20</td>
+</tr>
+<tr>
+<td>Synthetic structured systems (9): heraldry, slot tags, Markov emblems</td>
+<td>0.59-0.64</td>
+<td>0.56-0.66</td>
+<td>0.59-0.64</td>
+<td>0.57-0.67</td>
+</tr>
+</tbody>
+</table>
+<p>Attested systems at native size: barn stars 0.36, weather icons 0.57, emoticons 0.58, Pictish 0.57
+(disputed), kudurrus 0.72, totem poles 0.74, Vinča signs 0.85; samples of 2,906 texts give 0.59 for
+weather icons and 0.60 for emoticons.</p>
 <p><img alt="Figure 1" src="figures/fig1_entropy_ratio.png" /></p>
 <p><em>Figure 1. Plug-in conditional-to-unigram entropy ratio H(X2|X1)/H(X1) at the Indus point (2,906 texts, mean 4.6 signs; <code>full</code>
 calibration, seeds 0-2): full sign set (left) and rarer signs merged, top 100 signs
@@ -964,70 +1022,73 @@ published baseline, level with the best configuration. The settings differ in de
 the whole text vs one value per cipher letter; novels and Darwin vs news and an encyclopedia), but
 the solver plainly works on the problem it was built for. Its low recovery on Indus-like corpora is
 not a broken implementation.</p>
-<p><strong>Conditional-entropy ordering (Rao et al. 2009).</strong> Rao et al. give these values only as figures,
-which we read by eye; the supplement tabulates only Indus perplexities. We applied the frozen entropy
-function to our own reference corpora at matching unit levels, with a shuffled sequence as the
-random reference.</p>
-<p><em>Table 15. Relative conditional entropy: Rao et al. (2009) vs our corpora.</em></p>
+<p><strong>Conditional-entropy values (Rao et al. 2009).</strong> Rao et al. give these values only as a figure,
+which we read by eye. Their supplement describes the estimator: bigram probabilities with modified
+Kneser-Ney smoothing (Chen &amp; Goodman 1998), conditional entropy in nats, and a relative value against
+a uniformly random sequence over the same number of tokens. We implemented it post hoc, separately
+from the frozen method, and applied it to the same kinds of corpus where licences allowed: the Brown
+corpus for English, Rig Veda 1.1-1.100 for Sanskrit, the eight Ettuthokai anthologies for Old Tamil,
+CDLI rather than ETCSL for Sumerian, and their two controls (10,000 lines of 20 signs over 417 signs).</p>
+<p><em>Table 15. Relative conditional entropy with Rao et al.'s estimator: their Fig. 1B vs our corpora.</em></p>
 <table>
 <thead>
 <tr>
 <th>Corpus</th>
 <th>Rao et al., Fig. 1B (by eye)</th>
-<th>Ours, relative, 400 tokens</th>
-<th>Ours, nats, 400 tokens</th>
+<th>Ours</th>
+<th>Token types used (Rao's)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>i.i.d. random control (their type 1)</td>
 <td>1.00</td>
-<td>1.00</td>
-<td>5.45</td>
+<td>0.99</td>
+<td>417 (417)</td>
 </tr>
 <tr>
 <td>Sanskrit</td>
 <td>0.66</td>
-<td>0.75</td>
-<td>3.35</td>
+<td>0.55</td>
+<td>326 (388)</td>
 </tr>
 <tr>
 <td>English words</td>
 <td>0.64</td>
-<td>0.81</td>
-<td>3.31</td>
+<td>0.65</td>
+<td>417 (417)</td>
 </tr>
 <tr>
 <td>Sumerian</td>
 <td>0.57</td>
-<td>0.67</td>
-<td>3.24</td>
+<td>0.51</td>
+<td>417 (417)</td>
 </tr>
 <tr>
 <td>Old Tamil</td>
 <td>0.56</td>
-<td>0.74</td>
-<td>3.34</td>
+<td>0.54</td>
+<td>234 (244)</td>
 </tr>
 <tr>
 <td>English characters</td>
 <td>0.51</td>
-<td>0.85</td>
-<td>2.47</td>
+<td>0.54</td>
+<td>84 (128)</td>
 </tr>
 <tr>
 <td>Rigid control (their type 2)</td>
 <td>about 0</td>
-<td>0.02</td>
-<td>0.08</td>
+<td>0.01</td>
+<td>417 (417)</td>
 </tr>
 </tbody>
 </table>
-<p>The extremes reproduce, and at 400 tokens our languages sit at 3.2-3.4 nats, close to the roughly
-3.3-3.8 of Rao's Fig. 1A. The ordering among languages does not: English characters rank highest
-for us and lowest for Rao, and Sanskrit leads Sumerian in both, by different margins. Our corpora (Ramayana, CDLI and Pride and Prejudice rather than Rig Veda,
-ETCSL and the Brown corpus), unit definitions and random reference all differ, and English characters
-have fewer than 400 types. This is a partial reproduction only.</p>
+<p>The values reproduce within about 0.1. The extremes match, and so does the band of languages (ours
+0.51-0.65, Rao's 0.51-0.66). The order among languages does not, and it is not robust to choices the
+supplement leaves open: without space tokens Sanskrit rises to 0.65, Sumerian cut to Rao's corpus size
+(about 10,300 signs) rises to 0.64, and English characters fall to 0.49 when divided by 128 possible
+characters rather than the 84 observed. This is a partial reproduction.</p>
 <h3>4.10 Attested non-linguistic systems (Sproat's corpora)</h3>
 <p>Every other control in this paper was built by us. As a held-out test, we ran the frozen Task A and
 B methods on the real non-linguistic symbol systems collected by Sproat (2014; Wu, Solman, Linehan &amp;
@@ -1140,8 +1201,10 @@ unresolved. They add no new failure of the plug-in entropy ratio itself.</p>
    hidden corpus (verbatim overlap 30-56% by language, corrected sister) and comes with oracle sound
    correspondences. Its distance is a free parameter. Sister tiers are optimistic.</li>
 <li><strong>Oracle script type and unit level in Task D.</strong> Real decipherers are not told the script type.</li>
-<li><strong>Positive controls are partial.</strong> The frozen EM matches the best published cipher accuracy; the
-   entropy statistic reproduces Rao et al.'s extremes and magnitude but not their ordering. The
+<li><strong>Positive controls are partial.</strong> The frozen EM matches the best published cipher accuracy. Rao et
+   al.'s estimator, implemented post hoc, reproduces their values within about 0.1, including the
+   extremes and the band of languages, but the order among languages depends on choices their
+   supplement leaves open. The
    cognate-matcher and the n-gram, positional, segmentation and script-type methods have no positive
    control, so a low score from them could still reflect our implementation.</li>
 <li><strong>Genre.</strong> Four of five sources are literary (an epic, classical poetry, Caesar and Vergil, an oral
@@ -1190,9 +1253,10 @@ A and B are <code>generator v1</code> and <code>v2</code>, and the original, cor
 <code>sister-v1</code>, <code>sister-v2</code> and <code>sister-v3</code>. Source texts are fetched by the user under their own
 licences and never redistributed.</p>
 <h2>7. Conclusion</h2>
-<p>On synthetic corpora matched to the published Indus statistics, three results hold up best: entropy
-statistics cannot tell synthetic languages apart from an i.i.d. random control, methods without a
-related language recover about 5% of signs or fewer, and longer inscriptions help more than more
+<p>On synthetic corpora matched to the published Indus statistics, three results hold up best: a plug-in
+entropy ratio cannot tell synthetic languages from an i.i.d. random control, and Rao et al.'s
+smoothed estimator, which can, places structured non-linguistic systems among the languages; methods
+without a related language recover about 5% of signs or fewer, and longer inscriptions help more than more
 inscriptions. Any claim about how hard the Indus script is to decipher should therefore name its
 corpus, the script type it assumes and whether it assumes a related language; otherwise the answer
 can change several times over. The most useful additions would be longer inscriptions and corpora
@@ -1403,7 +1467,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.</p>
 <tr>
 <td>28</td>
 <td>8 Oct</td>
-<td>After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline wording pending review</td>
+<td>After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline 1 reworded after review</td>
 <td>Post-results</td>
 <td>this revision</td>
 </tr>
@@ -1423,6 +1487,8 @@ not read; what we use from it is taken from the secondary source named.</p>
 <em>Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing</em> (pp. 874-878).</p>
 <p>Chao, A. (1984). Nonparametric estimation of the number of classes in a population. <em>Scandinavian
 Journal of Statistics</em>, 11, 265-270. (not verified)</p>
+<p>Chen, S. F., &amp; Goodman, J. (1998). Harvard University Computer Science Technical Report TR-10-98.
+(not read; cited as in Rao et al. 2009, supplement)</p>
 <p>Farmer, S., Sproat, R., &amp; Witzel, M. (2004). The collapse of the Indus-script thesis: The myth of a
 literate Harappan civilization. <em>Electronic Journal of Vedic Studies</em>, 11(2) [pp. 19-57, not verified].</p>
 <p>Frenez, D., &amp; Tosi, M. (2005). The Lothal sealings: Records from an Indus civilization town at the
