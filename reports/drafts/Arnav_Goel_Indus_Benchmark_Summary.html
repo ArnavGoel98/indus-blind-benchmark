@@ -21,18 +21,18 @@ Summary of the paper "A Blind Benchmark of Decipherment Methods on Synthetic Scr
 <p>The Indus script was used about 4,500 years ago in what is now Pakistan and north-west India, and nobody has been able to read it. Most inscriptions are only four or five signs long, mostly on small seals, and there is no bilingual text to help. People have proposed readings, and others have used statistics to argue about whether the signs are writing at all. I wanted to check something more basic: would the computer methods people use actually work on texts this short, in a case where the answer is already known?</p>
 
 <h2>Method</h2>
-<p>To test this I built fake Indus-like collections of texts. I took real texts in five languages (Sanskrit, Old Tamil, Sumerian, Latin and Finnish), plus some sign systems that are not language, like coats of arms, and rewrote them in made-up scripts. I tuned each collection to match the published figures for the Indus inscriptions, roughly 2,900 texts of about 4.6 signs each. Then I hid the answers, ran the existing methods, and counted how many signs they got right. Sometimes a method was given a closely related language to work from, sometimes a mix of related and unrelated languages, and sometimes only unrelated ones.</p>
+<p>To test this I built synthetic Indus-like collections of texts. I took real texts in five languages (Sanskrit, Old Tamil, Sumerian, Latin and Finnish), plus some sign systems that are not language, like coats of arms, and rewrote them in made-up scripts. I tuned each collection to match the published figures for the Indus inscriptions, roughly 2,900 texts of about 4.6 signs each. Then I hid the answers, ran the existing methods, and counted how many signs they got right. Sometimes a method was given a closely related language to work from, sometimes a mix of related and unrelated languages, and sometimes only unrelated ones.</p>
 
 <h2>Findings</h2>
 <div class="fig">
 <img src="figures/fig2_length_vs_size.png" alt="Longer vs more inscriptions">
-<p>Same total amount of text: 2,906 texts of 10 signs (longer) vs 6,317 texts of 4.6 signs (more), for the two ways of building the collections (A, B). Bars are averages; lines show 95% ranges.</p>
+<p>Same total amount of text: 2,906 texts of 10 signs (longer) vs 6,317 texts of 4.6 signs (more), for the two ways of building the collections (A, B). Bars are averages; lines show 95% intervals.</p>
 </div>
 <ul>
-<li>The entropy statistics I tested could not tell real languages apart from random signs at this size.</li>
-<li>Without a related language, the methods got about 5% of signs right on average, or less.</li>
+<li>The entropy statistics I tested could not tell real languages apart from random signs at this size (0.470 for random signs vs 0.477 for languages).</li>
+<li>Without a related language, the methods recovered about 5% of signs or fewer, on average.</li>
 <li>For the same total amount of text, a few longer inscriptions helped much more than many short ones (figure).</li>
-<li>The published Indus figures are not enough to say how hard the problem is. I built the collections in two slightly different ways, both matching those figures, and the results came out three to five times apart when a related language was available. For the script type closest to Indus, the difference only showed up when the related language was the only one given.</li>
+<li>The published Indus figures are not enough to say how hard the problem is. I built the collections in two slightly different ways (A and B) that the published figures cannot tell apart, and the results came out three to five times apart when a related language was available. For the script type closest to Indus, the difference only showed up when the related language was the only one given.</li>
 <li>Seals are rarely copied but tablets often are, and my results suggest a seals-only collection may be somewhat easier to work with than a tablets-only one. I did not test this directly, so it is a prediction rather than a measurement.</li>
 </ul>
 
