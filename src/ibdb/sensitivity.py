@@ -408,9 +408,18 @@ def box_spread(ok: list[dict], combos, box_cells, tiers, methods, before_cognate
     return out
 
 
-def write_aggregate(name: str = "sensitivity", out_dir: Path | None = None) -> Path:
+def score_label(agg: dict) -> str:
+    """What the numbers in a sweep figure or table are (printed on every map and report)."""
+    if agg.get("before_cognate"):
+        return ("Primary scores: sister-v2, scored before the cognate step (no oracle sound correspondences).")
+    if agg.get("profile") == "sensitivity":
+        return "Upper bound (sister-v1, known overlap), with oracle sound correspondences."
+    return f"Profile {agg.get('profile')}, with oracle sound correspondences."
+
+
+def write_aggregate(name: str = "sensitivity", out_dir: Path | None = None, agg: dict | None = None) -> Path:
     from .paths import project_root
-    agg = aggregate(name)
+    agg = agg if agg is not None else aggregate(name)
     d = ensure(out_dir or project_root() / "reports" / "sensitivity")
     p = d / "aggregate.json"
     p.write_text(json.dumps(agg, indent=1, default=float))

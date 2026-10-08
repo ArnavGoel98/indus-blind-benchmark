@@ -286,8 +286,8 @@ Corpora are generated at three seeds per configuration (0-2) and replicated on f
 Two generators are used. Generator v2 differs from v1 only in how text windows are sampled (first
 the opening word type, then the rest); it was written to fix a missed text-beginner target and did
 not fix it. Both generators meet the size and length targets in every corpus and the remaining
-targets at similar, not identical, rates (all targets met by 12% of v1 and 8% of v2 language corpora
-at the Indus point; full table in the appendix).
+targets at similar, not identical, rates (all targets met by 13% of generator-v1 and 3-7% of generator-v2
+language corpora at the Indus point, sister-v2 runs; full table in the appendix).
 
 ### 3.9 Sensitivity sweep
 
@@ -391,7 +391,7 @@ selects the sister for them; with the sister as the sole reference the contrast 
 seeds 0-2: 15.9% vs 30.2%).
 
 The two generators differ only in how text windows are sampled. Both meet the size and length
-targets in every corpus, and neither meets every target in more than 12% of language corpora, so
+targets in every corpus, and neither meets every target in more than 13% of language corpora (sister-v2 runs), so
 the published statistics do not choose between them. Corpus size also behaves differently: from 500
 to 50,000 texts, generator v1 rises only from 2.5% to 3.7% (primary), while generator v2 rises from
 3.5% to 18.7%.
@@ -496,7 +496,7 @@ corpus 20.2%). The check is limited: seal texts are far more repetitive and use 
 than the calibrated corpora (duplicate rate 0.51-0.59, about 340 sign types, 37 signs covering 80%
 of tokens, against targets of 400-700 types and 69), and no seal-only corpus meets every calibration
 target, because the knobs were calibrated on the full source. The oracle step also adds more on
-seal-only material (13-17 points) than on the full source. The comparison is consistent with the
+seal-only material (15-17 points) than on the full source. The comparison is consistent with the
 main conclusions not depending on literary genre for Sumerian, but it is not a calibrated Indus-point
 result and cannot settle the question. Full table: `reports/sister_v2/sumerian_seal_genre_check.md`.
 
@@ -575,7 +575,7 @@ than 400 types, so this is a partial reproduction only. Files: `reports/positive
    cluster bootstrap can produce intervals that are too narrow; we did not measure their coverage, so
    every interval should be read as approximate. Logo-syllabic subsets (Section 4.7) have only 15
    corpora per point.
-8. **Text-beginner calibration.** Most corpora miss the text-beginner target (35-37% meet it), and
+8. **Text-beginner calibration.** Most corpora miss the text-beginner target (32-37% meet it, sister-v2 runs), and
    generator v2 did not fix this.
 9. **Median length is derived, not published.** The target of 4 is derived from Yadav et al. 2010,
    Fig. 2 (2,591 texts, mean 3.92, max 14), which is not like-for-like with 2,906 texts at 4.6 signs;
@@ -671,7 +671,7 @@ repository under the tags above; no third-party text is redistributed.
 **References.** Only sources read, or marked "via". See `reports/drafts/citation_check_2026-10-05.md`
 for verification status.
 
-**Appendices.** Analysis history (Appendix A), calibration, full result tables, sensitivity tables, the rule comparison, the audit,
+**Appendices.** Analysis history (Appendix A); sweep maps and tables, primary (`reports/sensitivity/`) and upper bound (`reports/sensitivity/appendix_sister_v1/`); calibration, full result tables, sensitivity tables, the rule comparison, the audit,
 the sister-v1/v2/v3 comparisons and method deviations.
 
 [Stop for review.]

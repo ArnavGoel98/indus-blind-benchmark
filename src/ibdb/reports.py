@@ -499,6 +499,7 @@ def sensitivity_report(agg: dict, out_dir=None) -> "Path":  # noqa: F821
           "texts that repeat an earlier text, and the number of sign types (reached by adding allographs). "
           "Everything else is unchanged. Accuracy is Task D token accuracy. "
           "The 95% intervals resample whole source languages (cluster bootstrap).", "",
+          f"**Scores in this report.** {__import__('ibdb.sensitivity', fromlist=['score_label']).score_label(agg)}", "",
           "**Nothing here is a measurement of the Indus script.** The map shows how much the difficulty of our "
           "synthetic Indus-like corpora depends on two properties the published Indus statistics do not pin down.",
           ""]

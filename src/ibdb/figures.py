@@ -486,7 +486,8 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                      f"Lines: published values (solid verified, dotted unverified).\n"
                      f"Top: sign lists P94 Parpola 386, M77 Mahadevan 417, W06/W15 Wells 676/694, F23? Fuls >700. "
                      f"Right: duplicate rate, M77 raw 0.354, M77-4 without 4 outlier texts 0.281, "
-                     f"ICIT? preprint 0.237. Empty cell: unreachable.", fontsize=8.5, x=0.01, ha="left", y=1.03)
+                     f"ICIT? preprint 0.237. Empty cell: unreachable.\n{_score_label(agg)}", fontsize=8.5, x=0.01,
+                     ha="left", y=1.05)
         fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
         fig.text(0.01, -0.075, SUBSET_NOTE, fontsize=8, color=INK2, ha="left", va="top", wrap=True)
         p = d / f"sensitivity_map_{panel}.png"
@@ -524,6 +525,7 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
                 ax.axvline(r["value"], color=INK, lw=0.7, ls=":" if r.get("verified") is False else "-", alpha=0.5)
     fig.tight_layout()
     fig.text(0.01, -0.01, ALLOGRAPH_NOTE, fontsize=8, color="#a3271f", ha="left", va="top", wrap=True)
+    fig.text(0.01, -0.07, _score_label(agg), fontsize=8, color=INK2, ha="left", va="top")
     p = d / "sensitivity_slices.png"
     fig.savefig(p, dpi=150, bbox_inches="tight")
     fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
@@ -531,6 +533,11 @@ def sensitivity_maps(agg: dict, out_dir: Path | None = None) -> list[Path]:
     paths.append(p)
     paths.append(archaeology_map(agg, refs, d))
     return paths
+
+
+def _score_label(agg: dict) -> str:
+    from .sensitivity import score_label
+    return score_label(agg)
 
 
 def archaeology_map(agg: dict, refs: dict, d: Path) -> Path:
@@ -586,6 +593,7 @@ def archaeology_map(agg: dict, refs: dict, d: Path) -> Path:
     fig.colorbar(im, ax=axes, shrink=0.7, pad=0.16, label="Task D token accuracy")
     fig.text(0.01, -0.02, ALLOGRAPH_NOTE, fontsize=8.5, color="#a3271f", ha="left", va="top", wrap=True)
     fig.text(0.01, -0.09, SUBSET_NOTE, fontsize=8, color=INK2, ha="left", va="top", wrap=True)
+    fig.text(0.01, -0.15, _score_label(agg), fontsize=8, color=INK2, ha="left", va="top")
     p = d / "sensitivity_archaeology.png"
     fig.savefig(p, dpi=150, bbox_inches="tight")
     fig.savefig(p.with_suffix(".svg"), bbox_inches="tight")
