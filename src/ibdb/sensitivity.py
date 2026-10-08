@@ -311,7 +311,13 @@ def valid(rec: dict) -> bool:
             and rec["gen"]["length_substitutions"] <= MAX_LENGTH_SUBSTITUTIONS * rec["job"]["n_texts"])
 
 
-def aggregate(name: str = "sensitivity") -> dict[str, Any]:
+def _acc(d: dict, before_cognate: bool) -> float:
+    """Task D token accuracy; with before_cognate, the score before the solver's cognate step
+    (equal to token_acc when no cognate step ran)."""
+    return d.get("token_acc_before_cognate", d["token_acc"]) if before_cognate else d["token_acc"]
+
+
+def aggregate(name: str = "sensitivity", before_cognate: bool = False) -> dict[str, Any]:
     prof = profile(name)
     recs = load_records(name)
     for r in recs:   # a corpus counts only if both knobs were actually hit (see valid())
@@ -356,23 +362,24 @@ def aggregate(name: str = "sensitivity") -> dict[str, Any]:
                 cell["by_script"] = {}
                 for tier in prof["knowledge_tiers"]:
                     for m in methods:
-                        x = np.array([r["CD"][tier][m]["token_acc"] for r in rs])
+                        x = np.array([_acc(r["CD"][tier][m], before_cognate) for r in rs])
                         cl = [r["job"]["source"] for r in rs]
                         lo, hi = cluster_bootstrap(x, cl)
                         cell[f"{tier}:{m}"] = {"mean": float(x.mean()), "ci_lo": lo, "ci_hi": hi,
                                                "share_ge_50": float(np.mean(x >= 0.5))}
                 for st in sorted({r["job"]["script_type"] for r in rs}):
                     sub = [r for r in rs if r["job"]["script_type"] == st]
-                    cell["by_script"][st] = {f"{t}:{m}": float(np.mean([r["CD"][t][m]["token_acc"] for r in sub]))
+                    cell["by_script"][st] = {f"{t}:{m}": float(np.mean([_acc(r["CD"][t][m], before_cognate) for r in sub]))
                                              for t in prof["knowledge_tiers"] for m in methods} | {"n": len(sub)}
             cells_out.append(cell)
         out["panels"][panel] = cells_out
-    out["box_spread"] = box_spread(ok, box_combos, box_cells, prof["knowledge_tiers"], methods)
+    out["box_spread"] = box_spread(ok, box_combos, box_cells, prof["knowledge_tiers"], methods, before_cognate)
+    out["before_cognate"] = before_cognate
     out["timing_mean_s"] = float(np.mean([r["timing"]["total"] for r in ok])) if ok else None
     return out
 
 
-def box_spread(ok: list[dict], combos, box_cells, tiers, methods) -> dict[str, Any]:
+def box_spread(ok: list[dict], combos, box_cells, tiers, methods, before_cognate: bool = False) -> dict[str, Any]:
     """Within one language x script combination, how far does accuracy move across the plausible box?
     Per combination: seed-averaged accuracy in each box cell, spread = max - min. Composition is fixed
     by construction (each spread compares a combination only with itself)."""
@@ -383,7 +390,7 @@ def box_spread(ok: list[dict], combos, box_cells, tiers, methods) -> dict[str, A
             for c in combos:
                 per_cell = []
                 for d, i in box_cells:
-                    xs = [r["CD"][t][m]["token_acc"] for r in ok if (r["job"]["source"], r["job"]["script_type"]) == c
+                    xs = [_acc(r["CD"][t][m], before_cognate) for r in ok if (r["job"]["source"], r["job"]["script_type"]) == c
                           and r["job"]["dup"] == d and r["job"]["inventory"] == i]
                     if xs:
                         per_cell.append((float(np.mean(xs)), d, i))

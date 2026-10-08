@@ -111,9 +111,9 @@ controls:
     license: MIT (generated)
   rao_type1:
     kind: trivial
-    source: Rao et al. 2009 'Type 1' rigid (deterministic successor) control
+    source: rigid (deterministic successor) control. Rao et al. 2009 call this 'Type 2'; our key numbering is reversed
     license: MIT (generated)
   rao_type2:
     kind: trivial
-    source: Rao et al. 2009 'Type 2' i.i.d. equiprobable control
+    source: i.i.d. equiprobable (random-order) control. Rao et al. 2009 call this 'Type 1'; our key numbering is reversed
     license: MIT (generated)

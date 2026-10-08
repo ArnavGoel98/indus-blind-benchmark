@@ -48,8 +48,15 @@ references:
     web search summary, 2026-10-03; exact count NOT verified.)
   NAIR2026: >-
     Nair, A. (2026). How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline
-    Scorecard. arXiv:2604.17828 (preprint, not peer reviewed). Corpus: ICIT as extracted from
-    the "Yajnadevam digital corpus"; data available only on request.
+    Scorecard. arXiv:2604.17828v1, 20 Apr 2026 (preprint, not peer reviewed; only version as of
+    2026-10-05). Corpus: ICIT as extracted from the "Yajnadevam digital corpus" (1,916 deduplicated
+    inscriptions, 52 sites). AVAILABILITY (checked 2026-10-05): the abstract says "All code and data
+    are publicly available", but the arXiv comment ("Code available from corresponding author upon
+    request") and the paper body ("available from the corresponding author ... upon request and will
+    be released as a public repository upon acceptance") say on request only. No public repository
+    and no licence found. Whether the data carry object-type or period tags is therefore unknown;
+    the paper describes the corpus as mostly seals, tablets and pottery from 52 sites but does not
+    say the released data include those tags.
   KENOYER_MEADOW2010: >-
     Kenoyer, J. M. & Meadow, R. H. (2010). Inscribed objects from Harappa excavations 1986-2007.
     In: A. Parpola, B. M. Pande & P. Koskikallio (eds.), Corpus of Indus Seals and Inscriptions,

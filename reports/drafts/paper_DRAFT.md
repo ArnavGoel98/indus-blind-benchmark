@@ -15,6 +15,26 @@ is reported as post hoc. Intervals are 95% and resample whole source languages.
 [Reviewer notes in square brackets are not part of the text. Every citation below is one already
 listed in the repository; entries marked "to verify" there are marked here too.]
 
+## Abstract
+
+Many arguments about the undeciphered Indus script rest on statistics or decipherment methods that
+have not been tested on corpora of Indus size and shape with a known answer. We build synthetic
+corpora from five known languages and from non-linguistic sign systems, write them in invented
+scripts, calibrate them to published Indus statistics (2,906 texts, 4.6 signs per text), and hide
+the answer keys. We test eight method families, frozen before the final runs, under three levels of
+solver knowledge. Four results replicate on fresh seeds. (1) Entropy statistics do not separate
+synthetic languages from independent random signs at Indus scale. (2) Without a related language
+among the candidates, mean recovery of sign values stays at or below 4.8% in every run. (3) At equal
+total size, longer inscriptions help more than more inscriptions, in both generators and in
+logo-syllabic corpora. (4) Published Indus statistics do not fix how decipherable an Indus-scale
+corpus is: two generators that both match them differ roughly three- to fivefold when a related
+language is available, and for logo-syllabic corpora this contrast appears only when the related
+language is the sole reference. A fifth, archaeological result is a prediction, not a measurement.
+The main solver matches the best published accuracy on English letter-substitution ciphers.
+Limitations, including an optimistic synthetic relative, few source languages and post-hoc
+decisions, are listed in full. This work does not decipher, and does not claim to decipher, the
+Indus script.
+
 ## Plain-language summary
 
 The Indus script, used in South Asia about 4,500 years ago, has never been read. Its inscriptions
@@ -70,13 +90,12 @@ fold. The paper therefore reports a map over them rather than a single Indus num
 **Findings.** (1) Entropy statistics do not separate synthetic languages from independent,
 identically distributed (i.i.d.) signs at Indus scale. (2) Without a related language among the
 candidates, mean recovery stays at or below 4.8% in every run; no corpus reaches 50% of tokens;
-the best single corpus reaches 28%. (3) Published Indus statistics do not fix how decipherable an
-Indus-scale corpus is. Two generators that both match them differ roughly three- to fivefold when a
-related language is available (frozen rule, no oracle correspondences: 2.4% vs 12.9% of sign tokens
-on the main seeds, 5.3x; 2.7% vs 9.4% on fresh seeds, 3.5x; 2.6% vs 9.3% with the stricter
-sister-v3, 3.7x). (4) Under the frozen rule, longer inscriptions help more than more
-inscriptions in both generators. (5) Archaeologically defined subsets of the corpus are predicted
-to sit at different points on the map; these are predictions, not measurements.
+the best single corpus reaches 28%. (3) Under the frozen rule, longer inscriptions help more than
+more inscriptions in both generators, including logo-syllabic corpora (12.7% vs 0.2% at equal total
+tokens, generator v1). (4) Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two generators that both match them differ roughly three- to fivefold when a related language is available. For logo-syllabic corpora, the most Indus-relevant type, this contrast appears only when the related language is the sole reference; among candidate languages it is unresolved. (Frozen rule, no oracle correspondences: 2.4% vs 12.9% of
+sign tokens on the main seeds, 5.3x; 2.7% vs 9.4% on fresh seeds, 3.5x; 2.6% vs 9.3% with the
+stricter sister-v3, 3.7x.) (5) Archaeologically defined subsets of the corpus are predicted to sit
+at different points on the map; these are predictions, not measurements.
 
 **What this paper provides.** (i) A generator of synthetic scripts calibrated to published Indus statistics,
 with every target cited and flagged as verified or not. (ii) Eight method families behind one
@@ -185,7 +204,9 @@ with `holdout` wherever a method could exploit calibration.
 
 The controls encode no language: heraldic bearings generated with the rule of tincture (one sign
 per visual element), administrative slot tags, sparse Markov emblems with positional preferences,
-the rigid and i.i.d. controls of Rao et al. (2009), and an adversarial Markov chain tuned to match
+the rigid and random-order controls of Rao et al. (2009) (they call the random-order system type 1 and
+the rigid one type 2; our internal keys `rao_type1` and `rao_type2` use the opposite numbering, so this
+paper names them by behaviour), and an adversarial Markov chain tuned to match
 the entropy ratio of the language corpora. Japanese kamon descriptions are text and are reported
 separately as a contaminated control.
 
@@ -226,7 +247,7 @@ be, in three measurable ways:**
    only phonemes and a fifth of the vocabulary change. The sister's distance is a free parameter;
    a sweep over four distances is reported in the appendix.
 
-Section 4.6 [robustness section, to be written] repeats the key comparisons with a stricter sister
+Section 4.6 repeats the key comparisons with a stricter sister
 (sister-v3), which drops every sister clause that contains any hidden text's word sequence; this
 removes 33-42% of the sister's clauses at the Indus point and leaves 7-8% of the hidden texts' word
 pairs in it (31-35% under sister-v2). Sister-v1 results are reported only as "upper bound
@@ -258,8 +279,8 @@ Decision rules for Tasks A and B are learned leave-one-source-out, so a Sanskrit
 a rule fitted only on other sources. Means carry 95% cluster-bootstrap intervals that resample
 source languages (or control families) and then corpora within them, because corpora from one
 source are not independent. A shuffled-prediction control checks that the Task D scorer is not
-generous: permuting a solver's predicted values across signs drops a 93% corpus to 0.9%. Our
-reimplementations have not been shown to reproduce any published result (Section 5).
+generous: permuting a solver's predicted values across signs drops a 93% corpus to 0.9%. Positive controls
+against published results are reported in Section 4.9.
 
 Corpora are generated at three seeds per configuration (0-2) and replicated on fresh seeds (3-5).
 Two generators are used. Generator v2 differs from v1 only in how text windows are sampled (first
@@ -290,8 +311,8 @@ duplicate rates and sign-list sizes are marked on the map as reference points, n
 Labels used in this section. **Primary**: original (frozen) rule, scored before the cognate step,
 sister-v2. **With oracle sound correspondences**: the same runs scored after the cognate step.
 **Upper bound (sister-v1, known overlap)**: runs made before the sister split was corrected; these
-were scored only after the cognate step. The sensitivity sweep (Sections 4.3 and 4.5) was run once,
-under sister-v1, so its numbers carry both labels and have no primary version.
+were scored only after the cognate step. The sensitivity sweep was run under both; the sister-v2
+sweep gives the primary numbers in Sections 4.4 and 4.5.
 
 ### 4.1 Entropy statistics fail at Indus scale
 
@@ -324,49 +345,15 @@ corpus reaches 50% of tokens; the best single corpus reaches 28%.
 | Generator v1, seeds 0-2 | 1.8% | 3.3% | 16.4% / 18.1% | 0 of 60 |
 | Generator v1, seeds 3-5 | 2.4% | 3.0% | 19.7% / 23.8% | 0 of 60 |
 | Generator v2, seeds 0-2 | 3.3% | 4.8% | 23.2% / 27.6% | 0 of 60 |
-| Sensitivity sweep, all valid cells | at most 4.6% per cell | at most 7.1% per cell | 24.6% / 27.9% | 0 of 1,571 |
+| Sensitivity sweep (sister-v1 hidden split), all valid cells | at most 4.6% per cell | at most 7.1% per cell | 24.6% / 27.9% | 0 of 1,571 |
+| Sensitivity sweep (sister-v2 hidden split), all valid cells | at most 4.6% per cell | at most 6.3% per cell | 26.5% (either rule) | 0 of 1,451 |
 
 Inside the plausible box the no-relative mean is at most 4.3% (fixed-composition panel: the
 same 10 language-script combinations in every box cell), never above
-7.1% anywhere on the grid. Longer texts do not change this: at 20 signs per text the no-relative
+7.1% anywhere on the grid (sister-v2 sweep: 4.3% and 6.3%). Longer texts do not change this: at 20 signs per text the no-relative
 tier stays at or below 6.5%.
 
-### 4.3 Difficulty is not fixed by published Indus statistics
-
-Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two generators
-that both match them differ roughly three- to fivefold when a related language is available.
-
-| Candidates tier, Indus point | Generator v1 | Generator v2 | Ratio |
-|---|---|---|---|
-| Primary, seeds 0-2 | 2.4% [1.2, 3.8] | 12.9% [7.8, 17.4] | 5.3x |
-| Primary, seeds 3-5 | 2.7% [1.2, 3.8] | 9.4% [4.7, 14.0] | 3.5x |
-| Primary, sister-v3 (Section 4.6) | 2.6% [1.2, 4.2] | 9.3% [5.4, 13.5] | 3.7x |
-| With oracle sound correspondences, seeds 0-2 | 2.8% | 18.9% | |
-| Upper bound (sister-v1, known overlap), seeds 0-2 | 2.1% | 15.0% | |
-
-No generator-v1 corpus reaches 50% of tokens in either seed set (primary); 6 of 120 generator-v2
-corpora do. For logo-syllabic corpora alone, the most Indus-relevant script type, the candidates-tier
-contrast is not resolved (0.6% vs 3.6%, and 0.9% vs 1.6% on fresh seeds, with overlapping intervals),
-while the `related`-tier contrast is (Section 4.7). In the `related` tier the contrast is smaller in ratio but larger in points (primary,
-seeds 0-2: 15.9% vs 30.2%).
-
-The two generators differ only in how text windows are sampled. Both meet the size and length
-targets in every corpus, and neither meets every target in more than 12% of language corpora, so
-the published statistics do not choose between them. Corpus size also behaves differently: from 500
-to 50,000 texts, generator v1 rises only from 2.5% to 3.7% (primary), while generator v2 rises from
-3.5% to 18.7%.
-
-Within one generator the duplicate rate and inventory matter less under the frozen rule. Across the
-plausible box (duplicates 0.2-0.4, inventory 400-700), generator-v1 recovery stays at 3.5-5.1%
-(box panel: the 10 language-script combinations valid in every box cell; upper bound (sister-v1, known overlap), with oracle sound
-correspondences), and the median within-combination spread is 2.1 points (maximum 7.6). Generator-v2
-corpora that fall inside the same box average 12.4% under the same labels, so the box does not bound
-recovery across generators.
-
-*Secondary, post hoc (revised rule):* primary scores 9.1% (v1) vs 25.1% (v2); within the v1 box the
-revised rule ranges 8.7-21.8% and moves by up to 62 points within one language and script.
-
-### 4.4 Longer inscriptions vs more inscriptions
+### 4.3 Longer inscriptions vs more inscriptions
 
 Under the frozen rule, longer inscriptions help more than more inscriptions in both generators.
 At equal total tokens (2,906 texts of 10 signs vs 6,317 texts of 4.6 signs, about 29,000 tokens
@@ -381,22 +368,66 @@ each, both run directly), candidates tier:
 
 On fresh seeds (size interpolated on log tokens, no interval): v1 17.7% vs 3.4%, v2 32.2% vs 11.8%
 (primary). The advantage holds from 10 signs per text in generator v1 and from 6 in generator v2.
-Without a relative, both stay at or below 6.5%, with a small edge for length.
+Without a relative, both stay at or below 6.5%, with a small edge for length. The result also holds
+for logo-syllabic corpora alone: 12.7% vs 0.2% (v1) and 27.8% vs 6.4% (v2), primary (Section 4.7).
+
+### 4.4 Difficulty is not fixed by published Indus statistics
+
+Published Indus statistics do not fix how decipherable an Indus-scale corpus is. Two generators that both match them differ roughly three- to fivefold when a related language is available. For logo-syllabic corpora, the most Indus-relevant type, this contrast appears only when the related language is the sole reference; among candidate languages it is unresolved.
+
+| Candidates tier, Indus point | Generator v1 | Generator v2 | Ratio |
+|---|---|---|---|
+| Primary, seeds 0-2 | 2.4% [1.2, 3.8] | 12.9% [7.8, 17.4] | 5.3x |
+| Primary, seeds 3-5 | 2.7% [1.2, 3.8] | 9.4% [4.7, 14.0] | 3.5x |
+| Primary, sister-v3 (Section 4.6) | 2.6% [1.2, 4.2] | 9.3% [5.4, 13.5] | 3.7x |
+| With oracle sound correspondences, seeds 0-2 | 2.8% | 18.9% | |
+| Upper bound (sister-v1, known overlap), seeds 0-2 | 2.1% | 15.0% | |
+
+No generator-v1 corpus reaches 50% of tokens in either seed set (primary); 6 of 120 generator-v2
+corpora do. For logo-syllabic corpora the `candidates`-tier contrast is unresolved (0.6% vs 3.6%,
+and 0.9% vs 1.6% on fresh seeds, with overlapping intervals), because the original rule seldom
+selects the sister for them; with the sister as the sole reference the contrast is clear (3.6% vs
+18.8%, and 3.2% vs 20.4%; Section 4.7). In the `related` tier the contrast is smaller in ratio but larger in points (primary,
+seeds 0-2: 15.9% vs 30.2%).
+
+The two generators differ only in how text windows are sampled. Both meet the size and length
+targets in every corpus, and neither meets every target in more than 12% of language corpora, so
+the published statistics do not choose between them. Corpus size also behaves differently: from 500
+to 50,000 texts, generator v1 rises only from 2.5% to 3.7% (primary), while generator v2 rises from
+3.5% to 18.7%.
+
+Within one generator the duplicate rate and inventory matter less under the frozen rule. Across the
+plausible box (duplicates 0.2-0.4, inventory 400-700), generator-v1 recovery stays at 2.9-4.2%
+(primary; box panel: the 10 language-script combinations valid in every box cell), and the median
+within-combination spread is 2.1 points (maximum 7.5). Upper bound (sister-v1, known overlap), with
+oracle sound correspondences: 3.5-5.1%, median spread 2.1, maximum 7.6. Generator-v2 corpora whose
+measured duplicate rate and inventory fall inside the same box (37 corpora, seeds 0-5) average 11.9%
+(primary; best 72.0%), so the box does not bound recovery across generators.
+
+*Secondary, post hoc (revised rule):* primary scores 9.1% (v1) vs 25.1% (v2); within the v1 box the
+revised rule ranges 5.6-14.2% (primary; upper bound 8.7-21.8%) and moves by up to 44 points within
+one language and script (upper bound 62).
 
 ### 4.5 Archaeological predictions (prediction, not measurement)
 
 No seals-only, tablets-only or single-period corpus was tested. The positions below place
-qualitative published statements on the sensitivity map. All numbers here are upper bound
-(sister-v1, known overlap), with oracle sound correspondences, under the frozen rule, generator v1.
+qualitative published statements on the sensitivity map: S, the seals-only region, is the column
+with no duplicates (from "almost all ... unique" seals; Kenoyer & Meadow 2010); T, the tablets-only
+region, is the columns with duplicates 0.4-0.5 (at or above the pooled M77 rate of 0.354, a derived
+lower bound). Both span inventories 400-800. Numbers are primary (sister-v2 sweep, original rule,
+before the cognate step, generator v1) unless labelled.
 
-A seals-only corpus (duplicates near 0, from "almost all ... unique" seals; Kenoyer & Meadow 2010)
-falls where recovery is 3.5-14.5%; a tablets-only corpus (duplicates at or above the pooled 0.354,
-a derived lower bound) falls at 1.4-4.9%. The direction holds in the strict panel, the 5 combinations valid in
-every grid cell (0.7-20.5% vs 0.1-1.4%), and under the revised rule (18.0-38.6% vs 4.2-17.3%). Under the frozen rule the
-seals-only region is high mainly at 400 signs. Without a related language every region stays at or
-below about 7%. A single-period corpus (fewer signs than the pooled 400-450; Kenoyer 2020b) falls
-below the smallest inventory we can build, so the map cannot place it. Every subset also holds
-fewer than 2,906 texts.
+Recovery in S is 2.8-7.0% against 0.6-3.0% in T, and S is higher at every inventory. In the strict
+panel (the 7 language-script combinations valid in every cell) S is higher only at 400, 500 and 800
+signs (4.3% vs 0.6% at 400) and within 0.4 points of T at 600 and 700, so under the frozen rule the
+seals-only advantage is concentrated at small inventories. Under the revised rule (post hoc) S is
+6.5-24.4% against 2.5-11.7%, higher at every inventory. Upper bound (sister-v1, known overlap), with
+oracle sound correspondences: S 3.5-14.5% vs T 0.4-4.9%. Without a related language every region
+stays at or below 6.3% (upper bound 7.1%).
+
+A single-period corpus (fewer signs than the pooled 400-450; Kenoyer 2020b, p. 249) falls below the
+smallest inventory we can build, so the map cannot place it. Every subset also holds fewer than 2,906
+texts.
 
 ### 4.6 Robustness: a sister with no shared hidden-text sequences (sister-v3)
 
@@ -412,8 +443,8 @@ both generators, Indus point and the equal-token comparison; 480 corpora.
 | `candidates`, primary | 2.4% | 2.6% | 12.9% | 9.3% |
 | `candidates`, with oracle sound correspondences | 2.8% | 2.6% | 18.9% | 12.3% |
 
-Headline 4.3 holds: 2.6% [1.2, 4.2] vs 9.3% [5.4, 13.5], 3.7x, intervals not overlapping. Headline
-4.4 holds: longer beats more by 13.6 [5.8, 21.3] points (v1) and 24.1 [11.9, 35.9] (v2), primary.
+Headline 4 (Section 4.4) holds: 2.6% [1.2, 4.2] vs 9.3% [5.4, 13.5], 3.7x, intervals not overlapping.
+Headline 3 (Section 4.3) holds: longer beats more by 13.6 [5.8, 21.3] points (v1) and 24.1 [11.9, 35.9] (v2), primary.
 The filter depends on the corpus: many short texts remove more of the sister (40-52% of clauses)
 than fewer long texts (9-15%), which favours the long-text condition. Sister-v3 therefore confirms
 that the length advantage survives; it does not measure its size better than sister-v2.
@@ -432,12 +463,12 @@ corpora (5 languages x 3 seeds = 15 corpora per point; primary unless stated):
 |---|---|---|---|
 | 4.1 Entropy ratio, Rao top-100 merge (i.i.d. control 0.696) | 0.591 (fresh seeds 0.587) | - | Yes: the i.i.d. control scores higher than the languages |
 | 4.2 No relative: mean, original / revised rule | 0.0% / 0.8% (fresh seeds 0.1% / 0.9%) | 0.3% / 1.1% | Yes: best single corpus 4.1%; none reaches 50% |
-| 4.3 `candidates`, seeds 0-2 | 0.6% [0.0, 1.5] | 3.6% [0.2, 9.3] | Not resolved: intervals overlap |
-| 4.3 `candidates`, seeds 3-5 | 0.9% [0.0, 2.6] | 1.6% [0.2, 3.9] | Not resolved |
-| 4.3 `candidates`, sister-v3 | 1.1% [0.0, 3.2] | 3.4% [0.2, 9.2] | Not resolved |
-| 4.3 `related`, seeds 0-2 | 3.6% [2.4, 4.7] | 18.8% [6.6, 31.0] | Yes |
-| 4.3 `related`, seeds 3-5 | 3.2% [2.0, 4.4] | 20.4% [8.3, 34.8] | Yes |
-| 4.4 Longer vs more at ~29k tokens, `candidates` | 12.7% vs 0.2% | 27.8% vs 6.4% | Yes |
+| 4.4 `candidates`, seeds 0-2 | 0.6% [0.0, 1.5] | 3.6% [0.2, 9.3] | Not resolved: intervals overlap |
+| 4.4 `candidates`, seeds 3-5 | 0.9% [0.0, 2.6] | 1.6% [0.2, 3.9] | Not resolved |
+| 4.4 `candidates`, sister-v3 | 1.1% [0.0, 3.2] | 3.4% [0.2, 9.2] | Not resolved |
+| 4.4 `related`, seeds 0-2 | 3.6% [2.4, 4.7] | 18.8% [6.6, 31.0] | Yes |
+| 4.4 `related`, seeds 3-5 | 3.2% [2.0, 4.4] | 20.4% [8.3, 34.8] | Yes |
+| 4.3 Longer vs more at ~29k tokens, `candidates` | 12.7% vs 0.2% | 27.8% vs 6.4% | Yes |
 
 For logo-syllabic corpora, recovery in the `candidates` tier is near zero in both generators, because
 the original rule selects Sumerian for almost every logo-syllabic corpus: it chooses the sister for
@@ -469,6 +500,53 @@ seal-only material (13-17 points) than on the full source. The comparison is con
 main conclusions not depending on literary genre for Sumerian, but it is not a calibrated Indus-point
 result and cannot settle the question. Full table: `reports/sister_v2/sumerian_seal_genre_check.md`.
 
+### 4.9 Positive controls
+
+**EM on English letter-substitution ciphers.** Knight et al. (2006, Sec. 3) decipher a 417-letter
+encyclopedia article enciphered by a 1:1 letter substitution, with an English letter-bigram model in
+which word boundaries are known. Their bigram EM/Viterbi baseline makes 68 errors (83.7% correct);
+their best configuration (trigrams, cubed channel probabilities, smoothing) reaches 97.6%. We ran the
+frozen EM at benchmark settings (3 restarts, 60 iterations) on the same kind of task: a plaintext
+model from Pride and Prejudice and Moby Dick (70,000 or 1.5 million characters, matching their two
+data sizes), ciphertext from On the Origin of Species, word boundaries given, 10 random passages and
+keys per length (Project Gutenberg texts).
+
+| Cipher length (letters) | 100 | 200 | 417 | 1,000 | 2,000 | 5,000 |
+|---|---|---|---|---|---|---|
+| Original rule, 1.5M-character model | 58.2% | 92.2% | 97.5% | 99.7% | 99.9% | 99.9% |
+| Original rule, 70,000-character model | 71.7% | 84.6% | 97.4% | 99.8% | 99.9% | 99.9% |
+| Revised rule, 1.5M-character model | 60.9% | 92.7% | 97.7% | 99.6% | 99.7% | 99.8% |
+
+At the published length of 417 letters the frozen EM decodes 97.4-97.7% of letters, above the
+published bigram baseline and level with the published best configuration. The settings are close
+but not identical: Knight et al. decode with Viterbi over the whole text, while our solver assigns
+one value per cipher letter, and our texts are novels and Darwin rather than news and an
+encyclopedia. The solver therefore works on the standard problem it was built for, and its low
+recovery on Indus-like corpora is not explained by a broken implementation.
+
+**Conditional-entropy ordering (Rao et al. 2009).** Rao et al. report their values only as figures
+(Fig. 1A, conditional entropy against the number of most frequent tokens; Fig. 1B, conditional
+entropy relative to a random sequence), read here by eye; the supplement tabulates only Indus
+perplexities. Using the frozen entropy function on our own reference corpora at matching unit levels,
+with a shuffled sequence as the random reference:
+
+| Corpus | Rao et al., Fig. 1B (by eye) | Ours, relative, 400 tokens | Ours, nats, 400 tokens |
+|---|---|---|---|
+| Random-order control (their type 1) | 1.00 | 1.00 | 5.45 |
+| Sanskrit | 0.66 | 0.75 | 3.35 |
+| English words | 0.64 | 0.81 | 3.31 |
+| Sumerian | 0.57 | 0.67 | 3.24 |
+| Old Tamil | 0.56 | 0.74 | 3.34 |
+| English characters | 0.51 | 0.85 | 2.47 |
+| Rigid control (their type 2) | about 0 | 0.02 | 0.08 |
+
+The extremes reproduce, and at 400 tokens our language corpora sit at 3.2-3.4 nats against roughly
+3.3-3.8 in Rao's Fig. 1A. The ordering among languages does not reproduce: English characters rank
+highest for us and lowest for Rao, and Sanskrit is above Sumerian in both but by different margins.
+Our corpora (Ramayana rather than Rig Veda, CDLI rather than ETCSL, Pride and Prejudice rather than
+the Brown corpus), unit definitions and random reference differ, and English characters have fewer
+than 400 types, so this is a partial reproduction only. Files: `reports/positive_controls/`.
+
 ## 5. Limitations
 
 1. **Allograph merging.** Sign inventory is raised only through allographs, and no tested method
@@ -478,11 +556,11 @@ result and cannot settle the question. Full table: `reports/sister_v2/sumerian_s
    oracle sound correspondences. Its distance is a free parameter. Sister tiers are optimistic.
 3. **Oracle script type and unit level in Task D.** Solvers are told the script type; real
    decipherers are not.
-4. **No positive controls against published results.** Our reimplementations have not been shown to
-   reproduce any published number. The only checks are unit tests: EM recovers more than 80% of
-   tokens on a 12-symbol synthetic substitution cipher when given the exact plaintext model, and the
-   entropy statistic gives the expected extremes on rigid and i.i.d. sequences. A low score could
-   therefore reflect our implementation rather than the method.
+4. **Positive controls are partial.** The frozen EM matches the best published accuracy on English
+   letter-substitution ciphers (Section 4.9). The entropy statistic reproduces the extremes and the
+   magnitude reported by Rao et al. (2009) but not their ordering among languages. No positive control
+   exists for the EM cognate-matcher or for the n-gram, positional, segmentation and script-type
+   methods, so a low score from those could still reflect our implementation.
 5. **Genre.** Four of the five sources are literary (an epic, classical poetry, Caesar and Vergil, an
    oral epic), cut into short seal-like clauses. Only Sumerian includes real seal inscriptions. Indus
    texts are mostly short inscriptions on seals and tablets. A genre check on Sumerian seal-only
@@ -536,10 +614,14 @@ are never redistributed.
 ## 7. Conclusion
 
 On synthetic corpora that match the published Indus statistics, mean recovery without a related
-language stays at or below 4.8% in every run, and with one, recovery depends three- to fivefold on corpus properties that
-those statistics leave open. A statement about how hard the Indus script is to decipher therefore has
-to name its corpus (object types, period, duplication), its knowledge tier, and its selection rule.
-None of these results bears on what the Indus signs mean.
+language stays at or below 4.8% in every run, and longer inscriptions help more than more
+inscriptions. Published Indus statistics do not fix how decipherable an Indus-scale corpus is: two
+generators that both match them differ roughly three- to fivefold when a related language is
+available, and for logo-syllabic corpora, the most Indus-relevant type, this contrast appears only
+when the related language is the sole reference; among candidate languages it is unresolved. A
+statement about how hard the Indus script is to decipher therefore has to name its corpus (object
+types, period, duplication), its knowledge tier, its script type and its selection rule. None of these
+results bears on what the Indus signs mean.
 
 
 ## Appendix A. Analysis history
@@ -570,6 +652,10 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 19 | 5 Oct | Sensitivity sweep rerun under sister-v2 with before-cognate scores | Post-results | this revision |
 | 20 | 5 Oct | Logo-syllabic headline split and Sumerian seal-only genre check added | Post-results | this revision |
 | 21 | 5 Oct | One configuration typo caused 60 failed jobs in an equal-token profile; fixed and rerun, failed records discarded | Operational | 1cb6faf |
+| 22 | 5 Oct | Headlines reordered (length vs size becomes headline 3; underdetermination becomes headline 4) and headline 4 reworded to state the logo-syllabic result | Post-results | this revision |
+| 23 | 5 Oct | Positive controls added: frozen EM on English letter-substitution ciphers, and conditional-entropy ordering against Rao et al. (2009) figures. The latter showed that our control keys number Rao's type 1 and type 2 the other way round | Post-results | this revision |
+| 24 | 5 Oct | Sensitivity sweep aggregated with before-cognate scores. Seals-only and tablets-only regions defined as duplicates 0.0 and 0.4-0.5 at all inventories, for both sweeps; an earlier tablets-only range (1.4-4.9%) had used the 0.4 column only | Post-results | this revision |
+| 25 | 5 Oct | Nair (2026) availability checked: on request only, no public repository or licence | - | this revision |
 
 ---
 

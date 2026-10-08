@@ -1,4 +1,4 @@
-# DRAFT OUTLINE (revision 6): awaiting approval, no prose written
+# DRAFT OUTLINE (revision 6; superseded for headline order and wording by `paper_DRAFT.md`, where length vs size is headline 3 and underdetermination headline 4): awaiting approval, no prose written
 
 **Title:** A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics
 
