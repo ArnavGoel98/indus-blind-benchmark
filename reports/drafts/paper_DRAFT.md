@@ -2,7 +2,9 @@
 
 **A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics**
 
-Arnav [SURNAME], Woodstock School, Mussoorie, India
+Arnav Goel, Woodstock School, Mussoorie, India
+
+arnavgoel@woodstock.ac.in
 
 ## Abstract
 
@@ -684,8 +686,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 
 ## Back matter
 
-**Data and code availability.** Code, configurations, run records and reports are in the
-repository under the tags above; no third-party text is redistributed.
+**Data and code availability.** Code, configurations and run records are available from the author on request.
 
 **Acknowledgements.** Code was developed with AI coding assistance.
 
