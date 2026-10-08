@@ -31,7 +31,7 @@ measures the Indus script itself.
    See [`reports/sensitivity/sensitivity.md`](reports/sensitivity/sensitivity.md).
 2. **A plug-in entropy ratio cannot tell synthetic languages from an i.i.d. random control at Indus
    scale** (about 0.47 for both). Rao et al.'s smoothed estimator separates them clearly, but places
-   structured non-linguistic systems, both synthetic and attested, within the range of the languages
+   most structured non-linguistic systems, both synthetic and attested, within the range of the languages
    (post hoc; [`reports/rao_kn/indus_point.md`](reports/rao_kn/indus_point.md)). Under the holdout calibration regime, the Rao-style
    entropy classifier is not distinguishable from chance: balanced accuracy 0.57 [0.32, 0.81],
    and 0.49 on fresh seeds.
