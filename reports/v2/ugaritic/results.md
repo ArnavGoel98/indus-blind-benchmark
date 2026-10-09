@@ -1,3 +1,5 @@
+**Pre-registered success criterion: FAILED (33.9% < 50% of tokens; frozen EM original rule, `related` tier, natural texts).** It also fails in every other condition and tier.
+
 # v2 rank 2: Ugaritic-Hebrew real-relative anchor — results
 
 Plan pre-registered in `docs/v2_ugaritic_plan.md` (pushed b05772d; amendment committed before the run).
@@ -11,6 +13,12 @@ Methods frozen-v1, unchanged. Not in the v1 paper.
   - https://eupt.uni-goettingen.de/api/eupt/html/KTU_1.16_facsimile.html (SHA-256 d6e6d6b80edec566…)
 - OSHB (WLC 4.20), commit 3d15126fb1ef74867fc1434be1942e837932691f, CC BY 4.0 (WLC public domain). Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb
 - Gold: Wikipedia 'Ugaritic alphabet' letters table (read 2026-10-09), citing Kogan 2011 Tab. 6.2 (not read).
+
+**Gold table status: SECONDARY SOURCE, not yet verified against an academic source we have read.** The table is Wikipedia's; its cited source, Kogan (2011), has not been read. Search for an openly accessible academic source (2026-10-09):
+- Partly corroborated by P. Merlo, "Ugaritic", *Mnamon: Ancient writing systems in the Mediterranean*, Scuola Normale Superiore (DOI 10.25429/sns.it/lettere/mnamon000), read 2026-10-09: ṯ and š merged into Hebrew š, ʿ and ġ into ʿ, and ẓ is written ṣ in Hebrew in the word for "summer" (one example). It does not cover ḫ/ḥ, ḏ/z or the three aleph signs.
+- Segert (1984), *A Basic Grammar of the Ugaritic Language* (UC Press): no openly licensed copy found (publisher and JSTOR access restricted; an Internet Archive scan of unclear legal status was not used).
+- Gianto, "Ugaritic" (ResearchGate full text): not accessible (HTTP 403).
+Until a read source covers ḫ/ḥ, ḏ/z and the alephs, all Task D numbers carry this caveat.
 
 ## Corpora
 
@@ -86,6 +94,8 @@ Letters right, natural, `related`, EM original: k l n p q r s w ḥ ṣ ṭ.
 
 ## Tasks A and B (frozen rules, fit on v1 run records as for Sproat's corpora)
 
+Task A is a check only (pre-registered as weak evidence). Real Ugaritic is called "not language" by 3-4 of the 5 frozen rules in every condition. **Training-distribution caveat:** the rules were fit on synthetic corpora with 400+ signs calibrated to Indus statistics; a 30-sign alphabet lies far outside that range, so this shows the rules do not transfer to small alphabets, not that the methods judge Ugaritic non-linguistic in any wider sense.
+
 ### `full/full`
 
 | Condition | rao2009_entropy | yadav2010_markov | fuls_positional | lee2010_tree | ling_classifier_lr | Entropy ratio | Task B (inventory / LR / branching) |
@@ -139,4 +149,8 @@ Letters right, natural, `related`, EM original: k l n p q r s w ḥ ṣ ṭ.
 | Letter-bigram JSD, bits | 0.184 (poetic ref 0.185) | 0.018 (same-size Hebrew sample vs Hebrew); shuffled map 0.475 | 0.035 / 0.024 / 0.087 / 0.022 / 0.014 (size-matched) |
 
 v1 sister cognate overlap is measured on samples of the same number of word tokens as the Ugaritic text (20 draws), hidden half vs sister half, alphabetic units.
+
+## Exploratory comparison (NOT pre-registered)
+
+Added after the results were seen. The v1 alphabetic corpora at the Indus point, `related` tier, frozen EM original rule, before the cognate step, score 38.9% (sampler A, 15 corpora) and 57.8% (sampler B); they have about 320-340 signs (allographs, homophones) and twice the tokens, but a synthetic sister reference. Ugaritic (30 signs, real relative, half the tokens) scores 33.9%. One reading: a real relative costs roughly what v1's inventory and duplication cost. This is not a controlled comparison (sign inventory, size, script and reference all differ) and is not a test of any pre-registered hypothesis.
 

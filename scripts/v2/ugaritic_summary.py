@@ -15,7 +15,10 @@ METHODS = [("baseline_frequency_rank", "Frequency rank"), ("knight2006_em_origin
 TIERS = ["related", "related_poetic", "candidates", "none"]
 pc = lambda x: f"{100 * x:.1f}"  # noqa: E731
 
-L = ["# v2 rank 2: Ugaritic-Hebrew real-relative anchor — results", "",
+nat = C["natural"]["D"]["related"]["knight2006_em_original"]["token_acc"]
+L = [f"**Pre-registered success criterion: FAILED ({pc(nat)}% < 50% of tokens; frozen EM original rule, `related` "
+     "tier, natural texts).** It also fails in every other condition and tier.", "",
+     "# v2 rank 2: Ugaritic-Hebrew real-relative anchor — results", "",
      "Plan pre-registered in `docs/v2_ugaritic_plan.md` (pushed b05772d; amendment committed before the run).",
      "Methods frozen-v1, unchanged. Not in the v1 paper.", "",
      "## Sources", "",
@@ -24,6 +27,17 @@ L += [f"  - {u} (SHA-256 {h[:16]}…)" for u, h in r["sources"]["eupt_pages"].it
 L += [f"- OSHB (WLC 4.20), commit {r['sources']['oshb_commit']}, CC BY 4.0 (WLC public domain). "
       "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb",
       f"- Gold: {r['sources']['gold']}.", "",
+      "**Gold table status: SECONDARY SOURCE, not yet verified against an academic source we have read.** The "
+      "table is Wikipedia's; its cited source, Kogan (2011), has not been read. Search for an openly accessible "
+      "academic source (2026-10-09):",
+      "- Partly corroborated by P. Merlo, \"Ugaritic\", *Mnamon: Ancient writing systems in the Mediterranean*, "
+      "Scuola Normale Superiore (DOI 10.25429/sns.it/lettere/mnamon000), read 2026-10-09: ṯ and š merged into "
+      "Hebrew š, ʿ and ġ into ʿ, and ẓ is written ṣ in Hebrew in the word for \"summer\" (one example). It does not "
+      "cover ḫ/ḥ, ḏ/z or the three aleph signs.",
+      "- Segert (1984), *A Basic Grammar of the Ugaritic Language* (UC Press): no openly licensed copy found "
+      "(publisher and JSTOR access restricted; an Internet Archive scan of unclear legal status was not used).",
+      "- Gianto, \"Ugaritic\" (ResearchGate full text): not accessible (HTTP 403).",
+      "Until a read source covers ḫ/ḥ, ḏ/z and the alephs, all Task D numbers carry this caveat.", "",
       "## Corpora", "",
       "| Condition | Texts | Tokens | Letters | Mean length | Duplicate rate | One-to-one ceiling (letters) |",
       "|---|---|---|---|---|---|---|"]
@@ -58,7 +72,12 @@ L += ["## Task C: language family (`candidates`: Hebrew + 5 v1 languages; chance
 for n, c in C.items():
     L.append(f"| {n} | " + " | ".join(c["D"]["candidates"][m]["reference"] for m, _ in METHODS) + " |")
 
-L += ["", "## Tasks A and B (frozen rules, fit on v1 run records as for Sproat's corpora)", ""]
+L += ["", "## Tasks A and B (frozen rules, fit on v1 run records as for Sproat's corpora)", "",
+      "Task A is a check only (pre-registered as weak evidence). Real Ugaritic is called \"not language\" by 3-4 of "
+      "the 5 frozen rules in every condition. **Training-distribution caveat:** the rules were fit on synthetic "
+      "corpora with 400+ signs calibrated to Indus statistics; a 30-sign alphabet lies far outside that range, so "
+      "this shows the rules do not transfer to small alphabets, not that the methods judge Ugaritic non-linguistic "
+      "in any wider sense.", ""]
 for pool, v in r["AB_pools"].items():
     a_names = list(next(iter(v.values()))["A"])
     L += [f"### `{pool}`", "", "| Condition | " + " | ".join(a_names) + " | Entropy ratio | Task B (inventory / LR / branching) |",
@@ -86,5 +105,12 @@ L += [f"| Sound mergers | {y['mergers']} | - | 0 (bijective) |",
       f"{f('bigram_jsd_size_matched', False)} (size-matched) |", "",
       "v1 sister cognate overlap is measured on samples of the same number of word tokens as the Ugaritic text "
       "(20 draws), hidden half vs sister half, alphabetic units.", ""]
+L += ["## Exploratory comparison (NOT pre-registered)", "",
+      "Added after the results were seen. The v1 alphabetic corpora at the Indus point, `related` tier, frozen EM "
+      "original rule, before the cognate step, score 38.9% (sampler A, 15 corpora) and 57.8% (sampler B); they have "
+      "about 320-340 signs (allographs, homophones) and twice the tokens, but a synthetic sister reference. "
+      "Ugaritic (30 signs, real relative, half the tokens) scores 33.9%. One reading: a real relative costs "
+      "roughly what v1's inventory and duplication cost. This is not a controlled comparison (sign inventory, "
+      "size, script and reference all differ) and is not a test of any pre-registered hypothesis.", ""]
 (D / "results.md").write_text("\n".join(L) + "\n")
 print("\n".join(L))

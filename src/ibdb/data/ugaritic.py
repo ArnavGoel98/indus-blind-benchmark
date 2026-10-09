@@ -13,7 +13,9 @@ https://github.com/openscriptures/morphhb".
 
 Gold correspondences: Wikipedia, "Ugaritic alphabet", letters table, Hebrew column (read
 2026-10-09), which cites Kogan (2011), Tab. 6.2, in Weninger (ed.), The Semitic Languages, p. 55.
-We have not read Kogan. The table leaves the Hebrew cell empty for ỉ, ủ and s₂; the plan maps the
+We have not read Kogan, so the table is a SECONDARY SOURCE until checked against an academic
+source we have read. Partly corroborated (2026-10-09) by P. Merlo, "Ugaritic", Mnamon (Scuola Normale
+Superiore): ṯ/š -> š, ʿ/ġ -> ʿ, and ẓ -> ṣ in one example; ḫ/ḥ, ḏ/z and the alephs are not covered there. The table leaves the Hebrew cell empty for ỉ, ủ and s₂; the plan maps the
 three aleph signs to א, and scores are also reported without ỉ and ủ (UNSOURCED).
 """
 
