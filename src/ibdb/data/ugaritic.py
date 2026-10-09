@@ -22,6 +22,7 @@ three aleph signs to א, and scores are also reported without ỉ and ủ (UNSOU
 from __future__ import annotations
 
 import hashlib
+from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -317,5 +318,43 @@ def ugaritic_words() -> dict[tuple[str, ...], int]:
     return out
 
 
-__all__ = ["load_eupt", "ugaritic_texts", "recut", "to_corpus", "hebrew_texts", "hebrew_words", "ugaritic_words",
+def hebrew_word_pairs(books: tuple[str, ...] | None = None) -> set[tuple[tuple[str, ...], tuple[str, ...]]]:
+    """Adjacent consonantal word pairs (consecutive <w> in one verse)."""
+    ns = "http://www.bibletechnologies.net/2003/OSIS/namespace"
+    files = sorted(p for p in oshb_dir().glob("*.xml") if p.stem != "VerseMap")
+    if books:
+        files = [p for p in files if p.stem in books]
+    out = set()
+    for p in files:
+        for v in ET.parse(p).getroot().iter(f"{{{ns}}}verse"):
+            ws = [t for t in (tuple(_letters(w)) for w in _words(v, ns)) if t]
+            out.update(zip(ws, ws[1:]))
+    return out
+
+
+def ugaritic_word_pairs() -> Counter:
+    """Adjacent pairs of complete words (as in ugaritic_words) in one tablet line, separated by a
+    single divider with no gap between them."""
+    out: Counter = Counter()
+    for lines in load_eupt().values():
+        for _, parts in lines:
+            flat = [x for p in parts for x in ([GAP] if p is GAP else p)]
+            prev = None                                # previous complete word, if adjacent
+            cur: list[str] = []
+            ok = True
+            for x in flat + [DIVIDER]:
+                if x is GAP:
+                    cur, ok, prev = [], False, None
+                elif x == DIVIDER:
+                    w = tuple(cur) if cur and ok else None
+                    if prev is not None and w is not None:
+                        out[(prev, w)] += 1
+                    prev = w
+                    cur, ok = [], True
+                else:
+                    cur.append(x)
+    return out
+
+
+__all__ = ["load_eupt", "ugaritic_texts", "recut", "to_corpus", "hebrew_texts", "hebrew_words", "ugaritic_words", "ugaritic_word_pairs", "hebrew_word_pairs",
            "GOLD", "UNSOURCED", "POETIC_BOOKS", "EUPT_PAGES", "EUPT_BASE", "EUPT_ACCESSED", "EUPT_VERSION", "OSHB_COMMIT"]

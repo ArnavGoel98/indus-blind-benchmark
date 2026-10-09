@@ -151,3 +151,43 @@ declared in `docs/v2_preregistration.md`, entry 2.
   partly corroborated by Merlo, Mnamon).
 - **Script levels.** The yardsticks are defined on phonemes, so syllabic and logographic sisters are
   checked on their phoneme layer only.
+
+## Calibration details fixed before the grid run (2026-10-09; no grid result seen)
+
+- **Word-pair yardstick on Ugaritic-Hebrew** (shared code, `src/ibdb/yardsticks.py`): 396 pair
+  types (452 tokens) of adjacent complete words. 1.5% are found as adjacent Hebrew words, against
+  0.04% by chance (95th percentile 0.25%); chance-corrected 1.5%. That is informative (well above
+  chance), so it **stays a target**: `close` 1.5% +/- 10 points, `distant` 0.7% +/- 10 points. In
+  practice both act as an upper bound of about 11%.
+- **Shared code reproduces the anchor.** All 19 published Ugaritic-Hebrew values are reproduced. Two
+  differed at the 1e-17 level because the JSD summed over a hash-ordered set; the sum order is now
+  fixed (sorted).
+- **Sister-side measurement** (`yardsticks.sister_yardsticks`):
+  - the hidden half is mapped forward through the regular reflexes;
+  - samples match the anchor's sizes (5,876 units, 977 word tokens, 452 word pairs, and the anchor's
+    6+ letter text lengths for verbatim windows);
+  - the floor is a same-size sister sample against the whole sister, as the anchor's is Hebrew
+    against Hebrew;
+  - chance uses shuffled regular maps.
+- **Grid** (per language, sister seeds 90 and 91, 5 draws per yardstick):
+  - n_cond {0, 2, 4, 6, 9, 12};
+  - affix_share {0, 0.25, 0.5, 0.75, 1};
+  - lexical {0.1, 0.2, 0.35, 0.5};
+  - word_order {0, 0.5, 1};
+  - final_vowel_loss {0, 0.3, 0.6}.
+
+  That is 1,080 settings. The merger share (24%) and shift (0.30) are fixed.
+- **Selection rule.** Separately for each language and setting (`close`, `distant`):
+  - among grid points whose mean verbatim share over the two seeds is at most 2%, choose the one
+    minimising the sum over the three yardsticks (JSD above floor, chance-corrected word forms,
+    chance-corrected word pairs) of ((mean value - target) / half-width)^2;
+  - half-widths: JSD 0.04 (`close`) or 0.06 (`distant`), word forms 0.10, word pairs 0.10.
+  - Ties go to the smaller knob values in the order listed.
+  - If no point is inside every tolerance, the minimiser is still reported, marked "not matched".
+- **Then:**
+  - the chosen settings are re-measured with 20 draws on seeds 90-91, then on held-out seeds 0-2
+    without any change;
+  - a v1-like sister (shift and 20% lexical replacement, no mergers or other mechanisms) is
+    measured with the same code for comparison.
+- **Leakage (acceptance check 4).** Leakage is measured per corpus, with the v3 filter, on generated
+  corpora. It runs after the yardstick table and before any Task C/D run.
