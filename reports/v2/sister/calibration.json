@@ -1,0 +1,1627 @@
+{
+ "targets": {
+  "close": {
+   "jsd_above_floor": [
+    0.1660125185812234,
+    0.04
+   ],
+   "cognate_types_cc": [
+    0.46824284940023936,
+    0.1
+   ],
+   "word_pairs_types_cc": [
+    0.014716099286300764,
+    0.1
+   ]
+  },
+  "distant": {
+   "jsd_above_floor": [
+    0.3320250371624468,
+    0.06
+   ],
+   "cognate_types_cc": [
+    0.23412142470011968,
+    0.1
+   ],
+   "word_pairs_types_cc": [
+    0.007358049643150382,
+    0.1
+   ]
+  }
+ },
+ "chosen": {
+  "close": {
+   "sanskrit": {
+    "knobs": {
+     "affix_share": 0.75,
+     "final_vowel_loss": 0.3,
+     "lexical": 0.5,
+     "n_cond": 12,
+     "word_order": 1.0
+    },
+    "loss": 21.239407365649956,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.22696088378231602,
+     "cognate_types_cc": 0.033483438490157606,
+     "word_pairs_types_cc": 0.0020104646176847822
+    },
+    "matched": false
+   },
+   "tamil": {
+    "knobs": {
+     "affix_share": 1.0,
+     "final_vowel_loss": 0.3,
+     "lexical": 0.1,
+     "n_cond": 12,
+     "word_order": 0.5
+    },
+    "loss": 19.837685880072225,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.1866599367498863,
+     "cognate_types_cc": 0.026079154664533692,
+     "word_pairs_types_cc": 0.00044544313655461143
+    },
+    "matched": false
+   },
+   "sumerian": {
+    "knobs": null,
+    "matched": false,
+    "note": "no grid point with verbatim <= 2%"
+   },
+   "latin": {
+    "knobs": {
+     "affix_share": 0.75,
+     "final_vowel_loss": 0,
+     "lexical": 0.35,
+     "n_cond": 0,
+     "word_order": 0
+    },
+    "loss": 16.387622929051386,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.15757331685108308,
+     "cognate_types_cc": 0.06403453077846108,
+     "word_pairs_types_cc": 0.007879531363990031
+    },
+    "matched": false
+   },
+   "finnish": {
+    "knobs": {
+     "affix_share": 0.5,
+     "final_vowel_loss": 0.3,
+     "lexical": 0.5,
+     "n_cond": 9,
+     "word_order": 1.0
+    },
+    "loss": 18.238166750823975,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.16265715656611615,
+     "cognate_types_cc": 0.04142280481753274,
+     "word_pairs_types_cc": 0.0030562660294138145
+    },
+    "matched": false
+   }
+  },
+  "distant": {
+   "sanskrit": {
+    "knobs": {
+     "affix_share": 1.0,
+     "final_vowel_loss": 0,
+     "lexical": 0.5,
+     "n_cond": 12,
+     "word_order": 0.5
+    },
+    "loss": 5.57615089458983,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.2795760746919517,
+     "cognate_types_cc": 0.0148235884345467,
+     "word_pairs_types_cc": 0.0020104646176847822
+    },
+    "matched": false
+   },
+   "tamil": {
+    "knobs": {
+     "affix_share": 1.0,
+     "final_vowel_loss": 0,
+     "lexical": 0.1,
+     "n_cond": 12,
+     "word_order": 0.5
+    },
+    "loss": 9.725308944670223,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.19295785629712636,
+     "cognate_types_cc": 0.025593321607091022,
+     "word_pairs_types_cc": 0.00044544313655461143
+    },
+    "matched": false
+   },
+   "sumerian": {
+    "knobs": null,
+    "matched": false,
+    "note": "no grid point with verbatim <= 2%"
+   },
+   "latin": {
+    "knobs": {
+     "affix_share": 1.0,
+     "final_vowel_loss": 0,
+     "lexical": 0.5,
+     "n_cond": 6,
+     "word_order": 0
+    },
+    "loss": 8.060668157322375,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.20961645273423288,
+     "cognate_types_cc": 0.03669626368316827,
+     "word_pairs_types_cc": 0.004503272109268212
+    },
+    "matched": false
+   },
+   "finnish": {
+    "knobs": {
+     "affix_share": 0.75,
+     "final_vowel_loss": 0,
+     "lexical": 0.1,
+     "n_cond": 9,
+     "word_order": 0
+    },
+    "loss": 9.106803455614239,
+    "dev_grid_means": {
+     "jsd_above_floor": 0.19901789940432885,
+     "cognate_types_cc": 0.029440915698552707,
+     "word_pairs_types_cc": 0.0016537943714486094
+    },
+    "matched": false
+   }
+  }
+ },
+ "confirm": {
+  "close": {
+   "sanskrit": {
+    "dev": [
+     {
+      "lang": "sanskrit",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.24449753307013494,
+      "floor": 0.040581176077688214,
+      "jsd_above_floor": 0.20391635699244673,
+      "cognate_types": 0.029195533612398832,
+      "cognate_types_chance": 0.0007133814848150732,
+      "cognate_types_cc": 0.028502485272848623,
+      "cognate_tokens": 0.07395087001023541,
+      "word_pairs_types": 0.005359698726124381,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.005359698726124381,
+      "verbatim_6plus": 0.022443890274314215,
+      "n_verbatim_windows": 401
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.28910674968050454,
+      "floor": 0.04376421740943861,
+      "jsd_above_floor": 0.24534253227106592,
+      "cognate_types": 0.04276875915417471,
+      "cognate_types_chance": 0.0004546347281560053,
+      "cognate_types_cc": 0.042333370646474494,
+      "cognate_tokens": 0.06187308085977482,
+      "word_pairs_types": 0.0018924078247858152,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0018924078247858152,
+      "verbatim_6plus": 0.02689486552567237,
+      "n_verbatim_windows": 409
+     }
+    ],
+    "held": [
+     {
+      "lang": "sanskrit",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.24877939950250968,
+      "floor": 0.039439333384717654,
+      "jsd_above_floor": 0.20934006611779205,
+      "cognate_types": 0.08304406653129266,
+      "cognate_types_chance": 0.0007769327005842061,
+      "cognate_types_cc": 0.08233109955422718,
+      "cognate_tokens": 0.12047082906857728,
+      "word_pairs_types": 0.004358801221771854,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.004358801221771854,
+      "verbatim_6plus": 0.032,
+      "n_verbatim_windows": 375
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.24611561419422526,
+      "floor": 0.04260071677857656,
+      "jsd_above_floor": 0.2035148974156487,
+      "cognate_types": 0.05106405600710575,
+      "cognate_types_chance": 0.0009737798536999723,
+      "cognate_types_cc": 0.05013910059945216,
+      "cognate_tokens": 0.06402251791197544,
+      "word_pairs_types": 0.0011188448231241883,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0011188448231241883,
+      "verbatim_6plus": 0.027707808564231738,
+      "n_verbatim_windows": 397
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.2745591490206246,
+      "floor": 0.04067609653063574,
+      "jsd_above_floor": 0.23388305248998886,
+      "cognate_types": 0.026976624888581453,
+      "cognate_types_chance": 0.0005938593867019813,
+      "cognate_types_cc": 0.026398442464731463,
+      "cognate_tokens": 0.040327533265097235,
+      "word_pairs_types": 0.0,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0,
+      "verbatim_6plus": 0.02743142144638404,
+      "n_verbatim_windows": 401
+     }
+    ]
+   },
+   "tamil": {
+    "dev": [
+     {
+      "lang": "tamil",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.19028392748469697,
+      "floor": 0.023771827472446112,
+      "jsd_above_floor": 0.16651210001225086,
+      "cognate_types": 0.036387279104646564,
+      "cognate_types_chance": 0.005923649552281538,
+      "cognate_types_cc": 0.030645160745092288,
+      "cognate_tokens": 0.047645854657113615,
+      "word_pairs_types": 0.0007787742235826558,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0007787742235826558,
+      "verbatim_6plus": 0.03353057199211045,
+      "n_verbatim_windows": 507
+     },
+     {
+      "lang": "tamil",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.2333385182158693,
+      "floor": 0.025165025944521986,
+      "jsd_above_floor": 0.2081734922713473,
+      "cognate_types": 0.03505539663016717,
+      "cognate_types_chance": 0.006483840946124147,
+      "cognate_types_cc": 0.028758018099324805,
+      "cognate_tokens": 0.041862845445240535,
+      "word_pairs_types": 0.0011198402305134254,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0011198402305134254,
+      "verbatim_6plus": 0.024096385542168676,
+      "n_verbatim_windows": 498
+     }
+    ],
+    "held": [
+     {
+      "lang": "tamil",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.22277188687650057,
+      "floor": 0.02415245480417336,
+      "jsd_above_floor": 0.1986194320723272,
+      "cognate_types": 0.04112612696417727,
+      "cognate_types_chance": 0.004757132464527901,
+      "cognate_types_cc": 0.03654283359971241,
+      "cognate_tokens": 0.04989764585465711,
+      "word_pairs_types": 0.0006693954010581378,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0006693954010581378,
+      "verbatim_6plus": 0.013888888888888888,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.1926437986515228,
+      "floor": 0.023495748176844196,
+      "jsd_above_floor": 0.16914805047467862,
+      "cognate_types": 0.04320386126354342,
+      "cognate_types_chance": 0.005763086430429541,
+      "cognate_types_cc": 0.037657799989231654,
+      "cognate_tokens": 0.05117707267144319,
+      "word_pairs_types": 0.0010037374435751501,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0010037374435751501,
+      "verbatim_6plus": 0.01984126984126984,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.2095153327212778,
+      "floor": 0.023778451701355362,
+      "jsd_above_floor": 0.18573688101992245,
+      "cognate_types": 0.038530590224258435,
+      "cognate_types_chance": 0.00493204000563127,
+      "cognate_types_cc": 0.03376508094865933,
+      "cognate_tokens": 0.044165813715455485,
+      "word_pairs_types": 0.0006676620444677819,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0006676620444677819,
+      "verbatim_6plus": 0.021696252465483234,
+      "n_verbatim_windows": 507
+     }
+    ]
+   },
+   "latin": {
+    "dev": [
+     {
+      "lang": "latin",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.35,
+       "n_cond": 0,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.1752018023926206,
+      "floor": 0.019240171985901108,
+      "jsd_above_floor": 0.15596163040671948,
+      "cognate_types": 0.0538621731302533,
+      "cognate_types_chance": 0.006071840793442815,
+      "cognate_types_cc": 0.048082280287703116,
+      "cognate_tokens": 0.1447799385875128,
+      "word_pairs_types": 0.01150101747627887,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.01150101747627887,
+      "verbatim_6plus": 0.03537735849056604,
+      "n_verbatim_windows": 424
+     },
+     {
+      "lang": "latin",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.35,
+       "n_cond": 0,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.17717260329161996,
+      "floor": 0.018082368028107105,
+      "jsd_above_floor": 0.15909023526351285,
+      "cognate_types": 0.08305568708617973,
+      "cognate_types_chance": 0.006559291947265862,
+      "cognate_types_cc": 0.07700147026273588,
+      "cognate_tokens": 0.16893551688843397,
+      "word_pairs_types": 0.010808669117173098,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.010808669117173098,
+      "verbatim_6plus": 0.007142857142857143,
+      "n_verbatim_windows": 420
+     }
+    ],
+    "held": [
+     {
+      "lang": "latin",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.35,
+       "n_cond": 0,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.16427108829653556,
+      "floor": 0.018128647427615982,
+      "jsd_above_floor": 0.1461424408689196,
+      "cognate_types": 0.0666467655516051,
+      "cognate_types_chance": 0.00490944906347002,
+      "cognate_types_cc": 0.062041908075632896,
+      "cognate_tokens": 0.15670419651995904,
+      "word_pairs_types": 0.010371115794029469,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.010371115794029469,
+      "verbatim_6plus": 0.016203703703703703,
+      "n_verbatim_windows": 432
+     },
+     {
+      "lang": "latin",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.35,
+       "n_cond": 0,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.15323902918965682,
+      "floor": 0.018021294544159655,
+      "jsd_above_floor": 0.13521773464549716,
+      "cognate_types": 0.07730316992186669,
+      "cognate_types_chance": 0.006438319018958698,
+      "cognate_types_cc": 0.07132405794166312,
+      "cognate_tokens": 0.16207778915046062,
+      "word_pairs_types": 0.010391158926213048,
+      "word_pairs_types_chance": 0.00011312217194570136,
+      "word_pairs_types_cc": 0.010279199559647397,
+      "verbatim_6plus": 0.016548463356973995,
+      "n_verbatim_windows": 423
+     },
+     {
+      "lang": "latin",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.35,
+       "n_cond": 0,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.14128521364043262,
+      "floor": 0.01715417137371675,
+      "jsd_above_floor": 0.12413104226671587,
+      "cognate_types": 0.10662976400424702,
+      "cognate_types_chance": 0.005976652347658125,
+      "cognate_types_cc": 0.10125829729684796,
+      "cognate_tokens": 0.18797338792221086,
+      "word_pairs_types": 0.012032239172457557,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.012032239172457557,
+      "verbatim_6plus": 0.04066985645933014,
+      "n_verbatim_windows": 418
+     }
+    ]
+   },
+   "finnish": {
+    "dev": [
+     {
+      "lang": "finnish",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 0.5,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 9,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.16334199244495523,
+      "floor": 0.015028787780731422,
+      "jsd_above_floor": 0.14831320466422382,
+      "cognate_types": 0.054553601352325176,
+      "cognate_types_chance": 0.0012737989818200264,
+      "cognate_types_cc": 0.053347756688657544,
+      "cognate_tokens": 0.08480040941658136,
+      "word_pairs_types": 0.004516711650147059,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.004516711650147059,
+      "verbatim_6plus": 0.029411764705882353,
+      "n_verbatim_windows": 510
+     },
+     {
+      "lang": "finnish",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 0.5,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 9,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.1918286493283315,
+      "floor": 0.01466585737934426,
+      "jsd_above_floor": 0.17716279194898724,
+      "cognate_types": 0.03026537478561152,
+      "cognate_types_chance": 0.0010229228399862502,
+      "cognate_types_cc": 0.02927239534740724,
+      "cognate_tokens": 0.04570112589559878,
+      "word_pairs_types": 0.00011655011655011655,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.00011655011655011655,
+      "verbatim_6plus": 0.011764705882352941,
+      "n_verbatim_windows": 510
+     }
+    ],
+    "held": [
+     {
+      "lang": "finnish",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 0.5,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 9,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.19145642681156821,
+      "floor": 0.013094859712925299,
+      "jsd_above_floor": 0.17836156709864293,
+      "cognate_types": 0.041841899624799596,
+      "cognate_types_chance": 0.0012774572084798615,
+      "cognate_types_cc": 0.04061632803735303,
+      "cognate_tokens": 0.06038894575230298,
+      "word_pairs_types": 0.0024979560529373632,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0024979560529373632,
+      "verbatim_6plus": 0.03929273084479371,
+      "n_verbatim_windows": 509
+     },
+     {
+      "lang": "finnish",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 0.5,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 9,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.13916148137270998,
+      "floor": 0.01310935108703758,
+      "jsd_above_floor": 0.1260521302856724,
+      "cognate_types": 0.06631848821261199,
+      "cognate_types_chance": 0.0016011393026899956,
+      "cognate_types_cc": 0.06482113657934421,
+      "cognate_tokens": 0.09969293756397135,
+      "word_pairs_types": 0.0023805475933115997,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0023805475933115997,
+      "verbatim_6plus": 0.052941176470588235,
+      "n_verbatim_windows": 510
+     },
+     {
+      "lang": "finnish",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 0.5,
+       "final_vowel_loss": 0.3,
+       "lexical": 0.5,
+       "n_cond": 9,
+       "word_order": 1.0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.17284080076536498,
+      "floor": 0.01513743904951215,
+      "jsd_above_floor": 0.15770336171585284,
+      "cognate_types": 0.038447777859977245,
+      "cognate_types_chance": 0.001403595019944,
+      "cognate_types_cc": 0.037096250953129656,
+      "cognate_tokens": 0.06622313203684752,
+      "word_pairs_types": 0.0007175697367592904,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0007175697367592904,
+      "verbatim_6plus": 0.013725490196078431,
+      "n_verbatim_windows": 510
+     }
+    ]
+   }
+  },
+  "distant": {
+   "sanskrit": {
+    "dev": [
+     {
+      "lang": "sanskrit",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.3063640167187092,
+      "floor": 0.04021774418207286,
+      "jsd_above_floor": 0.26614627253663636,
+      "cognate_types": 0.018732549722419372,
+      "cognate_types_chance": 0.0003868858746361733,
+      "cognate_types_cc": 0.018352764273040965,
+      "cognate_tokens": 0.06381780962128966,
+      "word_pairs_types": 0.004466328823935577,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.004466328823935577,
+      "verbatim_6plus": 0.0199501246882793,
+      "n_verbatim_windows": 401
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.3287670208033108,
+      "floor": 0.04253826164388414,
+      "jsd_above_floor": 0.2862287591594267,
+      "cognate_types": 0.015588874770254429,
+      "cognate_types_chance": 0.00012995720447613485,
+      "cognate_types_cc": 0.01546092682460703,
+      "cognate_tokens": 0.029068577277379732,
+      "word_pairs_types": 0.0005560537820998056,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0005560537820998056,
+      "verbatim_6plus": 0.022004889975550123,
+      "n_verbatim_windows": 409
+     }
+    ],
+    "held": [
+     {
+      "lang": "sanskrit",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.33272255157342745,
+      "floor": 0.038540630294405576,
+      "jsd_above_floor": 0.2941819212790219,
+      "cognate_types": 0.013451178583845971,
+      "cognate_types_chance": 0.0004497105744525008,
+      "cognate_types_cc": 0.013007317537635408,
+      "cognate_tokens": 0.043193449334698056,
+      "word_pairs_types": 0.0005572977799179382,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0005572977799179382,
+      "verbatim_6plus": 0.016,
+      "n_verbatim_windows": 375
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.31513735250137487,
+      "floor": 0.04037362982243321,
+      "jsd_above_floor": 0.27476372267894167,
+      "cognate_types": 0.01906758111267496,
+      "cognate_types_chance": 0.00039023969431883546,
+      "cognate_types_cc": 0.01868463290378896,
+      "cognate_tokens": 0.031576253838280444,
+      "word_pairs_types": 0.00022497444047414185,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.00022497444047414185,
+      "verbatim_6plus": 0.007556675062972292,
+      "n_verbatim_windows": 397
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 8,
+      "bigram_jsd": 0.30014643780070793,
+      "floor": 0.04204298427263596,
+      "jsd_above_floor": 0.25810345352807196,
+      "cognate_types": 0.014702076781699495,
+      "cognate_types_chance": 0.0003989329021275862,
+      "cognate_types_cc": 0.014308852151486817,
+      "cognate_tokens": 0.027482088024564994,
+      "word_pairs_types": 0.0,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0,
+      "verbatim_6plus": 0.032418952618453865,
+      "n_verbatim_windows": 401
+     }
+    ]
+   },
+   "tamil": {
+    "dev": [
+     {
+      "lang": "tamil",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.19519718890483242,
+      "floor": 0.023332122670984414,
+      "jsd_above_floor": 0.171865066233848,
+      "cognate_types": 0.032208574298076866,
+      "cognate_types_chance": 0.004471239679180803,
+      "cognate_types_cc": 0.027861911904943287,
+      "cognate_tokens": 0.04303991811668373,
+      "word_pairs_types": 0.0008893936926092045,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0008893936926092045,
+      "verbatim_6plus": 0.03353057199211045,
+      "n_verbatim_windows": 507
+     },
+     {
+      "lang": "tamil",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.24000651904998788,
+      "floor": 0.02452870565436598,
+      "jsd_above_floor": 0.2154778133956219,
+      "cognate_types": 0.03148154119988847,
+      "cognate_types_chance": 0.004920701248580351,
+      "cognate_types_cc": 0.026692184215504688,
+      "cognate_tokens": 0.038075742067553736,
+      "word_pairs_types": 0.0011198402305134254,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0011198402305134254,
+      "verbatim_6plus": 0.024096385542168676,
+      "n_verbatim_windows": 498
+     }
+    ],
+    "held": [
+     {
+      "lang": "tamil",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.22774085004793712,
+      "floor": 0.023511668578259037,
+      "jsd_above_floor": 0.20422918146967808,
+      "cognate_types": 0.03279254276158523,
+      "cognate_types_chance": 0.0034129387339625434,
+      "cognate_types_cc": 0.02948021820622438,
+      "cognate_tokens": 0.04002047082906858,
+      "word_pairs_types": 0.0006693954010581378,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0006693954010581378,
+      "verbatim_6plus": 0.013888888888888888,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.19480158799598224,
+      "floor": 0.022955939513750884,
+      "jsd_above_floor": 0.17184564848223136,
+      "cognate_types": 0.03351557830331125,
+      "cognate_types_chance": 0.003914818370553676,
+      "cognate_types_cc": 0.02971709696989484,
+      "cognate_tokens": 0.038178096212896626,
+      "word_pairs_types": 0.0010037374435751501,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0010037374435751501,
+      "verbatim_6plus": 0.021825396825396824,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 12,
+       "word_order": 0.5
+      },
+      "draws": 20,
+      "n_mergers": 6,
+      "bigram_jsd": 0.21276930629364763,
+      "floor": 0.022618367812146656,
+      "jsd_above_floor": 0.19015093848150097,
+      "cognate_types": 0.034217637870382116,
+      "cognate_types_chance": 0.003923899603965978,
+      "cognate_types_cc": 0.030413076123773603,
+      "cognate_tokens": 0.03925281473899693,
+      "word_pairs_types": 0.0006676620444677819,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0006676620444677819,
+      "verbatim_6plus": 0.023668639053254437,
+      "n_verbatim_windows": 507
+     }
+    ]
+   },
+   "latin": {
+    "dev": [
+     {
+      "lang": "latin",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 6,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.24946620165769576,
+      "floor": 0.020013881244296435,
+      "jsd_above_floor": 0.22945232041339933,
+      "cognate_types": 0.04496039099522877,
+      "cognate_types_chance": 0.004555183441026767,
+      "cognate_types_cc": 0.04059010291888769,
+      "cognate_tokens": 0.09887410440122824,
+      "word_pairs_types": 0.006881260545988343,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.006881260545988343,
+      "verbatim_6plus": 0.02358490566037736,
+      "n_verbatim_windows": 424
+     },
+     {
+      "lang": "latin",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 6,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.20528748500561625,
+      "floor": 0.01834099252080329,
+      "jsd_above_floor": 0.18694649248481296,
+      "cognate_types": 0.036526098958664,
+      "cognate_types_chance": 0.0058090035104805425,
+      "cognate_types_cc": 0.030896573753579824,
+      "cognate_tokens": 0.09959058341862845,
+      "word_pairs_types": 0.0006749359055989151,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0006749359055989151,
+      "verbatim_6plus": 0.004761904761904762,
+      "n_verbatim_windows": 420
+     }
+    ],
+    "held": [
+     {
+      "lang": "latin",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 6,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.2065894847303636,
+      "floor": 0.01890092683088273,
+      "jsd_above_floor": 0.18768855789948086,
+      "cognate_types": 0.03491520157058589,
+      "cognate_types_chance": 0.005118834759676676,
+      "cognate_types_cc": 0.029949674244472816,
+      "cognate_tokens": 0.09237461617195497,
+      "word_pairs_types": 0.001464246778458887,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.001464246778458887,
+      "verbatim_6plus": 0.006944444444444444,
+      "n_verbatim_windows": 432
+     },
+     {
+      "lang": "latin",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 6,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.1996682835631609,
+      "floor": 0.018151268572085627,
+      "jsd_above_floor": 0.18151701499107528,
+      "cognate_types": 0.03593001286022509,
+      "cognate_types_chance": 0.004515338774643645,
+      "cognate_types_cc": 0.03155716537803071,
+      "cognate_tokens": 0.09334698055271237,
+      "word_pairs_types": 0.003056458067225332,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.003056458067225332,
+      "verbatim_6plus": 0.018912529550827423,
+      "n_verbatim_windows": 423
+     },
+     {
+      "lang": "latin",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 1.0,
+       "final_vowel_loss": 0,
+       "lexical": 0.5,
+       "n_cond": 6,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.2380674603083502,
+      "floor": 0.017640060867239963,
+      "jsd_above_floor": 0.22042739944111023,
+      "cognate_types": 0.042096546325536215,
+      "cognate_types_chance": 0.004477987555453309,
+      "cognate_types_cc": 0.03778777194259013,
+      "cognate_tokens": 0.09866939611054247,
+      "word_pairs_types": 0.00134911617047634,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.00134911617047634,
+      "verbatim_6plus": 0.011961722488038277,
+      "n_verbatim_windows": 418
+     }
+    ]
+   },
+   "finnish": {
+    "dev": [
+     {
+      "lang": "finnish",
+      "seed": 90,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 9,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.21398908531723496,
+      "floor": 0.013587935978569133,
+      "jsd_above_floor": 0.20040114933866582,
+      "cognate_types": 0.023954638760721104,
+      "cognate_types_chance": 0.0009625173942475237,
+      "cognate_types_cc": 0.02301427300455643,
+      "cognate_tokens": 0.04887410440122826,
+      "word_pairs_types": 0.004870805566081994,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.004870805566081994,
+      "verbatim_6plus": 0.01764705882352941,
+      "n_verbatim_windows": 510
+     },
+     {
+      "lang": "finnish",
+      "seed": 91,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 9,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.21066027628665268,
+      "floor": 0.013641329107853659,
+      "jsd_above_floor": 0.19701894717879903,
+      "cognate_types": 0.036383649124455894,
+      "cognate_types_chance": 0.0008975250308441084,
+      "cognate_types_cc": 0.03551800238980221,
+      "cognate_tokens": 0.05609007164790174,
+      "word_pairs_types": 0.0010661366787789973,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0010661366787789973,
+      "verbatim_6plus": 0.01764705882352941,
+      "n_verbatim_windows": 510
+     }
+    ],
+    "held": [
+     {
+      "lang": "finnish",
+      "seed": 0,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 9,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.2264068800353447,
+      "floor": 0.01382291870849195,
+      "jsd_above_floor": 0.21258396132685276,
+      "cognate_types": 0.022910011742014326,
+      "cognate_types_chance": 0.0009644304275001454,
+      "cognate_types_cc": 0.021966766732745037,
+      "cognate_tokens": 0.039662231320368474,
+      "word_pairs_types": 0.0016713428588499535,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.0016713428588499535,
+      "verbatim_6plus": 0.029469548133595286,
+      "n_verbatim_windows": 509
+     },
+     {
+      "lang": "finnish",
+      "seed": 1,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 9,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.19209727536551174,
+      "floor": 0.012636795170239135,
+      "jsd_above_floor": 0.1794604801952726,
+      "cognate_types": 0.03366755811811166,
+      "cognate_types_chance": 0.0012798438371729782,
+      "cognate_types_cc": 0.03242921861652938,
+      "cognate_tokens": 0.06212896622313204,
+      "word_pairs_types": 0.00415675140213302,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.00415675140213302,
+      "verbatim_6plus": 0.027450980392156862,
+      "n_verbatim_windows": 510
+     },
+     {
+      "lang": "finnish",
+      "seed": 2,
+      "knobs": {
+       "affix_share": 0.75,
+       "final_vowel_loss": 0,
+       "lexical": 0.1,
+       "n_cond": 9,
+       "word_order": 0
+      },
+      "draws": 20,
+      "n_mergers": 5,
+      "bigram_jsd": 0.21472954910450986,
+      "floor": 0.014152585670287734,
+      "jsd_above_floor": 0.20057696343422213,
+      "cognate_types": 0.03587054220672513,
+      "cognate_types_chance": 0.0010235820944336,
+      "cognate_types_cc": 0.03488266538398469,
+      "cognate_tokens": 0.0616171954964176,
+      "word_pairs_types": 0.00929142762733133,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.00929142762733133,
+      "verbatim_6plus": 0.01764705882352941,
+      "n_verbatim_windows": 510
+     }
+    ]
+   }
+  },
+  "v1_like": {
+   "sanskrit": {
+    "held": [
+     {
+      "lang": "sanskrit",
+      "seed": 0,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.035852226484708136,
+      "floor": 0.031389284557960764,
+      "jsd_above_floor": 0.004462941926747371,
+      "cognate_types": 0.7590118408717839,
+      "cognate_types_chance": 0.0003833058764234799,
+      "cognate_types_cc": 0.7589194332738662,
+      "cognate_tokens": 0.7829068577277379,
+      "word_pairs_types": 0.29193968532977266,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.29193968532977266,
+      "verbatim_6plus": 0.384,
+      "n_verbatim_windows": 375
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 1,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.034803510945326216,
+      "floor": 0.031304732206698486,
+      "jsd_above_floor": 0.0034987787386277294,
+      "cognate_types": 0.7585851844094659,
+      "cognate_types_chance": 0.0003256435959063642,
+      "cognate_types_cc": 0.7585065436119398,
+      "cognate_tokens": 0.7772773797338793,
+      "word_pairs_types": 0.27888350585334737,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.27888350585334737,
+      "verbatim_6plus": 0.3879093198992443,
+      "n_verbatim_windows": 397
+     },
+     {
+      "lang": "sanskrit",
+      "seed": 2,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.034600452443603665,
+      "floor": 0.03134145652650901,
+      "jsd_above_floor": 0.003258995917094658,
+      "cognate_types": 0.7653872005662986,
+      "cognate_types_chance": 0.00032964157487057306,
+      "cognate_types_cc": 0.765309836931338,
+      "cognate_tokens": 0.7961105424769704,
+      "word_pairs_types": 0.3044766121468504,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.3044766121468504,
+      "verbatim_6plus": 0.3790523690773067,
+      "n_verbatim_windows": 401
+     }
+    ]
+   },
+   "tamil": {
+    "held": [
+     {
+      "lang": "tamil",
+      "seed": 0,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.024017172938295354,
+      "floor": 0.022163686915601555,
+      "jsd_above_floor": 0.0018534860226937996,
+      "cognate_types": 0.5748892843459039,
+      "cognate_types_chance": 0.0020102031131607615,
+      "cognate_types_cc": 0.5740330041647722,
+      "cognate_tokens": 0.596315250767656,
+      "word_pairs_types": 0.08102125052140638,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.08102125052140638,
+      "verbatim_6plus": 0.16666666666666666,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 1,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.024204369604490926,
+      "floor": 0.021228570955245947,
+      "jsd_above_floor": 0.002975798649244979,
+      "cognate_types": 0.5790826326391516,
+      "cognate_types_chance": 0.00374740935141987,
+      "cognate_types_cc": 0.5774993497514291,
+      "cognate_tokens": 0.5986182190378712,
+      "word_pairs_types": 0.08584216829781596,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.08584216829781596,
+      "verbatim_6plus": 0.19047619047619047,
+      "n_verbatim_windows": 504
+     },
+     {
+      "lang": "tamil",
+      "seed": 2,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.023306113062394627,
+      "floor": 0.02122709873055388,
+      "jsd_above_floor": 0.0020790143318407464,
+      "cognate_types": 0.578888407204355,
+      "cognate_types_chance": 0.002580429016293856,
+      "cognate_types_cc": 0.5777989473574062,
+      "cognate_tokens": 0.6025076765609008,
+      "word_pairs_types": 0.08706448437009802,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.08706448437009802,
+      "verbatim_6plus": 0.1755424063116371,
+      "n_verbatim_windows": 507
+     }
+    ]
+   },
+   "sumerian": {
+    "held": [
+     {
+      "lang": "sumerian",
+      "seed": 0,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.08583576958006835,
+      "floor": 0.05218260040074565,
+      "jsd_above_floor": 0.0336531691793227,
+      "cognate_types": 0.7355214962255635,
+      "cognate_types_chance": 0.14242489744267925,
+      "cognate_types_cc": 0.6915972688738843,
+      "cognate_tokens": 0.8027123848515865,
+      "word_pairs_types": 0.4358043945423975,
+      "word_pairs_types_chance": 0.07210311904117708,
+      "word_pairs_types_cc": 0.39196303270832994,
+      "verbatim_6plus": 0.3048327137546468,
+      "n_verbatim_windows": 269
+     },
+     {
+      "lang": "sumerian",
+      "seed": 1,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.09032022795993708,
+      "floor": 0.053545345851189176,
+      "jsd_above_floor": 0.0367748821087479,
+      "cognate_types": 0.7326317851509309,
+      "cognate_types_chance": 0.151499541641909,
+      "cognate_types_cc": 0.6848932581999475,
+      "cognate_tokens": 0.8050665301944729,
+      "word_pairs_types": 0.3837251373276613,
+      "word_pairs_types_chance": 0.09534891070240241,
+      "word_pairs_types_cc": 0.31877066201198534,
+      "verbatim_6plus": 0.3177257525083612,
+      "n_verbatim_windows": 299
+     },
+     {
+      "lang": "sumerian",
+      "seed": 2,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.0719897142049322,
+      "floor": 0.051973610765938205,
+      "jsd_above_floor": 0.020016103438994,
+      "cognate_types": 0.7522027315240646,
+      "cognate_types_chance": 0.14704533226693356,
+      "cognate_types_cc": 0.7094836597418283,
+      "cognate_tokens": 0.8410440122824975,
+      "word_pairs_types": 0.5068081101791506,
+      "word_pairs_types_chance": 0.0823266319525646,
+      "word_pairs_types_cc": 0.46256270804694877,
+      "verbatim_6plus": 0.43050847457627117,
+      "n_verbatim_windows": 295
+     }
+    ]
+   },
+   "latin": {
+    "held": [
+     {
+      "lang": "latin",
+      "seed": 0,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.02325438260876032,
+      "floor": 0.016789172911537517,
+      "jsd_above_floor": 0.006465209697222803,
+      "cognate_types": 0.5204729240710305,
+      "cognate_types_chance": 0.003808709803424148,
+      "cognate_types_cc": 0.5186395618512729,
+      "cognate_tokens": 0.5733879222108497,
+      "word_pairs_types": 0.07232662769264918,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.07232662769264918,
+      "verbatim_6plus": 0.09722222222222222,
+      "n_verbatim_windows": 432
+     },
+     {
+      "lang": "latin",
+      "seed": 1,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.0211918427509864,
+      "floor": 0.01606936109330797,
+      "jsd_above_floor": 0.005122481657678431,
+      "cognate_types": 0.5483923701817076,
+      "cognate_types_chance": 0.004320608801974393,
+      "cognate_types_cc": 0.5464326832406292,
+      "cognate_tokens": 0.6230296827021493,
+      "word_pairs_types": 0.07985750536767003,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.07985750536767003,
+      "verbatim_6plus": 0.1182033096926714,
+      "n_verbatim_windows": 423
+     },
+     {
+      "lang": "latin",
+      "seed": 2,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.024725702846064693,
+      "floor": 0.017097402365495725,
+      "jsd_above_floor": 0.007628300480568968,
+      "cognate_types": 0.5308705459372728,
+      "cognate_types_chance": 0.00432731466159861,
+      "cognate_types_cc": 0.5288316522379207,
+      "cognate_tokens": 0.5814738996929376,
+      "word_pairs_types": 0.06100853286852369,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.06100853286852369,
+      "verbatim_6plus": 0.15550239234449761,
+      "n_verbatim_windows": 418
+     }
+    ]
+   },
+   "finnish": {
+    "held": [
+     {
+      "lang": "finnish",
+      "seed": 0,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.014877803680913215,
+      "floor": 0.010568526353134622,
+      "jsd_above_floor": 0.004309277327778593,
+      "cognate_types": 0.5335556448829293,
+      "cognate_types_chance": 0.0005134408463157041,
+      "cognate_types_cc": 0.5333160302705494,
+      "cognate_tokens": 0.5671954964176049,
+      "word_pairs_types": 0.09037394703278383,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.09037394703278383,
+      "verbatim_6plus": 0.18271119842829076,
+      "n_verbatim_windows": 509
+     },
+     {
+      "lang": "finnish",
+      "seed": 1,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.014162068892720304,
+      "floor": 0.010730800636902836,
+      "jsd_above_floor": 0.0034312682558174674,
+      "cognate_types": 0.5351361418471682,
+      "cognate_types_chance": 0.0005744757143204579,
+      "cognate_types_cc": 0.5348689353465488,
+      "cognate_tokens": 0.5952405322415559,
+      "word_pairs_types": 0.11198554610741418,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.11198554610741418,
+      "verbatim_6plus": 0.2196078431372549,
+      "n_verbatim_windows": 510
+     },
+     {
+      "lang": "finnish",
+      "seed": 2,
+      "knobs": {
+       "n_cond": 0,
+       "affix_share": 0.0,
+       "lexical": 0.2,
+       "word_order": 0.0,
+       "final_vowel_loss": 0.0
+      },
+      "draws": 20,
+      "n_mergers": 0,
+      "bigram_jsd": 0.01415900344397642,
+      "floor": 0.010765240100281851,
+      "jsd_above_floor": 0.0033937633436945686,
+      "cognate_types": 0.5485301134924194,
+      "cognate_types_chance": 0.0006458867792277377,
+      "cognate_types_cc": 0.5482383266002087,
+      "cognate_tokens": 0.6029682702149437,
+      "word_pairs_types": 0.10920884833865288,
+      "word_pairs_types_chance": 0.0,
+      "word_pairs_types_cc": 0.10920884833865288,
+      "verbatim_6plus": 0.19019607843137254,
+      "n_verbatim_windows": 510
+     }
+    ]
+   }
+  }
+ }
+}
