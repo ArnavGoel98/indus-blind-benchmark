@@ -295,7 +295,9 @@ Duplicate-text rate and sign inventory are set exactly and varied independently 
 the Indus point (duplicates 0-0.5, inventory 400-800). Duplicates come from assembling a corpus out of
 distinct texts plus popularity-weighted copies; inventory comes from the allograph rate alone, set by
 bisection. Because no tested method merges allographs, the inventory axis measures robustness to
-unmerged variants, not to a larger sign system, and every map says so. A cell counts only if its
+unmerged variants, not to a larger sign system, and every map says so. Raising inventory through
+allographs also disguises repeated texts as distinct ones, so the axis partly measures hidden
+duplication as well. A cell counts only if its
 corpora hit both settings without distorting text lengths.
 
 The plausible box (duplicates 0.2-0.4, inventory 400-700) brackets the published duplicate rates and
@@ -678,6 +680,8 @@ unresolved. They add no new failure of the plug-in entropy ratio itself.
 ## 5. Limitations
 
 1. **Allograph merging.** Inventory rises only through allographs, which no tested method merges.
+   Allographs also disguise repeated texts, so the inventory axis partly measures hidden duplication,
+   not only robustness to unmerged variants.
 2. **Sister language.** The sister keeps word order and morphology, shares source text with the
    hidden corpus (verbatim overlap 30-56% by language, corrected sister) and comes with oracle sound
    correspondences. Its distance is a free parameter. Sister tiers are optimistic.
@@ -782,6 +786,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 26 | 8 Oct | Sproat's attested non-linguistic corpora added, with the author's permission, as a held-out control family for Tasks A and B: frozen methods, rules fit on existing Indus-point runs, no retraining. Indus bar seals excluded; Pictish reported separately. Non-linguistic systems no longer described as random; scope sentence extended to whether the script records a language at all | Post-results | 2401ca1, this revision |
 | 27 | 8 Oct | After expert comment: scope narrowed to automated methods that compare a script with known languages (Section 1, limitation 18); seals-only prediction weakened because sealings duplicate seal texts (Section 4.5); ICIT corpus size added as an unpublished reference point, not a target (Section 3.3) | Post-results | this revision |
 | 28 | 8 Oct | After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline 1 reworded after review | Post-results | this revision |
+| 29 | 9 Oct | Inventory-axis caveat added (Section 3.9, limitation 1): raising inventory through allographs also disguises repeated texts, so the axis partly measures hidden duplication. Found in stage-2 work on allograph merging; no v1 number changes | Post-results | this revision |
 
 ---
 

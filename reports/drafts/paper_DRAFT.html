@@ -334,7 +334,9 @@ runs; full table in the appendix).</p>
 the Indus point (duplicates 0-0.5, inventory 400-800). Duplicates come from assembling a corpus out of
 distinct texts plus popularity-weighted copies; inventory comes from the allograph rate alone, set by
 bisection. Because no tested method merges allographs, the inventory axis measures robustness to
-unmerged variants, not to a larger sign system, and every map says so. A cell counts only if its
+unmerged variants, not to a larger sign system, and every map says so. Raising inventory through
+allographs also disguises repeated texts as distinct ones, so the axis partly measures hidden
+duplication as well. A cell counts only if its
 corpora hit both settings without distorting text lengths.</p>
 <p>The plausible box (duplicates 0.2-0.4, inventory 400-700) brackets the published duplicate rates and
 sign-list sizes. It entered the run profile after the sweep had started, after a test rendering of
@@ -1196,7 +1198,9 @@ script type. Their outputs on these corpora are not meaningful and are not repor
 unresolved. They add no new failure of the plug-in entropy ratio itself.</p>
 <h2>5. Limitations</h2>
 <ol>
-<li><strong>Allograph merging.</strong> Inventory rises only through allographs, which no tested method merges.</li>
+<li><strong>Allograph merging.</strong> Inventory rises only through allographs, which no tested method merges.
+   Allographs also disguise repeated texts, so the inventory axis partly measures hidden duplication,
+   not only robustness to unmerged variants.</li>
 <li><strong>Sister language.</strong> The sister keeps word order and morphology, shares source text with the
    hidden corpus (verbatim overlap 30-56% by language, corrected sister) and comes with oracle sound
    correspondences. Its distance is a free parameter. Sister tiers are optimistic.</li>
@@ -1468,6 +1472,13 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.</p>
 <td>28</td>
 <td>8 Oct</td>
 <td>After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline 1 reworded after review</td>
+<td>Post-results</td>
+<td>this revision</td>
+</tr>
+<tr>
+<td>29</td>
+<td>9 Oct</td>
+<td>Inventory-axis caveat added (Section 3.9, limitation 1): raising inventory through allographs also disguises repeated texts, so the axis partly measures hidden duplication. Found in stage-2 work on allograph merging; no v1 number changes</td>
 <td>Post-results</td>
 <td>this revision</td>
 </tr>
