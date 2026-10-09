@@ -1,6 +1,7 @@
 # v2 rank 6: realistic sister language — plan (not yet run)
 
-Status: plan for review, 2026-10-09, branch `v2`. Nothing is built or run. Methods stay frozen; the
+Status: approved 2026-10-09 with two additions (distant setting; strict and lenient scoring), branch `v2`.
+Nothing is built or run at the time of this commit. Methods stay frozen; the
 new sister and any scoring change enter `frozen-v2` only after the acceptance checks below pass.
 
 ## Why
@@ -65,6 +66,24 @@ while choosing them**, so the sister is not tuned toward any recovery result.
 | Hidden texts of 6+ units found verbatim in the sister | <= 2% | <= 2% |
 | Word-pair overlap (new yardstick, below) | Ugaritic-Hebrew value | +/- 10 points |
 
+### Two settings (declared before any calibration run)
+
+Ugaritic and Hebrew are close relatives, centuries apart. Any relative of the Harappan language that
+might be attested would be far more distant. So two settings are calibrated, with the same
+mechanisms and different targets:
+
+| Setting | Role | JSD above floor | Shared word forms, chance-corrected | Mergers | Verbatim 6+ | Word-pair overlap |
+|---|---|---|---|---|---|---|
+| `close` ("close real relative") | **Primary** | 0.166 (accept 0.126-0.206) | 47% (37-57%) | 24% of consonants | <= 2% | U-H value +/- 10 points |
+| `distant` | Sensitivity tier | 0.332, twice U-H (accept 0.272-0.392) | 24%, half of U-H (14-34%) | 24% of consonants | <= 2% | half the U-H value +/- 10 points |
+
+**The `distant` targets are a guess, not a measurement.** No attested pair at that distance was
+measured. "Twice the letter-pair distance, half the shared word forms" is a declared assumption for
+a sensitivity tier. It is not a claim about how far any Indus relative would be. The merger share is
+kept at 24% in both settings, because distance comes from the other mechanisms here and the anchor
+gives no second value. For reference, the JSD ceiling from a shuffled mapping on the anchor is 0.475
+bits, so the distant target is reachable in principle.
+
 **New yardstick, computed on Ugaritic-Hebrew first.** Word-pair overlap is the share of adjacent
 pairs of complete Ugaritic words whose gold-mapped forms occur as adjacent Hebrew words, corrected
 for chance. It is the only yardstick that sees word order. It is computed and reported for
@@ -83,7 +102,7 @@ The new sister is used for nothing until all of these pass and are reported:
    - the share of clauses with word-order changes is as set;
    - the same seed gives the same sister.
 3. **Yardsticks on held-out seeds.** With knobs frozen from seeds 90-91, every language and script
-   type on seeds 0-2 falls inside every tolerance. A language that cannot reach a target without
+   type on seeds 0-2 falls inside every tolerance of its setting (`close` and `distant` separately). A language that cannot reach a target without
    breaking another (Tamil and Sanskrit start at JSD 0.005) is reported as not matched, not forced.
 4. **Leakage.** v3-filter diagnostics: hidden-text word pairs left in the sister are at or below the
    v1 stricter-sister level (8%).
@@ -100,8 +119,9 @@ Ugaritic scoring:
 - many-to-one is accepted;
 - conditioned reflexes count as wrong. This is conservative, and EM picks one value per sign anyway.
 
-This replaces `token_acc_before_cognate` for sister-v4 runs only. It is added to
-`docs/v2_preregistration.md` as entry 2 when you approve this plan.
+This replaces `token_acc_before_cognate` for sister-v4 runs only. It is the **strict** score
+(primary). A **lenient** secondary score accepts any attested reflex of the hidden sound. Both are
+declared in `docs/v2_preregistration.md`, entry 2.
 
 ## What it will be used for (later, after `frozen-v2`)
 

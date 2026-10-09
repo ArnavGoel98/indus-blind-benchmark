@@ -39,3 +39,36 @@ right language in every condition. That is one real case, not a validation.
 
 **What this does not change.** Task D scores stay "before the cognate step". Thresholds (50% of
 tokens) and tiers are unchanged. No other method parameter changes.
+
+## 2. Task D scoring with a realistic sister (sister-v4)
+
+Declared 2026-10-09, before sister-v4 is built (plan: `docs/v2_sister_plan.md`).
+
+**Why a new scorer.** v1 scored "before the cognate step" by inverting the sister-to-hidden table,
+which was one-to-one. Sister-v4 has mergers (several hidden sounds share one sister sound) and
+context-dependent changes (one hidden sound has several sister sounds), so that inversion is no
+longer defined.
+
+**Gold values.** The generator records, for each hidden unit, its **regular reflex**: the sister unit
+it becomes where no context-dependent rule applies. It also records every **attested reflex**: each
+sister unit the hidden unit actually becomes somewhere in the sister text. Units are scored at the
+script's unit level (phoneme, syllable or word form).
+
+**Primary: strict score.** A sign token counts as correct when the solver's predicted sister unit is
+the regular reflex of that token's hidden value. Several signs mapped to one sister unit all count
+(many-to-one accepted). Reflexes produced by context-dependent rules count as wrong.
+
+**Secondary: lenient score.** As strict, but a prediction counts as correct when it is any attested
+reflex of the token's hidden value.
+
+**Unchanged from v1.**
+- Every token counts. Units with no sister counterpart (word dividers, determinatives) are
+  unrecoverable.
+- The 50% token threshold.
+- Score labels: both scores are "before the cognate step". The solver is never given the
+  correspondence table.
+
+**Scope.** This scorer is used for sister-v4 runs only. Runs with the v1 sister keep the v1 scorer, so
+v1 numbers stay comparable. The Ugaritic anchor already scores this way (gold = the regular Hebrew
+correspondent, many-to-one accepted); it has no attested-reflex list, so it reports the strict score
+only.
