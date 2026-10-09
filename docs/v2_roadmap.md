@@ -33,7 +33,7 @@ Then do item 3 (Ugaritic-Hebrew), then item 4. Item 2 is the most important for 
 
 ---
 
-## 7. Allograph-merging method (rank 1)
+## 7. Allograph-merging method (rank 1) — SHELVED 2026-10-09 (negative result; see docs/v2_negative_results.md)
 
 **What.** A new Task D pre-processing method that proposes which sign types are variants of one another, then merges them before decipherment. Candidate approaches:
 - distributional similarity: shared left and right contexts, and complementary distribution;
