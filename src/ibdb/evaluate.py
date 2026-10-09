@@ -138,6 +138,7 @@ def run_job(job: Job, em_restarts: int = 3, em_iterations: int = 60, generator_v
     corpus, key, info = make_corpus(job.source, spec, job.n_texts, job.mean_length, job.seed, knobs,
                                     median_length=median, generator_version=generator_version)
     word_ids = info.pop("_word_ids", None)
+    info.pop("_allographs", None)
     logical = [t.tolist() for t in corpus.logical()]
     st = corpus_stats(logical, config.targets()["targets"], seed=job.seed)
     rec: dict[str, Any] = {

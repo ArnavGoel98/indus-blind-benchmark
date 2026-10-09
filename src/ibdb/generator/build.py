@@ -265,6 +265,9 @@ def make_corpus(source: str, spec: ScriptSpec, n_texts: int, mean_length: float,
     key = AnswerKey(cid, source, source_family(source), kind, kind == "language", script_type,
                     sign_values, token_values, word_starts, params, plaintext)
     info = {"truncated": n_trunc, "concatenated": n_concat, "n_values": len(values)}
+    # v2: the allograph map (base sign -> [base, variants...]) for scoring merging methods. Read
+    # from the script already built; no random draws, so corpora are unchanged. Popped by harnesses.
+    info["_allographs"] = {s: list(v) for s, v in script.allographs.items() if any(x in used for x in v)}
     if sister_version() == "v3" and word_ids:
         info["_word_ids"] = word_ids  # popped by the harness before recording; feeds the sister-v3 filter
     return corpus, key, info
