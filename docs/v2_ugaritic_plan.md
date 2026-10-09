@@ -143,3 +143,32 @@ match. In any case, we will not use their data, which has no licence.
 - **Chronology.** Biblical Hebrew is centuries later than Ugaritic and a different genre; this is
   part of what makes the anchor realistic.
 - **Unit-level oracle.** The solver is told the unit level (letters), as in v1 Task D.
+
+## Amendment before the run (2026-10-09, after b05772d was pushed; no scores seen)
+
+Added at the user's request:
+1. **Many-to-one scoring.** A sign counts as correct when it is mapped to its gold Hebrew
+   correspondent, so ḫ and ḥ both mapped to ח are both correct. The v1 scorer already compares each
+   token with its own gold value; `tests/test_ugaritic.py` checks this. EM chooses each sign's value
+   independently, so it can produce many-to-one maps. The frequency-rank baseline is one-to-one by
+   construction, so its best possible score (the one-to-one ceiling) is reported beside it.
+2. **Frequency-rank baseline** (`baseline_frequency_rank`, frozen) reported beside EM in every tier.
+3. **Exact sources.** EUPT pages `KTU_1.14_facsimile.html`, `KTU_1.15_facsimile.html` and
+   `KTU_1.16_facsimile.html` under https://eupt.uni-goettingen.de/api/eupt/html/, edition version
+   "Draft 3.2 [2025-07-18]", fetched 2026-10-09; SHA-256 recorded in `src/ibdb/data/ugaritic.py` and
+   checked on every load. OSHB commit 3d15126fb1ef74867fc1434be1942e837932691f.
+
+Details fixed while parsing, before any scoring:
+- **Size.** Exact counts replace the estimate: 6,928 tokens (5,876 letters and 1,052 word
+  dividers) from 678 tablet lines with readable text. Smaller than the planned 8,000-10,000.
+- **Texts.** A restoration [ ] or an illegible x ends a text: each readable run between gaps is
+  one text (primary, "natural"), so dropping text never creates false neighbours. Whole tablet
+  lines with gaps joined are a sensitivity check. Erased signs ([[ ]]), the tablet's wrong sign in
+  a correction, and editorial additions < > and deletions { } are dropped without a gap.
+- **Word dividers.** The primary token accuracy follows the v1 convention: every token counts, and
+  dividers are unrecoverable (no Hebrew unit). Letter-only accuracy is reported beside it.
+- **Gold source gap.** The Wikipedia table leaves the Hebrew cell empty for ỉ and ủ (and s₂, which
+  does not occur in Kirta). The plan's mapping of all three aleph signs to א is kept; accuracy
+  without ỉ and ủ tokens is also reported.
+- **Yardstick 1** is computed on letters with dividers removed (Hebrew has no divider unit),
+  against a chance level from shuffled mappings, also for texts of 6+ letters.
