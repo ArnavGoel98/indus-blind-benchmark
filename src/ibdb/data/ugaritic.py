@@ -196,17 +196,29 @@ def _trim(seg: list[str]) -> list[str]:
 
 
 def recut(texts: list[list[str]], mean_len: float, seed: int = 0) -> list[list[str]]:
-    """Re-cut the same token stream (in order, text by text) into texts of mean length `mean_len`
-    (geometric lengths >= 1). Cuts never join two original texts."""
-    rng = np.random.default_rng(seed)
-    out = []
-    for t in texts:
-        i = 0
-        while i < len(t):
-            L = int(rng.geometric(1.0 / mean_len))
-            out.append(t[i:i + L])
-            i += L
-    return [_trim(t) for t in out if any(x != DIVIDER for x in _trim(t))]
+    """Re-cut the same token stream (in order, text by text) into texts whose mean length after
+    trimming edge dividers is `mean_len` (within 0.05). Cut lengths are geometric; their mean is
+    found by bisection, because trimming and text ends shorten the texts. Cuts never join two
+    original texts."""
+    def cut(m: float) -> list[list[str]]:
+        rng = np.random.default_rng(seed)
+        out = []
+        for t in texts:
+            i = 0
+            while i < len(t):
+                L = int(rng.geometric(1.0 / m))
+                out.append(t[i:i + L])
+                i += L
+        return [x for x in (_trim(t) for t in out) if any(y != DIVIDER for y in x)]
+    lo, hi = mean_len, 4 * mean_len
+    for _ in range(40):
+        mid = 0.5 * (lo + hi)
+        got = cut(mid)
+        mean = sum(map(len, got)) / len(got)
+        if abs(mean - mean_len) < 0.05:
+            return got
+        lo, hi = (mid, hi) if mean < mean_len else (lo, mid)
+    return got
 
 
 def to_corpus(texts: list[list[str]], corpus_id: str, seed: int = 0) -> tuple[Corpus, AnswerKey, dict[str, int]]:

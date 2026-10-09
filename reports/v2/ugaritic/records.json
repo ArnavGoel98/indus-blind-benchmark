@@ -1,0 +1,1855 @@
+{
+ "sources": {
+  "eupt_pages": {
+   "https://eupt.uni-goettingen.de/api/eupt/html/KTU_1.14_facsimile.html": "ad851529e956ae5ca89237c2497a32af3afc365b51411cb40a49de017be886c6",
+   "https://eupt.uni-goettingen.de/api/eupt/html/KTU_1.15_facsimile.html": "48a0eca1ded4ce4bc84e4c7d40626cc19360ca7730b696dfc82f13b764bb4ea7",
+   "https://eupt.uni-goettingen.de/api/eupt/html/KTU_1.16_facsimile.html": "d6e6d6b80edec566577802cad6628bb02d31b04232dbd6a4b875eba5c244f37f"
+  },
+  "eupt_version": "Draft 3.2 [2025-07-18]",
+  "eupt_accessed": "2026-10-09",
+  "oshb_commit": "3d15126fb1ef74867fc1434be1942e837932691f",
+  "gold": "Wikipedia 'Ugaritic alphabet' letters table (read 2026-10-09), citing Kogan 2011 Tab. 6.2 (not read)"
+ },
+ "reference_sizes": {
+  "hebrew": {
+   "texts": 23213,
+   "units": 1197042,
+   "unit_types": 22
+  },
+  "hebrew-poetic": {
+   "texts": 4512,
+   "units": 137202,
+   "unit_types": 22
+  },
+  "sanskrit": {
+   "texts": 40000,
+   "units": 872338,
+   "unit_types": 47
+  },
+  "tamil": {
+   "texts": 18823,
+   "units": 502785,
+   "unit_types": 34
+  },
+  "sumerian": {
+   "texts": 40000,
+   "units": 415308,
+   "unit_types": 262
+  },
+  "latin": {
+   "texts": 5269,
+   "units": 118647,
+   "unit_types": 29
+  },
+  "finnish": {
+   "texts": 11246,
+   "units": 222028,
+   "unit_types": 24
+  }
+ },
+ "corpora": {
+  "natural": {
+   "n_texts": 791,
+   "n_tokens": 6928,
+   "n_letters": 5876,
+   "n_dividers": 1052,
+   "n_types": 30,
+   "mean_length": 8.758533501896334,
+   "dup_rate": 0.10240202275600507,
+   "ceilings": {
+    "one_to_one": 0.9063989108236896,
+    "many_to_one": 1.0
+   },
+   "AB": {
+    "stats": {
+     "n_texts": 791,
+     "n_tokens": 6928,
+     "mean_length": 8.758533501896334,
+     "median_length": 9.0,
+     "max_length": 19,
+     "sign_inventory": 30,
+     "coverage80_signs": 14,
+     "top1_share": 0.15184757505773672,
+     "hapax_fraction": 0.0,
+     "enders80_signs": 10,
+     "beginners80_signs": 13,
+     "duplicate_text_fraction": 0.10240202275600506,
+     "zm_a": 49.07392197000353,
+     "zm_b": 9.999999999836799,
+     "zm_c": 67.41799026763651
+    }
+   },
+   "D": {
+    "related": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.023239030023094687,
+      "letters": 0.027399591558883593,
+      "letters_sourced": 0.028315160042208933,
+      "type_acc_letters": 0.034482758620689655,
+      "types_right": [
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.3389145496535797,
+      "letters": 0.39959155888359427,
+      "letters_sourced": 0.41294407316215265,
+      "type_acc_letters": 0.3793103448275862,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "q",
+       "r",
+       "s",
+       "w",
+       "ḥ",
+       "ṣ",
+       "ṭ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.147040798174376
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.3204387990762125,
+      "letters": 0.3778080326752893,
+      "letters_sourced": 0.3904326415758002,
+      "type_acc_letters": 0.3103448275862069,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.153540145216327
+      }
+     }
+    },
+    "related_poetic": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.13366050808314087,
+      "letters": 0.15759019741320626,
+      "letters_sourced": 0.16285613788251846,
+      "type_acc_letters": 0.10344827586206896,
+      "types_right": [
+       "m",
+       "š",
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.3943418013856813,
+      "letters": 0.4649421375085092,
+      "letters_sourced": 0.48047836792121,
+      "type_acc_letters": 0.4482758620689655,
+      "types_right": [
+       "b",
+       "k",
+       "m",
+       "n",
+       "p",
+       "s",
+       "z",
+       "ġ",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ḫ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.077806598988235
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.371824480369515,
+      "letters": 0.4383934649421375,
+      "letters_sourced": 0.45304256067534293,
+      "type_acc_letters": 0.3448275862068966,
+      "types_right": [
+       "b",
+       "k",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.088024315651935
+      }
+     }
+    },
+    "candidates": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "hebrew": -6.174647450009192,
+       "sanskrit": -5.992704826131542,
+       "tamil": -6.0311957383995205,
+       "sumerian": -5.944314699674998,
+       "latin": -6.029491634113957,
+       "finnish": -6.050051835235701
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.3204387990762125,
+      "letters": 0.3778080326752893,
+      "letters_sourced": 0.3904326415758002,
+      "type_acc_letters": 0.3103448275862069,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": 0.40087648389748615,
+       "sanskrit": 0.18802603571857698,
+       "tamil": 0.16228585330797046,
+       "sumerian": 0.16948072416300364,
+       "latin": 0.21528839982785847,
+       "finnish": 0.13829874216020974
+      }
+     }
+    },
+    "none": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "sanskrit": -5.992704826131542,
+       "tamil": -6.0311957383995205,
+       "sumerian": -5.944314699674998,
+       "latin": -6.029491634113957,
+       "finnish": -6.050051835235701
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "latin",
+      "family": "indo-european",
+      "family_scores": {
+       "sanskrit": 0.18802603571857698,
+       "tamil": 0.16228585330797046,
+       "sumerian": 0.16948072416300364,
+       "latin": 0.21528839982785847,
+       "finnish": 0.13829874216020974
+      }
+     }
+    }
+   },
+   "D_em_seeds": {
+    "knight2006_em_original/seed1": {
+     "token_acc": 0.3389145496535797,
+     "letters": 0.39959155888359427,
+     "letters_sourced": 0.41294407316215265,
+     "type_acc_letters": 0.3793103448275862,
+     "types_right": [
+      "k",
+      "l",
+      "n",
+      "p",
+      "q",
+      "r",
+      "s",
+      "w",
+      "ḥ",
+      "ṣ",
+      "ṭ"
+     ],
+     "n_letter_types": 29
+    },
+    "knight2006_em_original/seed2": {
+     "token_acc": 0.3389145496535797,
+     "letters": 0.39959155888359427,
+     "letters_sourced": 0.41294407316215265,
+     "type_acc_letters": 0.3793103448275862,
+     "types_right": [
+      "k",
+      "l",
+      "n",
+      "p",
+      "q",
+      "r",
+      "s",
+      "w",
+      "ḥ",
+      "ṣ",
+      "ṭ"
+     ],
+     "n_letter_types": 29
+    },
+    "knight2006_em/seed1": {
+     "token_acc": 0.3204387990762125,
+     "letters": 0.3778080326752893,
+     "letters_sourced": 0.3904326415758002,
+     "type_acc_letters": 0.3103448275862069,
+     "types_right": [
+      "k",
+      "l",
+      "n",
+      "p",
+      "r",
+      "s",
+      "w",
+      "ḥ",
+      "ṣ"
+     ],
+     "n_letter_types": 29
+    },
+    "knight2006_em/seed2": {
+     "token_acc": 0.3204387990762125,
+     "letters": 0.3778080326752893,
+     "letters_sourced": 0.3904326415758002,
+     "type_acc_letters": 0.3103448275862069,
+     "types_right": [
+      "k",
+      "l",
+      "n",
+      "p",
+      "r",
+      "s",
+      "w",
+      "ḥ",
+      "ṣ"
+     ],
+     "n_letter_types": 29
+    }
+   }
+  },
+  "lines": {
+   "n_texts": 678,
+   "n_tokens": 6928,
+   "n_letters": 5876,
+   "n_dividers": 1052,
+   "n_types": 30,
+   "mean_length": 10.218289085545722,
+   "dup_rate": 0.04867256637168138,
+   "ceilings": {
+    "one_to_one": 0.9063989108236896,
+    "many_to_one": 1.0
+   },
+   "AB": {
+    "stats": {
+     "n_texts": 678,
+     "n_tokens": 6928,
+     "mean_length": 10.218289085545722,
+     "median_length": 11.0,
+     "max_length": 19,
+     "sign_inventory": 30,
+     "coverage80_signs": 14,
+     "top1_share": 0.15184757505773672,
+     "hapax_fraction": 0.0,
+     "enders80_signs": 10,
+     "beginners80_signs": 13,
+     "duplicate_text_fraction": 0.048672566371681415,
+     "zm_a": 49.07392197000353,
+     "zm_b": 9.999999999836799,
+     "zm_c": 67.41799026763651
+    }
+   },
+   "D": {
+    "related": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.023239030023094687,
+      "letters": 0.027399591558883593,
+      "letters_sourced": 0.028315160042208933,
+      "type_acc_letters": 0.034482758620689655,
+      "types_right": [
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.32549076212471134,
+      "letters": 0.3837644656228727,
+      "letters_sourced": 0.39658811115019343,
+      "type_acc_letters": 0.3448275862068966,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "ḥ",
+       "ṣ",
+       "ṭ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.1228738861047365
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.2971997690531178,
+      "letters": 0.35040844111640573,
+      "letters_sourced": 0.3621174815335913,
+      "type_acc_letters": 0.27586206896551724,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.129477169437119
+      }
+     }
+    },
+    "related_poetic": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.13366050808314087,
+      "letters": 0.15759019741320626,
+      "letters_sourced": 0.16285613788251846,
+      "type_acc_letters": 0.10344827586206896,
+      "types_right": [
+       "m",
+       "š",
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.40415704387990764,
+      "letters": 0.4765146358066712,
+      "letters_sourced": 0.4924375659514597,
+      "type_acc_letters": 0.4482758620689655,
+      "types_right": [
+       "b",
+       "h",
+       "k",
+       "m",
+       "n",
+       "p",
+       "s",
+       "z",
+       "ġ",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.066479499672457
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.3931870669745958,
+      "letters": 0.4635806671204901,
+      "letters_sourced": 0.47907140344706295,
+      "type_acc_letters": 0.3793103448275862,
+      "types_right": [
+       "b",
+       "h",
+       "k",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.076373693605079
+      }
+     }
+    },
+    "candidates": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "hebrew": -6.152133537490352,
+       "sanskrit": -5.991105602453295,
+       "tamil": -6.024465024620647,
+       "sumerian": -5.960967234624361,
+       "latin": -6.027130089068084,
+       "finnish": -6.048736553482049
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.2971997690531178,
+      "letters": 0.35040844111640573,
+      "letters_sourced": 0.3621174815335913,
+      "type_acc_letters": 0.27586206896551724,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": 0.38614886080138366,
+       "sanskrit": 0.18764447301942191,
+       "tamil": 0.1614606913219803,
+       "sumerian": 0.16975516811607763,
+       "latin": 0.21422137421163318,
+       "finnish": 0.14285622500342862
+      }
+     }
+    },
+    "none": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "sanskrit": -5.991105602453295,
+       "tamil": -6.024465024620647,
+       "sumerian": -5.960967234624361,
+       "latin": -6.027130089068084,
+       "finnish": -6.048736553482049
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "latin",
+      "family": "indo-european",
+      "family_scores": {
+       "sanskrit": 0.18764447301942191,
+       "tamil": 0.1614606913219803,
+       "sumerian": 0.16975516811607763,
+       "latin": 0.21422137421163318,
+       "finnish": 0.14285622500342862
+      }
+     }
+    }
+   }
+  },
+  "recut4.6/s0": {
+   "n_texts": 1451,
+   "n_tokens": 6693,
+   "n_letters": 5876,
+   "n_dividers": 817,
+   "n_types": 30,
+   "mean_length": 4.612680909717437,
+   "dup_rate": 0.2756719503790489,
+   "ceilings": {
+    "one_to_one": 0.9063989108236896,
+    "many_to_one": 1.0
+   },
+   "AB": {
+    "stats": {
+     "n_texts": 1451,
+     "n_tokens": 6693,
+     "mean_length": 4.612680909717437,
+     "median_length": 3.0,
+     "max_length": 19,
+     "sign_inventory": 30,
+     "coverage80_signs": 14,
+     "top1_share": 0.12206783206334977,
+     "hapax_fraction": 0.0,
+     "enders80_signs": 12,
+     "beginners80_signs": 14,
+     "duplicate_text_fraction": 0.27567195037904896,
+     "zm_a": 49.213587473971764,
+     "zm_b": 9.999999996768231,
+     "zm_c": 68.6415827386209
+    }
+   },
+   "D": {
+    "related": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.024054982817869417,
+      "letters": 0.027399591558883593,
+      "letters_sourced": 0.028315160042208933,
+      "type_acc_letters": 0.034482758620689655,
+      "types_right": [
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.3059913342297923,
+      "letters": 0.3485364193328795,
+      "letters_sourced": 0.3601829053816391,
+      "type_acc_letters": 0.3448275862068966,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "q",
+       "s",
+       "w",
+       "š",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.352102824462514
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.26804123711340205,
+      "letters": 0.3053097345132743,
+      "letters_sourced": 0.315511783327471,
+      "type_acc_letters": 0.27586206896551724,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "w",
+       "š",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.356177275749408
+      }
+     }
+    },
+    "related_poetic": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.13835350366054086,
+      "letters": 0.15759019741320626,
+      "letters_sourced": 0.16285613788251846,
+      "type_acc_letters": 0.10344827586206896,
+      "types_right": [
+       "m",
+       "š",
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.45420588674734796,
+      "letters": 0.517358747447243,
+      "letters_sourced": 0.5346465001758706,
+      "type_acc_letters": 0.3793103448275862,
+      "types_right": [
+       "b",
+       "k",
+       "l",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.205571107871607
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.4301509039294786,
+      "letters": 0.4899591558883594,
+      "letters_sourced": 0.5063313401336617,
+      "type_acc_letters": 0.3448275862068966,
+      "types_right": [
+       "b",
+       "k",
+       "l",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.2176177636297325
+      }
+     }
+    },
+    "candidates": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "hebrew": -6.373676235720607,
+       "sanskrit": -6.077900513973728,
+       "tamil": -6.143290085018695,
+       "sumerian": -5.9211570985849615,
+       "latin": -6.110114221589229,
+       "finnish": -6.113614937658573
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.26804123711340205,
+      "letters": 0.3053097345132743,
+      "letters_sourced": 0.315511783327471,
+      "type_acc_letters": 0.27586206896551724,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "w",
+       "š",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": 0.4153251426917495,
+       "sanskrit": 0.1647255069133066,
+       "tamil": 0.14674688450849888,
+       "sumerian": 0.1505587790727899,
+       "latin": 0.20292829536752247,
+       "finnish": 0.11898599483671565
+      }
+     }
+    },
+    "none": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "sanskrit": -6.077900513973728,
+       "tamil": -6.143290085018695,
+       "sumerian": -5.9211570985849615,
+       "latin": -6.110114221589229,
+       "finnish": -6.113614937658573
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "latin",
+      "family": "indo-european",
+      "family_scores": {
+       "sanskrit": 0.1647255069133066,
+       "tamil": 0.14674688450849888,
+       "sumerian": 0.1505587790727899,
+       "latin": 0.20292829536752247,
+       "finnish": 0.11898599483671565
+      }
+     }
+    }
+   }
+  },
+  "recut4.6/s1": {
+   "n_texts": 1462,
+   "n_tokens": 6702,
+   "n_letters": 5876,
+   "n_dividers": 826,
+   "n_types": 30,
+   "mean_length": 4.584131326949384,
+   "dup_rate": 0.2948016415868673,
+   "ceilings": {
+    "one_to_one": 0.9063989108236896,
+    "many_to_one": 1.0
+   },
+   "AB": {
+    "stats": {
+     "n_texts": 1462,
+     "n_tokens": 6702,
+     "mean_length": 4.584131326949384,
+     "median_length": 3.0,
+     "max_length": 18,
+     "sign_inventory": 30,
+     "coverage80_signs": 14,
+     "top1_share": 0.12324679200238735,
+     "hapax_fraction": 0.0,
+     "enders80_signs": 12,
+     "beginners80_signs": 14,
+     "duplicate_text_fraction": 0.2948016415868673,
+     "zm_a": 49.20749853958347,
+     "zm_b": 9.999999996965226,
+     "zm_c": 68.58787381796473
+    }
+   },
+   "D": {
+    "related": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0240226797970755,
+      "letters": 0.027399591558883593,
+      "letters_sourced": 0.028315160042208933,
+      "type_acc_letters": 0.034482758620689655,
+      "types_right": [
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.368099074903014,
+      "letters": 0.4198434309053778,
+      "letters_sourced": 0.4338726697150897,
+      "type_acc_letters": 0.3793103448275862,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "r",
+       "s",
+       "w",
+       "š",
+       "ḥ",
+       "ṣ",
+       "ṭ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.351388725146076
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.2987168009549388,
+      "letters": 0.3407079646017699,
+      "letters_sourced": 0.3520928596552937,
+      "type_acc_letters": 0.3103448275862069,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "w",
+       "š",
+       "ṣ",
+       "ṯ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.356180180737812
+      }
+     }
+    },
+    "related_poetic": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.13816771113100568,
+      "letters": 0.15759019741320626,
+      "letters_sourced": 0.16285613788251846,
+      "type_acc_letters": 0.10344827586206896,
+      "types_right": [
+       "m",
+       "š",
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.39615040286481645,
+      "letters": 0.4518379850238257,
+      "letters_sourced": 0.4669363348575448,
+      "type_acc_letters": 0.4482758620689655,
+      "types_right": [
+       "b",
+       "d",
+       "m",
+       "n",
+       "p",
+       "s",
+       "z",
+       "ġ",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ḫ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.203387175786994
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.3842136675619218,
+      "letters": 0.4382232811436351,
+      "letters_sourced": 0.45286669011607456,
+      "type_acc_letters": 0.41379310344827586,
+      "types_right": [
+       "b",
+       "d",
+       "m",
+       "n",
+       "p",
+       "s",
+       "z",
+       "ġ",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.215370557600524
+      }
+     }
+    },
+    "candidates": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "hebrew": -6.373146145862166,
+       "sanskrit": -6.069179797073636,
+       "tamil": -6.14156384639907,
+       "sumerian": -5.91543203987656,
+       "latin": -6.107445949070788,
+       "finnish": -6.1091044886773975
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.2987168009549388,
+      "letters": 0.3407079646017699,
+      "letters_sourced": 0.3520928596552937,
+      "type_acc_letters": 0.3103448275862069,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "w",
+       "š",
+       "ṣ",
+       "ṯ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": 0.4134268031068263,
+       "sanskrit": 0.17301218796688198,
+       "tamil": 0.14670872976807836,
+       "sumerian": 0.1533434534614212,
+       "latin": 0.2057782298979054,
+       "finnish": 0.1256259851015068
+      }
+     }
+    },
+    "none": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "sanskrit": -6.069179797073636,
+       "tamil": -6.14156384639907,
+       "sumerian": -5.91543203987656,
+       "latin": -6.107445949070788,
+       "finnish": -6.1091044886773975
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "latin",
+      "family": "indo-european",
+      "family_scores": {
+       "sanskrit": 0.17301218796688198,
+       "tamil": 0.14670872976807836,
+       "sumerian": 0.1533434534614212,
+       "latin": 0.2057782298979054,
+       "finnish": 0.1256259851015068
+      }
+     }
+    }
+   }
+  },
+  "recut4.6/s2": {
+   "n_texts": 1448,
+   "n_tokens": 6709,
+   "n_letters": 5876,
+   "n_dividers": 833,
+   "n_types": 30,
+   "mean_length": 4.63328729281768,
+   "dup_rate": 0.27693370165745856,
+   "ceilings": {
+    "one_to_one": 0.9063989108236896,
+    "many_to_one": 1.0
+   },
+   "AB": {
+    "stats": {
+     "n_texts": 1448,
+     "n_tokens": 6709,
+     "mean_length": 4.63328729281768,
+     "median_length": 3.0,
+     "max_length": 17,
+     "sign_inventory": 30,
+     "coverage80_signs": 14,
+     "top1_share": 0.12416157400506782,
+     "hapax_fraction": 0.0,
+     "enders80_signs": 13,
+     "beginners80_signs": 14,
+     "duplicate_text_fraction": 0.27693370165745856,
+     "zm_a": 49.20281166247455,
+     "zm_b": 9.999999999714063,
+     "zm_c": 68.54655421919038
+    }
+   },
+   "D": {
+    "related": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.023997615143836637,
+      "letters": 0.027399591558883593,
+      "letters_sourced": 0.028315160042208933,
+      "type_acc_letters": 0.034482758620689655,
+      "types_right": [
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.2723207631539723,
+      "letters": 0.31092579986385294,
+      "letters_sourced": 0.32131551178332746,
+      "type_acc_letters": 0.3103448275862069,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ḥ",
+       "ṣ",
+       "ẓ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.35224431874466
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.245938291846773,
+      "letters": 0.28080326752893126,
+      "letters_sourced": 0.29018642279282447,
+      "type_acc_letters": 0.2413793103448276,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": -6.355896011554826
+      }
+     }
+    },
+    "related_poetic": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.1380235504546132,
+      "letters": 0.15759019741320626,
+      "letters_sourced": 0.16285613788251846,
+      "type_acc_letters": 0.10344827586206896,
+      "types_right": [
+       "m",
+       "š",
+       "ḥ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.4164555075272023,
+      "letters": 0.4754935330156569,
+      "letters_sourced": 0.49138234259584945,
+      "type_acc_letters": 0.3793103448275862,
+      "types_right": [
+       "b",
+       "l",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ḫ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.204624215538944
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.40453122671038905,
+      "letters": 0.4618788291354663,
+      "letters_sourced": 0.4773126978543792,
+      "type_acc_letters": 0.3448275862068966,
+      "types_right": [
+       "b",
+       "l",
+       "m",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ˁ",
+       "ḥ",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew-poetic",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew-poetic": -6.216282303849095
+      }
+     }
+    },
+    "candidates": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "hebrew": -6.371457881500282,
+       "sanskrit": -6.070912889690191,
+       "tamil": -6.141290618725239,
+       "sumerian": -5.918085232797434,
+       "latin": -6.1074025201896465,
+       "finnish": -6.108893968172567
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.245938291846773,
+      "letters": 0.28080326752893126,
+      "letters_sourced": 0.29018642279282447,
+      "type_acc_letters": 0.2413793103448276,
+      "types_right": [
+       "k",
+       "l",
+       "n",
+       "p",
+       "s",
+       "š",
+       "ṣ"
+      ],
+      "n_letter_types": 29,
+      "reference": "hebrew",
+      "family": "semitic",
+      "family_scores": {
+       "hebrew": 0.40047893803444506,
+       "sanskrit": 0.16839700050072465,
+       "tamil": 0.14371002533824953,
+       "sumerian": 0.15148286341629982,
+       "latin": 0.20148055605065499,
+       "finnish": 0.12144262210967822
+      }
+     }
+    },
+    "none": {
+     "baseline_frequency_rank": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "tamil",
+      "family": "dravidian",
+      "family_scores": {}
+     },
+     "knight2006_em_original": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "sumerian",
+      "family": "isolate",
+      "family_scores": {
+       "sanskrit": -6.070912889690191,
+       "tamil": -6.141290618725239,
+       "sumerian": -5.918085232797434,
+       "latin": -6.1074025201896465,
+       "finnish": -6.108893968172567
+      }
+     },
+     "knight2006_em": {
+      "token_acc": 0.0,
+      "letters": 0.0,
+      "letters_sourced": 0.0,
+      "type_acc_letters": 0.0,
+      "types_right": [],
+      "n_letter_types": 29,
+      "reference": "latin",
+      "family": "indo-european",
+      "family_scores": {
+       "sanskrit": 0.16839700050072465,
+       "tamil": 0.14371002533824953,
+       "sumerian": 0.15148286341629982,
+       "latin": 0.20148055605065499,
+       "finnish": 0.12144262210967822
+      }
+     }
+    }
+   }
+  }
+ },
+ "AB_pools": {
+  "full/full": {
+   "natural": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8550867289251814
+   },
+   "lines": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8604518552818129
+   },
+   "recut4.6/s0": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8509165443266503
+   },
+   "recut4.6/s1": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8475393527463903
+   },
+   "recut4.6/s2": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8493476256277477
+   }
+  },
+  "full/holdout": {
+   "natural": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8550867289251814
+   },
+   "lines": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8604518552818129
+   },
+   "recut4.6/s0": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logosyllabic"
+    },
+    "entropy_ratio": 0.8509165443266503
+   },
+   "recut4.6/s1": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logosyllabic"
+    },
+    "entropy_ratio": 0.8475393527463903
+   },
+   "recut4.6/s2": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logosyllabic"
+    },
+    "entropy_ratio": 0.8493476256277477
+   }
+  },
+  "replication/full": {
+   "natural": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8550867289251814
+   },
+   "lines": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8604518552818129
+   },
+   "recut4.6/s0": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8509165443266503
+   },
+   "recut4.6/s1": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8475393527463903
+   },
+   "recut4.6/s2": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": true
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8493476256277477
+   }
+  },
+  "replication/holdout": {
+   "natural": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8550867289251814
+   },
+   "lines": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "syllabic"
+    },
+    "entropy_ratio": 0.8604518552818129
+   },
+   "recut4.6/s0": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logosyllabic"
+    },
+    "entropy_ratio": 0.8509165443266503
+   },
+   "recut4.6/s1": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logosyllabic"
+    },
+    "entropy_ratio": 0.8475393527463903
+   },
+   "recut4.6/s2": {
+    "A": {
+     "rao2009_entropy": false,
+     "yadav2010_markov": false,
+     "fuls_positional": false,
+     "lee2010_tree": true,
+     "ling_classifier_lr": false
+    },
+    "B": {
+     "script_type_inventory_rule": "alphabetic",
+     "script_type_lr": "alphabetic",
+     "segmentation_branching": "logographic"
+    },
+    "entropy_ratio": 0.8493476256277477
+   }
+  }
+ },
+ "yardsticks": {
+  "mergers": 7,
+  "n_word_types": 576,
+  "n_word_tokens": 977,
+  "verbatim_natural": 0.3084702907711757,
+  "verbatim_natural_chance": 0.23941845764854613,
+  "verbatim_natural_6plus": 0.00784313725490196,
+  "verbatim_natural_6plus_chance": 0.0005490196078431372,
+  "verbatim_recut4.6": 0.6609235010337698,
+  "verbatim_recut4.6_chance": 0.5525568573397657,
+  "cognate_types": 0.5486111111111112,
+  "cognate_tokens": 0.6366427840327533,
+  "cognate_types_chance": 0.15113715277777778,
+  "cognate_types_chance_p95": 0.1909722222222222,
+  "cognate_tokens_chance": 0.19334186284544522,
+  "bigram_jsd": 0.1838035118919642,
+  "bigram_jsd_poetic": 0.18506969064849002,
+  "bigram_jsd_shuffled_mean": 0.4746994763373575,
+  "bigram_jsd_hebrew_poetic_vs_whole": 0.020618335758660126,
+  "bigram_jsd_hebrew_sample_floor": 0.017790993310740792,
+  "v1_sister": {
+   "sanskrit": {
+    "bigram_jsd": 0.004352000608908181,
+    "bigram_jsd_size_matched": 0.03548758839839063,
+    "cognate_types_all": 0.5983378350301267,
+    "cognate_types": 0.752856231815145,
+    "cognate_tokens": 0.774257932446264,
+    "cognate_types_chance": 0.000901103444349373,
+    "cognate_tokens_chance": 0.0014841351074718525,
+    "mergers": 0
+   },
+   "tamil": {
+    "bigram_jsd": 0.004601491527394754,
+    "bigram_jsd_size_matched": 0.023855691584926675,
+    "cognate_types_all": 0.33278397960135575,
+    "cognate_types": 0.5801094963710028,
+    "cognate_tokens": 0.601944728761515,
+    "cognate_types_chance": 0.0033572161035949144,
+    "cognate_tokens_chance": 0.0037871033776867963,
+    "mergers": 0
+   },
+   "sumerian": {
+    "bigram_jsd": 0.048329629409295145,
+    "bigram_jsd_size_matched": 0.08687141986645622,
+    "cognate_types_all": 0.3768815996405302,
+    "cognate_types": 0.7310153775582043,
+    "cognate_tokens": 0.8001023541453429,
+    "cognate_types_chance": 0.10487916494476006,
+    "cognate_tokens_chance": 0.1972876151484135,
+    "mergers": 0
+   },
+   "latin": {
+    "bigram_jsd": 0.005299711871829194,
+    "bigram_jsd_size_matched": 0.021721028578962676,
+    "cognate_types_all": 0.3472951520332153,
+    "cognate_types": 0.5219492516309903,
+    "cognate_tokens": 0.576100307062436,
+    "cognate_types_chance": 0.004607511313829569,
+    "cognate_tokens_chance": 0.00992835209825998,
+    "mergers": 0
+   },
+   "finnish": {
+    "bigram_jsd": 0.0029959501870501113,
+    "bigram_jsd_size_matched": 0.014161354724799855,
+    "cognate_types_all": 0.32541075131599934,
+    "cognate_types": 0.5426706421729808,
+    "cognate_tokens": 0.6006653019447288,
+    "cognate_types_chance": 0.0007622610327864222,
+    "cognate_tokens_chance": 0.0015864892528147392,
+    "mergers": 0
+   }
+  }
+ }
+}
