@@ -1,0 +1,491 @@
+[
+ {
+  "lang": "sanskrit",
+  "split": "content",
+  "hidden_clause_share": 0.49928960454653093,
+  "hidden_type_share": 0.7823074799889594,
+  "reference_clause_share": 0.5007103954534691,
+  "reference_type_share": 0.7840463704112614,
+  "v1_like": {
+   "jsd_above_floor": 0.0052052155105756955,
+   "cognate_types_cc": 0.7551984707619651,
+   "word_pairs_types_cc": 0.26862441773101137,
+   "verbatim_6plus": 0.3973458551757173
+  },
+  "mid": {
+   "jsd_above_floor": 0.16921585865829414,
+   "cognate_types_cc": 0.09700190725658385,
+   "word_pairs_types_cc": 0.010718373965057463,
+   "verbatim_6plus": 0.06735887627259296
+  }
+ },
+ {
+  "lang": "sanskrit",
+  "split": "block250",
+  "hidden_clause_share": 0.4990801289640977,
+  "hidden_type_share": 0.6847088048578526,
+  "reference_clause_share": 0.5009198710359023,
+  "reference_type_share": 0.6812034225779741,
+  "v1_like": {
+   "jsd_above_floor": 0.004081036431102036,
+   "cognate_types_cc": 0.6896381531848456,
+   "word_pairs_types_cc": 0.16888398843153546,
+   "verbatim_6plus": 0.2534844955012854
+  },
+  "mid": {
+   "jsd_above_floor": 0.15407201707790116,
+   "cognate_types_cc": 0.0972934736539124,
+   "word_pairs_types_cc": 0.008360210114771357,
+   "verbatim_6plus": 0.059293326906598116
+  }
+ },
+ {
+  "lang": "sanskrit",
+  "split": "block1000",
+  "hidden_clause_share": 0.4918122370170677,
+  "hidden_type_share": 0.6656914159536296,
+  "reference_clause_share": 0.5081877629829323,
+  "reference_type_share": 0.6943693072039746,
+  "v1_like": {
+   "jsd_above_floor": 0.005085713018744022,
+   "cognate_types_cc": 0.6839289961076109,
+   "word_pairs_types_cc": 0.16923264736310678,
+   "verbatim_6plus": 0.2791878172588832
+  },
+  "mid": {
+   "jsd_above_floor": 0.17773334521927975,
+   "cognate_types_cc": 0.09031026349967375,
+   "word_pairs_types_cc": 0.004918805688243355,
+   "verbatim_6plus": 0.06345177664974619
+  }
+ },
+ {
+  "lang": "sanskrit",
+  "split": "block4000",
+  "hidden_clause_share": 0.5100275050547369,
+  "hidden_type_share": 0.6725365719017389,
+  "reference_clause_share": 0.4899724949452631,
+  "reference_type_share": 0.6741374551476677,
+  "v1_like": {
+   "jsd_above_floor": 0.00759156292722676,
+   "cognate_types_cc": 0.6658175609909022,
+   "word_pairs_types_cc": 0.15503955706757983,
+   "verbatim_6plus": 0.25251256281407036
+  },
+  "mid": {
+   "jsd_above_floor": 0.1522678920885091,
+   "cognate_types_cc": 0.11918492623858093,
+   "word_pairs_types_cc": 0.02042596112951161,
+   "verbatim_6plus": 0.06281407035175879
+  }
+ },
+ {
+  "lang": "sanskrit",
+  "split": "halves",
+  "hidden_clause_share": 0.5,
+  "hidden_type_share": 0.678415677615236,
+  "reference_clause_share": 0.5,
+  "reference_type_share": 0.650483025117306,
+  "v1_like": {
+   "jsd_above_floor": 0.015218333490842447,
+   "cognate_types_cc": 0.6401030246838039,
+   "word_pairs_types_cc": 0.11272665959845213,
+   "verbatim_6plus": 0.21805338155124954
+  },
+  "mid": {
+   "jsd_above_floor": 0.15866991114558104,
+   "cognate_types_cc": 0.12285450561225414,
+   "word_pairs_types_cc": 0.012739736406963978,
+   "verbatim_6plus": 0.03624440006477034
+  }
+ },
+ {
+  "lang": "tamil",
+  "split": "content",
+  "hidden_clause_share": 0.49714148322291085,
+  "hidden_type_share": 0.6225031361574833,
+  "reference_clause_share": 0.5028585167770891,
+  "reference_type_share": 0.6226768310334845,
+  "v1_like": {
+   "jsd_above_floor": 0.00280792148593444,
+   "cognate_types_cc": 0.5728945568882863,
+   "word_pairs_types_cc": 0.07822334093600872,
+   "verbatim_6plus": 0.1838029956841838
+  },
+  "mid": {
+   "jsd_above_floor": 0.11082145738238208,
+   "cognate_types_cc": 0.09242187424392195,
+   "word_pairs_types_cc": 0.0015655151317134814,
+   "verbatim_6plus": 0.03556545003612788
+  }
+ },
+ {
+  "lang": "tamil",
+  "split": "block250",
+  "hidden_clause_share": 0.5057704637743108,
+  "hidden_type_share": 0.6215767634854772,
+  "reference_clause_share": 0.49422953622568927,
+  "reference_type_share": 0.6137025957734247,
+  "v1_like": {
+   "jsd_above_floor": 0.002425845093546179,
+   "cognate_types_cc": 0.5653897717419485,
+   "word_pairs_types_cc": 0.08501611833464734,
+   "verbatim_6plus": 0.19086362355593126
+  },
+  "mid": {
+   "jsd_above_floor": 0.11390966336262764,
+   "cognate_types_cc": 0.09684668929824078,
+   "word_pairs_types_cc": 0.0023360841558582443,
+   "verbatim_6plus": 0.050442612942612944
+  }
+ },
+ {
+  "lang": "tamil",
+  "split": "block1000",
+  "hidden_clause_share": 0.5343022013250694,
+  "hidden_type_share": 0.6608897037537392,
+  "reference_clause_share": 0.46569779867493055,
+  "reference_type_share": 0.5550902248383672,
+  "v1_like": {
+   "jsd_above_floor": 0.004977754732545914,
+   "cognate_types_cc": 0.5152188834221122,
+   "word_pairs_types_cc": 0.06128009347545085,
+   "verbatim_6plus": 0.16683558119591488
+  },
+  "mid": {
+   "jsd_above_floor": 0.12722710139682805,
+   "cognate_types_cc": 0.0770318876651441,
+   "word_pairs_types_cc": 0.0017827624447029427,
+   "verbatim_6plus": 0.031589615654478834
+  }
+ },
+ {
+  "lang": "tamil",
+  "split": "block4000",
+  "hidden_clause_share": 0.42744176106005555,
+  "hidden_type_share": 0.5409437421596063,
+  "reference_clause_share": 0.5725582389399444,
+  "reference_type_share": 0.6613335906590756,
+  "v1_like": {
+   "jsd_above_floor": 0.00656766591732834,
+   "cognate_types_cc": 0.5574618872986494,
+   "word_pairs_types_cc": 0.046339870913558,
+   "verbatim_6plus": 0.15998063992255968
+  },
+  "mid": {
+   "jsd_above_floor": 0.10035822940141116,
+   "cognate_types_cc": 0.1327471071597892,
+   "word_pairs_types_cc": 0.0014491885083490487,
+   "verbatim_6plus": 0.04903019612078448
+  }
+ },
+ {
+  "lang": "tamil",
+  "split": "halves",
+  "hidden_clause_share": 0.5,
+  "hidden_type_share": 0.642709640065618,
+  "reference_clause_share": 0.5,
+  "reference_type_share": 0.5515970278876773,
+  "v1_like": {
+   "jsd_above_floor": 0.009873775687361724,
+   "cognate_types_cc": 0.47347436454877606,
+   "word_pairs_types_cc": 0.032930135077179505,
+   "verbatim_6plus": 0.13533501279121996
+  },
+  "mid": {
+   "jsd_above_floor": 0.1153667497858092,
+   "cognate_types_cc": 0.07349081981258969,
+   "word_pairs_types_cc": 0.00022322429557288423,
+   "verbatim_6plus": 0.03754564805592985
+  }
+ },
+ {
+  "lang": "sumerian",
+  "split": "content",
+  "hidden_clause_share": 0.503564048818921,
+  "hidden_type_share": 0.6415862385923445,
+  "reference_clause_share": 0.49643595118107897,
+  "reference_type_share": 0.6367605541330182,
+  "v1_like": {
+   "jsd_above_floor": 0.03595564768462715,
+   "cognate_types_cc": 0.6831572957137382,
+   "word_pairs_types_cc": 0.36669472352694465,
+   "verbatim_6plus": 0.35776264633696053
+  },
+  "mid": {
+   "jsd_above_floor": 0.11265475117185689,
+   "cognate_types_cc": 0.1604461948003005,
+   "word_pairs_types_cc": 0.08096575626445798,
+   "verbatim_6plus": 0.08539671162659368
+  }
+ },
+ {
+  "lang": "sumerian",
+  "split": "block250",
+  "hidden_clause_share": 0.5019994351038368,
+  "hidden_type_share": 0.6585253758781433,
+  "reference_clause_share": 0.4980005648961632,
+  "reference_type_share": 0.6480533123235507,
+  "v1_like": {
+   "jsd_above_floor": 0.027393381480184963,
+   "cognate_types_cc": 0.7158367902984415,
+   "word_pairs_types_cc": 0.4113317945019499,
+   "verbatim_6plus": 0.4460031347962382
+  },
+  "mid": {
+   "jsd_above_floor": 0.1149024193951349,
+   "cognate_types_cc": 0.20352388990797715,
+   "word_pairs_types_cc": 0.08227153586465845,
+   "verbatim_6plus": 0.09868861024033437
+  }
+ },
+ {
+  "lang": "sumerian",
+  "split": "block1000",
+  "hidden_clause_share": 0.4945665908516553,
+  "hidden_type_share": 0.6292758190532467,
+  "reference_clause_share": 0.5054334091483447,
+  "reference_type_share": 0.6659444553870396,
+  "v1_like": {
+   "jsd_above_floor": 0.03246734330937091,
+   "cognate_types_cc": 0.7184318034006285,
+   "word_pairs_types_cc": 0.4150057568878527,
+   "verbatim_6plus": 0.4550772786364293
+  },
+  "mid": {
+   "jsd_above_floor": 0.10839348069978456,
+   "cognate_types_cc": 0.18562875551754976,
+   "word_pairs_types_cc": 0.07327595612172133,
+   "verbatim_6plus": 0.0866787408748986
+  }
+ },
+ {
+  "lang": "sumerian",
+  "split": "block4000",
+  "hidden_clause_share": 0.5242979678603814,
+  "hidden_type_share": 0.684524981944718,
+  "reference_clause_share": 0.47570203213961854,
+  "reference_type_share": 0.5793775851881032,
+  "v1_like": {
+   "jsd_above_floor": 0.0313278673768096,
+   "cognate_types_cc": 0.667999345881034,
+   "word_pairs_types_cc": 0.39607052982311447,
+   "verbatim_6plus": 0.4038491083352045
+  },
+  "mid": {
+   "jsd_above_floor": 0.10301307289732944,
+   "cognate_types_cc": 0.19118187883601526,
+   "word_pairs_types_cc": 0.08786838462454832,
+   "verbatim_6plus": 0.07890849356512285
+  }
+ },
+ {
+  "lang": "sumerian",
+  "split": "halves",
+  "hidden_clause_share": 0.5,
+  "hidden_type_share": 0.6407655439564047,
+  "reference_clause_share": 0.5,
+  "reference_type_share": 0.5972359004661546,
+  "v1_like": {
+   "jsd_above_floor": 0.08232659244586712,
+   "cognate_types_cc": 0.4453823735216194,
+   "word_pairs_types_cc": 0.2028677881343723,
+   "verbatim_6plus": 0.2182605415511784
+  },
+  "mid": {
+   "jsd_above_floor": 0.15283725015601612,
+   "cognate_types_cc": 0.16730545874507904,
+   "word_pairs_types_cc": 0.05641722713175887,
+   "verbatim_6plus": 0.06876814327653225
+  }
+ },
+ {
+  "lang": "latin",
+  "split": "content",
+  "hidden_clause_share": 0.5007580064430548,
+  "hidden_type_share": 0.6356932153392331,
+  "reference_clause_share": 0.4992419935569452,
+  "reference_type_share": 0.6310355534854836,
+  "v1_like": {
+   "jsd_above_floor": 0.004940239355542976,
+   "cognate_types_cc": 0.530429026609728,
+   "word_pairs_types_cc": 0.0669738819662645,
+   "verbatim_6plus": 0.11791871921182266
+  },
+  "mid": {
+   "jsd_above_floor": 0.13948950783574193,
+   "cognate_types_cc": 0.07415674630222409,
+   "word_pairs_types_cc": 0.006635681616052836,
+   "verbatim_6plus": 0.02280605728881591
+  }
+ },
+ {
+  "lang": "latin",
+  "split": "block250",
+  "hidden_clause_share": 0.5262459730907713,
+  "hidden_type_share": 0.6294053718366713,
+  "reference_clause_share": 0.47375402690922874,
+  "reference_type_share": 0.6223412513584847,
+  "v1_like": {
+   "jsd_above_floor": 0.005462941699619261,
+   "cognate_types_cc": 0.5151058083178617,
+   "word_pairs_types_cc": 0.07750718042321918,
+   "verbatim_6plus": 0.13695693385075158
+  },
+  "mid": {
+   "jsd_above_floor": 0.14637114471747978,
+   "cognate_types_cc": 0.05830867131278401,
+   "word_pairs_types_cc": 0.008126495518012462,
+   "verbatim_6plus": 0.031881439850127126
+  }
+ },
+ {
+  "lang": "latin",
+  "split": "block1000",
+  "hidden_clause_share": 0.5685048322910745,
+  "hidden_type_share": 0.6684521037106039,
+  "reference_clause_share": 0.43149516770892554,
+  "reference_type_share": 0.5624126688402422,
+  "v1_like": {
+   "jsd_above_floor": 0.009178207114121104,
+   "cognate_types_cc": 0.4785700458049969,
+   "word_pairs_types_cc": 0.06321688610776059,
+   "verbatim_6plus": 0.09672239821340274
+  },
+  "mid": {
+   "jsd_above_floor": 0.1455348560393351,
+   "cognate_types_cc": 0.06235656363803848,
+   "word_pairs_types_cc": 0.006647007253028685,
+   "verbatim_6plus": 0.017466596390943126
+  }
+ },
+ {
+  "lang": "latin",
+  "split": "block4000",
+  "hidden_clause_share": 0.0,
+  "hidden_type_share": 0.0,
+  "reference_clause_share": 1.0,
+  "reference_type_share": 1.0,
+  "note": "a half is (nearly) empty: too few blocks"
+ },
+ {
+  "lang": "latin",
+  "split": "halves",
+  "hidden_clause_share": 0.5,
+  "hidden_type_share": 0.41049526471044867,
+  "reference_clause_share": 0.5,
+  "reference_type_share": 0.7057910262381618,
+  "v1_like": {
+   "jsd_above_floor": 0.028959821651897987,
+   "cognate_types_cc": 0.41703691237349505,
+   "word_pairs_types_cc": 0.05142124736004948,
+   "verbatim_6plus": 0.09661989795918367
+  },
+  "mid": {
+   "jsd_above_floor": 0.16855185170924963,
+   "cognate_types_cc": 0.059007494074291636,
+   "word_pairs_types_cc": 0.0042022360998565,
+   "verbatim_6plus": 0.01286139455782313
+  }
+ },
+ {
+  "lang": "finnish",
+  "split": "content",
+  "hidden_clause_share": 0.5081995889272751,
+  "hidden_type_share": 0.6243712962501867,
+  "reference_clause_share": 0.4918004110727249,
+  "reference_type_share": 0.6175489268462726,
+  "v1_like": {
+   "jsd_above_floor": 0.004310079553202512,
+   "cognate_types_cc": 0.537683664297495,
+   "word_pairs_types_cc": 0.09209429546185216,
+   "verbatim_6plus": 0.19236103085635042
+  },
+  "mid": {
+   "jsd_above_floor": 0.1546487147525615,
+   "cognate_types_cc": 0.04672210905638929,
+   "word_pairs_types_cc": 0.002741750573962508,
+   "verbatim_6plus": 0.034356100003852225
+  }
+ },
+ {
+  "lang": "finnish",
+  "split": "block250",
+  "hidden_clause_share": 0.48104255040013993,
+  "hidden_type_share": 0.6074896668492605,
+  "reference_clause_share": 0.51895744959986,
+  "reference_type_share": 0.6330362033763259,
+  "v1_like": {
+   "jsd_above_floor": 0.0033039054833372767,
+   "cognate_types_cc": 0.5315698798124564,
+   "word_pairs_types_cc": 0.14164968060686073,
+   "verbatim_6plus": 0.21568627450980393
+  },
+  "mid": {
+   "jsd_above_floor": 0.13849720245054165,
+   "cognate_types_cc": 0.06239214868684983,
+   "word_pairs_types_cc": 0.005316497520049457,
+   "verbatim_6plus": 0.03333333333333333
+  }
+ },
+ {
+  "lang": "finnish",
+  "split": "block1000",
+  "hidden_clause_share": 0.5247736913456073,
+  "hidden_type_share": 0.6426970768388028,
+  "reference_clause_share": 0.4752263086543928,
+  "reference_type_share": 0.5807977690354066,
+  "v1_like": {
+   "jsd_above_floor": 0.0032481448232993867,
+   "cognate_types_cc": 0.516205842033522,
+   "word_pairs_types_cc": 0.13600303018117144,
+   "verbatim_6plus": 0.21568627450980393
+  },
+  "mid": {
+   "jsd_above_floor": 0.14721841446566117,
+   "cognate_types_cc": 0.06232984325100767,
+   "word_pairs_types_cc": 0.004736805836823841,
+   "verbatim_6plus": 0.03333333333333333
+  }
+ },
+ {
+  "lang": "finnish",
+  "split": "block4000",
+  "hidden_clause_share": 0.3003017448725237,
+  "hidden_type_share": 0.4027189880982023,
+  "reference_clause_share": 0.6996982551274763,
+  "reference_type_share": 0.7954783128330263,
+  "v1_like": {
+   "jsd_above_floor": 0.00404889903364056,
+   "cognate_types_cc": 0.5748803903173374,
+   "word_pairs_types_cc": 0.15027489405033628,
+   "verbatim_6plus": 0.25098039215686274
+  },
+  "mid": {
+   "jsd_above_floor": 0.1422412171260398,
+   "cognate_types_cc": 0.04697236669738089,
+   "word_pairs_types_cc": 0.005726209682234111,
+   "verbatim_6plus": 0.030392156862745098
+  }
+ },
+ {
+  "lang": "finnish",
+  "split": "halves",
+  "hidden_clause_share": 0.49997813442952727,
+  "hidden_type_share": 0.6232757332802151,
+  "reference_clause_share": 0.5000218655704727,
+  "reference_type_share": 0.6080374483342463,
+  "v1_like": {
+   "jsd_above_floor": 0.0033758150183833832,
+   "cognate_types_cc": 0.5252685089891638,
+   "word_pairs_types_cc": 0.13533207908801828,
+   "verbatim_6plus": 0.2017716535433071
+  },
+  "mid": {
+   "jsd_above_floor": 0.15695459123911432,
+   "cognate_types_cc": 0.04303785731553039,
+   "word_pairs_types_cc": 0.0027583812779595806,
+   "verbatim_6plus": 0.024606299212598423
+  }
+ }
+]

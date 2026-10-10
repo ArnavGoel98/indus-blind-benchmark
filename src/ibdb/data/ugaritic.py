@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import hashlib
 from collections import Counter
+from functools import lru_cache
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -241,24 +242,86 @@ def to_corpus(texts: list[list[str]], corpus_id: str, seed: int = 0) -> tuple[Co
     return corpus, key, sid
 
 
-def hebrew_texts(books: tuple[str, ...] | None = None) -> list[list[str]]:
-    """Consonantal WLC (ketiv as written; notes, including qere readings, skipped), one text per
-    verse. Points and accents stripped, final forms folded, shin/sin one letter, maqaf and
-    morpheme slashes ignored. Units are Hebrew letters; no word-boundary unit."""
-    ns = {"o": "http://www.bibletechnologies.net/2003/OSIS/namespace"}
+OSIS_NS = "http://www.bibletechnologies.net/2003/OSIS/namespace"
+# Pointing (pre-registration entry 3). Vowel points: sheva, hatafs, vowels, qamets qatan.
+DAGESH, HOLAM, HOLAM_HASER = "\u05bc", "\u05b9", "\u05ba"
+HIRIQ, TSERE, SEGOL, QAMETS = "\u05b4", "\u05b5", "\u05b6", "\u05b8"
+VOWEL_POINTS = {chr(c) for c in range(0x05B0, 0x05BC)} | {"\u05c7"}
+MARKS = VOWEL_POINTS | {DAGESH}
+SPELLING_VARIANTS = (None, "remove_quiescent_aleph", "keep_final_he", "initial_shureq_vowel")
+
+
+def _clusters(word: str) -> list[tuple[str, frozenset[str]]]:
+    """Letters (finals folded) with their vowel points and dagesh; accents and other marks ignored."""
+    out: list[tuple[str, set[str]]] = []
+    for ch in word:
+        if "\u05d0" <= ch <= "\u05ea":
+            out.append((FINALS.get(ch, ch), set()))
+        elif ch in MARKS and out:
+            out[-1][1].add(ch)
+    return [(l, frozenset(p)) for l, p in out]
+
+
+def defective_letters(word: str, variant: str | None = None) -> list[str]:
+    """Letters of a pointed word with vowel letters (matres lectionis) removed, by the four rules of
+    docs/v2_preregistration.md entry 3. `variant` changes one choice (SPELLING_VARIANTS)."""
+    cl = _clusters(word)
+    keep = []
+    for i, (l, pts) in enumerate(cl):
+        vow = pts & VOWEL_POINTS
+        prev = cl[i - 1][1] & VOWEL_POINTS if i > 0 else frozenset()
+        if l == "ו" and i > 0 and HOLAM in pts and not prev:                       # 1 holam male
+            continue
+        if l == "ו" and pts == {DAGESH} and not prev and (i > 0 or variant == "initial_shureq_vowel"):
+            continue                                                               # 2 shureq
+        if l == "י" and not pts and prev & {HIRIQ, TSERE, SEGOL}:                  # 3 i/e vowel letter
+            continue
+        if (l == "ה" and i == len(cl) - 1 and DAGESH not in pts and prev & {QAMETS, SEGOL, TSERE, HOLAM}
+                and variant != "keep_final_he"):                                   # 4 final he
+            continue
+        if l == "א" and not vow and variant == "remove_quiescent_aleph":
+            continue
+        keep.append(l)
+    return keep
+
+
+@lru_cache(maxsize=16)
+def _verses(books: tuple[str, ...] | None, spelling: str, variant: str | None) -> tuple[tuple[tuple[str, ...], ...], ...]:
+    """Per verse, its words as letter tuples (ketiv as written; notes, including qere, skipped;
+    morpheme slashes and maqaf ignored). spelling='plene': every letter as written (points
+    stripped); 'defective': vowel letters removed (defective_letters)."""
     files = sorted(p for p in oshb_dir().glob("*.xml") if p.stem != "VerseMap")
     if books:
         files = [p for p in files if p.stem in books]
-    texts = []
+    out = []
     for p in files:
-        root = ET.parse(p).getroot()
-        for v in root.iter(f"{{{ns['o']}}}verse"):
-            seq: list[str] = []
-            for w in _words(v, ns["o"]):
-                seq += _letters(w)
-            if seq:
-                texts.append(seq)
-    return texts
+        for v in ET.parse(p).getroot().iter(f"{{{OSIS_NS}}}verse"):
+            ws = []
+            for w in _words(v, OSIS_NS):
+                t = tuple(_letters(w) if spelling == "plene" else defective_letters(w.replace("/", ""), variant))
+                if t:
+                    ws.append(t)
+            out.append(tuple(ws))
+    return tuple(out)
+
+
+def hebrew_texts(books: tuple[str, ...] | None = None, spelling: str = "plene",
+                 variant: str | None = None) -> list[list[str]]:
+    """Consonantal WLC, one text per verse; units are Hebrew letters, no word-boundary unit. Final
+    forms folded, shin/sin one letter."""
+    return [[x for w in v for x in w] for v in _verses(books, spelling, variant) if v]
+
+
+def hebrew_words(books: tuple[str, ...] | None = None, spelling: str = "plene",
+                 variant: str | None = None) -> dict[tuple[str, ...], int]:
+    """Word types (one per <w>, prefixes included as written) with counts."""
+    return dict(Counter(w for v in _verses(books, spelling, variant) for w in v))
+
+
+def hebrew_word_pairs(books: tuple[str, ...] | None = None, spelling: str = "plene",
+                      variant: str | None = None) -> set[tuple[tuple[str, ...], tuple[str, ...]]]:
+    """Adjacent word pairs (consecutive <w> in one verse)."""
+    return {p for v in _verses(books, spelling, variant) for p in zip(v, v[1:])}
 
 
 def _words(el, ns: str):
@@ -281,22 +344,6 @@ def _letters(s: str) -> list[str]:
     return out
 
 
-def hebrew_words(books: tuple[str, ...] | None = None) -> dict[tuple[str, ...], int]:
-    """Consonantal word types (one per <w>, prefixes included as written) with counts."""
-    ns = "http://www.bibletechnologies.net/2003/OSIS/namespace"
-    files = sorted(p for p in oshb_dir().glob("*.xml") if p.stem != "VerseMap")
-    if books:
-        files = [p for p in files if p.stem in books]
-    out: dict[tuple[str, ...], int] = {}
-    for p in files:
-        for v in ET.parse(p).getroot().iter(f"{{{ns}}}verse"):
-            for w in _words(v, ns):
-                t = tuple(_letters(w))
-                if t:
-                    out[t] = out.get(t, 0) + 1
-    return out
-
-
 def ugaritic_words() -> dict[tuple[str, ...], int]:
     """Complete word types: runs of letters bounded on both sides by a divider or a line edge.
     Words touching a gap (restoration or illegible sign) are excluded as possibly incomplete."""
@@ -315,20 +362,6 @@ def ugaritic_words() -> dict[tuple[str, ...], int]:
                     cur, ok = [], True
                 else:
                     cur.append(x)
-    return out
-
-
-def hebrew_word_pairs(books: tuple[str, ...] | None = None) -> set[tuple[tuple[str, ...], tuple[str, ...]]]:
-    """Adjacent consonantal word pairs (consecutive <w> in one verse)."""
-    ns = "http://www.bibletechnologies.net/2003/OSIS/namespace"
-    files = sorted(p for p in oshb_dir().glob("*.xml") if p.stem != "VerseMap")
-    if books:
-        files = [p for p in files if p.stem in books]
-    out = set()
-    for p in files:
-        for v in ET.parse(p).getroot().iter(f"{{{ns}}}verse"):
-            ws = [t for t in (tuple(_letters(w)) for w in _words(v, ns)) if t]
-            out.update(zip(ws, ws[1:]))
     return out
 
 
@@ -358,3 +391,32 @@ def ugaritic_word_pairs() -> Counter:
 
 __all__ = ["load_eupt", "ugaritic_texts", "recut", "to_corpus", "hebrew_texts", "hebrew_words", "ugaritic_words", "ugaritic_word_pairs", "hebrew_word_pairs",
            "GOLD", "UNSOURCED", "POETIC_BOOKS", "EUPT_PAGES", "EUPT_BASE", "EUPT_ACCESSED", "EUPT_VERSION", "OSHB_COMMIT"]
+
+
+def ugaritic_lines() -> list[dict]:
+    """Per tablet line with readable text: its segments (as ugaritic_texts('segment')), its complete
+    words and its adjacent complete-word pairs (as ugaritic_words / ugaritic_word_pairs). Used to
+    bootstrap the anchor's yardsticks over texts."""
+    out = []
+    for lines in load_eupt().values():
+        for nr, parts in lines:
+            segs = [_trim(s) for s in parts if s is not GAP]
+            segs = [s for s in segs if any(x != DIVIDER for x in s)]
+            flat = [x for p in parts for x in ([GAP] if p is GAP else p)]
+            words, pairs = Counter(), Counter()
+            prev, cur, ok = None, [], True
+            for x in flat + [DIVIDER]:
+                if x is GAP:
+                    cur, ok, prev = [], False, None
+                elif x == DIVIDER:
+                    w = tuple(cur) if cur and ok else None
+                    if w is not None:
+                        words[w] += 1
+                        if prev is not None:
+                            pairs[(prev, w)] += 1
+                    prev, cur, ok = w, [], True
+                else:
+                    cur.append(x)
+            if segs or words:
+                out.append({"line": nr, "segments": segs, "words": words, "pairs": pairs})
+    return out

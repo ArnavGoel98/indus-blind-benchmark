@@ -76,7 +76,8 @@ def shuffled_mapping(mapping: dict, rng) -> dict:
 
 # ---------------------------------------------------------------- Ugaritic-Hebrew anchor
 
-def ugaritic_hebrew(heb_texts, heb_words, poetic_texts, n_shuffle: int = 200, recut_mean: float = 4.6) -> dict:
+def ugaritic_hebrew(heb_texts, heb_words, poetic_texts, n_shuffle: int = 200, recut_mean: float = 4.6,
+                    heb_pairs=None) -> dict:
     """The anchor's yardsticks. The order of random draws is that of the original anchor script
     (reports/v2/ugaritic/records.json), so the published values are reproduced exactly; the word-pair
     yardstick, added later, uses its own generator."""
@@ -117,7 +118,7 @@ def ugaritic_hebrew(heb_texts, heb_words, poetic_texts, n_shuffle: int = 200, re
     # Word-pair overlap (added for the sister plan; own generator so the values above are unchanged).
     from .data.ugaritic import hebrew_word_pairs, ugaritic_word_pairs
     up = ugaritic_word_pairs()
-    hp = {("".join(a), "".join(b)) for a, b in hebrew_word_pairs()}
+    hp = {("".join(a), "".join(b)) for a, b in (hebrew_word_pairs() if heb_pairs is None else heb_pairs)}
     pmap = lambda m: (lambda p: ("".join(m[x] for x in p[0]), "".join(m[x] for x in p[1])))  # noqa: E731
     r2 = np.random.default_rng(1)
     pt, pk = overlap(up, hp, pmap(gold))

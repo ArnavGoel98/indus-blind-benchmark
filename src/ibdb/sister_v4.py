@@ -82,21 +82,32 @@ def _base(g: str) -> str:
     return b[:-1] if len(b) > 1 and b.endswith("h") else b
 
 
-def _split(lang: str, d: dict, half: str) -> list:
-    """Content-based half split (sister-v2/v3 rule), independent of IBDB_SISTER_VERSION."""
-    want = 0 if half == "hidden" else 1
-    return [c for c in d["clauses"]
-            if zlib.crc32(f"{base_source(lang)}:{' '.join(map(str, c[1]))}".encode()) % 2 == want]
+SPLITS = ("content", "block250", "block1000", "block4000", "halves")
 
+
+def _split(lang: str, d: dict, half: str, split: str = "content") -> list:
+    """Hidden / reference halves of a source's clauses (in source order).
+    content    by a hash of clause content (sister-v2/v3 rule; independent of IBDB_SISTER_VERSION)
+    blockN     contiguous blocks of N clauses, each block assigned by a hash of its index
+               (pre-registration entry 3: stands in for different works)
+    halves     first half of the clauses vs second half"""
+    want = 0 if half == "hidden" else 1
+    cl = d["clauses"]
+    if split == "content":
+        return [c for c in cl if zlib.crc32(f"{base_source(lang)}:{' '.join(map(str, c[1]))}".encode()) % 2 == want]
+    if split == "halves":
+        return cl[: len(cl) // 2] if want == 0 else cl[len(cl) // 2:]
+    n = int(split.removeprefix("block"))
+    return [c for i, c in enumerate(cl) if zlib.crc32(f"{base_source(lang)}:block{n}:{i // n}".encode()) % 2 == want]
 
 def _rng(lang: str, seed: int, tag: int) -> np.random.Generator:
     return np.random.default_rng([seed, tag, zlib.crc32(lang.encode())])
 
 
 @lru_cache(maxsize=8)
-def _source(lang: str):
+def _source(lang: str, split: str = "content"):
     d = _segments(lang)
-    clauses = _split(lang, d, "reference")[:MAX_CLAUSES]
+    clauses = _split(lang, d, "reference", split)[:MAX_CLAUSES]
     phon = [tuple(w[1]) for w in d["words"]]
     return d, clauses, phon
 
@@ -145,8 +156,8 @@ def _context_ok(ctx: str, word: tuple[str, ...], i: int, vowels, vowel: str | No
     return prv in vowels and nxt in vowels          # between_vowels
 
 
-def build(lang: str, seed: int, knobs: Knobs, merger_share: float = MERGER_SHARE) -> Sister:
-    d, clauses, phon = _source(lang)
+def build(lang: str, seed: int, knobs: Knobs, merger_share: float = MERGER_SHARE, split: str = "content") -> Sister:
+    d, clauses, phon = _source(lang, split)
     prof = phonology.PROFILES[lang]
     V, Cset = prof.vowels, prof.consonants
     used = sorted({w for _, ids in clauses for w in ids})
@@ -264,12 +275,12 @@ def build(lang: str, seed: int, knobs: Knobs, merger_share: float = MERGER_SHARE
     return Sister(lang, seed, knobs, out_clauses, out_ids, regular, attested, merg, rules, affixes)
 
 
-def hidden_half(lang: str) -> tuple[list[list[tuple[str, ...]]], list[list[int]]]:
+def hidden_half(lang: str, split: str = "content") -> tuple[list[list[tuple[str, ...]]], list[list[int]]]:
     """Hidden-half clauses as word phoneme tuples, and word ids (for yardsticks and leakage)."""
     d = _segments(lang)
     phon = [tuple(w[1]) for w in d["words"]]
     cl, ids_ = [], []
-    for _, ids in _split(lang, d, "hidden")[:MAX_CLAUSES]:
+    for _, ids in _split(lang, d, "hidden", split)[:MAX_CLAUSES]:
         ws = [(phon[w], w) for w in ids if phon[w]]
         if ws:
             cl.append([a for a, _ in ws])
