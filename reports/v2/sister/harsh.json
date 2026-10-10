@@ -1,0 +1,736 @@
+{
+ "chosen": {
+  "sanskrit": {
+   "knobs": {
+    "affix_share": 0.75,
+    "final_vowel_loss": 0.3,
+    "lexical": 0.5,
+    "n_cond": 12,
+    "word_order": 1.0
+   },
+   "matched_label": "harsh (original close)"
+  },
+  "tamil": {
+   "knobs": {
+    "affix_share": 1.0,
+    "final_vowel_loss": 0.3,
+    "lexical": 0.1,
+    "n_cond": 12,
+    "word_order": 0.5
+   },
+   "matched_label": "harsh (original close)"
+  },
+  "sumerian": {
+   "knobs": {
+    "affix_share": 1.0,
+    "final_vowel_loss": 0.6,
+    "lexical": 0.35,
+    "n_cond": 12,
+    "word_order": 1.0
+   },
+   "matched_label": "harsh (lowest verbatim, 2.8% on dev grid)"
+  },
+  "latin": {
+   "knobs": {
+    "affix_share": 0.75,
+    "final_vowel_loss": 0,
+    "lexical": 0.35,
+    "n_cond": 0,
+    "word_order": 0
+   },
+   "matched_label": "harsh (original close)"
+  },
+  "finnish": {
+   "knobs": {
+    "affix_share": 0.5,
+    "final_vowel_loss": 0.3,
+    "lexical": 0.5,
+    "n_cond": 9,
+    "word_order": 1.0
+   },
+   "matched_label": "harsh (original close)"
+  }
+ },
+ "confirm": {
+  "sanskrit": {
+   "dev": [
+    {
+     "lang": "sanskrit",
+     "seed": 90,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 8,
+     "bigram_jsd": 0.24449753307013494,
+     "floor": 0.040581176077688214,
+     "jsd_above_floor": 0.20391635699244673,
+     "cognate_types": 0.029195533612398832,
+     "cognate_types_chance": 0.0007133814848150732,
+     "cognate_types_cc": 0.028502485272848623,
+     "cognate_tokens": 0.07395087001023541,
+     "word_pairs_types": 0.005359698726124381,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.005359698726124381,
+     "verbatim_6plus": 0.022443890274314215,
+     "n_verbatim_windows": 401
+    },
+    {
+     "lang": "sanskrit",
+     "seed": 91,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 8,
+     "bigram_jsd": 0.28910674968050454,
+     "floor": 0.04376421740943861,
+     "jsd_above_floor": 0.24534253227106592,
+     "cognate_types": 0.04276875915417471,
+     "cognate_types_chance": 0.0004546347281560053,
+     "cognate_types_cc": 0.042333370646474494,
+     "cognate_tokens": 0.06187308085977482,
+     "word_pairs_types": 0.0018924078247858152,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0018924078247858152,
+     "verbatim_6plus": 0.02689486552567237,
+     "n_verbatim_windows": 409
+    }
+   ],
+   "held": [
+    {
+     "lang": "sanskrit",
+     "seed": 0,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 8,
+     "bigram_jsd": 0.24877939950250968,
+     "floor": 0.039439333384717654,
+     "jsd_above_floor": 0.20934006611779205,
+     "cognate_types": 0.08304406653129266,
+     "cognate_types_chance": 0.0007769327005842061,
+     "cognate_types_cc": 0.08233109955422718,
+     "cognate_tokens": 0.12047082906857728,
+     "word_pairs_types": 0.004358801221771854,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.004358801221771854,
+     "verbatim_6plus": 0.032,
+     "n_verbatim_windows": 375
+    },
+    {
+     "lang": "sanskrit",
+     "seed": 1,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 8,
+     "bigram_jsd": 0.24611561419422526,
+     "floor": 0.04260071677857656,
+     "jsd_above_floor": 0.2035148974156487,
+     "cognate_types": 0.05106405600710575,
+     "cognate_types_chance": 0.0009737798536999723,
+     "cognate_types_cc": 0.05013910059945216,
+     "cognate_tokens": 0.06402251791197544,
+     "word_pairs_types": 0.0011188448231241883,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0011188448231241883,
+     "verbatim_6plus": 0.027707808564231738,
+     "n_verbatim_windows": 397
+    },
+    {
+     "lang": "sanskrit",
+     "seed": 2,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 8,
+     "bigram_jsd": 0.2745591490206246,
+     "floor": 0.04067609653063574,
+     "jsd_above_floor": 0.23388305248998886,
+     "cognate_types": 0.026976624888581453,
+     "cognate_types_chance": 0.0005938593867019813,
+     "cognate_types_cc": 0.026398442464731463,
+     "cognate_tokens": 0.040327533265097235,
+     "word_pairs_types": 0.0,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0,
+     "verbatim_6plus": 0.02743142144638404,
+     "n_verbatim_windows": 401
+    }
+   ]
+  },
+  "tamil": {
+   "dev": [
+    {
+     "lang": "tamil",
+     "seed": 90,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.1,
+      "n_cond": 12,
+      "word_order": 0.5
+     },
+     "draws": 20,
+     "n_mergers": 6,
+     "bigram_jsd": 0.19028392748469697,
+     "floor": 0.023771827472446112,
+     "jsd_above_floor": 0.16651210001225086,
+     "cognate_types": 0.036387279104646564,
+     "cognate_types_chance": 0.005923649552281538,
+     "cognate_types_cc": 0.030645160745092288,
+     "cognate_tokens": 0.047645854657113615,
+     "word_pairs_types": 0.0007787742235826558,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0007787742235826558,
+     "verbatim_6plus": 0.03353057199211045,
+     "n_verbatim_windows": 507
+    },
+    {
+     "lang": "tamil",
+     "seed": 91,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.1,
+      "n_cond": 12,
+      "word_order": 0.5
+     },
+     "draws": 20,
+     "n_mergers": 6,
+     "bigram_jsd": 0.2333385182158693,
+     "floor": 0.025165025944521986,
+     "jsd_above_floor": 0.2081734922713473,
+     "cognate_types": 0.03505539663016717,
+     "cognate_types_chance": 0.006483840946124147,
+     "cognate_types_cc": 0.028758018099324805,
+     "cognate_tokens": 0.041862845445240535,
+     "word_pairs_types": 0.0011198402305134254,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0011198402305134254,
+     "verbatim_6plus": 0.024096385542168676,
+     "n_verbatim_windows": 498
+    }
+   ],
+   "held": [
+    {
+     "lang": "tamil",
+     "seed": 0,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.1,
+      "n_cond": 12,
+      "word_order": 0.5
+     },
+     "draws": 20,
+     "n_mergers": 6,
+     "bigram_jsd": 0.22277188687650057,
+     "floor": 0.02415245480417336,
+     "jsd_above_floor": 0.1986194320723272,
+     "cognate_types": 0.04112612696417727,
+     "cognate_types_chance": 0.004757132464527901,
+     "cognate_types_cc": 0.03654283359971241,
+     "cognate_tokens": 0.04989764585465711,
+     "word_pairs_types": 0.0006693954010581378,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0006693954010581378,
+     "verbatim_6plus": 0.013888888888888888,
+     "n_verbatim_windows": 504
+    },
+    {
+     "lang": "tamil",
+     "seed": 1,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.1,
+      "n_cond": 12,
+      "word_order": 0.5
+     },
+     "draws": 20,
+     "n_mergers": 6,
+     "bigram_jsd": 0.1926437986515228,
+     "floor": 0.023495748176844196,
+     "jsd_above_floor": 0.16914805047467862,
+     "cognate_types": 0.04320386126354342,
+     "cognate_types_chance": 0.005763086430429541,
+     "cognate_types_cc": 0.037657799989231654,
+     "cognate_tokens": 0.05117707267144319,
+     "word_pairs_types": 0.0010037374435751501,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0010037374435751501,
+     "verbatim_6plus": 0.01984126984126984,
+     "n_verbatim_windows": 504
+    },
+    {
+     "lang": "tamil",
+     "seed": 2,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.1,
+      "n_cond": 12,
+      "word_order": 0.5
+     },
+     "draws": 20,
+     "n_mergers": 6,
+     "bigram_jsd": 0.2095153327212778,
+     "floor": 0.023778451701355362,
+     "jsd_above_floor": 0.18573688101992245,
+     "cognate_types": 0.038530590224258435,
+     "cognate_types_chance": 0.00493204000563127,
+     "cognate_types_cc": 0.03376508094865933,
+     "cognate_tokens": 0.044165813715455485,
+     "word_pairs_types": 0.0006676620444677819,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0006676620444677819,
+     "verbatim_6plus": 0.021696252465483234,
+     "n_verbatim_windows": 507
+    }
+   ]
+  },
+  "sumerian": {
+   "dev": [
+    {
+     "lang": "sumerian",
+     "seed": 90,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.6,
+      "lexical": 0.35,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 4,
+     "bigram_jsd": 0.2640461990667012,
+     "floor": 0.06632344013691338,
+     "jsd_above_floor": 0.1977227589297878,
+     "cognate_types": 0.1975848966247584,
+     "cognate_types_chance": 0.13614407318438948,
+     "cognate_types_cc": 0.07112392417894867,
+     "cognate_tokens": 0.32057318321392014,
+     "word_pairs_types": 0.08409707772984812,
+     "word_pairs_types_chance": 0.04953683979915669,
+     "word_pairs_types_cc": 0.036361470257709375,
+     "verbatim_6plus": 0.032679738562091505,
+     "n_verbatim_windows": 306
+    },
+    {
+     "lang": "sumerian",
+     "seed": 91,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.6,
+      "lexical": 0.35,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 4,
+     "bigram_jsd": 0.20619514038105374,
+     "floor": 0.06561119879495127,
+     "jsd_above_floor": 0.1405839415861025,
+     "cognate_types": 0.20007260397428434,
+     "cognate_types_chance": 0.1487605834119486,
+     "cognate_types_cc": 0.06027918769082056,
+     "cognate_tokens": 0.34099283520982604,
+     "word_pairs_types": 0.1010496069789758,
+     "word_pairs_types_chance": 0.06961637308722343,
+     "word_pairs_types_cc": 0.03378523974680741,
+     "verbatim_6plus": 0.030716723549488054,
+     "n_verbatim_windows": 293
+    }
+   ],
+   "held": [
+    {
+     "lang": "sumerian",
+     "seed": 0,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.6,
+      "lexical": 0.35,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 4,
+     "bigram_jsd": 0.198530467999512,
+     "floor": 0.06532911828589598,
+     "jsd_above_floor": 0.13320134971361602,
+     "cognate_types": 0.2129823900985821,
+     "cognate_types_chance": 0.14112170568411395,
+     "cognate_types_cc": 0.08366806436959343,
+     "cognate_tokens": 0.3465711361310133,
+     "word_pairs_types": 0.09621345530807568,
+     "word_pairs_types_chance": 0.06118095368417348,
+     "word_pairs_types_cc": 0.037315499468591924,
+     "verbatim_6plus": 0.026022304832713755,
+     "n_verbatim_windows": 269
+    },
+    {
+     "lang": "sumerian",
+     "seed": 1,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.6,
+      "lexical": 0.35,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 4,
+     "bigram_jsd": 0.2195472992349632,
+     "floor": 0.06480211439200205,
+     "jsd_above_floor": 0.15474518484296113,
+     "cognate_types": 0.19835979925341268,
+     "cognate_types_chance": 0.13872102337924852,
+     "cognate_types_cc": 0.06924443472213651,
+     "cognate_tokens": 0.3379733879222108,
+     "word_pairs_types": 0.08292205880854757,
+     "word_pairs_types_chance": 0.048994415634922496,
+     "word_pairs_types_cc": 0.035675545687017474,
+     "verbatim_6plus": 0.026755852842809364,
+     "n_verbatim_windows": 299
+    },
+    {
+     "lang": "sumerian",
+     "seed": 2,
+     "split": "content",
+     "knobs": {
+      "affix_share": 1.0,
+      "final_vowel_loss": 0.6,
+      "lexical": 0.35,
+      "n_cond": 12,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 4,
+     "bigram_jsd": 0.2461150974547349,
+     "floor": 0.0707702148602168,
+     "jsd_above_floor": 0.17534488259451808,
+     "cognate_types": 0.21319681483275046,
+     "cognate_types_chance": 0.13871134943673957,
+     "cognate_types_cc": 0.0864814198437415,
+     "cognate_tokens": 0.3527123848515865,
+     "word_pairs_types": 0.060810676394994656,
+     "word_pairs_types_chance": 0.043094404122864395,
+     "word_pairs_types_cc": 0.018514127567506658,
+     "verbatim_6plus": 0.01694915254237288,
+     "n_verbatim_windows": 295
+    }
+   ]
+  },
+  "latin": {
+   "dev": [
+    {
+     "lang": "latin",
+     "seed": 90,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0,
+      "lexical": 0.35,
+      "n_cond": 0,
+      "word_order": 0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.1752018023926206,
+     "floor": 0.019240171985901108,
+     "jsd_above_floor": 0.15596163040671948,
+     "cognate_types": 0.0538621731302533,
+     "cognate_types_chance": 0.006071840793442815,
+     "cognate_types_cc": 0.048082280287703116,
+     "cognate_tokens": 0.1447799385875128,
+     "word_pairs_types": 0.01150101747627887,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.01150101747627887,
+     "verbatim_6plus": 0.03537735849056604,
+     "n_verbatim_windows": 424
+    },
+    {
+     "lang": "latin",
+     "seed": 91,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0,
+      "lexical": 0.35,
+      "n_cond": 0,
+      "word_order": 0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.17717260329161996,
+     "floor": 0.018082368028107105,
+     "jsd_above_floor": 0.15909023526351285,
+     "cognate_types": 0.08305568708617973,
+     "cognate_types_chance": 0.006559291947265862,
+     "cognate_types_cc": 0.07700147026273588,
+     "cognate_tokens": 0.16893551688843397,
+     "word_pairs_types": 0.010808669117173098,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.010808669117173098,
+     "verbatim_6plus": 0.007142857142857143,
+     "n_verbatim_windows": 420
+    }
+   ],
+   "held": [
+    {
+     "lang": "latin",
+     "seed": 0,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0,
+      "lexical": 0.35,
+      "n_cond": 0,
+      "word_order": 0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.16427108829653556,
+     "floor": 0.018128647427615982,
+     "jsd_above_floor": 0.1461424408689196,
+     "cognate_types": 0.0666467655516051,
+     "cognate_types_chance": 0.00490944906347002,
+     "cognate_types_cc": 0.062041908075632896,
+     "cognate_tokens": 0.15670419651995904,
+     "word_pairs_types": 0.010371115794029469,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.010371115794029469,
+     "verbatim_6plus": 0.016203703703703703,
+     "n_verbatim_windows": 432
+    },
+    {
+     "lang": "latin",
+     "seed": 1,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0,
+      "lexical": 0.35,
+      "n_cond": 0,
+      "word_order": 0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.15323902918965682,
+     "floor": 0.018021294544159655,
+     "jsd_above_floor": 0.13521773464549716,
+     "cognate_types": 0.07730316992186669,
+     "cognate_types_chance": 0.006438319018958698,
+     "cognate_types_cc": 0.07132405794166312,
+     "cognate_tokens": 0.16207778915046062,
+     "word_pairs_types": 0.010391158926213048,
+     "word_pairs_types_chance": 0.00011312217194570136,
+     "word_pairs_types_cc": 0.010279199559647397,
+     "verbatim_6plus": 0.016548463356973995,
+     "n_verbatim_windows": 423
+    },
+    {
+     "lang": "latin",
+     "seed": 2,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.75,
+      "final_vowel_loss": 0,
+      "lexical": 0.35,
+      "n_cond": 0,
+      "word_order": 0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.14128521364043262,
+     "floor": 0.01715417137371675,
+     "jsd_above_floor": 0.12413104226671587,
+     "cognate_types": 0.10662976400424702,
+     "cognate_types_chance": 0.005976652347658125,
+     "cognate_types_cc": 0.10125829729684796,
+     "cognate_tokens": 0.18797338792221086,
+     "word_pairs_types": 0.012032239172457557,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.012032239172457557,
+     "verbatim_6plus": 0.04066985645933014,
+     "n_verbatim_windows": 418
+    }
+   ]
+  },
+  "finnish": {
+   "dev": [
+    {
+     "lang": "finnish",
+     "seed": 90,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.5,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 9,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.16334199244495523,
+     "floor": 0.015028787780731422,
+     "jsd_above_floor": 0.14831320466422382,
+     "cognate_types": 0.054553601352325176,
+     "cognate_types_chance": 0.0012737989818200264,
+     "cognate_types_cc": 0.053347756688657544,
+     "cognate_tokens": 0.08480040941658136,
+     "word_pairs_types": 0.004516711650147059,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.004516711650147059,
+     "verbatim_6plus": 0.029411764705882353,
+     "n_verbatim_windows": 510
+    },
+    {
+     "lang": "finnish",
+     "seed": 91,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.5,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 9,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.1918286493283315,
+     "floor": 0.01466585737934426,
+     "jsd_above_floor": 0.17716279194898724,
+     "cognate_types": 0.03026537478561152,
+     "cognate_types_chance": 0.0010229228399862502,
+     "cognate_types_cc": 0.02927239534740724,
+     "cognate_tokens": 0.04570112589559878,
+     "word_pairs_types": 0.00011655011655011655,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.00011655011655011655,
+     "verbatim_6plus": 0.011764705882352941,
+     "n_verbatim_windows": 510
+    }
+   ],
+   "held": [
+    {
+     "lang": "finnish",
+     "seed": 0,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.5,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 9,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.19145642681156821,
+     "floor": 0.013094859712925299,
+     "jsd_above_floor": 0.17836156709864293,
+     "cognate_types": 0.041841899624799596,
+     "cognate_types_chance": 0.0012774572084798615,
+     "cognate_types_cc": 0.04061632803735303,
+     "cognate_tokens": 0.06038894575230298,
+     "word_pairs_types": 0.0024979560529373632,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0024979560529373632,
+     "verbatim_6plus": 0.03929273084479371,
+     "n_verbatim_windows": 509
+    },
+    {
+     "lang": "finnish",
+     "seed": 1,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.5,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 9,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.13916148137270998,
+     "floor": 0.01310935108703758,
+     "jsd_above_floor": 0.1260521302856724,
+     "cognate_types": 0.06631848821261199,
+     "cognate_types_chance": 0.0016011393026899956,
+     "cognate_types_cc": 0.06482113657934421,
+     "cognate_tokens": 0.09969293756397135,
+     "word_pairs_types": 0.0023805475933115997,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0023805475933115997,
+     "verbatim_6plus": 0.052941176470588235,
+     "n_verbatim_windows": 510
+    },
+    {
+     "lang": "finnish",
+     "seed": 2,
+     "split": "content",
+     "knobs": {
+      "affix_share": 0.5,
+      "final_vowel_loss": 0.3,
+      "lexical": 0.5,
+      "n_cond": 9,
+      "word_order": 1.0
+     },
+     "draws": 20,
+     "n_mergers": 5,
+     "bigram_jsd": 0.17284080076536498,
+     "floor": 0.01513743904951215,
+     "jsd_above_floor": 0.15770336171585284,
+     "cognate_types": 0.038447777859977245,
+     "cognate_types_chance": 0.001403595019944,
+     "cognate_types_cc": 0.037096250953129656,
+     "cognate_tokens": 0.06622313203684752,
+     "word_pairs_types": 0.0007175697367592904,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0007175697367592904,
+     "verbatim_6plus": 0.013725490196078431,
+     "n_verbatim_windows": 510
+    }
+   ]
+  }
+ }
+}
