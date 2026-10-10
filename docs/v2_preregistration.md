@@ -72,3 +72,82 @@ reflex of the token's hidden value.
 v1 numbers stay comparable. The Ugaritic anchor already scores this way (gold = the regular Hebrew
 correspondent, many-to-one accepted); it has no attested-reflex list, so it reports the strict score
 only.
+
+## 3. Sister-v4 targets corrected for Hebrew spelling (POST HOC amendment)
+
+Declared 2026-10-10, before any new grid run and before the corrected targets below are measured
+with this method. **This entry is post hoc.** It was written after the calibration against the
+targets of the sister plan failed (`reports/v2/sister/yardsticks.md`: no language matched in either
+setting), and after an approximate exploratory check had suggested why
+(`reports/v2/ugaritic/orthography_check.md`: about 0.09 bits and 58%). Those approximate values are
+not used. The original targets and their failure stay on record and are reported first.
+
+**Reason.** The original targets measured Ugaritic against Hebrew *as written*. Masoretic spelling
+writes many vowels with the letters ו, י and ה (matres lectionis); Ugaritic spelling does not. So
+part of the Ugaritic-Hebrew distance was a difference in spelling conventions, not in language. Our
+synthetic hidden languages and sisters share one spelling convention (all phonemes written), so the
+spelling component should not be in their target. The corrected targets aim to measure language
+distance only.
+
+**Method for removing vowel letters (fixed now).** It works per word, on the OSHB pointed text as
+written (ketiv letters with the pointing OSHB gives them), with accents ignored. A letter is removed
+as a vowel letter when:
+1. **ו holam male:** ו carries holam U+05B9 and the preceding letter has no vowel point. (Consonantal
+   ו with an o-vowel is encoded with U+05BA, holam haser for vav, and is kept.)
+2. **ו shureq:** ו carries only a dagesh (U+05BC), is not the first letter of the word, and the
+   preceding letter has no vowel point. Word-initial וּ (the conjunction) is kept, because Ugaritic
+   writes the conjunction w.
+3. **י after i/e vowels:** י carries no point of its own and no dagesh, and the preceding letter has
+   hiriq, tsere or segol.
+4. **Final ה:** the last letter of the word is ה without mappiq (dagesh), and the preceding letter has
+   qamets, segol, tsere or holam.
+
+Kept in all cases: א (quiescent aleph is etymologically consonantal and is written in Ugaritic too),
+ו and י with their own vowel or dagesh-plus-vowel, and every other letter. Shin and sin stay
+collapsed and final forms stay folded, as in the anchor.
+
+**Measurement.** Every Ugaritic-Hebrew yardstick is recomputed with the shared code against the
+vowel-letter-removed Hebrew, for the text, the word types and the word pairs. Uncertainty is reported
+two ways:
+- **Sampling:** a bootstrap over Ugaritic texts (readable segments, resampled with replacement, 200
+  replicates; word and word-pair statistics recomputed from the resampled segments' tablet lines).
+  The 95% interval is reported.
+- **Method:** three rule variants, each changing one choice: (a) also remove quiescent א; (b) keep
+  final ה; (c) treat word-initial וּ as a vowel letter. The range over the variants is reported.
+
+**Corrected targets.**
+- `close`: the point estimates of the main method.
+- `distant`: twice the JSD above floor, half the chance-corrected shared word forms and word pairs.
+  This is still a guess, not a measurement.
+- Tolerance half-widths are the original ones (JSD 0.04 for `close`, 0.06 for `distant`; word forms
+  0.10; word pairs 0.10), or half the width of the bootstrap 95% interval if that is larger.
+- Verbatim (6+ letters) stays a constraint: at most 2%, or the upper bootstrap bound if that is higher.
+
+**Sister source text: contiguous blocks (tested before the grid).**
+- The hidden half and the sister half are cut from the source text in contiguous blocks of
+  consecutive clauses, assigned to the two halves by a hash of the block index. This stands in for
+  "different works": a real relative's texts are different texts, so they share fewer formulaic
+  phrases.
+- Block sizes tested: 250, 1,000 and 4,000 clauses, plus a plain two-way split (first half, second
+  half).
+- Test: the v1-like sister and one fixed mid-grid setting (n_cond 4, affix 0.5, lexical 0.35, word
+  order 0.5, final-vowel loss 0.3), on seeds 90-91. Verbatim overlap and the other yardsticks are
+  reported for every block size.
+- Rule: use the largest block size for which each half keeps at least 40% of the source's clauses
+  and at least 40% of its word types. If blocks still share formulaic phrases (verbatim
+  above the constraint for the v1-like sister), that is recorded as a limitation.
+- Hidden corpora for sister-v4 runs are then generated from the hidden blocks (a new split version,
+  "v4"). The v1 splits are unchanged for v1 runs.
+
+**Grid and selection.** These are unchanged from the sister plan: the same knobs, the same selection
+rule with the corrected targets, dev seeds 90-91 only, then held-out seeds 0-2 with nothing changed.
+
+**Three tiers in v2 `related` and `candidates` results, always reported side by side:**
+1. **`harsh`** (lower bound): the settings chosen against the original targets (option A,
+   `reports/v2/sister/calibration.json`), which keep 2-8% of shared word forms. For Sumerian, which
+   had no grid point at or below 2% verbatim, `harsh` is the grid point with the lowest verbatim (ties
+   by loss), measured on the clause split it was calibrated with.
+2. **`close`** (corrected, primary): the corrected targets above.
+3. **`distant`** (corrected, sensitivity): as above.
+
+**What stays first.** The sister report opens with the original calibration failure.
