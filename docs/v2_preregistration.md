@@ -151,3 +151,23 @@ rule with the corrected targets, dev seeds 90-91 only, then held-out seeds 0-2 w
 3. **`distant`** (corrected, sensitivity): as above.
 
 **What stays first.** The sister report opens with the original calibration failure.
+
+## 4. v2 `related` tier: a bracket instead of a calibrated sister
+
+Declared 2026-10-11, before any v2 Task C/D run. Synthetic-sister calibration was killed after both
+the original and the corrected calibration failed (`docs/v2_negative_results.md`, item 2). This
+entry replaces the three tiers of entry 3.
+
+**v2 `related` and `candidates` results report, side by side:**
+1. **Upper bound: the v1 sister** (sister-v2 content split; as in the v1 paper). It is closer than any
+   real relative (shared word forms 48-76%, verbatim 10-38% by the shared yardsticks). It is scored
+   with the v1 scorer.
+2. **Lower bound: `harsh`** (sister-v4 with the settings chosen against the original targets, content
+   split; `reports/v2/sister/harsh.json`). It keeps 4-8% of shared word forms, harsher than
+   Ugaritic-Hebrew, and is scored with the entry 2 scorer (strict primary, lenient secondary).
+3. **Beside both: the Ugaritic-Hebrew yardsticks**, as written and with vowel letters removed, and the
+   Ugaritic Task D result (33.9%), so readers can place a real relative between the bounds.
+
+The corrected `close` and `distant` settings of entry 3 are not used. Real relatives from different
+texts (roadmap rank 6b) will be added as a separate tier by their own pre-registration entry, if
+that plan is approved.

@@ -180,7 +180,7 @@ Score how Tasks A-D degrade with the mix share and the amount of drift.
 - The likely result, that recovery falls, is predictable, so the value is in the size of the drop.
 - The drift model is our invention, with no published Indus drift rates to calibrate against; it must be framed as a sensitivity analysis.
 
-## 2. Realistic sister language (rank 6)
+## 2. Realistic sister language (rank 6) — synthetic calibration KILLED 2026-10-11 (negative result 2; see docs/v2_negative_results.md). Replaced by rank 6b: real related languages from different texts (docs/v2_real_relatives_plan.md, plan only)
 
 **What.** Replace the v1 sister with one built by:
 - conditioned sound changes, depending on neighbouring sounds and word position;

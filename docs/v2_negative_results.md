@@ -48,3 +48,55 @@ a caveat (Section 3.9, limitation 1, Appendix A entry 29; `main` commit 3f01abf)
   open licence.
 - A generator in which the inventory is raised without disguising duplicates, so that the inventory
   effect can be separated from the duplication effect.
+
+## 2. Synthetic-sister calibration (roadmap rank 6) — killed 2026-10-11
+
+**What was tried.** Sister-v4 (`src/ibdb/sister_v4.py`) adds to the v1 sister several mechanisms:
+- mergers (24% of consonants);
+- context-dependent sound changes;
+- final-vowel loss;
+- affix replacement;
+- word-order changes.
+
+It was calibrated to the distance between Ugaritic and Hebrew, measured with the same code
+(`src/ibdb/yardsticks.py`). Two settings were tried: `close` (the Ugaritic-Hebrew values) and
+`distant` (twice the distance). Each calibration was a grid of 1,080 settings per language on dev
+seeds 90-91, then a check on held-out seeds 0-2. Plan: `docs/v2_sister_plan.md`; pre-registration
+entries 2 and 3.
+
+**Results** (`reports/v2/sister/yardsticks.md`):
+1. **Original targets** (Hebrew as written: JSD above floor 0.166, shared word forms 47%, verbatim
+   at most 2%): 0 of 5 languages matched in either setting. Sumerian had no setting at or below 2%
+   verbatim.
+2. **Corrected targets** (entry 3, post hoc; Hebrew vowel letters removed: JSD 0.089, shared forms
+   58%, word pairs 4.6%; contiguous-block split): 0 of 5 matched in either setting. Sumerian again had
+   no setting at or below 2% verbatim. For Sanskrit and Finnish the closest `close` and `distant`
+   settings were the same grid point.
+
+**Why it fails.**
+- **Every mechanism that changes letter pairs also changes words.** Over the whole grid, at the
+  lowest accepted JSD (0.049) the best chance-corrected shared word forms were 32-43% for four of the
+  five languages, against a floor of 48%. Only Sumerian (63%) reached it.
+- **Verbatim text is the binding constraint.** A sister cut from the same source text shares its
+  formulaic phrases. Settings that keep shared forms near the target leave 10-21% verbatim; the only
+  settings at or below 2% keep 4-13% of shared forms. Contiguous blocks instead of clause-level
+  splits barely help: verbatim for the v1-like sister stays at 10-39%.
+
+**Findings kept.**
+- **Spelling inflates the Ugaritic-Hebrew distance.** Removing Hebrew vowel letters (matres
+  lectionis; method in entry 3) cuts the letter-pair distance above floor from 0.166 to 0.089 bits
+  (rule variants 0.084-0.106), and raises chance-corrected shared word forms from 47% to 58%.
+  About half the measured distance was spelling, not language.
+- **Low verbatim overlap between a real pair is about different texts, not spelling.** It stays at
+  0.8% with or without vowel letters (`reports/v2/sister/anchor_corrected.md`).
+- **A real relative differs from a resampled sister in what is written, not only in how.** No
+  sound-change or morphology mechanism applied to the same text reproduced that.
+
+**What replaces it.**
+- **v2 `related` tier:** a bracket (pre-registration entry 4), with the v1 sister as the upper bound,
+  `harsh` as the lower bound, and the Ugaritic-Hebrew yardsticks beside both. The corrected `close`
+  and `distant` settings are not used.
+- **Roadmap rank 6b:** real related languages written in different texts.
+
+**What could revive it.** A mechanism that changes word frequencies and phrasing without destroying
+word forms (e.g. genre shift). It was not tried, to stop revising targets after seeing results.
