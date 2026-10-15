@@ -6,8 +6,9 @@ SD and bootstrap mean are reported, because plug-in statistics are biased upward
 the number of mergers in the gold table. Rows for comparison: Ugaritic-Hebrew (as written; vowel
 letters removed), the v1-like sister and the `harsh` bound for the same hidden language (same code).
 
-Available now: Latin-Italian (descendant). Finnish-Estonian waits for its gold source; the Dravidian
-pairs wait for the provenance check; Sanskrit-Pali waits for a licence.
+Available now: Latin-Italian (descendant), Tamil-Malayalam (descendant), Tamil-Kannada (sister).
+Finnish-Estonian waits for its gold source (Pajusalu PDF from the project owner); Sanskrit-Pali waits
+on SuttaCentral.
 
 Usage: python scripts/v2/real_relatives_yardsticks.py -> reports/v2/real_relatives/yardsticks.{json,md}
 """
@@ -123,7 +124,12 @@ def write_md(res: dict) -> None:
                                                    f"{p['normalised']['n_units']:,} units" for n, p in res["pairs"].items()) + ".",
           "**Gold sources:** Latin-Italian, Grandgent (1907), section per row (`src/ibdb/data/relatives.py`); Tamil-Malayalam and "
           "Tamil-Kannada, Caldwell (1875), pages per row (`src/ibdb/data/dravidian.py`). Hidden side: the v1 hidden half of each source.",
-          "**Data notes:** Malayalam and Kannada Wikisource texts: source edition unstated; Kannada commentary (ಸಟೀಕಾ) pages excluded.", "",
+          "**Data notes:** Malayalam (Adhyatma Ramayanam Kilippattu, 126 section pages) and Kannada (Kumaravyasa Bharata) "
+          "Wikisource texts: source edition unstated (accepted as clean by the project owner, 2026-10-15). Kannada coverage "
+          "is partial: 93 of the 154 sandhi pages linked from the ten parva pages exist (61 red links), mostly Adi, Virata "
+          "and Karna parvas; the 2 commentary (ಸಟೀಕಾ) pages are excluded. Each Kannada sandhi page opens with a short "
+          "invocation that may be in Sanskrit; it was not removed. Revision ids and SHA-256 per page are in "
+          "`data/raw/relatives/{ml,kn}/manifest.json`.", "",
           "**Not measured:**", ""] + [f"- {k}: {v}" for k, v in res["not_yet"].items()] + [""]
     (OUT / "yardsticks.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))

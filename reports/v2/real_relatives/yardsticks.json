@@ -14,6 +14,7 @@
  "pairs": {
   "latin-italian": {
    "pair": "latin-italian",
+   "hidden": "latin",
    "relationship": "descendant",
    "mergers": 9,
    "deleted": [
@@ -83,6 +84,158 @@
      }
     }
    }
+  },
+  "tamil-malayalam": {
+   "pair": "tamil-malayalam",
+   "hidden": "tamil",
+   "relationship": "descendant",
+   "mergers": 3,
+   "deleted": [
+    "h",
+    "s",
+    "\u1e35",
+    "\u1e63"
+   ],
+   "as_written": {
+    "n_texts": 15901,
+    "n_words": 42648,
+    "n_units": 479851,
+    "point": {
+     "bigram_jsd": 0.20556347479473103,
+     "floor": 0.02952923518906118,
+     "jsd_above_floor": 0.17603423960566986,
+     "cognate_types": 0.05744869032524928,
+     "cognate_types_chance": 0.002971874899985149,
+     "cognate_types_cc": 0.05463919628124774,
+     "cognate_tokens": 0.06760491299897646,
+     "word_pairs_types": 0.0,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0,
+     "verbatim_6plus": 0.01768172888015717,
+     "n_verbatim_windows": 509
+    }
+   },
+   "normalised": {
+    "n_texts": 15901,
+    "n_words": 42648,
+    "n_units": 479851,
+    "point": {
+     "bigram_jsd": 0.1605327399066547,
+     "floor": 0.021182340116596803,
+     "jsd_above_floor": 0.1393503997900579,
+     "cognate_types": 0.059864713259441225,
+     "cognate_types_chance": 0.0030276162600743352,
+     "cognate_types_cc": 0.05700970049556924,
+     "cognate_tokens": 0.06980552712384853,
+     "word_pairs_types": 0.0,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0,
+     "verbatim_6plus": 0.01768172888015717,
+     "n_verbatim_windows": 509
+    },
+    "bootstrap": {
+     "jsd_above_floor": {
+      "lo": 0.13732676866279744,
+      "hi": 0.14452581841276058,
+      "mean": 0.14064081789547037,
+      "sd": 0.0018319720254041376
+     },
+     "cognate_types_cc": {
+      "lo": 0.040466236842715476,
+      "hi": 0.052405877479262314,
+      "mean": 0.04603859978031613,
+      "sd": 0.002934602644505013
+     },
+     "word_pairs_types_cc": {
+      "lo": 0.0,
+      "hi": 0.0004484556859978838,
+      "mean": 8.028410530957801e-05,
+      "sd": 0.00018804420038170903
+     },
+     "verbatim_6plus": {
+      "lo": 0.003967666948436179,
+      "hi": 0.023946536687894104,
+      "mean": 0.013244179074596856,
+      "sd": 0.005125478985621207
+     }
+    }
+   }
+  },
+  "tamil-kannada": {
+   "pair": "tamil-kannada",
+   "hidden": "tamil",
+   "relationship": "sister",
+   "mergers": 4,
+   "deleted": [
+    "h",
+    "s",
+    "\u1e35",
+    "\u1e63"
+   ],
+   "as_written": {
+    "n_texts": 29880,
+    "n_words": 105385,
+    "n_units": 857617,
+    "point": {
+     "bigram_jsd": 0.3384122234339356,
+     "floor": 0.02894766557102053,
+     "jsd_above_floor": 0.3094645578629151,
+     "cognate_types": 0.04080002009794116,
+     "cognate_types_chance": 0.010499503776156653,
+     "cognate_types_cc": 0.030622032467308605,
+     "cognate_tokens": 0.04580348004094166,
+     "word_pairs_types": 0.0,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.0,
+     "verbatim_6plus": 0.001984126984126984,
+     "n_verbatim_windows": 504
+    }
+   },
+   "normalised": {
+    "n_texts": 29880,
+    "n_words": 105385,
+    "n_units": 857617,
+    "point": {
+     "bigram_jsd": 0.1997500411871901,
+     "floor": 0.019330852621961207,
+     "jsd_above_floor": 0.1804191885652289,
+     "cognate_types": 0.058850378337658174,
+     "cognate_types_chance": 0.012182255361118442,
+     "cognate_types_cc": 0.047243657273640376,
+     "cognate_tokens": 0.06612077789150458,
+     "word_pairs_types": 0.00022197804363679368,
+     "word_pairs_types_chance": 0.0,
+     "word_pairs_types_cc": 0.00022197804363679368,
+     "verbatim_6plus": 0.00992063492063492,
+     "n_verbatim_windows": 504
+    },
+    "bootstrap": {
+     "jsd_above_floor": {
+      "lo": 0.17812496926124996,
+      "hi": 0.18595991591295394,
+      "mean": 0.18201687358046276,
+      "sd": 0.002026290615911926
+     },
+     "cognate_types_cc": {
+      "lo": 0.037687576153099055,
+      "hi": 0.051345542395880114,
+      "mean": 0.04465841890210705,
+      "sd": 0.003672255044390325
+     },
+     "word_pairs_types_cc": {
+      "lo": 0.0,
+      "hi": 0.001331458346878776,
+      "mean": 0.00042772912828582886,
+      "sd": 0.0003828956634580652
+     },
+     "verbatim_6plus": {
+      "lo": 0.0039603960396039604,
+      "hi": 0.02367098248286367,
+      "mean": 0.01312716045206951,
+      "sd": 0.004891460920554061
+     }
+    }
+   }
   }
  },
  "bracket": {
@@ -99,11 +252,25 @@
     "word_pairs_types_cc": 0.010894184842044808,
     "verbatim_6plus": 0.024474007840002615
    }
+  },
+  "tamil": {
+   "v1_like": {
+    "jsd_above_floor": 0.002302766334593175,
+    "cognate_types_cc": 0.5764437670912025,
+    "word_pairs_types_cc": 0.08464263439644011,
+    "verbatim_6plus": 0.17756175448483139
+   },
+   "harsh": {
+    "jsd_above_floor": 0.18450145452230945,
+    "cognate_types_cc": 0.03598857151253446,
+    "word_pairs_types_cc": 0.0007802649630336899,
+    "verbatim_6plus": 0.01847547039854732
+   }
   }
  },
  "not_yet": {
-  "finnish-estonian (sister)": "gold source (Pajusalu 2012) not reachable from this environment",
-  "tamil-malayalam (descendant), tamil-kannada (sister)": "awaiting Wikisource provenance check",
-  "sanskrit-pali (descendant)": "licence unresolved; public-domain fallback being searched"
+  "finnish-estonian (sister)": "waiting for the Pajusalu (2012) PDF from the project owner",
+  "sanskrit-pali (descendant)": "waiting on SuttaCentral; no OCR re-transcription",
+  "sumerian": "isolate; none tier only"
  }
 }
