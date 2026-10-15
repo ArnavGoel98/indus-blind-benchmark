@@ -142,10 +142,10 @@ def sister_yardsticks(hidden_clauses, sister_clauses, regular: dict, anchor: dic
     shuffled mappings. The floor is a same-size sample of the sister against the whole sister, as
     the anchor's floor is a Hebrew sample against all Hebrew."""
     rng = np.random.default_rng(seed)
-    f = lambda p: regular.get(p, p)  # noqa: E731
+    f = lambda p: regular.get(p, p)  # noqa: E731   (a value of None means the unit has no reflex)
     htexts = [[p for w in c for p in w] for c in hidden_clauses]
     stexts = [[p for w in c for p in w] for c in sister_clauses]
-    fwd = [[f(p) for p in t] for t in htexts]
+    fwd = [[f(p) for p in t if f(p) is not None] for t in htexts]
     jsd = float(np.mean([bigram_jsd(sample_texts(fwd, anchor["n_letters"], rng), stexts) for _ in range(n_draws)]))
     floor = float(np.mean([bigram_jsd(sample_texts(stexts, anchor["n_letters"], rng), stexts) for _ in range(n_draws)]))
 
@@ -153,7 +153,7 @@ def sister_yardsticks(hidden_clauses, sister_clauses, regular: dict, anchor: dic
     shuf = [dict(zip(keys, rng.permutation([regular[k] for k in keys]))) for _ in range(n_draws)]
     hw = Counter(w for c in hidden_clauses for w in c)
     sw = {w for c in sister_clauses for w in c}
-    mapw = lambda m: (lambda w: tuple(m.get(p, p) for p in w))  # noqa: E731
+    mapw = lambda m: (lambda w: tuple(x for x in (m.get(p, p) for p in w) if x is not None))  # noqa: E731
     samples = [sample_tokens(hw, anchor["n_word_tokens"], rng) for _ in range(n_draws)]
     ov = np.array([overlap(s, sw, mapw(regular)) for s in samples])
     ch = np.array([overlap(s, sw, mapw(m)) for s, m in zip(samples, shuf)])
