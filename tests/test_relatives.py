@@ -28,3 +28,42 @@ def test_gold_covers_every_latin_unit_and_cites_a_section():
 def test_relationship_labels():
     assert R.RELATIONSHIP[("latin", "italian")] == "descendant"
     assert R.RELATIONSHIP[("finnish", "estonian")] == "sister"
+
+
+# ---------------------------------------------------------------- Dravidian (rank 6b)
+from collections import Counter  # noqa: E402
+
+from ibdb.data import dravidian as D  # noqa: E402
+
+
+def test_malayalam_script_converter():
+    assert D.script_phonemes("മലയാളം", "malayalam") == ["m", "a", "l", "a", "y", "ā", "ḷ", "a", "m"]
+    assert D.script_phonemes("കണ്ണ്", "malayalam") == ["k", "a", "ṇ", "ṇ"]
+    assert D.script_phonemes("അവൻ", "malayalam") == ["a", "v", "a", "n"]
+    assert D.script_phonemes("സംഗീതം", "malayalam", "as_written") == ["s", "a", "ṅ", "g", "ī", "t", "a", "m"]
+    assert D.script_phonemes("സംഗീതം", "malayalam") == ["s", "a", "ṅ", "k", "ī", "t", "a", "m"]
+
+
+def test_kannada_script_converter():
+    assert D.script_phonemes("ಕನ್ನಡ", "kannada", "as_written") == ["k", "a", "n", "n", "a", "ḍ", "a"]
+    assert D.script_phonemes("ಕನ್ನಡ", "kannada") == ["k", "a", "n", "n", "a", "ṭ", "a"]
+    assert D.script_phonemes("ಹತ್ತು", "kannada") == ["h", "a", "t", "t", "u"]
+    assert D.script_phonemes("ಗಂಗೆ", "kannada") == ["k", "a", "ṅ", "k", "e"]
+
+
+def test_dravidian_gold_tables():
+    tamil_units = set(phonology.PROFILES["tamil"].consonants | phonology.PROFILES["tamil"].vowels) | {"ḵ"}
+    for lang in ("malayalam", "kannada"):
+        g = D.GOLD[lang]
+        assert tamil_units <= set(g), tamil_units - set(g)
+        reg, att = D.gold_map(lang)
+        assert all(r is None or r in att[k] for k, r in reg.items())
+        assert all(v[2] for v in g.values())
+        assert D.RELATIONSHIP[lang] in ("sister", "descendant")
+    assert D.GOLD["malayalam"]["ṉ"][0] == "n" and D.GOLD["kannada"]["ḻ"][0] == "ḷ"
+
+
+def test_normalisation_only_collapses_voicing_and_aspiration():
+    assert set(D.NORMALISE.values()) <= {"k", "c", "ṭ", "t", "p"}
+    c = Counter(D.NORMALISE.values())
+    assert c["t"] == 3 and c["ṭ"] == 3 and c["k"] == 3 and c["c"] == 3 and c["p"] == 3

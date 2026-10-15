@@ -156,3 +156,31 @@ positive_controls:
     license: CC BY 4.0
     license_evidence: "dcs/data/readme.md, section 'License' (read 2026-10-03)"
     notes: Add with `git sparse-checkout add` in data/raw/sanskrit/repo. Rao et al. (2009) used the same 100 hymns from sacred-texts.com.
+# v2 rank 6b: real related languages (pre-registration entry 5). Used as relatives only; never
+# redistributed. Relationship to the hidden language in brackets.
+real_relatives:
+  italian:   # Latin -> Italian (descendant)
+    source: Dante Alighieri, La Divina Commedia, Project Gutenberg #1000
+    url: https://www.gutenberg.org/cache/epub/1000/pg1000.txt
+    license: Public domain in the USA (Project Gutenberg page, read 2026-10-15)
+    sha256: 4669dcc00ee61ceffe92d871e61ea430cec87b35cbab24f19a4c0b1c7da521b2
+  estonian:  # Finnish -> Estonian (sister)
+    source: F. R. Kreutzwald, Kalevipoeg, Estonian Wikisource, cantos I-XX
+    url: https://et.wikisource.org/wiki/Kalevipoeg
+    license: CC BY-SA 4.0 (site licence via API, read 2026-10-11); text public domain (author died 1882)
+  malayalam: # Old Tamil -> Malayalam (descendant)
+    source: Ezhuthachan, Adhyatma Ramayanam Kilippattu, Malayalam Wikisource section pages
+    url: https://ml.wikisource.org/wiki/അദ്ധ്യാത്മരാമായണം_കിളിപ്പാട്ട്
+    license: CC BY-SA 4.0 (site licence via API, read 2026-10-11); text public domain by age
+    notes: >-
+      Source edition unstated. Typed by Wikisource volunteers (2007-08); no link to the CC BY-NC-ND
+      scan on Internet Archive. Accepted as clean by the project owner on 2026-10-15. Revision ids
+      and SHA-256 per page in data/raw/relatives/ml/manifest.json.
+  kannada:   # Old Tamil -> Kannada (sister)
+    source: Kumaravyasa, Karnata Bharata Kathamanjari, Kannada Wikisource
+    url: https://kn.wikisource.org/wiki/ಕುಮಾರವ್ಯಾಸ_ಭಾರತ
+    license: CC BY-SA 4.0 (site licence via API, read 2026-10-11); text public domain by age
+    notes: >-
+      Source edition unstated. Typed by Wikisource volunteers (from 2013). Pages titled "ಸಟೀಕಾ"
+      (modern commentary) are excluded. Accepted as clean by the project owner on 2026-10-15.
+      Revision ids and SHA-256 per page in data/raw/relatives/kn/manifest.json.

@@ -34,3 +34,14 @@ Synthetic corpora published in `challenge/` are transformed sign-ID sequences: a
 language written in invented signs, not readable text. Their keys (in `challenge/public/*/keys/`)
 contain transformed units, and the public-tier keys carry these attributions:
 DCS (CC BY 4.0, O. Hellwig), CDLI (academic reuse with citation, https://cdli.mpiwg-berlin.mpg.de), Project Madurai, Project Gutenberg, Sakana AI Kamon (CC BY-SA 4.0).
+
+## v2 rank 6b: real related languages (relatives only; not redistributed)
+
+| Relative (relationship) | Text | Licence | Notes |
+|---|---|---|---|
+| Italian (descendant of Latin) | Dante, *La Divina Commedia*, Project Gutenberg #1000 | Public domain in the USA | SHA-256 in config/sources.yaml |
+| Estonian (sister of Finnish) | Kreutzwald, *Kalevipoeg*, Estonian Wikisource | CC BY-SA 4.0 (site); text public domain | |
+| Malayalam (descendant of Old Tamil) | *Adhyatma Ramayanam Kilippattu*, Malayalam Wikisource | CC BY-SA 4.0 (site); text public domain | **Source edition unstated**; typed by volunteers; no link to the restricted scan |
+| Kannada (sister of Old Tamil) | Kumaravyasa *Bharata*, Kannada Wikisource | CC BY-SA 4.0 (site); text public domain | **Source edition unstated**; "ಸಟೀಕಾ" commentary pages excluded |
+
+Any published derivative of the Wikisource texts carries CC BY-SA 4.0 with attribution to Wikisource.
