@@ -19,6 +19,7 @@ import numpy as np
 
 from ibdb import sister_v4 as S
 from ibdb import yardsticks as Y
+from ibdb.data import dravidian as D
 from ibdb.data import relatives as R
 from ibdb.paths import ensure, reports_dir
 
@@ -28,14 +29,13 @@ KEYS = ["jsd_above_floor", "cognate_types_cc", "word_pairs_types_cc", "verbatim_
 N_BOOT, BOOT_DRAWS = 200, 5
 
 
-def pair_latin_italian(anchor: dict) -> dict:
-    hidden = S.hidden_half("latin")[0]
-    regular, attested = R.latin_italian_map()
-    out = {"pair": "latin-italian", "relationship": R.RELATIONSHIP[("latin", "italian")],
+def measure_pair(name: str, hidden_lang: str, relationship: str, rel_texts, regular: dict, anchor: dict) -> dict:
+    hidden = S.hidden_half(hidden_lang)[0]
+    out = {"pair": name, "hidden": hidden_lang, "relationship": relationship,
            "mergers": len([k for k, v in regular.items() if v is not None]) - len({v for v in regular.values() if v}),
            "deleted": sorted(k for k, v in regular.items() if v is None)}
     for spelling in ("as_written", "normalised"):
-        rel = R.dante_texts(spelling)
+        rel = rel_texts(spelling)
         out[spelling] = {"n_texts": len(rel), "n_words": sum(map(len, rel)),
                          "n_units": sum(len(w) for t in rel for w in t),
                          "point": Y.sister_yardsticks(hidden, rel, regular, anchor, n_draws=20, seed=0)}
@@ -48,10 +48,20 @@ def pair_latin_italian(anchor: dict) -> dict:
                 for k in KEYS:
                     boot[k].append(y[k])
                 if (b + 1) % 50 == 0:
-                    print(f"[latin-italian] bootstrap {b + 1}/{N_BOOT}", flush=True)
+                    print(f"[{name}] bootstrap {b + 1}/{N_BOOT}", flush=True)
             out[spelling]["bootstrap"] = {k: {"lo": float(np.quantile(v, 0.025)), "hi": float(np.quantile(v, 0.975)),
                                               "mean": float(np.mean(v)), "sd": float(np.std(v))} for k, v in boot.items()}
     return out
+
+
+def pair_latin_italian(anchor: dict) -> dict:
+    return measure_pair("latin-italian", "latin", R.RELATIONSHIP[("latin", "italian")], R.dante_texts,
+                        R.latin_italian_map()[0], anchor)
+
+
+def pair_tamil(lang: str, anchor: dict) -> dict:
+    return measure_pair(f"tamil-{lang}", "tamil", D.RELATIONSHIP[lang], lambda sp: D.texts(lang, sp),
+                        D.gold_map(lang)[0], anchor)
 
 
 def comparison_rows(lang: str) -> dict:
@@ -68,40 +78,53 @@ def main() -> None:
            | {"verbatim_6plus": anchor["verbatim_natural_6plus"]},
            "anchor_vowel_letters_removed": {k: corr[k] for k in ("jsd_above_floor", "cognate_types_cc", "word_pairs_types_cc")}
            | {"verbatim_6plus": corr["verbatim_natural_6plus"]},
-           "pairs": {"latin-italian": pair_latin_italian(anchor)},
-           "bracket": {"latin": comparison_rows("latin")},
-           "not_yet": {"finnish-estonian (sister)": "gold source (Pajusalu 2012) not reachable from this environment",
-                       "tamil-malayalam (descendant), tamil-kannada (sister)": "awaiting Wikisource provenance check",
-                       "sanskrit-pali (descendant)": "licence unresolved; public-domain fallback being searched"}}
+           "pairs": {"latin-italian": pair_latin_italian(anchor), "tamil-malayalam": pair_tamil("malayalam", anchor),
+                     "tamil-kannada": pair_tamil("kannada", anchor)},
+           "bracket": {"latin": comparison_rows("latin"), "tamil": comparison_rows("tamil")},
+           "not_yet": {"finnish-estonian (sister)": "waiting for the Pajusalu (2012) PDF from the project owner",
+                       "sanskrit-pali (descendant)": "waiting on SuttaCentral; no OCR re-transcription",
+                       "sumerian": "isolate; none tier only"}}
     (OUT / "yardsticks.json").write_text(json.dumps(res, indent=1, default=float))
     write_md(res)
 
 
+SCRIPT = {"Ugaritic-Hebrew": "consonant-only (abjad)", "latin-italian": "alphabet (vowels written)",
+          "tamil-malayalam": "abugida (vowels written)", "tamil-kannada": "abugida (vowels written)"}
+
+
 def write_md(res: dict) -> None:
     f = lambda k, v: f"{v:.3f}" if k == "jsd_above_floor" else f"{100 * v:.1f}%"  # noqa: E731
-    li = res["pairs"]["latin-italian"]
     L = ["# Rank 6b: Ugaritic-Hebrew yardsticks on real related languages (pre-registration entry 5)", "",
          "No tuning, no targets. Shared code (`src/ibdb/yardsticks.py`); sample sizes matched to the anchor. "
          "Normalised spelling is primary. Every pair is labelled sister or descendant.", "",
-         "| Pair | Relationship | Spelling | JSD above floor (bits) | Shared word forms, chance-corr. | Word pairs, chance-corr. | Verbatim 6+ units | Mergers |",
-         "|---|---|---|---|---|---|---|---|",
-         f"| Ugaritic-Hebrew | sister | as written | " + " | ".join(f(k, res["anchor_as_written"][k]) for k in KEYS) + " | 7 |",
-         f"| Ugaritic-Hebrew | sister | vowel letters removed | " + " | ".join(f(k, res["anchor_vowel_letters_removed"][k]) for k in KEYS) + " | 7 |"]
-    for sp in ("as_written", "normalised"):
-        L.append(f"| **Latin-Italian** | {li['relationship']} | {sp.replace('_', ' ')}{' (primary)' if sp == 'normalised' else ''} | "
-                 + " | ".join(f(k, li[sp]["point"][k]) for k in KEYS) + f" | {li['mergers']} (+ h deleted) |")
-    b = res["bracket"]["latin"]
-    L += [f"| Latin, v1-like sister (upper bound) | synthetic | - | " + " | ".join(f(k, b["v1_like"][k]) for k in KEYS) + " | 0 |",
-          f"| Latin, `harsh` (lower bound) | synthetic | - | " + " | ".join(f(k, b["harsh"][k]) for k in KEYS) + " | 5 |", "",
-          "**Latin-Italian, bootstrap over Dante lines (normalised; 200 replicates, 5 draws each):**", "",
-          "| Yardstick | Point (20 draws) | Bootstrap mean | 95% interval | SD |", "|---|---|---|---|---|"]
-    for k in KEYS:
-        bt = li["normalised"]["bootstrap"][k]
-        L.append(f"| {k} | {f(k, li['normalised']['point'][k])} | {f(k, bt['mean'])} | {f(k, bt['lo'])}-{f(k, bt['hi'])} | {f(k, bt['sd'])} |")
-    n = li["normalised"]
-    L += ["", f"Sizes: Dante {n['n_texts']:,} lines, {n['n_words']:,} words, {n['n_units']:,} units; hidden side = v1 Latin hidden half.",
-          f"Gold: Grandgent (1907), section per row in `src/ibdb/data/relatives.py`. Mergers: {li['mergers']}; deleted: {', '.join(li['deleted'])}.", "",
-          "**Not measured yet:**", ""] + [f"- {k}: {v}" for k, v in res["not_yet"].items()] + [""]
+         "**Cross-script comparisons are indicative only.** Shared word forms (and word pairs) are not directly "
+         "comparable between a consonant-only script (Ugaritic-Hebrew) and scripts that write vowels (all other "
+         "rows): a consonant skeleton matches far more easily than a full word, even after the chance correction. "
+         "Comparisons within one script type are the meaningful ones.", "",
+         "| Pair | Relationship | Script type | Spelling | JSD above floor (bits) | Shared word forms, cc | Word pairs, cc | Verbatim 6+ | Mergers |",
+         "|---|---|---|---|---|---|---|---|---|",
+         "| Ugaritic-Hebrew | sister | " + SCRIPT["Ugaritic-Hebrew"] + " | as written | " + " | ".join(f(k, res["anchor_as_written"][k]) for k in KEYS) + " | 7 |",
+         "| Ugaritic-Hebrew | sister | " + SCRIPT["Ugaritic-Hebrew"] + " | vowel letters removed | " + " | ".join(f(k, res["anchor_vowel_letters_removed"][k]) for k in KEYS) + " | 7 |"]
+    for name, pr in res["pairs"].items():
+        for sp in ("as_written", "normalised"):
+            L.append(f"| **{name}** | {pr['relationship']} | {SCRIPT[name]} | {sp.replace('_', ' ')}{' (primary)' if sp == 'normalised' else ''} | "
+                     + " | ".join(f(k, pr[sp]["point"][k]) for k in KEYS)
+                     + f" | {pr['mergers']}{' + ' + ', '.join(pr['deleted']) + ' no reflex' if pr['deleted'] else ''} |")
+    for lang, b in res["bracket"].items():
+        L += [f"| {lang}, v1-like sister (upper bound) | synthetic | as hidden | - | " + " | ".join(f(k, b["v1_like"][k]) for k in KEYS) + " | 0 |",
+              f"| {lang}, `harsh` (lower bound) | synthetic | as hidden | - | " + " | ".join(f(k, b["harsh"][k]) for k in KEYS) + " | 24% of consonants |"]
+    L += ["", "**Bootstrap over the relative's lines (normalised; 200 replicates, 5 draws each): point / bootstrap mean / 95% interval**", "",
+          "| Pair | " + " | ".join(KEYS) + " |", "|---|" + "---|" * len(KEYS)]
+    for name, pr in res["pairs"].items():
+        bt = pr["normalised"]["bootstrap"]
+        L.append(f"| {name} | " + " | ".join(f"{f(k, pr['normalised']['point'][k])} / {f(k, bt[k]['mean'])} / {f(k, bt[k]['lo'])}-{f(k, bt[k]['hi'])}"
+                                            for k in KEYS) + " |")
+    L += ["", "**Sizes (normalised):** " + "; ".join(f"{n}: {p['normalised']['n_texts']:,} lines, {p['normalised']['n_words']:,} words, "
+                                                   f"{p['normalised']['n_units']:,} units" for n, p in res["pairs"].items()) + ".",
+          "**Gold sources:** Latin-Italian, Grandgent (1907), section per row (`src/ibdb/data/relatives.py`); Tamil-Malayalam and "
+          "Tamil-Kannada, Caldwell (1875), pages per row (`src/ibdb/data/dravidian.py`). Hidden side: the v1 hidden half of each source.",
+          "**Data notes:** Malayalam and Kannada Wikisource texts: source edition unstated; Kannada commentary (ಸಟೀಕಾ) pages excluded.", "",
+          "**Not measured:**", ""] + [f"- {k}: {v}" for k, v in res["not_yet"].items()] + [""]
     (OUT / "yardsticks.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 

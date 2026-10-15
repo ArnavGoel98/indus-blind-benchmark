@@ -106,6 +106,9 @@ def script_phonemes(word: str, lang: str, spelling: str = "normalised") -> list[
     return out
 
 
+KN_PARVAS = ("ಆದಿಪರ್ವ", "ಸಭಾಪರ್ವ", "ಅರಣ್ಯಪರ್ವ", "ವಿರಾಟಪರ್ವ", "ಉದ್ಯೋಗಪರ್ವ", "ಭೀಷ್ಮಪರ್ವ", "ದ್ರೋಣಪರ್ವ", "ಕರ್ಣಪರ್ವ",
+             "ಶಲ್ಯಪರ್ವ", "ಗದಾಪರ್ವ")
+KN_SANDHI = re.compile(r"^(" + "|".join(KN_PARVAS) + r"): *[೦-೯0-9]+\..*ಸಂಧಿ")   # Kumaravyasa sandhi pages only
 _DIGITS = re.compile(r"[0-9೦-೯൦-൯|।॥]+")
 
 
@@ -116,7 +119,7 @@ def _poem_lines(text: str) -> list[str]:
         for l in b.splitlines():
             l = re.sub(r"<[^>]+>|\{\{[^}]*\}\}|\[\[[^\]|]*\||\]\]|\[\[|'''|''|^[=:*#;]+|[=]+$", "", l)
             l = _DIGITS.sub(" ", l).strip()
-            if l and not l.startswith(("{", "|", "}")):
+            if l and not l.startswith(("{", "|", "}", "<")):     # templates, tables, navigation links
                 lines.append(l)
     return lines
 
@@ -127,7 +130,7 @@ def lines(lang: str) -> list[str]:
     man = json.loads((d / "manifest.json").read_text())
     out = []
     for title, m in sorted(man.items(), key=lambda kv: kv[1]["file"]):
-        if lang == "kannada" and "ಸಟೀಕಾ" in title:
+        if lang == "kannada" and ("ಸಟೀಕಾ" in title or not KN_SANDHI.match(title)):
             continue
         out += _poem_lines((d / m["file"]).read_text(encoding="utf-8"))
     return out
