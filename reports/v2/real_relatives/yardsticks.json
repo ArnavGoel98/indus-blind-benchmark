@@ -1,0 +1,109 @@
+{
+ "anchor_as_written": {
+  "jsd_above_floor": 0.1660125185812234,
+  "cognate_types_cc": 0.46824284940023936,
+  "word_pairs_types_cc": 0.014716099286300764,
+  "verbatim_6plus": 0.00784313725490196
+ },
+ "anchor_vowel_letters_removed": {
+  "jsd_above_floor": 0.08894133283708225,
+  "cognate_types_cc": 0.5844982484833081,
+  "word_pairs_types_cc": 0.04637838794946059,
+  "verbatim_6plus": 0.00784313725490196
+ },
+ "pairs": {
+  "latin-italian": {
+   "pair": "latin-italian",
+   "relationship": "descendant",
+   "mergers": 9,
+   "deleted": [
+    "h"
+   ],
+   "as_written": {
+    "n_texts": 14233,
+    "n_words": 101601,
+    "n_units": 392534,
+    "point": {
+     "bigram_jsd": 0.12815152792425266,
+     "floor": 0.011234262031607212,
+     "jsd_above_floor": 0.11691726589264545,
+     "cognate_types": 0.13695339915260374,
+     "cognate_types_chance": 0.02158791007733056,
+     "cognate_types_cc": 0.11791093984170953,
+     "cognate_tokens": 0.22968270214943703,
+     "word_pairs_types": 0.0057533679077989884,
+     "word_pairs_types_chance": 0.0002252355080734755,
+     "word_pairs_types_cc": 0.005529377811946317,
+     "verbatim_6plus": 0.018867924528301886,
+     "n_verbatim_windows": 424
+    }
+   },
+   "normalised": {
+    "n_texts": 14233,
+    "n_words": 101601,
+    "n_units": 391950,
+    "point": {
+     "bigram_jsd": 0.11396526651644981,
+     "floor": 0.009892679794436515,
+     "jsd_above_floor": 0.10407258672201329,
+     "cognate_types": 0.1375704433286385,
+     "cognate_types_chance": 0.021726732065346206,
+     "cognate_types_cc": 0.11841651516029197,
+     "cognate_tokens": 0.23019447287615144,
+     "word_pairs_types": 0.005979868764551946,
+     "word_pairs_types_chance": 0.0003391307244743866,
+     "word_pairs_types_cc": 0.005642651636615041,
+     "verbatim_6plus": 0.018867924528301886,
+     "n_verbatim_windows": 424
+    },
+    "bootstrap": {
+     "jsd_above_floor": {
+      "lo": 0.10087850488769175,
+      "hi": 0.10767160636549201,
+      "mean": 0.10415976387151411,
+      "sd": 0.0017721007908005728
+     },
+     "cognate_types_cc": {
+      "lo": 0.09622533594554247,
+      "hi": 0.1153404434838097,
+      "mean": 0.10588430214350569,
+      "sd": 0.005363312059197467
+     },
+     "word_pairs_types_cc": {
+      "lo": 0.001375848336801581,
+      "hi": 0.00719518815433844,
+      "mean": 0.004335250328356688,
+      "sd": 0.0015120279704701903
+     },
+     "verbatim_6plus": {
+      "lo": 0.007090537645124321,
+      "hi": 0.033020819394263795,
+      "mean": 0.01941103060660104,
+      "sd": 0.006618921379814018
+     }
+    }
+   }
+  }
+ },
+ "bracket": {
+  "latin": {
+   "v1_like": {
+    "jsd_above_floor": 0.006405330611823401,
+    "cognate_types_cc": 0.531301299109941,
+    "word_pairs_types_cc": 0.07106422197628097,
+    "verbatim_6plus": 0.12364264141979708
+   },
+   "harsh": {
+    "jsd_above_floor": 0.13516373926037753,
+    "cognate_types_cc": 0.07820808777138132,
+    "word_pairs_types_cc": 0.010894184842044808,
+    "verbatim_6plus": 0.024474007840002615
+   }
+  }
+ },
+ "not_yet": {
+  "finnish-estonian (sister)": "gold source (Pajusalu 2012) not reachable from this environment",
+  "tamil-malayalam (descendant), tamil-kannada (sister)": "awaiting Wikisource provenance check",
+  "sanskrit-pali (descendant)": "licence unresolved; public-domain fallback being searched"
+ }
+}
