@@ -171,3 +171,39 @@ entry replaces the three tiers of entry 3.
 The corrected `close` and `distant` settings of entry 3 are not used. Real relatives from different
 texts (roadmap rank 6b) will be added as a separate tier by their own pre-registration entry, if
 that plan is approved.
+
+## 5. Real related languages (roadmap rank 6b)
+
+Declared 2026-10-15, on approval of `docs/v2_real_relatives_plan.md` and before any download, parse or
+measurement for it.
+
+**Pairs, each labelled by relationship in every table:**
+
+| Hidden | Relative | Relationship | Status |
+|---|---|---|---|
+| Finnish | Estonian | sister | first |
+| Latin | Italian | descendant | first |
+| Old Tamil | Malayalam | descendant (western Old Tamil dialect) | only after the Wikisource provenance check |
+| Old Tamil | Kannada | sister | only after the Wikisource provenance check |
+| Sanskrit | Pali | descendant | only if a source with clear terms is found: SuttaCentral permission, or a public-domain edition as the fallback |
+| Sumerian | none (isolate) | - | `none` tier only |
+
+**Fixed by this entry:**
+- Sources, unit levels, normalisation rules and gold sources as in the plan at the commit adding
+  this entry.
+- **Measurements:** the Ugaritic-Hebrew yardsticks, as written and normalised (primary). No tuning,
+  no targets. Sister pairs and descendant pairs are reported separately.
+- **Gold tables:** written only from the named sources, with section or page per row. Rows the
+  source does not cover are marked "no source" and are unrecoverable under strict scoring.
+  Wikipedia is not used for any gold value.
+- **Normalisation rules** are coded and tested before any yardstick is computed.
+
+**Tasks C and D:**
+- tiers `related_real` and `candidates_real`, beside the entry-4 bracket;
+- the frozen methods (revised EM rule primary, original secondary, frequency-rank baseline beside
+  them) and the entry-2 scorer;
+- run only after the yardstick table has been reported.
+
+**Pali fallback:** a public-domain edition (e.g. 19th-century Pali Text Society or Fausbøll
+editions) whose transcription carries clear terms. A public-domain scan with an OCR or transcription
+under non-commercial or unclear terms does not qualify.

@@ -1,6 +1,7 @@
 # v2 rank 6b: real related languages from different texts — plan (not yet run)
 
-Status: plan for review, 2026-10-11, branch `v2`. Nothing downloaded, built or run. Replaces the
+Status: approved 2026-10-15 (pre-registration entry 5), branch `v2`. Order: Finnish-Estonian and
+Latin-Italian first; the Dravidian pairs only after the Wikisource provenance check. Replaces the
 synthetic-sister calibration, which was killed (`docs/v2_negative_results.md`, item 2).
 
 ## Idea
@@ -44,12 +45,12 @@ The Hebrew lesson (pre-registration entry 3) applies: spelling conventions must 
 language distance. Every pair is measured **as written** and **normalised**; the normalised value is
 primary.
 
-| Pair | Units | Normalisation (primary) |
-|---|---|---|
-| Sanskrit-Pali | IAST letters, as the v1 Sanskrit profile | None needed; both romanised phonemically. Pali ṃ = Sanskrit ṃ. |
-| Finnish-Estonian | Letters, Finnish profile | Estonian **b, d, g** spell the short (lenis) stops that Finnish writes p, t, k; Estonian doubles letters to mark overlong quantity. Both are spelling conventions, and the normalised text maps them to the Finnish convention. Estonian õ, ü stay (ü vs Finnish y is a gold correspondence, not spelling). |
-| Latin-Italian | Letters by greedy segmentation, as the v1 Latin profile, plus Italian digraphs ch, gh, gl, gn, sc | Strip accents (à → a); drop silent h; apostrophes split words. |
-| Tamil-Malayalam, Tamil-Kannada | Phonemes from the script (deterministic converter, as `phonology.tamil_phonemes`) | Collapse the voicing and aspiration distinctions that Tamil script cannot write (Malayalam and Kannada write them, mostly in Sanskrit loans): kh, g, gh → k; and so on. Same purpose as removing Hebrew vowel letters. |
+| Pair | Relationship | Units | Normalisation (primary) |
+|---|---|---|---|
+| Sanskrit-Pali | descendant | IAST letters, as the v1 Sanskrit profile | None needed; both romanised phonemically. Pali ṃ = Sanskrit ṃ. |
+| Finnish-Estonian | sister | Letters, Finnish profile | Estonian **b, d, g** spell the short (lenis) stops that Finnish writes p, t, k; Estonian doubles letters to mark overlong quantity. Both are spelling conventions, and the normalised text maps them to the Finnish convention. Estonian õ, ü stay (ü vs Finnish y is a gold correspondence, not spelling). |
+| Latin-Italian | descendant | Letters by greedy segmentation, as the v1 Latin profile, plus Italian digraphs ch, gh, gl, gn, sc | Strip accents (à → a); drop silent h; apostrophes split words. |
+| Tamil-Malayalam (descendant), Tamil-Kannada (sister) | see pair | Phonemes from the script (deterministic converter, as `phonology.tamil_phonemes`) | Collapse the voicing and aspiration distinctions that Tamil script cannot write (Malayalam and Kannada write them, mostly in Sanskrit loans): kh, g, gh → k; and so on. Same purpose as removing Hebrew vowel letters. |
 
 Each rule is listed in code with a test before any yardstick is computed.
 
@@ -60,12 +61,12 @@ case) and to all **attested reflexes** the source lists (for the lenient score).
 page for every row, and is written only from the source below after reading it. Wikipedia is not
 used for any gold value.
 
-| Pair | Source (open, read in full for the phonology sections) |
-|---|---|
-| Sanskrit-Pali | W. Geiger, *Pāli. Literatur und Sprache* (Strassburg, 1916), phonology chapters. Public domain; Internet Archive `in.ernet.dli.2015.70352` (full text, not restricted). |
-| Finnish-Estonian | K. Pajusalu, "Phonological innovations of the Southern Finnic languages", *Suomalais-Ugrilaisen Seuran Toimituksia* 266 (2012), open PDF at sgr.fi. Plus P. Kallio, "Historical phonology from Proto-Finnic to Proto-Livonian", *JEFUL* 7(1), 2016, open access, as a cross-check. |
-| Latin-Italian | C. H. Grandgent, *An Introduction to Vulgar Latin* (Boston, 1907), public domain, Internet Archive `introductiontovu00gran` (open). It covers Latin to Romance with Italian outcomes, not Italian alone. The 1927 *From Latin to Italian* is on Internet Archive only as a lending copy of a 1971 reprint; it is used if an open full-view copy of the 1927 edition is found. |
-| Tamil-Malayalam, Tamil-Kannada | R. Caldwell, *A Comparative Grammar of the Dravidian or South-Indian Family of Languages* (1856; Public Domain Mark on Internet Archive), with the 2nd edition (1875; Internet Archive `in.ernet.dli.2015.459581`). |
+| Pair | Relationship | Source (open, read in full for the phonology sections) |
+|---|---|---|
+| Sanskrit-Pali | descendant | W. Geiger, *Pāli. Literatur und Sprache* (Strassburg, 1916), phonology chapters. Public domain; Internet Archive `in.ernet.dli.2015.70352` (full text, not restricted). |
+| Finnish-Estonian | sister | K. Pajusalu, "Phonological innovations of the Southern Finnic languages", *Suomalais-Ugrilaisen Seuran Toimituksia* 266 (2012), open PDF at sgr.fi. Plus P. Kallio, "Historical phonology from Proto-Finnic to Proto-Livonian", *JEFUL* 7(1), 2016, open access, as a cross-check. |
+| Latin-Italian | descendant | C. H. Grandgent, *An Introduction to Vulgar Latin* (Boston, 1907), public domain, Internet Archive `introductiontovu00gran` (open). It covers Latin to Romance with Italian outcomes, not Italian alone. The 1927 *From Latin to Italian* is on Internet Archive only as a lending copy of a 1971 reprint; it is used if an open full-view copy of the 1927 edition is found. |
+| Tamil-Malayalam (descendant), Tamil-Kannada (sister) | see pair | R. Caldwell, *A Comparative Grammar of the Dravidian or South-Indian Family of Languages* (1856; Public Domain Mark on Internet Archive), with the 2nd edition (1875; Internet Archive `in.ernet.dli.2015.459581`). |
 
 **Caveat, stated now.** Three of the four sources are over a century old. Basic consonant
 correspondences are stable, but some details are outdated. Every row records its source, and rows the
@@ -79,7 +80,7 @@ forward map. The hidden side is the v1 hidden half of each source; the relative 
 relative text. Sample sizes match the anchor (5,876 units, 977 word tokens, 452 word pairs, the
 anchor's 6+ letter text lengths).
 
-Reported per pair, as written and normalised:
+Reported per pair, labelled sister or descendant in every table, as written and normalised:
 - letter-pair JSD and JSD above the same-size floor;
 - shared word forms and word pairs (raw and chance-corrected, chance from shuffled maps);
 - verbatim overlap for texts of 6+ letters;
