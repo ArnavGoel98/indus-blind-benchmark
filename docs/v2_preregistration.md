@@ -207,3 +207,50 @@ measurement for it.
 **Pali fallback:** a public-domain edition (e.g. 19th-century Pali Text Society or Fausbøll
 editions) whose transcription carries clear terms. A public-domain scan with an OCR or transcription
 under non-commercial or unclear terms does not qualify.
+
+## 6. Task C/D harness for entries 4 and 5 (implementation details)
+
+Proposed 2026-10-17, before any v2 Task C/D final run; binding once approved and tagged with
+`frozen-v2`. Written after a pipeline check on development seed 90 only (sampler A, one EM restart;
+its numbers are not results and are not reported). It fixes what
+entries 4 and 5 left to the implementation (`src/ibdb/relative_cd.py`, `scripts/v2/cd_v2.py`,
+`scripts/v2/cd_v2_summary.py`). It replaces nothing.
+
+**Corpora.** The v1 Indus-point corpora with the sister-v2 content split, i.e. those of profiles
+`sister_v2_main` (sampler A) and `sister_v2_gen2` (sampler B): 2,906 texts, mean length 4.6, seeds
+0-2, the four script types, regenerated from the same seeds (checked: identical corpus statistics).
+The `harsh` tiers cover all five languages; the real tiers cover Latin (Italian) and Tamil (Malayalam,
+Kannada), and Finnish (Estonian) once its gold table is committed.
+
+**Upper bound.** The v1 sister rows are read from the existing `sister_v2_main` and `sister_v2_gen2`
+records (frozen-v1 methods, same corpora), scored before the cognate step; they are not rerun.
+
+**Reference units** (no reference carries a correspondence table):
+- alphabetic: the relative's phonemes;
+- syllabic: the v1 CV syllabifier (`phonology.syllabify`) with the hidden language's vowels. Sumerian's
+  syllable units are sign readings, so for Sumerian (`harsh` only) the relative's syllables are found by
+  greedy longest match against the hidden readings mapped through the regular reflexes, single
+  phonemes otherwise;
+- logographic: the relative's word forms;
+- logo-syllabic: word forms for the relative's 250 most frequent word types (as v1 references),
+  syllables otherwise;
+- the relative text is used whole, up to 40,000 clauses (as v1 references).
+
+**Scoring details (entry 2).**
+- The regular reflex of a syllable is the reflexes of its phonemes joined, phonemes with no reflex
+  dropped. A logogram's regular reflex is the relative word so formed, and only if that word occurs
+  in the relative text. A token with no regular reflex is unrecoverable.
+- Lenient: the prediction can be written as attested reflexes (regular included; empty where the
+  regular reflex is none) of the hidden phonemes, in order. A logogram must also occur in the relative.
+- Units the generator adds (word dividers, determinatives `<DET:n>`) are unrecoverable, as in v1.
+  Source units no sound law touches (Sumerian numerals such as `#1(disz)` and written determinatives
+  such as `{kuš}`) keep their value, as in the v1 sister.
+- Every token counts. Task D is scored whatever reference the solver chose, as in v1. The ceiling
+  (share of tokens with a strict reflex) is reported beside every score.
+
+**Methods and settings.** Revised EM (primary), original EM, frequency-rank baseline; 3 EM restarts,
+60 iterations (as v1). Task C: the family of the chosen reference; the chosen reference is reported.
+
+**Reporting.** Means over the 6 corpora per hidden language and script type, the number of corpora at
+or above 50% of tokens, `related` and `candidates` tables, sister and descendant pairs labelled, the
+bracket rows and the Ugaritic result beside them.

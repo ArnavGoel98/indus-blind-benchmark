@@ -1,0 +1,146 @@
+"""Summary of the v2 Task C/D run (scripts/v2/cd_v2.py): the bracket and the real relatives side by side.
+
+Upper bound: v1 sister, read from the sister_v2_main (sampler A) and sister_v2_gen2 (sampler B) records at
+the Indus point, scored with the v1 scorer before the cognate step (entry 4). Lower bound: `harsh`.
+Real relatives: entry 5. Beside them, the Ugaritic Task D result (reports/v2/ugaritic/results.md).
+Every cell is a mean over the 6 corpora (seeds 0-2, samplers A and B) of one hidden language and script
+type; `n>=50%` counts corpora at or above the v1 threshold (50% of tokens).
+
+Usage: python scripts/v2/cd_v2_summary.py [RECORDS] [OUTDIR]
+  default RECORDS runs/results/v2_cd/records.jsonl, OUTDIR reports/v2/cd
+"""
+from __future__ import annotations
+
+import json
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+import numpy as np
+
+from ibdb.paths import ensure, reports_dir, runs_dir
+
+SCRIPTS = ["logographic", "syllabic", "logosyllabic", "alphabetic"]
+METHODS = ["knight2006_em", "knight2006_em_original", "baseline_frequency_rank"]
+LABEL = {"knight2006_em": "EM revised (primary)", "knight2006_em_original": "EM original",
+         "baseline_frequency_rank": "frequency rank"}
+RELATIONSHIP = {"real:italian": "descendant", "real:malayalam": "descendant", "real:kannada": "sister"}
+UGARITIC = "Ugaritic-Hebrew, natural text, related tier: 33.9% (EM original), 32.0% (EM revised)"
+THRESHOLD = 0.5
+
+
+def upper_bound() -> dict:
+    """(lang, script, tier) -> method -> list of (before-cognate token acc, family correct)."""
+    out: dict = defaultdict(lambda: defaultdict(list))
+    for prof in ("sister_v2_main", "sister_v2_gen2"):
+        for line in (runs_dir() / "results" / prof / "records.jsonl").read_text().splitlines():
+            r = json.loads(line)
+            j = r.get("job", {})
+            if "error" in r or j.get("sweep") != "size" or j.get("n_texts") != 2906 or j.get("seed") not in (0, 1, 2) \
+                    or r["truth"]["kind"] != "language":
+                continue
+            for tier in ("related", "candidates"):
+                for m in METHODS:
+                    v = r["CD"][tier][m]
+                    out[(j["source"], j["script_type"], tier)][m].append(
+                        (v.get("token_acc_before_cognate", v["token_acc"]), v["family_correct"], v.get("reference")))
+    return out
+
+
+def load(path: Path) -> tuple[dict, list]:
+    """(lang, script, tier) -> method -> list of records."""
+    out: dict = defaultdict(lambda: defaultdict(list))
+    errors = []
+    for line in path.read_text().splitlines():
+        r = json.loads(line)
+        if "error" in r:
+            errors.append(r)
+            continue
+        for tier, ms in r["tiers"].items():
+            for m, v in ms.items():
+                out[(r["lang"], r["script_type"], tier)][m].append(v)
+    return out, errors
+
+
+def main() -> None:
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else runs_dir() / "results" / "v2_cd" / "records.jsonl"
+    outdir = ensure(Path(sys.argv[2]) if len(sys.argv) > 2 else reports_dir() / "v2" / "cd")
+    res, errors = load(path)
+    ub = upper_bound()
+    langs = sorted({k[0] for k in res}, key=lambda x: ["sanskrit", "tamil", "sumerian", "latin", "finnish"].index(x))
+    pc = lambda x: f"{100 * x:.1f}" if x == x else "-"  # noqa: E731
+
+    def rows_for(lang: str, kind: str) -> list[tuple[str, str, str]]:
+        """(row label, relationship, tier key or 'upper') for the related or candidates tier."""
+        rows = [("v1 sister (upper bound)", "synthetic", "upper")]
+        rows += [(t.split("_", 1)[1].replace("real:", ""), RELATIONSHIP[t.split("_", 1)[1]], t)
+                 for t in sorted({k[2] for k in res if k[0] == lang and k[2].startswith(kind + "_real:")})]
+        rows.append(("`harsh` (lower bound)", "synthetic", f"{kind}_harsh"))
+        return rows
+
+    def cell(lang, st, tier, kind, m, field="strict"):
+        if tier == "upper":
+            v = [x[0] for x in ub.get((lang, st, kind), {}).get(m, [])]
+        else:
+            v = [x[field] for x in res.get((lang, st, tier), {}).get(m, [])]
+        return (float(np.mean(v)) if v else float("nan")), sum(x >= THRESHOLD for x in v), len(v)
+
+    summary: dict = {"task_d": {}, "task_c": {}, "errors": len(errors)}
+    L = ["# v2 Tasks C and D: real relatives beside the bracket", "",
+         f"Records: `{path}` ({len(errors)} corpora with errors). Methods frozen (`frozen-v2`); scoring entry 2 "
+         "(strict primary, lenient secondary, before the cognate step); the v1 sister rows use the v1 scorer before "
+         "the cognate step (entry 4). Each cell: mean % of sign tokens over 6 corpora (seeds 0-2, samplers A and B), "
+         "then corpora at or above 50%. Beside: " + UGARITIC + ".", ""]
+    for kind in ("related", "candidates"):
+        for m in METHODS:
+            L += [f"## Task D, `{kind}` tier, {LABEL[m]} (strict)", "",
+                  "| Hidden | Relative | Relationship | " + " | ".join(SCRIPTS) + " |", "|---|---|---|" + "---|" * len(SCRIPTS)]
+            for lang in langs:
+                for label, rel, tier in rows_for(lang, kind):
+                    cells = []
+                    for st in SCRIPTS:
+                        mean, n50, n = cell(lang, st, tier, kind, m)
+                        cells.append(f"{pc(mean)} ({n50}/{n})")
+                        summary["task_d"].setdefault(kind, {}).setdefault(m, {}).setdefault(lang, {}).setdefault(label, {})[st] = \
+                            {"mean": mean, "n_at_50": n50, "n": n}
+                    L.append(f"| {lang} | {label} | {rel} | " + " | ".join(cells) + " |")
+            L.append("")
+    L += ["## Task D, secondary columns (EM revised): lenient score and the strict ceiling", "",
+          "Ceiling: share of tokens with a strict reflex at all (unrecoverable: no reflex, no cognate for a logogram, "
+          "determinatives).", "", "| Hidden | Tier | " + " | ".join(f"{st}: lenient / ceiling" for st in SCRIPTS) + " |",
+          "|---|---|" + "---|" * len(SCRIPTS)]
+    for lang in langs:
+        for tier in sorted({k[2] for k in res if k[0] == lang}):
+            cells = []
+            for st in SCRIPTS:
+                v = res.get((lang, st, tier), {}).get("knight2006_em", [])
+                cells.append(f"{pc(np.mean([x['lenient'] for x in v]))} / {pc(np.mean([x['recoverable'] for x in v]))}"
+                             if v else "-")
+            L.append(f"| {lang} | {tier} | " + " | ".join(cells) + " |")
+    L += ["", "## Task C (`candidates` tiers): right family, % of corpora (all script types pooled), and the reference chosen", "",
+          "| Hidden | Tier | " + " | ".join(LABEL[m] for m in METHODS) + " | References chosen by EM revised |", "|---|---|" + "---|" * (len(METHODS) + 1)]
+    for lang in langs:
+        tiers = ["upper"] + sorted({k[2] for k in res if k[0] == lang and k[2].startswith("candidates_")})
+        for tier in tiers:
+            cells = []
+            for m in METHODS:
+                if tier == "upper":
+                    v = [x[1] for st in SCRIPTS for x in ub.get((lang, st, "candidates"), {}).get(m, [])]
+                else:
+                    v = [x["family_correct"] for st in SCRIPTS for x in res.get((lang, st, tier), {}).get(m, [])]
+                cells.append(f"{pc(np.mean(v)) if v else '-'} ({len(v)})")
+                summary["task_c"].setdefault(lang, {}).setdefault(tier, {})[m] = float(np.mean(v)) if v else None
+            if tier == "upper":
+                refs = Counter(x[2] for st in SCRIPTS for x in ub.get((lang, st, "candidates"), {}).get("knight2006_em", []))
+            else:
+                refs = Counter(x["reference"] for st in SCRIPTS for x in res.get((lang, st, tier), {}).get("knight2006_em", []))
+            name = "v1 sister (upper bound)" if tier == "upper" else tier
+            L.append(f"| {lang} | {name} | " + " | ".join(cells) + " | " + ", ".join(f"{k} {n}" for k, n in refs.most_common()) + " |")
+    L.append("")
+    (outdir / "results.json").write_text(json.dumps(summary, indent=1, default=float))
+    (outdir / "results.md").write_text("\n".join(L) + "\n")
+    print("\n".join(L))
+
+
+if __name__ == "__main__":
+    main()
