@@ -1,0 +1,1874 @@
+{
+ "task_d": {
+  "related": {
+   "knight2006_em": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.1611953088664458,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.5487694071195444,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.04216469403975048,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.5690951272255641,
+       "n_at_50": 5,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.005362910940600234,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.07318748379891392,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.01223128031604471,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.2913685350505984,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.26749574768685486,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.18960444479864932,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.4247927257408197,
+       "n_at_50": 2,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.00025084161210942344,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.03250990257319544,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.028516406580544967,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.3217341355975535,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.06208716707678006,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.05944212993829761,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.303807918381569,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0005207539501092313,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.06187455591433158,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.059237371584700126,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.1637125237955586,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.037049419415973846,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0565487300905844,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.045265313276829866,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.2963211972902025,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.01056393786135954,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.010418657661080967,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.02530846953857435,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.11983963158621909,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.014339186010500505,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.3221002745135277,
+       "n_at_50": 1,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.09814553751189109,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.45363518967763133,
+       "n_at_50": 2,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.05976976703606595,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.015387732582231662,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.16856628338773594,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.015002215349924982,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.24354376019395055,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.04553411760734994,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.36104105381161583,
+       "n_at_50": 1,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.010113106412675342,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.435664289577862,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.21204961803095757,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.652721628753316,
+       "n_at_50": 5,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.19868707757263016,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.08583005682117018,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.3593566080419954,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    }
+   },
+   "knight2006_em_original": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0056201415740691615,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.5316561835518755,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.03999979413985295,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.5854885575103702,
+       "n_at_50": 6,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0002885025463485612,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.07392453484302508,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.019956665233219244,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.292321044213165,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.2811537760356052,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.18695128326160335,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.4305641042799519,
+       "n_at_50": 2,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.034102847040163385,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.02527355289022988,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.33508052891784074,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.05872508852802694,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0655530866037684,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.3039073237565397,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.08392104056056442,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.054444182390441694,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.17342114573902798,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.02291526611956359,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.038367047255393645,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.026395494161797244,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.2869170996147099,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.01097660803901418,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.013922973847727024,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.016466183636707873,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.11856823865846818,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.00021256572910804557,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.29517145729342414,
+       "n_at_50": 1,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.095202645426728,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.45682262439547267,
+       "n_at_50": 2,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.06002875309172554,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.017114398492266602,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.17118835460752393,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0011498179179191906,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.24013908635866632,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.042675027464094656,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.35776887062686386,
+       "n_at_50": 1,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.00035421151487165806,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.46212314456731624,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.20983025994745622,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.6572958466172504,
+       "n_at_50": 5,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.20243352535532075,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.08945264757898201,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.37585693126149194,
+       "n_at_50": 1,
+       "n": 6
+      }
+     }
+    }
+   },
+   "baseline_frequency_rank": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.1426642161363303,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.03255092539396848,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.004727057288796689,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.10546910457622422,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.00037838655970939914,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.04079513226061913,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.00626487479238334,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.08381506243255421,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.006331092229364587,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0135192456540741,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.048041968019889185,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.0004570188572967128,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.01288314306720439,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.014119780655946457,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.06294607395117312,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.02226742859932136,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.01886250142161296,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.03495041761539076,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0004953513183965859,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.008004697040718529,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0032216129649346227,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.04302653857038191,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0014659449706811007,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.01000613254277217,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.007325669958229373,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09619418009556514,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.007132794735156813,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.00028915541474944055,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.010136624457096304,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.06520138550232772,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0591329638045672,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.04031246452820776,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.00851350454098766,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.07461678710419534,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.04853894554493316,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.023677792779978793,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.07793207835326012,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.11022762574033661,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.07135670391201702,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.021581517046282986,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09165480471756361,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.008154560281018693,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.08417073964606807,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.017602879186774664,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.0735585804353731,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.011074696342247317,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.07114244290982141,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.011701621188203162,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.0737187002756064,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    }
+   }
+  },
+  "candidates": {
+   "knight2006_em": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.5487694071195444,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.017218190639847742,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.12950373279383562,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0036461294010511416,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.016931531537095996,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.005828112595718728,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09805669054085897,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.19736982507579337,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.17619848502156507,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.20171129798310528,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.023909955720992013,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.028516406580544967,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.11821217612974148,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.02286058016557471,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.021940239162927814,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.12181440821543044,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0005207539501092313,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.021253917883451864,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.009910917218303327,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.08792591622538369,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.006958991487954531,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.005891342910055963,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.07408928556665566,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.01056393786135954,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.007816927395095586,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.00635323090845808,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.075072463494685,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.00835550967982102,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.3221002745135277,
+       "n_at_50": 1,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.09814553751189109,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.45363518967763133,
+       "n_at_50": 2,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.07102939273096003,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.012100875523282694,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.15082644908296644,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.007040671110778219,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.18637285830723369,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.010860791364377195,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.3511443994062909,
+       "n_at_50": 1,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0008136798357618547,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.435664289577862,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.19549849613497727,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.5470990786322264,
+       "n_at_50": 4,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.15375635398395396,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.05384845108246905,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.252268000109313,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    }
+   },
+   "knight2006_em_original": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.3061938342998104,
+       "n_at_50": 3,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0009767270146713667,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.15179374287703354,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0002646630802984629,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0008354405370716955,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.12240765866667093,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.1381832952911443,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.07324256817707785,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.1337428913329671,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.003661759154397886,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0013444481730040304,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.16744056998122847,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.005870089621436402,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0018879023238987777,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.18190896139135324,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.00040671408914761726,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0010144355428229532,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.11431154518109987,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.02291526611956359,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.038367047255393645,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.026395494161797244,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.2869170996147099,
+       "n_at_50": 1,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.01097660803901418,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.013922973847727024,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.016466183636707873,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.11856823865846818,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.15829150505226286,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.002275382355624001,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09544391719949669,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.010687946438442777,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.002275382355624001,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09543146451967999,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.007308505807866594,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0010192121490088162,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.07213743720133017,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0036357303877013265,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0009741891697758304,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09589871123906402,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0036357303877013265,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.056938932754470595,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    }
+   },
+   "baseline_frequency_rank": {
+    "sanskrit": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.020646747447379644,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.03255092539396848,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.007047750822262371,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.05310600857194268,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.00470098643649815,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0014780362878598979,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.08381506243255421,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "tamil": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.005860246488609708,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.006536293557575749,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.07127878075956279,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "kannada": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0030308093112177206,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.006536293557575749,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.10666841142435346,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "malayalam": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.01761532503945081,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.007888271307884774,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.03495041761539076,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0002751926348443911,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0015708693860733416,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.02226144684590051,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "sumerian": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.002130380056374711,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09619418009556514,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.002130380056374711,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.06520138550232772,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "latin": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0591329638045672,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.03808940970118141,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.005808292097036478,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.05662042592867477,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "italian": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.030558510725210736,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.006773180236495251,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.05662042592867477,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.11022762574033661,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.03141174418927924,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0032453691069127583,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09165480471756361,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    },
+    "finnish": {
+     "v1 sister (upper bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.061595252832930464,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.008586700593527254,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.03604847978102117,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (lower bound)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.026125451475242884,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0019986781091141832,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.0737187002756064,
+       "n_at_50": 0,
+       "n": 6
+      }
+     }
+    }
+   }
+  }
+ },
+ "task_c": {
+  "sanskrit": {
+   "upper": {
+    "knight2006_em": 0.75,
+    "knight2006_em_original": 0.125,
+    "baseline_frequency_rank": 0.5416666666666666
+   },
+   "candidates_harsh": {
+    "knight2006_em": 0.625,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.5833333333333334
+   }
+  },
+  "tamil": {
+   "upper": {
+    "knight2006_em": 0.3333333333333333,
+    "knight2006_em_original": 0.125,
+    "baseline_frequency_rank": 0.125
+   },
+   "candidates_harsh": {
+    "knight2006_em": 0.125,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.2916666666666667
+   },
+   "candidates_real:kannada": {
+    "knight2006_em": 0.375,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.08333333333333333
+   },
+   "candidates_real:malayalam": {
+    "knight2006_em": 0.0,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.375
+   }
+  },
+  "sumerian": {
+   "upper": {
+    "knight2006_em": 0.041666666666666664,
+    "knight2006_em_original": 1.0,
+    "baseline_frequency_rank": 0.25
+   },
+   "candidates_harsh": {
+    "knight2006_em": 0.25,
+    "knight2006_em_original": 1.0,
+    "baseline_frequency_rank": 0.25
+   }
+  },
+  "latin": {
+   "upper": {
+    "knight2006_em": 0.9583333333333334,
+    "knight2006_em_original": 0.08333333333333333,
+    "baseline_frequency_rank": 0.625
+   },
+   "candidates_harsh": {
+    "knight2006_em": 0.5416666666666666,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.7083333333333334
+   },
+   "candidates_real:italian": {
+    "knight2006_em": 0.25,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.5
+   }
+  },
+  "finnish": {
+   "upper": {
+    "knight2006_em": 0.7083333333333334,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.25
+   },
+   "candidates_harsh": {
+    "knight2006_em": 0.7083333333333334,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.375
+   }
+  }
+ },
+ "errors": 0
+}
