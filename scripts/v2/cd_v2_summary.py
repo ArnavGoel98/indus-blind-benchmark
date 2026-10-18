@@ -7,7 +7,7 @@ Every cell is a mean over the 6 corpora (seeds 0-2, samplers A and B) of one hid
 type; `n>=50%` counts corpora at or above the v1 threshold (50% of tokens).
 
 Usage: python scripts/v2/cd_v2_summary.py [RECORDS] [OUTDIR]
-  default RECORDS runs/results/v2_cd/records.jsonl, OUTDIR reports/v2/cd
+  default RECORDS runs/results/v2_cd (every records*.jsonl in it, merged), OUTDIR reports/v2/cd
 """
 from __future__ import annotations
 
@@ -51,7 +51,8 @@ def load(path: Path) -> tuple[dict, list]:
     """(lang, script, tier) -> method -> list of records."""
     out: dict = defaultdict(lambda: defaultdict(list))
     errors = []
-    for line in path.read_text().splitlines():
+    files = sorted(path.glob("records*.jsonl")) if path.is_dir() else [path]
+    for line in (ln for f in files for ln in f.read_text().splitlines()):
         r = json.loads(line)
         if "error" in r:
             errors.append(r)
@@ -63,7 +64,7 @@ def load(path: Path) -> tuple[dict, list]:
 
 
 def main() -> None:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else runs_dir() / "results" / "v2_cd" / "records.jsonl"
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else runs_dir() / "results" / "v2_cd"
     outdir = ensure(Path(sys.argv[2]) if len(sys.argv) > 2 else reports_dir() / "v2" / "cd")
     res, errors = load(path)
     ub = upper_bound()

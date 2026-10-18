@@ -210,9 +210,11 @@ under non-commercial or unclear terms does not qualify.
 
 ## 6. Task C/D harness for entries 4 and 5 (implementation details)
 
-Proposed 2026-10-17, before any v2 Task C/D final run; binding once approved and tagged with
-`frozen-v2`. Written after a pipeline check on development seed 90 only (sampler A, one EM restart;
-its numbers are not results and are not reported). It fixes what
+Proposed 2026-10-17; declared 2026-10-18 on the project owner's instruction to proceed ("do what you
+think is best"), before any v2 Task C/D final run, and tagged with `frozen-v2`. Written after a
+pipeline check on development seed 90 only (sampler A, one EM restart; its numbers are not results
+and are not reported). That check found one scorer error (Sumerian numerals and written determinatives
+counted as unrecoverable), fixed before this declaration. It fixes what
 entries 4 and 5 left to the implementation (`src/ibdb/relative_cd.py`, `scripts/v2/cd_v2.py`,
 `scripts/v2/cd_v2_summary.py`). It replaces nothing.
 
@@ -250,6 +252,12 @@ records (frozen-v1 methods, same corpora), scored before the cognate step; they 
 
 **Methods and settings.** Revised EM (primary), original EM, frequency-rank baseline; 3 EM restarts,
 60 iterations (as v1). Task C: the family of the chosen reference; the chosen reference is reported.
+
+**Freeze and later data.** The final run refuses to start unless every file outside `src/ibdb/data`
+(and outside `reports/`, `docs/`) is identical to the `frozen-v2` tag. Finnish-Estonian joins later as
+data only: the Pajusalu gold table and the Kalevipoeg text function in `src/ibdb/data/relatives.py`,
+written and committed before its yardsticks and before its Task C/D tiers, which run on the same
+frozen code into their own records file (`--relative estonian`).
 
 **Reporting.** Means over the 6 corpora per hidden language and script type, the number of corpora at
 or above 50% of tokens, `related` and `candidates` tables, sister and descendant pairs labelled, the

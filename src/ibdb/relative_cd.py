@@ -241,6 +241,12 @@ def hidden_logograms(hidden_lang: str, logogram_vocab: int = 250) -> set[str]:
 
 # ------------------------------------------------------------------ the relatives
 
+def has_gold(relative: str) -> bool:
+    """Estonian joins once src/ibdb/data/relatives.py has its gold table (a data change, no code change)."""
+    from .data import relatives as R
+    return relative != "estonian" or hasattr(R, "finnish_estonian_map")
+
+
 @lru_cache(maxsize=8)
 def real_relative(hidden_lang: str, relative: str) -> Relative:
     from .data import dravidian as D
@@ -251,6 +257,9 @@ def real_relative(hidden_lang: str, relative: str) -> Relative:
     elif hidden_lang == "tamil" and relative in ("malayalam", "kannada"):
         reg, att = D.gold_map(relative)
         clauses = D.texts(relative, "normalised")
+    elif (hidden_lang, relative) == ("finnish", "estonian") and has_gold("estonian"):
+        reg, att = R.finnish_estonian_map()               # data only: added with the Pajusalu gold table
+        clauses = R.kalevipoeg_texts("normalised")
     else:
         raise ValueError(f"no real relative {relative} for {hidden_lang} yet")
     return Relative(relative, source_family(hidden_lang), clauses, reg, {k: set(v) for k, v in att.items()})

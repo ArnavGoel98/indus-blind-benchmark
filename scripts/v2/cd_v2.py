@@ -16,9 +16,13 @@ Methods (entry 1): revised EM (primary), original EM, frequency-rank baseline; u
 Scoring (entry 2): `relative_cd.score`, strict primary, lenient secondary, before the cognate step;
 Task C: family of the chosen reference; the chosen reference is recorded for every method.
 
+A final run refuses to start unless every file outside src/ibdb/data is identical to the `frozen-v2`
+tag (working tree included), so data (the Estonian gold table) may be added after the tag; code may not.
+
 Usage:
   python scripts/v2/cd_v2.py --dev OUTDIR      # pipeline check: seed 90, sampler A, 1 EM restart (not a result)
-  python scripts/v2/cd_v2.py                   # final run -> runs/results/v2_cd/records.jsonl (only after frozen-v2)
+  python scripts/v2/cd_v2.py                   # final run -> runs/results/v2_cd/records.jsonl
+  python scripts/v2/cd_v2.py --relative estonian   # add one real relative later -> records_estonian.jsonl
 """
 from __future__ import annotations
 
@@ -44,21 +48,33 @@ from ibdb.paths import ensure, reports_dir, runs_dir  # noqa: E402
 
 D_METHODS = [KnightEM, KnightEMOriginal, FrequencyRankBaseline]
 SCRIPTS = ["logographic", "syllabic", "logosyllabic", "alphabetic"]
-REAL = {"latin": ["italian"], "tamil": ["malayalam", "kannada"]}
+REAL = {"latin": ["italian"], "tamil": ["malayalam", "kannada"],
+        "finnish": ["estonian"] if RC.has_gold("estonian") else []}
 SAMPLERS = {"A": "v1", "B": "v2"}
 N_TEXTS, MEAN_LEN = 2906, 4.6
 HARSH = json.loads((reports_dir() / "v2" / "sister" / "harsh.json").read_text())["chosen"]
 
 
-def relatives_for(lang: str, seed: int) -> dict[str, RC.Relative]:
+def relatives_for(lang: str, seed: int, only: str | None = None) -> dict[str, RC.Relative]:
+    if only:
+        return {f"real:{only}": RC.real_relative(lang, only)}
     out = {"harsh": RC.harsh_relative(lang, seed, HARSH[lang]["knobs"])}
     for r in REAL.get(lang, []):
         out[f"real:{r}"] = RC.real_relative(lang, r)
     return out
 
 
+def check_frozen() -> None:
+    """Refuse unless all code (everything outside src/ibdb/data) matches the frozen-v2 tag."""
+    ok = subprocess.run(["git", "rev-parse", "-q", "--verify", "refs/tags/frozen-v2"], capture_output=True).returncode == 0
+    same = ok and subprocess.run(["git", "diff", "--quiet", "frozen-v2", "--", ".", ":(exclude)src/ibdb/data",
+                                  ":(exclude)reports", ":(exclude)docs"]).returncode == 0
+    if not same:
+        raise SystemExit("final run refused: code differs from the frozen-v2 tag (or the tag is missing)")
+
+
 def run_corpus(args) -> dict:
-    lang, st, seed, sampler, restarts, iterations = args
+    lang, st, seed, sampler, restarts, iterations, only = args
     t0 = time.time()
     gv = SAMPLERS[sampler]
     knobs, spec = load_knobs("full", lang, st, gv)
@@ -68,7 +84,7 @@ def run_corpus(args) -> dict:
     others = [build_reference(o, st, False, seed, spec.logogram_vocab) for o in LANGUAGES if o != lang]
     rec = {"lang": lang, "script_type": st, "seed": seed, "sampler": sampler, "family": key.family,
            "n_tokens": corpus.n_tokens, "tiers": {}}
-    for rname, rel in relatives_for(lang, seed).items():
+    for rname, rel in relatives_for(lang, seed, only).items():
         ref = RC.reference(rel, st, lang, spec.logogram_vocab)
         gold = RC.Gold(rel, lang, st, logos)
         for tier, refs in ((f"related_{rname}", [ref]), (f"candidates_{rname}", [ref] + others)):
@@ -87,18 +103,21 @@ def run_corpus(args) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dev", metavar="OUTDIR", help="pipeline check only: seed 90, sampler A, 1 restart")
+    ap.add_argument("--relative", help="run only this real relative's tiers (added after the main run)")
     ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     if a.dev:
-        jobs = [(lang, st, 90, "A", 1, 60) for lang in LANGUAGES for st in SCRIPTS]
+        jobs = [(lang, st, 90, "A", 1, 60, None) for lang in LANGUAGES for st in SCRIPTS]
         path = Path(a.dev) / "records_dev.jsonl"
         path.parent.mkdir(parents=True, exist_ok=True)
     else:
-        tag = subprocess.run(["git", "tag", "--points-at", "HEAD"], capture_output=True, text=True).stdout.split()
-        if "frozen-v2" not in tag:
-            raise SystemExit("final run refused: HEAD is not tagged frozen-v2")
-        jobs = [(lang, st, s, smp, 3, 60) for smp in SAMPLERS for s in (0, 1, 2) for lang in LANGUAGES for st in SCRIPTS]
-        path = ensure(runs_dir() / "results" / "v2_cd") / "records.jsonl"
+        check_frozen()
+        langs = [lg for lg, rs in REAL.items() if a.relative in rs] if a.relative else LANGUAGES
+        if a.relative and not langs:
+            raise SystemExit(f"no gold table for {a.relative} yet")
+        jobs = [(lang, st, s, smp, 3, 60, a.relative) for smp in SAMPLERS for s in (0, 1, 2) for lang in langs for st in SCRIPTS]
+        name = f"records_{a.relative}.jsonl" if a.relative else "records.jsonl"
+        path = ensure(runs_dir() / "results" / "v2_cd") / name
     done = set()
     if path.exists():
         for line in path.read_text().splitlines():
