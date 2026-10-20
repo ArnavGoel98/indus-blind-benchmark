@@ -100,3 +100,39 @@ entries 2 and 3.
 
 **What could revive it.** A mechanism that changes word frequencies and phrasing without destroying
 word forms (e.g. genre shift). It was not tried, to stop revising targets after seeing results.
+
+## 3. The `harsh` bound is not a lower bound for real relatives — observed 2026-10-20 (post hoc)
+
+**What was expected.** Pre-registration entry 4 placed a real relative between two synthetic
+bounds: the v1 sister above, `harsh` below. The real relatives of entry 5 were to be read against
+that bracket.
+
+**What was found** (final run at `frozen-v2`, `reports/v2/cd/results.md`; per corpus in
+`reports/v2/cd/per_corpus.md`; revised EM, `related` tier, strict score, mean over 6 corpora):
+- **Latin-Italian falls below `harsh`** for alphabetic (16.9% against 36.1%; below in 5 of 6
+  corpora), syllabic (6.0% against 24.4%; 4 of 6) and logo-syllabic scripts (1.5% against 4.6%;
+  4 of 6). Logographic is about 0 for both.
+- **Old Tamil-Kannada falls below `harsh`** for syllabic (3.3% against 6.2%; 5 of 6) and logo-syllabic
+  scripts (2.9% against 5.9%; 5 of 6), but lies above it for alphabetic (32.2% against 16.4%; 0 of 6
+  below).
+- **Old Tamil-Malayalam** lies above `harsh` for alphabetic (30.4% against 16.4%; 1 of 6 below) and
+  level with it for syllabic and logo-syllabic (6.2% and 5.9% against 6.2% and 5.9%).
+- Single corpora vary widely (Malayalam alphabetic 0.0-56.0%; Italian alphabetic 0.2-53.2%), so the
+  means are imprecise. No statistic was pre-registered for this comparison and none is tested here.
+
+**The yardsticks did not predict it.** On every yardstick Italian is closer to Latin than `harsh`
+is (normalised: JSD above floor 0.104 against 0.135; chance-corrected shared word forms 11.8%
+against 7.8%; `reports/v2/real_relatives/yardsticks.md`), yet Task D is lower. Kannada is further
+from Old Tamil than Malayalam on every yardstick, yet its alphabetic Task D mean is level and less
+variable. The distance yardsticks measure how similar the texts are; they do not measure how hard a
+frequency-based solver finds the mapping.
+
+**Possible reasons (not tested).** The relative is a different text from a different period and
+genre (Dante against Caesar and Vergil; 15th-16th century epics against Sangam poetry), so unit
+frequencies differ in ways a sound-change model does not produce; the EM solver depends heavily on
+unit frequencies and often lands in a poor optimum (bimodal per-corpus scores).
+
+**Consequence (a reporting decision, post hoc, made after seeing these results).** The real
+relatives are the primary evidence for the `related` tier in v2. The bracket is reported beside
+them as secondary, with this failure stated. Methods, scores and the pre-registered tables are
+unchanged.
