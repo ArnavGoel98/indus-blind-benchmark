@@ -11,6 +11,7 @@ Every file here is labelled by its epistemic status: **pre-registered** (procedu
 | `replication.md`, `replication.json` | pre-registered (entry 7) | Seeds 3-5 tables and the four replication checks R1-R4. | `analysis/replication.py`, `analysis/v2_analysis.py` |
 | `pooled.md` | pre-registered as reported (entry 7), descriptive | Means over seeds 0-5 with bootstrap intervals over corpora. | `analysis/v2_analysis.py` |
 | `controls.md`, `controls.json` | pre-registered in procedure (entry 8), post hoc in motivation | Unrelated reference (C1), constant floor (C2), solver budget (C3), determinism (C4). | `analysis/controls.py`, `analysis/v2_analysis.py` |
+| `reach_check.md` | exploratory, post hoc | Share of tokens the frozen solver can reach at all (its 250-unit cap) beside the entry-2 ceiling; finds that the logographic ceilings overstate what the solver can reach. | `analysis/reach_check.py` |
 | `frequency_check.md` | exploratory, post hoc | Unit-frequency agreement against Task D; refutes one explanation offered in negative result 3. | `analysis/freq_check.py` |
 | `page_data.json` | derived | Per-corpus data for the review page. | `analysis/v2_analysis.py` |
 | `records/` | raw | Gzipped run records (scores and chosen references only; no answer keys) with SHA-256. | copies of `runs/results/v2_cd*`, `v2_controls` |

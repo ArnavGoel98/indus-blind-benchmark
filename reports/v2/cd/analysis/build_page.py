@@ -111,6 +111,7 @@ svg .thr { stroke: var(--muted); stroke-dasharray: 4 3; }
 svg .ug { stroke: var(--muted); stroke-dasharray: 1 3; stroke-width: 1.5; }
 svg .mean { stroke: var(--ink); stroke-width: 2.5; } svg .ci { stroke: var(--ink); stroke-width: 1.2; }
 svg .dot { stroke: var(--panel); stroke-width: 1.2; cursor: default; } svg .dot:hover, svg .dot:focus { stroke: var(--ink); outline: none; }
+svg .dmd { fill: var(--panel); stroke: var(--ink); stroke-width: 1.5; } svg .dmd:hover, svg .dmd:focus { stroke-width: 2.5; outline: none; }
 svg .rowlab { fill: var(--ink); font-size: 12px; }
 .legend { display: flex; flex-wrap: wrap; gap: 14px; font-family: var(--label); font-size: 13px; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
@@ -172,9 +173,9 @@ function strip() {
     const wrap = document.createElement('div'); wrap.className = 'panel';
     const h = document.createElement('h3'); h.textContent = st === 'logosyllabic' ? 'logo-syllabic' : st; wrap.appendChild(h);
     const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, width: '100%', role: 'img', 'aria-label': `${NAME[state.lang]}, ${st}, ${state.tier} tier: sign tokens recovered per corpus`});
+    if (st === 'alphabetic' && state.tier === 'related') el('rect', {x: X(D.ugaritic_recut[0]), y: top, width: X(D.ugaritic_recut[1]) - X(D.ugaritic_recut[0]), height: H - 24 - top, fill: 'var(--wash)'}, svg);
     for (const t of [0, 25, 50, 75]) if (t <= xmax) { el('line', {x1: X(t), x2: X(t), y1: top, y2: H - 24, class: t === 50 ? 'thr' : 'grid'}, svg);
       const tx = el('text', {x: X(t), y: H - 10, 'text-anchor': 'middle'}, svg); tx.textContent = t; }
-    if (st === 'alphabetic' && state.tier === 'related') el('line', {x1: X(D.ugaritic), x2: X(D.ugaritic), y1: top, y2: H - 24, class: 'ug'}, svg);
     rels.forEach((r, k) => {
       const c = cells.find(c => c.rel === r && c.script === st); const cy = top + k * rowH + rowH / 2;
       const lab = el('text', {x: left - 8, y: cy + 4, 'text-anchor': 'end', class: 'rowlab'}, svg); lab.textContent = REL[r];
@@ -239,7 +240,7 @@ function closeness() {
 function controls() {
   const box = document.getElementById('ctl'); if (!box || !D.controls) return; box.textContent = '';
   const rows = D.controls, W = 760, rowH = 26, l = 190, r = 120, t = 8, b = 34, H = t + rows.length * rowH + b;
-  const xmax = Math.max(...rows.map(x => Math.max(x.real, x.unrel[x.best], x.floor))) + 6;
+  const xmax = Math.max(...rows.map(x => Math.max(x.real, x.unrel[x.best], x.floor))) + 14;
   const X = v => l + v / xmax * (W - l - r);
   const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, width: '100%', role: 'img', 'aria-label': 'Each real relative against the better unrelated reference and the constant-answer floor'});
   for (let v = 0; v <= xmax; v += 10) { el('line', {x1: X(v), x2: X(v), y1: t, y2: H - b + 4, class: 'grid'}, svg);
@@ -251,9 +252,9 @@ function controls() {
     lab.textContent = `${REL[x.rel]}, ${x.script === 'logosyllabic' ? 'logo-syllabic' : x.script}`;
     el('rect', {x: X(0), y: cy - 4, width: Math.max(0, X(x.floor) - X(0)), height: 8, fill: 'var(--rule)'}, svg);
     el('line', {x1: X(best), x2: X(x.real), y1: cy, y2: cy, stroke: 'var(--muted)', 'stroke-width': 1}, svg);
-    const d = el('path', {d: `M${X(best)},${cy - 6} L${X(best) + 6},${cy} L${X(best)},${cy + 6} L${X(best) - 6},${cy} Z`, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.4, class: 'dot'}, svg);
+    const d = el('path', {d: `M${X(best)},${cy - 6} L${X(best) + 6},${cy} L${X(best)},${cy + 6} L${X(best) - 6},${cy} Z`, class: 'dmd'}, svg);
     const c = el('circle', {cx: X(x.real), cy, r: 5.5, fill: COLOR(x.rel), class: 'dot'}, svg);
-    const v = el('text', {x: X(Math.max(best, x.real)) + 12, y: cy + 4, 'text-anchor': 'start', class: 'rowlab'}, svg);
+    const v = el('text', {x: X(Math.max(best, x.real, x.floor)) + 12, y: cy + 4, 'text-anchor': 'start', class: 'rowlab'}, svg);
     v.textContent = `${x.added > 0 ? '+' : ''}${x.added.toFixed(1)} · ${x.helps ? 'helps' : 'no measurable help'}`;
     const un = Object.entries(x.unrel).map(([k, w]) => `${NAME[k]} ${w}%`).join(', ');
     const tt = `${REL[x.rel]}, ${x.script}: relative ${x.real}%; unrelated ${un}; constant floor ${x.floor}%; ahead in ${x.wins} of ${x.n} corpora`;
@@ -281,6 +282,8 @@ def main(out: str) -> None:
     data = json.loads((CD / "page_data.json").read_text())
     n = max(c["n"] for c in data["cells"])
     ctl_band = ""
+    det = data.get("determinism") or {}
+    det_txt = f"{det['compared'] - det['mismatches']} of {det['compared']} identical" if det else "pending"
     if data.get("controls"):
         det = data["determinism"]
         ctl_band = ('<section class="band" aria-labelledby="c3"><h2 id="c3">Against the null</h2>'
@@ -301,8 +304,8 @@ def main(out: str) -> None:
   <header>
     <div class="eyebrow">Indus Blind Decipherment Benchmark · v2 · draft section for review</div>
     <h1>What a real relative buys a decipherer</h1>
-    <p class="lede">Latin with Italian, Old Tamil with Malayalam and Kannada: measured with the Ugaritic-Hebrew yardsticks, then given to frozen comparison-based solvers against the v1 sister and the <code>harsh</code> bound. Not for deposit. Nothing here is, or claims, a decipherment.</p>
-    <ul class="status"><li><b>Methods</b> frozen-v2 · 4ce3e90</li><li><b>Pre-registration</b> entries 1-7</li><li><b>Corpora</b> {n} per cell</li><li><b>Post hoc</b> labelled where it applies</li><li><b>Pending</b> Finnish-Estonian, Pali</li></ul>
+    <p class="lede">Latin with Italian, Old Tamil with Malayalam and Kannada: measured with the Ugaritic-Hebrew yardsticks, given to frozen comparison-based solvers, replicated on fresh seeds, and checked against an unrelated language, a constant answer and a larger search budget. Draft for review, not for deposit. Nothing here is, or claims, a decipherment.</p>
+    <ul class="status"><li><b>Methods</b> frozen-v2 · 4ce3e90</li><li><b>Pre-registration</b> entries 1-8</li><li><b>Corpora</b> {n} per cell</li><li><b>Replication</b> 4 of 4 checks</li><li><b>Reruns</b> {det_txt}</li><li><b>Pending</b> Finnish-Estonian, Pali</li></ul>
   </header>
   <section aria-labelledby="kf"><h2 class="section-label" id="kf">Key findings</h2>{findings_cards(key)}{checks_strip()}</section>
   <section class="band" aria-labelledby="c1">
@@ -311,7 +314,7 @@ def main(out: str) -> None:
     <div class="controls"><div><span class="ctl-label">Hidden language</span><div class="seg" id="ctl-lang" role="group" aria-label="Hidden language">{langs_btn}</div></div>
       <div><span class="ctl-label">Tier</span><div class="seg" id="ctl-tier" role="group" aria-label="Tier"><button type="button" data-v="related">related</button><button type="button" data-v="candidates">candidates</button></div></div></div>
     <div class="panels" id="panels"></div>
-    <div class="legend"><span><i style="background:var(--s-upper);border-radius:1px"></i>v1 sister (upper bound)</span><span><i style="background:var(--s-italian)"></i>Italian</span><span><i style="background:var(--s-malayalam)"></i>Malayalam</span><span><i style="background:var(--s-kannada)"></i>Kannada</span><span><i style="background:var(--s-harsh);border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%)"></i><code>harsh</code> (lower bound)</span><span>dashed: 50% threshold</span><span id="ug-note">dotted (alphabetic): Ugaritic-Hebrew, {data["ugaritic"]}%</span></div>
+    <div class="legend"><span><i style="background:var(--s-upper);border-radius:1px"></i>v1 sister (synthetic)</span><span><i style="background:var(--s-italian)"></i>Italian</span><span><i style="background:var(--s-malayalam)"></i>Malayalam</span><span><i style="background:var(--s-kannada)"></i>Kannada</span><span><i style="background:var(--s-harsh);border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%)"></i><code>harsh</code> (synthetic; not a lower bound, negative result 3)</span><span>dashed: 50% threshold</span><span id="ug-note">shaded (alphabetic): Ugaritic-Hebrew re-cut to mean length 4.6, {data["ugaritic_recut"][0]}-{data["ugaritic_recut"][1]}%</span></div>
   </section>
   {ctl_band}
   <section class="band" aria-labelledby="c2">

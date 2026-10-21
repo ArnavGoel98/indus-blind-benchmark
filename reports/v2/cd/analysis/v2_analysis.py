@@ -30,7 +30,8 @@ REAL = {"tamil": ["malayalam", "kannada"], "latin": ["italian"]}
 UNREL = {"tamil": ["latin", "finnish"], "latin": ["tamil", "finnish"]}   # entry 8, C1
 RELN = {"italian": "descendant", "malayalam": "descendant", "kannada": "sister"}
 EM, EMO, FR = "knight2006_em", "knight2006_em_original", "baseline_frequency_rank"
-UGARITIC = 32.0          # revised EM, natural text, related tier (reports/v2/ugaritic/results.md)
+UGARITIC = 32.0          # revised EM, natural text, related tier (reports/v2/ugaritic/results.md); R2 uses this
+UGARITIC_RECUT = (24.6, 29.9)   # revised EM, texts re-cut to mean length 4.6 (seeds 0-2): the like-for-like range
 UPPER = {(0, 1, 2): ("sister_v2_main", "sister_v2_gen2"), (3, 4, 5): ("sister_v2_repl", "sister_v2_gen2_repl")}
 # Yardsticks, normalised (reports/v2/real_relatives/yardsticks.md): JSD above floor, shared word forms cc (%).
 YARD = {("latin", "italian"): (0.104, 11.8), ("latin", "harsh"): (0.135, 7.8),
@@ -187,7 +188,9 @@ def pooled(recs, upper):
     L = [f"# v2 Task D pooled over seeds {S[0]}-{S[-1]} (descriptive; entry 7)", "",
          "Revised EM, strict, % of sign tokens. Mean over all corpora per cell (12 when both seed blocks are present) "
          "with a 95% bootstrap interval over corpora (2,000 resamples). The seeds 0-2 tables "
-         "(`results.md`) stay primary. No test is made.", ""]
+         "(`results.md`) stay primary. No test is made.", "",
+         f"Corpus sizes: {min(r['n_tokens'] for r in recs):,}-{max(r['n_tokens'] for r in recs):,} sign tokens per corpus "
+         f"(mean {np.mean([r['n_tokens'] for r in recs]):,.0f}) over the {len(recs)} corpora.", ""]
     data = {}
     for kind in ("related", "candidates"):
         L += [f"## `{kind}` tier", "", "| Hidden | Relative | Relationship | " + " | ".join(SCRIPTS) + " |",
@@ -202,6 +205,16 @@ def pooled(recs, upper):
                     cells.append(f"{np.mean(v):.1f} ({lo:.1f}-{hi:.1f}), n={len(v)}" if v else "-")
                 L.append(f"| {NAME[lang]} | {label(t)} | {RELN.get(t, 'synthetic')} | " + " | ".join(cells) + " |")
         L.append("")
+    L += ["## Per-corpus range and runs at or above 50%, `related` tier, real relatives", "",
+          "| Hidden | Relative | " + " | ".join(SCRIPTS) + " |", "|---|---|" + "---|" * 4]
+    for lang in REAL:
+        for t in REAL[lang]:
+            cells = []
+            for st in SCRIPTS:
+                v = values(recs, upper, lang, st, "related", t, S)
+                cells.append(f"{min(v):.1f}-{max(v):.1f}; {sum(x >= 50 for x in v)} of {len(v)} at or above 50%")
+            L.append(f"| {NAME[lang]} | {t.capitalize()} | " + " | ".join(cells) + " |")
+    L.append("")
     (CD / "pooled.md").write_text("\n".join(L) + "\n")
     return data
 
@@ -219,7 +232,7 @@ def fig_per_corpus(recs, upper, pool):
             ax = axes[i, j]
             ax.axvline(50, color=INK2, lw=0.8, ls=(0, (4, 3)), zorder=1)
             if st == "alphabetic":
-                ax.axvline(UGARITIC, color=INK2, lw=0.8, ls=(0, (1, 2)), zorder=1)
+                ax.axvspan(*UGARITIC_RECUT, color=GRID, alpha=0.55, lw=0, zorder=0)
             for k, t in enumerate(ts):
                 y = len(ts) - 1 - k
                 v = values(recs, upper, lang, st, "related", t, S)
@@ -243,7 +256,8 @@ def fig_per_corpus(recs, upper, pool):
                 ax.set_ylabel(NAME[lang], fontsize=9, color=INK)
     fig.supxlabel("sign tokens recovered, % (one mark per corpus; bar = mean with 95% bootstrap interval)",
                   fontsize=8, color=INK, y=0.0)
-    fig.text(0.5, -0.06, "dashed line: 50% threshold    dotted line (alphabetic): Ugaritic-Hebrew, 32%    "
+    fig.text(0.5, -0.06, "dashed line: 50% threshold    band (alphabetic): Ugaritic-Hebrew re-cut to mean length "
+             "4.6, 24.6-29.9%    "
              "square: v1 sister    triangle: harsh    circle: real relative", ha="center", fontsize=7, color=INK2)
     fig.savefig(FIG / "fig_v2_taskd_per_corpus.png", dpi=220, bbox_inches="tight")
     plt.close(fig)
@@ -440,7 +454,8 @@ def page_data(recs, upper, pool, ctl=None):
                     cells.append({"tier": kind, "lang": lang, "rel": t, "relationship": RELN.get(t, "synthetic"),
                                   "script": st, "mean": round(p[0], 1), "lo": round(p[1], 1), "hi": round(p[2], 1),
                                   "n": p[3], "corpora": pc})
-    out = {"cells": cells, "ugaritic": UGARITIC, "yardsticks": {f"{a}:{b}": v for (a, b), v in YARD.items()}}
+    out = {"cells": cells, "ugaritic": UGARITIC, "ugaritic_recut": list(UGARITIC_RECUT),
+           "yardsticks": {f"{a}:{b}": v for (a, b), v in YARD.items()}}
     if ctl:
         fl = {(r["lang"], r["rel"], r["script"]): r["floor"] for r in ctl["C2"]}
         out["controls"] = [{"lang": r["lang"], "rel": r["rel"], "script": r["script"], "real": round(r["real"], 1),

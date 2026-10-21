@@ -136,3 +136,22 @@ unit frequencies and often lands in a poor optimum (bimodal per-corpus scores).
 relatives are the primary evidence for the `related` tier in v2. The bracket is reported beside
 them as secondary, with this failure stated. Methods, scores and the pre-registered tables are
 unchanged.
+
+**Evidence added 2026-10-21 (exploratory or post hoc unless a pre-registered entry is named).**
+- *Replication (entry 7, pre-registered check R3):* Italian stays below `harsh` on fresh seeds 3-5
+  (alphabetic 23.8% against 26.8%; syllabic 2.4% against 9.4%). Pooled over seeds 0-5, alphabetic
+  20.3% against 31.5% (`reports/v2/cd/pooled.md`).
+- *Solver budget (entry 8, C3):* with 10 EM restarts instead of 3, `harsh` rises (Latin alphabetic
+  36.1% to 43.6%) while Italian barely moves (16.9% to 18.1%). The failure is not an artefact of the
+  budget; more search widens it.
+- *Unrelated reference (entry 8, C1):* an unrelated Finnish reference, scored against Italian's own
+  gold, recovers 14.0% of alphabetic tokens; Italian recovers 20.3%. By the rule fixed in entry 8,
+  Italian gives no measurable help over an unrelated language in any script type.
+- *The first possible reason above is not supported:* Italian agrees with Latin in letter
+  frequencies better than `harsh` does (unigram JSD 0.026 against 0.059; rank correlation 0.85
+  against 0.79), yet scores lower (`reports/v2/cd/frequency_check.md`).
+- *A text effect of the needed size is documented:* in the pre-registered Ugaritic anchor, a
+  genre-matched Hebrew reference raised revised-EM recovery from 32.0% to 37.2% (natural texts) and
+  from 24.6-29.9% to 38.4-43.0% (texts re-cut to mean length 4.6) (`reports/v2/ugaritic/results.md`).
+  That supports, but does not show, the second reason: the relative's text differs in genre and
+  period from the hidden text, and the `harsh` sister does not.

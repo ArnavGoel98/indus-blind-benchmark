@@ -2,6 +2,8 @@
 
 Revised EM, strict, % of sign tokens. Mean over all corpora per cell (12 when both seed blocks are present) with a 95% bootstrap interval over corpora (2,000 resamples). The seeds 0-2 tables (`results.md`) stay primary. No test is made.
 
+Corpus sizes: 12,904-13,401 sign tokens per corpus (mean 13,215) over the 240 corpora.
+
 ## `related` tier
 
 | Hidden | Relative | Relationship | logographic | syllabic | logosyllabic | alphabetic |
@@ -37,4 +39,12 @@ Revised EM, strict, % of sign tokens. Mean over all corpora per cell (12 when bo
 | Latin | `harsh` (lower bound) | synthetic | 1.8 (0.0-4.6), n=12 | 10.5 (3.6-18.5), n=12 | 1.1 (0.5-1.7), n=12 | 27.8 (18.7-37.2), n=12 |
 | Finnish | v1 sister (upper bound) | synthetic | 0.5 (0.0-1.3), n=12 | 43.4 (33.8-53.4), n=12 | 17.7 (8.3-28.1), n=12 | 49.9 (34.2-64.0), n=12 |
 | Finnish | `harsh` (lower bound) | synthetic | 0.1 (0.0-0.3), n=12 | 18.9 (11.9-26.4), n=12 | 6.7 (2.4-12.2), n=12 | 32.2 (21.2-43.8), n=12 |
+
+## Per-corpus range and runs at or above 50%, `related` tier, real relatives
+
+| Hidden | Relative | logographic | syllabic | logosyllabic | alphabetic |
+|---|---|---|---|---|---|
+| Old Tamil | Malayalam | 0.0-0.0; 0 of 12 at or above 50% | 3.4-33.9; 0 of 12 at or above 50% | 1.6-18.3; 0 of 12 at or above 50% | 0.0-66.0; 3 of 12 at or above 50% |
+| Old Tamil | Kannada | 0.0-0.1; 0 of 12 at or above 50% | 0.1-10.0; 0 of 12 at or above 50% | 0.0-12.2; 0 of 12 at or above 50% | 21.5-60.1; 1 of 12 at or above 50% |
+| Latin | Italian | 0.0-0.2; 0 of 12 at or above 50% | 0.0-14.6; 0 of 12 at or above 50% | 0.0-10.3; 0 of 12 at or above 50% | 0.2-53.2; 3 of 12 at or above 50% |
 
