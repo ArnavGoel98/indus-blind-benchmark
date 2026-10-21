@@ -182,6 +182,8 @@ Score how Tasks A-D degrade with the mix share and the amount of drift.
 
 ## 2. Realistic sister language (rank 6) — synthetic calibration KILLED 2026-10-11 (negative result 2; see docs/v2_negative_results.md). Replaced by rank 6b: real related languages from different texts (docs/v2_real_relatives_plan.md, plan only)
 
+**Update 2026-10-21:** rank 6b has run (entries 5-8; `reports/v2/cd/`, `docs/v2_negative_results.md` item 3). `frozen-v2` is tagged on commit `4ce3e90`.
+
 **What.** Replace the v1 sister with one built by:
 - conditioned sound changes, depending on neighbouring sounds and word position;
 - mergers and splits, so correspondences are no longer one-to-one;

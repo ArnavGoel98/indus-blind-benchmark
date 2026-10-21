@@ -4,6 +4,8 @@ Status: approved 2026-10-15 (pre-registration entry 5), branch `v2`. Order: Finn
 Latin-Italian first; the Dravidian pairs only after the Wikisource provenance check. Replaces the
 synthetic-sister calibration, which was killed (`docs/v2_negative_results.md`, item 2).
 
+**Status update 2026-10-21:** run. Yardsticks in `reports/v2/real_relatives/`; Tasks C and D at `frozen-v2` (entries 6-8) in `reports/v2/cd/`; draft section in `reports/drafts/v2_real_relatives_section_DRAFT.md`. Finnish-Estonian (gold source not yet received) and Sanskrit-Pali (no text with clear terms) are still pending. The bracket of entry 4 did not hold for the real relatives (`docs/v2_negative_results.md`, item 3).
+
 ## Idea
 
 For each v1 language except Sumerian, use a real related language, written in **different texts**,

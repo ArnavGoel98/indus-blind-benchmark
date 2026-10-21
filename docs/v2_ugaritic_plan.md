@@ -5,6 +5,8 @@ Status: plan for review, 2026-10-09, branch `v2`.
 - New code is data and adapters only.
 - Nothing here goes into the v1 paper.
 
+**Status update 2026-10-21:** run; results in `reports/v2/ugaritic/results.md` (pre-registered 50% criterion failed: 33.9%, original rule; 32.0%, revised rule; natural text). The gold table is still secondary (Wikipedia citing Kogan 2011, not read).
+
 ## Question
 
 The v1 "related" tier uses a synthetic sister that is much closer to the hidden language than any

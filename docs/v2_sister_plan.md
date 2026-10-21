@@ -4,6 +4,8 @@ Status: approved 2026-10-09 with two additions (distant setting; strict and leni
 Nothing is built or run at the time of this commit. Methods stay frozen; the
 new sister and any scoring change enter `frozen-v2` only after the acceptance checks below pass.
 
+**Status update 2026-10-21:** calibration killed 2026-10-11 (`docs/v2_negative_results.md`, item 2); the `harsh` setting survives only as the entry-4 bracket row, and it is not a lower bound for real relatives (item 3).
+
 ## Why
 
 The v1 sister is far closer to the hidden language than a real relative. The Ugaritic-Hebrew anchor
