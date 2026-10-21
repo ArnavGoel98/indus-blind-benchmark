@@ -297,3 +297,46 @@ frozen functions; it does not score anything itself.
 corpora per cell (seeds 0-5) beside the primary seeds 0-2 tables, labelled as pooled. Descriptive
 95% intervals from a bootstrap over corpora (2,000 resamples) accompany the pooled means; no
 hypothesis test is made.
+
+## 8. Controls for reading the Task D results (unrelated reference, constant floor, solver budget, determinism)
+
+Declared 2026-10-21, before any of these controls is run. **Post hoc in motivation, pre-registered in
+procedure.** The motivation comes from results already seen: in `candidates_real`, when the revised rule
+chose an unrelated reference, Old Tamil alphabetic still scored about 12% against Malayalam's gold;
+and single-corpus scores are bimodal (`reports/v2/cd/per_corpus.md`). Methods are unchanged
+(`frozen-v2`); only the reference given and the number of EM restarts vary. Code:
+`reports/v2/cd/analysis/controls.py`, which calls only frozen functions.
+
+**Corpora.** As entries 6 and 7: Latin and Old Tamil, four script types, seeds 0-5, samplers A and B
+(48 corpora per hidden language), except C3 (seeds 0-2 only).
+
+**C1. Unrelated-reference control.** The `related` tier with one unrelated v1 language as the only
+reference (the same v1 reference object the `candidates` tiers use): for Old Tamil, Latin and Finnish;
+for Latin, Old Tamil and Finnish (Sanskrit is left out for Latin as a distant relative, and Sumerian
+because its syllable units are sign readings). Revised EM (3 restarts, 60 iterations) and the
+frequency-rank baseline. Each prediction is scored, strict and lenient, against each real relative's
+gold for that hidden language, exactly as the real relative's own run is scored.
+- *Reading, fixed now:* in a cell (relative, script type), the relative's added value is its mean
+  (seeds 0-5) minus the higher of the two unrelated-reference means on the same corpora and gold. The
+  relative **measurably helps** in that cell only if the added value is at least 5 points **and** the
+  relative beats the better unrelated reference in at least 9 of the 12 paired corpora. Otherwise the
+  cell is reported as "no measurable help over an unrelated reference".
+
+**C2. Constant-prediction floor.** For each corpus and gold, the strict score of the best single-unit
+answer (every sign mapped to one unit): the largest token share of one regular reflex. Computed exactly,
+no solver. A real-relative mean within 2 points of its floor is reported as "at the floor".
+
+**C3. Solver budget.** Revised EM with 10 restarts instead of 3 (the first three restarts are identical:
+same seed, same draws, best likelihood kept), `related` tier, the real relatives and `harsh`, Latin and
+Old Tamil, four script types, seeds 0-2, both samplers. Reading, fixed now: budget is **first-order**
+in a cell if the 10-restart mean differs from the 3-restart mean by more than 10 points; otherwise
+second-order. The primary results stay at 3 restarts.
+
+**C4. Determinism.** C3 also reruns revised EM at 3 restarts on the same corpora and tiers. Every value
+must equal the frozen-run record exactly; any mismatch is reported as a reproducibility failure.
+
+**Diagnostics** (recorded, no threshold): number of distinct units predicted, and the share of sign
+tokens assigned to the single most common predicted unit (a degeneracy index).
+
+**Reporting.** C1-C4 in `reports/v2/cd/controls.md`, with per-cell values and paired counts, beside
+the primary tables. Nothing in entries 1-7 changes.
