@@ -1,0 +1,59 @@
+{
+ "n_corpora": 120,
+ "checks": {
+  "R1": {
+   "pass": true,
+   "values": {
+    "malayalam/logographic": 0.0,
+    "malayalam/syllabic": 15.120782802770302,
+    "malayalam/logosyllabic": 7.2206870540293115,
+    "malayalam/alphabetic": 30.537695949932537,
+    "kannada/logographic": 0.0,
+    "kannada/syllabic": 4.788069410560075,
+    "kannada/logosyllabic": 5.021717170778499,
+    "kannada/alphabetic": 36.67740948090317,
+    "italian/logographic": 0.027685492801771874,
+    "italian/syllabic": 2.384416436302815,
+    "italian/logosyllabic": 3.034566863306545,
+    "italian/alphabetic": 23.77230663722861
+   }
+  },
+  "R2": {
+   "pass": true,
+   "values": {
+    "malayalam": 30.537695949932537,
+    "kannada": 36.67740948090317
+   }
+  },
+  "R3": {
+   "pass": true,
+   "values": {
+    "alphabetic": [
+     23.77230663722861,
+     26.80619384639643
+    ],
+    "syllabic": [
+     2.384416436302815,
+     9.391889168521498
+    ]
+   }
+  },
+  "R4": {
+   "pass": true,
+   "values": {
+    "malayalam": [
+     0,
+     24
+    ],
+    "kannada": [
+     10,
+     24
+    ],
+    "italian": [
+     6,
+     24
+    ]
+   }
+  }
+ }
+}
