@@ -31,6 +31,7 @@ targets: whatever distance each real pair has is the distance used (pre-registra
 | Sumerian | - | isolate | - | - | `none` tier only |
 
 **Data notes.**
+
 - The two Wikisource transcriptions state no source edition. They were accepted as clean by the
   project owner (2026-10-15): they carry the CC BY-SA site licence and do not link to the
   CC BY-NC-ND scan on Internet Archive.
@@ -44,6 +45,7 @@ segmentation, and Old Tamil phonemes. Malayalam and Kannada script are converted
 phonemes by deterministic tables, tested on hand-checked words. Every pair is measured as written
 and normalised, and the normalised value is primary, so that spelling conventions do not count as
 language distance (the Hebrew lesson of v2 entry 3):
+
 - Italian: accents stripped, j folded to i, silent h dropped, apostrophes split words.
 - Malayalam and Kannada: the voicing and aspiration that Tamil script cannot write are collapsed
   (kh, g, gh → k, and so on).
@@ -82,6 +84,7 @@ bootstrap interval, because resampling duplicates lines and so lowers the share 
 the interval is the conservative reading.
 
 **Reading.**
+
 - On these yardsticks the real relatives sit near the `harsh` setting and far from the v1-like
   sister. The v1 sister shares 4-12 times as many word forms as the real relatives.
 - The descendant is closer than the sister, as expected: Malayalam is closer to Old Tamil than
@@ -94,6 +97,7 @@ Verbatim runs of 6+ units occur in 1.4% (Malayalam), 1.6% (Kannada) and 2.5% (It
 windows, against 0.0-0.1% through shuffled maps and 0.3-0.4% for an unrelated language with a similar
 open syllable shape (the v1 Finnish hidden half, letters as they are). They are therefore signal,
 but not shared text:
+
 - 60-73% of them run across a word boundary;
 - they are mostly short shared morphs and phoneme strings (for example Malayalam *-kkoṇṭu*,
   *colliyatu*, *paricil*), and for Italian, cognate stems and Dante's Latinisms (*principi-*,
@@ -107,29 +111,31 @@ coincidental partner, not a shared loan.
 ## v2.4 Tasks C and D with real relatives
 
 **Design** (entries 1, 2, 4-6).
+
 - **Corpora:** the v1 Indus-point corpora (2,906 texts, mean length 4.6 signs), seeds 0-2, samplers
   A and B, four script types, with the corrected (content-split) sister: 6 corpora per hidden
   language and script type. They were regenerated from the same seeds; all 120 have corpus statistics
   identical to the v1 records (checked 2026-10-20).
 - **References:** the relative's whole text at the script's unit level, as v1 writes its
   references:
-  - phonemes for alphabetic scripts;
-  - CV syllables for syllabic scripts;
-  - word forms for logographic scripts;
-  - for logo-syllabic scripts, word forms for the relative's 250 most frequent words and syllables
+    - phonemes for alphabetic scripts;
+    - CV syllables for syllabic scripts;
+    - word forms for logographic scripts;
+    - for logo-syllabic scripts, word forms for the relative's 250 most frequent words and syllables
     otherwise.
 
-  No reference carries a correspondence table, so every score is before the cognate step.
+    No reference carries a correspondence table, so every score is before the cognate step.
+
 - **Tiers:** `related` gives the relative alone. `candidates` gives the relative plus the other v1
   languages.
 - **Methods:** the frozen EM solver with the revised selection rule (primary), the original rule,
   and the frequency-rank baseline.
 - **Scoring:**
-  - Strict (primary): a sign token is right when its predicted unit is the regular reflex of the
+    - Strict (primary): a sign token is right when its predicted unit is the regular reflex of the
     token's hidden value. A logogram is right only when its reflex is a word that occurs in the
     relative (a cognate). Many-to-one predictions are accepted.
-  - Lenient (secondary): any combination of attested reflexes counts.
-  - Every token counts. The share of tokens that have a strict reflex at all is reported as a
+    - Lenient (secondary): any combination of attested reflexes counts.
+    - Every token counts. The share of tokens that have a strict reflex at all is reported as a
     ceiling.
 - **Bracket rows:** beside the real relatives stand the v1 sister (upper bound, read from the v1
   records and scored with the v1 scorer before the cognate step) and `harsh` (lower bound).
@@ -166,30 +172,30 @@ For Latin, picking Sanskrit also counts as the right family (Indo-European), as 
 ## v2.5 What the results show
 
 1. **No real relative brings any script type to 50% on average.**
-   - In the `related` tier, 2 of the 72 real-relative runs reach 50% (3 relatives, 4 script types,
+      - In the `related` tier, 2 of the 72 real-relative runs reach 50% (3 relatives, 4 script types,
      6 corpora each). Both are alphabetic: one with Malayalam, one with Italian.
-   - With revised EM, none of the 72 reaches 50% in the `candidates` tier.
-   - Syllabic and logo-syllabic scripts reach 1.5-6.2% with a real relative.
-   - Logographic scripts reach about 0%. Only 17-51% of their tokens have a cognate in the relative
+      - With revised EM, none of the 72 reaches 50% in the `candidates` tier.
+      - Syllabic and logo-syllabic scripts reach 1.5-6.2% with a real relative.
+      - Logographic scripts reach about 0%. Only 17-51% of their tokens have a cognate in the relative
      at all (the strict ceiling).
 2. **Alphabetic scripts with a real relative land near the one real anchor.** Old Tamil with
    Malayalam or Kannada reaches 30-32%, close to Ugaritic with Hebrew (32-34%). These are two
    independent real cases on different data, with similar results.
 3. **The bracket does not hold** (post hoc, `docs/v2_negative_results.md`, item 3).
-   - Italian falls below the `harsh` "lower bound" for alphabetic, syllabic and logo-syllabic scripts
+      - Italian falls below the `harsh` "lower bound" for alphabetic, syllabic and logo-syllabic scripts
      (alphabetic 16.9% against 36.1%; below in 5 of 6 corpora).
-   - Kannada falls below `harsh` for syllabic and logo-syllabic scripts (5 of 6 corpora each).
-   - The real relatives therefore replace the bracket as the primary evidence for this tier. That
+      - Kannada falls below `harsh` for syllabic and logo-syllabic scripts (5 of 6 corpora each).
+      - The real relatives therefore replace the bracket as the primary evidence for this tier. That
      reporting decision was taken after seeing the results.
 4. **Measured closeness did not predict decipherability.** Italian is closer to Latin than `harsh`
    on every yardstick, yet harder for the solver. Kannada is further from Old Tamil than Malayalam,
    yet level on alphabetic Task D and less variable. The yardsticks measure how similar two texts
    are, not how hard a frequency-based solver finds the mapping.
 5. **Task C rarely finds the real relative.**
-   - The revised rule picks Italian for Latin in 6 of 24 corpora, Kannada for Old Tamil in 9 of 24,
+      - The revised rule picks Italian for Latin in 6 of 24 corpora, Kannada for Old Tamil in 9 of 24,
      and Malayalam in none; it mostly picks Latin or Finnish.
-   - This is the bias declared in pre-registration entry 1: the revised rule favours Latin.
-   - The original rule picks Sumerian in all 72 real-relative corpora, which gives 0% here.
+      - This is the bias declared in pre-registration entry 1: the revised rule favours Latin.
+      - The original rule picks Sumerian in all 72 real-relative corpora, which gives 0% here.
 6. **Single runs are unstable.** For the same relative and script type, scores range from 0.0% to
    56.0% between corpora (Malayalam, alphabetic). The EM solver often lands in a poor optimum
    (`reports/v2/cd/per_corpus.md`). Means over 6 corpora are therefore imprecise. No test was
@@ -213,9 +219,9 @@ comparison-based methods little help outside alphabetic scripts.
 5. **Normalisation choices.** Normalisation is fixed in code and tested, but it is a choice, and it
    moves the Kannada distance a great deal.
 6. **Scoring choices.**
-   - Task D is scored whatever reference the solver chose, as in v1, so a wrong reference can still
+      - Task D is scored whatever reference the solver chose, as in v1, so a wrong reference can still
      score by coincidence.
-   - The logogram cognate rule (the reflex must occur in the relative) makes logographic ceilings
+      - The logogram cognate rule (the reflex must occur in the relative) makes logographic ceilings
      low by construction.
 7. **v1 assumptions still apply.** The solver is told the script type (an oracle). The Ugaritic
    gold table is still secondary: Wikipedia, citing Kogan (2011), which we have not read.
@@ -228,17 +234,17 @@ comparison-based methods little help outside alphabetic scripts.
   Wikisource texts accepted as clean by the project owner. Gold tables committed with citations
   before any measurement.
 - **2026-10-17:**
-  - Yardstick table reported before any Task C/D run.
-  - Verbatim matches inspected (exploratory).
-  - Pre-registration entry 6 (harness details) proposed after a pipeline check on development seed
+    - Yardstick table reported before any Task C/D run.
+    - Verbatim matches inspected (exploratory).
+    - Pre-registration entry 6 (harness details) proposed after a pipeline check on development seed
     90 only. That check found a scorer error, fixed before the freeze: Sumerian numerals and
     written determinatives had been counted as unrecoverable.
 - **2026-10-18:** entry 6 declared; methods tagged `frozen-v2` (commit `4ce3e90`); final run of
   120 corpora with no errors.
 - **2026-10-20 (post hoc):**
-  - Per-corpus table added.
-  - The bracket failure recorded as negative result 3.
-  - Real relatives made the primary `related`-tier evidence; the bracket is secondary.
+    - Per-corpus table added.
+    - The bracket failure recorded as negative result 3.
+    - Real relatives made the primary `related`-tier evidence; the bracket is secondary.
 
 ## References (this section)
 
