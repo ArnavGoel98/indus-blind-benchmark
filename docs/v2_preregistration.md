@@ -262,3 +262,38 @@ frozen code into their own records file (`--relative estonian`).
 **Reporting.** Means over the 6 corpora per hidden language and script type, the number of corpora at
 or above 50% of tokens, `related` and `candidates` tables, sister and descendant pairs labelled, the
 bracket rows and the Ugaritic result beside them.
+
+## 7. Fresh-seed replication of the Task C/D run (seeds 3-5)
+
+Declared 2026-10-21, after the seeds 0-2 results of entry 6 were reported and before any corpus of
+this replication is generated. It changes no method, no score and no entry-6 result; the seeds 0-2
+tables stay primary.
+
+**Why.** The entry-6 cells rest on 6 corpora each and single corpora vary widely
+(`reports/v2/cd/per_corpus.md`). v1 replicated its headline experiments on fresh seeds 3-5; this
+does the same for v2.
+
+**Run.** The frozen `run_corpus` of `scripts/v2/cd_v2.py`, unchanged, on the Indus-point corpora of
+profiles `sister_v2_repl` (sampler A) and `sister_v2_gen2_repl` (sampler B): seeds 3-5, five
+languages, four script types, 120 corpora, the same tiers (`harsh`; Italian, Malayalam, Kannada), 3 EM
+restarts, 60 iterations. The corpora are checked against the statistics in the v1 records before
+any score is read. The upper bound is read from the same two profiles' records.
+
+**Where the code lives.** Post-hoc analysis, figure and replication-driver code lives under
+`reports/v2/cd/analysis/`, outside the code tree that the frozen-code check guards (everything
+outside `src/ibdb/data`, `reports/` and `docs/` must equal `frozen-v2`). The driver only calls the
+frozen functions; it does not score anything itself.
+
+**Replication checks, fixed now.** Each is evaluated on seeds 3-5 alone (revised EM, strict,
+`related` tier unless stated) and reported as replicated or not replicated:
+- R1. Every real-relative mean (each relative, each script type) is below 50%.
+- R2. The Old Tamil alphabetic means with Malayalam and with Kannada both lie within 10 points of
+  the Ugaritic result (32.0%), i.e. in 22.0-42.0%.
+- R3. Italian's mean is below `harsh`'s for alphabetic and for syllabic scripts.
+- R4. In `candidates_real`, the revised rule picks the real relative in fewer than half of the 24
+  corpora, for each of the three relatives.
+
+**Reporting.** The same tables for seeds 3-5 alone; R1-R4 with their values; then means over all 12
+corpora per cell (seeds 0-5) beside the primary seeds 0-2 tables, labelled as pooled. Descriptive
+95% intervals from a bootstrap over corpora (2,000 resamples) accompany the pooled means; no
+hypothesis test is made.
