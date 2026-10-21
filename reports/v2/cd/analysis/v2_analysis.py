@@ -9,6 +9,7 @@ seeds 0-2; sister_v2_repl, sister_v2_gen2_repl for seeds 3-5). Writes:
 - reports/v2/cd/page_data.json: per-corpus values for the review page.
 Usage (repository root): python reports/v2/cd/analysis/v2_analysis.py
 """
+import gzip
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -41,20 +42,41 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "axes.edgec
                      "figure.facecolor": "white", "axes.facecolor": "white"})
 
 
+ARCHIVE = CD / "records"          # gzipped copies committed with the reports (used when runs/ is absent)
+
+
+def _lines(name: str):
+    p = RUNS / name / "records.jsonl"
+    if p.exists():
+        return p.read_text().splitlines()
+    a = ARCHIVE / f"{name}.jsonl.gz"
+    return gzip.decompress(a.read_bytes()).decode().splitlines() if a.exists() else None
+
+
 def load_runs():
-    """[(record, seed-block)] for the v2 runs that exist."""
+    """Records of the v2 runs that exist (complete 120-corpus blocks only)."""
     out = []
     for d in ("v2_cd", "v2_cd_repl"):
-        p = RUNS / d / "records.jsonl"
-        if p.exists():
-            rs = [r for r in (json.loads(line) for line in p.read_text().splitlines()) if "error" not in r]
+        lines = _lines(d)
+        if lines:
+            rs = [r for r in (json.loads(line) for line in lines) if "error" not in r]
             if len({(r["lang"], r["script_type"], r["seed"], r["sampler"]) for r in rs}) == 120:   # complete blocks only
                 out += rs
     return out
 
 
 def load_upper():
-    """(lang, script, tier) -> method -> [(sampler, seed, before-cognate acc, family_correct, reference)]."""
+    """(lang, script, tier) -> method -> [(sampler, seed, before-cognate acc, family_correct, reference)].
+    Read from the v1 records in runs/; when they are absent, from the committed extract
+    (reports/v2/cd/records/v1_upper_bound.json.gz), which holds exactly the fields used here."""
+    ext = ARCHIVE / "v1_upper_bound.json.gz"
+    if not (RUNS / "sister_v2_main" / "records.jsonl").exists() and ext.exists():
+        out = defaultdict(lambda: defaultdict(list))
+        for k, ms in json.loads(gzip.decompress(ext.read_bytes())).items():
+            lang, st, tier = k.split("|")
+            for m, rows in ms.items():
+                out[(lang, st, tier)][m] = [tuple(x) for x in rows]
+        return out
     out = defaultdict(lambda: defaultdict(list))
     for seeds, profs in UPPER.items():
         for prof, smp in zip(profs, "AB"):
@@ -258,11 +280,17 @@ def fig_closeness(pool):
     plt.close(fig)
 
 
+def write_upper_extract(upper) -> None:
+    ext = ARCHIVE / "v1_upper_bound.json.gz"
+    data = {"|".join(k): {m: [list(x) for x in rows] for m, rows in ms.items()} for k, ms in upper.items()}
+    ext.write_bytes(gzip.compress(json.dumps(data, sort_keys=True).encode(), mtime=0))
+
+
 def load_controls():
-    p = RUNS / "v2_controls" / "records.jsonl"
-    if not p.exists():
+    lines = _lines("v2_controls")
+    if not lines:
         return None
-    rs = [r for r in (json.loads(line) for line in p.read_text().splitlines()) if "error" not in r]
+    rs = [r for r in (json.loads(line) for line in lines) if "error" not in r]
     keys = {(r["lang"], r["script_type"], r["seed"], r["sampler"]) for r in rs}
     return rs if len(keys) == 96 else None                        # complete runs only (entry 8)
 
@@ -428,6 +456,8 @@ def page_data(recs, upper, pool, ctl=None):
 def main():
     recs = load_runs()
     upper = load_upper()
+    if (RUNS / "sister_v2_main" / "records.jsonl").exists():
+        write_upper_extract(upper)
     rep = replication(recs, upper) if any(r["seed"] >= 3 for r in recs) else None
     pool = pooled(recs, upper)
     fig_per_corpus(recs, upper, pool)
