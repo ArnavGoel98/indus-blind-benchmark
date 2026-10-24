@@ -1,3 +1,6 @@
 19c6675c33577e8fb15f47eddb732999e1f960ee32ee9dd1aae68aea7979ecfa  v2_cd.jsonl (120 records, uncompressed)
 6109931ce7b2d7d3caab80c110c107f9b38406ce991709a9b9ae36d560a0a9e7  v2_cd_repl.jsonl (120 records, uncompressed)
 1073f9b351f27f6d7506b20b84f5eb5372dbaa9d0cabc1832910fc725de00c76  v2_controls.jsonl (96 records, uncompressed)
+d8634060685ed7af9105b87a67bed54cdff91ad1ea90c470cd9f8ee94ce43791  v2_cd_estonian.jsonl (24 records, uncompressed)
+a79576b39be51ed30341e92e6a8e6d76311c11c4cfe1d2c5de70cfc9e62fa350  v2_cd_repl_estonian.jsonl (24 records, uncompressed)
+eead23c0754193b5917c52fbace831ad2d74a26399f483ed6f6bcaf21e49f5cb  v2_controls_estonian.jsonl (48 records, uncompressed)

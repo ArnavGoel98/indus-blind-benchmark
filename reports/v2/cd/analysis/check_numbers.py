@@ -1,8 +1,8 @@
 """Provenance check for the v2 draft section: every decimal number in the draft must appear in a source report.
 
 Sources are the generated reports (reports/v2/cd/*.md, reports/v2/real_relatives/*.md, reports/v2/ugaritic/results.md)
-and the yardstick and sister reports they quote. Numbers in headings, section labels (v2.4), dates and code paths
-are skipped. Unmatched numbers are printed for a human to resolve; exit code 1 if any remain.
+and the yardstick and sister reports they quote. Numbers in headings, section labels (v2.4), dates, DOIs and code
+paths are skipped. Unmatched numbers are printed for a human to resolve; exit code 1 if any remain.
 Usage (repository root): python reports/v2/cd/analysis/check_numbers.py
 """
 import re
@@ -24,7 +24,7 @@ def main() -> int:
     for i, line in enumerate(DRAFT.read_text(encoding="utf-8").splitlines(), 1):
         if line.startswith("#"):
             continue
-        clean = re.sub(r"`[^`]*`|v2\.\d+|\d{4}-\d{2}-\d{2}|entry \d+(\.\d+)?|pp?\. [\d\-, ]+|§+[\d\-, ]+", " ", line)
+        clean = re.sub(r"`[^`]*`|v2\.\d+|\d{4}-\d{2}-\d{2}|entry \d+(\.\d+)?|pp?\. [\d\-, ]+|§+[\d\-, ]+|doi:\S+", " ", line)
         for n in re.findall(r"(?<![\d.\w])\d+\.\d+(?![\d.])", clean):
             if n not in have:
                 missing.append((i, n, line.strip()[:100]))

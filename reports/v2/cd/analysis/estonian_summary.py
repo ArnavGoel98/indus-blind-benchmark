@@ -123,7 +123,7 @@ def main() -> None:
         wins = sum(relv[k] > unrel[best][k] for k in relv)
         mean05 = c[f"{EM}|s05"]["mean"]
         res["readings"][st] = {
-            "E1_at_floor": bool(abs(mean05 - c["floor|s05"]["mean"]) <= 2), "E1_gap": mean05 - c["floor|s05"]["mean"],
+            "E1_at_floor": bool(mean05 - c["floor|s05"]["mean"] <= 2), "E1_gap": mean05 - c["floor|s05"]["mean"],  # as controls.md
             "E2_best_unrelated": best, "E2_added": float(added), "E2_wins": int(wins),
             "E2_helps": bool(added >= 5 and wins >= 9),
             "E3_minus_harsh": c[f"{EM}|s02"]["mean"] - c["harsh|s02"]["mean"],
@@ -149,11 +149,11 @@ def write_md(res: dict) -> None:
                  f"{pct(c[EMO + '|s02']['mean'])} | {pct(c[FR + '|s02']['mean'])} | {pct(c['lenient|s02']['mean'])} | "
                  f"{pct(c['ceiling|s02']['mean'])} | {pct(c['harsh|s02']['mean'])} | {pct(c['upper|s02']['mean'])} |")
     L += ["", "## Readings (fixed in entry 9 before the run)", "",
-          "| Script | E1: floor (C2), pooled | E1: at the floor? | E2: better unrelated ref., mean | E2: added value; paired wins | E2: measurably helps? | E3: minus `harsh` (0-2) | E4: picks Estonian (of 6) |",
+          "| Script | E1: floor (C2), pooled | E1: reading (gap) | E2: better unrelated ref., mean | E2: added value; paired wins | E2: measurably helps? | E3: minus `harsh` (0-2) | E4: picks Estonian (of 6) |",
           "|---|---|---|---|---|---|---|---|"]
     for st, r in Rd.items():
         c = C[st]
-        L.append(f"| {st} | {pct(c['floor|s05']['mean'])} | {'yes' if r['E1_at_floor'] else 'no'} ({r['E1_gap']:+.1f}) | "
+        L.append(f"| {st} | {pct(c['floor|s05']['mean'])} | {'at the floor' if r['E1_at_floor'] else 'above the floor'} ({r['E1_gap']:+.1f}) | "
                  f"{r['E2_best_unrelated'].capitalize()}, {pct(c['unrel_' + r['E2_best_unrelated'] + '|s05']['mean'])} | "
                  f"{r['E2_added']:+.1f}; {r['E2_wins']} of 12 | {'yes' if r['E2_helps'] else 'no'} | "
                  f"{r['E3_minus_harsh']:+.1f} | {r['E4_picks']} |")
@@ -161,7 +161,7 @@ def write_md(res: dict) -> None:
           f"{sum(r['E4_picks'] for r in Rd.values())}). References chosen in `candidates_real:estonian`: "
           + "; ".join(f"{st}: " + ", ".join(f"{k} {v}" for k, v in sorted(C[st]['cand_refs|s02'].items(), key=lambda kv: -kv[1]))
                       for st in C) + ".", "",
-          "## Scorer diagnostics (entry 9; no solver)", "",
+          "*At the floor* = no more than 2 points above the C2 floor, as in `controls.md` (entry 8).", "", "## Scorer diagnostics (entry 9; no solver)", "",
           "| Script | Ceiling | Tokens whose reflex silently drops a no-source letter | Ceiling reachable by the solver (top 250 units) |",
           "|---|---|---|---|"]
     for st, d in D.items():

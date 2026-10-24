@@ -1,10 +1,11 @@
 # DRAFT v2 section (for review; not for deposit): real related languages written in different texts
 
-Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights, on branch `v2`,
+Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights and 2026-10-24
+with Finnish-Estonian (entry 9), on branch `v2`,
 from the reports named in each paragraph. It does not change any v1 number or the v1 paper
 (`paper-v1`). Every number here is a v2 result, and every decimal in it is checked against a
 generated report (`reports/v2/cd/analysis/check_numbers.py`). Methods are frozen at `frozen-v2`
-(commit `4ce3e90`); pre-registration entries 1-8 are in `docs/v2_preregistration.md`. Each claim
+(commit `4ce3e90`); pre-registration entries 1-9 are in `docs/v2_preregistration.md`. Each claim
 is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims, a decipherment.
 
 ## Key findings
@@ -24,6 +25,10 @@ is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims,
 - **Bracket failed** for Latin: Italian scores below the synthetic `harsh` setting on both seed blocks,
   although it is closer to Latin on every yardstick, and more restarts widen the gap (`harsh` 43.6%,
   Italian 18.1%). Post hoc, negative result 3.
+- **+20.1 points** for Finnish-Estonian (sister), alphabetic, over the better unrelated reference,
+  ahead in 11 of 12 paired corpora (31.1% pooled): the clearest case of a relative helping. It still falls below `harsh` (35.9% on seeds 0-2, 41.2% pooled), and on syllabic and
+  logo-syllabic scripts it is at the constant-answer floor. Its gold is weaker than the others':
+  13 of 27 rows, built from the word pairs Pajusalu (2012) prints. Entry 9; reported separately.
 - **0.0%** logographic recovery with every real relative, below a constant answer (8.6-17.5%). The
   solver can only output the reference's 250 most frequent words, and the hidden language's frequent
   words have rare cognates: Latin *et* is rank 2,592 in Dante. Exploratory.
@@ -40,6 +45,7 @@ is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims,
 | Logographic zeros are partly a solver artefact | Reachability check | Exploratory | Computed exactly, no solver | A solver without a unit cap |
 | Solver budget is second-order except for one cell | C3 | Pre-registered | Seeds 0-2 only | More restarts or another optimiser |
 | The runs are deterministic | C4 | Pre-registered | 120 of 120 identical | - |
+| Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | One pair; 12 corpora; gold has a regular reflex for 13 of 27 rows | A fuller Finnish-Estonian gold source; another Estonian text |
 
 ## v2.1 Why real relatives
 
@@ -63,8 +69,8 @@ targets: whatever distance each real pair has is the distance used (pre-registra
 | Latin (Caesar, Vergil) | Italian | descendant, of spoken (Vulgar) Latin rather than the Classical written language (Grandgent 1907: §§3-4) | Dante, *La Divina Commedia*, Project Gutenberg #1000 (public domain in the USA) | Grandgent (1907), section per row | measured |
 | Old Tamil (Sangam anthologies) | Malayalam | descendant: "a very ancient offshoot of Tamil… not a sister of Tamil, but a daughter" (Caldwell 1875: 23-24; Gundert, reported there, disagreed) | Ezhuthachan, *Adhyātma Rāmāyaṇam Kiḷippāṭṭu*, Malayalam Wikisource (CC BY-SA 4.0) | Caldwell (1875), pages per row | measured |
 | Old Tamil | Kannada | sister: one of Tamil's "sister idioms" (Caldwell 1875: vi), a separate cultivated language (33-34) | Kumāravyāsa, *Karṇāṭa Bhārata Kathāmañjari*, Kannada Wikisource (CC BY-SA 4.0) | Caldwell (1875), pages per row | measured |
-| Finnish (Kalevala) | Estonian | sister | Kreutzwald, *Kalevipoeg*, Estonian Wikisource, cantos I-XX | Pajusalu (2012), not yet read | text parsed; gold pending |
-| Sanskrit (Rāmāyaṇa) | Pali | descendant | - | - | blocked: no text with clear terms |
+| Finnish (Kalevala) | Estonian | sister (both Finnic; Estonian is Southern Finnic, Finnish Northern: Pajusalu 2012: 202-203, 217) | Kreutzwald, *Kalevipoeg*, Estonian Wikisource, cantos I-XX (CC BY-SA 4.0 site licence; text public domain) | Pajusalu (2012), from the word pairs it prints; Kallio (2016) as cross-check | measured (entry 9) |
+| Sanskrit (Rāmāyaṇa) | Pali | descendant | - | - | blocked: SuttaCentral asks that its texts not be used for AI datasets "or similar"; permission to be requested |
 | Sumerian | - | isolate | - | - | `none` tier only |
 
 **Data notes.**
@@ -104,13 +110,28 @@ language distance (the Hebrew lesson of v2 entry 3):
 - Italian: accents stripped, j folded to i, silent h dropped, apostrophes split words.
 - Malayalam and Kannada: the voicing and aspiration that Tamil script cannot write are collapsed
   (kh, g, gh → k, and so on).
+- Estonian: letters as units; b, d, g written p, t, k, since in native words they spell short lenis
+  stops (Pajusalu 2012: 213). Estonian writes a long stop after a long vowel single where Finnish
+  writes it double (*saatma*, Finnish *saattaa*); this is left as written, which can only make the
+  pair look less alike.
 
 **Gold tables.** Each hidden unit has a regular reflex (its outcome where no conditioned change
 applies) and a list of attested reflexes, with the section or page of the source for every row.
 Rows the source does not cover are marked "no source" and are unrecoverable under strict scoring
 (Old Tamil h, s, ḵ, ṣ for both Dravidian relatives). Both sources are over a century old; their
 basic consonant correspondences are standard, but details are dated. No gold value comes from
-Wikipedia. On 2026-10-21 four rows were spot-checked against the scanned texts, and each citation
+Wikipedia.
+
+The Finnish-Estonian gold is built differently, because its named source, Pajusalu (2012), describes
+the innovations of the Southern Finnic languages and has no correspondence table. The table uses only
+the ten Finnish-North Estonian word pairs that paper prints (for example *sisar* ~ *sõsar*, *kato* ~
+*kadu*, *kolmas* ~ *kolmas*; pp. 208-218), aligned letter by letter in the code. A letter kept in a
+pair gives the regular reflex; a change the paper describes as an innovation (õ for *a, e, i, o*;
+non-initial *o* > *u*) is attested only. That gives a regular reflex for 13 of 27 rows. Finnish *p, v,
+j, y, ö* and *ä* have no kept example and are "no source", although *y* and Estonian *ü* spell the same
+sound: no general knowledge was used. The rule was fixed in entry 9 before any measurement.
+
+On 2026-10-21 four rows were spot-checked against the scanned texts, and each citation
 holds: Kannada initial *p* > *h* (Caldwell 1875: 53), *talei* = Malayalam *tala* (p. 19), Malayalam as
 an offshoot of Tamil (pp. 23-24) and Latin *x* > *s* (Grandgent 1907: §255). This is a spot check, not
 a full audit.
@@ -134,11 +155,18 @@ bootstrap over the relative's lines, 200 replicates, 95%.*
 | Latin-Italian | descendant | alphabet | 0.104 (0.101-0.108) | 11.8% (9.6-11.5%) | 0.6% (0.1-0.7%) | 1.9% (0.7-3.3%) |
 | Old Tamil-Malayalam | descendant | abugida | 0.139 (0.137-0.145) | 5.7% (4.0-5.2%) | 0.0% (0.0-0.0%) | 1.8% (0.4-2.4%) |
 | Old Tamil-Kannada | sister | abugida | 0.180 (0.178-0.186) | 4.7% (3.8-5.1%) | 0.0% (0.0-0.1%) | 1.0% (0.4-2.4%) |
+| Finnish-Estonian† | sister | alphabet | 0.184 (0.180-0.189) | -7.9% (-16.2--1.3%) | -1.8% (-3.2--0.4%) | 1.4% (0.2-1.8%) |
+| Finnish, v1-like sister* / `harsh` | synthetic | as hidden | 0.004 / 0.154 | 53.9% / 4.8% | 10.4% / 0.2% | 19.8% / 3.5% |
 | Latin, v1-like sister* / `harsh` | synthetic | as hidden | 0.006 / 0.135 | 53.1% / 7.8% | 7.1% / 1.1% | 12.4% / 2.4% |
 | Old Tamil, v1-like sister* / `harsh` | synthetic | as hidden | 0.002 / 0.185 | 57.6% / 3.6% | 8.5% / 0.1% | 17.8% / 1.8% |
 
 \* The yardstick stand-in for the v1 sister: sister-v4 with v1-like settings (`reports/v2/sister/`), not
 the v1 sister object used in the Task D tables.
+† Not comparable with the other rows (entry 9; `reports/v2/real_relatives/estonian.md`). The yardstick
+code deletes letters whose reflex is "no source", and 12.6% of the hidden Finnish letters are, so mapped
+words are cut short and match less often than chance. An exploratory check (post hoc,
+`estonian_sensitivity.md`) that fills those rows from general knowledge gives 0.117 bits and 5.3%
+shared word forms, near Latin-Italian; it is not a result and changes no gold value.
 
 For Latin-Italian and Malayalam the plug-in estimate of shared word forms lies above its own
 bootstrap interval, because resampling duplicates lines and so lowers the share of distinct forms;
@@ -165,6 +193,10 @@ but not shared text:
   *colliyatu*, *paricil*), and for Italian, cognate stems and Dante's Latinisms (*principi-*,
   *cantando*, *crudel-*);
 - no match is a phrase that respects word boundaries on both sides, so they are not shared formulae.
+
+For Finnish-Estonian the share is 1.2% (shuffled maps: 0.6% at the 95th percentile; unrelated Latin
+letters: 0.3%), and no match spans two whole words. Kreutzwald modelled *Kalevipoeg* on the *Kalevala*,
+so shared formulas were possible; none is found at this level.
 
 In Malayalam about a quarter of the matches (35 of 143) exist only after normalisation. By
 inspection, most of these pair a native Tamil string with a Sanskrit loanword: the loan is a
@@ -272,6 +304,32 @@ in `pooled.md`).
 Bar: mean with 95% bootstrap interval. Band (alphabetic): the Ugaritic anchor re-cut to mean length
 4.6. Scores are often near 0% or near 50% for the same relative and script type.*
 
+**Finnish-Estonian (entry 9, pre-registered; `reports/v2/cd/estonian.md`).** The same harness on
+Finnish with *Kalevipoeg*, run after the yardsticks were reported: 24 corpora on seeds 0-2 (primary), 24
+on seeds 3-5 and 48 for the controls, all on the frozen code, with no errors. Its gold has a regular
+reflex for 13 of 27 rows, so it is reported in its own table and not pooled with the other pairs.
+
+*Table v2.6. Finnish-Estonian, Task D, `related` tier, revised EM, strict (%). Pooled: seeds 0-5 with
+a 95% bootstrap interval over corpora.*
+
+| Script | Seeds 0-2 | Pooled 0-5 | Ceiling | `harsh`, seeds 0-2 | v1 sister, seeds 0-2 | Task C: picks Estonian (of 6) |
+|---|---|---|---|---|---|---|
+| Logographic | 0.0 | 0.2 (0.0-0.5) | 22.4 | 0.0 | 1.0 | 0 |
+| Syllabic | 9.3 | 8.4 (4.8-12.5) | 96.5 | 19.9 | 43.6 | 6 |
+| Logo-syllabic | 3.9 | 3.8 (2.2-5.3) | 60.5 | 8.6 | 21.2 | 6 |
+| Alphabetic | 29.8 | 31.1 (25.1-36.3) | 86.5 | 35.9 | 65.3 | 3 |
+
+- No Estonian run reaches 50%; the highest is 44.1% (alphabetic). Alphabetic runs range from 5.3% to
+  44.1%.
+- Estonian falls below `harsh` in every script type but logographic (E3), as Italian does on
+  alphabetic and syllabic scripts: the bracket fails for a sister pair too.
+- The syllabic ceiling (96.5%) is inflated by the frozen scorer: when a syllable contains a no-source
+  consonant, the consonant is dropped from its reflex instead of making the token unrecoverable. This
+  affects up to 13.6% of syllabic tokens and 10.0% of logo-syllabic tokens, and none on alphabetic
+  scripts (diagnostic fixed in entry 9).
+- In `candidates_real`, the revised rule picks Estonian in all 12 syllabic and logo-syllabic corpora,
+  in 3 of 6 alphabetic ones (Latin in the rest) and in none of the logographic ones (E4: 15 of 24).
+
 ## v2.5 Controls: is the relative doing the work?
 
 Pre-registration entry 8 fixed four controls and their readings before they ran (post hoc in
@@ -292,10 +350,16 @@ unrelated reference and is ahead in at least 9 of the 12 paired corpora.
   against the relatives' gold. Its transcription shares many letters with ours (*a, i, u, k, t, p, n*),
   so coincidence alone reaches that level.
 
+- Estonian (entry 9, same rule, Latin and Old Tamil as the unrelated references) helps on alphabetic
+  scripts: 31.1% against Latin 11.1%, +20.1 points, ahead in 11 of 12 paired corpora. It does not help
+  on syllabic (+4.6; 7 of 12), logo-syllabic (+2.2; 8 of 12) or logographic scripts (+0.2).
+
 **C2. Constant-answer floor.** Mapping every sign to the single most common regular reflex scores
 14.2-15.8% on alphabetic scripts. The real relatives stay above it there. On logographic scripts
 the floor is 8.6-17.5% and every real relative scores 0.0%; on syllabic and logo-syllabic scripts,
-Kannada and Italian are at or below it.
+Kannada and Italian are at or below it. For Estonian the floor is 12.9% (alphabetic), 13.8%
+(syllabic), 9.6% (logo-syllabic) and 5.8% (logographic): Estonian is above it only on alphabetic
+scripts.
 
 **C3. Solver budget.** With 10 EM restarts instead of 3 (the first three identical), only Old
 Tamil-Malayalam, alphabetic, moves by more than 10 points: 30.4% to 41.9%. Kannada alphabetic falls
@@ -334,7 +398,9 @@ added value; \* = helps by the entry-8 rule.*
 2. **Most of the alphabetic recovery does not need the relative.** An unrelated Finnish reference
    recovers 14.0-19.7% against the relatives' gold, and a constant answer 14.2-15.8%. The relatives
    add 6.3-15.1 points over the better unrelated reference on alphabetic scripts, and by the
-   pre-registered rule help measurably in 2 of 12 cells. Italian helps in none.
+   pre-registered rule help measurably in 2 of 12 cells. Italian helps in none. Finnish-Estonian is
+   the exception on alphabetic scripts (+20.1 points, 11 of 12; entry 9), the largest added value of
+   any pair, with a gold that covers fewer letters.
 3. **The Old Tamil alphabetic scores are in the range of the Ugaritic anchor** (30.5% and 34.4%
    against 24.6-29.9% like-for-like), as pre-registered check R2 required. This is a consistency
    check, not corroboration: the conditions differ (section v2.7).
@@ -342,6 +408,9 @@ added value; \* = helps by the entry-8 rule.*
     - Italian falls below `harsh` on both seed blocks for alphabetic and syllabic scripts (pooled
       alphabetic 20.3% against 31.5%), and more restarts widen the gap.
     - Kannada falls below `harsh` for syllabic and logo-syllabic scripts on both seed blocks.
+    - Estonian, a sister of Finnish, falls below `harsh` for syllabic, logo-syllabic and alphabetic
+      scripts (alphabetic 29.8% against 35.9% on seeds 0-2; entry 9, E3). This is a fourth pair with
+      the same pattern, so the failure is not specific to a descendant relationship.
     - The real relatives therefore replace the bracket as the primary evidence for this tier. That
       reporting decision was taken after seeing the results.
 5. **Closeness on the yardsticks did not predict Task D** (exploratory; Figure v2.3). Italian is
@@ -354,7 +423,7 @@ added value; \* = helps by the entry-8 rule.*
 7. **Task C rarely finds the real relative** (pre-registered check R4, replicated). The revised rule
    picks it in 0 (Malayalam), 9 and 10 (Kannada) and 6 and 6 (Italian) of 24 corpora on the two seed
    blocks, mostly preferring Latin or Finnish; the original rule picks Sumerian in all 72 corpora of
-   seeds 0-2.
+   seeds 0-2. Estonian is picked in 15 of 24 corpora (entry 9, E4), the most of any real relative.
 8. **Single runs are unstable, and budget matters for one cell.** Scores for the same relative and
    script type range from 0.0% to 66.0% between the 12 corpora (Malayalam, alphabetic), and 10
    restarts raise Malayalam alphabetic by 11.5 points.
@@ -396,9 +465,10 @@ Inside them the added value is modest and unstable.
 
 ## v2.8 Limitations of this section
 
-1. **Two hidden languages only.** Latin and Old Tamil; Old Tamil has both relatives, so the two
-   Dravidian rows share their hidden side and their gold source. Finnish-Estonian is waiting for its
-   gold source and will run on the same frozen code. Sanskrit has no relative with clear terms.
+1. **Three hidden languages only.** Latin, Old Tamil and Finnish; Old Tamil has both relatives, so
+   the two Dravidian rows share their hidden side and their gold source. Sanskrit has no relative with
+   clear terms: SuttaCentral's licensing page asks that its texts not be used for AI datasets "or
+   similar", and permission has not been requested yet (`docs/v2_pali_permission_request.md`).
 2. **Relationship and text are confounded.** Each relative is one text of one genre and period;
    the effect of the relationship cannot be separated from that of the text.
 3. **Old gold sources.** Caldwell (1875) and Grandgent (1907) are cited per row, gaps are marked
@@ -434,6 +504,15 @@ Inside them the added value is modest and unstable.
     occurs anywhere in the relative, while the solver can only predict among the reference's 250
     most frequent units. For logographic scripts the reported ceilings overstate what the solver
     could reach (section v2.5). This was found after the run and is reported, not corrected.
+14. **A thinner gold for Finnish-Estonian.** Its source has no correspondence table, so the gold
+    comes from ten printed word pairs and has a regular reflex for 13 of 27 rows. The frozen scorer
+    and yardstick code treat "no source" like "no reflex": a no-source letter is deleted rather than
+    making the token unrecoverable. This makes the word-level yardsticks negative and inflates the
+    syllabic and logo-syllabic ceilings (by up to 13.6% and 10.0% of tokens); alphabetic scores are
+    unaffected. The same holds, on a much smaller scale, for the Tamil tables' no-source letters.
+15. **Frozen syllable cutter.** It uses the hidden language's vowel set, so Estonian õ and ü are cut
+    as consonants in the Estonian syllabic reference. Neither is the regular reflex of any Finnish
+    letter in this gold.
 
 ## v2 analysis history (dated)
 
@@ -468,19 +547,38 @@ Inside them the added value is modest and unstable.
     - Pre-registration entry 8 (controls C1-C4) declared and pushed (commit `29de37e`) before any
       control ran; post hoc in motivation. Run records archived with SHA-256 sums.
 
+- **2026-10-24:**
+    - Finnish-Estonian done directly on the project owner's instruction. Pajusalu (2012) taken from
+      the Internet Archive copy of the society's URL (which now redirects) and read in full: it has
+      no correspondence table. Pre-registration entry 9 (gold rule, normalisation, runs, readings
+      E1-E4, a scorer diagnostic) declared and pushed (commit `30471b0`) before any measurement.
+    - Yardsticks and verbatim check reported first; the negative word-level yardsticks traced to the
+      deletion of no-source letters (exploratory, post hoc). The entry-9 row count corrected (13 of
+      27 rows with a regular reflex, not 14) before any Task C/D result was read.
+    - Task C/D: 96 corpora, no errors. E1 was evaluated as in `controls.md` (at the floor = no more
+      than 2 points above it).
+    - Pali: SuttaCentral's terms read; still blocked; a permission request drafted, not sent.
+
 ## References (this section)
 
 - Caldwell, R. (1875). *A Comparative Grammar of the Dravidian or South-Indian Family of
   Languages* (2nd ed.). London. Internet Archive `in.ernet.dli.2015.459581`.
 - Grandgent, C. H. (1907). *An Introduction to Vulgar Latin*. Boston. Internet Archive
   `introductiontovu00gran`.
+- Kallio, P. (2016). Historical phonology from Proto-Finnic to Proto-Livonian. *Eesti ja
+  soome-ugri keeleteaduse ajakiri / Journal of Estonian and Finno-Ugric Linguistics* 7(1), 39-65.
+  doi:10.12697/jeful.2016.7.1.02.
 - Knight, K., Nair, A., Rathod, N., & Yamada, K. (2006). Unsupervised analysis for decipherment
   problems. In *Proceedings of the COLING/ACL 2006 Main Conference Poster Sessions* (pp. 499-506).
+- Pajusalu, K. (2012). Phonological innovations of the Southern Finnic languages. In R. Grünthal &
+  P. Kallio (eds.), *A Linguistic Map of Prehistoric Northern Europe* (Suomalais-Ugrilaisen Seuran
+  Toimituksia 266, pp. 201-224). Helsinki: Société Finno-Ougrienne.
 - Snyder, B., Barzilay, R., & Knight, K. (2010). A statistical model for lost language decipherment.
   In *Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics*
   (pp. 1048-1057).
 - Texts: Dante, *La Divina Commedia*, Project Gutenberg #1000. Ezhuthachan, *Adhyātma Rāmāyaṇam
-  Kiḷippāṭṭu*, Malayalam Wikisource. Kumāravyāsa, *Karṇāṭa Bhārata Kathāmañjari*, Kannada Wikisource.
+  Kiḷippāṭṭu*, Malayalam Wikisource. Kumāravyāsa, *Karṇāṭa Bhārata Kathāmañjari*, Kannada Wikisource. Kreutzwald, *Kalevipoeg*, Estonian
+  Wikisource. Finnish: *Kalevala*, Project Gutenberg #7000.
   Ugaritic: EUPT (Göttingen), CC BY-SA 4.0. Hebrew: Open Scriptures Hebrew Bible (WLC), CC BY 4.0
   annotations, text public domain.
 - Not read, cited only as the source of a secondary table: Kogan (2011), via Wikipedia, "Ugaritic

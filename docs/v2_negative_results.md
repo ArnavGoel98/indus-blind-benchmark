@@ -155,3 +155,11 @@ unchanged.
   from 24.6-29.9% to 38.4-43.0% (texts re-cut to mean length 4.6) (`reports/v2/ugaritic/results.md`).
   That supports, but does not show, the second reason: the relative's text differs in genre and
   period from the hidden text, and the `harsh` sister does not.
+
+**Evidence added 2026-10-24 (entry 9, pre-registered reading E3).** A fourth pair, and the first
+true sister pair in an alphabet on both sides, shows the same pattern: Estonian falls below the Finnish
+`harsh` setting on syllabic (9.3% against 19.9%), logo-syllabic (3.9% against 8.6%) and alphabetic
+scripts (29.8% against 35.9%), seeds 0-2 (`reports/v2/cd/estonian.md`). The failure is therefore not
+specific to a descendant relationship or to the Dravidian conversion tables. On alphabetic scripts
+Estonian nevertheless helps measurably over an unrelated reference (+20.1 points; 11 of 12), so a
+relative can help and still fall below `harsh`.
