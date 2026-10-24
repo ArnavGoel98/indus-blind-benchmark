@@ -19,8 +19,22 @@ Latin -> Italian (descendant)
 
 Finnish -> Estonian (sister)
   Text: Kreutzwald, Kalevipoeg, Estonian Wikisource cantos I-XX (CC BY-SA 4.0 site licence; text
-  public domain), fetched 2026-10-15. Parsed here for size only: its gold source (Pajusalu 2012) is
-  not reachable from this environment yet, so no Finnish-Estonian yardstick is computed.
+  public domain), fetched 2026-10-15. One text per verse line.
+  Units: letters, one character each (the Finnish profile is letters; Estonian o-tilde and u-umlaut
+  are units of their own).
+  Spelling: 'as_written' lowercases and splits words at anything that is not a letter.
+  'normalised' (primary) also writes b, d, g as p, t, k: in native Estonian words these letters
+  spell short lenis stops, not voiced ones (Pajusalu 2012: 213), which Finnish writes p, t, k.
+  Nothing else is changed (pre-registration entry 9).
+  Gold: K. Pajusalu, "Phonological innovations of the Southern Finnic languages", in R. Gruenthal and
+  P. Kallio (eds.), A Linguistic Map of Prehistoric Northern Europe, Suomalais-Ugrilaisen Seuran
+  Toimituksia 266 (Helsinki, 2012), 201-224; read in full. It has no correspondence table, so the
+  table is built from the ten Finnish-North Estonian word pairs it prints (FE_PAIRS, aligned by
+  hand): a letter kept in a pair gives the regular reflex; a change the paper describes as an
+  innovation, or one seen only in a non-initial syllable, is attested only. A letter with no kept
+  example is "no source" (entry 5): p, v, j, y, oe, d, g and the loan letters. P. Kallio, "Historical
+  phonology from Proto-Finnic to Proto-Livonian", ESUKA-JEFUL 7(1) (2016), 39-65, is the cross-check
+  (it agrees where it overlaps; it prints no Finnish-Estonian pairs). Rules: entry 9.
 """
 
 from __future__ import annotations
@@ -128,7 +142,124 @@ def latin_italian_map() -> tuple[dict[str, str | None], dict[str, set]]:
     return regular, attested
 
 
-# ------------------------------------------------------------------ Kalevipoeg (size only for now)
+# ------------------------------------------------------------------ Finnish -> Estonian (entry 9)
+
+GOLD_SOURCES_FE = {
+    "pajusalu2012": {"url": "https://www.sgr.fi/sust/sust266/sust266_pajusalu.pdf",
+                     "retrieved_from": "https://web.archive.org/web/2020id_/https://www.sgr.fi/sust/sust266/sust266_pajusalu.pdf",
+                     "note": "the society's URL now redirects to its home page; the archived copy is the society's PDF",
+                     "sha256": "9be38b56fca0ff90de4522de993a8a6aee60c119efa8fa0d74ed7918c84263fc", "fetched": "2026-10-24"},
+    "kallio2016": {"url": "https://ojs.utlib.ee/index.php/jeful/article/download/jeful.2016.7.1.02/9989/",
+                   "doi": "10.12697/jeful.2016.7.1.02",
+                   "sha256": "cf0e90ce7cf5ff33e213aaa85958f29ea65c5fb1bb1a34c9f50380fa0fc00329", "fetched": "2026-10-24"},
+}
+
+# Every Finnish-North Estonian word pair printed in Pajusalu (2012), aligned letter by letter.
+# kind: "kept" (same letter after normalisation), "innov" (a change the paper describes, or one in a
+# non-initial syllable), "lost" (no Estonian letter), "added" (no Finnish letter). The Kihnu pairs lapset ~ lapsoed and olimme ~
+# olimoe (p. 217) are left out: they show velar vowel harmony, which Table 1 (p. 219) marks as absent
+# from North Estonian.
+FE_PAIRS: list[tuple[str, str, str, list[tuple[str, str | None, str]]]] = [
+    ("lukea", "lugeda", "p. 208", [("l", "l", "kept"), ("u", "u", "kept"), ("k", "k", "kept"), ("e", "e", "kept"),
+                                   ("", "t", "added"), ("a", "a", "kept")]),     # Estonian d of the -da infinitive
+    ("luen", "loen", "p. 208", [("l", "l", "kept"), ("u", "o", "innov"), ("e", "e", "kept"), ("n", "n", "kept")]),
+    ("kolmas", "kolmas", "p. 215", [("k", "k", "kept"), ("o", "o", "kept"), ("l", "l", "kept"), ("m", "m", "kept"),
+                                    ("a", "a", "kept"), ("s", "s", "kept")]),
+    ("sisar", "sõsar", "p. 216", [("s", "s", "kept"), ("i", "õ", "innov"), ("s", "s", "kept"), ("a", "a", "kept"),
+                                  ("r", "r", "kept")]),
+    ("nenä", "nina", "p. 216", [("n", "n", "kept"), ("e", "i", "innov"), ("n", "n", "kept"), ("ä", "a", "innov")]),
+    ("kaikki", "kõik", "p. 216", [("k", "k", "kept"), ("a", "õ", "innov"), ("i", "i", "kept"), ("k", "k", "kept"),
+                                  ("k", None, "lost"), ("i", None, "lost")]),
+    ("heimo", "hõim", "p. 216", [("h", "h", "kept"), ("e", "õ", "innov"), ("i", "i", "kept"), ("m", "m", "kept"),
+                                 ("o", None, "lost")]),
+    ("sana", "sõna", "p. 216", [("s", "s", "kept"), ("a", "õ", "innov"), ("n", "n", "kept"), ("a", "a", "kept")]),
+    ("lanka", "lõng", "p. 217", [("l", "l", "kept"), ("a", "õ", "innov"), ("n", "n", "kept"), ("k", "k", "kept"),
+                                 ("a", None, "lost")]),
+    ("kato", "kadu", "p. 218", [("k", "k", "kept"), ("a", "a", "kept"), ("t", "t", "kept"), ("o", "u", "innov")]),
+]
+
+# Finnish letter -> (regular reflex or None, other attested reflexes, Pajusalu 2012 pages).
+# None = "no source" (entry 5): unrecoverable under strict scoring.
+FINNISH_ESTONIAN: dict[str, tuple[str | None, tuple[str, ...], str]] = {
+    "a": ("a", ("õ",), "kept: pp. 208, 215, 216, 218; õ: pp. 216-217 (sõna, kõik, lõng; a > õ in North Estonian)"),
+    "e": ("e", ("i", "õ"), "kept: p. 208; i: p. 216 (nina; Finnish e for North Estonian i, p. 216-217); õ: p. 216 (hõim)"),
+    "i": ("i", ("õ",), "kept: p. 216 (kõik, hõim); õ: p. 216 (sõsar)"),
+    "o": ("o", ("u", "õ"), "kept: p. 215; u: p. 218 (o > u in non-initial syllables, kadu); õ: p. 217 (o-stems in North Estonian)"),
+    "u": ("u", ("o",), "kept: p. 208 (lugeda); o: p. 208 (loen)"),
+    "ä": (None, ("a",), "no kept example; a: p. 216 (nina), p. 218 (loss of vowel harmony, non-initial syllables)"),
+    "h": ("h", (), "kept: p. 216 (hõim); lost word-initially and finally in most North Estonian dialects: p. 214"),
+    "k": ("k", (), "kept: pp. 208, 215, 216, 217, 218 (g spells the short lenis k: p. 213)"),
+    "l": ("l", (), "kept: pp. 208, 215, 217"),
+    "m": ("m", (), "kept: pp. 215, 216"),
+    "n": ("n", (), "kept: pp. 208, 216, 217; lost word-finally and vocalised before s: pp. 214-215"),
+    "r": ("r", (), "kept: p. 216 (sõsar)"),
+    "s": ("s", (), "kept: pp. 215, 216"),
+    "t": ("t", (), "kept: p. 218 (kadu; d spells the short lenis t: p. 213)"),
+}
+for _u in ("p", "v", "j", "y", "ö", "d", "g", "b", "c", "f", "z", "š", "ž"):
+    FINNISH_ESTONIAN[_u] = (None, (), "no source: no Finnish-Estonian pair with this letter in Pajusalu (2012)")
+
+
+def _check_fe_table() -> None:
+    """Every regular and attested reflex must come from an aligned pair, except o > õ (a statement, p. 217)."""
+    kept = {(f, e) for _, _, _, al in FE_PAIRS for f, e, k in al if k == "kept"}
+    innov = {(f, e) for _, _, _, al in FE_PAIRS for f, e, k in al if k == "innov"} | {("o", "õ")}
+    for u, (reg, att, _) in FINNISH_ESTONIAN.items():
+        assert reg is None or (u, reg) in kept, u
+        assert all((u, a) in innov for a in att), u
+        assert reg is not None or not any(f == u for f, _ in kept), u
+    for fi, et, _, al in FE_PAIRS:
+        assert "".join(f for f, _, _ in al) == fi, fi
+        assert "".join(e for _, e, _ in al if e) == estonian_normalise(et), et
+
+
+def finnish_estonian_map() -> tuple[dict[str, str | None], dict[str, set]]:
+    _check_fe_table()
+    regular = {k: v[0] for k, v in FINNISH_ESTONIAN.items()}
+    attested = {k: ({v[0]} if v[0] else set()) | set(v[1]) for k, v in FINNISH_ESTONIAN.items()}
+    return regular, attested
+
+
+_LENIS = str.maketrans("bdg", "ptk")
+
+
+def estonian_normalise(word: str) -> str:
+    return word.translate(_LENIS)
+
+
+def estonian_words(line: str, spelling: str = "normalised") -> list[tuple[str, ...]]:
+    out = []
+    for w in re.findall(r"[a-zõäöüšž]+", unicodedata.normalize("NFC", line.lower())):
+        if spelling == "normalised":
+            w = estonian_normalise(w)
+        out.append(tuple(w))
+    return out
+
+
+def kalevipoeg_texts(spelling: str = "normalised") -> list[list[tuple[str, ...]]]:
+    """Verse lines as lists of words (unit tuples)."""
+    return [ws for ws in (estonian_words(l, spelling) for l in kalevipoeg_lines()) if ws]
+
+
+# Hand-checked examples (entry 9: rules are tested before any measurement).
+ESTONIAN_CHECKS = [
+    ("Kotkas kõrge kalju peale", "as_written", [tuple("kotkas"), tuple("kõrge"), tuple("kalju"), tuple("peale")]),
+    ("Kotkas kõrge kalju peale", "normalised", [tuple("kotkas"), tuple("kõrke"), tuple("kalju"), tuple("peale")]),
+    ("Jumalikul juhatusel", "normalised", [tuple("jumalikul"), tuple("juhatusel")]),
+    ("Riiki kohe rajatanud,", "normalised", [tuple("riiki"), tuple("kohe"), tuple("rajatanut")]),
+    ("Sõitis üle Soome mere,", "as_written", [tuple("sõitis"), tuple("üle"), tuple("soome"), tuple("mere")]),
+    ("lugeda : loen, Tütar-lapse", "normalised", [tuple("luketa"), tuple("loen"), tuple("tütar"), tuple("lapse")]),
+]
+
+
+def check_estonian() -> None:
+    for line, sp, want in ESTONIAN_CHECKS:
+        got = estonian_words(line, sp)
+        assert got == want, (line, sp, got)
+    _check_fe_table()
+
+
+# ------------------------------------------------------------------ Kalevipoeg text
 
 def kalevipoeg_lines() -> list[str]:
     out = []

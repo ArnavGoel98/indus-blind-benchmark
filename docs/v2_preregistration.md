@@ -340,3 +340,68 @@ tokens assigned to the single most common predicted unit (a degeneracy index).
 
 **Reporting.** C1-C4 in `reports/v2/cd/controls.md`, with per-cell values and paired counts, beside
 the primary tables. Nothing in entries 1-7 changes.
+
+## 9. Finnish-Estonian: gold table, normalisation and runs (completes entry 5)
+
+Declared 2026-10-24, on the project owner's instruction to do the Finnish-Estonian work directly ("do
+these yourself"), after the gold sources were read and before any Finnish-Estonian yardstick, verbatim
+check, Task C/D corpus or control is computed. Kalevipoeg had been parsed for size only (2026-10-15).
+Methods are unchanged (`frozen-v2`); everything new is data (`src/ibdb/data/relatives.py`) or a driver
+under `reports/`.
+
+**Sources, as named in entry 5.** Pajusalu (2012), read in full. The society's URL named in the plan now
+redirects to its home page; the PDF was taken from the Internet Archive copy of that URL (SHA-256 in
+`GOLD_SOURCES_FE`). Kallio (2016), read for the cross-check, from the journal site. No other source is
+used. The PDFs are not committed.
+
+**Finding before any measurement.** Pajusalu (2012) describes the innovations that separate Southern
+Finnic from Northern Finnic; it has no Finnish-Estonian correspondence table. Kallio (2016) gives
+Proto-Finnic and Livonian forms, not Finnish-Estonian pairs. A row-by-row table in the style of
+Grandgent (1907) cannot be copied from either.
+
+**Gold table rule, fixed now.** The table is built only from the Finnish-North Estonian word pairs
+Pajusalu prints (ten, from nine words: lukea/lugeda, luen/loen, kolmas/kolmas, sisar/sõsar, nenä/nina, kaikki/kõik,
+heimo/hõim, sana/sõna, lanka/lõng, kato/kadu; pp. 208-218), aligned letter by letter in the code
+(`FE_PAIRS`). A letter that is kept in a pair (after normalisation) gives the regular reflex. A change
+the paper describes as an innovation (õ for a, e, i, o; o > u in non-initial syllables; e for North
+Estonian i), and the non-initial ä > a of nenä/nina, are attested only (lenient). A letter with no kept
+example is "no source" and unrecoverable under strict scoring (entry 5): p, v, j, y, ö, d, g and the loan
+letters; ä has no kept example and so no regular reflex. Two Kihnu pairs (lapset/lapsõd, olimme/olimõ)
+are left out because they show velar vowel harmony, which Pajusalu's Table 1 marks as absent from North
+Estonian. The code checks that every value comes from an aligned pair (the one exception, o > õ, is a
+statement on p. 217 without a Finnish form). Wikipedia and general knowledge are not used: Finnish y and
+Estonian ü stay "no source", although they spell the same sound, because no pair in the source shows them.
+
+**Normalisation, fixed now.** Letters, one character per unit. Normalised spelling (primary) writes
+Estonian b, d, g as p, t, k (in native words they spell short lenis stops, Pajusalu 2012: 213). The plan's
+clause on Estonian double letters is not turned into a rewrite: both orthographies write long vowels and
+long consonants double. Estonian writes a long stop after a long vowel or diphthong single (our example:
+saatma, Finnish saattaa); this is left unchanged, which can only make Estonian look less like Finnish.
+Hand-checked examples run before any measurement (`check_estonian`).
+
+**Known limitation of the frozen scorer, fixed now as a diagnostic.** The scorer cannot tell "no source"
+from "no reflex": a no-source letter inside a syllable or a word is dropped from the reflex instead of
+making the token unrecoverable (the same holds for the Tamil tables' rare no-source letters). The share of
+sign tokens for which this happens is reported per script type beside the results, as an upper bound on
+its effect. No code changes.
+
+**Runs.**
+- Yardsticks and verbatim overlap with the entry-5 code (`measure_pair`, `inspect`) unchanged. The
+  unrelated-language level for the verbatim check uses the Latin hidden half, in letters.
+- Tasks C and D, primary: `python scripts/v2/cd_v2.py --relative estonian` (seeds 0-2, both samplers,
+  four script types, 24 corpora, tiers `related_real:estonian` and `candidates_real:estonian`).
+- Replication (as entry 7): seeds 3-5 with the frozen `run_corpus`, 24 corpora.
+- Controls (as entry 8): C1 with Latin and Old Tamil as the unrelated references, and C2, on seeds 0-5
+  (48 corpora); C3 and C4 are not run. The entry-8 readings apply unchanged.
+
+**Readings, fixed now.** Revised EM, strict, `related_real:estonian` unless stated.
+- E1. Whether each script type's seeds 0-5 mean is "at the floor" (C2, within 2 points).
+- E2. Whether Estonian "measurably helps" over an unrelated reference in each script type (C1 rule).
+- E3. The difference from the Finnish `harsh` mean of entry 6 on the same corpora (seeds 0-2), reported
+  without a test.
+- E4. In `candidates_real:estonian`, the number of the 24 seeds 0-2 corpora in which the revised rule
+  picks Estonian.
+
+**Reporting.** Finnish-Estonian is reported in its own rows, labelled "gold from example pairs (14 of 27
+rows sourced)", and is not pooled with the other pairs. The seeds 0-2 tables stay primary. The yardsticks
+are reported before Task C/D results are read.
