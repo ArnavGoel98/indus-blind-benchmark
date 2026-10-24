@@ -4,7 +4,9 @@ Status: approved 2026-10-15 (pre-registration entry 5), branch `v2`. Order: Finn
 Latin-Italian first; the Dravidian pairs only after the Wikisource provenance check. Replaces the
 synthetic-sister calibration, which was killed (`docs/v2_negative_results.md`, item 2).
 
-**Status update 2026-10-21:** run. Yardsticks in `reports/v2/real_relatives/`; Tasks C and D at `frozen-v2` (entries 6-8) in `reports/v2/cd/`; draft section in `reports/drafts/v2_real_relatives_section_DRAFT.md`. Finnish-Estonian (gold source not yet received) and Sanskrit-Pali (no text with clear terms) are still pending. The bracket of entry 4 did not hold for the real relatives (`docs/v2_negative_results.md`, item 3).
+**Status update 2026-10-21:** run. Yardsticks in `reports/v2/real_relatives/`; Tasks C and D at `frozen-v2` (entries 6-8) in `reports/v2/cd/`; draft section in `reports/drafts/v2_real_relatives_section_DRAFT.md`. Finnish-Estonian (gold source not yet received) and Sanskrit-Pali (no text with clear terms) are still pending.
+
+**Status update 2026-10-24:** Finnish-Estonian done directly on the owner's instruction: Pajusalu (2012) fetched from the Internet Archive copy of the sgr.fi URL (the society's link now redirects), read in full; it has no correspondence table, so the gold is built from the ten Finnish-North Estonian pairs it prints (entry 9; 14 of 27 rows sourced). Sanskrit-Pali: SuttaCentral's licensing page (read 2026-10-24) says the root texts are public domain but asks that its content not be used "for the creation of datasets for generative AI or similar"; still blocked pending permission. Draft request: `docs/v2_pali_permission_request.md` (not sent). The bracket of entry 4 did not hold for the real relatives (`docs/v2_negative_results.md`, item 3).
 
 ## Idea
 

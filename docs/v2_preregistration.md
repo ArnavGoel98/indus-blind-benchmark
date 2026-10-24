@@ -405,3 +405,7 @@ its effect. No code changes.
 **Reporting.** Finnish-Estonian is reported in its own rows, labelled "gold from example pairs (14 of 27
 rows sourced)", and is not pooled with the other pairs. The seeds 0-2 tables stay primary. The yardsticks
 are reported before Task C/D results are read.
+
+*Correction to entry 9, 2026-10-24 (after the yardsticks, before any Task C/D result was read): the label
+"14 of 27 rows sourced" counts ä, which has a source for an attested reflex only. 13 of 27 rows have a
+regular reflex. Tables use "13 of 27 rows with a regular reflex". No rule changes.*
