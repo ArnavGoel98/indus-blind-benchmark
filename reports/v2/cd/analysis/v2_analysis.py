@@ -1,12 +1,15 @@
 """Post-hoc analysis of the v2 Task C/D runs (pre-registration entries 6 and 7). Descriptive only.
 
 Reads the frozen-run records (seeds 0-2: runs/results/v2_cd; replication seeds 3-5: runs/results/v2_cd_repl)
-and the v1-sister upper bound from the v1 records at the Indus point (sister_v2_main, sister_v2_gen2 for
+and the v1 sister (an optimistic upper reference, entry 10) from the v1 records at the Indus point (sister_v2_main, sister_v2_gen2 for
 seeds 0-2; sister_v2_repl, sister_v2_gen2_repl for seeds 3-5). Writes:
 - reports/v2/cd/replication.{md,json}: seeds 3-5 tables and the entry-7 checks R1-R4;
 - reports/v2/cd/pooled.md: means over seeds 0-5 with bootstrap intervals over corpora (2,000 resamples);
 - reports/drafts/figures/fig_v2_taskd_per_corpus.png and fig_v2_closeness.png;
 - reports/v2/cd/page_data.json: per-corpus values for the review page.
+Entry 10: where runs/results/v2_e10 (or its archive) holds a rerun corpus, its entry-10 scores (a no-source
+gold row is unknown, not lost) replace the old real-relative scores, floors, unrelated-reference scores and
+10-restart scores; C4 still compares the frozen records with the entry-8 reruns.
 Usage (repository root): python reports/v2/cd/analysis/v2_analysis.py
 """
 import gzip
@@ -33,9 +36,23 @@ EM, EMO, FR = "knight2006_em", "knight2006_em_original", "baseline_frequency_ran
 UGARITIC = 32.0          # revised EM, natural text, related tier (reports/v2/ugaritic/results.md); R2 uses this
 UGARITIC_RECUT = (24.6, 29.9)   # revised EM, texts re-cut to mean length 4.6 (seeds 0-2): the like-for-like range
 UPPER = {(0, 1, 2): ("sister_v2_main", "sister_v2_gen2"), (3, 4, 5): ("sister_v2_repl", "sister_v2_gen2_repl")}
-# Yardsticks, normalised (reports/v2/real_relatives/yardsticks.md): JSD above floor, shared word forms cc (%).
-YARD = {("latin", "italian"): (0.104, 11.8), ("latin", "harsh"): (0.135, 7.8),
-        ("tamil", "malayalam"): (0.139, 5.7), ("tamil", "kannada"): (0.180, 4.7), ("tamil", "harsh"): (0.185, 3.6)}
+
+
+def load_yard() -> dict:
+    """Yardsticks, normalised (reports/v2/real_relatives/yardsticks.json): JSD above floor, shared word forms cc (%)."""
+    y = json.loads((ROOT / "reports" / "v2" / "real_relatives" / "yardsticks.json").read_text())
+    syn = y.get("synthetic", y.get("bracket"))
+    pt = lambda d: (round(d["jsd_above_floor"], 3), round(100 * d["cognate_types_cc"], 1))  # noqa: E731
+    out = {}
+    for pair, (lang, rel) in (("latin-italian", ("latin", "italian")), ("tamil-malayalam", ("tamil", "malayalam")),
+                              ("tamil-kannada", ("tamil", "kannada"))):
+        out[(lang, rel)] = pt(y["pairs"][pair]["normalised"]["point"])
+    for lang in ("latin", "tamil"):
+        out[(lang, "harsh")] = pt(syn[lang]["harsh"])
+    return out
+
+
+YARD = load_yard()
 INK, INK2, GRID = "#1d2422", "#5b6662", "#d5dbd8"
 COL = {"italian": "#2a78d6", "malayalam": "#eb6834", "kannada": "#1baf7a", "upper": "#3a4441", "harsh": "#8f9a96"}
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "axes.edgecolor": INK2, "axes.labelcolor": INK,
@@ -119,7 +136,8 @@ def tiers_for(lang):
 
 
 def label(t):
-    return {"upper": "v1 sister (upper bound)", "harsh": "`harsh` (lower bound)"}.get(t, t.capitalize())
+    return {"upper": "v1 sister (synthetic, optimistic upper reference)",
+            "harsh": "`harsh` (synthetic, optimistic upper reference)"}.get(t, t.capitalize())
 
 
 def replication(recs, upper):
@@ -129,7 +147,9 @@ def replication(recs, upper):
     L = ["# v2 Task C/D: fresh-seed replication, seeds 3-5 (pre-registration entry 7)", "",
          f"Corpora: {len(have)} of 120 (seeds 3-5, samplers A and B), frozen code (`frozen-v2`), the same tiers. "
          "Each cell: mean % of sign tokens over 6 corpora (number at or above 50%). Revised EM, strict, unless stated. "
-         "The upper bound is read from the v1 `sister_v2_repl` and `sister_v2_gen2_repl` records.", ""]
+         "The v1 sister is read from the v1 `sister_v2_repl` and `sister_v2_gen2_repl` records. Entry 10: Old Tamil "
+         "real-relative values use the entry-10 rule (no source = unknown; old values in `entry10.md`); the synthetic "
+         "sisters are optimistic upper references, not bounds.", ""]
     for kind in ("related", "candidates"):
         L += [f"## Task D, `{kind}` tier", "", "| Hidden | Relative | Relationship | " + " | ".join(SCRIPTS) + " |",
               "|---|---|---|" + "---|" * 4]
@@ -189,6 +209,8 @@ def pooled(recs, upper):
          "Revised EM, strict, % of sign tokens. Mean over all corpora per cell (12 when both seed blocks are present) "
          "with a 95% bootstrap interval over corpora (2,000 resamples). The seeds 0-2 tables "
          "(`results.md`) stay primary. No test is made.", "",
+         "Entry 10: Old Tamil real-relative values are scored with the entry-10 rule (a no-source gold row is unknown, "
+         "not lost; old values in `entry10.md`). The synthetic sisters are optimistic upper references, not bounds.", "",
          f"Corpus sizes: {min(r['n_tokens'] for r in recs):,}-{max(r['n_tokens'] for r in recs):,} sign tokens per corpus "
          f"(mean {np.mean([r['n_tokens'] for r in recs]):,.0f}) over the {len(recs)} corpora.", ""]
     data = {}
@@ -309,8 +331,57 @@ def load_controls():
     return rs if len(keys) == 96 else None                        # complete runs only (entry 8)
 
 
-def controls(recs, ctrl):
-    """Entry 8: C1 unrelated reference, C2 constant floor, C3 budget, C4 determinism."""
+def load_e10():
+    lines = _lines("v2_e10")
+    return {(r["lang"], r["script_type"], r["seed"], r["sampler"]): r
+            for r in (json.loads(x) for x in lines or []) if "error" not in r}
+
+
+def _new(x):
+    return {k: v for k, v in x.items() if k not in ("old", "pred")}
+
+
+def overlay_runs(recs, e10):
+    """Entry 10: copies of the records with the rerun corpora's real-relative tiers rescored."""
+    out = []
+    for r in recs:
+        e = e10.get((r["lang"], r["script_type"], r["seed"], r["sampler"]))
+        r = {**r, "tiers": dict(r["tiers"])}
+        if e:
+            for tier, ms in e["tiers"].items():
+                if tier in r["tiers"]:
+                    r["tiers"][tier] = {m: _new(x) for m, x in ms.items()}
+        out.append(r)
+    return out
+
+
+def overlay_controls(ctrl, e10):
+    out = []
+    for c in ctrl:
+        e = e10.get((c["lang"], c["script_type"], c["seed"], c["sampler"]))
+        c = json.loads(json.dumps(c))
+        if e:
+            for g, v in e["floor"].items():
+                if g in c["floor"]:
+                    c["floor"][g] = v["new"]
+            for u, ms in e["unrelated"].items():
+                for m, gs in ms.items():
+                    if u in c["unrelated"] and m in c["unrelated"][u]:
+                        for g, x in gs.items():
+                            if g in c["unrelated"][u][m]:
+                                c["unrelated"][u][m][g] = _new(x)
+            for g, b in e["budget"].items():
+                if g in c["budget"]:
+                    c["budget"][g]["10"] = {"diag": b["10"]["diag"], **_new({k: v for k, v in b["10"].items() if k != "diag"})}
+                    c["budget"][g]["3"] = {**c["budget"][g]["3"], **_new(e["tiers"][f"related_{g}"][EM])}
+                    for k in ("reference", "family", "family_correct"):
+                        c["budget"][g]["3"].pop(k, None)
+        out.append(c)
+    return out
+
+
+def controls(recs, ctrl, raw_recs=None, raw_ctrl=None):
+    """Entry 8: C1 unrelated reference, C2 constant floor, C3 budget, C4 determinism (C4 on the records as run)."""
     key = lambda r: (r["lang"], r["script_type"], r["seed"], r["sampler"])  # noqa: E731
     main = {key(r): r for r in recs}
     cr = {key(r): r for r in ctrl}
@@ -344,10 +415,11 @@ def controls(recs, ctrl):
                                   "r10": float(np.mean(v10)), "delta": d, "first_order": abs(d) > 10,
                                   "changed": sum(abs(a - b) > 1e-9 for a, b in zip(v3, v10))})
     mism, n = [], 0
-    for k, r in cr.items():
+    raw_main = {key(r): r for r in (raw_recs or recs)}
+    for k, r in {key(c): c for c in (raw_ctrl or ctrl)}.items():
         for name, b in r["budget"].items():
             n += 1
-            frozen = main[k]["tiers"][f"related_{name}"][EM]["strict"]
+            frozen = raw_main[k]["tiers"][f"related_{name}"][EM]["strict"]
             if abs(b["3"]["strict"] - frozen) > 1e-12:
                 mism.append({"corpus": k, "tier": name, "rerun": b["3"]["strict"], "frozen": frozen})
     out["C4"] = {"compared": n, "mismatches": mism}
@@ -366,7 +438,9 @@ def write_controls_md(c):
     L = ["# v2 Task D controls (pre-registration entry 8)", "",
          "Post hoc in motivation, pre-registered in procedure; readings fixed in entry 8 before the run. Revised EM, "
          "strict score, % of sign tokens, `related` tier. Corpora: Latin and Old Tamil, four script types, seeds 0-5, "
-         "samplers A and B (C3 and C4: seeds 0-2). Code: `reports/v2/cd/analysis/controls.py` (frozen functions only).", "",
+         "samplers A and B (C3 and C4: seeds 0-2). Code: `reports/v2/cd/analysis/controls.py` (frozen functions only). "
+         "Entry 10: Old Tamil values use the entry-10 rule (a no-source gold row is unknown, not lost; old values in "
+         "`entry10.md`); C4 compares the records as originally run.", "",
          "## C1. Does the real relative beat an unrelated reference scored against the same gold?", "",
          "The unrelated reference is a v1 language given as the only reference; its predictions are scored against the "
          "real relative's gold, exactly as the relative's own run. *Helps* = added value at least 5 points and the "
@@ -469,7 +543,9 @@ def page_data(recs, upper, pool, ctl=None):
 
 
 def main():
-    recs = load_runs()
+    raw = load_runs()
+    e10 = load_e10()
+    recs = overlay_runs(raw, e10)
     upper = load_upper()
     if (RUNS / "sister_v2_main" / "records.jsonl").exists():
         write_upper_extract(upper)
@@ -477,12 +553,13 @@ def main():
     pool = pooled(recs, upper)
     fig_per_corpus(recs, upper, pool)
     fig_closeness(pool)
-    ctrl = load_controls()
-    ctl = controls(recs, ctrl) if ctrl and rep else None
+    raw_ctrl = load_controls()
+    ctrl = overlay_controls(raw_ctrl, e10) if raw_ctrl else None
+    ctl = controls(recs, ctrl, raw, raw_ctrl) if ctrl and rep else None
     if ctl:
         fig_controls(ctl)
     page_data(recs, upper, pool, ctl)
-    print("records:", len(recs), "replication:", None if rep is None else {k: v["pass"] for k, v in rep["checks"].items()},
+    print("records:", len(recs), "entry-10 corpora:", len(e10), "replication:", None if rep is None else {k: v["pass"] for k, v in rep["checks"].items()},
           "controls:", None if ctl is None else "done")
 
 

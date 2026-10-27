@@ -1,4 +1,4 @@
-"""Exploratory (post hoc, 2026-10-21): does unit-frequency agreement explain the bracket failure?
+"""Exploratory (post hoc, 2026-10-21): does unit-frequency agreement explain why real relatives score below `harsh`?
 
 Negative result 3 offered, untested, that the real relatives' texts have different unit frequencies. This
 measures, per pair and at the alphabetic level, the unigram distribution of the hidden half mapped forward
@@ -40,7 +40,7 @@ def jsd(p, q):
 
 def main():
     d = json.loads(TASK_D.read_text())["task_d"]["related"]["knight2006_em"]
-    lab = {"italian": "italian", "malayalam": "malayalam", "kannada": "kannada", "harsh": "`harsh` (lower bound)"}
+    lab = {"italian": "italian", "malayalam": "malayalam", "kannada": "kannada", "harsh": "`harsh` (synthetic, optimistic upper reference)"}
     L = ["# Unit-frequency agreement against Task D (exploratory, post hoc)", "",
          "Added 2026-10-21. Tests the first reason offered (untested) in `docs/v2_negative_results.md`, item 3. "
          "Alphabetic level: the hidden half mapped forward through the gold regular reflexes, against the relative's "
@@ -61,7 +61,7 @@ def main():
             L.append(f"| {lang} | {name} | {jsd(pu, qu):.3f} | {rho:.2f} | {top(pu)} | {top(qu)} | {td:.1f} |")
     L += ["", "**Reading.** Italian agrees with Latin in unit frequencies better than `harsh` does (lower JSD, higher rank "
           "correlation), yet scores lower on Task D. Unigram frequency agreement therefore does not explain the "
-          "bracket failure for Latin. For Old Tamil the two measures disagree (Malayalam is closer by JSD, Kannada by "
+          "lower Latin score with Italian than with `harsh`. For Old Tamil the two measures disagree (Malayalam is closer by JSD, Kannada by "
           "rank order) while Task D is level for the two relatives. Three points per hidden language; nothing is "
           "tested."]
     OUT.write_text("\n".join(L) + "\n")

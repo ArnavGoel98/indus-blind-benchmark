@@ -10,11 +10,12 @@ Available now: Latin-Italian (descendant), Tamil-Malayalam (descendant), Tamil-K
 Finnish-Estonian waits for its gold source (Pajusalu PDF from the project owner); Sanskrit-Pali waits
 on SuttaCentral.
 
-Usage: python scripts/v2/real_relatives_yardsticks.py -> reports/v2/real_relatives/yardsticks.{json,md}
+Usage: python scripts/v2/real_relatives_yardsticks.py [--md-only] -> reports/v2/real_relatives/yardsticks.{json,md}
 """
 from __future__ import annotations
 
 import json
+import sys
 
 import numpy as np
 
@@ -75,7 +76,19 @@ def comparison_rows(lang: str) -> dict:
     return {"v1_like": mean(cal["confirm"]["v1_like"][lang]["held"]), "harsh": mean(harsh["confirm"][lang]["held"])}
 
 
+NOT_YET = {"finnish-estonian (sister)": "measured separately, weak gold: `estonian.md` (entries 9 and 10)",
+           "sanskrit-pali (descendant)": "blocked: SuttaCentral asks that its texts not be used for AI datasets \"or similar\"; "
+                                         "permission request drafted (`docs/v2_pali_permission_request.md`), not sent",
+           "sumerian": "isolate; none tier only"}
+
+
 def main() -> None:
+    if "--md-only" in sys.argv:             # rewrite the report from yardsticks.json (no recomputation)
+        res = json.loads((OUT / "yardsticks.json").read_text())
+        res["not_yet"] = NOT_YET
+        (OUT / "yardsticks.json").write_text(json.dumps(res, indent=1, default=float))
+        write_md(res)
+        return
     anchor = json.loads((SIS / "anchor.json").read_text())
     corr = json.loads((SIS / "anchor_corrected.json").read_text())["main"]
     res = {"anchor_as_written": {k: anchor[k] for k in ("jsd_above_floor", "cognate_types_cc", "word_pairs_types_cc")}
@@ -85,9 +98,7 @@ def main() -> None:
            "pairs": {"latin-italian": pair_latin_italian(anchor), "tamil-malayalam": pair_tamil("malayalam", anchor),
                      "tamil-kannada": pair_tamil("kannada", anchor)},
            "synthetic": {"latin": comparison_rows("latin"), "tamil": comparison_rows("tamil")},
-           "not_yet": {"finnish-estonian (sister)": "waiting for the Pajusalu (2012) PDF from the project owner",
-                       "sanskrit-pali (descendant)": "waiting on SuttaCentral; no OCR re-transcription",
-                       "sumerian": "isolate; none tier only"}}
+           "not_yet": NOT_YET}
     (OUT / "yardsticks.json").write_text(json.dumps(res, indent=1, default=float))
     write_md(res)
 

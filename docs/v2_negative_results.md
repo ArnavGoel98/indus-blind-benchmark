@@ -163,3 +163,8 @@ scripts (29.8% against 35.9%), seeds 0-2 (`reports/v2/cd/estonian.md`). The fail
 specific to a descendant relationship or to the Dravidian conversion tables. On alphabetic scripts
 Estonian nevertheless helps measurably over an unrelated reference (+20.1 points; 11 of 12), so a
 relative can help and still fall below `harsh`.
+
+**Reframing, 2026-10-27 (entry 10, a reporting decision).** Because `harsh` is not a lower bound, the
+bracket of entry 4 is dropped. Real relatives are the realistic `related` tier; the synthetic sisters
+(v1 sister and `harsh`) are reported as optimistic upper references. The observations above are
+unchanged.

@@ -245,3 +245,5 @@ Fit it to ORACC Akkadian and TLA Egyptian sign statistics from item 4.
 The proxy refused the tag push from this session. To push `paper-v1` (main at aa9a359) from your machine:
 
     git fetch origin && git tag -a paper-v1 aa9a35967cd0bf34feacbf610adb35e472d46ae5 -m "Paper v1 as submitted for review" && git push origin paper-v1
+
+**Status update 2026-10-27:** the bracket framing of entry 4 is dropped (pre-registration entry 10). Real relatives are the realistic `related` tier; the synthetic sisters (the v1 sister and `harsh`) are optimistic upper references, not bounds. Entry 10 also makes "no source" gold rows unknown rather than lost in the v2 scoring and yardstick harness.

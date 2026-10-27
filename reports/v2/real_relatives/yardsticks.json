@@ -20,6 +20,7 @@
    "deleted": [
     "h"
    ],
+   "no_source": [],
    "as_written": {
     "n_texts": 14233,
     "n_words": 101601,
@@ -90,7 +91,8 @@
    "hidden": "tamil",
    "relationship": "descendant",
    "mergers": 3,
-   "deleted": [
+   "deleted": [],
+   "no_source": [
     "h",
     "s",
     "\u1e35",
@@ -101,18 +103,18 @@
     "n_words": 42648,
     "n_units": 479851,
     "point": {
-     "bigram_jsd": 0.20556347479473103,
-     "floor": 0.02952923518906118,
-     "jsd_above_floor": 0.17603423960566986,
-     "cognate_types": 0.05744869032524928,
-     "cognate_types_chance": 0.002971874899985149,
-     "cognate_types_cc": 0.05463919628124774,
-     "cognate_tokens": 0.06760491299897646,
+     "bigram_jsd": 0.20757443495809982,
+     "floor": 0.029573929750622847,
+     "jsd_above_floor": 0.17800050520747698,
+     "cognate_types": 0.058258999644833345,
+     "cognate_types_chance": 0.0011770178257961938,
+     "cognate_types_cc": 0.057149247502077935,
+     "cognate_tokens": 0.06821903787103378,
      "word_pairs_types": 0.0,
      "word_pairs_types_chance": 0.0,
      "word_pairs_types_cc": 0.0,
-     "verbatim_6plus": 0.01768172888015717,
-     "n_verbatim_windows": 509
+     "verbatim_6plus": 0.005952380952380952,
+     "n_verbatim_windows": 504
     }
    },
    "normalised": {
@@ -120,43 +122,43 @@
     "n_words": 42648,
     "n_units": 479851,
     "point": {
-     "bigram_jsd": 0.1605327399066547,
-     "floor": 0.021182340116596803,
-     "jsd_above_floor": 0.1393503997900579,
-     "cognate_types": 0.059864713259441225,
-     "cognate_types_chance": 0.0030276162600743352,
-     "cognate_types_cc": 0.05700970049556924,
-     "cognate_tokens": 0.06980552712384853,
+     "bigram_jsd": 0.16262414599526234,
+     "floor": 0.02112571494235418,
+     "jsd_above_floor": 0.14149843105290816,
+     "cognate_types": 0.0605027287809212,
+     "cognate_types_chance": 0.001288006164013753,
+     "cognate_types_cc": 0.059291089906177694,
+     "cognate_tokens": 0.07047082906857727,
      "word_pairs_types": 0.0,
      "word_pairs_types_chance": 0.0,
      "word_pairs_types_cc": 0.0,
-     "verbatim_6plus": 0.01768172888015717,
-     "n_verbatim_windows": 509
+     "verbatim_6plus": 0.007936507936507936,
+     "n_verbatim_windows": 504
     },
     "bootstrap": {
      "jsd_above_floor": {
-      "lo": 0.13732676866279744,
-      "hi": 0.14452581841276058,
-      "mean": 0.14064081789547037,
-      "sd": 0.0018319720254041376
+      "lo": 0.13728471019062588,
+      "hi": 0.1441674861278576,
+      "mean": 0.1406512267911072,
+      "sd": 0.0018174242840872641
      },
      "cognate_types_cc": {
-      "lo": 0.040466236842715476,
-      "hi": 0.052405877479262314,
-      "mean": 0.04603859978031613,
-      "sd": 0.002934602644505013
+      "lo": 0.041936087263142435,
+      "hi": 0.05327198519926499,
+      "mean": 0.04717888881647243,
+      "sd": 0.0030192163452264866
      },
      "word_pairs_types_cc": {
       "lo": 0.0,
-      "hi": 0.0004484556859978838,
-      "mean": 8.028410530957801e-05,
-      "sd": 0.00018804420038170903
+      "hi": 0.00044745237307009363,
+      "mean": 6.016931751905468e-05,
+      "sd": 0.00016484783400816158
      },
      "verbatim_6plus": {
-      "lo": 0.003967666948436179,
-      "hi": 0.023946536687894104,
-      "mean": 0.013244179074596856,
-      "sd": 0.005125478985621207
+      "lo": 0.005846163479676579,
+      "hi": 0.021828664100370685,
+      "mean": 0.013258615001814043,
+      "sd": 0.004605292982394228
      }
     }
    }
@@ -166,7 +168,8 @@
    "hidden": "tamil",
    "relationship": "sister",
    "mergers": 4,
-   "deleted": [
+   "deleted": [],
+   "no_source": [
     "h",
     "s",
     "\u1e35",
@@ -177,18 +180,18 @@
     "n_words": 105385,
     "n_units": 857617,
     "point": {
-     "bigram_jsd": 0.3384122234339356,
-     "floor": 0.02894766557102053,
-     "jsd_above_floor": 0.3094645578629151,
-     "cognate_types": 0.04080002009794116,
-     "cognate_types_chance": 0.010499503776156653,
-     "cognate_types_cc": 0.030622032467308605,
-     "cognate_tokens": 0.04580348004094166,
+     "bigram_jsd": 0.33906083618803184,
+     "floor": 0.029495020544835084,
+     "jsd_above_floor": 0.30956581564319674,
+     "cognate_types": 0.04146104393318989,
+     "cognate_types_chance": 0.004141245659718872,
+     "cognate_types_cc": 0.03747499141903309,
+     "cognate_tokens": 0.04570112589559878,
      "word_pairs_types": 0.0,
      "word_pairs_types_chance": 0.0,
      "word_pairs_types_cc": 0.0,
-     "verbatim_6plus": 0.001984126984126984,
-     "n_verbatim_windows": 504
+     "verbatim_6plus": 0.008,
+     "n_verbatim_windows": 500
     }
    },
    "normalised": {
@@ -196,49 +199,49 @@
     "n_words": 105385,
     "n_units": 857617,
     "point": {
-     "bigram_jsd": 0.1997500411871901,
-     "floor": 0.019330852621961207,
-     "jsd_above_floor": 0.1804191885652289,
-     "cognate_types": 0.058850378337658174,
-     "cognate_types_chance": 0.012182255361118442,
-     "cognate_types_cc": 0.047243657273640376,
-     "cognate_tokens": 0.06612077789150458,
-     "word_pairs_types": 0.00022197804363679368,
+     "bigram_jsd": 0.20106509043399087,
+     "floor": 0.01964204672780114,
+     "jsd_above_floor": 0.18142304370618972,
+     "cognate_types": 0.0625108375529791,
+     "cognate_types_chance": 0.004648178275619993,
+     "cognate_types_cc": 0.058132871226493514,
+     "cognate_tokens": 0.06857727737973388,
+     "word_pairs_types": 0.0004454420097601558,
      "word_pairs_types_chance": 0.0,
-     "word_pairs_types_cc": 0.00022197804363679368,
-     "verbatim_6plus": 0.00992063492063492,
-     "n_verbatim_windows": 504
+     "word_pairs_types_cc": 0.0004454420097601558,
+     "verbatim_6plus": 0.012,
+     "n_verbatim_windows": 500
     },
     "bootstrap": {
      "jsd_above_floor": {
-      "lo": 0.17812496926124996,
-      "hi": 0.18595991591295394,
-      "mean": 0.18201687358046276,
-      "sd": 0.002026290615911926
+      "lo": 0.1778374926924537,
+      "hi": 0.18578602950720813,
+      "mean": 0.18199543188654657,
+      "sd": 0.0020556285179675698
      },
      "cognate_types_cc": {
-      "lo": 0.037687576153099055,
-      "hi": 0.051345542395880114,
-      "mean": 0.04465841890210705,
-      "sd": 0.003672255044390325
+      "lo": 0.04515102164640333,
+      "hi": 0.05625551252014815,
+      "mean": 0.05045830131319975,
+      "sd": 0.003264037846877606
      },
      "word_pairs_types_cc": {
       "lo": 0.0,
-      "hi": 0.001331458346878776,
-      "mean": 0.00042772912828582886,
-      "sd": 0.0003828956634580652
+      "hi": 0.0013383751033339305,
+      "mean": 0.00038990363138411197,
+      "sd": 0.0004179181871233846
      },
      "verbatim_6plus": {
-      "lo": 0.0039603960396039604,
-      "hi": 0.02367098248286367,
-      "mean": 0.01312716045206951,
-      "sd": 0.004891460920554061
+      "lo": 0.003976143141153081,
+      "hi": 0.02376592639343616,
+      "mean": 0.013538693478289503,
+      "sd": 0.004932768521258407
      }
     }
    }
   }
  },
- "bracket": {
+ "synthetic": {
   "latin": {
    "v1_like": {
     "jsd_above_floor": 0.006405330611823401,
@@ -269,8 +272,8 @@
   }
  },
  "not_yet": {
-  "finnish-estonian (sister)": "waiting for the Pajusalu (2012) PDF from the project owner",
-  "sanskrit-pali (descendant)": "waiting on SuttaCentral; no OCR re-transcription",
+  "finnish-estonian (sister)": "measured separately, weak gold: `estonian.md` (entries 9 and 10)",
+  "sanskrit-pali (descendant)": "blocked: SuttaCentral asks that its texts not be used for AI datasets \"or similar\"; permission request drafted (`docs/v2_pali_permission_request.md`), not sent",
   "sumerian": "isolate; none tier only"
  }
 }

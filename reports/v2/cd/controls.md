@@ -1,6 +1,6 @@
 # v2 Task D controls (pre-registration entry 8)
 
-Post hoc in motivation, pre-registered in procedure; readings fixed in entry 8 before the run. Revised EM, strict score, % of sign tokens, `related` tier. Corpora: Latin and Old Tamil, four script types, seeds 0-5, samplers A and B (C3 and C4: seeds 0-2). Code: `reports/v2/cd/analysis/controls.py` (frozen functions only).
+Post hoc in motivation, pre-registered in procedure; readings fixed in entry 8 before the run. Revised EM, strict score, % of sign tokens, `related` tier. Corpora: Latin and Old Tamil, four script types, seeds 0-5, samplers A and B (C3 and C4: seeds 0-2). Code: `reports/v2/cd/analysis/controls.py` (frozen functions only). Entry 10: Old Tamil values use the entry-10 rule (a no-source gold row is unknown, not lost; old values in `entry10.md`); C4 compares the records as originally run.
 
 ## C1. Does the real relative beat an unrelated reference scored against the same gold?
 

@@ -23,6 +23,7 @@ import cd_v2  # noqa: E402
 import v2_analysis as A  # noqa: E402
 from ibdb import relative_cd as RC  # noqa: E402
 from ibdb.data import relatives as R  # noqa: E402
+from ibdb.data.gold import old_semantics  # noqa: E402
 from ibdb.generator.build import make_corpus  # noqa: E402
 from ibdb.generator.calibrate import load_knobs  # noqa: E402
 from ibdb.methods.decipher import KnightEM  # noqa: E402
@@ -52,48 +53,68 @@ def cell(vals):
     return {"mean": float(np.mean(vals)), "lo": lo, "hi": hi, "n": len(vals), "values": vals}
 
 
+def e10_records() -> tuple[list, list, list] | None:
+    """Entry 10: the Finnish rerun records, split as the entry-9 files (new scores; old ones under 'old')."""
+    lines = A._lines("v2_e10") or []
+    rs = [r for r in (json.loads(x) for x in lines) if r.get("lang") == "finnish" and "error" not in r]
+    if len(rs) != 48:
+        return None
+    strip = lambda x: {k: v for k, v in x.items() if k != "old"}  # noqa: E731
+    recs = [{**r, "tiers": {t: {m: strip(x) for m, x in ms.items()} for t, ms in r["tiers"].items()}} for r in rs]
+    ctrl = [{**r, "floor": {g: v["new"] for g, v in r["floor"].items()},
+             "unrelated": {u: {m: {g: (strip(x) if isinstance(x, dict) and "strict" in x else x) for g, x in gs.items()}
+                               for m, gs in ms.items()} for u, ms in r["unrelated"].items()}} for r in rs]
+    return [r for r in recs if r["seed"] < 3], [r for r in recs if r["seed"] >= 3], ctrl
+
+
 def diagnostics() -> dict:
-    """Per script type, mean over seeds 0-5 and both samplers: ceiling, silent-drop share, reachable share."""
+    """Per script type, mean over seeds 0-5 and both samplers: ceiling (entry 10), ceiling under the old reading
+    (no-source letters dropped), and the share reachable by the solver."""
     rel = RC.real_relative("finnish", "estonian")
-    nosrc = {u for u, v in R.FINNISH_ESTONIAN.items() if v[0] is None}
+    rel_old = RC.Relative(rel.name, rel.family, rel.clauses, old_semantics(rel.regular), rel.attested)
     cap = KnightEM().max_units
     out = {}
     for st in cd_v2.SCRIPTS:
-        d = {"ceiling": [], "silent_drop": [], "reachable": []}
+        d = {"ceiling": [], "ceiling_old": [], "reachable": []}
         for smp, gv in cd_v2.SAMPLERS.items():
             for seed in range(6):
                 knobs, spec = load_knobs("full", "finnish", st, gv)
                 _, key, _ = make_corpus("finnish", spec, cd_v2.N_TEXTS, cd_v2.MEAN_LEN, seed, knobs, generator_version=gv)
                 logos = RC.hidden_logograms("finnish", spec.logogram_vocab) if st == "logosyllabic" else set()
                 g = RC.Gold(rel, "finnish", st, logos)
+                go = RC.Gold(rel_old, "finnish", st, logos)
                 ref = RC.reference(rel, st, "finnish", spec.logogram_vocab)
                 top = {u for u, _ in Counter(u for t in ref.texts for u in t).most_common(cap)}
                 vals = Counter(v for t in key.token_values for v in t)
                 n = sum(vals.values())
-                rec = drop = reach = 0
+                rec = old = reach = 0
                 for v, m in vals.items():
-                    r, phon, _ = g._value(v)
+                    old += m * go.recoverable(v)
+                    r = g._value(v)[0]
                     if r is None:
                         continue
                     rec += m
-                    drop += m * any(p in nosrc for p in phon)
                     reach += m * (r in top)
                 d["ceiling"].append(100 * rec / n)
-                d["silent_drop"].append(100 * drop / n)
+                d["ceiling_old"].append(100 * old / n)
                 d["reachable"].append(100 * reach / n)
         out[st] = {k: float(np.mean(v)) for k, v in d.items()}
     return out
 
 
 def main() -> None:
-    prim = _recs("v2_cd", "records_estonian.jsonl")
-    repl = _recs("v2_cd_repl", "records_estonian.jsonl")
-    ctrl = _recs("v2_controls", "records_estonian.jsonl")
+    e10 = e10_records()
+    if e10:
+        prim, repl, ctrl = e10
+    else:
+        prim = _recs("v2_cd", "records_estonian.jsonl")
+        repl = _recs("v2_cd_repl", "records_estonian.jsonl")
+        ctrl = _recs("v2_controls", "records_estonian.jsonl")
     main_recs = [r for r in A.load_runs() if r["lang"] == "finnish"]
     upper = A.load_upper()
     assert len(prim) == 24 and len(repl) == 24 and len(ctrl) == 48, (len(prim), len(repl), len(ctrl))
     both = prim + repl
-    res = {"cells": {}, "readings": {}}
+    res = {"cells": {}, "readings": {}, "entry10": bool(e10)}
     for st in cd_v2.SCRIPTS:
         c = {}
         for m in (EM, EMO, FR):
@@ -136,13 +157,16 @@ def main() -> None:
 def write_md(res: dict) -> None:
     C, Rd, D = res["cells"], res["readings"], res["diagnostics"]
     iv = lambda c: f"{pct(c['mean'])} [{pct(c['lo'])}, {pct(c['hi'])}]"  # noqa: E731
-    L = ["# Finnish-Estonian, Tasks C and D (pre-registration entry 9)", "",
+    L = ["# Finnish-Estonian, Tasks C and D (pre-registration entries 9 and 10)", "",
          "Hidden Finnish (Indus-point corpora, 2,906 texts, mean length 4.6) against Kalevipoeg, normalised spelling. "
-         "Gold from the word pairs printed in Pajusalu (2012), 13 of 27 rows with a regular reflex; reported in its own rows and "
-         "not pooled with the other pairs. Revised EM, strict, `related_real:estonian` unless stated; % of sign tokens. "
+         "**Gold: weak (10 word pairs, 13 of 27 letters)**, from the word pairs printed in Pajusalu (2012); reported in its "
+         "own rows and not pooled with the other pairs. "
+         + ("Scored with the entry-10 rule: a no-source gold row is unknown, not lost (old values in `entry10.md`). "
+            if res.get("entry10") else "") +
+         "The synthetic sisters (`harsh`, v1 sister) are optimistic upper references, not bounds (entry 10). Revised EM, strict, `related_real:estonian` unless stated; % of sign tokens. "
          "Seeds 0-2 primary; brackets are 95% bootstrap intervals over corpora (2,000 resamples), descriptive only.", "",
          "## Task D", "",
-         "| Script | Revised EM, seeds 0-2 | Seeds 3-5 | Pooled 0-5 | Original EM 0-2 | Frequency rank 0-2 | Lenient 0-2 | Ceiling | `harsh` 0-2 | v1 sister 0-2 |",
+         "| Script | Estonian (weak gold), revised EM, seeds 0-2 | Seeds 3-5 | Pooled 0-5 | Original EM 0-2 | Frequency rank 0-2 | Lenient 0-2 | Ceiling | `harsh` (synthetic, optimistic) 0-2 | v1 sister (synthetic, optimistic) 0-2 |",
          "|---|---|---|---|---|---|---|---|---|---|"]
     for st, c in C.items():
         L.append(f"| {st} | {iv(c[EM + '|s02'])} | {pct(c[EM + '|s35']['mean'])} | {iv(c[EM + '|s05'])} | "
@@ -161,13 +185,13 @@ def write_md(res: dict) -> None:
           f"{sum(r['E4_picks'] for r in Rd.values())}). References chosen in `candidates_real:estonian`: "
           + "; ".join(f"{st}: " + ", ".join(f"{k} {v}" for k, v in sorted(C[st]['cand_refs|s02'].items(), key=lambda kv: -kv[1]))
                       for st in C) + ".", "",
-          "*At the floor* = no more than 2 points above the C2 floor, as in `controls.md` (entry 8).", "", "## Scorer diagnostics (entry 9; no solver)", "",
-          "| Script | Ceiling | Tokens whose reflex silently drops a no-source letter | Ceiling reachable by the solver (top 250 units) |",
+          "*At the floor* = no more than 2 points above the C2 floor, as in `controls.md` (entry 8).", "", "## Ceilings (entries 9 and 10; no solver)", "",
+          "| Script | Ceiling, entry 10 (no source = unknown) | Ceiling, before entry 10 (no-source letters dropped) | Ceiling reachable by the solver (top 250 units) |",
           "|---|---|---|---|"]
     for st, d in D.items():
-        L.append(f"| {st} | {pct(d['ceiling'])} | {pct(d['silent_drop'])} | {pct(d['reachable'])} |")
-    L += ["", "The middle column is an upper bound on how far the frozen scorer's handling of \"no source\" rows can raise "
-          "a score (entry 9): such tokens count as recoverable with a shortened reflex. Seeds 0-5, both samplers.", "",
+        L.append(f"| {st} | {pct(d['ceiling'])} | {pct(d['ceiling_old'])} | {pct(d['reachable'])} |")
+    L += ["", "Before entry 10 the harness dropped a no-source letter from a syllable or word reflex, so such tokens counted "
+          "as recoverable with a shortened reflex; entry 10 makes them unrecoverable. Seeds 0-5, both samplers.", "",
           "**Frozen-code notes.** The syllable cutter uses the hidden language's vowel set, so Estonian õ and ü (not "
           "Finnish letters) are cut as consonants in the Estonian reference; neither is the regular reflex of any "
           "Finnish letter in this gold."]

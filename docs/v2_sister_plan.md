@@ -193,3 +193,5 @@ declared in `docs/v2_preregistration.md`, entry 2.
     measured with the same code for comparison.
 - **Leakage (acceptance check 4).** Leakage is measured per corpus, with the v3 filter, on generated
   corpora. It runs after the yardstick table and before any Task C/D run.
+
+**Status update 2026-10-27:** the bracket framing of entry 4 is dropped (pre-registration entry 10). Real relatives are the realistic `related` tier; the synthetic sisters (the v1 sister and `harsh`) are optimistic upper references, not bounds. Entry 10 also makes "no source" gold rows unknown rather than lost in the v2 scoring and yardstick harness.

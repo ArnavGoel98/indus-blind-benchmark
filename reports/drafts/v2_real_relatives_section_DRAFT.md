@@ -1,11 +1,13 @@
 # DRAFT v2 section (for review; not for deposit): real related languages written in different texts
 
-Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights and 2026-10-24
-with Finnish-Estonian (entry 9), on branch `v2`,
+Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights, 2026-10-24
+with Finnish-Estonian (entry 9) and 2026-10-27 for entry 10 (no-source gold rows read as unknown; the
+synthetic sisters reframed as optimistic upper references), on branch `v2`,
 from the reports named in each paragraph. It does not change any v1 number or the v1 paper
 (`paper-v1`). Every number here is a v2 result, and every decimal in it is checked against a
 generated report (`reports/v2/cd/analysis/check_numbers.py`). Methods are frozen at `frozen-v2`
-(commit `4ce3e90`); pre-registration entries 1-9 are in `docs/v2_preregistration.md`. Each claim
+(commit `4ce3e90`); pre-registration entries 1-10 are in `docs/v2_preregistration.md`; entry 10 changed
+only the v2 scoring and yardstick harness. Each claim
 is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims, a decipherment.
 
 ## Key findings
@@ -22,9 +24,11 @@ is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims,
 - **+11.5 points** for Old Tamil-Malayalam, alphabetic, with 10 EM restarts instead of 3 (30.4% to
   41.9%): the only first-order budget effect. All 120 reruns at 3 restarts reproduce the frozen
   records exactly. Entry 8, C3 and C4.
-- **Bracket failed** for Latin: Italian scores below the synthetic `harsh` setting on both seed blocks,
-  although it is closer to Latin on every yardstick, and more restarts widen the gap (`harsh` 43.6%,
-  Italian 18.1%). Post hoc, negative result 3.
+- **Synthetic sisters are optimistic, not bounds.** Italian scores below the synthetic `harsh`
+  setting on both seed blocks, although it is closer to Latin on every yardstick, and more restarts
+  widen the gap (`harsh` 43.6%, Italian 18.1%); Estonian falls below Finnish `harsh` too. Real
+  relatives are therefore the realistic `related` tier, and the synthetic sisters (v1 sister and
+  `harsh`) optimistic upper references. Observation post hoc (negative result 3); framing, entry 10.
 - **+20.1 points** for Finnish-Estonian (sister), alphabetic, over the better unrelated reference,
   ahead in 11 of 12 paired corpora (31.1% pooled): the clearest case of a relative helping. It still falls below `harsh` (35.9% on seeds 0-2, 41.2% pooled), and on syllabic and
   logo-syllabic scripts it is at the constant-answer floor. Its gold is weaker than the others':
@@ -40,12 +44,12 @@ is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims,
 | No real relative brings a script type to a 50% mean | Tables v2.3, v2.5; R1 | Pre-registered (entries 6, 7) | Replicated; holds at 10 restarts (highest 41.9%) | A stronger solver; other relatives or texts |
 | A relative helps measurably in only 2 of 12 cells | C1 | Procedure pre-registered (entry 8), motivation post hoc | One run of 12 corpora per cell; the rule's thresholds are a choice | Other unrelated references; other gold tables |
 | Old Tamil alphabetic recovery is in the range of the Ugaritic anchor | R2; Ugaritic report | Pre-registered check | Replicated | Nothing here: it is a consistency check, not confirmation |
-| Italian falls below `harsh` (the bracket fails) | Tables v2.3, v2.5; R3; C3 | Observation post hoc; R3 pre-registered | Replicated; widens with more restarts | A genre-matched Italian text; other Romance texts |
+| Real relatives fall below the synthetic `harsh` reference, so synthetic sisters are optimistic upper references | Tables v2.3, v2.5, v2.6; R3; C3; E3 | Observation post hoc; R3 and E3 pre-registered; framing post hoc (entry 10) | Replicated for Italian; widens with more restarts; seen for Estonian | A genre-matched relative text; other relatives |
 | Closeness on the yardsticks does not predict Task D | Figure v2.3; frequency check | Exploratory | Five points | More pairs |
 | Logographic zeros are partly a solver artefact | Reachability check | Exploratory | Computed exactly, no solver | A solver without a unit cap |
 | Solver budget is second-order except for one cell | C3 | Pre-registered | Seeds 0-2 only | More restarts or another optimiser |
 | The runs are deterministic | C4 | Pre-registered | 120 of 120 identical | - |
-| Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | One pair; 12 corpora; gold has a regular reflex for 13 of 27 rows | A fuller Finnish-Estonian gold source; another Estonian text |
+| Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | One pair; 12 corpora; **weak gold: 10 word pairs, 13 of 27 letters** | A fuller Finnish-Estonian gold source; another Estonian text |
 
 ## v2.1 Why real relatives
 
@@ -60,6 +64,13 @@ a sister cut from the same text keeps too much verbatim text (`docs/v2_negative_
 Stage 2 therefore measures real related languages written in different texts, with no tuning and no
 targets: whatever distance each real pair has is the distance used (pre-registration entry 5).
 
+Entry 4 had planned to bracket the real case between two synthetic sisters: the v1 sister as an
+upper bound and a harsher sister-v4 setting, `harsh`, as a lower bound. That framing is dropped
+(entry 10). Real relatives fall below `harsh` in two pairs on alphabetic scripts, so `harsh` is no
+lower bound. Both synthetic sisters are built from the hidden language's own source text and keep its
+vocabulary and genre, so they are reported as **optimistic upper references**. The real relatives are
+the realistic `related` tier and the primary evidence.
+
 ## v2.2 Pairs, texts and gold correspondences
 
 *Table v2.1. Real relatives. Each pair is labelled by relationship in every table.*
@@ -69,7 +80,7 @@ targets: whatever distance each real pair has is the distance used (pre-registra
 | Latin (Caesar, Vergil) | Italian | descendant, of spoken (Vulgar) Latin rather than the Classical written language (Grandgent 1907: §§3-4) | Dante, *La Divina Commedia*, Project Gutenberg #1000 (public domain in the USA) | Grandgent (1907), section per row | measured |
 | Old Tamil (Sangam anthologies) | Malayalam | descendant: "a very ancient offshoot of Tamil… not a sister of Tamil, but a daughter" (Caldwell 1875: 23-24; Gundert, reported there, disagreed) | Ezhuthachan, *Adhyātma Rāmāyaṇam Kiḷippāṭṭu*, Malayalam Wikisource (CC BY-SA 4.0) | Caldwell (1875), pages per row | measured |
 | Old Tamil | Kannada | sister: one of Tamil's "sister idioms" (Caldwell 1875: vi), a separate cultivated language (33-34) | Kumāravyāsa, *Karṇāṭa Bhārata Kathāmañjari*, Kannada Wikisource (CC BY-SA 4.0) | Caldwell (1875), pages per row | measured |
-| Finnish (Kalevala) | Estonian | sister (both Finnic; Estonian is Southern Finnic, Finnish Northern: Pajusalu 2012: 202-203, 217) | Kreutzwald, *Kalevipoeg*, Estonian Wikisource, cantos I-XX (CC BY-SA 4.0 site licence; text public domain) | Pajusalu (2012), from the word pairs it prints; Kallio (2016) as cross-check | measured (entry 9) |
+| Finnish (Kalevala) | Estonian (**weak gold**: 10 word pairs, 13 of 27 letters) | sister (both Finnic; Estonian is Southern Finnic, Finnish Northern: Pajusalu 2012: 202-203, 217) | Kreutzwald, *Kalevipoeg*, Estonian Wikisource, cantos I-XX (CC BY-SA 4.0 site licence; text public domain) | Pajusalu (2012), from the word pairs it prints; Kallio (2016) as cross-check | measured (entry 9) |
 | Sanskrit (Rāmāyaṇa) | Pali | descendant | - | - | blocked: SuttaCentral asks that its texts not be used for AI datasets "or similar"; permission to be requested |
 | Sumerian | - | isolate | - | - | `none` tier only |
 
@@ -118,7 +129,10 @@ language distance (the Hebrew lesson of v2 entry 3):
 **Gold tables.** Each hidden unit has a regular reflex (its outcome where no conditioned change
 applies) and a list of attested reflexes, with the section or page of the source for every row.
 Rows the source does not cover are marked "no source" and are unrecoverable under strict scoring
-(Old Tamil h, s, ḵ, ṣ for both Dravidian relatives). Both sources are over a century old; their
+(Old Tamil h, s, ḵ, ṣ for both Dravidian relatives). Since entry 10 a no-source row is read as an
+unknown reflex everywhere: a syllable or word containing it is unrecoverable, and the yardsticks break
+the text there. Before entry 10 the harness dropped such a letter like a lost sound; only Latin *h*,
+which Grandgent states is lost (§249), is now treated that way. Both sources are over a century old; their
 basic consonant correspondences are standard, but details are dated. No gold value comes from
 Wikipedia.
 
@@ -147,58 +161,61 @@ other rows): a consonant skeleton matches far more easily than a full word, even
 correction. Comparisons within one script type are the meaningful ones.
 
 *Table v2.2. Yardsticks, normalised spelling (primary). cc = chance-corrected. Real-pair intervals:
-bootstrap over the relative's lines, 200 replicates, 95%.*
+bootstrap over the relative's lines, 200 replicates, 95%. No-source gold rows read as unknown (entry 10).*
 
 | Pair | Relationship | Script type | JSD above floor (bits) | Shared word forms, cc | Word pairs, cc | Verbatim 6+ units |
 |---|---|---|---|---|---|---|
 | Ugaritic-Hebrew (vowel letters removed) | sister | consonant-only | 0.089 | 58.4% | 4.6% | 0.8% |
 | Latin-Italian | descendant | alphabet | 0.104 (0.101-0.108) | 11.8% (9.6-11.5%) | 0.6% (0.1-0.7%) | 1.9% (0.7-3.3%) |
-| Old Tamil-Malayalam | descendant | abugida | 0.139 (0.137-0.145) | 5.7% (4.0-5.2%) | 0.0% (0.0-0.0%) | 1.8% (0.4-2.4%) |
-| Old Tamil-Kannada | sister | abugida | 0.180 (0.178-0.186) | 4.7% (3.8-5.1%) | 0.0% (0.0-0.1%) | 1.0% (0.4-2.4%) |
-| Finnish-Estonian† | sister | alphabet | 0.184 (0.180-0.189) | -7.9% (-16.2--1.3%) | -1.8% (-3.2--0.4%) | 1.4% (0.2-1.8%) |
-| Finnish, v1-like sister* / `harsh` | synthetic | as hidden | 0.004 / 0.154 | 53.9% / 4.8% | 10.4% / 0.2% | 19.8% / 3.5% |
-| Latin, v1-like sister* / `harsh` | synthetic | as hidden | 0.006 / 0.135 | 53.1% / 7.8% | 7.1% / 1.1% | 12.4% / 2.4% |
-| Old Tamil, v1-like sister* / `harsh` | synthetic | as hidden | 0.002 / 0.185 | 57.6% / 3.6% | 8.5% / 0.1% | 17.8% / 1.8% |
+| Old Tamil-Malayalam | descendant | abugida | 0.141 (0.137-0.144) | 5.9% (4.2-5.3%) | 0.0% (0.0-0.0%) | 0.8% (0.6-2.2%) |
+| Old Tamil-Kannada | sister | abugida | 0.181 (0.178-0.186) | 5.8% (4.5-5.6%) | 0.0% (0.0-0.1%) | 1.2% (0.4-2.4%) |
+| Finnish-Estonian† (weak gold: 10 word pairs, 13 of 27 letters) | sister | alphabet | 0.183 (0.178-0.186) | 10.6% (8.9-10.7%) | 0.6% (0.4-0.9%) | 1.3% (1.0-4.4%) |
+| Finnish, v1-like sister* / `harsh` | synthetic, optimistic | as hidden | 0.004 / 0.154 | 53.9% / 4.8% | 10.4% / 0.2% | 19.8% / 3.5% |
+| Latin, v1-like sister* / `harsh` | synthetic, optimistic | as hidden | 0.006 / 0.135 | 53.1% / 7.8% | 7.1% / 1.1% | 12.4% / 2.4% |
+| Old Tamil, v1-like sister* / `harsh` | synthetic, optimistic | as hidden | 0.002 / 0.185 | 57.6% / 3.6% | 8.5% / 0.1% | 17.8% / 1.8% |
 
 \* The yardstick stand-in for the v1 sister: sister-v4 with v1-like settings (`reports/v2/sister/`), not
 the v1 sister object used in the Task D tables.
-† Not comparable with the other rows (entry 9; `reports/v2/real_relatives/estonian.md`). The yardstick
-code deletes letters whose reflex is "no source", and 12.6% of the hidden Finnish letters are, so mapped
-words are cut short and match less often than chance. An exploratory check (post hoc,
-`estonian_sensitivity.md`) that fills those rows from general knowledge gives 0.117 bits and 5.3%
-shared word forms, near Latin-Italian; it is not a result and changes no gold value.
+† Weak gold (entry 9): 14 of 27 Finnish letters have no source, 12.6% of the hidden letters. Before
+entry 10 the yardstick code deleted them, which cut mapped words short and made the word-level
+yardsticks negative (-7.9% shared word forms; `reports/v2/cd/entry10.md`). Read as unknown, words
+containing them are left out, and Finnish-Estonian shares about as many word forms as Latin-Italian.
+The letter-pair distance stays high, because the Estonian text still contains the letters the Finnish
+side now leaves out.
 
-For Latin-Italian and Malayalam the plug-in estimate of shared word forms lies above its own
+For Latin-Italian, Malayalam and Kannada the plug-in estimate of shared word forms lies above its own
 bootstrap interval, because resampling duplicates lines and so lowers the share of distinct forms;
 the interval is the conservative reading.
 
 **Reading.**
 
 - On these yardsticks the real relatives sit near the `harsh` setting and far from the v1-like
-  sister, which shares 4-12 times as many word forms.
+  sister, which shares about 4-10 times as many word forms.
 - Malayalam is closer to Old Tamil than Kannada on the letter-pair distance, and the intervals do not
   overlap. That fits the relationship labels, but the two texts also differ in genre, period and size,
   so the distance cannot be attributed to the relationship alone.
 - Normalisation matters most where scripts differ most. Kannada writes voicing; collapsing it moves
-  the letter-pair distance from 0.309 to 0.180 bits.
+  the letter-pair distance from 0.310 to 0.181 bits.
 
 **What the verbatim matches are** (exploratory inspection, `reports/v2/real_relatives/verbatim.md`).
-Verbatim runs of 6+ units occur in 1.4% (Malayalam), 1.6% (Kannada) and 2.5% (Italian) of sampled
+Verbatim runs of 6+ units occur in 1.6% (Malayalam), 1.5% (Kannada) and 2.5% (Italian) of sampled
 windows, against 0.0-0.1% through shuffled maps and 0.3-0.4% for an unrelated language with a similar
 open syllable shape (the v1 Finnish hidden half, letters as they are). They are therefore signal,
 but not shared text:
 
-- 60-73% of them run across a word boundary;
+- 60-74% of them run across a word boundary;
 - they are mostly short shared morphs and phoneme strings (for example Malayalam *-kkoṇṭu*,
   *colliyatu*, *paricil*), and for Italian, cognate stems and Dante's Latinisms (*principi-*,
   *cantando*, *crudel-*);
 - no match is a phrase that respects word boundaries on both sides, so they are not shared formulae.
 
-For Finnish-Estonian the share is 1.2% (shuffled maps: 0.6% at the 95th percentile; unrelated Latin
-letters: 0.3%), and no match spans two whole words. Kreutzwald modelled *Kalevipoeg* on the *Kalevala*,
+For Finnish-Estonian the share is 3.1% (shuffled maps: 0.4% at the 95th percentile; unrelated Latin
+letters: 0.3%), and no match spans two whole words. Under entry 10 a window cannot cross a letter
+without a source, so the windows come from stretches written in letters the gold covers, which raises
+the share (1.2% before entry 10). Kreutzwald modelled *Kalevipoeg* on the *Kalevala*,
 so shared formulas were possible; none is found at this level.
 
-In Malayalam about a quarter of the matches (35 of 143) exist only after normalisation. By
+In Malayalam about a fifth of the matches (33 of 164) exist only after normalisation. By
 inspection, most of these pair a native Tamil string with a Sanskrit loanword: the loan is a
 coincidental partner, not a shared loan.
 
@@ -227,27 +244,29 @@ coincidental partner, not a shared loan.
   restarts: a frequency-informed start (sign rank *k* to unit rank *k*) and two random starts.
 - **Scoring:**
     - Strict (primary): a sign token is right when its predicted unit is the regular reflex of the
-    token's hidden value. A logogram is right only when its reflex is a word that occurs in the
+    token's hidden value. A token whose hidden value contains a no-source letter is unrecoverable
+    (entry 10). A logogram is right only when its reflex is a word that occurs in the
     relative (a cognate). Many-to-one predictions are accepted.
     - Lenient (secondary): any combination of attested reflexes counts.
     - Every token counts. The share of tokens that have a strict reflex at all is reported as a
     ceiling.
-- **Bracket rows:** beside the real relatives stand the v1 sister (labelled upper bound in entry 4;
-  read from the v1 records and scored with the v1 scorer before the cognate step) and `harsh`
-  (labelled lower bound in entry 4, which it is not for real relatives: negative result 3).
+- **Synthetic reference rows:** beside the real relatives stand the v1 sister (read from the v1
+  records and scored with the v1 scorer before the cognate step) and `harsh`. Both are optimistic
+  upper references (entry 10); entry 4 had labelled them upper and lower bound, and `harsh` is not a
+  lower bound (negative result 3).
 
 *Table v2.3. Task D, `related` tier, revised EM, strict score: mean % of sign tokens over 6 corpora
 (number of corpora at or above 50%). From `reports/v2/cd/results.md`.*
 
 | Hidden | Relative | Relationship | Logographic | Syllabic | Logo-syllabic | Alphabetic |
 |---|---|---|---|---|---|---|
-| Old Tamil | v1 sister (upper bound) | synthetic | 0.0 (0) | 26.7 (0) | 19.0 (0) | 42.5 (2) |
+| Old Tamil | v1 sister | synthetic, optimistic | 0.0 (0) | 26.7 (0) | 19.0 (0) | 42.5 (2) |
 | Old Tamil | **Malayalam** | descendant | 0.0 (0) | 6.2 (0) | 5.9 (0) | **30.4 (1)** |
 | Old Tamil | **Kannada** | sister | 0.0 (0) | 3.3 (0) | 2.9 (0) | **32.2 (0)** |
-| Old Tamil | `harsh` (lower bound) | synthetic | 0.1 (0) | 6.2 (0) | 5.9 (0) | 16.4 (0) |
-| Latin | v1 sister (upper bound) | synthetic | 1.4 (0) | 32.2 (1) | 9.8 (0) | 45.4 (2) |
+| Old Tamil | `harsh` | synthetic, optimistic | 0.1 (0) | 6.2 (0) | 5.9 (0) | 16.4 (0) |
+| Latin | v1 sister | synthetic, optimistic | 1.4 (0) | 32.2 (1) | 9.8 (0) | 45.4 (2) |
 | Latin | **Italian** | descendant | 0.0 (0) | 6.0 (0) | 1.5 (0) | **16.9 (1)** |
-| Latin | `harsh` (lower bound) | synthetic | 1.5 (0) | 24.4 (0) | 4.6 (0) | 36.1 (1) |
+| Latin | `harsh` | synthetic, optimistic | 1.5 (0) | 24.4 (0) | 4.6 (0) | 36.1 (1) |
 
 The real Ugaritic anchor, for comparison (`reports/v2/ugaritic/results.md`; pre-registered 50%
 criterion failed): 32.0% (revised EM) and 33.9% (original EM) on natural texts, `related` tier,
@@ -287,13 +306,13 @@ bootstrap interval over corpora (descriptive; `reports/v2/cd/pooled.md`).*
 
 | Hidden | Relative | Relationship | Syllabic | Logo-syllabic | Alphabetic |
 |---|---|---|---|---|---|
-| Old Tamil | v1 sister | synthetic | 29.3 (21.9-38.1) | 21.3 (11.1-32.3) | 43.5 (34.4-53.4) |
+| Old Tamil | v1 sister | synthetic, optimistic | 29.3 (21.9-38.1) | 21.3 (11.1-32.3) | 43.5 (34.4-53.4) |
 | Old Tamil | Malayalam | descendant | 10.7 (6.9-15.7) | 6.6 (3.9-9.7) | 30.5 (16.9-44.2) |
 | Old Tamil | Kannada | sister | 4.0 (2.5-5.8) | 3.9 (2.0-6.2) | 34.4 (28.8-41.2) |
-| Old Tamil | `harsh` | synthetic | 8.1 (4.3-12.4) | 6.3 (3.0-9.8) | 12.9 (7.0-19.2) |
-| Latin | v1 sister | synthetic | 29.3 (16.2-43.1) | 9.7 (5.8-14.4) | 46.3 (37.6-55.3) |
+| Old Tamil | `harsh` | synthetic, optimistic | 8.1 (4.3-12.4) | 6.3 (3.0-9.8) | 12.9 (7.0-19.2) |
+| Latin | v1 sister | synthetic, optimistic | 29.3 (16.2-43.1) | 9.7 (5.8-14.4) | 46.3 (37.6-55.3) |
 | Latin | Italian | descendant | 4.2 (1.8-6.9) | 2.3 (1.2-3.9) | 20.3 (9.6-32.6) |
-| Latin | `harsh` | synthetic | 16.9 (9.3-25.4) | 3.6 (1.8-5.6) | 31.5 (24.0-38.9) |
+| Latin | `harsh` | synthetic, optimistic | 16.9 (9.3-25.4) | 3.6 (1.8-5.6) | 31.5 (24.0-38.9) |
 
 Logographic scripts are left out of this table: every real relative scores 0.0 there (the full table is
 in `pooled.md`).
@@ -309,24 +328,23 @@ Finnish with *Kalevipoeg*, run after the yardsticks were reported: 24 corpora on
 on seeds 3-5 and 48 for the controls, all on the frozen code, with no errors. Its gold has a regular
 reflex for 13 of 27 rows, so it is reported in its own table and not pooled with the other pairs.
 
-*Table v2.6. Finnish-Estonian, Task D, `related` tier, revised EM, strict (%). Pooled: seeds 0-5 with
+*Table v2.6. Finnish-Estonian (weak gold: 10 word pairs, 13 of 27 letters), Task D, `related` tier, revised EM, strict (%). Pooled: seeds 0-5 with
 a 95% bootstrap interval over corpora.*
 
-| Script | Seeds 0-2 | Pooled 0-5 | Ceiling | `harsh`, seeds 0-2 | v1 sister, seeds 0-2 | Task C: picks Estonian (of 6) |
+| Script | Estonian, seeds 0-2 | Pooled 0-5 | Ceiling | `harsh` (synthetic, optimistic), seeds 0-2 | v1 sister (synthetic, optimistic), seeds 0-2 | Task C: picks Estonian (of 6) |
 |---|---|---|---|---|---|---|
-| Logographic | 0.0 | 0.2 (0.0-0.5) | 22.4 | 0.0 | 1.0 | 0 |
-| Syllabic | 9.3 | 8.4 (4.8-12.5) | 96.5 | 19.9 | 43.6 | 6 |
-| Logo-syllabic | 3.9 | 3.8 (2.2-5.3) | 60.5 | 8.6 | 21.2 | 6 |
+| Logographic | 0.0 | 0.2 (0.0-0.5) | 15.5 | 0.0 | 1.0 | 0 |
+| Syllabic | 9.3 | 8.1 (4.4-12.3) | 82.9 | 19.9 | 43.6 | 6 |
+| Logo-syllabic | 3.7 | 3.6 (2.1-5.1) | 50.5 | 8.6 | 21.2 | 6 |
 | Alphabetic | 29.8 | 31.1 (25.1-36.3) | 86.5 | 35.9 | 65.3 | 3 |
 
 - No Estonian run reaches 50%; the highest is 44.1% (alphabetic). Alphabetic runs range from 5.3% to
   44.1%.
 - Estonian falls below `harsh` in every script type but logographic (E3), as Italian does on
-  alphabetic and syllabic scripts: the bracket fails for a sister pair too.
-- The syllabic ceiling (96.5%) is inflated by the frozen scorer: when a syllable contains a no-source
-  consonant, the consonant is dropped from its reflex instead of making the token unrecoverable. This
-  affects up to 13.6% of syllabic tokens and 10.0% of logo-syllabic tokens, and none on alphabetic
-  scripts (diagnostic fixed in entry 9).
+  alphabetic and syllabic scripts: a real sister pair also scores below the optimistic synthetic reference.
+- Entry 10 lowered the ceilings (syllabic 96.5% to 82.9%, logo-syllabic 60.5% to 50.5%, logographic
+  22.4% to 15.5%): before it, a syllable containing a no-source consonant counted as recoverable with
+  the consonant dropped. Scores moved by at most 0.5 points, and no reading flipped.
 - In `candidates_real`, the revised rule picks Estonian in all 12 syllabic and logo-syllabic corpora,
   in 3 of 6 alphabetic ones (Latin in the rest) and in none of the logographic ones (E4: 15 of 24).
 
@@ -352,13 +370,13 @@ unrelated reference and is ahead in at least 9 of the 12 paired corpora.
 
 - Estonian (entry 9, same rule, Latin and Old Tamil as the unrelated references) helps on alphabetic
   scripts: 31.1% against Latin 11.1%, +20.1 points, ahead in 11 of 12 paired corpora. It does not help
-  on syllabic (+4.6; 7 of 12), logo-syllabic (+2.2; 8 of 12) or logographic scripts (+0.2).
+  on syllabic (+5.5; 7 of 12), logo-syllabic (+2.5; 10 of 12) or logographic scripts (+0.2).
 
 **C2. Constant-answer floor.** Mapping every sign to the single most common regular reflex scores
 14.2-15.8% on alphabetic scripts. The real relatives stay above it there. On logographic scripts
 the floor is 8.6-17.5% and every real relative scores 0.0%; on syllabic and logo-syllabic scripts,
-Kannada and Italian are at or below it. For Estonian the floor is 12.9% (alphabetic), 13.8%
-(syllabic), 9.6% (logo-syllabic) and 5.8% (logographic): Estonian is above it only on alphabetic
+Kannada and Italian are at or below it. For Estonian the floor is 12.9% (alphabetic), 12.6%
+(syllabic), 9.3% (logo-syllabic) and 5.8% (logographic): Estonian is above it only on alphabetic
 scripts.
 
 **C3. Solver budget.** With 10 EM restarts instead of 3 (the first three identical), only Old
@@ -404,15 +422,16 @@ added value; \* = helps by the entry-8 rule.*
 3. **The Old Tamil alphabetic scores are in the range of the Ugaritic anchor** (30.5% and 34.4%
    against 24.6-29.9% like-for-like), as pre-registered check R2 required. This is a consistency
    check, not corroboration: the conditions differ (section v2.7).
-4. **The bracket does not hold** (post hoc; `docs/v2_negative_results.md`, item 3).
+4. **Real relatives fall below the synthetic references** (post hoc; `docs/v2_negative_results.md`,
+   item 3). The synthetic sisters are therefore optimistic upper references, not bounds (entry 10).
     - Italian falls below `harsh` on both seed blocks for alphabetic and syllabic scripts (pooled
       alphabetic 20.3% against 31.5%), and more restarts widen the gap.
     - Kannada falls below `harsh` for syllabic and logo-syllabic scripts on both seed blocks.
     - Estonian, a sister of Finnish, falls below `harsh` for syllabic, logo-syllabic and alphabetic
       scripts (alphabetic 29.8% against 35.9% on seeds 0-2; entry 9, E3). This is a fourth pair with
       the same pattern, so the failure is not specific to a descendant relationship.
-    - The real relatives therefore replace the bracket as the primary evidence for this tier. That
-      reporting decision was taken after seeing the results.
+    - The real relatives are therefore the primary evidence for this tier, and the bracket of entry 4
+      is dropped. These reporting decisions were taken after seeing the results.
 5. **Closeness on the yardsticks did not predict Task D** (exploratory; Figure v2.3). Italian is
    closer to Latin than `harsh` on every yardstick and agrees better in letter frequencies (unigram
    JSD 0.026 against 0.059; `reports/v2/cd/frequency_check.md`), yet scores lower. A text effect of the
@@ -451,7 +470,7 @@ Inside them the added value is modest and unstable.
   genre and period. In the Ugaritic anchor, a pre-registered tier with a genre-matched Hebrew
   reference (the poetic books) raised revised-EM recovery from 32.0% to 37.2% on natural texts, and
   from 24.6-29.9% to 38.4-43.0% on texts re-cut to mean length 4.6 (`reports/v2/ugaritic/results.md`).
-  Text effects of that size could account for the bracket failure.
+  Text effects of that size could account for real relatives scoring below `harsh`.
 - **A ranking of sister against descendant.** There are two relatives of one hidden language, with
   different texts, periods and reference sizes.
 - **Independent confirmation from Ugaritic.** The Old Tamil alphabetic scores and the like-for-like
@@ -504,12 +523,10 @@ Inside them the added value is modest and unstable.
     occurs anywhere in the relative, while the solver can only predict among the reference's 250
     most frequent units. For logographic scripts the reported ceilings overstate what the solver
     could reach (section v2.5). This was found after the run and is reported, not corrected.
-14. **A thinner gold for Finnish-Estonian.** Its source has no correspondence table, so the gold
-    comes from ten printed word pairs and has a regular reflex for 13 of 27 rows. The frozen scorer
-    and yardstick code treat "no source" like "no reflex": a no-source letter is deleted rather than
-    making the token unrecoverable. This makes the word-level yardsticks negative and inflates the
-    syllabic and logo-syllabic ceilings (by up to 13.6% and 10.0% of tokens); alphabetic scores are
-    unaffected. The same holds, on a much smaller scale, for the Tamil tables' no-source letters.
+14. **A weak gold for Finnish-Estonian.** Its source has no correspondence table, so the gold comes
+    from ten printed word pairs and has a regular reflex for 13 of 27 letters; every table labels it
+    weak. Since entry 10 the other letters are unknown rather than lost, which lowers the ceilings and
+    removes the artefact that made the word-level yardsticks negative (`reports/v2/cd/entry10.md`).
 15. **Frozen syllable cutter.** It uses the hidden language's vowel set, so Estonian õ and ü are cut
     as consonants in the Estonian syllabic reference. Neither is the regular reflex of any Finnish
     letter in this gold.
@@ -558,6 +575,18 @@ Inside them the added value is modest and unstable.
     - Task C/D: 96 corpora, no errors. E1 was evaluated as in `controls.md` (at the floor = no more
       than 2 points above it).
     - Pali: SuttaCentral's terms read; still blocked; a permission request drafted, not sent.
+
+- **2026-10-27:**
+    - Pre-registration entry 10 declared and pushed (commit `d686a5a`) before any rerun: a no-source
+      gold row is unknown, not lost, in the v2 scoring and yardstick harness only; the bracket framing
+      dropped (synthetic sisters are optimistic upper references); the Finnish-Estonian gold labelled
+      weak in every table.
+    - 96 corpora rerun (Finnish, Old Tamil; seeds 0-5), 0 errors; every prediction scored under the old
+      and the new reading, and the old scores matched the archived records in all 3,348 values compared.
+      Old Tamil scores did not change at one decimal; Finnish-Estonian ceilings fell; no reading
+      flipped. Predictions are archived so later scoring questions need no rerun.
+    - An implementation error in the entry-10 verbatim inspection (a stretch after a break was counted
+      as a word start) was found and fixed before the results were reported.
 
 ## References (this section)
 

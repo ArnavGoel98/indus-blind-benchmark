@@ -4,12 +4,12 @@ Not pre-registered; an inspection of the yardstick in `yardsticks.md`. Normalise
 
 | Pair | Windows | Hits | Share | Chance (mean / 95th pct.) | Unrelated (Finnish) | One whole word | Inside words | Across word boundaries | Normalised only | In 10+ relative lines |
 |---|---|---|---|---|---|---|---|---|---|---|
-| tamil-malayalam | 10,089 | 143 | 1.4% | 0.0% / 0.2% | 0.3% | 1 | 37 | 105 | 35 | 23 |
-| tamil-kannada | 10,089 | 161 | 1.6% | 0.0% / 0.0% | 0.4% | 0 | 48 | 113 | 109 | 36 |
+| tamil-malayalam | 10,082 | 164 | 1.6% | 0.0% / 0.0% | 0.3% | 1 | 41 | 122 | 33 | 19 |
+| tamil-kannada | 10,082 | 154 | 1.5% | 0.0% / 0.0% | 0.4% | 1 | 40 | 113 | 85 | 25 |
 | latin-italian | 8,488 | 210 | 2.5% | 0.1% / 0.4% | 0.3% | 16 | 69 | 125 | n/a | 18 |
 
-- **tamil-malayalam:** 1.4% of windows, 4.5 times the unrelated-language level (0.3%). 73.4% of hits run across a word boundary. Hits that are one whole word on both sides: 1; that cover two or more whole hidden words: 1.
-- **tamil-kannada:** 1.6% of windows, 4.1 times the unrelated-language level (0.4%). 70.2% of hits run across a word boundary. Hits that are one whole word on both sides: 0; that cover two or more whole hidden words: 3.
+- **tamil-malayalam:** 1.6% of windows, 5.2 times the unrelated-language level (0.3%). 74.4% of hits run across a word boundary. Hits that are one whole word on both sides: 1; that cover two or more whole hidden words: 0.
+- **tamil-kannada:** 1.5% of windows, 3.9 times the unrelated-language level (0.4%). 73.4% of hits run across a word boundary. Hits that are one whole word on both sides: 1; that cover two or more whole hidden words: 0.
 - **latin-italian:** 2.5% of windows, 7.2 times the unrelated-language level (0.3%). 59.5% of hits run across a word boundary. Hits that are one whole word on both sides: 16; that cover two or more whole hidden words: 0.
 
 Classes count hits (a window drawn twice counts twice). *Normalised only*: the matched stretch of the relative is written with a voiced or aspirated stop, so it matches only after normalisation. In Malayalam such letters mostly mark Sanskrit loans; Kannada also writes voicing in native words. The flag is not defined for Latin-Italian (n/a).
@@ -18,311 +18,322 @@ Classes count hits (a window drawn twice counts twice). *Normalised only*: the m
 
 | Class | Window | Hidden word(s) | Relative word(s), as written | Relative lines holding it | Normalised only |
 |---|---|---|---|---|---|
-| across boundaries | k k o ṇ ṭ u | oṟṟik koṇṭu | vasiccavaḷekkoṇṭu | 201 |  |
-| across boundaries | a n t a n a n | vantaṉa ṉōmaṟṟu | bhūpālanandananmārōṭu | 69 | yes |
-| across boundaries | a m v a r u t | alkiṉam varutal | rāmābhiṣēkavighnam varuttīṭuvānā | 40 |  |
+| across boundaries | a n t a n a | tāṉmaṇan taṉaiyameṉa | bhūpālanandananmārōṭu | 119 | yes |
+| across boundaries | r k k a ṭ a | vēntuamark kaṭanta | markkaṭasañcayam | 46 |  |
 | across boundaries | a n t a m a | eyiṉantai makaṉ | mandamandantalōṭittalōṭi | 30 | yes |
-| across boundaries | n a v a n t | teṉṉavaṉ teḷitta | mannavan tannōṭu | 25 |  |
+| across boundaries | m c e y t a | ēmam ceytakaṉ | mandasmitam ceytarike | 24 |  |
 | across boundaries | a v a r k a | pāṭiyavar kallāṭaṉār | pravēśīccavarkaḷum | 23 |  |
-| across boundaries | t a m p a r | marutam paraṇar | mandam paramāśramasannidhau | 21 | yes |
-| across boundaries | k a v a n t a | yāka vantaṉar | rāghavan tanne | 19 | yes |
-| across boundaries | a v u m t a | kaṭavum taḻaṅkukural | dēhavum dahippiccāl | 16 | yes |
-| across boundaries | a n t a p u | iṟanta pukaḻcāl | ṇṭanta puramakam | 13 |  |
-| across boundaries | t a m p a r a | marutam paraṇar | mandam paramāśramasannidhau | 13 | yes |
-| across boundaries | ṇ ṭ u n i n | koṇṭuniṉ | utsāhamuṇṭu ninakkeṅkilikkālam | 12 |  |
-| across boundaries | t a m k a l | nīttam kalporutu | cittasamōdam kalarnnu | 10 | yes |
-| across boundaries | u p o ḻ u t i | alkuṟu poḻutiṉ | atupoḻutilatikaruṇayoṭu | 8 |  |
-| across boundaries | m a l a n ā | malai nāṭa | nirmmalanākiya | 6 |  |
-| across boundaries | n i m a k a | mēṉi makaḷir | ccavanimakaḷaṭimalarumakataḷirilōrttu | 6 |  |
-| across boundaries | a ḷ u m k a | puraḷum kaiya | rājyaṅṅaḷum kaṭa | 5 |  |
-| across boundaries | r t t a m c | yāṇarttam ciṟukuṭi | dēhamatyarttham jaḍam | 5 | yes |
-| across boundaries | t i r i k k a | pātirik karuntakaṭṭu | lallaluḷḷattiluṇṭākātirikkaṇam | 5 |  |
-| across boundaries | ā y a t u k a | kaṭāyatu kaṭinakar | sannaddhanāyatu kaṇṭanērattu | 5 |  |
-| across boundaries | ṭ a n t a n | maṭantai niṉ | paṅktikaṇṭhan tannekkonnu | 5 | yes |
+| across boundaries | a t t a m a | vilaṅkumalait tamarnta | dattamallo | 22 |  |
+| across boundaries | u ḷ a ḷ a v | ceyporuḷ aḷavu | panthikaḷāyuḷaḷavarēyumokkavē | 19 |  |
+| across boundaries | u v a r u n | añcuvaru naṉantalaip | vasiccu varunnatumuṇṭu | 18 |  |
+| across boundaries | a v u m n i | malayavum nilattavum | svarṇṇavum niṣprabham | 16 |  |
+| across boundaries | r u m i l l | uyirum illai | nārumillenikku | 15 |  |
+| across boundaries | u m a r u v i | tāyiṉum aruvi | cinticcu maruvinān | 14 |  |
+| across boundaries | r a y u m v | puraiyum vaṇaṅkuiṟaip | etrayum vṛddhatapasvinimāril | 13 |  |
+| across boundaries | u p u ṇ a r | aṟaṉoṭu puṇarnta | puṇarnnu puṇarnnuṭan | 12 |  |
+| across boundaries | i n ā n ā t | āyiṉ āṉātu | gamiccīṭinānādarāl | 10 | yes |
+| across boundaries | m e l l ā m p | nilam ellām pōr | viśvamellām parattikkulatantavē | 9 |  |
+| across boundaries | n a v u m p | viṉavum pētaiyam | rājanārījanavum puna | 9 |  |
+| across boundaries | t t i r u n | piṇiyakat tiruntu | cennaṅṅarikattirunnu | 9 |  |
+| across boundaries | v a r u m k | iruvarum kavaiyiṉaḷ | varum kramāl | 9 |  |
+| across boundaries | a c e y y u | pāṭiya ceyyuḷ | mōdēna ceyyunna | 8 |  |
+| across boundaries | c u v a r u | añcuvaru | vasiccu varuvan | 8 |  |
+| across boundaries | n i t u m a | iṉitu maṉṟamma | cennirunnitu mahāviṣṇumāyayumappōḷ | 8 |  |
+| across boundaries | i l v ā ḻ k | paricil vāḻkkaip | dharaṇiyil vāḻkayil | 7 |  |
+| across boundaries | i y u m i l l | valiyum illai | antavumādiyumillātoru | 7 |  |
+| across boundaries | t a n t a m | tanta māṟaṉ | tātōdantamāśū | 7 | yes |
+| across boundaries | a m o ṭ u k | cuṟṟamoṭu kaipuṇarn | duṣṭaniśācaravamśamoṭukkuvān | 5 |  |
+| across boundaries | r a y u m e n | varaiyum eṉpa | netrayumennuḷḷa | 5 |  |
+| across boundaries | ṇ ṭ a v a r k | kaṇṭavar kāṇavaruvārkku | kaṇṭavarkkentu | 5 |  |
+| across boundaries | ṭ a n t a n | uṭaintaṉṉa | paṅktikaṇṭhan tannekkonnu | 5 | yes |
+| across boundaries | ṭ u v a t i | peṭaiyaṭu vatiyum | collīṭuvatiṅṅane | 5 |  |
+| across boundaries | a l a m k o | kāṉalam koṇkaṉ | jalam koṇṭaṅṅu | 4 |  |
+| across boundaries | a n t a t a m m | tantai tammūr | santatam mandatvaṅkoṇṭentoru | 4 |  |
+| across boundaries | a p a l a p | aṉṉavai palapala | sahajasutasaciva balapatikaḷoṭu | 4 | yes |
 | across boundaries | a p a l a p a | aṉṉavai palapala | sahajasutasaciva balapatikaḷoṭu | 4 | yes |
-| across boundaries | k o n n u m | koṉṉum | konnu muṭikkunnatuṇṭallō | 4 |  |
-| across boundaries | n a l k i y | nalki yōṉē | nalkiyāl | 4 |  |
-| across boundaries | t t u v a r | maṟuttu varaivu | aṭuttuvaru | 4 |  |
-| across boundaries | ṭ i y a n a | ḷīṇṭiya nal | uṇṭaṭiyanabhiṣēkasambhāraṅṅaḷ | 4 |  |
-| across boundaries | ṭ u k k a m | aṭukkam | koṭukka maṭiyāte | 4 |  |
-| across boundaries | a v i n a y | māṟiya viṉaiyē | ārūḍhavinayaṅkoṇṭānatavaktrattōṭu | 3 |  |
-| across boundaries | i r a ṇ ṭ u | tiraṇṭunīṭu | cevi raṇṭum | 3 |  |
-| across boundaries | k k a ḷ u ṇ | kuṟumākkaḷ uṇṭa | śatrukkaḷuṇṭākayāl | 3 |  |
-| across boundaries | k u m e n n ā | ākumeṉ ṉāmaik | piḻaykkumennāśu | 3 |  |
-| across boundaries | k u ṭ i c c ī | amkuṭic cīṟūr | kuṭiccīṭuva | 3 |  |
-| across boundaries | m e l l ā m u | vaḻakkam ellāmum | nityadharmmādharmmamellāmupēkṣiccu | 3 |  |
-| across boundaries | p a l a v i | pala viṉai | palavidhamāyudhaṅṅaḷumāyi | 3 |  |
-| across boundaries | t ā n u m k a | tāṉum kaṭaliṉum | tānum karēṟinān | 3 |  |
-| across boundaries | u m v a r a | tatumpum varaiya | vēṇṭum varaṅṅaḷ | 3 |  |
-| across boundaries | ā n a v a n t a | yāṉai vantatu | kaṭṭukoṇṭānavantannuṭe | 3 |  |
-| across boundaries | ā r m a k a | veḷḷūrkiḻār makaṉār | tārārmakaḷāya | 3 |  |
+| across boundaries | i v a n t a | elli vantaṉṟō | ñānitilpukkivantanneyoṭukkuvan | 4 |  |
+| across boundaries | l l a t u v a | allatu vanta | nallatu varuvatināyanugrahikkēṇam | 4 |  |
+| across boundaries | t a m u r a | kaṭanta muraṇ | mandamura | 4 | yes |
+| across boundaries | v a r ē v a | tevvar ēval | punaravarēvarumatunēram | 4 |  |
+| across boundaries | a n t ō ṟ u m | maran tōṟu mai | kānanantōṟum | 3 |  |
+| across boundaries | a ṭ a p p a n | paṭappai nuṇilaip | naṭappan | 3 |  |
+| across boundaries | e y t u n a | ceytunat | nannāyāślēṣañceytu nalkinānanugrahamḥ | 3 |  |
+| across boundaries | i y a n ā r | cāṇṭiliyaṉār | pūjitanākiya nāradan | 3 |  |
+| across boundaries | i y i l u ḷ | pakutiyil uḷḷaṉa | hīnajātiyiluḷaḷa | 3 |  |
+| across boundaries | k k u m a r u | kaṭakkum aruñcamat | pinneyupadēśavākkumaruḷ | 3 |  |
+| across boundaries | l p u k k u | il pukku | laṅkayilpukku | 3 |  |
+| across boundaries | m a r a t t | tāmarait taṇ | samarattinorumpeṭṭu | 3 |  |
+| across boundaries | n a r ā k a | aṟiyunar āka | punarākayāl | 3 |  |
+| across boundaries | o ṭ u t t u n | ṟoṭuttu nannalam | toṭuttu nōkkikkoṇṭu | 3 |  |
+| across boundaries | p p a n n a | cūṉmutirp paṉṉa | nityamulppannam | 3 |  |
+| across boundaries | ṇ ī r k u ṭ | teṇṇīr kuṭittali | taṇṇīrkuṭikkum | 3 |  |
 | across boundaries | ṟ i y ā m a | aṟiyā maraṉpayil | bhavānataṟiyāmallō | 3 |  |
-| across boundaries | ṭ u m ā n a | neṭumāṉ añci | kaiviṭṭumānasē | 3 |  |
-| across boundaries | a m v ē ṇ ṭ | ākkam vēṇṭiyum | saṅkaṭam vēṇṭā | 2 |  |
-| across boundaries | a p a r i c | tuṟai paricil | sarvasatvāntarggatanaparicchēdyanallō | 2 |  |
-| across boundaries | a r o r u v | oruvar oruvā | ivaroruvaretiriṭukilasurasurajātika | 2 |  |
-| across boundaries | c o l l i p p | collip periya | collippalataram | 2 |  |
-| across boundaries | i m a t u r a m | kuṟiñci maturai marutaṉ | amṛtasamajalavumatimadhuramadhupūravu | 2 | yes |
-| across boundaries | i n t a p ū | ocinta pū | cintapūṇṭuḻannitu | 2 |  |
-| across boundaries | m c e y v ā | pāṇṭiyam ceyvāṉ | rāmaneccenneṭuttāliṅganam ceyvān | 2 |  |
-| across boundaries | m p a ṭ u t t | valam paṭutta | kuṇṭhavihīnam paṭuttutuṭaṅṅinān | 2 |  |
-| across boundaries | n a r ā y i | iṟantaṉar āyiṉum | punarāyirambāṇameytān | 2 |  |
-| across boundaries | n t i k k a r | māntik karaiya | cintikkarutu | 2 |  |
-| across boundaries | p a r a n t a | paranta | paran tadviyuktan | 2 |  |
-| across boundaries | p a ṭ a k a | nōṉpaṭai kaṭṭiloṭu | kālāḷppaṭakaḷum | 2 |  |
-| across boundaries | r a y a y a | kalvarai yayalatu | yātrayayaccōranantaram | 2 |  |
-| across boundaries | r k k ō t a y | malark kōtaiyār | narkkōdayam | 2 | yes |
-| across boundaries | r ā l a m p a | kurālam paṟantalai | ṟṟillorālambanam | 2 | yes |
-| across boundaries | t a m a n ō | nekiḻntamai nōkkik | sattamanōrkkil | 2 |  |
-| across boundaries | t a n n a v a | taṉṉa vaiēntu | vanyabhōjanavuñceytannavarellāvaru | 2 |  |
-| across boundaries | t a n t a v | citainta varai | parattikkulatantavē | 2 |  |
-| across boundaries | ṭ ṭ u p a k | puṟattiraṭṭu pakaivayiṟcēṟal | kumpiṭṭu bhaktyā | 2 | yes |
-| across boundaries | a k a n t u | akaṉtuṟai | krōdhēna gantumabhyudyatam | 1 | yes |
-| across boundaries | a m k a ṇ ṭ u c | paruvam kaṇṭu colliyatu | mahārṇṇavam kaṇṭu cāṭīṭinān | 1 |  |
-| across boundaries | a m p e r u t t | paiññiṇam perutta | bhayam peruttu | 1 |  |
-| across boundaries | a n a m u l a | vaṉa mulai | tribhuvanamulaye | 1 |  |
-| across boundaries | a n n a r ā y | naṉṉar āykaviṉ | lulpannarāyitu | 1 |  |
-| across boundaries | a p a l a k a | tuṭaippa palakaiyum | aticapalakarabhuvi | 1 |  |
+| across boundaries | ṭ u v a t i n | paṟaḻoṭu vatinta | santyajiccīṭuvatinillallō | 3 |  |
+| across boundaries | a k ā m a r | kaṟitta kāmar | śūrppaṇakha kāmarūpiṇiyallō | 2 |  |
+| across boundaries | a m n ō k k | puṟam nōkki | naṭakoṇṭānāśramam nōkkippuna | 2 |  |
+| across boundaries | a m n ō k k i | patam nōkki | naṭakoṇṭānāśramam nōkkippuna | 2 |  |
+| across boundaries | a v u m v e | taṇṇilavum veṅkatirum | pātracatuṣṭayavum veccukoḷḷaṇam | 2 |  |
+| across boundaries | a y a m t u | tuṇikayam tuṉṉiya | samśayam duṣṭe | 2 | yes |
+| across boundaries | a y u m n ī | niṉaiyum nīril | nārāyaṇapriyanetrayum nīyennu | 2 |  |
+| across boundaries | a y u m v a n | meṉmaiyum vaṉmaiyum | nidrayum vannitudayaśailōpari | 2 |  |
+| across boundaries | a ṇ ṭ a m ā | taṇṭa māppoṟi | daṇḍamāśu | 2 | yes |
+| across boundaries | i c c o l l i | neruṅkic colli | nōkkiccollināḷatunēramḥ | 2 |  |
+| across boundaries | i y u m n ā | kaṭiyum nāṭa | saumitriyum nāḷe | 2 |  |
+| across boundaries | k a n i n t | keṭukaniṉ tevvar | yōganindra | 2 | yes |
+| across boundaries | k a t t u c | piṇaṉukaittuc | muppatunāḷinakattu cennīṭāyki | 2 |  |
+| across boundaries | l a v a n t a | mālai vantaṉṟeṉ | kālkṣaṇampōlumennākilavan tani | 2 |  |
+| across boundaries | l u m u ṭ a | cemmalum uṭaittē | baddharākilumuṭan | 2 |  |
+| across boundaries | m a ṇ ṇ i n | arumaṇ ṇiṉaiyē | maṇṇinu | 2 |  |
+| across boundaries | ṟ ṟ a m ā k | cuṟṟa māka | bhavānēṟṟamākayāl | 2 |  |
+| across boundaries | ṟ ṟ u m m a | āṟṟum malar | muṟṟum maṟaññucamaññitu | 2 |  |
+| across boundaries | a k a v a k | takai vakai | vānaranāyakavakṣasi | 1 |  |
+| across boundaries | a l a y a k a ṭ | malaittalaiya kaṭaṟkāviri | valaya kaṭakāṅgada | 1 |  |
+| across boundaries | a n a p a l a | māṇṭaṉai palavē | niśamanabala | 1 | yes |
+| across boundaries | a n m a l a | taṉ malaintu | vanmalapōleyoru | 1 |  |
+| across boundaries | a n n a n n a | naṉṉaṉ nal | annannasurareyokkeyoṭukkuvān | 1 |  |
+| across boundaries | a n n a t a k | aṉṉa takai | sannatagātrattōṭumuyarēkkūppittoḻu | 1 | yes |
+| across boundaries | a n t a c e | milainta ceṉṉiyaṉ | ppuṇyāhaparyantamāhanta ceyka | 1 |  |
+| across boundaries | a n u m a n a n t a | kuṟṟanum aṉantal | guhanumanantanum | 1 |  |
+| across boundaries | a p p ō ḷ k ā | civappōḷ kāṇiṉ | mavatārañceytappōḷ kāṇāyī | 1 |  |
+| across boundaries | a r k ō ṭ ṭ | vaṇar kōṭṭuc | rākṣasar kōṭṭayil | 1 |  |
 | across boundaries | a r u m p a t i n | eṇmarum patiṉoru | vararum patinnālāyiravum | 1 |  |
 | across boundaries | a r u m p o ḻ u | arum poḻutōṭu | varumpoḻum | 1 |  |
-| across boundaries | a r u ḷ e n n | aruḷ eṉṉai | jayiccaruḷennirunnaruḷināḷ | 1 |  |
-| across boundaries | a t a l a m a k | maṟuttanta talaimakaṟku | bhuvanatalamakhilamaravindōtbhavādiyām | 1 | yes |
-| across boundaries | a t u m a n n | iṉṉatu maṉṉō | saphalamāyvannatu mannētravum | 1 |  |
-| across boundaries | a y ā t u n | varaiyātu neṭuṅkālam | mayādhunā | 1 | yes |
-| across boundaries | i k k a l l | tīṇṭik kalleṉa | patmasamlagnapāmsulēśaminnenikkallō | 1 |  |
-| across boundaries | i r u v a ṭ i k a | tiruvaṭikaḷ | nintiruvaṭi kaniññaṅṅeḻunnaḷaḷīṭaṇa | 1 |  |
-| across boundaries | i ñ c i t a | kuṟiñci talaivi | kiñcidantike | 1 | yes |
-| across boundaries | k a y a n a | takaiya naṉ | kēkayanarādhipanākiya | 1 |  |
-| across boundaries | k k a n a l | teṟukatirk kaṉali | marikka nallū | 1 |  |
-| across boundaries | k k u m t a n | pāvaikkum taṉakkum | ninakkum tannu | 1 |  |
-| across boundaries | k k u m ō y | uykkumō yātavaṉ | nīlkkumō yauvanavum | 1 |  |
-| across boundaries | m a l a r t | māmalar taṇtuṟait | kalpakavṛkṣapputumalar tūkinā | 1 |  |
-| across boundaries | m a t i p ō l | mati pōla | veṇmatipōle | 1 |  |
-| across boundaries | n a m ē v a | kolviṉai mēvaṟṟut | tārāvacanamēvam | 1 |  |
-| across boundaries | n m ā r p i | māyavaṉ mārpil | dandaśukanmār pitṛkkaḷ | 1 |  |
-| across boundaries | n n i n u m | poṉṉiṉu mattuṇai | ronninum | 1 |  |
-| across boundaries | n n u ṟ a p p | muṉṉuṟap pukaḻnta | pāliccukoḷkennuṟappiccu | 1 |  |
-| across boundaries | n u m t a r | vāyiṉum tarukuvēm | kaḻiññitennum dharā | 1 | yes |
-| across boundaries | t a t u m p | tatumpuvaṉa | nārada tumburumukhyajanaṅṅaḷum | 1 | yes |
-| across boundaries | t ō ṟ u m a | tōṟu mai | hastaṅṅaḷtōṟumalātavum | 1 |  |
-| across boundaries | u k k i y a t | curukkiya tōl | duṣkṛtamellāmoṭukkiyatōrkka | 1 |  |
-| across boundaries | u m a ṟ a n | yāṅkumaṟan | putranumiṅṅu maṟannu | 1 |  |
-| across boundaries | u m i n n u m | iṉṉum iṉṉum | ḷellavaruminnu malkkarakauśalam | 1 |  |
-| across boundaries | u m p ē k a | kōpperum pēkaṉ | mumpē kaṭannitu | 1 |  |
-| across boundaries | u v a n k a | ciṟuvaṉ kaṇṇi | naṭannīṭuvan gatabhayam | 1 | yes |
-| across boundaries | u ṭ a y ō r | nāṭuṭai yōrē | ñaṅṅaḷkkumāruṭayōrini | 1 |  |
-| across boundaries | v a n p a ṟ | vaṉpaṟai | supārśvan paṟaññatu | 1 |  |
-| across boundaries | v a r a p p | avaraip poyataḷ | naṭannāravarappōḷ | 1 |  |
-| across boundaries | v a r a v u k | varaivu kaṭāyatu | varavu kaṇṭākulāl | 1 |  |
+| across boundaries | a t t a n e | tolaitta neṭunal | baddhanennuḷḷa | 1 | yes |
+| across boundaries | a v a k ā n | avai kāṉal | bhavakānanadavadahananāmadhēyam | 1 |  |
+| across boundaries | a v a n m ā r p | avaṉ mārpu | puṅgavanmār paṟayunnatu | 1 |  |
+| across boundaries | i k k u t t | kiḻattikkut talaivaṉ | uttamagaṅgānadikkuttaratīrē | 1 |  |
+| across boundaries | k a l a m t | varuṅkalam tiṟantu | valkkalam divyāmbarōpari | 1 | yes |
+| across boundaries | k a ṇ ṭ u t a | kaṇṭu talaimakaḷ | kaṇṭu daśakandharan | 1 | yes |
+| across boundaries | l l i c c e | collic celavu | llicceyta | 1 |  |
+| across boundaries | m a ṇ a l a | maṇal aruviyiṉ | lakṣmaṇalakṣyasvarūpam | 1 |  |
+| across boundaries | m c e y t u n a | vañciṉam ceytunat | laṅghanam ceytu naktañcaranāyaka | 1 |  |
+| across boundaries | m u k a t t | ūrmukat tu | gurumukhattilninnitellām | 1 | yes |
+| across boundaries | n a c c u ṭ | yāṉaic cuṭarppūṇ | ninaccuṭajāntarbhāgattiṅkal | 1 |  |
+| across boundaries | n a m p ō l | viruntiṉam pōla | janampōle | 1 |  |
+| across boundaries | n a v u m u r | eṉavum uraittaṉarē | upavanavumurutarataru | 1 |  |
+| across boundaries | n i ṟ a k k | niṟak karuviḷai | niṟakkēṭakappeṭū | 1 |  |
+| across boundaries | n n u t a ṟ | naṉṉutaṟ | cennu taṟaccitu | 1 |  |
+| across boundaries | n t a k ā n t | civanta kāntaḷ | antakāntakanpōlum | 1 |  |
+| across boundaries | n u t a l a | nṉṉutal arivai | nūṟṟonnu talakaḷe | 1 |  |
+| across boundaries | p a t i k a m | patikam | amarapati kamalajagirīśa | 1 |  |
+| across boundaries | r a c a v ā | araca vākai | agrajavākyamēvam | 1 | yes |
+| across boundaries | r i c i l k | paricil kaṭā | paricil kāṇunnatu | 1 |  |
+| across boundaries | r i k k u m a | parikkum araināṭ | dhyāniccirikkuma | 1 |  |
+| across boundaries | r v a r u m | emakkumār varumē | vānaranmār varum | 1 |  |
+| across boundaries | t a k a r u | ivarnta karuvi | nātha karuṇākara | 1 | yes |
+| across boundaries | t a l a t t | talait toḻuti | bhūtalattiṅkalellāmannutoṭṭanudinam | 1 |  |
+| across boundaries | t a m a v i ḷ | tiruntamai viḷainta | ñciccālanartthamaviḷambitam | 1 | yes |
+| across boundaries | t a p i n n | peyarnta piṉṉum | tāhanta pinne | 1 |  |
+| across boundaries | t t a r u m a | naṉaittarum av | paṟaññīloruttarumaṅgadan | 1 |  |
+| across boundaries | u m k ā ṭ ṭ i | kaṉaviṉum kāṭṭi | tanneyum kāṭṭittaruva | 1 |  |
+| across boundaries | u m u n i v a | uṟu muṉivar | kāṭṭikkoṭuttu munivaran | 1 |  |
+| across boundaries | u n i n t ā | taṟṟuniṉ tāṉai | paṇṭu nin tātanāl | 1 |  |
+| across boundaries | u p a k a v a | allatu pakaivar | bhaktikaikkoṇṭu bhagaval | 1 | yes |
+| across boundaries | u t a l a m | eṉṟu talaimakaṉ | sutalam | 1 |  |
+| across boundaries | u ḻ u k k u | perumpuḻuk kuṟṟaniṉ | muḻukkumpōḷ | 1 |  |
+| across boundaries | u ṇ ṭ a n a | uṇṭa naṉainaṟavu | paṇiyuṇṭanantanum | 1 |  |
+| across boundaries | v a r i k k | koṭuvarik kuruḷai | varikka | 1 |  |
 | across boundaries | v i m u l a | kuvimulai | gaḷabhuvi mulattaṭattiṅkalum | 1 |  |
-| across boundaries | y a k a ḷ i | nīṟāṭiya kaḷiṟupōla | vidyakaḷiva | 1 |  |
-| across boundaries | y u m v ā y | vaḷinuḻaiyum vāyporunti | pāśiyum vāyuvum | 1 |  |
-| across boundaries | ḷ i y u m m | uḷḷiyum maṟṟu | koḷḷiyum minnikkiṭakkunnatil | 1 |  |
-| across boundaries | ṅ k i k k a y | otuṅkik kaiyeṟintu | laṅghikkayilloru | 1 | yes |
-| across boundaries | ṇ ṇ a m a n a | paṇṇamai nalyāḻp | santōṣapūrṇṇa manassōṭu | 1 |  |
-| across boundaries | ṟ u v a n t i | eṉṟu vanticiṉē | mukhyanmāretirēṟṟu vandiccāratunēram | 1 | yes |
-| across boundaries | ṭ u m p a n | iṭum paṉi | kiṣkindhayōṭum bandhukkaḷōṭum | 1 | yes |
-| within words | a n t a n a | taṇantaṉai | bhūpālanandananmārōṭu | 119 | yes |
-| within words | u m ā r a n | kumāraṉār | rāmakumāranōḷam | 69 |  |
-| within words | n ā k i y a | āṟṟāṉākiya | nāḷīkalōcananākiya | 67 |  |
-| within words | n i n n ō ṭ | niṉṉōṭu | ninnōṭukūṭavē | 26 |  |
-| within words | r t t a n a | tīrttaṉaṉ | nirddhananetrayumiṣṭam | 16 | yes |
-| within words | l l a v a n | pallavaṉ | bhēdamillavanorikkalum | 12 |  |
-| within words | p ū t a n ā | pūtaṉār | bimbabhūtanāy | 12 | yes |
-| within words | a r i k k u m | parikkum | samskarikkum | 11 |  |
-| within words | a m p a l a | kampalaik | peruvaḻiyampalam | 9 |  |
-| within words | a r u m ā ṟ u | varumāṟu | paramānandamvarumāṟu | 6 |  |
+| across boundaries | y ā k a m a | yāka maṭaiya | mitthyāgamam | 1 | yes |
+| across boundaries | ḷ u m m a r | teruḷum maruḷum | mantrikaḷum mariccīṭinārēṟṟava | 1 |  |
+| across boundaries | ṭ a k k u t | paṭak kuttic | kūṭakkutikkayum | 1 |  |
+| across boundaries | ṭ a n c o l | nāṭaṉ colnayan | mennatukēṭṭuṭan collinānanyanum | 1 |  |
+| across boundaries | ṭ i y a ṟ u | mākkoṭi yaṟukai | veṭṭiyaṟuttānatunēram | 1 |  |
+| across boundaries | ṭ ṭ u t t a | mēliṭṭut taṉṉuḷḷē | ṭṭuttarakāryārtthamāy | 1 |  |
+| within words | a n t a r a | antara | mantharatannuṭe | 139 | yes |
+| within words | v a r k k u | uvarkkum | vallavarkkum | 21 |  |
+| within words | i ḷ a k k a | viḷakkam | ētumitinoriḷakkam | 13 |  |
+| within words | n a k k u m | kaṉaikkum | ninakkum | 13 |  |
+| within words | a ṟ i y u n | aṟiyunar | rōrttaṟiyunnīla | 12 |  |
+| within words | y a m a n a | ṟiyamaṉai | divyamanastava | 9 |  |
 | within words | l a m a k a | talaimakaḷ | mākulamakannoru | 6 |  |
-| within words | a k a t t u | ulakattu | rttārūḍhatāpamakattupukkīṭināḷ | 5 |  |
-| within words | t t a n a n | maṭuttaṉaṉ | nirddhananetrayumiṣṭam | 5 | yes |
-| within words | u t t i y a | vaṟpuṟuttiyatu | varuttiyanēramavarkaḷum | 5 |  |
-| within words | a m a ṇ a n | talaimaṇanta | lakṣamaṇaneppōle | 4 |  |
-| within words | a ṟ i y ā m a | varampaṟiyāmai | bhavānataṟiyāmallō | 3 |  |
-| within words | p a r a t a v | paratavar | śrutābharatavākyam | 3 | yes |
-| within words | a l a m a k a ḷ | talaimakaḷ | kamalamakaḷ | 2 |  |
-| within words | a r u t t a | varuttamoṭu | punaruttamametrayum | 2 |  |
+| within words | a l a m a k | talaimakaḷ | pṛtthvīmaṇḍalamakannāśu | 5 |  |
+| within words | k a r a n t | karantu | kharantānum | 5 | yes |
+| within words | ō r k k a ḷ | pōrkkaḷattai | pōrkkaḷam | 5 |  |
+| within words | k o ḷ ḷ u m | koḷḷumkālai | paḷḷikkuṟuppukoḷḷum | 4 |  |
+| within words | n a t t a r | naṉaittarum | sannaddharāy | 4 | yes |
+| within words | a l a m a k a | talaimakaḷ | pṛtthvīmaṇḍalamakannāśu | 3 |  |
+| within words | k u ñ c a r a | kuñcaram | kuñjaranmārettoḻutu | 3 | yes |
+| within words | n t a n a y | puṇarntaṉaiyēm | brahmanandanayāya | 3 | yes |
+| within words | ē v a l a n | mēvalaṉ | kēvalan | 3 |  |
+| within words | a m a r a r | amararcelvaṉ | bhayattōṭamararum | 2 |  |
+| within words | a n k a l a | naṉkalam | rātriñcarādhipankalanēmīgṛham | 2 |  |
 | within words | c o l l i y a t | colliyatu | colliyatennuṭe | 2 |  |
-| within words | l a m a k a n | talaimakaṉ | mākulamakannoru | 2 |  |
-| within words | o r u v a r u | ovvoruvarum | maṟṟoruvarum | 2 |  |
-| within words | t ī r k k e | tīrkkeṉa | tīrkkennu | 2 |  |
-| within words | ā m a r a t | tāmarait | cāmaradvandavum | 2 | yes |
-| within words | a p p u ṟ a m | ciṟaippuṟamākac | kutirappuṟamēṟi | 1 |  |
-| within words | a r a n t u | parantu | sukhānantarandu | 1 | yes |
-| within words | a r i c i l | paricil | paricil | 1 |  |
-| within words | a v a r i n | pavariṉ | ruḷkkaruttuḷḷavarinnumuṇṭeṅkilō | 1 |  |
-| within words | i n i k k o | iṉikkoṇṭō | enneyeṭuttinikkoṇṭupōy | 1 |  |
-| within words | k a n a v u | kaṉavu | māruṇyāmbarapariśōbhitajaghanavum | 1 | yes |
-| within words | k a r n t a | nukarntaṉam | garndharvvasiddhavidyādharacāraṇā | 1 | yes |
-| within words | k k a ḷ a t | ikkaḷattu | jantukkaḷatra | 1 |  |
-| within words | l a m a k a ḷ a | talaimakaḷait | kamalamakaḷakhila | 1 |  |
-| within words | l a v a r k k u | valaivarkku | vallavarkkum | 1 |  |
-| within words | n a k a ṭ a | muṉaikaṭantu | balēnakaṭannu | 1 |  |
-| within words | p a l a k a | palakaik | aticapalakarabhuvi | 1 |  |
-| within words | u p a t a m | varupatam | viṣṇupadam | 1 | yes |
-| word | m u n n a m | muṉṉam | munnam | 61 |  |
+| within words | i r i p p ū | kāvirippūmpaṭṭiṉattuc | mitramāyirippūtennanyōnyam | 2 |  |
+| within words | i r t t a n | ayirttaṉṟu | nirddhananetrayumiṣṭam | 2 | yes |
+| within words | i t t u m a | kuḷittumaṇaṟ | vṛtrārijittumatikāyanum | 2 |  |
+| within words | p a r i c i | paricilarkku | paricil | 2 |  |
+| within words | r a m p a y | marampayil | rambhayum | 2 | yes |
+| within words | ā ṅ k a v u | tāṅkavum | ḷuttamāṅgavum | 2 | yes |
+| within words | ā ṅ k a v u m | tāṅkavum | ḷuttamāṅgavum | 2 | yes |
+| within words | a r i p p a n | arippaṉi | vīṇumarippanallāykilō | 1 |  |
+| within words | i c a y a m a | icaiyamaittavar | kapinicayamanilajanemunniṭṭu | 1 |  |
+| within words | i y a v a r | pāṭiyavar | prītiyavarkku | 1 |  |
+| within words | k a ṭ a k k u m | kaṭakkum | viravoṭukaṭakkuma | 1 |  |
+| within words | m u n n i l a | muṉṉilaic | munnilarakṣaṇam | 1 |  |
+| within words | p p a l a r | mikappalar | prahastādikaḷeppalareyu | 1 |  |
+| within words | p u r a v u | puravu | laṅkāpuravum | 1 |  |
+| within words | r u v i r a | karuviral | tṛkkālperuviralkoṇṭatu | 1 |  |
+| within words | t i ṅ k a ḷ u m | tiṅkaḷum | tiṅkaḷumādityanagniyennittaram | 1 |  |
+| within words | u v ā r k k | varuvārkku | namukkiruvārkkumi | 1 |  |
+| within words | u ṭ u m p i | tuṭumpiṟ | luttamanmārāykkuṭumbikaḷākiya | 1 | yes |
+| within words | v a n a p p | vaṉappiṉaḷ | rāghavanappōḷ | 1 |  |
+| within words | v u m u t a | patavumutaṟ | citrabhānuvumudayādrimūrddhani | 1 | yes |
+| word | p a r i c i l | paricil | paricil | 1 |  |
 
 ## tamil-kannada: every distinct hit
 
 | Class | Window | Hidden word(s) | Relative word(s), as written | Relative lines holding it | Normalised only |
 |---|---|---|---|---|---|
-| across boundaries | a n t a n a n | vantaṉa ṉōmaṟṟu | nandanandana | 108 | yes |
-| across boundaries | a l a v a n | añcal avaṉ | kuśalavanarasa | 98 |  |
-| across boundaries | r i v ā r a | ari vārap | parivāra | 58 |  |
+| across boundaries | t a k a r u | ivarnta karuvi | sampādakaru | 86 | yes |
+| across boundaries | a n t a r a | antara | yanta rakṣisu | 66 |  |
 | across boundaries | a v a r k a | pāṭiyavar kallāṭaṉār | sāhitya varga | 52 | yes |
-| across boundaries | p a l a v i | pala viṉai | hebbala vighātiya | 38 | yes |
-| across boundaries | t a l i n ā | alaittaliṉ āṉātu | jaladali nādi | 20 | yes |
-| across boundaries | k e y a n a | takaiya naṉ | yambikeyanambāleyanu | 16 |  |
-| across boundaries | n i m a k a | mēṉi makaḷir | nimagavarindalupahati | 14 | yes |
-| across boundaries | p a r a t a v | paratavar | bharata vomśadoḷaidu | 14 | yes |
-| across boundaries | ṭ i y a n a | ḷīṇṭiya nal | padadaprauḍhiya navarasaṅgaḷa | 13 | yes |
-| across boundaries | a p a l a k e | tuṭaippa palakaiyum | hiraṇyakabalake | 12 | yes |
-| across boundaries | t a m p a r | marutam paraṇar | ttambaradi | 11 | yes |
-| across boundaries | ḷ a l a r i | talaināḷ alariṉ | hēḷalaridenipeṇṭu | 11 |  |
-| across boundaries | r m a k a n | aṇṭar makaṉ | kṛtavarmakana | 10 |  |
-| across boundaries | t a m p a r a | marutam paraṇar | ttambaradi | 10 | yes |
-| across boundaries | i v a n a p a | virivaṉa palavuṭaṉ | śāḷivana phalavāytalā | 9 | yes |
-| across boundaries | i y a n t e | viyaṉ teruviṉ | kēsariyante | 9 |  |
-| across boundaries | t a r u p u | kaḷiṟutaru puṇarcci | muḷugidaru puḷakāmbu | 9 | yes |
-| across boundaries | a v a r i n | pavariṉ | sukhataravallavari nṛpara | 8 |  |
-| across boundaries | u v a r a l | iruvar allatu | garuvarallā | 8 |  |
-| across boundaries | ḷ a v a n ā | orēruḻavaṉār | ravakuḷava nānēna | 8 |  |
-| across boundaries | v a r i p p | varip pantu | bandaravaribbaru | 7 | yes |
-| across boundaries | a k a t t u | ulakattu | maṇimayada gaddugeya | 6 | yes |
-| across boundaries | a k a v a ḷ | vaitta kavaḷam | karpurada kavaḷada | 6 |  |
-| across boundaries | k a l i n n | ākaliṉ naṉṟum | vaḷukalinnēkenuta | 6 |  |
-| across boundaries | t a l a r i | oṇṇuta larivai | vigrahadalarivevu | 6 | yes |
-| across boundaries | u m ā n a v a | perumāṉ avaḷ | lēsāytu mānava | 6 |  |
-| across boundaries | ḷ e y a n u | iḷaiya nukam | baḷeyanukaruṣavom | 6 |  |
-| across boundaries | i y a l i n i n | iyali niṉ | taḍiyali nindu | 5 |  |
-| across boundaries | n a v a n t | teṉṉavaṉ teḷitta | ennavandiga | 5 | yes |
-| across boundaries | n e k a ṭ a | muṉaikaṭantu | huliyoḍane gaḍa | 5 | yes |
-| across boundaries | t t u v a r | maṟuttu varaivu | bittuvare | 5 |  |
-| across boundaries | u p a t a m | varupatam | drupada mu | 5 | yes |
-| across boundaries | y a k a ḷ i | nīṟāṭiya kaḷiṟupōla | ghōṣaṇeya ghaḷilugaḷa | 5 | yes |
-| across boundaries | a r u v a p | pāṭunar uvappa | taruva bhūtāvaḷiyanīkṣisi | 4 | yes |
-| across boundaries | i p a l a p | moḻipala perukiya | gāḍhadali balabhadra | 4 | yes |
-| across boundaries | k a l a t a r | kal atar | sakala dharmada | 4 | yes |
-| across boundaries | l a m p a v a | pulampa vaḷaiiya | mahimāvalambavanendanā | 4 | yes |
-| across boundaries | t a n n a t e | taṉṉa teṇkural | tannadendē | 4 | yes |
-| across boundaries | a l i n ī r | mali nīr | ttarali nīrūḍidanu | 3 |  |
-| across boundaries | a n n e k a ḷ | ṭaṉṉai kaḻiya | sannegaḷōregoraḷugaḷauḍugaccugaḷa | 3 | yes |
-| across boundaries | a r a n t a k a | karanta karappoṭu | kelarantakana | 3 |  |
-| across boundaries | a ṅ k e v a | kaṅkai vaṅkam | pāṇḍunṛpaṅge vasudēva | 3 | yes |
+| across boundaries | a n t a n e | tāṉmaṇan taṉaiyameṉa | merevēkadantane | 18 |  |
+| across boundaries | a t i r u m | kaṭanta tirumaṟu | pariharisadiru māva | 15 | yes |
+| across boundaries | i n t a k a | virinta karuṅ | śālavastugaḷinda kajjāyagaḷa | 14 | yes |
+| across boundaries | t a m u r a | kaṭanta muraṇ | mudada muravina | 14 | yes |
+| across boundaries | u v a r u n | añcuvaru naṉantalaip | aravarisadaṅgaisuvaru nā | 12 |  |
+| across boundaries | u m a r a n | kumaraṉār | hattittu marananivanai | 10 |  |
+| across boundaries | u p a l a p | pakaṭupala parappi | bharavu balabhadranadu | 10 | yes |
+| across boundaries | a l l i p a | palli paṭutoṟum | yalli paraḍiya | 9 |  |
+| across boundaries | r e y a k a | tiraiyakam | kāmaripuviṅgoreya kaṭṭuva | 9 |  |
+| across boundaries | r u k a ḷ a t | porukaḷattu | pūrugaḷa deseyinda | 9 | yes |
+| across boundaries | a r a l l a t | koḷpavar allatai | pāṇḍavaralladillī | 8 | yes |
+| across boundaries | i t t u m a | kuḷittumaṇaṟ | hattittu marananivanai | 7 |  |
+| across boundaries | t a p i n n | peyarnta piṉṉum | kṛtabhinnavādare | 7 | yes |
+| across boundaries | u n i n t u | cerumuṉintu | neredu nindudu | 7 | yes |
+| across boundaries | a r u l a k | nilaiiyar ulakamōṭu | nōḍutirdaru laggeyabbara | 6 | yes |
+| across boundaries | i v a n t a | elli vantaṉṟō | musukanugivandadali | 6 | yes |
+| across boundaries | n a p p a r a | eṉap paravutum | siḍilinabbaravo | 6 | yes |
+| across boundaries | t a n t a m | tanta māṟaṉ | tandamalamauktikavideyo | 6 | yes |
+| across boundaries | y a m a n e | ṟiyamaṉai | maduveya manege | 6 |  |
+| across boundaries | a l u m u r i | ākalum urittē | halumuridudē | 5 |  |
+| across boundaries | k a ṇ ṭ u t a | kaṇṭu talaimakaḷ | kaṇḍuda | 5 | yes |
+| across boundaries | n u t a l a | nṉṉutal arivai | varanahudenuta lalanā | 5 |  |
+| across boundaries | u k o ṇ ṭ i r | irantu koṇṭirukkum | kettu koṇḍiralēke | 5 | yes |
+| across boundaries | u m u n i v a | uṟu muṉivar | ṛṣigaḷu munivararu | 5 |  |
+| across boundaries | ḷ u m a r a | paḻumaram | kkāḷu maraḷidaḍastra | 5 |  |
+| across boundaries | a k u t i r | viṭṭakutiraiyār | baṇagu tirukanali | 4 | yes |
+| across boundaries | e y a k ā ṭ | cōlaiya kāṭiṟat | moneya khāḍākhāḍi | 4 | yes |
+| across boundaries | i t t a p u | poṟitta puṇ | baḷikitta puradali | 4 |  |
+| across boundaries | p a ṭ a m a l | tīppaṭa malarnta | caupaṭamalla | 4 |  |
+| across boundaries | u k a t u p | nāṟu katuppiṉāy | viṣavanaṇuvendaḷukadupabhō | 4 | yes |
+| across boundaries | ḷ i n a m i | tōḻi nam iṭaimulaic | naḷinamitrana | 4 |  |
+| across boundaries | ṭ u k a ḷ a m | koṇṭukaḷam | ḍugaḷa mēlaḍageḍedu | 4 | yes |
+| across boundaries | a l i y a v | naliya veyya | hūvaliya vīdhigaḷa | 3 |  |
+| across boundaries | e p a l a p | aṉṉavai palapala | purige balabhadrananu | 3 | yes |
 | across boundaries | e p a l a p a | aṉṉavai palapala | purige balabhadrananu | 3 | yes |
-| across boundaries | i n t a p ū | ocinta pū | ḷinda pūrita | 3 | yes |
-| across boundaries | k a v a n t a | yāka vantaṉar | jñānamukhavantarmukha | 3 | yes |
-| across boundaries | r i y a m ā t | pariya mā tāṅkavum | ḷōdariya mātuḷana | 3 |  |
-| across boundaries | t a t u m p | tatumpuvaṉa | phalavēnenuta tumbidanarasa | 3 | yes |
-| across boundaries | t o ṭ e m a | viḻuttoṭai maṟavar | maraḷidoḍe marumone | 3 | yes |
-| across boundaries | y a k o ṭ u v e | nīṅkiya koṭuveṇ | baliya koḍuvenu | 3 | yes |
-| across boundaries | y a l a k u | kaṭaiyala kuralam | vararājya lakumiya | 3 |  |
-| across boundaries | y a m a k a ḷ | āya makaḷ | ninnaya magaḷa | 3 | yes |
-| across boundaries | ā t i y a r u | āti yarumaṉ | kaidukātiyaruṇṭe | 3 |  |
-| across boundaries | ḷ a l a r i t e | curumpucūḻ alari taii | hēḷalaridenipeṇṭu | 3 | yes |
-| across boundaries | ḷ u t i t t | koḻutit tātu | ḷānumuḷuguttēḷutiddenu | 3 | yes |
-| across boundaries | ṇ ṭ u n i n | koṇṭuniṉ | tarulateyaloḷakoṇḍu nindudu | 3 | yes |
-| across boundaries | a k a n t u | akaṉtuṟai | manassina kandu | 2 | yes |
-| across boundaries | a k a ṇ ṇ i y | niṉṉa kaṇṇiyum | kālagaṇṇiya | 2 | yes |
-| across boundaries | a l l a n t | vallaṉ tōḷ | ballandadali | 2 | yes |
-| across boundaries | a n i n n a v | keṭukaniṉ ṉavala | karṇa ninnava | 2 |  |
-| across boundaries | a n t a k a ṭ | tanta kaṭuṅkaṇ | haritandakaṭa | 2 | yes |
-| across boundaries | a n t u k a ḷ a | vantu kaḻaṟuval | bandhugaḷavana | 2 | yes |
-| across boundaries | a r i r a p | akavunar irappiṉ | bhramitarira bhaṇḍāṭavētake | 2 | yes |
-| across boundaries | a ñ c i t u | vañci tuṟai | stōmavañjitu | 2 | yes |
-| across boundaries | a ḷ a n i p | kaḻaṉi puleṉat | samprītigaḷa nibiḍāliṅganōtsavada | 2 | yes |
-| across boundaries | e p a r i c | tuṟai paricil | munijanake parijanake | 2 | yes |
-| across boundaries | i n n u n i m | miṉṉu nimirn | nīveyarasugaḷinnu nimmaya | 2 |  |
-| across boundaries | i r u m a r u | irumarup | māḍadiru maruḷē | 2 |  |
-| across boundaries | i y a n a k ā | ariyaṉa kāṇā | pratatiyanaghāṭada | 2 | yes |
-| across boundaries | i ñ c i t a | kuṟiñci talaivi | miñcidavu | 2 | yes |
-| across boundaries | m u n n a m | muṉṉam | munna maunadoḷirdudāsthāna | 2 |  |
-| across boundaries | p a ṭ e k a | nōṉpaṭai kaṭṭiloṭu | paḍe gajāśvava | 2 | yes |
-| across boundaries | y a t a ṭ a | taṇṇiya taṭameṉ | sūnuvariyada ḍa | 2 | yes |
-| across boundaries | a n t a p u | iṟanta pukaḻcāl | naḷukadaitandabujavadaneya | 1 | yes |
+| across boundaries | e t t a m a | vilaṅkumalait tamarnta | baḷasihudetta mana | 3 |  |
+| across boundaries | n i t u m a | iṉitu maṉṟamma | duryōdhananidu mam | 3 | yes |
+| across boundaries | r ā r i y a p | pāṭiyavar āriyap | rāriyappidanaḍigaḍige | 3 |  |
+| across boundaries | u t a l e m | eṉṟu talaimakaṉ | tegedu tale māleyanu | 3 |  |
+| across boundaries | y a l u r u | kārppeyal urumiṉ | pariyaluru | 3 |  |
+| across boundaries | y a m a ṅ k | niyamaṅkiḻār | vīrasēseya maṅgaḷāratiya | 3 | yes |
+| across boundaries | a l a k a ḷ a v | pala kaḷavu | latāṅgiyaraḷala kaḷavaḷava | 2 |  |
+| across boundaries | a l e m a k a | talaimakaḷ | bēḍale magane | 2 | yes |
+| across boundaries | a l e y a k a ṭ | malaittalaiya kaṭaṟkāviri | kattaleya kaṭakavu | 2 |  |
+| across boundaries | a n a y a n u ṭ | cāṉṟa nayaṉuṭai | namagemba naya nuḍi | 2 | yes |
+| across boundaries | a r a v u r | varavuraitta | śaravu ripuvanu | 2 |  |
+| across boundaries | a t u p a ṭ a | eṉpatu paṭac | karuṇakrōdhadupaṭaḷake | 2 | yes |
+| across boundaries | a ṇ ṇ i y a | naṇṇi yatuvē | kālagaṇṇiya | 2 |  |
+| across boundaries | i n t a k u n | maṟinta kuṉṟē | ṛṣigaḷanumatadinda kuntiya | 2 | yes |
+| across boundaries | i n ā n ā t | āyiṉ āṉātu | neraviyali nānā digantada | 2 | yes |
+| across boundaries | i y a p e r | pāṭiya peruntēvaṉār | nuḍiya beragina | 2 | yes |
+| across boundaries | l i n ī ṭ i | nelli nīṭiya | nandadali nīḍidanu | 2 | yes |
+| across boundaries | m a ṇ a l a | maṇal aruviyiṉ | maṇala | 2 |  |
+| across boundaries | n t a v ē n | irunta vēntaṉ | dandavē nīnariye | 2 | yes |
+| across boundaries | r v a r u m | emakkumār varumē | nūrvaru maḍiye | 2 |  |
+| across boundaries | t a l e t t | talait toḻuti | nijakaradalettuta | 2 | yes |
+| across boundaries | t a n ā l v a | ataṉāl vacainīkki | uḷida nālvaru | 2 | yes |
+| across boundaries | u m ū ṭ a l | payaṉum ūṭaluḷ | takavu mūḍalu | 2 | yes |
+| across boundaries | u r a v ā y | mura vāy | guravāyigaḷa | 2 |  |
+| across boundaries | u t a r u m | eḻutarum | mādrīsutaru maimuridu | 2 |  |
+| across boundaries | u ṇ ṭ a n a | uṇṭa naṉainaṟavu | muṇḍa naḍedudu | 2 | yes |
+| across boundaries | ō n i n a k | ottatō niṉakku | hadanō ninage | 2 | yes |
+| across boundaries | ḷ e m a k a | iḻai makaḷirai | kaḷe magane | 2 | yes |
+| across boundaries | ḷ e t a k a | viḻaitaka | seḷeda gaḍa | 2 | yes |
+| across boundaries | ṭ u v a t i | peṭaiyaṭu vatiyum | kaṭṭuva tiruhi | 2 |  |
+| across boundaries | a l a v a n ē | valavaṉ ēvaliṉ | tatphalavanē | 1 |  |
+| across boundaries | a l i n t a m | malinta maṟukiṉ | beralinda miḍi | 1 | yes |
+| across boundaries | a n e p a l a | māṇṭaṉai palavē | nammoḍane phalasiddhiyillenda | 1 | yes |
 | across boundaries | a n t e m a | eyiṉantai makaṉ | tande makkaḷu | 1 | yes |
-| across boundaries | a t a l e m a k | maṟuttanta talaimakaṟku | mitrabhāvadalemage | 1 | yes |
-| across boundaries | a t u v a t a | atuvataṉ | madhuva taralendu | 1 | yes |
-| across boundaries | a v a r m a t u r | pāṭiyavar maturai | kṛtavarma durmukha | 1 | yes |
-| across boundaries | a ḷ a n u m ā ṇ | vaḷaṉum āṇmaiyum | dhaṭṭaṇegaḷanu māṇisi | 1 |  |
-| across boundaries | a ḷ i n a ṭ | mākkaḷiṉ aṭu | hoḍemaraḷi naḍu | 1 | yes |
-| across boundaries | a ṇ i y i n t | maṇiyiṉ tōṉṟum | dharaṇiyindu | 1 | yes |
+| across boundaries | a p p e y a | pōlap peyartal | tūḷidabbeya | 1 | yes |
+| across boundaries | a ṅ k i y a m | mayaṅkiya malaimutal | taṅgiya magana | 1 | yes |
 | across boundaries | a ṇ ṇ i k k | kaṇṇik karikāl | kiggaṇṇikki | 1 |  |
-| across boundaries | a ṭ a n a m a | koṭaikkaṭaṉ amarnta | lampaṭanamala | 1 |  |
-| across boundaries | i k ā n a n | ḷōri kāṉan | giri kānanakadadva | 1 |  |
-| across boundaries | i p a r u m | āṭi paru maṇal | dharaṇiparu māgadhanamaneyali | 1 |  |
-| across boundaries | k e y a k a t t | kaiyakat tatu | teraḷikeya kattaleya | 1 |  |
-| across boundaries | l a l l a t | paṭutal allatu | moneyalallade | 1 | yes |
-| across boundaries | m p u k a v i | pāmpu kaviṉ | hogarambu kavidavu | 1 | yes |
-| across boundaries | n i y ā t u | iṉi yātum | mēdiniyādudida | 1 | yes |
-| across boundaries | n n i y a p ā | ceṉṉiya pāṟumayir | kunniya bāyanelavō | 1 | yes |
-| across boundaries | n t a v a c i | uḻanta vacipaṭu | saindhava citrasēnādigaḷu | 1 | yes |
-| across boundaries | p a k e v e | pakai veṉṟu | bagevenu | 1 | yes |
-| across boundaries | r u v i v ā | karuvi vāṉam | niṣṭharu vivāhō | 1 |  |
-| across boundaries | t a k a ṇ ṇ a | kaṉinta kaṇṇakaṉ | naremugida kaṇṇaraḷdavantaḥ | 1 | yes |
+| across boundaries | a ṇ ṇ i v a | kaṇṇi vantu | kaṇṇivalegaḷali | 1 |  |
+| across boundaries | a ṭ u k a ṭ a l | paṭu kaṭal | kaḍugaḍala | 1 | yes |
+| across boundaries | i n a n n a n | tōḻi naṉṉaṉ | hēsi nannanu | 1 |  |
+| across boundaries | i y a p e n n | tolaicciya painniṇap | dhūḷiya benna | 1 | yes |
+| across boundaries | i ḷ i t a r u m | iḻitarum | sūtariḷidaru munna | 1 | yes |
+| across boundaries | k a n i n t | keṭukaniṉ tevvar | tilaka nindanu | 1 | yes |
+| across boundaries | k a r i k ā l | karikāl | kari kālāḷu | 1 |  |
+| across boundaries | k a r u v i v | karuvi vāṉan | samśaptakaru vivi | 1 |  |
+| across boundaries | k i ḷ a v i t | kiḷavi terumara | nikhiḷa vidyada | 1 | yes |
+| across boundaries | l i r a k k | malirak keṇṭi | dudalliyadalli rakkasi | 1 |  |
+| across boundaries | l l i y a l | melliya lōyē | variyevalliya lēsu | 1 |  |
+| across boundaries | l u ḷ i t a v | kaluḻi tavveṉak | dharmavalluḷidavara | 1 | yes |
+| across boundaries | m a r e t t | tāmarait taṇ | nāmareddudu | 1 | yes |
+| across boundaries | m p a r a k k | ekkartoṟum parakkun | jareyemba rakkasi | 1 | yes |
+| across boundaries | n a r ā k a | aṟiyunar āka | janarāga | 1 | yes |
+| across boundaries | n t a k ā n t | civanta kāntaḷ | antakāntaka | 1 |  |
+| across boundaries | n t a l e m | akaṉtalai maṉṟattu | mmānadindale musukinali | 1 | yes |
+| across boundaries | p a t i k a m | patikam | bhūmipati kam | 1 |  |
+| across boundaries | p u p a l a n | paṇpupala nayantē | dēvaripubala nikaravasmaddvārakāpuriya | 1 | yes |
+| across boundaries | r a c a v ā | araca vākai | varajavājiya | 1 | yes |
+| across boundaries | r i n a r a | viḷari narampiṉ | kari nara | 1 |  |
+| across boundaries | r u v i r a | karuviral | mamateyavaru viraktarādaru | 1 |  |
 | across boundaries | t a l a r i v e | vaṇutal arivai | vigrahadalarivevu | 1 | yes |
-| across boundaries | t a l e t i | mukaitalai tiṟanta | tale tirugi | 1 |  |
-| across boundaries | t a r u n a p a | taruna paṇpumār | nāradaraḍaridaru nabhava | 1 | yes |
-| across boundaries | t a ṇ ṭ u k o ṇ ṭ u | taṇṭu koṇṭu | bagidaṇḍugoṇḍudu | 1 | yes |
-| across boundaries | t e n t a v | citainta varai | ninagidentavararitavaragina | 1 | yes |
-| across boundaries | t t a l e y a k a ṭ a | malaittalaiya kaṭaṟkāviri | kattaleya kaṭakavu | 1 |  |
-| across boundaries | t t a l e y ā | kaḻāat talaiyār | savaḍigattaleyāytu | 1 |  |
+| across boundaries | t a t i t t | urutta tittip | ta dittu | 1 | yes |
+| across boundaries | t a ḷ ē n t | māyitaḻ ēntiya | bhūtaḷēndrarali | 1 | yes |
+| across boundaries | t t a n ā r | cokuttaṉār | nindiddanā rāma | 1 | yes |
+| across boundaries | t t a r u m a | naṉaittarum av | ttaru mahā | 1 |  |
+| across boundaries | t t i r u n | piṇiyakat tiruntu | guṇḍudottiru nageyanānali | 1 |  |
 | across boundaries | u k a r e p a | naintukarai paṟaintaeṉ | sikkidanu kare paḍi | 1 |  |
 | across boundaries | u m a r u m | poṉṉiṉum arumainaṟku | dalagu maru moneyenuta | 1 |  |
-| across boundaries | u p a ṭ ṭ a v | meymmaṟantu paṭṭa varaiyāp | maḍidanu paṭṭavāytu | 1 |  |
-| across boundaries | u t a n t a v | pōtu tanta viravut | geḷedu tandavaridhikasajjana | 1 | yes |
-| across boundaries | u v i ṭ a c | miṉṉuviṭac | baḍatanavu viṭajanakenalu | 1 | yes |
-| across boundaries | v a n t e n a | vanteṉa | manadaloḍaloḍevante naguta | 1 |  |
-| across boundaries | v a t u n i l a | paṭuvatu nilattōṭu | narasutanavadu nilali | 1 | yes |
-| across boundaries | y ā k a l i n | yākaliṉ | garasiyāgali ninna | 1 | yes |
-| across boundaries | ṭ a k a ḷ a m | koṇṭa kaḷam | vāḍagaḷa moga | 1 | yes |
-| across boundaries | ṭ a n t e n | maṭantai niṉ | koṇḍantenna | 1 | yes |
-| across boundaries | ṭ u m p a n | iṭum paṉi | kuṭumbanembī | 1 | yes |
-| within words | e k a ḷ a l | puṉaikaḻal | kriyegaḷali | 67 | yes |
-| within words | ḷ i t a r u | iḻitaru | maraḷidaru | 55 | yes |
-| within words | u m ā r a n | kumāraṉār | kumārane | 35 |  |
+| across boundaries | u p a k e v a | allatu pakaivar | kuṇiyalu bageva | 1 | yes |
+| across boundaries | u t a v a ṭ | poruta vaṭuvāḻ | baruta vaṭa | 1 |  |
+| across boundaries | u ṇ ṭ u m u n n | uṇṭu munnīrp | kṛpeyenaguṇṭu munnenutā | 1 |  |
+| across boundaries | v a r i m a | varimaṇal | bavari matsyōdgati | 1 |  |
+| across boundaries | v i v a ḷ i | puravi vaḻivāy | vivaḷitāṅga | 1 |  |
+| across boundaries | y ā k a m a | yāka maṭaiya | yāga ma | 1 | yes |
+| within words | v a r u k a | varuka | dūruvaremmanavarugaḷa | 49 | yes |
 | within words | r a ṇ i y a | muraṇiya | tkaraṇiyanu | 34 |  |
-| within words | a k k a ḷ i | vayakkaḷiṟu | koḷḷadaggaḷike | 31 | yes |
-| within words | p a l a k e | palakaik | bembalake | 30 | yes |
-| within words | l l a v a n | pallavaṉ | hindellavanu | 28 |  |
-| within words | u t t i y a | vaṟpuṟuttiyatu | buddhiyali | 25 | yes |
-| within words | m a r u ḷ u | maruḷum | maruḷugoṇḍanu | 20 |  |
+| within words | a m a r a r | amararcelvaṉ | bhōjanadindalādudajīrṇavamararige | 28 |  |
+| within words | n e t t a r | naṉaittarum | nettara | 28 |  |
+| within words | t i r u v i | tiruviṉ | tiruvina | 21 |  |
 | within words | a l i t t a | kalitta | sukhadunnatiyaliddanu | 18 | yes |
-| within words | a n t a n e | taṇantaṉai | merevēkadantane | 18 |  |
-| within words | l i y a t u | colliyatu | arivijayavelliyadu | 18 | yes |
-| within words | p a r u t i | paruti | barutirpātanarjunanendanasurāri | 16 | yes |
-| within words | a ṅ k e y a | maṅkaiyar | niśyaṅkeyali | 14 |  |
-| within words | a r a n t u | parantu | nōḍidarandu | 13 | yes |
+| within words | p a r i y a l | pariyaleṉ | pariyali | 18 |  |
+| within words | n t a n e y | puṇarntaṉaiyēm | vandaneya | 17 | yes |
+| within words | p a l l i t a | pallitaḻ | ballidanu | 16 | yes |
+| within words | i y a v a r | pāṭiyavar | kōḍakaiyavaru | 14 |  |
+| within words | i ṭ i y a l | viṭiyal | pariviḍiyalūhā | 14 | yes |
+| within words | u ṭ a v a n | muṭavaṉār | karapuṭavanu | 14 |  |
 | within words | m u c c i t | muccit | muccidaḷāke | 12 | yes |
-| within words | u t u k a ṇ | mutukaṇṇaṉ | neredudugaṇita | 12 | yes |
 | within words | a p p a t u | iḻappatu | tappadu | 11 | yes |
-| within words | k k a ḷ a t | ikkaḷattu | hekkaḷadoḷōlāḍidanu | 11 | yes |
-| within words | r t i k a ḷ | nīrtikaḻ | vidyārthigaḷu | 11 | yes |
-| within words | a r u t t a | varuttamoṭu | pāṇḍavaruttarāyigaḷendanā | 9 |  |
-| within words | t t a n a n | maṭuttaṉaṉ | hottananitara | 8 |  |
-| within words | p a k u t i y | pakutiyil | bhakutiya | 7 | yes |
-| within words | n a ṭ u v a | naṭuvaṇa | naḍuvaṇa | 6 | yes |
-| within words | p ū t a n ā | pūtaṉār | bhūtanāthana | 6 | yes |
-| within words | t a l e v i | talaiviyait | mundaleviḍidu | 6 | yes |
-| within words | v i r e n t | viraintuval | māḍuvirendu | 6 | yes |
-| within words | k a ḷ i n t a | kaḻintataṉ | śālavastugaḷinda | 5 | yes |
-| within words | m a r u t a | marutam | marutasuta | 5 |  |
-| within words | k a l i r u | akaliru | hagaliru | 4 | yes |
+| within words | ṭ e n t a n | uṭaintaṉṉa | ḍendanī | 11 | yes |
+| within words | i y a n ā r | cāṇṭiliyaṉār | saṅgatiyanārendarāvava | 7 |  |
+| within words | p a ṭ ṭ a v a | oṉṟupaṭṭavar | sēnāpaṭṭavanu | 7 |  |
+| within words | t a l e v a | talaiva | talevarigeyali | 7 |  |
+| within words | k a r a n t | karantu | makaranda | 6 | yes |
+| within words | t a l e v i | talaivi | mundaleviḍidu | 6 | yes |
+| within words | a l e m a k | talaimakaḷ | mēṇaḷiyalemagi | 5 | yes |
 | within words | l e m a k a | talaimakaḷ | elemagane | 4 | yes |
-| within words | l e m a k a n | talaimakaṉ | elemagane | 4 | yes |
-| within words | k u v a ḷ e | ilaṅkuvaḷai | diguvaḷeyadali | 3 | yes |
-| within words | a r m a r u | uyarmaruppu | pāpakarmaru | 2 |  |
-| within words | k a n a v u | kaṉavu | ṇyāvalōkanavuṇṭalē | 2 |  |
-| within words | n ā k i y a | āṟṟāṉākiya | rvṛttanāgiyadharma | 2 | yes |
-| within words | c u v a r a | añcuvarap | bavarakañjuvaralla | 1 | yes |
-| within words | e n a p p a | eṉappaṭṭatu | tōruvenappanavarim | 1 |  |
-| within words | e ṭ u v a r e | neṭuvarai | keḍuvare | 1 | yes |
-| within words | i r i n t u | virintu | ddiravanaruhadirindu | 1 | yes |
+| within words | k u ñ c a r a | kuñcaram | kuñjarana | 3 | yes |
+| within words | ṭ a v a ṇ i | ṭavaṇiṟai | ṭhavaṇiya | 3 | yes |
+| within words | k a p i l a | kapilar | kapilana | 2 |  |
+| within words | v a n a p p | vaṉappiṉaḷ | naḍuvanappaḷisidanu | 2 |  |
+| within words | a ṇ i y i n | taṇiyiṉ | dharaṇiyindu | 1 |  |
+| within words | k a l i t t | kalitta | hogalitta | 1 | yes |
+| within words | k u ḷ a t t | kuḷatta | maguḷaddu | 1 | yes |
 | within words | n a ḷ i n ī | naḷinīr | kūruvamśanaḷinī | 1 |  |
-| within words | p a r a n t a | paranta | hariyanaramaneganibarantaḥ | 1 | yes |
-| within words | v a ḷ i t o | vaḷitoḻil | kalpavaḷidoḍe | 1 | yes |
-| within words | ā m a r e t | tāmarait | nāmareddudu | 1 | yes |
+| within words | r i y a l a m | ariyalam | bhīmavairiyalambusana | 1 |  |
+| within words | t a ṭ a k k | taṭakkai | muḷidaḍaggada | 1 | yes |
+| within words | v a ḷ a ṅ k | vaḷaṅkeḻu | modaloḷavanavaḷaṅgavaṭṭava | 1 | yes |
+| within words | ā ṅ k a v u | tāṅkavum | bhārāṅkavuḷidarige | 1 |  |
+| within words | ā ṭ a n ā r | kallāṭaṉār | payapāḍanāraidu | 1 | yes |
 | within words | ā ṭ i y a v a | pāṭiyavar | nāḍiyavagā | 1 | yes |
-| within words | ṭ ṭ e n a k | paṭṭeṉak | keṭṭenakaṭem | 1 |  |
+| within words | ṭ i y a v a r | pāṭiyavar | paṭṭiyavarodagidaru | 1 |  |
+| word | p u r a v u | puravu | puravu | 1 |  |
 
 ## latin-italian: every distinct hit
 

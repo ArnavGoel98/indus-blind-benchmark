@@ -3,7 +3,7 @@
   "related": {
    "knight2006_em": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.1611953088664458,
        "n_at_50": 0,
@@ -25,7 +25,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.005362910940600234,
        "n_at_50": 0,
@@ -49,7 +49,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -115,7 +115,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0005207539501092313,
        "n_at_50": 0,
@@ -139,7 +139,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.037049419415973846,
        "n_at_50": 0,
@@ -161,7 +161,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.01056393786135954,
        "n_at_50": 0,
@@ -185,7 +185,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.014339186010500505,
        "n_at_50": 0,
@@ -229,7 +229,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.015002215349924982,
        "n_at_50": 0,
@@ -253,7 +253,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.010113106412675342,
        "n_at_50": 0,
@@ -275,7 +275,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0931934416600085,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0371212907947048,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.29787617354276447,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -301,7 +323,7 @@
    },
    "knight2006_em_original": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0056201415740691615,
        "n_at_50": 0,
@@ -323,7 +345,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0002885025463485612,
        "n_at_50": 0,
@@ -347,7 +369,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -413,7 +435,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -437,7 +459,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.02291526611956359,
        "n_at_50": 0,
@@ -459,7 +481,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.01097660803901418,
        "n_at_50": 0,
@@ -483,7 +505,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.00021256572910804557,
        "n_at_50": 0,
@@ -527,7 +549,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0011498179179191906,
        "n_at_50": 0,
@@ -551,7 +573,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.00035421151487165806,
        "n_at_50": 0,
@@ -573,7 +595,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0969831474901953,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.034587307670757676,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.29962206140552655,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -599,7 +643,7 @@
    },
    "baseline_frequency_rank": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.1426642161363303,
        "n_at_50": 0,
@@ -621,7 +665,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.00037838655970939914,
        "n_at_50": 0,
@@ -645,7 +689,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -711,7 +755,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0004953513183965859,
        "n_at_50": 0,
@@ -735,7 +779,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0014659449706811007,
        "n_at_50": 0,
@@ -757,7 +801,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.007132794735156813,
        "n_at_50": 0,
@@ -781,7 +825,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0591329638045672,
        "n_at_50": 0,
@@ -825,7 +869,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.11022762574033661,
        "n_at_50": 0,
@@ -849,7 +893,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.008154560281018693,
        "n_at_50": 0,
@@ -871,7 +915,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.017518480729439765,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.005615713013618012,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.03041069938840844,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.011074696342247317,
        "n_at_50": 0,
@@ -899,7 +965,7 @@
   "candidates": {
    "knight2006_em": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -921,7 +987,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0036461294010511416,
        "n_at_50": 0,
@@ -945,7 +1011,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1011,7 +1077,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0005207539501092313,
        "n_at_50": 0,
@@ -1035,7 +1101,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1057,7 +1123,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.01056393786135954,
        "n_at_50": 0,
@@ -1081,7 +1147,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.00835550967982102,
        "n_at_50": 0,
@@ -1125,7 +1191,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.007040671110778219,
        "n_at_50": 0,
@@ -1149,7 +1215,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0008136798357618547,
        "n_at_50": 0,
@@ -1171,7 +1237,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0931934416600085,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0371212907947048,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.23004097668288517,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1197,7 +1285,7 @@
    },
    "knight2006_em_original": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1219,7 +1307,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1243,7 +1331,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1309,7 +1397,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1333,7 +1421,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.02291526611956359,
        "n_at_50": 0,
@@ -1355,7 +1443,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.01097660803901418,
        "n_at_50": 0,
@@ -1379,7 +1467,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1423,7 +1511,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1447,7 +1535,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1469,7 +1557,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.0036357303877013265,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0009366140137707573,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.09506256996862848,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1495,7 +1605,7 @@
    },
    "baseline_frequency_rank": {
     "sanskrit": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.020646747447379644,
        "n_at_50": 0,
@@ -1517,7 +1627,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1541,7 +1651,7 @@
      }
     },
     "tamil": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1607,7 +1717,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1631,7 +1741,7 @@
      }
     },
     "sumerian": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1653,7 +1763,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1677,7 +1787,7 @@
      }
     },
     "latin": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0591329638045672,
        "n_at_50": 0,
@@ -1721,7 +1831,7 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.11022762574033661,
        "n_at_50": 0,
@@ -1745,7 +1855,7 @@
      }
     },
     "finnish": {
-     "v1 sister (upper bound)": {
+     "v1 sister (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1767,7 +1877,29 @@
        "n": 6
       }
      },
-     "`harsh` (lower bound)": {
+     "estonian (weak gold: 10 word pairs, 13 of 27 letters)": {
+      "logographic": {
+       "mean": 0.0,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "syllabic": {
+       "mean": 0.025715733909623614,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "logosyllabic": {
+       "mean": 0.0019238558120696638,
+       "n_at_50": 0,
+       "n": 6
+      },
+      "alphabetic": {
+       "mean": 0.03041069938840844,
+       "n_at_50": 0,
+       "n": 6
+      }
+     },
+     "`harsh` (synthetic, optimistic upper reference)": {
       "logographic": {
        "mean": 0.0,
        "n_at_50": 0,
@@ -1867,6 +1999,11 @@
     "knight2006_em": 0.7083333333333334,
     "knight2006_em_original": 0.0,
     "baseline_frequency_rank": 0.375
+   },
+   "candidates_real:estonian": {
+    "knight2006_em": 0.625,
+    "knight2006_em_original": 0.0,
+    "baseline_frequency_rank": 0.2916666666666667
    }
   }
  },
