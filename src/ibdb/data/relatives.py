@@ -32,7 +32,7 @@ Finnish -> Estonian (sister)
   table is built from the ten Finnish-North Estonian word pairs it prints (FE_PAIRS, aligned by
   hand): a letter kept in a pair gives the regular reflex; a change the paper describes as an
   innovation, or one seen only in a non-initial syllable, is attested only. A letter with no kept
-  example is "no source" (entry 5): p, v, j, y, oe, d, g and the loan letters. P. Kallio, "Historical
+  example is "no source" (entries 5, 10; NO_SOURCE, unknown): p, v, j, y, oe, d, g and the loan letters. P. Kallio, "Historical
   phonology from Proto-Finnic to Proto-Livonian", ESUKA-JEFUL 7(1) (2016), 39-65, is the cross-check
   (it agrees where it overlaps; it prints no Finnish-Estonian pairs). Rules: entry 9.
 """
@@ -46,6 +46,7 @@ from pathlib import Path
 
 from .. import phonology
 from ..paths import raw_dir
+from .gold import NO_SOURCE
 
 SOURCES = {
     "dante_pg1000.txt": {"url": "https://www.gutenberg.org/cache/epub/1000/pg1000.txt",
@@ -178,15 +179,15 @@ FE_PAIRS: list[tuple[str, str, str, list[tuple[str, str | None, str]]]] = [
     ("kato", "kadu", "p. 218", [("k", "k", "kept"), ("a", "a", "kept"), ("t", "t", "kept"), ("o", "u", "innov")]),
 ]
 
-# Finnish letter -> (regular reflex or None, other attested reflexes, Pajusalu 2012 pages).
-# None = "no source" (entry 5): unrecoverable under strict scoring.
+# Finnish letter -> (regular reflex or NO_SOURCE, other attested reflexes, Pajusalu 2012 pages).
+# NO_SOURCE = "no source" (entries 5, 10): unknown, so unrecoverable under strict scoring.
 FINNISH_ESTONIAN: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "a": ("a", ("õ",), "kept: pp. 208, 215, 216, 218; õ: pp. 216-217 (sõna, kõik, lõng; a > õ in North Estonian)"),
     "e": ("e", ("i", "õ"), "kept: p. 208; i: p. 216 (nina; Finnish e for North Estonian i, p. 216-217); õ: p. 216 (hõim)"),
     "i": ("i", ("õ",), "kept: p. 216 (kõik, hõim); õ: p. 216 (sõsar)"),
     "o": ("o", ("u", "õ"), "kept: p. 215; u: p. 218 (o > u in non-initial syllables, kadu); õ: p. 217 (o-stems in North Estonian)"),
     "u": ("u", ("o",), "kept: p. 208 (lugeda); o: p. 208 (loen)"),
-    "ä": (None, ("a",), "no kept example; a: p. 216 (nina), p. 218 (loss of vowel harmony, non-initial syllables)"),
+    "ä": (NO_SOURCE, ("a",), "no kept example; a: p. 216 (nina), p. 218 (loss of vowel harmony, non-initial syllables)"),
     "h": ("h", (), "kept: p. 216 (hõim); lost word-initially and finally in most North Estonian dialects: p. 214"),
     "k": ("k", (), "kept: pp. 208, 215, 216, 217, 218 (g spells the short lenis k: p. 213)"),
     "l": ("l", (), "kept: pp. 208, 215, 217"),
@@ -197,7 +198,7 @@ FINNISH_ESTONIAN: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "t": ("t", (), "kept: p. 218 (kadu; d spells the short lenis t: p. 213)"),
 }
 for _u in ("p", "v", "j", "y", "ö", "d", "g", "b", "c", "f", "z", "š", "ž"):
-    FINNISH_ESTONIAN[_u] = (None, (), "no source: no Finnish-Estonian pair with this letter in Pajusalu (2012)")
+    FINNISH_ESTONIAN[_u] = (NO_SOURCE, (), "no source: no Finnish-Estonian pair with this letter in Pajusalu (2012)")
 
 
 def _check_fe_table() -> None:
@@ -205,9 +206,9 @@ def _check_fe_table() -> None:
     kept = {(f, e) for _, _, _, al in FE_PAIRS for f, e, k in al if k == "kept"}
     innov = {(f, e) for _, _, _, al in FE_PAIRS for f, e, k in al if k == "innov"} | {("o", "õ")}
     for u, (reg, att, _) in FINNISH_ESTONIAN.items():
-        assert reg is None or (u, reg) in kept, u
+        assert reg == NO_SOURCE or (u, reg) in kept, u
         assert all((u, a) in innov for a in att), u
-        assert reg is not None or not any(f == u for f, _ in kept), u
+        assert reg != NO_SOURCE or not any(f == u for f, _ in kept), u
     for fi, et, _, al in FE_PAIRS:
         assert "".join(f for f, _, _ in al) == fi, fi
         assert "".join(e for _, e, _ in al if e) == estonian_normalise(et), et
@@ -216,7 +217,7 @@ def _check_fe_table() -> None:
 def finnish_estonian_map() -> tuple[dict[str, str | None], dict[str, set]]:
     _check_fe_table()
     regular = {k: v[0] for k, v in FINNISH_ESTONIAN.items()}
-    attested = {k: ({v[0]} if v[0] else set()) | set(v[1]) for k, v in FINNISH_ESTONIAN.items()}
+    attested = {k: ({v[0]} if v[0] not in (None, NO_SOURCE) else set()) | set(v[1]) for k, v in FINNISH_ESTONIAN.items()}
     return regular, attested
 
 

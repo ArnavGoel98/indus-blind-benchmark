@@ -7,7 +7,8 @@ One code path for two kinds of relative:
   Finnish once its gold table exists), normalised spelling, whole text.
 
 A relative is given as clauses of words (phoneme tuples), a gold regular-reflex map (hidden phoneme ->
-relative phoneme, None = no reflex) and the attested reflexes of each hidden phoneme.
+relative phoneme; None = no reflex, the sound is lost; NO_SOURCE = the source says nothing, the reflex
+is unknown: entry 10) and the attested reflexes of each hidden phoneme.
 
 Reference (what the solver sees) is written at the script's unit level as v1 writes its references
 (knowledge._word_units): phonemes (alphabetic); CV syllables from phonology.syllabify with the hidden
@@ -22,7 +23,8 @@ Scoring (entry 2), per sign token, against the token's hidden value:
 - strict: the predicted unit equals the regular reflex of the hidden value. For a phoneme, its
   reflex; for a syllable, the reflexes of its phonemes joined (phonemes with no reflex dropped); for a
   word form (logogram), the relative word so formed, and only if that word occurs in the relative
-  (a cognate; plan, "Script levels"). Otherwise the token is unrecoverable.
+  (a cognate; plan, "Script levels"). Otherwise the token is unrecoverable. A token containing a
+  no-source phoneme is unrecoverable (entry 10; before, the phoneme was dropped like a lost one).
 - lenient: the predicted unit can be formed from attested reflexes (regular included) of the hidden
   value's phonemes, in order; for a logogram it must also occur in the relative.
 - Units the generator adds (word dividers <DIV>, determinatives <DET:n>) are unrecoverable, as in v1.
@@ -39,6 +41,7 @@ from functools import lru_cache
 
 from . import phonology
 from .corpus import AnswerKey
+from .data.gold import NO_SOURCE
 from .generator.build import _segments, base_source, source_family
 from .knowledge import MAX_REF_CLAUSES
 from .methods.base import Reference
@@ -55,7 +58,8 @@ class Relative:
     def options(self, p: str) -> set[str]:
         """Strings hidden phoneme `p` may become (lenient); '' where it has no reflex."""
         r = self.regular.get(p, p)
-        return {r or ""} | {a for a in self.attested.get(p, ()) if a}
+        att = {a for a in self.attested.get(p, ()) if a}
+        return att if r == NO_SOURCE else {r or ""} | att
 
 
 def _groups(phon, vowels) -> list[tuple[str, ...]]:
@@ -191,13 +195,15 @@ class Gold:
             if self.st == "logographic" or (self.st == "logosyllabic" and v in self.logograms):
                 phon = self.forms.get(v)
                 if phon is not None:
-                    r = "".join(x for x in (self.rel.regular.get(p, p) for p in phon) if x)
-                    out = (r if r in self.vocab else None, phon, True)
+                    refl = [self.rel.regular.get(p, p) for p in phon]
+                    r = "".join(x for x in refl if x)
+                    out = (r if r in self.vocab and NO_SOURCE not in refl else None, phon, True)
             else:
                 phon = (v,) if self.st == "alphabetic" else self.syls.get(v)
                 if phon is not None:
-                    r = "".join(x for x in (self.rel.regular.get(p, p) for p in phon) if x)
-                    out = (r or None, phon, False)
+                    refl = [self.rel.regular.get(p, p) for p in phon]
+                    r = "".join(x for x in refl if x)
+                    out = (r if r and NO_SOURCE not in refl else None, phon, False)
         self._cache[v] = out
         return out
 

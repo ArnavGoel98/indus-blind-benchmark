@@ -1,0 +1,2196 @@
+{
+ "pair": {
+  "pair": "finnish-estonian",
+  "hidden": "finnish",
+  "relationship": "sister",
+  "mergers": 0,
+  "deleted": [
+   "b",
+   "c",
+   "d",
+   "f",
+   "g",
+   "j",
+   "p",
+   "v",
+   "y",
+   "z",
+   "ä",
+   "ö",
+   "š",
+   "ž"
+  ],
+  "as_written": {
+   "n_texts": 18664,
+   "n_words": 58926,
+   "n_units": 369658,
+   "point": {
+    "bigram_jsd": 0.2561240496537576,
+    "floor": 0.01525407914861883,
+    "jsd_above_floor": 0.2408699705051388,
+    "cognate_types": 0.07255938771467899,
+    "cognate_types_chance": 0.1554786521504697,
+    "cognate_types_cc": -0.09818492409568379,
+    "cognate_tokens": 0.10414534288638691,
+    "word_pairs_types": 0.003081086769400005,
+    "word_pairs_types_chance": 0.021074568701864423,
+    "word_pairs_types_cc": -0.018380850427599557,
+    "verbatim_6plus": 0.007920792079207921,
+    "n_verbatim_windows": 505
+   }
+  },
+  "normalised": {
+   "n_texts": 18664,
+   "n_words": 58926,
+   "n_units": 369658,
+   "point": {
+    "bigram_jsd": 0.19566395952902577,
+    "floor": 0.012136960602870952,
+    "jsd_above_floor": 0.18352699892615482,
+    "cognate_types": 0.09089031310626777,
+    "cognate_types_chance": 0.15719468830165026,
+    "cognate_types_cc": -0.07867104570303614,
+    "cognate_tokens": 0.12359263050153528,
+    "word_pairs_types": 0.0036775559683950637,
+    "word_pairs_types_chance": 0.021428342286770083,
+    "word_pairs_types_cc": -0.018139485420879498,
+    "verbatim_6plus": 0.013861386138613862,
+    "n_verbatim_windows": 505
+   },
+   "bootstrap": {
+    "jsd_above_floor": {
+     "lo": 0.17982071766646837,
+     "hi": 0.18878118137788807,
+     "mean": 0.18374397162836673,
+     "sd": 0.002181956031047123
+    },
+    "cognate_types_cc": {
+     "lo": -0.16209117499654127,
+     "hi": -0.013196785870662624,
+     "mean": -0.08446641371717638,
+     "sd": 0.04108578850564974
+    },
+    "word_pairs_types_cc": {
+     "lo": -0.03180055133186931,
+     "hi": -0.0038010246121051045,
+     "mean": -0.015839577625114315,
+     "sd": 0.0075354835623041
+    },
+    "verbatim_6plus": {
+     "lo": 0.001984028760018859,
+     "hi": 0.018001807228915662,
+     "mean": 0.009553210603987434,
+     "sd": 0.004266000610450996
+    }
+   }
+  }
+ },
+ "bracket": {
+  "v1_like": {
+   "jsd_above_floor": 0.0037114363090968764,
+   "cognate_types_cc": 0.5388077640724357,
+   "word_pairs_types_cc": 0.10385611382628364,
+   "verbatim_6plus": 0.19750503999897273
+  },
+  "harsh": {
+   "jsd_above_floor": 0.15403901970005607,
+   "cognate_types_cc": 0.047511238523275635,
+   "word_pairs_types_cc": 0.0018653577943360845,
+   "verbatim_6plus": 0.0353197991704868
+  }
+ },
+ "verbatim": {
+  "n_windows_drawn": 10041,
+  "n_hits": 116,
+  "share": 0.011552634199780898,
+  "chance_share_mean": 0.0018627450980392157,
+  "chance_share_p95": 0.0058823529411764705,
+  "n_distinct_hits": 113,
+  "hits_by_class": {
+   "across boundaries": 84,
+   "within words": 32
+  },
+  "hits_normalised_only": null,
+  "hits_whole_multiword": 0,
+  "hits_in_10plus_relative_lines": 14,
+  "hits": [
+   {
+    "window": "t u u l e t a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "vastatuulet",
+     "vaapumahan"
+    ],
+    "relative_words_as_written": [
+     "tuuled",
+     "armsad"
+    ],
+    "n_relative_lines": 48,
+    "relative_line": "avaltake tuulet armsat",
+    "relative_line_as_printed": "Avaldage, tuuled, armsad:",
+    "times_hit": 1
+   },
+   {
+    "window": "k u t a s i",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kuta",
+     "pyysin"
+    ],
+    "relative_words_as_written": [
+     "nikutasid"
+    ],
+    "n_relative_lines": 15,
+    "relative_line": "sõrmet niisi nikutasit",
+    "relative_line_as_printed": "Sõrmed niisi nikutasid,",
+    "times_hit": 1
+   },
+   {
+    "window": "k u l t a l",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kultalatvakuusosehen"
+    ],
+    "relative_words_as_written": [
+     "kulda",
+     "lähä"
+    ],
+    "n_relative_lines": 13,
+    "relative_line": "ei mina kulta lähä kuule",
+    "relative_line_as_printed": "\"Ei mina, kulda, lähä kuule,",
+    "times_hit": 1
+   },
+   {
+    "window": "i t u l l a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "piti",
+     "tulla"
+    ],
+    "relative_words_as_written": [
+     "ei",
+     "tulla"
+    ],
+    "n_relative_lines": 10,
+    "relative_line": "või ei tulla taatikene",
+    "relative_line_as_printed": "\"Või ei tulla, taadikene!",
+    "times_hit": 1
+   },
+   {
+    "window": "k a t a a t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "katajatar"
+    ],
+    "relative_words_as_written": [
+     "piiga",
+     "taadile"
+    ],
+    "n_relative_lines": 9,
+    "relative_line": "pajatas piika taatile",
+    "relative_line_as_printed": "Pajatas piiga taadile:",
+    "times_hit": 1
+   },
+   {
+    "window": "e n t e l i",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "lenteli"
+    ],
+    "relative_words_as_written": [
+     "peente",
+     "linadesse"
+    ],
+    "n_relative_lines": 8,
+    "relative_line": "panit peente linatesse",
+    "relative_line_as_printed": "Panid peente linadesse,",
+    "times_hit": 1
+   },
+   {
+    "window": "i s t a k a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "karista",
+     "katosta"
+    ],
+    "relative_words_as_written": [
+     "siis",
+     "ta",
+     "kasteta"
+    ],
+    "n_relative_lines": 8,
+    "relative_line": "siis ta kasteta kahistap",
+    "relative_line_as_printed": "Siis ta kasteta kahistab,",
+    "times_hit": 1
+   },
+   {
+    "window": "l e k u l t a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kuule",
+     "kultaiset"
+    ],
+    "relative_words_as_written": [
+     "kuule",
+     "kuldakuulutusi"
+    ],
+    "n_relative_lines": 8,
+    "relative_line": "kuule kultakuulutusi",
+    "relative_line_as_printed": "Kuule kuldakuulutusi,",
+    "times_hit": 1
+   },
+   {
+    "window": "a l a k a n t",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kalpa",
+     "kantajan"
+    ],
+    "relative_words_as_written": [
+     "jalakandadeni"
+    ],
+    "n_relative_lines": 7,
+    "relative_line": "kuklast jalakantateni",
+    "relative_line_as_printed": "Kuklast jalakandadeni,",
+    "times_hit": 1
+   },
+   {
+    "window": "e m a a t a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "lyöte",
+     "maata"
+    ],
+    "relative_words_as_written": [
+     "meie",
+     "maada"
+    ],
+    "n_relative_lines": 6,
+    "relative_line": "meie maata markamata",
+    "relative_line_as_printed": "Meie maada markamata",
+    "times_hit": 1
+   },
+   {
+    "window": "l e l a i n",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "lakeille",
+     "lainehille"
+    ],
+    "relative_words_as_written": [
+     "lagle",
+     "lainetelle"
+    ],
+    "n_relative_lines": 6,
+    "relative_line": "jäin kui lakle lainetelle",
+    "relative_line_as_printed": "Jäin kui lagle lainetelle,",
+    "times_hit": 1
+   },
+   {
+    "window": "t a e n n e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "tuota",
+     "ennen"
+    ],
+    "relative_words_as_written": [
+     "korda",
+     "enne"
+    ],
+    "n_relative_lines": 6,
+    "relative_line": "kümme korta enne koitu",
+    "relative_line_as_printed": "Kümme korda enne koitu,",
+    "times_hit": 1
+   },
+   {
+    "window": "a l a n k u t",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kalankutuhun"
+    ],
+    "relative_words_as_written": [
+     "korra",
+     "langutelles"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "laskis korra lankutelles",
+    "relative_line_as_printed": "Laskis korra langutelles",
+    "times_hit": 1
+   },
+   {
+    "window": "i l l a t e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "tietoisilla",
+     "tehtahilla"
+    ],
+    "relative_words_as_written": [
+     "villade"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "hellalt villate vahele",
+    "relative_line_as_printed": "Hellalt villade vahele,",
+    "times_hit": 1
+   },
+   {
+    "window": "s a a n u t k",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "saanutkana"
+    ],
+    "relative_words_as_written": [
+     "saanud",
+     "kaugemalle"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "kust ei saanut kaukemalle",
+    "relative_line_as_printed": "Kust ei saanud kaugemalle.",
+    "times_hit": 1
+   },
+   {
+    "window": "s i t k i i",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "läksitkö",
+     "piikojen"
+    ],
+    "relative_words_as_written": [
+     "jõudsid",
+     "kiirusela"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "sõutsit jõutsit kiirusela",
+    "relative_line_as_printed": "Sõudsid, jõudsid kiirusela;",
+    "times_hit": 1
+   },
+   {
+    "window": "l i s t a a r",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "aitallista",
+     "armastansa"
+    ],
+    "relative_words_as_written": [
+     "hädalista",
+     "arstimaie"
+    ],
+    "n_relative_lines": 4,
+    "relative_line": "hätalista arstimaie",
+    "relative_line_as_printed": "Hädalista arstimaie,",
+    "times_hit": 1
+   },
+   {
+    "window": "u l l a t k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kullat",
+     "kuunikuiset"
+    ],
+    "relative_words_as_written": [
+     "kullad",
+     "kamberila"
+    ],
+    "n_relative_lines": 4,
+    "relative_line": "külat kullat kamperila",
+    "relative_line_as_printed": "Külad, kullad kamberila.",
+    "times_hit": 1
+   },
+   {
+    "window": "e l i l l e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "noille",
+     "väljille"
+    ],
+    "relative_words_as_written": [
+     "õnnelilled"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "jaaniöösi õnnelillet",
+    "relative_line_as_printed": "Jaaniöösi õnnelilled,",
+    "times_hit": 1
+   },
+   {
+    "window": "k a s a a k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kasvava",
+     "kataja"
+    ],
+    "relative_words_as_written": [
+     "varga",
+     "saaki"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "varka saaki paati viia",
+    "relative_line_as_printed": "Varga saaki paati viia.",
+    "times_hit": 1
+   },
+   {
+    "window": "m e i l m a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "iäksemme",
+     "ilmaksemme"
+    ],
+    "relative_words_as_written": [
+     "meil",
+     "magab"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "taat meil makap kalmukünkas",
+    "relative_line_as_printed": "\"Taat meil magab kalmukünkas,",
+    "times_hit": 1
+   },
+   {
+    "window": "n e s u r m a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kunne",
+     "surma"
+    ],
+    "relative_words_as_written": [
+     "enne",
+     "surma"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "nii oli taati enne surma",
+    "relative_line_as_printed": "Nii oli taati enne surma",
+    "times_hit": 1
+   },
+   {
+    "window": "o l i k u l l a",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "oli",
+     "kullankäärehissä"
+    ],
+    "relative_words_as_written": [
+     "oli",
+     "kulla"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "üks oli kulla kuusemetsa",
+    "relative_line_as_printed": "Üks oli kulla kuusemetsa,",
+    "times_hit": 1
+   },
+   {
+    "window": "s e i t s e n",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "seitsentä"
+    ],
+    "relative_words_as_written": [
+     "seitse",
+     "nädalada"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "et ta seitse nätalata",
+    "relative_line_as_printed": "Et ta seitse nädalada",
+    "times_hit": 1
+   },
+   {
+    "window": "t a s s a m",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "aitassamme"
+    ],
+    "relative_words_as_written": [
+     "kuidas",
+     "sa",
+     "mind"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "kuitas sa mint kasvatasit",
+    "relative_line_as_printed": "Kuidas sa mind kasvatasid,",
+    "times_hit": 1
+   },
+   {
+    "window": "t s i l e n",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "päätäsi",
+     "ylennä"
+    ],
+    "relative_words_as_written": [
+     "tantsi",
+     "lendageme"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "lääne tantsi lentakeme",
+    "relative_line_as_printed": "Lääne tantsi lendageme,",
+    "times_hit": 1
+   },
+   {
+    "window": "u u l i n k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "luulin",
+     "kukkuvan"
+    ],
+    "relative_words_as_written": [
+     "kuulin",
+     "kõu"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "kuulin kõu kärkatama",
+    "relative_line_as_printed": "Kuulin Kõu kärgatama,",
+    "times_hit": 1
+   },
+   {
+    "window": "a k u t s u t a",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "sinua",
+     "kutsutahan"
+    ],
+    "relative_words_as_written": [
+     "kaasa",
+     "kutsutakse"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "kas meit kaasa kutsutakse",
+    "relative_line_as_printed": "Kas meid kaasa kutsutakse.",
+    "times_hit": 1
+   },
+   {
+    "window": "e e s i l l",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "väljille",
+     "vesille"
+    ],
+    "relative_words_as_written": [
+     "see",
+     "silla"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "mis see silla sünnitaja",
+    "relative_line_as_printed": "Mis see silla sünnitaja.",
+    "times_hit": 1
+   },
+   {
+    "window": "e i m i n u",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "jottei",
+     "minua"
+    ],
+    "relative_words_as_written": [
+     "ei",
+     "minu"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "ei minu pitu parane",
+    "relative_line_as_printed": "Ei minu pidu parane,",
+    "times_hit": 1
+   },
+   {
+    "window": "e k u u s i k",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "pane",
+     "kuusi",
+     "kukkulaista"
+    ],
+    "relative_words_as_written": [
+     "kurvastuse",
+     "kuusikusta"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "kurvastuse kuusikusta",
+    "relative_line_as_printed": "Kurvastuse kuusikusta.",
+    "times_hit": 1
+   },
+   {
+    "window": "e m a a l l e",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "itse",
+     "maalle"
+    ],
+    "relative_words_as_written": [
+     "ema",
+     "alles"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "ema alles hautumata",
+    "relative_line_as_printed": "Ema alles haudumata,",
+    "times_hit": 1
+   },
+   {
+    "window": "e n a r m a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "apeainen",
+     "armastani"
+    ],
+    "relative_words_as_written": [
+     "kastenarma"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "katap palke kastenarma",
+    "relative_line_as_printed": "Katab palge kastenarma,",
+    "times_hit": 1
+   },
+   {
+    "window": "i e t k u u e",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "viiet",
+     "kuuet"
+    ],
+    "relative_words_as_written": [
+     "viied",
+     "kuued"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "viiet kuuet viinakruusit",
+    "relative_line_as_printed": "Viied, kuued viinakruusid,",
+    "times_hit": 1
+   },
+   {
+    "window": "i l l a i n",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "noilla",
+     "väinölän"
+    ],
+    "relative_words_as_written": [
+     "lustil",
+     "lainetella"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "laklet lustil lainetella",
+    "relative_line_as_printed": "Lagled lustil lainetella,",
+    "times_hit": 1
+   },
+   {
+    "window": "i n u s t a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "minusta"
+    ],
+    "relative_words_as_written": [
+     "minust",
+     "aga"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "minust aka kasvas meesi",
+    "relative_line_as_printed": "Minust aga kasvas meesi,",
+    "times_hit": 1
+   },
+   {
+    "window": "i s t a k o r",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "korvallista",
+     "korkeampi"
+    ],
+    "relative_words_as_written": [
+     "mis",
+     "ta",
+     "korra"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "mis ta korra kokemata",
+    "relative_line_as_printed": "Mis ta korra kogemata,",
+    "times_hit": 1
+   },
+   {
+    "window": "i t s e t k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "suitset",
+     "kullan"
+    ],
+    "relative_words_as_written": [
+     "seitset",
+     "karva"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "sitemet seitset karva karrast",
+    "relative_line_as_printed": "Sidemed seitset karva karrast,",
+    "times_hit": 1
+   },
+   {
+    "window": "l e i n a i",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "leivän",
+     "paimenelle"
+    ],
+    "relative_words_as_written": [
+     "leina",
+     "igatsusi"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "ikes leina ikatsusi",
+    "relative_line_as_printed": "Ikes leina-igatsusi,",
+    "times_hit": 1
+   },
+   {
+    "window": "l i n t u l a u l",
+    "length": 9,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "lempilintu",
+     "laulakana"
+    ],
+    "relative_words_as_written": [
+     "lindu",
+     "laulu"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "lintu laulu laskemassa",
+    "relative_line_as_printed": "Lindu, laulu laskemassa,",
+    "times_hit": 1
+   },
+   {
+    "window": "l l a l a u",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "rahkehella",
+     "laulamassa"
+    ],
+    "relative_words_as_written": [
+     "alla",
+     "laua"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "lapset nutsit alla laua",
+    "relative_line_as_printed": "Lapsed nutsid alla laua,",
+    "times_hit": 1
+   },
+   {
+    "window": "m a a l l e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "maalle"
+    ],
+    "relative_words_as_written": [
+     "ema",
+     "alles"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "ema alles hautumata",
+    "relative_line_as_printed": "Ema alles haudumata,",
+    "times_hit": 1
+   },
+   {
+    "window": "m u s t a t s i l m",
+    "length": 10,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "mustat",
+     "silmänsä"
+    ],
+    "relative_words_as_written": [
+     "sitikmustad",
+     "silmakulmud"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "sitikmustat silmakulmut",
+    "relative_line_as_printed": "Sitikmustad silmakulmud.",
+    "times_hit": 1
+   },
+   {
+    "window": "n k u m i s",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kultainen",
+     "kumisi"
+    ],
+    "relative_words_as_written": [
+     "hangumise"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "verel hankumise aeka",
+    "relative_line_as_printed": "Verel hangumise aega.",
+    "times_hit": 1
+   },
+   {
+    "window": "n u t k a t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kasvanut",
+     "katajapehko"
+    ],
+    "relative_words_as_written": [
+     "kännud",
+     "katkemata"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "oksa kännut katkemata",
+    "relative_line_as_printed": "Oksa kännud katkemata,",
+    "times_hit": 1
+   },
+   {
+    "window": "s i i n e i",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "siinä",
+     "veitikkä"
+    ],
+    "relative_words_as_written": [
+     "siin",
+     "ei"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "võõrast siin ei veeremassa",
+    "relative_line_as_printed": "\"Võõrast siin ei veeremassa,",
+    "times_hit": 1
+   },
+   {
+    "window": "t i k a n t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "äiti",
+     "kantajani"
+    ],
+    "relative_words_as_written": [
+     "lustikandja"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "lustikantja lotjakene",
+    "relative_line_as_printed": "Lustikandja lodjakene",
+    "times_hit": 1
+   },
+   {
+    "window": "t i s e l l",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "entisellensä"
+    ],
+    "relative_words_as_written": [
+     "taadi",
+     "sellidelle"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "s a r v i k taati sellitelle",
+    "relative_line_as_printed": "S a r v i k-taadi sellidelle!\"",
+    "times_hit": 1
+   },
+   {
+    "window": "t m i n u l",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "mitä",
+     "minullen"
+    ],
+    "relative_words_as_written": [
+     "mõtteid",
+     "minule"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "kui mitu mõtteit minule",
+    "relative_line_as_printed": "Kui mitu mõtteid minule,",
+    "times_hit": 1
+   },
+   {
+    "window": "u i s a i n",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "puu",
+     "visainen"
+    ],
+    "relative_words_as_written": [
+     "kui",
+     "sain"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "kui sain päeva paistuselle",
+    "relative_line_as_printed": "Kui sain päeva paistuselle,",
+    "times_hit": 1
+   },
+   {
+    "window": "u t a r k u",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kuutar",
+     "kultiasi"
+    ],
+    "relative_words_as_written": [
+     "taevaliku",
+     "tarkus"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "võip ehk taevaliku tarkus",
+    "relative_line_as_printed": "Võib ehk taevaliku tarkus,",
+    "times_hit": 1
+   },
+   {
+    "window": "a e n n e n",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "tuulta",
+     "ennen"
+    ],
+    "relative_words_as_written": [
+     "miska",
+     "enne",
+     "näkineitsi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "miska enne näkineitsi",
+    "relative_line_as_printed": "Miska enne näkineitsi",
+    "times_hit": 1
+   },
+   {
+    "window": "a s i s u k e",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "suullasi",
+     "sukelteleihet"
+    ],
+    "relative_words_as_written": [
+     "susilasi",
+     "sugedessa"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "susilasi suketessa",
+    "relative_line_as_printed": "Susilasi sugedessa",
+    "times_hit": 1
+   },
+   {
+    "window": "a s u u r t a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "sukua",
+     "suurta"
+    ],
+    "relative_words_as_written": [
+     "valda",
+     "suurta"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "valta suurta valitsema",
+    "relative_line_as_printed": "Valda suurta valitsema,",
+    "times_hit": 1
+   },
+   {
+    "window": "a t a s a a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "maata",
+     "saaren"
+    ],
+    "relative_words_as_written": [
+     "sada",
+     "saagi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "sata saaki saakimassa",
+    "relative_line_as_printed": "Sada saagi saagimassa,",
+    "times_hit": 1
+   },
+   {
+    "window": "a t u h k a",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "tulta",
+     "tuhkasissa"
+    ],
+    "relative_words_as_written": [
+     "aga",
+     "tuhkadessa"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "tuiskas aka tuhkatessa",
+    "relative_line_as_printed": "Tuiskas aga tuhkadessa",
+    "times_hit": 1
+   },
+   {
+    "window": "a u n i s k a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kaunis",
+     "kankahan"
+    ],
+    "relative_words_as_written": [
+     "kaunis",
+     "kari"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kaunis kari repasita",
+    "relative_line_as_printed": "Kaunis kari rebasida.",
+    "times_hit": 1
+   },
+   {
+    "window": "a u t a r a k",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "rauta",
+     "rakkautta"
+    ],
+    "relative_words_as_written": [
+     "rauda",
+     "rakendame"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "röövlit rauta rakentame",
+    "relative_line_as_printed": "Röövlid rauda rakendame.\"",
+    "times_hit": 1
+   },
+   {
+    "window": "e i t u s k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "jottei",
+     "tuska"
+    ],
+    "relative_words_as_written": [
+     "peidus",
+     "koju"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "peitus koju pakemaie",
+    "relative_line_as_printed": "Peidus koju pagemaie,",
+    "times_hit": 1
+   },
+   {
+    "window": "e r i l l e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "puulle",
+     "pyörivälle"
+    ],
+    "relative_words_as_written": [
+     "vankerille"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "veeretati vankerille",
+    "relative_line_as_printed": "Veeretati vankerille;",
+    "times_hit": 1
+   },
+   {
+    "window": "h e t l a i a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "miehet",
+     "laivahansa"
+    ],
+    "relative_words_as_written": [
+     "lõhed",
+     "laiad"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "lõhet laiat laukut otsas",
+    "relative_line_as_printed": "Lõhed laiad, laugud otsas.",
+    "times_hit": 1
+   },
+   {
+    "window": "i i k a s i l",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "siikasille"
+    ],
+    "relative_words_as_written": [
+     "piiga",
+     "silmi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "piika silmi pisaraisse",
+    "relative_line_as_printed": "Piiga silmi pisaraisse,",
+    "times_hit": 1
+   },
+   {
+    "window": "i k a t e t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "viikatetta"
+    ],
+    "relative_words_as_written": [
+     "sai",
+     "katet"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "sest sai katet siili selka",
+    "relative_line_as_printed": "Sest sai katet siili selga,",
+    "times_hit": 1
+   },
+   {
+    "window": "i n a m i n u",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "useinpa",
+     "minun"
+    ],
+    "relative_words_as_written": [
+     "sina",
+     "minu"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "sina minu väest ei pääse",
+    "relative_line_as_printed": "Sina minu väest ei pääse!",
+    "times_hit": 1
+   },
+   {
+    "window": "i n k o l m a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "päivän",
+     "kolmannen"
+    ],
+    "relative_words_as_written": [
+     "hakkasin",
+     "kolmat"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "hakkasin kolmat võttemaie",
+    "relative_line_as_printed": "Hakkasin kolmat võttemaie.",
+    "times_hit": 1
+   },
+   {
+    "window": "i s k a u k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kaunis",
+     "kaukomieli"
+    ],
+    "relative_words_as_written": [
+     "laulis",
+     "kauge"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kukke laulis kauke elta",
+    "relative_line_as_printed": "Kukke laulis kauge′elta,",
+    "times_hit": 1
+   },
+   {
+    "window": "i t e l l e n",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "patakoitellen"
+    ],
+    "relative_words_as_written": [
+     "neitsidelle",
+     "naljakambri"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "neitsitelle naljakampri",
+    "relative_line_as_printed": "Neitsidelle naljakambri,",
+    "times_hit": 1
+   },
+   {
+    "window": "k a n n u t k a n",
+    "length": 9,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kannut",
+     "kanteleisi"
+    ],
+    "relative_words_as_written": [
+     "kannud",
+     "kanad"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kannut kanat kamperista",
+    "relative_line_as_printed": "Kannud kanad kamberista,",
+    "times_hit": 1
+   },
+   {
+    "window": "l i t k u l t",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kuulit",
+     "kultainen"
+    ],
+    "relative_words_as_written": [
+     "olid",
+     "kuldakeerulised"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "vööt olit kultakeeruliset",
+    "relative_line_as_printed": "Vööd olid kuldakeerulised,",
+    "times_hit": 1
+   },
+   {
+    "window": "l l e n a l",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "patakoitellen",
+     "palolla"
+    ],
+    "relative_words_as_written": [
+     "neitsidelle",
+     "naljakambri"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "neitsitelle naljakampri",
+    "relative_line_as_printed": "Neitsidelle naljakambri,",
+    "times_hit": 1
+   },
+   {
+    "window": "l t a k u u l u",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "alta",
+     "kuulun"
+    ],
+    "relative_words_as_written": [
+     "kuldakuulutusi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kuule kultakuulutusi",
+    "relative_line_as_printed": "Kuule kuldakuulutusi,",
+    "times_hit": 1
+   },
+   {
+    "window": "m a s i s t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kolmas",
+     "istuta"
+    ],
+    "relative_words_as_written": [
+     "kolmas",
+     "istus"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kolmas istus kotka selka",
+    "relative_line_as_printed": "Kolmas istus kotka selga,",
+    "times_hit": 1
+   },
+   {
+    "window": "n e k u n k",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "minne",
+     "kunka"
+    ],
+    "relative_words_as_written": [
+     "mine",
+     "k",
+     "u",
+     "n",
+     "g"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "mine k u n k l a kosimaie",
+    "relative_line_as_printed": "Mine K u n g l a kosimaie,",
+    "times_hit": 1
+   },
+   {
+    "window": "n l a i n e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "satalauan",
+     "lainehille"
+    ],
+    "relative_words_as_written": [
+     "leidsin",
+     "lainetesta"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "mis ma leitsin lainetesta",
+    "relative_line_as_printed": "Mis ma leidsin lainetesta?",
+    "times_hit": 1
+   },
+   {
+    "window": "n t a s i l l a",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "rantasilla"
+    ],
+    "relative_words_as_written": [
+     "kanda",
+     "sillal"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kanta sillal teine kaltal",
+    "relative_line_as_printed": "Kanda sillal, teine kaldal,",
+    "times_hit": 1
+   },
+   {
+    "window": "s a a n u t l e",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "saanut",
+     "lemminkäinen"
+    ],
+    "relative_words_as_written": [
+     "saanud",
+     "lese"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "eka saanut lese sänki",
+    "relative_line_as_printed": "Ega saanud lese sängi",
+    "times_hit": 1
+   },
+   {
+    "window": "s a a t a t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "saatatti"
+    ],
+    "relative_words_as_written": [
+     "saada",
+     "täisi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "eka tahtnut saata täisi",
+    "relative_line_as_printed": "Ega tahtnud saada täisi,",
+    "times_hit": 1
+   },
+   {
+    "window": "s t a k a u a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kangasta",
+     "kapuamahan"
+    ],
+    "relative_words_as_written": [
+     "käis",
+     "ta",
+     "kaua"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "käis ta kaua ümperkautu",
+    "relative_line_as_printed": "Käis ta kaua ümberkaudu,",
+    "times_hit": 1
+   },
+   {
+    "window": "s u k a t s u l",
+    "length": 8,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "sukat",
+     "sulkkuiset"
+    ],
+    "relative_words_as_written": [
+     "kasukat",
+     "sull"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kasukat sull kohentata",
+    "relative_line_as_printed": "Kasukat sull′ kohendada!\"",
+    "times_hit": 1
+   },
+   {
+    "window": "t a r e h e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "pientarehen"
+    ],
+    "relative_words_as_written": [
+     "ta",
+     "rehekütjaks"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kotu võiks ta rehekütjaks",
+    "relative_line_as_printed": "Kodu võiks ta rehekütjaks,",
+    "times_hit": 1
+   },
+   {
+    "window": "t k a n n e",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "vettä",
+     "kannettihin"
+    ],
+    "relative_words_as_written": [
+     "meid",
+     "kannetie"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kaukelta meit kannetie",
+    "relative_line_as_printed": "Kaugelta meid kannetie,",
+    "times_hit": 1
+   },
+   {
+    "window": "t k u l u t",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kynnystä",
+     "kulutti"
+    ],
+    "relative_words_as_written": [
+     "küllalt",
+     "kulutanud"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "ketrust küllalt kulutanut",
+    "relative_line_as_printed": "Ketrust küllalt kulutanud,",
+    "times_hit": 1
+   },
+   {
+    "window": "t u n u t k a",
+    "length": 7,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kaatunut",
+     "kalervo"
+    ],
+    "relative_words_as_written": [
+     "kadunud",
+     "kanake"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "senna katunut kanake",
+    "relative_line_as_printed": "Senna kadunud kanake,",
+    "times_hit": 1
+   },
+   {
+    "window": "u t i s k o",
+    "length": 6,
+    "class": "across boundaries",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kutiskosta"
+    ],
+    "relative_words_as_written": [
+     "jõudis",
+     "kohta"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kuni vastu jõutis kohta",
+    "relative_line_as_printed": "Kuni vastu jõudis kohta,",
+    "times_hit": 1
+   },
+   {
+    "window": "i t e l l e",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "patakoitellen"
+    ],
+    "relative_words_as_written": [
+     "selitelles"
+    ],
+    "n_relative_lines": 80,
+    "relative_line": "selitelles silmasita",
+    "relative_line_as_printed": "Selitelles silmasida,",
+    "times_hit": 2
+   },
+   {
+    "window": "l a u l u l",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "laululle"
+    ],
+    "relative_words_as_written": [
+     "laululaevakesta"
+    ],
+    "n_relative_lines": 44,
+    "relative_line": "sõua laululaevakesta",
+    "relative_line_as_printed": "Sõua laululaevakesta,",
+    "times_hit": 1
+   },
+   {
+    "window": "a i t s e m a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "havaitsematta"
+    ],
+    "relative_words_as_written": [
+     "kaitsemassa"
+    ],
+    "n_relative_lines": 15,
+    "relative_line": "eite olnut kaitsemassa",
+    "relative_line_as_printed": "Eite olnud kaitsemassa.",
+    "times_hit": 1
+   },
+   {
+    "window": "a k s u s t",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "paksusti"
+    ],
+    "relative_words_as_written": [
+     "paksust"
+    ],
+    "n_relative_lines": 15,
+    "relative_line": "leiap paksust pilvetesta",
+    "relative_line_as_printed": "Leiab paksust pilvetesta,",
+    "times_hit": 1
+   },
+   {
+    "window": "k a t e s s a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "hakatessansa"
+    ],
+    "relative_words_as_written": [
+     "pungadessa"
+    ],
+    "n_relative_lines": 13,
+    "relative_line": "penninkita punkatessa",
+    "relative_line_as_printed": "Penningida pungadessa.",
+    "times_hit": 1
+   },
+   {
+    "window": "u l t a k a n",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kultakannen"
+    ],
+    "relative_words_as_written": [
+     "kuldakangaksa"
+    ],
+    "n_relative_lines": 12,
+    "relative_line": "kultakankaksa kutusin",
+    "relative_line_as_printed": "Kuldakangaksa kudusin,",
+    "times_hit": 1
+   },
+   {
+    "window": "l i i k u t",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "liikuta"
+    ],
+    "relative_words_as_written": [
+     "liigutusta"
+    ],
+    "n_relative_lines": 11,
+    "relative_line": "eka laukil liikutusta",
+    "relative_line_as_printed": "Ega laugil liigutusta.",
+    "times_hit": 1
+   },
+   {
+    "window": "t a k a n k",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "keltakankahilla"
+    ],
+    "relative_words_as_written": [
+     "kuldakangaksa"
+    ],
+    "n_relative_lines": 11,
+    "relative_line": "kultakankaksa kutusin",
+    "relative_line_as_printed": "Kuldakangaksa kudusin,",
+    "times_hit": 1
+   },
+   {
+    "window": "t a m a s s a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "vaeltamassa"
+    ],
+    "relative_words_as_written": [
+     "valmistamassa"
+    ],
+    "n_relative_lines": 10,
+    "relative_line": "vanemat valmistamassa",
+    "relative_line_as_printed": "Vanemad valmistamassa,",
+    "times_hit": 1
+   },
+   {
+    "window": "t u l l e s",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "tullessa"
+    ],
+    "relative_words_as_written": [
+     "tulles"
+    ],
+    "n_relative_lines": 8,
+    "relative_line": "virust tulles veeretelles",
+    "relative_line_as_printed": "Virust tulles veeretelles,",
+    "times_hit": 1
+   },
+   {
+    "window": "u i s t a m a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "suistamahan"
+    ],
+    "relative_words_as_written": [
+     "puistamaie"
+    ],
+    "n_relative_lines": 8,
+    "relative_line": "puie latvu puistamaie",
+    "relative_line_as_printed": "Puie latvu puistamaie,",
+    "times_hit": 1
+   },
+   {
+    "window": "i l m a t a",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmatar"
+    ],
+    "relative_words_as_written": [
+     "ilmatargad"
+    ],
+    "n_relative_lines": 6,
+    "relative_line": "tere tere ilmatarkat",
+    "relative_line_as_printed": "\"Tere, tere, ilmatargad!",
+    "times_hit": 1
+   },
+   {
+    "window": "h a m m a s",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "hammasta"
+    ],
+    "relative_words_as_written": [
+     "hammastesta"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "hammastesta api püütis",
+    "relative_line_as_printed": "Hammastesta abi püüdis:",
+    "times_hit": 1
+   },
+   {
+    "window": "k e i l t a",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "karkeilta"
+    ],
+    "relative_words_as_written": [
+     "palgeilta"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "paistap kaua palkeilta",
+    "relative_line_as_printed": "Paistab kaua palgeilta,",
+    "times_hit": 1
+   },
+   {
+    "window": "s i t u u l",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "länsituuli"
+    ],
+    "relative_words_as_written": [
+     "püksituule"
+    ],
+    "n_relative_lines": 5,
+    "relative_line": "püksituule pakitusel",
+    "relative_line_as_printed": "Püksituule pakitusel,",
+    "times_hit": 1
+   },
+   {
+    "window": "u t a s i l l a",
+    "length": 8,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "lautasilla"
+    ],
+    "relative_words_as_written": [
+     "raudasillal"
+    ],
+    "n_relative_lines": 4,
+    "relative_line": "äike sõitis rautasillal",
+    "relative_line_as_printed": "Äike sõitis raudasillal",
+    "times_hit": 1
+   },
+   {
+    "window": "h a t e s s a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "puuhatessa"
+    ],
+    "relative_words_as_written": [
+     "rahadessa"
+    ],
+    "n_relative_lines": 3,
+    "relative_line": "meil on ruunat rahatessa",
+    "relative_line_as_printed": "Meil on ruunad rahadessa,",
+    "times_hit": 1
+   },
+   {
+    "window": "i l m a r i",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmarinen"
+    ],
+    "relative_words_as_written": [
+     "ilmarise"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "seatnut ilmarise sellit",
+    "relative_line_as_printed": "Seadnud Ilmarise sellid,",
+    "times_hit": 1
+   },
+   {
+    "window": "i s t u m a",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "istumasta"
+    ],
+    "relative_words_as_written": [
+     "istumaie"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "laua taha istumaie",
+    "relative_line_as_printed": "Laua taha istumaie,",
+    "times_hit": 1
+   },
+   {
+    "window": "u i s t a n",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "muistan"
+    ],
+    "relative_words_as_written": [
+     "puistand"
+    ],
+    "n_relative_lines": 2,
+    "relative_line": "utuaurus puistant orku",
+    "relative_line_as_printed": "Uduaurus puistand orgu,",
+    "times_hit": 1
+   },
+   {
+    "window": "a s k u t e",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "raskutellen"
+    ],
+    "relative_words_as_written": [
+     "taskutessa"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "tarkus meie taskutessa",
+    "relative_line_as_printed": "Tarkus meie taskutessa,",
+    "times_hit": 1
+   },
+   {
+    "window": "e n t a m a s t a",
+    "length": 9,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "rakentamasta"
+    ],
+    "relative_words_as_written": [
+     "lendamasta"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "lepatriinu lentamasta",
+    "relative_line_as_printed": "Lepatriinu lendamasta",
+    "times_hit": 1
+   },
+   {
+    "window": "i l m a r i n",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmarinen"
+    ],
+    "relative_words_as_written": [
+     "ilmarine"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "ilmarine imeseppa",
+    "relative_line_as_printed": "Ilmarine, imeseppa,",
+    "times_hit": 2
+   },
+   {
+    "window": "i l m a r i n e",
+    "length": 8,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmarinen"
+    ],
+    "relative_words_as_written": [
+     "ilmarine"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "ilmarine imeseppa",
+    "relative_line_as_printed": "Ilmarine, imeseppa,",
+    "times_hit": 1
+   },
+   {
+    "window": "k a s e s t a",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "vakkasesta"
+    ],
+    "relative_words_as_written": [
+     "kasesta"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kasesta urvat kauvat",
+    "relative_line_as_printed": "Kasesta urvad kauvad,",
+    "times_hit": 1
+   },
+   {
+    "window": "k u u l u n",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "kuuluna"
+    ],
+    "relative_words_as_written": [
+     "kuulunesse"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "kuhu heali kuulunesse",
+    "relative_line_as_printed": "Kuhu heali kuulunesse,",
+    "times_hit": 2
+   },
+   {
+    "window": "l m a r i n",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmarinen"
+    ],
+    "relative_words_as_written": [
+     "ilmarine"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "ilmarine imeseppa",
+    "relative_line_as_printed": "Ilmarine, imeseppa,",
+    "times_hit": 1
+   },
+   {
+    "window": "l m a r i n e",
+    "length": 7,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "ilmarinen"
+    ],
+    "relative_words_as_written": [
+     "ilmarine"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "ilmarine imeseppa",
+    "relative_line_as_printed": "Ilmarine, imeseppa,",
+    "times_hit": 1
+   },
+   {
+    "window": "u m a h a n",
+    "length": 6,
+    "class": "within words",
+    "whole_words_multi": false,
+    "normalised_only": false,
+    "hidden_words": [
+     "korttumahan"
+    ],
+    "relative_words_as_written": [
+     "lumahangessegi"
+    ],
+    "n_relative_lines": 1,
+    "relative_line": "lõhna lumahankesseki",
+    "relative_line_as_printed": "Lõhna lumahangessegi,",
+    "times_hit": 1
+   }
+  ],
+  "unrelated_latin_share": 0.002672864613596746
+ },
+ "rows": {
+  "sourced": 13,
+  "total": 27
+ }
+}

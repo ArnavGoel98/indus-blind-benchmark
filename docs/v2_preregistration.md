@@ -409,3 +409,69 @@ are reported before Task C/D results are read.
 *Correction to entry 9, 2026-10-24 (after the yardsticks, before any Task C/D result was read): the label
 "14 of 27 rows sourced" counts ä, which has a source for an attested reflex only. 13 of 27 rows have a
 regular reflex. Tables use "13 of 27 rows with a regular reflex". No rule changes.*
+
+## 10. "No source" means unknown, not lost; new framing of the synthetic references; weak-gold label
+
+Declared 2026-10-27 on the project owner's instruction, before any rerun. **Post hoc in motivation**
+(the entry-9 diagnostic showed that the v2 harness treats a "no source" gold row as a lost sound),
+**pre-registered in procedure**. No v1 method code changes (`src/ibdb/methods`, the generator and the
+v1 knowledge code stay equal to `frozen-v1` and `frozen-v2`). The solver's input does not depend on
+the gold table for Finnish or Old Tamil (their references are cut from the relative's text alone), so
+only scoring and yardsticks change.
+
+**A. The rule.** Gold rows get one of two markers.
+- *Lost* (`None`): the cited source states that the sound has no reflex. Only Latin *h* (Grandgent
+  1907: §249) is of this kind among the real relatives. Synthetic sisters keep `None` for the sounds
+  they delete by construction.
+- *No source* (`NO_SOURCE`, new): the source says nothing. Finnish *p, v, j, y, ö, d, g* and the loan
+  letters, and the regular reflex of *ä* (entry 9); Old Tamil *h, s, ṣ* and *ḵ* for both Malayalam and
+  Kannada. (The Malayalam *ḵ* row's note "no Malayalam letter" describes the script, not a sound law,
+  and could not be re-verified in the OCR text, so it is treated as no source.)
+
+**B. What changes in the v2 harness** (and nothing else):
+- *Scorer* (`src/ibdb/relative_cd.py`): a token whose hidden value contains a no-source phoneme is
+  unrecoverable under strict scoring, whatever the script type; before, the phoneme was dropped from a
+  syllable or word reflex. Lenient scoring may still use the attested reflexes of that phoneme.
+  Ceilings change accordingly.
+- *Yardsticks* (`src/ibdb/yardsticks.py`, `sister_yardsticks`): a no-source unit breaks the forward-
+  mapped text, so no bigram or verbatim window spans it; hidden words and word pairs containing one
+  are left out of the shared-form samples; chance maps permute the values of the known rows only.
+  Before, the unit was deleted.
+- *Verbatim inspection* (`scripts/v2/real_relatives_verbatim.py`): the same break and chance rule.
+- *Merger counts* (`scripts/v2/real_relatives_yardsticks.py`): no-source rows are counted apart from
+  mergers.
+- *Results tables* (`scripts/v2/cd_v2_summary.py`): the new labels (E), the weak-gold label (F), the
+  missing relationship entry for Estonian, and an overlay that shows the entry-10 scores of the rerun
+  corpora in place of the old ones.
+- When a gold map has no no-source row, every function follows its old code path exactly; Latin-Italian
+  and the synthetic sisters are therefore unchanged by construction, and this is checked.
+
+**C. Reruns** (driver `reports/v2/cd/analysis/entry10.py`, which refuses to run unless every file
+other than the ones named in B, the data, tests, `reports/` and `docs/` equals `frozen-v2`):
+1. Yardsticks with bootstrap and verbatim inspection for Finnish-Estonian, Old Tamil-Malayalam and
+   Old Tamil-Kannada (entry-5 settings); Latin-Italian recomputed as the equivalence check.
+2. Tasks C and D and the controls, Finnish-Estonian first, then the Dravidian pairs: seeds 0-5, both
+   samplers, four script types (96 corpora); tiers `related_real` and `candidates_real`; the entry-6
+   methods and budget; C1 (unrelated references as entries 8 and 9); C2 floors; C3 (10 restarts) for
+   Old Tamil on seeds 0-2 except alphabetic, where no score can change (an alphabetic no-source token
+   was already unrecoverable).
+3. Every prediction is scored twice, with the old map (no-source rows as `None`) and the new one. The
+   old scores must equal the archived records exactly; any mismatch is reported as a reproducibility
+   failure. The predictions themselves are stored, so later scoring changes need no rerun.
+
+**D. Readings, fixed now.** Old and new values side by side for every affected cell
+(`reports/v2/cd/entry10.md`). Re-evaluated with the new values and listed where they flip: R1-R4
+(entry 7), C1 "helps", C2 "at the floor" and C3 "first-order" (entry 8), E1-E4 (entry 9). The new
+values become the primary ones for the affected pairs in every report and in the draft; the old ones
+stay in the old-vs-new table.
+
+**E. Framing (a reporting decision, post hoc).** The bracket of entry 4 is dropped: `harsh` is not a
+lower bound, since real relatives fall below it on alphabetic scripts in two pairs (Latin-Italian,
+Finnish-Estonian), and Kannada falls below it on syllabic and logo-syllabic scripts. Real
+relatives are the realistic `related` tier and the primary evidence. The synthetic sisters (the v1
+sister and `harsh`) are reported as *optimistic upper references*: built from the hidden language's own
+source text, they keep its vocabulary and genre. Labels change in every report and in the draft;
+entry 4's text is left as it was declared.
+
+**F. Weak gold.** Every table with a Finnish-Estonian row labels its gold "weak: 10 word pairs, 13 of 27
+letters".

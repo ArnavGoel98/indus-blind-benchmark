@@ -34,6 +34,7 @@ import numpy as np
 from ibdb import sister_v4 as S
 from ibdb.data import dravidian as D
 from ibdb.data import relatives as R
+from ibdb.data.gold import NO_SOURCE
 from ibdb.paths import ensure, reports_dir
 
 OUT = ensure(reports_dir() / "v2" / "real_relatives")
@@ -44,14 +45,19 @@ VOICED_ASPIRATED = set(D.NORMALISE)
 
 
 def _forward(hidden, regular):
-    """Hidden texts mapped forward, with the hidden word index of every unit (texts of 6+ units)."""
+    """Hidden texts mapped forward, with the hidden word index of every unit (texts of 6+ units).
+    A no-source unit (entry 10) breaks the text: each stretch between such units is a text of its own."""
     out = []
     for c in hidden:
         units, word_of = [], []
         for wi, w in enumerate(c):
             for p in w:
                 q = regular.get(p, p)
-                if q is not None:
+                if q == NO_SOURCE:
+                    if len(units) >= 6:
+                        out.append((units, word_of, c))
+                    units, word_of = [], []
+                elif q is not None:
                     units.append(q)
                     word_of.append(wi)
         if len(units) >= 6:
@@ -107,7 +113,7 @@ def inspect(hidden_lang: str, rel: Relative, regular: dict, lengths: list[int], 
         if key in info:
             continue
         span = sorted(set(word_of[i:i + L]))
-        whole_hidden = len(span) == 1 and len([p for p in c[span[0]] if regular.get(p, p) is not None]) == L
+        whole_hidden = len(span) == 1 and len([p for p in c[span[0]] if regular.get(p, p) not in (None, NO_SOURCE)]) == L
         starts = i == 0 or word_of[i - 1] != word_of[i]
         ends = i + L == len(units) or word_of[i + L] != word_of[i + L - 1]
         loc = rel.locate(key)
@@ -130,10 +136,10 @@ def inspect(hidden_lang: str, rel: Relative, regular: dict, lengths: list[int], 
     by = lambda f: {c: sum(r["times_hit"] for r in rows if f(r) == c) for c in sorted({f(r) for r in rows})}  # noqa: E731
     # Chance: the same draw positions through shuffled maps.
     rng = np.random.default_rng(1)
-    keys = sorted(regular)
+    keys = sorted(q for q in regular if regular[q] != NO_SOURCE)      # entry 10: permute known rows only
     chance = []
     for _ in range(N_SHUF):
-        m = dict(zip(keys, rng.permutation([regular[q] for q in keys])))
+        m = regular | dict(zip(keys, rng.permutation([regular[q] for q in keys])))
         fs = _forward(S.hidden_half(hidden_lang)[0], m)
         h = t = 0
         for k, i, L in _draws(fs, lengths, 0):

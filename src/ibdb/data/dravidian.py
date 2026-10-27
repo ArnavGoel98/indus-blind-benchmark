@@ -22,7 +22,8 @@ Gold: R. Caldwell, A Comparative Grammar of the Dravidian or South-Indian Family
 ed. (London, 1875), Internet Archive `in.ernet.dli.2015.459581`; read for pp. 11-27 (alphabets,
 vowels, consonants) and 48-64 (dialectic interchange, euphonic permutation). Each row cites pages.
 Identity rows rest on the shared sound system (pp. 11-14, 21-27); changes on pp. 15-20 and 48-61.
-Rows with no statement in the read pages are None ("no source"), unrecoverable under strict scoring.
+Rows with no statement in the read pages are NO_SOURCE ("no source": unknown, entry 10), unrecoverable
+under strict scoring.
 """
 
 from __future__ import annotations
@@ -32,6 +33,7 @@ import re
 import unicodedata
 
 from ..paths import raw_dir
+from .gold import NO_SOURCE
 
 RELATIONSHIP = {"malayalam": "descendant", "kannada": "sister"}
 
@@ -148,7 +150,7 @@ def texts(lang: str, spelling: str = "normalised") -> list[list[tuple[str, ...]]
 
 
 # ------------------------------------------------------------------ gold tables (Caldwell 1875)
-# Tamil unit -> (regular reflex, other attested reflexes, pages). None = no reflex / no source.
+# Tamil unit -> (regular reflex, other attested reflexes, pages). NO_SOURCE = no source (entry 10).
 _SHARED = "pp. 11-14, 21-27 (shared Dravidian sound system)"
 TAMIL_MALAYALAM: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "a": ("a", (), "pp. 15-16 (a less subject to change in Malayalam; neuter plural -a kept)"),
@@ -181,11 +183,11 @@ TAMIL_MALAYALAM: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "ḻ": ("ḻ", ("ḷ", "y"), "p. 11 (Malayalam has Tamil ḻ); pp. 59-60 (ḻ > ḷ finally, > y)"),
     "ḷ": ("ḷ", (), "pp. 27-28"),
     "ṟ": ("ṟ", (), "p. 11 (Malayalam alphabet has the hard r)"),
-    "ḵ": (None, (), "p. 12 (āytam only in the poets; no Malayalam letter)"),
+    "ḵ": (NO_SOURCE, (), "p. 12 (āytam only in the poets; no Malayalam letter: a script fact, not a sound law; entry 10)"),
     "j": ("c", (), "p. 24 (ordinarily the sound of ch/ś used instead of j)"),
-    "h": (None, (), "no source in the pages read"),
-    "s": (None, (), "no source in the pages read"),
-    "ṣ": (None, (), "no source in the pages read (Grantha letter; p. 13: never in the ancient grammars)"),
+    "h": (NO_SOURCE, (), "no source in the pages read"),
+    "s": (NO_SOURCE, (), "no source in the pages read"),
+    "ṣ": (NO_SOURCE, (), "no source in the pages read (Grantha letter; p. 13: never in the ancient grammars)"),
 }
 TAMIL_KANNADA: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "a": ("a", ("e", "u"), "pp. 15-16 (final a > e in Canarese; neuter plurals end in u)"),
@@ -218,11 +220,11 @@ TAMIL_KANNADA: dict[str, tuple[str | None, tuple[str, ...], str]] = {
     "ḻ": ("ḷ", ("ḻ",), "p. 59 (Tamil ḻ is always ḷ in modern Canarese; old Canarese has ḻ)"),
     "ḷ": ("ḷ", (), "pp. 27-28"),
     "ṟ": ("ṟ", ("r",), "p. 11 (hard r in the Telugu-Canarese alphabets); pp. 55-56"),
-    "ḵ": (None, (), "p. 12 (āytam only in the poets)"),
+    "ḵ": (NO_SOURCE, (), "p. 12 (āytam only in the poets; nothing on Kannada; entry 10)"),
     "j": ("c", (), "p. 24"),
-    "h": (None, (), "no source in the pages read"),
-    "s": (None, (), "no source in the pages read"),
-    "ṣ": (None, (), "no source in the pages read (Grantha letter; p. 13: never in the ancient grammars)"),
+    "h": (NO_SOURCE, (), "no source in the pages read"),
+    "s": (NO_SOURCE, (), "no source in the pages read"),
+    "ṣ": (NO_SOURCE, (), "no source in the pages read (Grantha letter; p. 13: never in the ancient grammars)"),
 }
 GOLD = {"malayalam": TAMIL_MALAYALAM, "kannada": TAMIL_KANNADA}
 
@@ -230,5 +232,5 @@ GOLD = {"malayalam": TAMIL_MALAYALAM, "kannada": TAMIL_KANNADA}
 def gold_map(lang: str) -> tuple[dict[str, str | None], dict[str, set]]:
     g = GOLD[lang]
     regular = {k: v[0] for k, v in g.items()}
-    attested = {k: ({v[0]} if v[0] else set()) | set(v[1]) for k, v in g.items()}
+    attested = {k: ({v[0]} if v[0] not in (None, NO_SOURCE) else set()) | set(v[1]) for k, v in g.items()}
     return regular, attested

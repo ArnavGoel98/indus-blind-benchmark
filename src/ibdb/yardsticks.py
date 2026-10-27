@@ -10,6 +10,11 @@ measured with the same code (plan: docs/v2_sister_plan.md). The texts compared a
 - overlap: share of hidden word types (and tokens) whose mapped form occurs in the relative's
   word types; word_pair_overlap: the same for adjacent word pairs.
 - chance_corrected: (observed - chance) / (1 - chance), chance from shuffled mappings.
+
+A mapping value of None deletes the unit (a lost sound). NO_SOURCE (pre-registration entry 10) marks an
+unknown reflex: the forward text is broken there, words and word pairs containing such a unit are left
+out of the shared-form samples, and chance maps permute the known values only. A mapping without
+NO_SOURCE follows the code path used before entry 10 exactly.
 """
 
 from __future__ import annotations
@@ -18,6 +23,8 @@ from collections import Counter
 from typing import Callable, Iterable, Sequence
 
 import numpy as np
+
+from .data.gold import NO_SOURCE
 
 
 def bigram_jsd(a: Sequence[Sequence[str]], b: Sequence[Sequence[str]]) -> float:
@@ -143,22 +150,40 @@ def sister_yardsticks(hidden_clauses, sister_clauses, regular: dict, anchor: dic
     the anchor's floor is a Hebrew sample against all Hebrew."""
     rng = np.random.default_rng(seed)
     f = lambda p: regular.get(p, p)  # noqa: E731   (a value of None means the unit has no reflex)
+    unknown = NO_SOURCE in regular.values()
     htexts = [[p for w in c for p in w] for c in hidden_clauses]
     stexts = [[p for w in c for p in w] for c in sister_clauses]
-    fwd = [[f(p) for p in t if f(p) is not None] for t in htexts]
+    if unknown:                       # entry 10: break the text at a no-source unit
+        fwd = []
+        for t in htexts:
+            cur: list = []
+            for p in t:
+                q = f(p)
+                if q == NO_SOURCE:
+                    if cur:
+                        fwd.append(cur)
+                    cur = []
+                elif q is not None:
+                    cur.append(q)
+            if cur:
+                fwd.append(cur)
+        known = lambda w: all(f(p) != NO_SOURCE for p in w)  # noqa: E731
+    else:
+        fwd = [[f(p) for p in t if f(p) is not None] for t in htexts]
+        known = lambda w: True  # noqa: E731
     jsd = float(np.mean([bigram_jsd(sample_texts(fwd, anchor["n_letters"], rng), stexts) for _ in range(n_draws)]))
     floor = float(np.mean([bigram_jsd(sample_texts(stexts, anchor["n_letters"], rng), stexts) for _ in range(n_draws)]))
 
-    keys = sorted(regular)
-    shuf = [dict(zip(keys, rng.permutation([regular[k] for k in keys]))) for _ in range(n_draws)]
-    hw = Counter(w for c in hidden_clauses for w in c)
+    keys = sorted(k for k in regular if regular[k] != NO_SOURCE)
+    shuf = [regular | dict(zip(keys, rng.permutation([regular[k] for k in keys]))) for _ in range(n_draws)]
+    hw = Counter(w for c in hidden_clauses for w in c if known(w))
     sw = {w for c in sister_clauses for w in c}
     mapw = lambda m: (lambda w: tuple(x for x in (m.get(p, p) for p in w) if x is not None))  # noqa: E731
     samples = [sample_tokens(hw, anchor["n_word_tokens"], rng) for _ in range(n_draws)]
     ov = np.array([overlap(s, sw, mapw(regular)) for s in samples])
     ch = np.array([overlap(s, sw, mapw(m)) for s, m in zip(samples, shuf)])
 
-    hp = Counter(p for c in hidden_clauses for p in zip(c, c[1:]))
+    hp = Counter(p for c in hidden_clauses for p in zip(c, c[1:]) if known(p[0]) and known(p[1]))
     sp = {p for c in sister_clauses for p in zip(c, c[1:])}
     mapp = lambda m: (lambda p: (mapw(m)(p[0]), mapw(m)(p[1])))  # noqa: E731
     psamples = [sample_tokens(hp, anchor["n_word_pair_tokens"], rng) for _ in range(n_draws)]

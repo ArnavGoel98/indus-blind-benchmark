@@ -33,7 +33,8 @@ def test_relationship_labels():
 # ---------------------------------------------------------------- Dravidian (rank 6b)
 from collections import Counter  # noqa: E402
 
-from ibdb.data import dravidian as D  # noqa: E402
+from ibdb.data import dravidian as D
+from ibdb.data.gold import NO_SOURCE  # noqa: E402
 
 
 def test_malayalam_script_converter():
@@ -57,7 +58,7 @@ def test_dravidian_gold_tables():
         g = D.GOLD[lang]
         assert tamil_units <= set(g), tamil_units - set(g)
         reg, att = D.gold_map(lang)
-        assert all(r is None or r in att[k] for k, r in reg.items())
+        assert all(r is None or r == NO_SOURCE or r in att[k] for k, r in reg.items())
         assert all(v[2] for v in g.values())
         assert D.RELATIONSHIP[lang] in ("sister", "descendant")
     assert D.GOLD["malayalam"]["ṉ"][0] == "n" and D.GOLD["kannada"]["ḻ"][0] == "ḷ"

@@ -22,6 +22,7 @@ from ibdb import sister_v4 as S
 from ibdb import yardsticks as Y
 from ibdb.data import dravidian as D
 from ibdb.data import relatives as R
+from ibdb.data.gold import NO_SOURCE
 from ibdb.paths import ensure, reports_dir
 
 OUT = ensure(reports_dir() / "v2" / "real_relatives")
@@ -33,8 +34,10 @@ N_BOOT, BOOT_DRAWS = 200, 5
 def measure_pair(name: str, hidden_lang: str, relationship: str, rel_texts, regular: dict, anchor: dict) -> dict:
     hidden = S.hidden_half(hidden_lang)[0]
     out = {"pair": name, "hidden": hidden_lang, "relationship": relationship,
-           "mergers": len([k for k, v in regular.items() if v is not None]) - len({v for v in regular.values() if v}),
-           "deleted": sorted(k for k, v in regular.items() if v is None)}
+           "mergers": len([k for k, v in regular.items() if v not in (None, NO_SOURCE)])
+           - len({v for v in regular.values() if v and v != NO_SOURCE}),
+           "deleted": sorted(k for k, v in regular.items() if v is None),
+           "no_source": sorted(k for k, v in regular.items() if v == NO_SOURCE)}
     for spelling in ("as_written", "normalised"):
         rel = rel_texts(spelling)
         out[spelling] = {"n_texts": len(rel), "n_words": sum(map(len, rel)),
@@ -81,7 +84,7 @@ def main() -> None:
            | {"verbatim_6plus": corr["verbatim_natural_6plus"]},
            "pairs": {"latin-italian": pair_latin_italian(anchor), "tamil-malayalam": pair_tamil("malayalam", anchor),
                      "tamil-kannada": pair_tamil("kannada", anchor)},
-           "bracket": {"latin": comparison_rows("latin"), "tamil": comparison_rows("tamil")},
+           "synthetic": {"latin": comparison_rows("latin"), "tamil": comparison_rows("tamil")},
            "not_yet": {"finnish-estonian (sister)": "waiting for the Pajusalu (2012) PDF from the project owner",
                        "sanskrit-pali (descendant)": "waiting on SuttaCentral; no OCR re-transcription",
                        "sumerian": "isolate; none tier only"}}
@@ -97,7 +100,10 @@ def write_md(res: dict) -> None:
     f = lambda k, v: f"{v:.3f}" if k == "jsd_above_floor" else f"{100 * v:.1f}%"  # noqa: E731
     L = ["# Rank 6b: Ugaritic-Hebrew yardsticks on real related languages (pre-registration entry 5)", "",
          "No tuning, no targets. Shared code (`src/ibdb/yardsticks.py`); sample sizes matched to the anchor. "
-         "Normalised spelling is primary. Every pair is labelled sister or descendant.", "",
+         "Normalised spelling is primary. Every pair is labelled sister or descendant. "
+         "No-source gold rows are unknown, not lost (pre-registration entry 10): the forward text is broken there and "
+         "words containing them are left out of the shared-form samples. The synthetic sisters are optimistic upper "
+         "references, not bounds (entry 10).", "",
          "**Cross-script comparisons are indicative only.** Shared word forms (and word pairs) are not directly "
          "comparable between a consonant-only script (Ugaritic-Hebrew) and scripts that write vowels (all other "
          "rows): a consonant skeleton matches far more easily than a full word, even after the chance correction. "
@@ -110,10 +116,11 @@ def write_md(res: dict) -> None:
         for sp in ("as_written", "normalised"):
             L.append(f"| **{name}** | {pr['relationship']} | {SCRIPT[name]} | {sp.replace('_', ' ')}{' (primary)' if sp == 'normalised' else ''} | "
                      + " | ".join(f(k, pr[sp]["point"][k]) for k in KEYS)
-                     + f" | {pr['mergers']}{' + ' + ', '.join(pr['deleted']) + ' no reflex' if pr['deleted'] else ''} |")
-    for lang, b in res["bracket"].items():
-        L += [f"| {lang}, v1-like sister (upper bound) | synthetic | as hidden | - | " + " | ".join(f(k, b["v1_like"][k]) for k in KEYS) + " | 0 |",
-              f"| {lang}, `harsh` (lower bound) | synthetic | as hidden | - | " + " | ".join(f(k, b["harsh"][k]) for k in KEYS) + " | 24% of consonants |"]
+                     + f" | {pr['mergers']}{' + ' + ', '.join(pr['deleted']) + ' no reflex' if pr['deleted'] else ''}"
+                     f"{'; no source: ' + ', '.join(pr.get('no_source', [])) if pr.get('no_source') else ''} |")
+    for lang, b in res["synthetic"].items():
+        L += [f"| {lang}, v1-like sister (synthetic, optimistic upper reference) | synthetic | as hidden | - | " + " | ".join(f(k, b["v1_like"][k]) for k in KEYS) + " | 0 |",
+              f"| {lang}, `harsh` (synthetic, optimistic upper reference) | synthetic | as hidden | - | " + " | ".join(f(k, b["harsh"][k]) for k in KEYS) + " | 24% of consonants |"]
     L += ["", "**Bootstrap over the relative's lines (normalised; 200 replicates, 5 draws each): point / bootstrap mean / 95% interval**", "",
           "| Pair | " + " | ".join(KEYS) + " |", "|---|" + "---|" * len(KEYS)]
     for name, pr in res["pairs"].items():
