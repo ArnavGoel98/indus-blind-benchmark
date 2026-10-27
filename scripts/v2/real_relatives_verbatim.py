@@ -45,23 +45,27 @@ VOICED_ASPIRATED = set(D.NORMALISE)
 
 
 def _forward(hidden, regular):
-    """Hidden texts mapped forward, with the hidden word index of every unit (texts of 6+ units).
-    A no-source unit (entry 10) breaks the text: each stretch between such units is a text of its own."""
+    """Hidden texts mapped forward, with the hidden word index of every unit (texts of 6+ units), and whether
+    each unit is the first / last mapped unit of its hidden word. A no-source unit (entry 10) breaks the text:
+    each stretch between such units is a text of its own, and a break inside a word is not a word boundary."""
     out = []
     for c in hidden:
-        units, word_of = [], []
+        units, word_of, first, last = [], [], [], []
         for wi, w in enumerate(c):
-            for p in w:
-                q = regular.get(p, p)
+            mapped = [regular.get(p, p) for p in w]
+            kept = [j for j, q in enumerate(mapped) if q is not None]       # a no-source unit counts as present
+            for j, q in enumerate(mapped):
                 if q == NO_SOURCE:
                     if len(units) >= 6:
-                        out.append((units, word_of, c))
-                    units, word_of = [], []
+                        out.append((units, word_of, c, first, last))
+                    units, word_of, first, last = [], [], [], []
                 elif q is not None:
                     units.append(q)
                     word_of.append(wi)
+                    first.append(j == kept[0])
+                    last.append(j == kept[-1])
         if len(units) >= 6:
-            out.append((units, word_of, c))
+            out.append((units, word_of, c, first, last))
     return out
 
 
@@ -105,7 +109,7 @@ def inspect(hidden_lang: str, rel: Relative, regular: dict, lengths: list[int], 
     hits, info, n = Counter(), {}, 0
     for k, i, L in _draws(fwd, lengths, 0):
         n += 1
-        units, word_of, c = fwd[k]
+        units, word_of, c, first, last = fwd[k]
         key = SEP.join(units[i:i + L]) + SEP
         if key not in rel.blob:
             continue
@@ -114,8 +118,7 @@ def inspect(hidden_lang: str, rel: Relative, regular: dict, lengths: list[int], 
             continue
         span = sorted(set(word_of[i:i + L]))
         whole_hidden = len(span) == 1 and len([p for p in c[span[0]] if regular.get(p, p) not in (None, NO_SOURCE)]) == L
-        starts = i == 0 or word_of[i - 1] != word_of[i]
-        ends = i + L == len(units) or word_of[i + L] != word_of[i + L - 1]
+        starts, ends = first[i], last[i + L - 1]
         loc = rel.locate(key)
         if len(span) == 1 and len(loc["spans"]) == 1:
             cls = "word" if whole_hidden and loc["whole_word"] else "within words"

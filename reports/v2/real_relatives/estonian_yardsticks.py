@@ -4,7 +4,8 @@ Runs the hand-checked normalisation examples first, then `measure_pair` of
 scripts/v2/real_relatives_yardsticks.py and `inspect` of scripts/v2/real_relatives_verbatim.py on
 Finnish (v1 hidden half) against Kalevipoeg. The unrelated-language level for the verbatim check uses
 the Latin hidden half, in letters. Lives under reports/ so the frozen-code check keeps guarding the code.
-Usage (repository root): python reports/v2/real_relatives/estonian_yardsticks.py
+Usage (repository root): python reports/v2/real_relatives/estonian_yardsticks.py [--verbatim-only]
+  --verbatim-only keeps the yardsticks in estonian.json and recomputes the verbatim inspection only.
 Writes reports/v2/real_relatives/estonian.{json,md}.
 """
 import json
@@ -30,9 +31,12 @@ def main() -> None:
     R.check_estonian()
     anchor = json.loads((Y.SIS / "anchor.json").read_text())
     regular = R.finnish_estonian_map()[0]
-    res = {"pair": Y.measure_pair("finnish-estonian", "finnish", R.RELATIONSHIP[("finnish", "estonian")],
-                                  R.kalevipoeg_texts, regular, anchor),
-           "synthetic": Y.comparison_rows("finnish")}
+    if "--verbatim-only" in sys.argv:
+        res = json.loads((OUT / "estonian.json").read_text())
+    else:
+        res = {"pair": Y.measure_pair("finnish-estonian", "finnish", R.RELATIONSHIP[("finnish", "estonian")],
+                                      R.kalevipoeg_texts, regular, anchor),
+               "synthetic": Y.comparison_rows("finnish")}
     lengths = json.loads((Y.SIS / "anchor.json").read_text())["verbatim_6plus_lengths"]
     tx = R.kalevipoeg_texts("normalised")
     rel = V.Relative(tx, R.kalevipoeg_texts("as_written"), V._aligned(R.kalevipoeg_lines(), tx, R.estonian_words))
