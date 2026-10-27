@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Update: real related languages</title>
+<style>
+@page { size: A4; margin: 12mm 17mm; }
+body { font-family: 'DejaVu Serif', Georgia, serif; font-size: 9.4pt; line-height: 1.3; color: #000; }
+h1 { font-size: 13pt; margin: 0 0 3pt; }
+h2 { font-size: 10.2pt; margin: 8pt 0 2pt; }
+p { margin: 0 0 5pt; }
+.byline { margin-bottom: 4pt; }
+ul { margin: 0 0 6pt 0; padding-left: 14pt; }
+li { margin: 0 0 3pt; }
+.fig { float: right; width: 66mm; margin: 2pt 0 4pt 10pt; }
+.fig img { width: 100%; display: block; }
+.fig p { font-size: 8.5pt; line-height: 1.3; margin: 2pt 0 0; }
+.end { clear: both; }
+</style></head><body>
+<h1>Update: real related languages</h1>
+<p class="byline">Arnav Goel, Woodstock School, Mussoorie, India<br>
+Follow-up to "A Blind Benchmark of Decipherment Methods on Synthetic Scripts Calibrated to Indus Statistics"</p>
+
+<h2>Question</h2>
+<p>In my first study, the methods did much better when given a related language, but that relative was one I built from the same text as the hidden language, so it was far closer than any real relative could be. Does a real related language, written in a different text, help as much?</p>
+
+<h2>What I did</h2>
+<p>I gave the methods real relatives: Dante's Italian for Latin, Estonian (the epic <i>Kalevipoeg</i>) for Finnish, and Malayalam and Kannada for Old Tamil. The sound correspondences used to score the answers come from published sources: Grandgent (1907) for Latin and Italian, Caldwell (1875) for the Dravidian languages, and Pajusalu (2012) for Finnish and Estonian. The test collections were the same Indus-like ones as before (2,906 texts of about 4.6 signs). I wrote down the procedure and how I would read the results before running anything.</p>
+
+<h2>Findings</h2>
+<div class="fig">
+<img src="figures/fig_update_real_relatives.png" alt="Recovery by script type, real relative against synthetic relatives">
+<p>Signs recovered with each related language, by script type: real relatives (I Italian, M Malayalam, K Kannada, E Estonian) against my two synthetic relatives, the original and the harshest. Averages over 12 test collections; dashed line: 50%. On logographic scripts every real relative recovered almost nothing (0.0-0.2%).</p>
+</div>
+<ul>
+<li>No real relative brought any script type to 50% on average. The best average was 34.4% (Kannada, alphabetic). On syllabic, logo-syllabic and alphabetic scripts, every real relative did worse than my original synthetic relative.</li>
+<li>For Latin and Finnish, the real relative did worse than even my harshest synthetic relative, for example 20.3% against 31.5% (Italian) and 31.1% against 41.2% (Estonian) on alphabetic scripts. Old Tamil was mixed: both real relatives beat the harshest synthetic relative on alphabetic scripts (30.5% and 34.4% against 12.9%), but Kannada fell below it on syllabic and logo-syllabic scripts. So my synthetic relatives were optimistic, not a fair stand-in.</li>
+<li>As a check, I also gave the methods an unrelated language instead. A relative helped clearly mainly with alphabetic scripts: Estonian recovered 31.1% against 11.1%, about 20 points more, and Kannada 15.1 points more. Italian never helped measurably.</li>
+<li>For syllabic and logo-syllabic scripts, the kinds closest to Indus, a real relative gave measurable help in only one of eight cases (Malayalam on syllabic scripts, 7.6 points) at Indus-like text lengths.</li>
+<li>A test I fixed in advance on a real case, Ugaritic deciphered with Hebrew as the relative, failed its target: 33.9% of signs recovered against the 50% I had set.</li>
+</ul>
+
+<h2 class="end">Limitations</h2>
+<p>The Finnish-Estonian correspondence table is weak: the paper I used has no full table, so I built it from the 10 word pairs it prints, which cover 13 of 27 Finnish letters. The other sources are old (1875 and 1907). There are only four pairs, from three hidden languages, and each relative is a single text of a different period and genre, so the language and the text cannot be separated. Some reporting decisions were made after seeing the results, and they are labelled as such. A confirmatory run on fresh test collections, with every reading fixed in advance, is still to come.</p>
+
+<h2>Conclusion</h2>
+<p>A real related language helps much less than the synthetic one I first used, and for the script types closest to Indus it barely helps at all at these text lengths. Results that assume a close relative should be read as a best case.</p>
+
+<p>All numbers here come from synthetic test collections I built, not from real Indus inscriptions. The full report is available on request: arnavgoel@woodstock.ac.in</p>
+</body></html>
