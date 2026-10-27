@@ -59,6 +59,12 @@ _KN_C = {"ಕ": "k", "ಖ": "kh", "ಗ": "g", "ಘ": "gh", "ಙ": "ṅ", "ಚ": 
 _KN = {"V": _KN_V, "S": _KN_S, "C": _KN_C, "virama": "್", "anusvara": "ಂ", "visarga": "ಃ", "extra": {}}
 SCRIPTS = {"malayalam": _ML, "kannada": _KN}
 
+
+def vowel_letters(relative: str) -> frozenset[str]:
+    """The script's vowels, independent and as signs (entry 11: the syllable cutter's vowels for this relative)."""
+    return frozenset(SCRIPTS[relative]["V"].values()) | frozenset(SCRIPTS[relative]["S"].values())
+
+
 _ROW_NASAL = [({"k", "kh", "g", "gh"}, "ṅ"), ({"c", "ch", "j", "jh"}, "ñ"), ({"ṭ", "ṭh", "ḍ", "ḍh"}, "ṇ"),
               ({"t", "th", "d", "dh"}, "n"), ({"p", "ph", "b", "bh"}, "m")]
 NORMALISE = {"kh": "k", "g": "k", "gh": "k", "ch": "c", "j": "c", "jh": "c", "ṭh": "ṭ", "ḍ": "ṭ", "ḍh": "ṭ",

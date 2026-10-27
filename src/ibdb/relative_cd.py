@@ -8,11 +8,13 @@ One code path for two kinds of relative:
 
 A relative is given as clauses of words (phoneme tuples), a gold regular-reflex map (hidden phoneme ->
 relative phoneme; None = no reflex, the sound is lost; NO_SOURCE = the source says nothing, the reflex
-is unknown: entry 10) and the attested reflexes of each hidden phoneme.
+is unknown: entry 10), the attested reflexes of each hidden phoneme and, for a real relative, its own
+vowel letters (entry 11).
 
 Reference (what the solver sees) is written at the script's unit level as v1 writes its references
 (knowledge._word_units): phonemes (alphabetic); CV syllables from phonology.syllabify with the hidden
-language's vowels (syllabic); word forms (logographic); in logo-syllabic scripts, word forms for the
+language's vowels and the relative's own vowel letters (syllabic; entry 11, before which a vowel letter the
+hidden language lacks was cut as a consonant); word forms (logographic); in logo-syllabic scripts, word forms for the
 relative's `logogram_vocab` most frequent word types and syllables otherwise. Sumerian's syllable units
 are sign readings (CVC and longer), not CV syllables, so for such a language the relative's syllables
 are found by greedy longest match against the hidden readings mapped through the regular reflexes
@@ -30,7 +32,8 @@ Scoring (entry 2), per sign token, against the token's hidden value:
 - Units the generator adds (word dividers <DIV>, determinatives <DET:n>) are unrecoverable, as in v1.
   Units of the source text that no sound law touches (Sumerian numerals such as #1(disz) and its
   written determinatives such as {kuš}) keep their value, as in the v1 sister. Many-to-one is accepted.
-`recoverable` is the share of tokens that have a strict reflex at all (the ceiling for that corpus).
+`recoverable` is the share of tokens that have a strict reflex at all (the raw ceiling for that corpus);
+`reachable` (entry 11) the share whose strict reflex is also among the units the EM solver considers.
 """
 
 from __future__ import annotations
@@ -54,6 +57,7 @@ class Relative:
     clauses: list[list[tuple[str, ...]]]
     regular: dict[str, str | None]
     attested: dict[str, set[str]] = field(default_factory=dict)
+    vowels: frozenset[str] = frozenset()      # the relative's own vowel letters (entry 11); empty for sisters
 
     def options(self, p: str) -> set[str]:
         """Strings hidden phoneme `p` may become (lenient); '' where it has no reflex."""
@@ -119,7 +123,7 @@ def _greedy(word: tuple[str, ...], inventory: set[str], longest: int) -> list[st
 
 
 def reference(rel: Relative, script_type: str, hidden_lang: str, logogram_vocab: int = 250) -> Reference:
-    vowels = _vowels(hidden_lang)
+    vowels = _vowels(hidden_lang) | rel.vowels
     if script_type in ("syllabic", "logosyllabic") and not _cv_language(hidden_lang):
         mapped = {tuple(x for x in (rel.regular.get(p, p) for p in ph) if x) for ph in _hidden_lookup(hidden_lang)[1].values()}
         inventory = {"".join(m) for m in mapped if m}
@@ -239,6 +243,15 @@ def score(pred: dict[int, str] | None, key: AnswerKey, logical: list[list[int]],
             "recoverable": rec / n if n else 0.0}
 
 
+def reachable(ref: Reference, key: AnswerKey, gold: Gold, cap: int) -> float:
+    """Share of sign tokens whose strict reflex is among the reference's `cap` most frequent units, ranked
+    as KnightEM._fit ranks them: the part of the ceiling the solver can reach at all (entry 11)."""
+    top = {u for u, _ in Counter(u for t in ref.texts for u in t).most_common(cap)}
+    vals = Counter(v for t in key.token_values for v in t)
+    n = sum(vals.values())
+    return sum(m for v, m in vals.items() if gold._value(v)[0] in top) / n if n else 0.0
+
+
 def hidden_logograms(hidden_lang: str, logogram_vocab: int = 250) -> set[str]:
     """Word forms written with logograms in a logo-syllabic corpus (generator: rank <= vocab)."""
     d = _segments(hidden_lang)
@@ -260,15 +273,18 @@ def real_relative(hidden_lang: str, relative: str) -> Relative:
     if (hidden_lang, relative) == ("latin", "italian"):
         reg, att = R.latin_italian_map()
         clauses = R.dante_texts("normalised")
+        vowels = R.ITALIAN_VOWELS
     elif hidden_lang == "tamil" and relative in ("malayalam", "kannada"):
         reg, att = D.gold_map(relative)
         clauses = D.texts(relative, "normalised")
+        vowels = D.vowel_letters(relative)
     elif (hidden_lang, relative) == ("finnish", "estonian") and has_gold("estonian"):
         reg, att = R.finnish_estonian_map()               # data only: added with the Pajusalu gold table
         clauses = R.kalevipoeg_texts("normalised")
+        vowels = R.ESTONIAN_VOWELS
     else:
         raise ValueError(f"no real relative {relative} for {hidden_lang} yet")
-    return Relative(relative, source_family(hidden_lang), clauses, reg, {k: set(v) for k, v in att.items()})
+    return Relative(relative, source_family(hidden_lang), clauses, reg, {k: set(v) for k, v in att.items()}, vowels)
 
 
 def harsh_relative(hidden_lang: str, seed: int, knobs: dict) -> Relative:

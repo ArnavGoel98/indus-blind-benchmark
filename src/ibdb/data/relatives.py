@@ -58,6 +58,11 @@ KALEVIPOEG_CANTOS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"
 RELATIONSHIP = {("latin", "italian"): "descendant", ("finnish", "estonian"): "sister",
                 ("tamil", "malayalam"): "descendant", ("tamil", "kannada"): "sister", ("sanskrit", "pali"): "descendant"}
 
+# The relatives' own vowel letters, for the syllable cutter (entry 11; orthography, not gold). Italian's are
+# all Latin vowels; Estonian adds õ and ü to Finnish's.
+ITALIAN_VOWELS = frozenset("aeiou")
+ESTONIAN_VOWELS = frozenset("aeiouõäöü")
+
 LATIN_INVENTORY = sorted(phonology.PROFILES["latin"].consonants | phonology.PROFILES["latin"].vowels)
 
 # Latin unit -> (regular reflex, other attested reflexes, Grandgent 1907 section). None = no reflex.
