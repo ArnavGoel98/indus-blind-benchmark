@@ -475,3 +475,56 @@ entry 4's text is left as it was declared.
 
 **F. Weak gold.** Every table with a Finnish-Estonian row labels its gold "weak: 10 word pairs, 13 of 27
 letters".
+
+## 11. Pre-freeze harness changes: the relative's own vowels in the syllable cutter; the reachable ceiling
+
+Declared 2026-10-27, on the project owner's approval of the freeze plan (decisions 1 and 2 of
+`docs/v2_freeze_and_final_run_PROPOSAL.md`), **before any code for it is written and before any
+rerun**. **Post hoc in motivation** (both problems were found after results were seen: limitation 13
+and the frozen-code note in `reports/v2/cd/estonian.md`), **pre-registered in procedure**. No v1
+method code changes; `harsh`, the v1 sister and the gold tables are untouched.
+
+**A. Syllable cutter (decision 2).** `relative_cd.reference` cuts a real relative's words into CV
+syllables with the hidden language's vowel set only, so a vowel letter of the relative that the hidden
+language lacks is cut as a consonant. From now on a real relative is cut with the **union of the hidden
+language's vowels and the relative's own vowel letters**, given as data:
+- Estonian: a, e, i, o, u, õ, ä, ö, ü (the vowel letters of the Estonian alphabet; an orthographic
+  fact, not a gold value). Adds **õ** and **ü** to Finnish's set.
+- Malayalam and Kannada: the values of each script's vowel tables already in
+  `src/ibdb/data/dravidian.py` (independent vowels and vowel signs). Adds **ṛ** (vocalic r, ഋ/ಋ) to Old
+  Tamil's set. *Found while checking before this entry, as the proposal required: ṛ is 0.24% of the
+  units of each Dravidian text, in Sanskrit loans (nṛpa, kṛṣṇa, mṛtyu).* The approved rule covers it, so
+  it is included; the owner's wording named only õ and ü.
+- Italian: a, e, i, o, u. All are Latin vowels: **no change** (checked by test).
+The Sumerian branch (greedy match, `harsh` only) is unchanged. Alphabetic and logographic references
+cannot change (they do not cut syllables); a logo-syllabic reference changes only in its syllable part.
+
+**B. Reachable ceiling (decision 1).** The harness records, per corpus and real relative, the share of
+sign tokens whose strict regular reflex is among the reference's 250 most frequent units
+(`KnightEM.max_units`, ranked by token count as in `KnightEM._fit`): the part of the ceiling this solver
+can reach at all (`reach_check.md`). From now on the **reachable ceiling is the primary ceiling column
+for every script type and the raw ceiling (entry 2) the secondary one.** The owner's decision named the
+logographic ceiling; one rule for all script types is applied so that a column means the same thing in
+every row (the two differ by at most 5 points outside logographic and logo-syllabic scripts in
+`reach_check.md`). No score changes.
+
+**C. Confirmation rerun, development seeds only.** Only the cells whose solver input changes under A:
+Finnish (Estonian) and Old Tamil (Malayalam, Kannada), syllabic and logo-syllabic scripts, **seeds 0-2**,
+samplers A and B: 24 corpora. Tiers `related_real` and `candidates_real`; the entry-6 methods and budget;
+the entry-10 scorer; predictions stored. C1 and C2 do not use the relative's reference and are not rerun;
+C3 is not rerun. Driver: `reports/v2/cd/analysis/entry11.py`, which refuses to run unless every code file
+other than `src/ibdb/relative_cd.py` and the entry-10 harness equals `frozen-v2`, and the change is
+committed.
+
+**D. The fix "works" if, fixed now:**
+1. Tests: õ and ü (Estonian) and ṛ (Malayalam, Kannada) start or end no syllable as a consonant; every
+   Italian reference, every alphabetic and logographic reference and every `harsh` reference is
+   identical to the reference before the change.
+2. In every changed reference, the units of each word still join to the word, and every word whose
+   units changed contains an added vowel letter.
+3. The 24-corpus rerun completes with 0 errors.
+Scores are not a criterion. Old and new values (entry-10 records against the rerun) are reported side by
+side for each of the 24 corpora and each cell: Task D strict and lenient, raw and reachable ceilings,
+Task C picks. The development readings (E1-E4, C1, C2) are not re-evaluated on a mix of new seeds 0-2
+and old seeds 3-5; the entry-10 values stay primary in the development reports, and the cutter's effect
+is read in the final run (seeds 6-11), which runs on the fixed code.
