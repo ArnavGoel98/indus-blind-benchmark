@@ -528,3 +528,37 @@ side for each of the 24 corpora and each cell: Task D strict and lenient, raw an
 Task C picks. The development readings (E1-E4, C1, C2) are not re-evaluated on a mix of new seeds 0-2
 and old seeds 3-5; the entry-10 values stay primary in the development reports, and the cutter's effect
 is read in the final run (seeds 6-11), which runs on the fixed code.
+
+## 12. Freeze `frozen-v2.1` and the confirmatory final run on seeds 6-11
+
+Declared 2026-10-27, on the project owner's approval of `docs/v2_freeze_and_final_run_PROPOSAL.md` with
+five decisions, **before any seed 6-11 corpus is generated** (checked: no record or archive has a seed in
+6-11). The tag `frozen-v2.1` is placed by the owner on Friday 2026-10-30 on the commit that holds this
+entry; `frozen-v2` stays where it is.
+
+**Decisions, as approved.**
+1. Logographic ceiling: the reachable ceiling is the primary ceiling column, the raw ceiling the
+   secondary one (entry 11, B; applied to every script type).
+2. Syllable cutter: fixed by entry 11 (A), confirmed on development seeds 0-2 (entry 11, C-D;
+   `reports/v2/cd/entry11.md`).
+3. Pali joins the final run only if SuttaCentral grants permission before the freeze. On 2026-10-27 it
+   has not; unless a dated entry records the permission and adds the data before the tag, the final run
+   has no Pali, and Pali can only be added later as a labelled addition.
+4. Every hypothesis, metric, threshold and table layout for seeds 6-11 is fixed in
+   `docs/v2_final_run_readings.md`, committed with this entry.
+5. The Dravidian pairs are reported in the Estonian format before the freeze
+   (`reports/v2/cd/dravidian.md`).
+
+**Run.** `python scripts/v2/final_v2.py` (240 corpora), then `python scripts/v2/final_v2.py --c4` (24
+corpora), then `python reports/v2/final/analysis/final_summary.py`. Over the weekend of 2026-10-31 to
+2026-11-01; results reported to the owner on Monday 2026-11-02, against the readings, failures first,
+before anything enters the paper. The driver refuses to start unless the tag exists and every file
+outside `reports/` and `docs/` (and `reports/v2/cd/analysis/controls.py`, whose entry-8 floor it calls)
+equals the tag, with no untracked code files.
+
+**Guard, one change from the proposal.** The proposal said `cd_v2.check_frozen` would point at the new
+tag. It is left at `frozen-v2`, because it guards the seeds 0-2 runs of entries 6 and 9; the final
+run has its own guard (`final_v2.check_final`) pointed at `frozen-v2.1`.
+
+**Pipeline check.** Before the tag, the driver and the report code are run once on development seed 90
+(sampler A, 1 restart; `--dev`), as entry 6 did. Its numbers are not results and are not reported.

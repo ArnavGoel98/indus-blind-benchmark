@@ -1,7 +1,9 @@
-# PROPOSAL (not approved): v2 freeze date and final-run plan
+# v2 freeze date and final-run plan (APPROVED 2026-10-27, with five decisions)
 
-Written 2026-10-27 after entry 10. **Nothing here is declared or run until the project owner approves.**
-On approval, the plan becomes pre-registration entry 11 and is committed before the freeze tag.
+Written 2026-10-27 after entry 10 and approved the same day. The approved plan, with the owner's five
+decisions, is pre-registration entries 11 (the cutter fix and the reachable ceiling) and 12 (the freeze
+and the final run); the readings are fixed in `docs/v2_final_run_readings.md`. Where this proposal and
+entries 11-12 differ, the entries rule. The text below is kept as proposed.
 
 ## 1. Why a new freeze is needed
 
