@@ -1,0 +1,78 @@
+{
+ "cells": {
+  "estonian|syllabic": {
+   "old": 6.527139083010463,
+   "new": 10.953164791328591,
+   "best_unrel": "latin",
+   "unrel": 2.223575804091811,
+   "added_old": 4.303563278918652,
+   "wins_old": 8,
+   "added_new": 8.729588987236781,
+   "wins_new": 10,
+   "helps_old": false,
+   "helps_new": true
+  },
+  "estonian|logosyllabic": {
+   "old": 5.217233032537778,
+   "new": 7.737085680594056,
+   "best_unrel": "latin",
+   "unrel": 2.355775120719899,
+   "added_old": 2.861457911817879,
+   "wins_old": 7,
+   "added_new": 5.381310559874157,
+   "wins_new": 9,
+   "helps_old": false,
+   "helps_new": true
+  },
+  "malayalam|syllabic": {
+   "old": 9.250611525957403,
+   "new": 9.697509624672923,
+   "best_unrel": "finnish",
+   "unrel": 3.527549317351539,
+   "added_old": 5.723062208605864,
+   "wins_old": 8,
+   "added_new": 6.169960307321384,
+   "wins_new": 10,
+   "helps_old": false,
+   "helps_new": true
+  },
+  "malayalam|logosyllabic": {
+   "old": 7.449125835975107,
+   "new": 7.799513802070077,
+   "best_unrel": "finnish",
+   "unrel": 2.375372799407604,
+   "added_old": 5.073753036567503,
+   "wins_old": 8,
+   "added_new": 5.4241410026624735,
+   "wins_new": 8,
+   "helps_old": false,
+   "helps_new": false
+  },
+  "kannada|syllabic": {
+   "old": 4.338957731657026,
+   "new": 3.7669259619966535,
+   "best_unrel": "finnish",
+   "unrel": 3.5751955436287712,
+   "added_old": 0.763762188028255,
+   "wins_old": 7,
+   "added_new": 0.1917304183678823,
+   "wins_new": 7,
+   "helps_old": false,
+   "helps_new": false
+  },
+  "kannada|logosyllabic": {
+   "old": 3.5087912228279605,
+   "new": 3.2490402955483986,
+   "best_unrel": "finnish",
+   "unrel": 2.4150323380055148,
+   "added_old": 1.0937588848224458,
+   "wins_old": 8,
+   "added_new": 0.8340079575428838,
+   "wins_new": 8,
+   "helps_old": false,
+   "helps_new": false
+  }
+ },
+ "h3_old": 0,
+ "verdict": "attributed to the cutter fix"
+}
