@@ -562,3 +562,26 @@ run has its own guard (`final_v2.check_final`) pointed at `frozen-v2.1`.
 
 **Pipeline check.** Before the tag, the driver and the report code are run once on development seed 90
 (sampler A, 1 restart; `--dev`), as entry 6 did. Its numbers are not results and are not reported.
+
+## 13. POST HOC: the old syllable cutter on the final-run corpora (why H3 was not met)
+
+Declared 2026-10-31, on the project owner's instruction, after the final-run results (entry 12) were
+read and before this check is run. **Post hoc in motivation and in design**; it changes no entry-12
+reading, and H3 stays "not met". Code is `frozen-v2.1`; the driver lives in `reports/` and only builds
+each relative with `vowels=frozenset()`, i.e. the frozen-v2 cutter that entry 11 replaced.
+
+**Question.** Does the entry-11 cutter fix account for the two Estonian cells that crossed the C1
+"measurably helps" rule in the final run?
+
+**Run.** The six cells the fix changed (Estonian, Malayalam, Kannada; syllabic and logo-syllabic), seeds
+6-11, samplers A and B: 24 corpora (12 Finnish, 12 Old Tamil). Revised EM, 3 restarts, 60 iterations,
+`related_real` tier only, with the old-cutter reference; entry-10 scorer. The unrelated-reference
+scores and floors are taken from the final-run records (they do not depend on the cutter).
+
+**Readings, fixed now.** For each of the six cells: the old-cutter mean, the final (new-cutter) mean,
+their difference, and the C1 rule (>= 5 points and >= 9 of 12 paired wins) with the old cutter. The H3
+count is recomputed with old-cutter values for these six cells and final values for Italian.
+- If both Estonian cells fail the C1 rule with the old cutter, the H3 result is attributed to the fix.
+- If both pass, it is attributed to the new seeds, not the fix.
+- If one passes, the result is reported as mixed.
+Descriptive only; no test.
