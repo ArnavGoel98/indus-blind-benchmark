@@ -14,6 +14,7 @@ DRAFT = ROOT / "reports" / "drafts" / "v2_real_relatives_section_DRAFT.md"
 SOURCES = [*sorted((ROOT / "reports" / "v2" / "cd").glob("*.md")),
            *sorted((ROOT / "reports" / "v2" / "real_relatives").glob("*.md")),
            ROOT / "reports" / "v2" / "ugaritic" / "results.md",
+           *sorted((ROOT / "reports" / "v2" / "final").glob("*.md")),
            ROOT / "reports" / "v2" / "sister" / "anchor_corrected.md"]
 
 

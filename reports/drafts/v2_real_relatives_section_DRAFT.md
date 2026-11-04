@@ -2,15 +2,26 @@
 
 Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights, 2026-10-24
 with Finnish-Estonian (entry 9) and 2026-10-27 for entry 10 (no-source gold rows read as unknown; the
-synthetic sisters reframed as optimistic upper references), on branch `v2`,
+synthetic sisters reframed as optimistic upper references), and 2026-11-04 for the confirmatory final run
+on fresh seeds 6-11 (entries 11-13; section v2.6a), on branch `v2`,
 from the reports named in each paragraph. It does not change any v1 number or the v1 paper
 (`paper-v1`). Every number here is a v2 result, and every decimal in it is checked against a
 generated report (`reports/v2/cd/analysis/check_numbers.py`). Methods are frozen at `frozen-v2`
-(commit `4ce3e90`); pre-registration entries 1-10 are in `docs/v2_preregistration.md`; entry 10 changed
-only the v2 scoring and yardstick harness. Each claim
+(commit `4ce3e90`) and, for the final run, `frozen-v2.1` (commit `c5ad0ad`); pre-registration entries 1-13
+are in `docs/v2_preregistration.md`; entries 10-11 changed only the v2 scoring, yardstick harness and the
+syllable cutter for real relatives. Each claim
 is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims, a decipherment.
 
 ## Key findings
+
+**Confirmatory final run (seeds 6-11, entry 12; section v2.6a).** 240 fresh corpora, 0 errors, all
+24 determinism reruns identical (3,904 of 3,904 values). Eight of nine pre-registered readings were met:
+no real relative reaches a 50% mean (highest 40.5%, Kannada alphabetic); Estonian (+17.0 points) and
+Kannada (+23.9) measurably help on alphabetic scripts; every real relative stays below the v1 sister.
+**One reading was not met (H3):** on syllabic and logo-syllabic scripts a real relative gave measurable
+but small help in 3 of 8 cells (two at the constant-answer floor), which appears only with the corrected
+syllable cutter (post hoc entry 13: with the old cutter, 0 of 8). The development findings below
+(seeds 0-5) stand as development results.
 
 - **0 of 12** cells (3 real relatives × 4 script types) reach a 50% mean, on either seed block.
   Pre-registered (entry 6) and replicated on fresh seeds (entry 7).
@@ -42,14 +53,16 @@ is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims,
 | Claim | Evidence | Status | Robustness | What would change it |
 |---|---|---|---|---|
 | No real relative brings a script type to a 50% mean | Tables v2.3, v2.5; R1 | Pre-registered (entries 6, 7) | Replicated; holds at 10 restarts (highest 41.9%) | A stronger solver; other relatives or texts |
-| A relative helps measurably in only 2 of 12 cells | C1 | Procedure pre-registered (entry 8), motivation post hoc | One run of 12 corpora per cell; the rule's thresholds are a choice | Other unrelated references; other gold tables |
+| A relative helps measurably in only 2 of 12 cells (development seeds) | C1 | Procedure pre-registered (entry 8), motivation post hoc | One run of 12 corpora per cell; the rule's thresholds are a choice | Other unrelated references; other gold tables |
 | Old Tamil alphabetic recovery is in the range of the Ugaritic anchor | R2; Ugaritic report | Pre-registered check | Replicated | Nothing here: it is a consistency check, not confirmation |
 | Real relatives fall below the synthetic `harsh` reference, so synthetic sisters are optimistic upper references | Tables v2.3, v2.5, v2.6; R3; C3; E3 | Observation post hoc; R3 and E3 pre-registered; framing post hoc (entry 10) | Replicated for Italian; widens with more restarts; seen for Estonian | A genre-matched relative text; other relatives |
 | Closeness on the yardsticks does not predict Task D | Figure v2.3; frequency check | Exploratory | Five points | More pairs |
 | Logographic zeros are partly a solver artefact | Reachability check | Exploratory | Computed exactly, no solver | A solver without a unit cap |
 | Solver budget is second-order except for one cell | C3 | Pre-registered | Seeds 0-2 only | More restarts or another optimiser |
 | The runs are deterministic | C4 | Pre-registered | 120 of 120 identical | - |
-| Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | One pair; 12 corpora; **weak gold: 10 word pairs, 13 of 27 letters** | A fuller Finnish-Estonian gold source; another Estonian text |
+| Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | Confirmed on seeds 6-11 (+17.0; 11 of 12; H2a); **weak gold: 10 word pairs, 13 of 27 letters** | A fuller Finnish-Estonian gold source; another Estonian text |
+| Kannada measurably helps Old Tamil on alphabetic scripts | C1; H2b | Pre-registered (entries 8, 12) | Confirmed on seeds 6-11 (+23.9; 11 of 12) | Other unrelated references |
+| On syllabic and logo-syllabic scripts a relative helps in at most 1 of 8 cells | H3 | Pre-registered (entry 12): **not met** | 3 of 8 on seeds 6-11, two of them at the floor; 0 of 8 with the old cutter (entry 13, post hoc) | The syllable cutter; other gold tables |
 
 ## v2.1 Why real relatives
 
@@ -456,7 +469,40 @@ Exploratory: five points.*
 For Indus, where no relative is agreed and the `candidates` and `none` tiers are the relevant ones,
 these results add one point. With these comparison-based solvers, a genuine relative adds little
 beyond what an unrelated language or a constant answer already gives, outside alphabetic scripts.
-Inside them the added value is modest and unstable.
+Inside them the added value is modest and unstable. The confirmatory run (section v2.6a) adds a
+qualification: on syllabic and logo-syllabic scripts the help is measurable but small in 3 of 8 cells,
+and only once the relative's syllables are cut correctly.
+
+## v2.6a Confirmatory final run on fresh seeds 6-11
+
+Pre-registered (entry 12): every hypothesis, threshold and table was fixed in
+`docs/v2_final_run_readings.md` and frozen with the code (`frozen-v2.1`) before any seed 6-11 corpus
+existed. The run covers 240 corpora (five hidden languages, four script types, two samplers, six seeds),
+with 0 errors; the 24-corpus determinism rerun matched in 3,904 of 3,904 values. The syllable cutter now
+uses each relative's own vowel letters too (entry 11). Full tables: `reports/v2/final/results.md`.
+
+| Reading | Threshold | Seeds 6-11 | Met? |
+|---|---|---|---|
+| H1. Every real-relative cell below 50% | 16 of 16 cells | 16 of 16; highest 40.5% (Kannada, alphabetic) | yes |
+| H2a. Estonian helps, alphabetic (C1 rule) | at least 5 points, at least 9 of 12 wins | +17.0; 11 of 12 | yes |
+| H2b. Kannada helps, alphabetic | as H2a | +23.9; 11 of 12 | yes |
+| **H3. At most 1 of 8 syllabic or logo-syllabic cells helps** | count at most 1 | **3: Malayalam syllabic, Estonian syllabic, Estonian logo-syllabic** | **no** |
+| H4. Every real relative below the v1 sister (12 non-logographic cells) | 12 of 12 | 12 of 12 | yes |
+| H5. Old Tamil alphabetic within 10 points of Ugaritic (32.0%) | both in 22.0-42.0 | 27.8 and 40.5 | yes |
+| H6. Italian below `harsh`, alphabetic and syllabic | both | 16.6 against 26.3; 3.0 against 16.3 | yes |
+| H7. Relative picked in under half of `candidates_real` corpora | each at most 23 of 48 | Italian 12, Malayalam 0, Kannada 23 | yes |
+| H8. Determinism | 0 mismatches | 3,904 of 3,904 identical | yes |
+
+**H3, the failed reading.** On syllabic and logo-syllabic scripts a real relative gave **measurable but
+small help in 3 of 8 cells, which appears only with the corrected syllable cutter.** The three cells:
+Malayalam syllabic (+6.2; 10 of 12), Estonian syllabic (+8.7; 10 of 12) and Estonian logo-syllabic
+(+5.4; 9 of 12). The two Estonian cells stay at the constant-answer floor, and none of the three
+exceeds 11.0% of signs. A post hoc check (entry 13, declared before it ran) repeated the six cells the
+cutter fix changed with the old cutter on the same corpora: then 0 of 8 cells help, and by its fixed
+rule the Estonian change is attributed to the fix (Estonian syllabic 6.5% with the old cutter, 11.0% with
+the new; logo-syllabic 5.2% and 7.7%). Malayalam syllabic also falls just short with the old cutter
+(+5.7; 8 of 12), so that cell sits on the threshold. H3 stays *not met*; the check explains it and
+changes no reading. Estonian rests on the weak gold.
 
 ## v2.7 What these results do not show
 
@@ -522,14 +568,17 @@ Inside them the added value is modest and unstable.
 13. **The entry-2 ceiling ignores the solver.** It counts a token as recoverable if its reflex
     occurs anywhere in the relative, while the solver can only predict among the reference's 250
     most frequent units. For logographic scripts the reported ceilings overstate what the solver
-    could reach (section v2.5). This was found after the run and is reported, not corrected.
+    could reach (section v2.5). This was found after the run; from entry 11 the reachable ceiling is
+    the primary column, and the final run (v2.6a) reports both.
 14. **A weak gold for Finnish-Estonian.** Its source has no correspondence table, so the gold comes
     from ten printed word pairs and has a regular reflex for 13 of 27 letters; every table labels it
     weak. Since entry 10 the other letters are unknown rather than lost, which lowers the ceilings and
     removes the artefact that made the word-level yardsticks negative (`reports/v2/cd/entry10.md`).
-15. **Frozen syllable cutter.** It uses the hidden language's vowel set, so Estonian õ and ü are cut
-    as consonants in the Estonian syllabic reference. Neither is the regular reflex of any Finnish
-    letter in this gold.
+15. **Syllable cutter (development runs only).** The development runs cut each relative with the
+    hidden language's vowel set, so Estonian õ and ü and Dravidian vocalic ṛ were cut as consonants.
+    Entry 11 fixed this before the final run; entry 13 shows the fix is what moved H3 (post hoc).
+16. **One confirmatory run.** The seeds 6-11 readings rest on 12 corpora per cell, and two of them
+    (H3's Malayalam cell, H7's Kannada count) sit at their thresholds.
 
 ## v2 analysis history (dated)
 
@@ -587,6 +636,12 @@ Inside them the added value is modest and unstable.
       flipped. Predictions are archived so later scoring questions need no rerun.
     - An implementation error in the entry-10 verbatim inspection (a stretch after a break was counted
       as a word start) was found and fixed before the results were reported.
+
+- **2026-10-27 to 2026-11-04:** entry 11 (syllable cutter uses the relative's vowels; reachable
+  ceiling primary), declared before any code; confirmed on development seeds 0-2. Entry 12: readings
+  for seeds 6-11 fixed and frozen (`frozen-v2.1`, `c5ad0ad`). Final run: 240 corpora, 0 errors; one
+  restart after a container restart killed the first attempt before any corpus finished. H3 not met.
+  Entry 13 (post hoc): the old cutter on the final-run corpora; H3 change attributed to the fix.
 
 ## References (this section)
 
