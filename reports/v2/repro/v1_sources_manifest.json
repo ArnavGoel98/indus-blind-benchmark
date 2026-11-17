@@ -1,0 +1,2542 @@
+{
+ "pinned": "2026-11-17",
+ "note": "Old Tamil (Project Madurai) differs from the 2026-10-03 download used by v1 and v2; see README.md",
+ "files": {
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0000-R\u0101m, B\u0101, 1-1067.conllu": {
+   "bytes": 175676,
+   "sha256": "18791aae1c6966e5f9691290a48dbc1c449c83b59c23d46fbd04e7a89bbd8665"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0001-R\u0101m, B\u0101, 2-1070.conllu": {
+   "bytes": 88139,
+   "sha256": "03265f2e3f1f728b24e3dbf9889179eb50ccb338b8d843ff2009e7cd7df3d15f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0002-R\u0101m, B\u0101, 3-1071.conllu": {
+   "bytes": 59450,
+   "sha256": "93706b833f507f7aa697736e5e2dd7695d87c1dfcef82bf14cfa2c7bfe1fdc3a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0003-R\u0101m, B\u0101, 4-1072.conllu": {
+   "bytes": 58644,
+   "sha256": "58bbcd591bfcad206cc99af0c73b939ba690dd82cd69c56b4353a4252d928fbb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0004-R\u0101m, B\u0101, 5-1073.conllu": {
+   "bytes": 47456,
+   "sha256": "1e7d4e873ab1b60a7bbca3dd99065477cc476c9eb59ed1b81c7d675593f81a2e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0005-R\u0101m, B\u0101, 6-1074.conllu": {
+   "bytes": 57536,
+   "sha256": "09fa806c56066652fff85a41841ebe46ccc3f111177ae196708d99bd78b65126"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0006-R\u0101m, B\u0101, 7-1075.conllu": {
+   "bytes": 40060,
+   "sha256": "2978f171ed38083c178a30d1a51c0eae26a76003f1984a2746a49de254f0358c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0007-R\u0101m, B\u0101, 8-1076.conllu": {
+   "bytes": 50366,
+   "sha256": "8f2020805b06b2b22ef86b9d4452b571e7eeb8c6e6b1e9535c514f89cf38eff1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0008-R\u0101m, B\u0101, 9-1077.conllu": {
+   "bytes": 74373,
+   "sha256": "d18dd8e0111a38c433010e113fcfce8f4db86f18eba5b0105f51333f6d970479"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0009-R\u0101m, B\u0101, 10-1078.conllu": {
+   "bytes": 67781,
+   "sha256": "d639541e65dbb3c80d7817e6ae9888e1540a57d500a31ae6a1ef49b3e32987b6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0010-R\u0101m, B\u0101, 11-1079.conllu": {
+   "bytes": 46720,
+   "sha256": "9b6ec07a3ac3f2d8768cc1c5ab054837046e749686c6e7cecde8b50c414863be"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0011-R\u0101m, B\u0101, 12-1080.conllu": {
+   "bytes": 77001,
+   "sha256": "1024a81ff16b0772a232a7c0fd8b33e062caf96cd44ba714abee881ab190db76"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0012-R\u0101m, B\u0101, 13-1081.conllu": {
+   "bytes": 104533,
+   "sha256": "dcbdcccdcdaa2fdd0de7d802f1d7aa69965d718952a60062d8a54d7bbd8ff977"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0013-R\u0101m, B\u0101, 14-1082.conllu": {
+   "bytes": 48402,
+   "sha256": "e317ae26c105c4c8ddedf447b4eb803b6cb3783ce950fb9d5956c38c76580c0d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0014-R\u0101m, B\u0101, 15-1083.conllu": {
+   "bytes": 60814,
+   "sha256": "0960ad565321e71a40cfaf8f81124dddd16579c5846971bf4e7b96e6707c5b71"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0015-R\u0101m, B\u0101, 16-1084.conllu": {
+   "bytes": 44156,
+   "sha256": "44e80193d9b0774682b6820f80fa42899a56477e7aa71b3f9c8cb9f69dde2566"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0016-R\u0101m, B\u0101, 17-1085.conllu": {
+   "bytes": 87641,
+   "sha256": "99cfc16dcaaa5a4931b86a889b1c6f4abff917d55692e6044b4d8c7cce02ae27"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0017-R\u0101m, B\u0101, 18-1086.conllu": {
+   "bytes": 45878,
+   "sha256": "0f32ade145105b95debacc92bcf65bce37b59a90a850b9a60874bbd61daa2d28"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0018-R\u0101m, B\u0101, 19-1087.conllu": {
+   "bytes": 59102,
+   "sha256": "090fe7f6c206580be443795e3929848f549bbb726a655074ec9307693de426aa"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0019-R\u0101m, B\u0101, 20-1088.conllu": {
+   "bytes": 40321,
+   "sha256": "11ecbfbc2998876e291b309ab4d9b65bb41228bbc3b1f0384a8cdcc98c342c17"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0020-R\u0101m, B\u0101, 21-1089.conllu": {
+   "bytes": 43780,
+   "sha256": "f3b3dbb34d0d9cc3fcdc31cfc929fdf1512b495ac9001db88e152b8fb344fdeb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0021-R\u0101m, B\u0101, 22-1090.conllu": {
+   "bytes": 39905,
+   "sha256": "3d8260ca4be9178d33a4d7656192d4a2bd23e62d39220015584c004c60d58ac0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0022-R\u0101m, B\u0101, 23-1091.conllu": {
+   "bytes": 64441,
+   "sha256": "7ba3f488c99d1e1b4524e9a3fd8292f75a02764238ff3b96518d671887073172"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0023-R\u0101m, B\u0101, 24-1092.conllu": {
+   "bytes": 42031,
+   "sha256": "c9909ab9e79a04a96dec0e3aa712f3c2fe05d91619fd6f3c088d7f8506879d83"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0024-R\u0101m, B\u0101, 25-1093.conllu": {
+   "bytes": 48656,
+   "sha256": "343f3f9b624f8ba62be0e9cd732ac001a4040605774f3f76f471f38d05555f00"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0025-R\u0101m, B\u0101, 26-1094.conllu": {
+   "bytes": 54488,
+   "sha256": "31ccc52a130155472da8d0c00866a6cdb81b1e4d37f6172f98779e5ffe00a0e5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0026-R\u0101m, B\u0101, 27-1095.conllu": {
+   "bytes": 37669,
+   "sha256": "f963131619059771928ee5cdc4e5a857018bc8e32960bad699aef6d68999931c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0027-R\u0101m, B\u0101, 28-1096.conllu": {
+   "bytes": 43277,
+   "sha256": "73fac85d7ce75f0d4eba868b0f594df6a70c4c7183b0295bef15a63a08566924"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0028-R\u0101m, B\u0101, 29-1097.conllu": {
+   "bytes": 48603,
+   "sha256": "7d9fcf9d9c806c4f4c1a8b2b8f11b5193342536071f904a835f198d3225304b6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0029-R\u0101m, B\u0101, 30-1098.conllu": {
+   "bytes": 49343,
+   "sha256": "56fb44d12e1abf2d66345bf0633f2275be62656ddc67145d1e1e2ac1038c8ade"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0030-R\u0101m, B\u0101, 31-1099.conllu": {
+   "bytes": 48321,
+   "sha256": "7c20285355689db1654a8ffee67b1c52a60ac59155a54d55215c9529a162e9ac"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0031-R\u0101m, B\u0101, 32-1100.conllu": {
+   "bytes": 54731,
+   "sha256": "984e85164800df46e1c806ed3dccba4b1f1a883586ff46c281e119c14e076d9a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0032-R\u0101m, B\u0101, 33-1101.conllu": {
+   "bytes": 41642,
+   "sha256": "218719d3933cb04f38a0c7d1c409c49fddb0954043c67e998fdc0faf02299890"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0033-R\u0101m, B\u0101, 34-1102.conllu": {
+   "bytes": 47223,
+   "sha256": "dea63edcd7459567feaedfb2607b8aad2119f78abcfcc73dd27b0d9030cdf1d1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0034-R\u0101m, B\u0101, 35-1103.conllu": {
+   "bytes": 58903,
+   "sha256": "ef7656c244d165067df850dbaa0857f366a75244b742cf1845be944a4e903ff2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0035-R\u0101m, B\u0101, 36-1104.conllu": {
+   "bytes": 64573,
+   "sha256": "89bcaf4376ecd50c1dd128ba1edbb0fb9ef01e09d76c6c66b57840d8439ab623"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0036-R\u0101m, B\u0101, 37-1105.conllu": {
+   "bytes": 51751,
+   "sha256": "7de9da2c1bdbd2b4c5d5950cc8e758e135dee90c0127af1a729051b914565be0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0037-R\u0101m, B\u0101, 38-1106.conllu": {
+   "bytes": 52788,
+   "sha256": "d7a0ef2ff519fac3fd318ca4c768fdd81ac590737d6a2a9be56bd013dc34ac87"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0038-R\u0101m, B\u0101, 39-1107.conllu": {
+   "bytes": 55695,
+   "sha256": "9da6752b94d08b1890a15438cc43e564648ed094953913c82b5dd7cbe8501a16"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0039-R\u0101m, B\u0101, 40-1109.conllu": {
+   "bytes": 56037,
+   "sha256": "0106a8c4322673e60220dc0c07c24c9cab70ac5e1417362d35aeb2510e0b7d24"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0040-R\u0101m, B\u0101, 41-1110.conllu": {
+   "bytes": 50633,
+   "sha256": "c687ba87b343ba65b3cde5ff73f17c8532834f1daf6590eaf42aff48e9bd33d9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0041-R\u0101m, B\u0101, 42-1111.conllu": {
+   "bytes": 53463,
+   "sha256": "eded68ec79e5eddbc2371ad3bb36f5ff819b03a0460b41c42ebd36773df0479a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0042-R\u0101m, B\u0101, 43-1112.conllu": {
+   "bytes": 45305,
+   "sha256": "cdbdc5ee16eb456c2c5e7e7f91e2d7a8f87341884d05f35ba11d9c3fe7618d69"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0043-R\u0101m, B\u0101, 44-1113.conllu": {
+   "bytes": 60262,
+   "sha256": "c90a801e64f431207eb19cfae6e95c3d71895deafe1e5fe682485d8176539313"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0044-R\u0101m, B\u0101, 45-1114.conllu": {
+   "bytes": 47831,
+   "sha256": "0007326b8d490cc059afc83052f17ade1759bd21d95a80690e9f90f487214a51"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0045-R\u0101m, B\u0101, 46-1115.conllu": {
+   "bytes": 47429,
+   "sha256": "4254eb894ebc6eaa39dbc93d50c9742eef9d62b1e6db7947304034ae77338d68"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0046-R\u0101m, B\u0101, 47-1116.conllu": {
+   "bytes": 71573,
+   "sha256": "17df9bb1b31b9626ad83912f7aed2b8f85f602a8a97c16a5d6f54789dce316f1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0047-R\u0101m, B\u0101, 48-1117.conllu": {
+   "bytes": 47992,
+   "sha256": "6189fc91d2d9afcd9412b0e1063f88db81fafc34210fb9839d8bbc76354aad20"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0048-R\u0101m, B\u0101, 49-1118.conllu": {
+   "bytes": 51927,
+   "sha256": "3cd612432a6999faceb95b756c8cd950dd038fa75a8a4a91c8cac1a73551eea5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0049-R\u0101m, B\u0101, 50-1119.conllu": {
+   "bytes": 60528,
+   "sha256": "c159fa94bf84cd4844d933d8ab7dcfbbd0bae1d2301f97cf542de80fa0cd067a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0050-R\u0101m, B\u0101, 51-1120.conllu": {
+   "bytes": 49602,
+   "sha256": "5f17c6e496031e8818c674f78d34f224b28aeaf1b5513ddeea18ac995a5c5909"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0051-R\u0101m, B\u0101, 52-1121.conllu": {
+   "bytes": 53361,
+   "sha256": "03375034e76abb46a2dcd2c2122a9579c908c2f40a0a9370be1f7c5fea9c5e24"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0052-R\u0101m, B\u0101, 53-1123.conllu": {
+   "bytes": 48896,
+   "sha256": "c53d6e4775b8f0eda108cedbaf50f07f768ceabb29f0f02c7e36391b0f8647ee"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0053-R\u0101m, B\u0101, 54-1124.conllu": {
+   "bytes": 60808,
+   "sha256": "18cbac862ddda59b32c33a3d029828c59c07244b4073b380137ecadb032ba8bf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0054-R\u0101m, B\u0101, 55-1125.conllu": {
+   "bytes": 50498,
+   "sha256": "41a4ce75eb1abefeba61798155dd632fadc86a5166476d7b56ac7f4b645ea6c3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0055-R\u0101m, B\u0101, 56-1126.conllu": {
+   "bytes": 44986,
+   "sha256": "120933dde91f7162168801879c04e0c28fce06a56f4af66f1b587bb8ec49e2cd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0056-R\u0101m, B\u0101, 57-1129.conllu": {
+   "bytes": 53487,
+   "sha256": "3c79311c28196dbfb0807dc31b000e9ab65d9dcc1ca89643996aaf9d89399d8e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0057-R\u0101m, B\u0101, 58-1134.conllu": {
+   "bytes": 48489,
+   "sha256": "7d5ae0bdd1199bf16943cb783456255806523bdf2a52dc72f3e2f175d8df7f46"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0058-R\u0101m, B\u0101, 59-1135.conllu": {
+   "bytes": 72907,
+   "sha256": "e6789027dde5885dfbe54ee46d1db1ff5b5b357b5bd27c6ae190eeae676f8a15"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0059-R\u0101m, B\u0101, 60-1136.conllu": {
+   "bytes": 46260,
+   "sha256": "66b3ec11a9776576f0de08aa26a04e7e260188d40c2a3c3d0a35274e1e59b3ee"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0060-R\u0101m, B\u0101, 61-1138.conllu": {
+   "bytes": 59471,
+   "sha256": "a2eb8234a5959c942c3de33a1849ae7386d663bf11463a32205b6d2db9911db6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0061-R\u0101m, B\u0101, 62-1139.conllu": {
+   "bytes": 56045,
+   "sha256": "4455a0f888a9f3753f464c720db408094a59025b5a218fa5d5a3e1ddd3acf049"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0062-R\u0101m, B\u0101, 63-1140.conllu": {
+   "bytes": 34180,
+   "sha256": "e38ddcaff3225632d7d1ffd813ccc77d4d0dac692032aa23fea690d789813dc7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0063-R\u0101m, B\u0101, 64-1141.conllu": {
+   "bytes": 67957,
+   "sha256": "2b4a1e0baddf74d6c4f3bf4a70cd91f47fdf56d32b9505360ad29a1e31c27390"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0064-R\u0101m, B\u0101, 65-1142.conllu": {
+   "bytes": 57259,
+   "sha256": "10f40c06f5450cf3cfd54bd8712b4568c566cfe074601a258b7071e1858db283"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0065-R\u0101m, B\u0101, 66-1143.conllu": {
+   "bytes": 59315,
+   "sha256": "9d342e685694b5700b96030300769c005f2862a7e8e8dfef9b650a5c1a96ac2c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0066-R\u0101m, B\u0101, 67-1145.conllu": {
+   "bytes": 41115,
+   "sha256": "8ae43c38723ea227d498f1e149d5124bbe0d97c54b235bc9043a6d5e2583911f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0067-R\u0101m, B\u0101, 68-1146.conllu": {
+   "bytes": 40836,
+   "sha256": "d4be129edd9432b71eafcdae8d32f8e30775074b60ee8af50c09f1d940b1a1d8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0068-R\u0101m, B\u0101, 69-1147.conllu": {
+   "bytes": 67887,
+   "sha256": "a2bda6024da2b7393ef20c2734dcdc00cfe24861194a1fe82f70dd67e8da2cbf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0069-R\u0101m, B\u0101, 70-1149.conllu": {
+   "bytes": 50767,
+   "sha256": "05ac4f4a8395b171234e855129954c2154f10f14e85e46540ccba48355c43b7a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0070-R\u0101m, B\u0101, 71-1150.conllu": {
+   "bytes": 52166,
+   "sha256": "ea2def3c3b9962aa3e1362115370374683b63f503082ab67a9ac10837f2f20ec"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0071-R\u0101m, B\u0101, 72-1151.conllu": {
+   "bytes": 60648,
+   "sha256": "c265b559472ac5dc9f1ebc1709d2ce315e221e057d6663d7fb397ef8aa767f16"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0072-R\u0101m, B\u0101, 73-1153.conllu": {
+   "bytes": 52780,
+   "sha256": "e5580d2cfbed29d867652d15b63b657fba6ad874d1e2ab83f393ee50659734fb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0073-R\u0101m, B\u0101, 74-1154.conllu": {
+   "bytes": 60044,
+   "sha256": "e643829dd7155dfe215d644cee8aac1768b272b24b28d3787b1bd4890f8471c0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0074-R\u0101m, B\u0101, 75-1155.conllu": {
+   "bytes": 49945,
+   "sha256": "2d96062dfc00cd2be84f39d532e3748bbcdf6050ca7b2e536bd70c1fec745b73"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0075-R\u0101m, B\u0101, 76-1156.conllu": {
+   "bytes": 39317,
+   "sha256": "869ff7003360c03039540dcd6a16c30927199f2e8c7fb4db3d62e32a579261ba"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0076-R\u0101m, Ay, 1-1158.conllu": {
+   "bytes": 67296,
+   "sha256": "d82e9512d8c682ec03d92f033a1d46b9c22cfe7751b501f50023cdbb71d235af"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0077-R\u0101m, Ay, 2-1159.conllu": {
+   "bytes": 74316,
+   "sha256": "3e8d72d3319ba3b3b3d032b37879f17c2c57f37d76480c0ff3a5cf500d1b36cf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0078-R\u0101m, Ay, 3-1160.conllu": {
+   "bytes": 72399,
+   "sha256": "5e66c16700dd7868755fe84e17e6d65767cd4eec82823443ba62c8548ce1647e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0079-R\u0101m, Ay, 4-1161.conllu": {
+   "bytes": 98408,
+   "sha256": "d36ffa2cf645bb39e456af083c742ba563a14dc43c24576c5fa90d2f3237ec35"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0080-R\u0101m, Ay, 5-1163.conllu": {
+   "bytes": 52884,
+   "sha256": "2759119c740a17537e4e88c86ec0f560b47391b63c85bf4fd5d82bc73574d4ed"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0081-R\u0101m, Ay, 6-1166.conllu": {
+   "bytes": 61338,
+   "sha256": "5be7d328ef7000a367b6b7ce19bc391a7c5171c2db6f0dd79647aa2e84de02e6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0082-R\u0101m, Ay, 7-1167.conllu": {
+   "bytes": 69282,
+   "sha256": "be9cfe46a55fd8a2e372bc7c608d4bb196853ddc7b4aa69590ebcee60cf01197"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0083-R\u0101m, Ay, 8-1168.conllu": {
+   "bytes": 60774,
+   "sha256": "08f7a68194c09e86559c11bb06af26fa2bd75a39f757c99422498868aba40091"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0084-R\u0101m, Ay, 9-1169.conllu": {
+   "bytes": 106952,
+   "sha256": "79b2b3a351f12252851cf9eb5a1b005763c30166c4fd54af2b1aad5fbcabcc36"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0085-R\u0101m, Ay, 10-1170.conllu": {
+   "bytes": 93158,
+   "sha256": "a6e90420753b6e60bb6be58e3924cabf80e8e10fcae4a95fa93b7d4b11d01b42"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0086-R\u0101m, Ay, 11-1171.conllu": {
+   "bytes": 36176,
+   "sha256": "607dbc4611a6a1e9f253713e1204df6ea606c188d5db91499cb3f4330da16385"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0087-R\u0101m, Ay, 12-1172.conllu": {
+   "bytes": 55575,
+   "sha256": "3b00028dde2ad3420d632e943230a4c86fbe13e0a4c9e878dd2afb70e08e867a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0088-R\u0101m, Ay, 13-1174.conllu": {
+   "bytes": 65454,
+   "sha256": "5613bb8cd3438b7adaba5a8f28bc16d8c1ad5b995c3effce8d482a6c49cef799"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0089-R\u0101m, Ay, 14-1175.conllu": {
+   "bytes": 62590,
+   "sha256": "6280db77415d4a9cda4493ff852172bc28b3b55b9b146a42c67b0121379fd4fd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0090-R\u0101m, Ay, 15-1176.conllu": {
+   "bytes": 31880,
+   "sha256": "78419ea4247c5eb833c7b89327b3cee7a94186ad9fd2c7a857ea27ad1cb6b106"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0091-R\u0101m, Ay, 16-1177.conllu": {
+   "bytes": 144125,
+   "sha256": "bd37d59261a45f833639b42c15c155e3df7578dde9af1186f2d6bff5083dedce"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0092-R\u0101m, Ay, 17-1181.conllu": {
+   "bytes": 81368,
+   "sha256": "d08d7461bff1e3bc6506fb51df28acc6cb197a45eb36b6e8f3b5f74f002d59f1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0093-R\u0101m, Ay, 18-1182.conllu": {
+   "bytes": 96920,
+   "sha256": "3d783b727898d2544da84d6707a263fa444b99dbea14e306143b638d7641254c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0094-R\u0101m, Ay, 19-1183.conllu": {
+   "bytes": 53664,
+   "sha256": "d0d933d2eff160148f567f167bca57e8bf63555dc3de1b09268be36e54059c6e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0095-R\u0101m, Ay, 20-1185.conllu": {
+   "bytes": 86058,
+   "sha256": "a0750aaa6844566101945c5fb87d0a5df0e9ac12fae9f2433f84a0c8f1833b53"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0096-R\u0101m, Ay, 21-1187.conllu": {
+   "bytes": 63168,
+   "sha256": "b7877fcdd0dd881f72c23e10829ee066c8756e0cfbf0b1a4cec1f0445f227af6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0097-R\u0101m, Ay, 22-1188.conllu": {
+   "bytes": 50679,
+   "sha256": "659f3f3f2a6ca3073844d7737c5085fe4bbe4767d91cf24eef1fe3b9126a0ea2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0098-R\u0101m, Ay, 23-1189.conllu": {
+   "bytes": 79888,
+   "sha256": "9c73d3301fc96b9138dcc13a8cabb8998fe86391066781df39dae30197515c60"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0099-R\u0101m, Ay, 24-1190.conllu": {
+   "bytes": 47256,
+   "sha256": "f14ffbced9ac3f3838e4335ce23d35a07e063077a989099768e183fed3513282"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0100-R\u0101m, Ay, 25-1194.conllu": {
+   "bytes": 35793,
+   "sha256": "002120e43807e67bb11d2008c3796291bca5ea14e0ecf9a4eaf04077b98f6fdc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0101-R\u0101m, Ay, 26-1195.conllu": {
+   "bytes": 51208,
+   "sha256": "36ca70455f48ca70ca4738d75be1456fe47739b004b98fb006d12ebe4223d876"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0102-R\u0101m, Ay, 27-1196.conllu": {
+   "bytes": 78739,
+   "sha256": "1b87657a8465c812c894c4d022bcfd22e3e4b7d71f6a62c305fbc1731f0fc08e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0103-R\u0101m, Ay, 28-1197.conllu": {
+   "bytes": 45411,
+   "sha256": "a04546e9ccbca72ebebc30aa9383ad2c87c2894885be00e08ea824933a653e2b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0104-R\u0101m, Ay, 29-1198.conllu": {
+   "bytes": 65568,
+   "sha256": "d387947dff61f65c65e7ae8bae48e13997f1f99c9637a167c3ff6e914a410729"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0105-R\u0101m, Ay, 30-1199.conllu": {
+   "bytes": 54997,
+   "sha256": "647a37835809b8eb261d65b53dd79011e1cd50a8e850a4fe7c2b6818730fa18f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0106-R\u0101m, Ay, 31-1206.conllu": {
+   "bytes": 91720,
+   "sha256": "beef8252875873a1c3d59ac4664752902ef2857a050a7dd4948ea6d2e65c4fff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0107-R\u0101m, Ay, 32-1207.conllu": {
+   "bytes": 54468,
+   "sha256": "ea7821745ad969076b08e42c717465ee6fcd776ca142115005977eba6bb2ff9f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0108-R\u0101m, Ay, 33-1209.conllu": {
+   "bytes": 45013,
+   "sha256": "bccda8f7633dec9f5f74b973779bfed7b97432473ca690ce9bec01c69356b64c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0109-R\u0101m, Ay, 34-1210.conllu": {
+   "bytes": 83326,
+   "sha256": "17e664992806144221cb064cd5592c6c31f3917150d5775e99385579860b6445"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0110-R\u0101m, Ay, 35-1215.conllu": {
+   "bytes": 91760,
+   "sha256": "f9fe98dcffa4cc94ea63b22387c095c78334d866fe86f7a482cfa35abb8a47c3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0111-R\u0101m, Ay, 36-1216.conllu": {
+   "bytes": 39812,
+   "sha256": "68ffd91c3b0fb8aa8c099671e00902205fb22674a7a08dcf99535c5eb3efb542"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0112-R\u0101m, Ay, 37-1221.conllu": {
+   "bytes": 65222,
+   "sha256": "21b534df2ba1bdc2ab08ab941593016e940f4df6c004e28b36a5ab4ee8f3b379"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0113-R\u0101m, Ay, 38-1222.conllu": {
+   "bytes": 45919,
+   "sha256": "31af5e2284b18e3c5da4fcd176b73c2717ea0616f7a01815aa6220f6a41a7fe1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0114-R\u0101m, Ay, 39-1224.conllu": {
+   "bytes": 38210,
+   "sha256": "79b9d46689652fef68913d440221c456433feb4107acc773538690d7961a8738"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0115-R\u0101m, Ay, 40-1225.conllu": {
+   "bytes": 69081,
+   "sha256": "82646422fbe1481a80a8b93379ada69de2244954643e351a577c53cb29559a15"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0116-R\u0101m, Ay, 41-1226.conllu": {
+   "bytes": 72543,
+   "sha256": "0456943ea4cfeb05478bacb6f127a4e660a446109a80004c2bd89ee98197b193"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0117-R\u0101m, Ay, 42-1227.conllu": {
+   "bytes": 62138,
+   "sha256": "61455d8ee1b455aae418452a62e97eb6afe197eb36cb05d03b94312dbed89279"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0118-R\u0101m, Ay, 43-1228.conllu": {
+   "bytes": 34034,
+   "sha256": "bb4788d41fe373594585b021e3fde59e6c61b45d4d7015da14c4bab817623076"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0119-R\u0101m, Ay, 44-1230.conllu": {
+   "bytes": 61794,
+   "sha256": "a3d483d89f119557a6af49276d63b347b03b19de5cd365187b9feccd52ade3c4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0120-R\u0101m, Ay, 45-1231.conllu": {
+   "bytes": 54564,
+   "sha256": "be3a95f687136bc6b1d8da713bfff1aca8ea6684cbdffda2e218f930e7c05eb6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0121-R\u0101m, Ay, 46-1233.conllu": {
+   "bytes": 182537,
+   "sha256": "5069e4d5dab914b2c952e1c4f272922b25fb8ea07b0a2dd81260dff809fc8067"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0122-R\u0101m, Ay, 47-1236.conllu": {
+   "bytes": 74531,
+   "sha256": "9b53e7dc5d9579411ecc24d00f3db41fdb137124d132890831179ef854fb173f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0123-R\u0101m, Ay, 48-1244.conllu": {
+   "bytes": 80699,
+   "sha256": "ca20a5b0bae54760635f11b434f75c4bc076c6df12015072018e6b3e67b53532"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0124-R\u0101m, Ay, 49-1246.conllu": {
+   "bytes": 35843,
+   "sha256": "608aa8ebb42199b737e3c9c3c3e9acdfa528a2d3ff948ae8ec828b329cf2cdfd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0125-R\u0101m, Ay, 50-1247.conllu": {
+   "bytes": 49722,
+   "sha256": "5c69e9ac8a1fc2569f841b7de44dd10c62190e48c6108b06b7e9d5c1e1f42103"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0126-R\u0101m, Ay, 51-1248.conllu": {
+   "bytes": 68107,
+   "sha256": "a8f1fb653203592bc6cc5b16817ef8e3baf7e4d8357717f004f5a9c55925e91b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0127-R\u0101m, Ay, 52-1250.conllu": {
+   "bytes": 61938,
+   "sha256": "72a72db41dd80848930f2c2ad6eda2edc2f399cce39ca55ba3024bea6d0c986b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0128-R\u0101m, Ay, 53-1251.conllu": {
+   "bytes": 61935,
+   "sha256": "ef396b356df8699c2f3e37427744a172284d4f48347fd3d200a28be2b903b6a0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0129-R\u0101m, Ay, 54-1252.conllu": {
+   "bytes": 49240,
+   "sha256": "c48e96eba3284962d128282ff895d3403b002af46d22aa4c12a87325565648ce"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0130-R\u0101m, Ay, 55-1253.conllu": {
+   "bytes": 51882,
+   "sha256": "a3607f03b371ba36607b489c20a53effb5aa6265aa79578de378b4bb80f21bc8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0131-R\u0101m, Ay, 56-1254.conllu": {
+   "bytes": 39383,
+   "sha256": "9b450791ebf9014edbe256634f657681de5d28456ec8568979d849209f554cfa"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0132-R\u0101m, Ay, 57-1258.conllu": {
+   "bytes": 93696,
+   "sha256": "3547811e0fcb42db45269a67a9f414c116ec7023915e722ef3bcbf28b2d3586b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0133-R\u0101m, Ay, 58-1262.conllu": {
+   "bytes": 135710,
+   "sha256": "fadc238e1eaff7f6043fe7d6ea0098bdc1b61729ff6676dd69edffac3e417135"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0134-R\u0101m, Ay, 59-1277.conllu": {
+   "bytes": 30522,
+   "sha256": "6e300349b30ad499ba0577a8d6c06581133c2e451ffbe0bb29a7b9aebbe85a2e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0135-R\u0101m, Ay, 60-1290.conllu": {
+   "bytes": 45636,
+   "sha256": "4b9cb92edb00445b3f6c3d0349e322003545b6ac239b93a1b8e20afd1ac831de"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0136-R\u0101m, Ay, 61-1299.conllu": {
+   "bytes": 55570,
+   "sha256": "6c822e96125f38af4deb5020acd4d6a9b424f846e6212e9808ff2e7bdad3abdb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0137-R\u0101m, Ay, 62-1322.conllu": {
+   "bytes": 36492,
+   "sha256": "30b7e00b27c1390c206a23361fe5741b6edd92221c9119248a92150b0a60c1b5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0138-R\u0101m, Ay, 63-1323.conllu": {
+   "bytes": 43692,
+   "sha256": "fd9315c3fd57db59bb8d565cdacbaa9cecb89cf82e77b1765dd9b059f2dcb81d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0139-R\u0101m, Ay, 64-1324.conllu": {
+   "bytes": 57758,
+   "sha256": "26027240fdc2b72f41764c34ee1abbaec94d62f49815c25b238699a838c37677"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0140-R\u0101m, Ay, 65-1337.conllu": {
+   "bytes": 65589,
+   "sha256": "57f82407e1eccb1e1098434eb0ce57574d21db8aac4439ec350e54f03b62eb00"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0141-R\u0101m, Ay, 66-1338.conllu": {
+   "bytes": 110130,
+   "sha256": "cd625f50a5512e10479f9a4293f159cb7a7a03053dea744b38c008e368e32b44"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0142-R\u0101m, Ay, 67-1350.conllu": {
+   "bytes": 37208,
+   "sha256": "3a59d117645ec68fadcd45017c676b037e212671a27e69aa081787f2af22fb33"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0143-R\u0101m, Ay, 68-1351.conllu": {
+   "bytes": 67888,
+   "sha256": "3446dfcf12dd58f8d557ca95d9e7aea411818a3c056fbe3f962fdd1b6faed011"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0144-R\u0101m, Ay, 69-1352.conllu": {
+   "bytes": 81171,
+   "sha256": "bd916ce770d71f73897ec7e507289e3edcef1be7a89a1c8cc4acb372f5fdd6a9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0145-R\u0101m, Ay, 70-1355.conllu": {
+   "bytes": 52274,
+   "sha256": "647ad4d29c0d4915635569a0e5bc504ffae3cde04a7fbd87dbc08db5dcac0810"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0146-R\u0101m, Ay, 71-1356.conllu": {
+   "bytes": 56757,
+   "sha256": "e4e1d3bb06c00766af63cc08057a0fffc0a6639412d1feb978c963b0e350680c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0147-R\u0101m, Ay, 72-1357.conllu": {
+   "bytes": 58318,
+   "sha256": "e9d0de18492975d885ef1618a2ea79aa0c485871aa992e751a65e33e915984fc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0148-R\u0101m, Ay, 73-1358.conllu": {
+   "bytes": 40596,
+   "sha256": "e39865cc1f572398b97aa1989ab2a94ac7881a38f3b702da7283ef08c8944696"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0149-R\u0101m, Ay, 74-1359.conllu": {
+   "bytes": 47438,
+   "sha256": "813fe30fe09dad98ae7eb8d937f6238be9c2fb3b9859182b53b767ada6c137c7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0150-R\u0101m, Ay, 75-1360.conllu": {
+   "bytes": 32228,
+   "sha256": "a49a62fa86336908122dc4525cd9d943780b181cbc57ad5314afbe28aeefc523"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0151-R\u0101m, Ay, 76-1365.conllu": {
+   "bytes": 72439,
+   "sha256": "9a48fa23ef330ab372f430befc1b197c0b55f4183c3a9d891bcd815089c96fe2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0152-R\u0101m, Ay, 77-1366.conllu": {
+   "bytes": 50285,
+   "sha256": "237f4ce30ece1271d77e41ec9042a134c50f24d91774be04ef888c89f6a6a9d3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0153-R\u0101m, Ay, 78-1367.conllu": {
+   "bytes": 39610,
+   "sha256": "bb1198f176cfca3a273a80361205e553a4c1bc8a7438cba59a405b44d5f9e373"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0154-R\u0101m, Ay, 79-1368.conllu": {
+   "bytes": 48238,
+   "sha256": "7cec13955751e8018ca0599fb07f9180d379115c7b84d6cdadb4a660b021e2e2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0155-R\u0101m, Ay, 80-1369.conllu": {
+   "bytes": 56587,
+   "sha256": "7e0829d41c6b68f242f34810fdac7bfa0e38c0944c6f69b5d9b4685089fe0823"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0156-R\u0101m, Ay, 81-1378.conllu": {
+   "bytes": 54460,
+   "sha256": "9b55888438d24b5116ee6e32d48869a06fc74afd8078e46921118fce9fbb4bb8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0157-R\u0101m, Ay, 82-1382.conllu": {
+   "bytes": 60005,
+   "sha256": "50aab2e096b0c3074dc2dcaeb92f04ec65615b1d93c19eef092d5ad4ec8d2d95"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0158-R\u0101m, Ay, 83-1383.conllu": {
+   "bytes": 50248,
+   "sha256": "228e54cea471d5a09d013d99c27fa6a649e565c843a7e4288838a8fd1bda2cc9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0159-R\u0101m, Ay, 84-1392.conllu": {
+   "bytes": 53977,
+   "sha256": "bdb2323897658f647de7c325a2b50a0d550f3a977011f80d6c682a849f8f3d58"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0160-R\u0101m, Ay, 85-1393.conllu": {
+   "bytes": 179712,
+   "sha256": "1ac22c9549a7273277aef30a77264d7b654b9735f1dbe6c2a1dab6cc2dc953bc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0161-R\u0101m, Ay, 86-1394.conllu": {
+   "bytes": 84949,
+   "sha256": "c264c5d56daefcc4661ab026ae6555eb6edc0a97aeb2084fcdcf1b3f40e7bf7f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0162-R\u0101m, Ay, 87-1395.conllu": {
+   "bytes": 60952,
+   "sha256": "bcae186e9da0b724ee109508446ebd4d39151732e4f4403ec96995ec715e8e95"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0163-R\u0101m, Ay, 88-1397.conllu": {
+   "bytes": 63173,
+   "sha256": "8f1d1db7c3fc1039d4bd7eb5a5e9af012c3cc46fd1a03b2ea7e39a83efb99992"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0164-R\u0101m, Ay, 89-1398.conllu": {
+   "bytes": 43728,
+   "sha256": "4213853991da99eb18f273428b4611feea8b9b4fd4db37f5f68350c96219d6f3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0165-R\u0101m, Ay, 90-1407.conllu": {
+   "bytes": 58887,
+   "sha256": "aead356c58227c65df9fbec3879c93d88929daa13f817a3b0d67c7f9d8e6d2b1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0166-R\u0101m, Ay, 91-1410.conllu": {
+   "bytes": 39598,
+   "sha256": "3f41665c1f9d6208d17f6b6a0fd6c4fb7563d873fe457e1558bbb9997fb3e08b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0167-R\u0101m, Ay, 92-1411.conllu": {
+   "bytes": 34637,
+   "sha256": "258ebf9eeda89e63b453302701b9091748c5dba5e23f47aa5085177019d0fe6a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0168-R\u0101m, Ay, 93-1423.conllu": {
+   "bytes": 93693,
+   "sha256": "b6c3bbb105c4fd797b410b741a4ddd9187aebc622d60bf0d71297480e10fe14a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0169-R\u0101m, Ay, 94-1430.conllu": {
+   "bytes": 132420,
+   "sha256": "c7b77703d2d39f5d53d4bf5ceb279d43a1df1ff68290fc15da2a27d8cd7f1aa3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0170-R\u0101m, Ay, 95-1440.conllu": {
+   "bytes": 111811,
+   "sha256": "b56edba3768e74277addcf9db5039281a59efffd8aa5c7b0b04a6a99ef8b002d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0171-R\u0101m, Ay, 96-1446.conllu": {
+   "bytes": 70547,
+   "sha256": "8900887fc79c69af16741af2b2852866e46a244044762097cc1d59f2a15f4e3a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0172-R\u0101m, Ay, 97-1458.conllu": {
+   "bytes": 55772,
+   "sha256": "a19fdfdd80d1030cbec4c3f4c68f5c69b353ef2a6d10cadb86d3fec36f13207e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0173-R\u0101m, Ay, 98-1466.conllu": {
+   "bytes": 166478,
+   "sha256": "5035a82c639c713651e0182c1e347e0b0b690d19c1c48378589598aea2288989"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0174-R\u0101m, Ay, 99-1475.conllu": {
+   "bytes": 46596,
+   "sha256": "3bbe74d41bab31312f0a0c3ac2c33f930486de9a289ba15b62c46b5ead8c07c1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0175-R\u0101m, Ay, 100-1476.conllu": {
+   "bytes": 39217,
+   "sha256": "4334584eeff6ca466093e1b1ef7b71cf39349d0f38add6a17d116f045012d6ad"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0176-R\u0101m, Ay, 101-1477.conllu": {
+   "bytes": 74466,
+   "sha256": "acc715d06d6cf3de3905a2b30c6552742fc12f5e697ad235af46823f27d5b888"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0177-R\u0101m, Ay, 102-1480.conllu": {
+   "bytes": 74804,
+   "sha256": "6926dba9836a7c14149403b34132ce32d133ee8f9eeb5802deace5b0a9014c1b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0178-R\u0101m, Ay, 103-1481.conllu": {
+   "bytes": 71228,
+   "sha256": "95765b68a2edcfe562db314a1f7f980936b6d96aab4e098faed2dc78ae596e77"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0179-R\u0101m, Ay, 104-1482.conllu": {
+   "bytes": 60497,
+   "sha256": "16c087250b7f34d7a430ce0718c9bf5f453435c160492c3881f67998ca342694"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0180-R\u0101m, Ay, 105-1483.conllu": {
+   "bytes": 52682,
+   "sha256": "11341a738707332d8a0b9241fadc6aeb5743be2e7c2a64e6233a26f6d98e09fd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0181-R\u0101m, Ay, 106-1484.conllu": {
+   "bytes": 55804,
+   "sha256": "1d5479c8b74ce1070577565665d052ccaa1e56b5f466512d1bba7219ef71a9ff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0182-R\u0101m, Ay, 107-1485.conllu": {
+   "bytes": 51360,
+   "sha256": "bee6d272960d5be1e599578e8416a594c1d8a3640140cfd385e08c46d3d07a3d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0183-R\u0101m, Ay, 108-1486.conllu": {
+   "bytes": 59361,
+   "sha256": "3b4c56f6bc6de906b0305a5ac38676954ef26e956dde8d0e605a61de4c0db040"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0184-R\u0101m, Ay, 109-1487.conllu": {
+   "bytes": 63326,
+   "sha256": "9e2541a3652da070dbbc302c5081d74b221ea721d263d9f8e86ace5c726591b1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0185-R\u0101m, Ay, 110-1488.conllu": {
+   "bytes": 122054,
+   "sha256": "5a2e8f20df3aefe55c24d475f4ddd0501bd6ccc9fe2b57d5cbfe6e7611269590"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0186-R\u0101m, Ay, 111-1508.conllu": {
+   "bytes": 45431,
+   "sha256": "478cc23d57c9bdf4b457076e866ef8871f27a0575e41e83328e7a1b11fd419e2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0187-R\u0101m, \u0100r, 1-1510.conllu": {
+   "bytes": 51156,
+   "sha256": "6990c7f3dd2b89b5eba382aea5191cebbfbe3c20c3f9d40fa1ee87377569c194"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0188-R\u0101m, \u0100r, 2-1511.conllu": {
+   "bytes": 61073,
+   "sha256": "10e3903893f7751e97709c10853f2f69800504502b1ef0f80c12505a1aaf8c91"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0189-R\u0101m, \u0100r, 3-1512.conllu": {
+   "bytes": 64765,
+   "sha256": "57d96971f184a011304cde4dff834bb94752a77cc230baf71d54fa85ea687b90"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0190-R\u0101m, \u0100r, 4-1528.conllu": {
+   "bytes": 82170,
+   "sha256": "6842b13ff414b63c517c6d0b4589b0a4b8c9406fcd90ecb577439289cfbf8663"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0191-R\u0101m, \u0100r, 5-1532.conllu": {
+   "bytes": 51565,
+   "sha256": "e947308562a1861a75cb5bd8ec7b0c0297c4f353d4fca4d10a1f7469222dcfe4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0192-R\u0101m, \u0100r, 6-1538.conllu": {
+   "bytes": 52388,
+   "sha256": "81a7597c09b28ea071e0aeeeab937710d79cc3569ef8004630dd357d04ed4d33"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0193-R\u0101m, \u0100r, 7-1539.conllu": {
+   "bytes": 41642,
+   "sha256": "a3f4816b8e0e1b0b7feebfca103b17bf0f73bb3db5132f759fb3c4c42c9bb963"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0194-R\u0101m, \u0100r, 8-1545.conllu": {
+   "bytes": 68261,
+   "sha256": "bfef311882324f95fad77db833f507696ae471014122b757ef22f5705a6ff409"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0195-R\u0101m, \u0100r, 9-1546.conllu": {
+   "bytes": 52232,
+   "sha256": "b75e32c68a585d8f799866cfdd21d46e09ea98ba2959a454c8ae5f1b8140231e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0196-R\u0101m, \u0100r, 10-1550.conllu": {
+   "bytes": 209009,
+   "sha256": "a19d7357a0a04e19877f121f46fb8e8906494d5cc594337bd57ab27a2836c619"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0197-R\u0101m, \u0100r, 11-1560.conllu": {
+   "bytes": 78456,
+   "sha256": "60475517ee71f74ed56d31f35b2546afaf2585fefc81a9737f15eb34bb6ea182"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0198-R\u0101m, \u0100r, 12-1568.conllu": {
+   "bytes": 57659,
+   "sha256": "cd604de8d80113d64bd7d3456ed3504adfcf4724fc8e10b658538193efbfc8ab"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0199-R\u0101m, \u0100r, 13-1572.conllu": {
+   "bytes": 83650,
+   "sha256": "2201cc81b97c49349693dd21c88b1ee88ab3f32d82a42153859f0e2c97a42154"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0200-R\u0101m, \u0100r, 14-1585.conllu": {
+   "bytes": 66696,
+   "sha256": "f65098f780c5d593a0a63e20e119e67dab65eccc90a3963d7d5b1c26cb5c5c81"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0201-R\u0101m, \u0100r, 15-1588.conllu": {
+   "bytes": 87767,
+   "sha256": "7a2a4740e82e2ea813d13bbd542e5994794894baf03df7228705528b474d2468"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0202-R\u0101m, \u0100r, 16-1606.conllu": {
+   "bytes": 58181,
+   "sha256": "2162fa99a03ba0d8331634273160c69bfb0a279e9d4abe582873b6f27a782141"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0203-R\u0101m, \u0100r, 17-1607.conllu": {
+   "bytes": 59036,
+   "sha256": "7effa23486e03e0acf43dbfe4d7ebcfa5483632af689d6f4dcc67c7824daee52"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0204-R\u0101m, \u0100r, 18-1608.conllu": {
+   "bytes": 47217,
+   "sha256": "52e5bb42c6d3aa86ed4f23d070e6d5a71f3f01e157a87adf719dff87ebff0aa5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0205-R\u0101m, \u0100r, 19-1611.conllu": {
+   "bytes": 59533,
+   "sha256": "7b8950ee9740b4f2f208736904cbb640ad54656ae7374602ea4578d26df5f42f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0206-R\u0101m, \u0100r, 20-1612.conllu": {
+   "bytes": 45847,
+   "sha256": "7db764c39755c658c372c6f3afb218531b6c701de8cfde462d91408ff15c97e3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0207-R\u0101m, \u0100r, 21-1617.conllu": {
+   "bytes": 59552,
+   "sha256": "10aed954814cfdf3d91c1edf5e9ad892f2d13e0af426f2e40e2de11cec39e932"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0208-R\u0101m, \u0100r, 22-1618.conllu": {
+   "bytes": 76737,
+   "sha256": "bb63cf65e455330b75ead04708271816954e20785f3894d960664c265bec2652"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0209-R\u0101m, \u0100r, 23-1619.conllu": {
+   "bytes": 60101,
+   "sha256": "9348be6db36a51da74515bef84afce3b6499fc480781e27a2206d2a0a0af08c1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0210-R\u0101m, \u0100r, 24-1627.conllu": {
+   "bytes": 63418,
+   "sha256": "c1eb1fa624f3ab237085c3d5020091379207c7140b7109ab4a7aaa2b6a3b7658"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0211-R\u0101m, \u0100r, 25-1632.conllu": {
+   "bytes": 56808,
+   "sha256": "c8d0a47376aaa31d32ca37e81b697e9c4d02a4fd5d8d7312f206ac8007e70f85"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0212-R\u0101m, \u0100r, 26-1642.conllu": {
+   "bytes": 42157,
+   "sha256": "bbf75e31b1893562c3fe7bacdb04a3121892d74a16d95545085fc86c7a059c5b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0213-R\u0101m, \u0100r, 27-1643.conllu": {
+   "bytes": 68807,
+   "sha256": "13e51dea2e7743a3e370fc3a9a6b03e58be819b51d85229c4dd139783cf4f7d3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0214-R\u0101m, \u0100r, 28-1649.conllu": {
+   "bytes": 59539,
+   "sha256": "a5f233dbdf0bf43e6f58f07009723af9caa248c7b739a75e375f6d1f81846b6e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0215-R\u0101m, \u0100r, 29-1659.conllu": {
+   "bytes": 73622,
+   "sha256": "7cefcc57fe8f870db892266979be7b634d366ebfed6cfb98d313c698c00173e0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0216-R\u0101m, \u0100r, 30-1667.conllu": {
+   "bytes": 47642,
+   "sha256": "85441b8bbd7627c18dc92fcea40b43e2aef5851aafadc032e981cbd20de9649d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0217-R\u0101m, \u0100r, 31-1682.conllu": {
+   "bytes": 50761,
+   "sha256": "2c04b37e3ead905a8d811e610ed345d75d4b115c153bde4ad517c6e93ed0d514"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0218-R\u0101m, \u0100r, 32-1685.conllu": {
+   "bytes": 53183,
+   "sha256": "196aadfc3d2a396c478f8a8904034a7379b9b2d3a3a6fafcc83d68f68b8967a3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0219-R\u0101m, \u0100r, 33-1691.conllu": {
+   "bytes": 80009,
+   "sha256": "ac3a45372c37a968503249d18435935d1875f979e61bc7a759b664e67be5a94c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0220-R\u0101m, \u0100r, 34-1694.conllu": {
+   "bytes": 47153,
+   "sha256": "186df698900eb69830aaf5701f54054809318ab7ebb1eb7a8bb4b851e3436d53"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0221-R\u0101m, \u0100r, 35-1699.conllu": {
+   "bytes": 54959,
+   "sha256": "a8a113011181a9c297b6e9d6478e9d2aa5a0b9aa0aaafb9d52c6f82312c453bd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0222-R\u0101m, \u0100r, 36-1702.conllu": {
+   "bytes": 65265,
+   "sha256": "743ca25fb338e3b440b5796dee5e4f66ea69ee1db7203cfb3b26f2e9fcf51bcd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0223-R\u0101m, \u0100r, 37-1710.conllu": {
+   "bytes": 45765,
+   "sha256": "bd51288b012180480e8296f42e3d21f6864ada3d742a4519ecc396f6d998073d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0224-R\u0101m, \u0100r, 38-1713.conllu": {
+   "bytes": 48727,
+   "sha256": "3e5b105d34cdd2e52c23264fa963cf76b8cbdbe97a65b0f891534542e1bf5e1a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0225-R\u0101m, \u0100r, 39-1717.conllu": {
+   "bytes": 43054,
+   "sha256": "46de9384c5c40fd6cb82c323bf5b9c63fd0affbb43b223426103cca48ec73996"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0226-R\u0101m, \u0100r, 40-1718.conllu": {
+   "bytes": 67640,
+   "sha256": "fd1ac0e2a843ca4a04386a1e17334e9b55727a04418cddafcd61f0802b449326"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0227-R\u0101m, \u0100r, 41-1720.conllu": {
+   "bytes": 109384,
+   "sha256": "fe10afa2265f32a2a23583d6e2c3ca6c5a17a538e026d472667143e4bfcba1bb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0228-R\u0101m, \u0100r, 42-1721.conllu": {
+   "bytes": 50181,
+   "sha256": "4c5a9f07736c94f04a94ab7ba81b076aa473aafec28980cde05eabfeedbeba18"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0229-R\u0101m, \u0100r, 43-1725.conllu": {
+   "bytes": 82359,
+   "sha256": "aebf25548b78f7233cf77d1eebf05156534e0748e208de4da032c9790350ef7d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0230-R\u0101m, \u0100r, 44-1727.conllu": {
+   "bytes": 79694,
+   "sha256": "ea4ef360ba0b3977c323ee095696d6df7990bdbc0f5cf23d71c1cd7e395c4d63"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0231-R\u0101m, \u0100r, 45-1731.conllu": {
+   "bytes": 104492,
+   "sha256": "35fa67e6b4950301df63e29f2ebf9e9d8496034ce24f0244a98fdacc99ba1d11"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0232-R\u0101m, \u0100r, 46-1732.conllu": {
+   "bytes": 47765,
+   "sha256": "55f958b47e85da4f15c6a87751574e3c19961e7c8ba1796aeff1116c059056c6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0233-R\u0101m, \u0100r, 47-1736.conllu": {
+   "bytes": 77240,
+   "sha256": "742de3605e52fae9246d859d7397037e40bdf29b2000819d7004682eca9ba892"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0234-R\u0101m, \u0100r, 48-1737.conllu": {
+   "bytes": 60608,
+   "sha256": "4e64472cfc15127ad918bbcb75f5dc8fd726f92cfb0315008983ea70aa1a3191"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0235-R\u0101m, \u0100r, 49-1739.conllu": {
+   "bytes": 87482,
+   "sha256": "0f0ffbabb8aadf6b299ab08eb2012fbe754775277165dae1f1cfde0d353542ed"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0236-R\u0101m, \u0100r, 50-1744.conllu": {
+   "bytes": 92905,
+   "sha256": "cd9fd55cb82438a9d37d52cc14155e2d3967839f78e2ef445e070207c0525ce9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0237-R\u0101m, \u0100r, 51-1745.conllu": {
+   "bytes": 57008,
+   "sha256": "7402e2d325973d9f719620be3ffb4cb102e7e05a90a28f864e2b51df4641f560"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0238-R\u0101m, \u0100r, 52-1746.conllu": {
+   "bytes": 65834,
+   "sha256": "00eac01c8238fab82160a6ea6624d6b7b38f6100fde50dd500955e8665aebc7f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0239-R\u0101m, \u0100r, 53-1747.conllu": {
+   "bytes": 73342,
+   "sha256": "20af877d63df93ff6bb0782420e7404e4493fbe517ef718dee69dede9534ab88"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0240-R\u0101m, \u0100r, 54-1749.conllu": {
+   "bytes": 72364,
+   "sha256": "747ba78d7f854445fa76b354f1145158bd39b097ce4161e766f156c065128651"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0241-R\u0101m, \u0100r, 55-1751.conllu": {
+   "bytes": 44721,
+   "sha256": "4859bbb529f9c065d7370057235d8a541a057bcf1062c5205f2154d8714330f7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0242-R\u0101m, \u0100r, 56-1752.conllu": {
+   "bytes": 43172,
+   "sha256": "450c65452f1ceebc59064b94d118ab9f25080608d5e2175e5129fcda2729f98d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0243-R\u0101m, \u0100r, 57-1753.conllu": {
+   "bytes": 58398,
+   "sha256": "2da8f917eb892ddbaeb06bf87798e6f190419fdb5d37587fc556096a5182263e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0244-R\u0101m, \u0100r, 58-1755.conllu": {
+   "bytes": 76011,
+   "sha256": "ef4922c2495c7c2f28da0d5a8017ea07cffde2e542c7909ccbfa506a06d7c0a1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0245-R\u0101m, \u0100r, 59-1761.conllu": {
+   "bytes": 66030,
+   "sha256": "509f8172b0bbc04aeb8b3c22eaae0c78a3318e85d4efe35df626e1fc6a3be231"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0246-R\u0101m, \u0100r, 60-1766.conllu": {
+   "bytes": 113669,
+   "sha256": "a691ae14a11bf9bce440f05b7180b48f1636d4cb6fbe6cb18ba799c0a52a5690"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0247-R\u0101m, \u0100r, 61-1769.conllu": {
+   "bytes": 36221,
+   "sha256": "36ab22276e7394cd7139c3c76a0d0a6e15b9c139732f82c8fa99d4f0504f94f8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0248-R\u0101m, \u0100r, 62-1770.conllu": {
+   "bytes": 43296,
+   "sha256": "166a73375c48e0d6a2acc5208619070461cbfee0a6897832667b0dc7918f8d46"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0249-R\u0101m, \u0100r, 63-1774.conllu": {
+   "bytes": 59007,
+   "sha256": "7b76b9741c88836b98cf2dae4d04a50087cd0081f49c3da0de2d6206205c9aa8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0250-R\u0101m, \u0100r, 64-1776.conllu": {
+   "bytes": 77156,
+   "sha256": "8960df28e8e45a0084dbd5046734ad1cbf426912948d375341c3a92e04bbbe4d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0251-R\u0101m, \u0100r, 65-1778.conllu": {
+   "bytes": 73114,
+   "sha256": "ae4420e8dc68c577a750887aa9962b79650d160218efb07599283fd02a0608ec"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0252-R\u0101m, \u0100r, 66-1779.conllu": {
+   "bytes": 34805,
+   "sha256": "eef0ceb2c68741d6e3a335c4165af774f282313d62ab757eca155cece1c3ccfc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0253-R\u0101m, \u0100r, 67-1781.conllu": {
+   "bytes": 68720,
+   "sha256": "f1ebfc55123b5681099aa8487d2e0966d89e55960f338277173c24a8f7536879"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0254-R\u0101m, \u0100r, 68-1802.conllu": {
+   "bytes": 47463,
+   "sha256": "f955b77f1efbffd34db90bf55d746fbf2e86ec0d6372141aa633fbf5f2882b4a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0255-R\u0101m, \u0100r, 69-1807.conllu": {
+   "bytes": 78050,
+   "sha256": "f29bb08234dd65bc07d356c79c8fde1abcfe3ceb0191a0fc55c53bc52e1614e1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0256-R\u0101m, \u0100r, 70-1809.conllu": {
+   "bytes": 57772,
+   "sha256": "77e836bab4c1ead0537452371dc8455f09387398190c5d5d127fac8735843d36"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0257-R\u0101m, \u0100r, 71-1812.conllu": {
+   "bytes": 58730,
+   "sha256": "ac99022a481f59fab9c090df1a480dea078d3e14bf906759ff8a5b6abb87185a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0258-R\u0101m, Ki, 1-1814.conllu": {
+   "bytes": 103598,
+   "sha256": "5d2f00c6f4b9b228a3b3a671542a8d4703e46806b12d8e8638027f5575f6c5bf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0259-R\u0101m, Ki, 2-1815.conllu": {
+   "bytes": 59776,
+   "sha256": "066908a5cfce6992768c66ac36f9dd2ca074267557ff2f9c61ca9d2d39473461"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0260-R\u0101m, Ki, 3-1816.conllu": {
+   "bytes": 52271,
+   "sha256": "fb715a2d70b1301650476613179e79e7cff486e3d090750b46e58d00c65e69a9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0261-R\u0101m, Ki, 4-1817.conllu": {
+   "bytes": 58131,
+   "sha256": "99eff727d0c14024f0a21c309cc570606cd8a927909cffdca50201628beae77e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0262-R\u0101m, Ki, 5-1818.conllu": {
+   "bytes": 39372,
+   "sha256": "c47843c54eb86eba906f4cb18f07ec6453229bd7b1e207d0535236c6985b2bf8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0263-R\u0101m, Ki, 6-1819.conllu": {
+   "bytes": 47685,
+   "sha256": "94a45d787ebdf934fe2c5dffe4abe009cc40bf3945ec6879c36bf32765bf00a3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0264-R\u0101m, Ki, 7-1820.conllu": {
+   "bytes": 48986,
+   "sha256": "5c9aab9f825a4154f603e21aefdf668d358e74814609406e054cd63448a7ae40"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0265-R\u0101m, Ki, 8-1821.conllu": {
+   "bytes": 97482,
+   "sha256": "9b376ca9bccf170187d2135ecf49831832e54bb81a78de1eca01a5c25ebe2fab"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0266-R\u0101m, Ki, 9-1822.conllu": {
+   "bytes": 53066,
+   "sha256": "9d97e80fbe384a7cbf65c3d583e81f6a16feb985fffda7fe2ea05150b72eabfd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0267-R\u0101m, Ki, 10-1823.conllu": {
+   "bytes": 65222,
+   "sha256": "0f72274db9ed82dc1e438a170d8dde9920eb929097944d2615837fbf62a148ac"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0268-R\u0101m, Ki, 11-1824.conllu": {
+   "bytes": 113428,
+   "sha256": "aabb346a44ff2ea2594e9a576a1bb445ffb430e3acbb0bc51311b84d2f860a7d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0269-R\u0101m, Ki, 12-1826.conllu": {
+   "bytes": 81894,
+   "sha256": "63a3451c7675d1ed34cfeb1a15207243a52c971c3defcad3466afe15c46273d6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0270-R\u0101m, Ki, 13-1828.conllu": {
+   "bytes": 57651,
+   "sha256": "f9a1894f9cfa1d37e7492e37c4bcbb88899e74f2a0ac25685963642011df8f83"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0271-R\u0101m, Ki, 14-1829.conllu": {
+   "bytes": 46643,
+   "sha256": "3940b06c9a89847dca9e90c5853cb006f39ca29df01d29e6d99fff9ef8bf905d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0272-R\u0101m, Ki, 15-1832.conllu": {
+   "bytes": 49024,
+   "sha256": "21af7206641fbd7c4efe91b38345d3e3593f8ba4a674e36946cb68b34fe3fd59"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0273-R\u0101m, Ki, 16-1833.conllu": {
+   "bytes": 56965,
+   "sha256": "68865a44399393aa2c5987d1efe4b0b1cda5505aa347dde14a2c48beab25ef16"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0274-R\u0101m, Ki, 17-1834.conllu": {
+   "bytes": 100287,
+   "sha256": "7acf32224cd51e6a04f3a9d875c88a4b7240ad4071847d1dd8c8cae17f9c3c8b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0275-R\u0101m, Ki, 18-1836.conllu": {
+   "bytes": 126594,
+   "sha256": "eb73b1990127bad36dc5d7758e0b35fcd8f34719c3a42134eca08ff2815f3d19"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0276-R\u0101m, Ki, 19-1839.conllu": {
+   "bytes": 60442,
+   "sha256": "0d7527f6d41d5ca47299b0668e4fdb453a98710c14ea7c4730aca2369533ab0d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0277-R\u0101m, Ki, 20-1842.conllu": {
+   "bytes": 57460,
+   "sha256": "aef2b33a9e09647cf89cb9424b0bd1f882c50b54265e1828abbb29edfd80cd72"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0278-R\u0101m, Ki, 21-1843.conllu": {
+   "bytes": 35510,
+   "sha256": "13889df7f7628725ba0316387216ab14234589179ea4f2dd9532aaaaf4b6b43c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0279-R\u0101m, Ki, 22-1853.conllu": {
+   "bytes": 59001,
+   "sha256": "2a3d447cae907a849c0a9a5dc198f448e90ff046baafcb4d77821dbdab924335"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0280-R\u0101m, Ki, 23-1860.conllu": {
+   "bytes": 65299,
+   "sha256": "521b9b53e316bec238509c01d91c0d208a4358634706b008624a71f68ecec700"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0281-R\u0101m, Ki, 24-1861.conllu": {
+   "bytes": 91640,
+   "sha256": "48fb4e05c0c95c5a8e3da7f3dc41e9ed84c9a4877e03381cb92f627a6dc6d1bb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0282-R\u0101m, Ki, 25-1862.conllu": {
+   "bytes": 78177,
+   "sha256": "8ef159ab6dea4b5db003eae9c09018db226915a4c2008bf7735af78584b15421"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0283-R\u0101m, Ki, 26-1865.conllu": {
+   "bytes": 52342,
+   "sha256": "836108d4f48c09549244adaa809038866a2ed4cf1969d95f6373bc27a1c21b4f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0284-R\u0101m, Ki, 27-1866.conllu": {
+   "bytes": 110894,
+   "sha256": "86e54e6a2eff5453e064e9e01ba742c53d413fcbe03005aecf39d5350d9d6875"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0285-R\u0101m, Ki, 28-1869.conllu": {
+   "bytes": 72916,
+   "sha256": "f471b57ee14c294c8a87610d19a58b1759b49c7da1fc3c5b20f0021bff15aab8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0286-R\u0101m, Ki, 29-1870.conllu": {
+   "bytes": 113847,
+   "sha256": "50079204220202949bcd8b1a3b8a8169991de1d23f460de26e110ebc482419da"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0287-R\u0101m, Ki, 30-1873.conllu": {
+   "bytes": 96181,
+   "sha256": "055f9a2c1657dab2e142ebf11ea4e5ef7e58f4aa5417b6d401ff4a4d61654c0b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0288-R\u0101m, Ki, 31-1875.conllu": {
+   "bytes": 47784,
+   "sha256": "bc7cf32e393a1faaeb4a98179562dba66131d068b21c453efa2030a77e6edc2d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0289-R\u0101m, Ki, 32-1876.conllu": {
+   "bytes": 58703,
+   "sha256": "252d46e3b7cfc7bddbc263887393875446b45f02e7c939529b5659f62d9bf128"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0290-R\u0101m, Ki, 33-1879.conllu": {
+   "bytes": 41640,
+   "sha256": "437814803e5cb3dceaab213c1d4fffc39b532161d005c33c85f9ff4adc2a2d3c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0291-R\u0101m, Ki, 34-1883.conllu": {
+   "bytes": 52285,
+   "sha256": "31fa73523f0b037a41dedda2be5edc4736dad16eb916b5da2f7715c179ec0b29"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0292-R\u0101m, Ki, 35-1884.conllu": {
+   "bytes": 43304,
+   "sha256": "c1cd53d6c7dd796d699f1a30e8877a2a784ace9c4ef3625baffcb2867a9e3ec7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0293-R\u0101m, Ki, 36-1891.conllu": {
+   "bytes": 77893,
+   "sha256": "a5a5253531bb093b339075c6ade7c2dc04d8f3d6c13021da6e4dea8601e9181a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0294-R\u0101m, Ki, 37-1895.conllu": {
+   "bytes": 73904,
+   "sha256": "fe7c12290be4c0b55bfb8f12d1314e8d263562eb119b04d331dc66047c8ab53f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0295-R\u0101m, Ki, 38-1899.conllu": {
+   "bytes": 77405,
+   "sha256": "b7868823d47e8a300df6c2bd0d2beaedbea04874de029f6f37263484fff6bc1f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0296-R\u0101m, Ki, 39-1901.conllu": {
+   "bytes": 131794,
+   "sha256": "6b9cf1aea64a1f9fdea2d40dd8f45e3f0056210d86e8f0f472e8a3ef9440ef78"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0297-R\u0101m, Ki, 40-1906.conllu": {
+   "bytes": 101504,
+   "sha256": "f29cc3ade433cc78ca28ee6109f148df5cf252dd37939b87f0b55938c738ad94"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0298-R\u0101m, Ki, 41-1912.conllu": {
+   "bytes": 109488,
+   "sha256": "b937e7d9cb2ec1a38ef70636ec5c265c7872de3b93424ebd985847a2d24bd5c2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0299-R\u0101m, Ki, 42-1918.conllu": {
+   "bytes": 130800,
+   "sha256": "fbf27c482b3a7f3627ba010ecea3feea5fb031fd9d8e5d1da6c05e0ed8be9651"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0300-R\u0101m, Ki, 43-1932.conllu": {
+   "bytes": 37070,
+   "sha256": "f33419170050ff00065c379d7bdf1a05fe9885d3493cc7fee9775e9511c9a9f2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0301-R\u0101m, Ki, 44-1933.conllu": {
+   "bytes": 30191,
+   "sha256": "f70ca9c6bf665c71fe5034ef3ef3bed93e8c18cff132ab6f546d5499c954bca7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0302-R\u0101m, Ki, 45-1940.conllu": {
+   "bytes": 38277,
+   "sha256": "357fa3dbd058b4a8c5d3d454c4214ea5071ecdae16e35d51b7c54ad2326245f6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0303-R\u0101m, Ki, 46-1941.conllu": {
+   "bytes": 30717,
+   "sha256": "b0dfb43462b46ce3468286d8d17fd1a80aaa02c7b3087e010b06b988a3bd8a56"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0304-R\u0101m, Ki, 47-1947.conllu": {
+   "bytes": 48451,
+   "sha256": "e3a67ffce3f6cc804c8eb0643a06b1d357b76c34e9c8d4a25aa531a69fe6f7b7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0305-R\u0101m, Ki, 48-1956.conllu": {
+   "bytes": 45396,
+   "sha256": "3c042844ca473fd588a4ab8be96749e1dacfd6ea12d2cf4bcd2bb31547ecdd7e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0306-R\u0101m, Ki, 49-1957.conllu": {
+   "bytes": 68095,
+   "sha256": "c7d6d2a6d4138a962e8fe61298a13c2e72418ee5b8544acded8e60ae4cfdd8f7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0307-R\u0101m, Ki, 50-1962.conllu": {
+   "bytes": 41292,
+   "sha256": "45839ca05345505d78368dd35252c5fd777eb10f4793285b7d4f76ae7a3b011c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0308-R\u0101m, Ki, 51-1965.conllu": {
+   "bytes": 40025,
+   "sha256": "588af73f94d42f9b80c35b297e5a59e4e1dce512c927f8418ad507c37d2f9e49"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0309-R\u0101m, Ki, 52-1969.conllu": {
+   "bytes": 72596,
+   "sha256": "59a62b3f2abc9ded49bcfb65730d0ab09f609744c5e0df5b7dae9a4e2951cb36"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0310-R\u0101m, Ki, 53-1974.conllu": {
+   "bytes": 45714,
+   "sha256": "dea55165791e682bf3a97324069ad080ffc067c7c14361d0aefc6fbd9b2409e2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0311-R\u0101m, Ki, 54-1984.conllu": {
+   "bytes": 44232,
+   "sha256": "b0e15e6803287e56e66c735f5498e4f8982be86663a5dc1cf47bdadc3441f901"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0312-R\u0101m, Ki, 55-1988.conllu": {
+   "bytes": 44816,
+   "sha256": "ba139ccae56158d8f0658cf4c035d11223f965179caa5829ad223cf45dfddf1b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0313-R\u0101m, Ki, 56-1995.conllu": {
+   "bytes": 42008,
+   "sha256": "c8471d1c0fb62f74f5d36ad64a85f5e7d44d11f766e7184704f6e0ce9b8dae8a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0314-R\u0101m, Ki, 57-2006.conllu": {
+   "bytes": 72595,
+   "sha256": "d180a0f19292a856b6d20110eaf36ac1ac82e3025b6e6b19fc133b2984f22df5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0315-R\u0101m, Ki, 58-3207.conllu": {
+   "bytes": 64490,
+   "sha256": "902a3dede392234bd778eadfb62b3edd88942354535eaf5ecdd9525eba58e030"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0316-R\u0101m, Ki, 59-3208.conllu": {
+   "bytes": 46428,
+   "sha256": "3199ed392cfa6cb9b81af9c7ded0beeca0bfc348ab3148b9b58bf077750b921b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0317-R\u0101m, Ki, 60-3209.conllu": {
+   "bytes": 34352,
+   "sha256": "4c3cf8a1c879cf14e734e92a1e177b3dd3048e352120b5f9aee109989d7545e3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0318-R\u0101m, Ki, 61-3210.conllu": {
+   "bytes": 32602,
+   "sha256": "30b8ab681ed02cbe92e96518635596422ae3bbdacf1b4584d323628b5a43973e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0319-R\u0101m, Ki, 62-3211.conllu": {
+   "bytes": 33758,
+   "sha256": "50bdc8c3bb4ba87c14199c8b9b7f1beab493797a2d00cb748d602fb9b78539b7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0320-R\u0101m, Ki, 63-3212.conllu": {
+   "bytes": 49688,
+   "sha256": "6be3596354912bd5bd5698719be5b0f1740c5790b8c023315e8256d8e4c3abe9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0321-R\u0101m, Ki, 64-3213.conllu": {
+   "bytes": 74862,
+   "sha256": "3043d268caff646f0b061b3cf90018cc46bb4e97c379d617e9cfe7772428962c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0322-R\u0101m, Ki, 65-3214.conllu": {
+   "bytes": 79463,
+   "sha256": "d8591b347291bb6cc7880c31ff074fcfea94a33e5c41643470c67aa6f61ada84"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0323-R\u0101m, Ki, 66-3218.conllu": {
+   "bytes": 91583,
+   "sha256": "61a031d6c77668d3e26bc3ccbd6ab5a1a881954760e4680deb1bf935e9d516a4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0324-R\u0101m, Su, 1-3220.conllu": {
+   "bytes": 415624,
+   "sha256": "01aa89319835587357647177c6244886a90bcec5163fd09a96675fbf5b0503fe"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0325-R\u0101m, Su, 2-3228.conllu": {
+   "bytes": 122298,
+   "sha256": "b0e15b34adac8d75ec26acc4499596e383a1d4cb5a04c1e1b70275f47ac6b572"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0326-R\u0101m, Su, 3-3232.conllu": {
+   "bytes": 84888,
+   "sha256": "12296dcbf9e1ae9618b0c57d90e9c70b70a400ef1fd60319d94c705d2e02b656"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0327-R\u0101m, Su, 4-3233.conllu": {
+   "bytes": 71475,
+   "sha256": "a8ae59f9cc9a70fd1594ed59ef2a0da6881c4d4ef8dbcc287e5e58439240e6f4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0328-R\u0101m, Su, 5-3234.conllu": {
+   "bytes": 87793,
+   "sha256": "f29d340b55206c88597ab83c3c983b64c453c8de41377ea80648a5e8ce8c2994"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0329-R\u0101m, Su, 6-3235.conllu": {
+   "bytes": 50275,
+   "sha256": "ba337c5b6b6ac02aa3becf6d1457dfbb21dce59254debffe3469fe8f85945539"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0330-R\u0101m, Su, 7-3237.conllu": {
+   "bytes": 151220,
+   "sha256": "b37e3080f079a46db05421306b8ca65d411c9cbbe35e9971b795b2fb264e7c3b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0331-R\u0101m, Su, 8-3241.conllu": {
+   "bytes": 105342,
+   "sha256": "8dbc320585c4d3750b4b5429777c0eaeccc958b6983444c7d1268871a86b0c8e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0332-R\u0101m, Su, 9-3242.conllu": {
+   "bytes": 97823,
+   "sha256": "c868784bb66fb78371e763b2d8d3300a1d140c6dc82c28e51c69cc25e09cac82"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0333-R\u0101m, Su, 10-3243.conllu": {
+   "bytes": 60621,
+   "sha256": "75186159617edc0d9f1364b4f15abd1c35f678c3cfb208cd1f0701871fc5e78d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0334-R\u0101m, Su, 11-3247.conllu": {
+   "bytes": 146614,
+   "sha256": "57a7bb6c2afebdb25217fe8706489497107dc44caefa668e8527005d9c140cf9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0335-R\u0101m, Su, 12-3252.conllu": {
+   "bytes": 109292,
+   "sha256": "ac7256f2d0452a735d51e1e5fe09560c46edfe023d5c6e3a92cf8ad67a680b1b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0336-R\u0101m, Su, 13-3255.conllu": {
+   "bytes": 111829,
+   "sha256": "bbee78f8c3faeb62c43e8e9d0a9458b86873aa4828c6759ceb164f0057b84b95"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0337-R\u0101m, Su, 14-3256.conllu": {
+   "bytes": 73999,
+   "sha256": "7e2c3bbf8ea72cc4e5b2645d789effad61d401d89457b75972de50d6d7652727"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0338-R\u0101m, Su, 15-3257.conllu": {
+   "bytes": 68504,
+   "sha256": "eeb2c716e06264b85c43b9433f0cda60755bedaadcbc7514ba40193f649cb115"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0339-R\u0101m, Su, 16-3260.conllu": {
+   "bytes": 58895,
+   "sha256": "c2db3dc3cf5fe0b335e676c702bc87017fd6b2976855aa451e7c7e1cd9217cd3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0340-R\u0101m, Su, 17-3261.conllu": {
+   "bytes": 44450,
+   "sha256": "26bd2ecde2c91493bd981b2df9f54b9323a502ab9a5a7f7253897278b38f52d4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0341-R\u0101m, Su, 18-3262.conllu": {
+   "bytes": 79102,
+   "sha256": "da7d2e6cb56ba6e6ad233a41ef305031df0e0d670ae02fad1056c7beb6628e2f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0342-R\u0101m, Su, 19-3263.conllu": {
+   "bytes": 64561,
+   "sha256": "474072d53d5522a7497e35164b97f4b1de8ff3c350f1b62dce654762369ff021"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0343-R\u0101m, Su, 20-3264.conllu": {
+   "bytes": 89615,
+   "sha256": "de4157b0e6afba1b4c4525af9f71db3575f9073df81ec7fb131d06c78a6a9ebc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0344-R\u0101m, Su, 21-3265.conllu": {
+   "bytes": 41937,
+   "sha256": "6fc959d7f66e1ff01d30b4c1ec0d336c91b892762ca3dc386cff84b5e668ef88"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0345-R\u0101m, Su, 22-3267.conllu": {
+   "bytes": 90917,
+   "sha256": "00f38a2144f34340106be2ccb603e7850c37393ed46ee7a89af9b13478bdf16b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0346-R\u0101m, Su, 23-3268.conllu": {
+   "bytes": 42699,
+   "sha256": "779616bb0816b4b303a8c19d3a72f7680da81995bf8691ceee10e0e628acc63a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0347-R\u0101m, Su, 24-3269.conllu": {
+   "bytes": 108751,
+   "sha256": "23c354358b728279db14e83ccdfeed6bfa02f53e6b8fbd0c41bce998474555f4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0348-R\u0101m, Su, 25-3270.conllu": {
+   "bytes": 83127,
+   "sha256": "94c0ea7bf3f0d4e7fa80f26ce5a105c77b08677e7585fca763ca62e5cfdc6e0b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0349-R\u0101m, Su, 26-3272.conllu": {
+   "bytes": 60064,
+   "sha256": "53121ddab7b4a664f348002f70fcae500f97561fcce12e887762cca9acee7426"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0350-R\u0101m, Su, 27-3273.conllu": {
+   "bytes": 23305,
+   "sha256": "0a264a9554e6f9fa9a520144da460fb611916e479092efe65d49155612593d93"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0351-R\u0101m, Su, 28-3274.conllu": {
+   "bytes": 92558,
+   "sha256": "38c4d5c2b031f14fdbd954de065f8e1f61dc15b4343fa3cbb07f2358364f23c5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0352-R\u0101m, Su, 29-3277.conllu": {
+   "bytes": 29097,
+   "sha256": "f3fcb1934362caa9e95c0a5c6c06b4e142e971e3f107f864c21dba6f32b3c538"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0353-R\u0101m, Su, 30-3278.conllu": {
+   "bytes": 22954,
+   "sha256": "8c5bc746e530f9de7342d7427fab83e77cae7b14a143d572327230ca48aa2e76"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0354-R\u0101m, Su, 31-3279.conllu": {
+   "bytes": 57435,
+   "sha256": "e3482ebb67d412fc65fa899791f3115db5cb39efcd3c4a1910b84daee1b4086b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0355-R\u0101m, Su, 32-3280.conllu": {
+   "bytes": 85921,
+   "sha256": "3e04aab47fca30d1ffbf64d8771105180e23e7f32360c731988ef014c9dce868"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0356-R\u0101m, Su, 33-3281.conllu": {
+   "bytes": 175389,
+   "sha256": "e4611d4ff029f135b7cbe624255536a079adbf8994e97e27da76abb7ad00ed9c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0357-R\u0101m, Su, 34-3282.conllu": {
+   "bytes": 105455,
+   "sha256": "413cf63b58158769794043d0eb7037d854ea8f25480825110c9d7192adce7c8d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0358-R\u0101m, Su, 35-3287.conllu": {
+   "bytes": 149481,
+   "sha256": "483b841e1b6ac87929a89e2f1fca76b9debdaa3da51d89d357aa794c431f7c39"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0359-R\u0101m, Su, 36-3289.conllu": {
+   "bytes": 127803,
+   "sha256": "431cb950636869fb4fba237dca0fa72fa83442adb14800c550e8219eb1471fae"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0360-R\u0101m, Su, 37-3290.conllu": {
+   "bytes": 114705,
+   "sha256": "52dd718e18301d56f275c74b860541d769dee56b7b207e80ddd67aaee9c9a153"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0361-R\u0101m, Su, 38-3291.conllu": {
+   "bytes": 55367,
+   "sha256": "1a02ccc23a66e8049babeb264eff7f69472e1711157708da5c852928783589e8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0362-R\u0101m, Su, 39-3293.conllu": {
+   "bytes": 44739,
+   "sha256": "98081390d151580dd887b5601e6b9f2fe2772b4699d414a0e7bb25f7f3783be8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0363-R\u0101m, Su, 40-3296.conllu": {
+   "bytes": 77492,
+   "sha256": "a89daedfa265d32fd36dfa6eb07c6c49a08c2249c4944622fee1df992fb19dd6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0364-R\u0101m, Su, 41-3297.conllu": {
+   "bytes": 40424,
+   "sha256": "4a8af7c39b93121530b887328a0c46b64d9daa9c8414043654435d17171f1af7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0365-R\u0101m, Su, 42-3298.conllu": {
+   "bytes": 41843,
+   "sha256": "82baf93c957b060b0f24c734494197c9f11a333922023be51312cd76cbb433d0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0366-R\u0101m, Su, 43-3299.conllu": {
+   "bytes": 35928,
+   "sha256": "f69756b670700c047c8b4d8a36f355a1c9520c073225f7dc575d180d27ce0bc5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0367-R\u0101m, Su, 44-3300.conllu": {
+   "bytes": 88454,
+   "sha256": "38c994cbf1a8ffff57fc294321da28cd37e2cf89ef75c619dedd5b2b096e4b85"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0368-R\u0101m, Su, 45-3301.conllu": {
+   "bytes": 122346,
+   "sha256": "9f46342ae728dfcd7f0a3268e90bdf26b9b02a32f893fbab625694b808b737e1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0369-R\u0101m, Su, 46-3304.conllu": {
+   "bytes": 150801,
+   "sha256": "919ea4acdf880923f7ab6ff78e6fce166c4ff19c1f05f3dd4358c2feeb801567"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0370-R\u0101m, Su, 47-3305.conllu": {
+   "bytes": 40401,
+   "sha256": "943e25e3984b936c9a5557c9cc03583618a796cd36b67d48ff5a5e11de2d5462"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0371-R\u0101m, Su, 48-3306.conllu": {
+   "bytes": 34911,
+   "sha256": "42c3ae21d1e1c39adeeb0ce507a5c09d87b55b1e026c41ee34be932d95c1b068"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0372-R\u0101m, Su, 49-3309.conllu": {
+   "bytes": 80741,
+   "sha256": "438692f483fd7fa547ec186f69a17d0b68561231f7f65f802f4c3b17fe834eac"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0373-R\u0101m, Su, 50-3333.conllu": {
+   "bytes": 43888,
+   "sha256": "fa7e35c9bdbebc2bcf3547f8ad531ea8196c3ddf76339b1ba6e3de1751fc81f5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0374-R\u0101m, Su, 51-3337.conllu": {
+   "bytes": 84521,
+   "sha256": "925973566c9c8a26f294cf6208aecd68a021f97f0db7cadbe4a1623bb61cc94c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0375-R\u0101m, Su, 52-3339.conllu": {
+   "bytes": 36279,
+   "sha256": "f072088ed20782e9d88f3d4826a5b2e6cbda5be3d3ea3d71e621eaaed5339b61"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0376-R\u0101m, Su, 53-3340.conllu": {
+   "bytes": 61527,
+   "sha256": "23a2d65ac1f26096304ebe2b9b3102b3de4573dc4479f3d5432f1ba4cffaba03"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0377-R\u0101m, Su, 54-3343.conllu": {
+   "bytes": 56125,
+   "sha256": "bd2c2bb680a96fe2facbc4d97f11ea6f78ee620d047893cb25a4f78e7e4a1bfa"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0378-R\u0101m, Su, 55-3366.conllu": {
+   "bytes": 82249,
+   "sha256": "8ae2e0001a91c2a69f8b036e11b55b178a1eb313f61c353c4e0015660bd0b367"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0379-R\u0101m, Su, 56-3372.conllu": {
+   "bytes": 306347,
+   "sha256": "ee962bd7001610b9ff4835e12846c3dc20f07e705342ae470e4a2a8af1ede58d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0380-R\u0101m, Su, 57-3388.conllu": {
+   "bytes": 33952,
+   "sha256": "6a547162d5b36b80471b0f9f9ebbd23205b534c28ae37ef5283dcb95f586e8d8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0381-R\u0101m, Su, 58-3396.conllu": {
+   "bytes": 46944,
+   "sha256": "23d5a01675c2a35ab6a22e7c102d7154732f1e283d722fd2550e1524033f16a2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0382-R\u0101m, Su, 59-3397.conllu": {
+   "bytes": 53577,
+   "sha256": "e3cc92ed2159e49be53b453191193444f784809900ec7ef99f364ea5cbee1eab"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0383-R\u0101m, Su, 60-3398.conllu": {
+   "bytes": 78150,
+   "sha256": "6254d61b34f0442b63f6d876791f2bc7e0cf9813e6c1ab3e4616f4e38aa15223"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0384-R\u0101m, Su, 61-3399.conllu": {
+   "bytes": 61999,
+   "sha256": "4129d594b859182861acf3ada433cdebf01e5252b42df2852dd3c9938a0df4ce"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0385-R\u0101m, Su, 62-3406.conllu": {
+   "bytes": 88804,
+   "sha256": "e742e87a92b05a0105e1983ba89158ad17c4b3411443c133abcd14bb0fe0cf1f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0386-R\u0101m, Su, 63-3416.conllu": {
+   "bytes": 56382,
+   "sha256": "95af33af169f645f4299fa240cb13d7355de1ccf8873cf641962352e0a1ce9ca"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0387-R\u0101m, Su, 64-3418.conllu": {
+   "bytes": 33500,
+   "sha256": "3c762bc0e51c04f3770e4ef7c51e4ff84aa8cf395f78117fcbe53a5615fd228d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0388-R\u0101m, Su, 65-3419.conllu": {
+   "bytes": 80475,
+   "sha256": "4185ea0fc9d9ea17f0dc1377f94bf508fd684c60d118e8d29709c4576f5ef8a5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0389-R\u0101m, Su, 66-3420.conllu": {
+   "bytes": 64071,
+   "sha256": "676263545bbfd8392f5b6ae388292c1c4eda26df7ccc352745cd0b37eaf47271"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0390-R\u0101m, Yu, 1-3434.conllu": {
+   "bytes": 35875,
+   "sha256": "53a568d22220ec7bf7f6d7c720f756d76b04b67e12b03f27ce14488c27354699"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0391-R\u0101m, Yu, 2-3435.conllu": {
+   "bytes": 46061,
+   "sha256": "e9b89e4a3f56e7766852693c856a49a734e9d2f5c60ff8d6e087cc8190d18c30"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0392-R\u0101m, Yu, 3-3438.conllu": {
+   "bytes": 66434,
+   "sha256": "5fb7925555f8b32ee9576d603650ba2303431518400dfbe57f5e604b6090b947"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0393-R\u0101m, Yu, 4-3448.conllu": {
+   "bytes": 183961,
+   "sha256": "c5ca84d708b6a98911dada5cb97b2169e6ba099fcab61cf754715bc6878aa5fb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0394-R\u0101m, Yu, 5-3452.conllu": {
+   "bytes": 47573,
+   "sha256": "8253e5e6d5c8a6fc6d929496de921b1d3e3d12b1f05c46913ffcb96e8507c01f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0395-R\u0101m, Yu, 6-3455.conllu": {
+   "bytes": 39755,
+   "sha256": "1e9342217a67e6a95852c4dc4548c4da7240d1ca0b1de9f6b1f8427f2087c79b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0396-R\u0101m, Yu, 7-3459.conllu": {
+   "bytes": 35285,
+   "sha256": "89d2aea27925b3d1e42db966c93524cd06cb0b97ab1f64285e233816595a881a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0397-R\u0101m, Yu, 8-3460.conllu": {
+   "bytes": 34043,
+   "sha256": "a8ab25146ce4c22bf68f306fe4ef3deb8090d4bfd73a2aedefb4a1004f65997c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0398-R\u0101m, Yu, 9-3470.conllu": {
+   "bytes": 47785,
+   "sha256": "17dd8b398f6eb7f9a2bb9885822f60aa3cf8a7c4fdad7762be17d8adf5ee4d10"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0399-R\u0101m, Yu, 10-3471.conllu": {
+   "bytes": 47473,
+   "sha256": "c93b92ab759e10dd04a28e2a411222bd4c71788e70175c7cc27d456209f8c04a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0400-R\u0101m, Yu, 11-3474.conllu": {
+   "bytes": 125380,
+   "sha256": "3d07554708db949dfca7f83c99a29b6481f38c5cc3a29ebb6f38bc3772e481d3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0401-R\u0101m, Yu, 12-3487.conllu": {
+   "bytes": 48550,
+   "sha256": "d36b9b44dd0a06f892c7c3e53661d87bb00895c238e5947b09d2e0b6f27feadb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0402-R\u0101m, Yu, 13-3488.conllu": {
+   "bytes": 47708,
+   "sha256": "37180f0ee8965f2abf8a034653786b36af4ed47305b2a08d2cfe1c0081ddb00a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0403-R\u0101m, Yu, 14-3489.conllu": {
+   "bytes": 43987,
+   "sha256": "676ad02ea9d13ee3b9827d92ae72e4b4811fffd4c3d3cb2f33be2393d434eceb"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0404-R\u0101m, Yu, 15-3490.conllu": {
+   "bytes": 73542,
+   "sha256": "14fff76b294b7e049dbe77bbf7360ac4051786705794ae5c3bd37577e2046691"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0405-R\u0101m, Yu, 16-3492.conllu": {
+   "bytes": 62454,
+   "sha256": "90d0436fca35ccc72405129f9e1d966f3dbe055a83520b41b85d22507830dc68"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0406-R\u0101m, Yu, 17-3493.conllu": {
+   "bytes": 85656,
+   "sha256": "ecac999e8dfb334fda35758026dfd550d6dceb40f8b16154cdbc351a05adc146"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0407-R\u0101m, Yu, 18-3494.conllu": {
+   "bytes": 92955,
+   "sha256": "9b9881d269580d6be5306b2aa806b075a6ac18cfc93672a7aa0e0b7a5528990a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0408-R\u0101m, Yu, 19-3495.conllu": {
+   "bytes": 75047,
+   "sha256": "a37e5dafc2ebad1b9e4de6a19c7c1f913530971e6e1e3ec2ba97ee916871318f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0409-R\u0101m, Yu, 20-3497.conllu": {
+   "bytes": 52169,
+   "sha256": "eefaeed792cfddd7a37423301dfc325759be3240f68984493e0dd4ed80c300d9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0410-R\u0101m, Yu, 21-3498.conllu": {
+   "bytes": 75235,
+   "sha256": "09117819f7735eaa015be6697de93681f496396b80005973043da8fcd43faa56"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0411-R\u0101m, Yu, 22-3499.conllu": {
+   "bytes": 91628,
+   "sha256": "6906335ee795e8d5aeb100f94a0e9918d115a66810aac3ed0c7d383ca917a567"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0412-R\u0101m, Yu, 23-3500.conllu": {
+   "bytes": 92293,
+   "sha256": "cd5a421f59274d9ef443af22307f98bb0b10dd0c6f7433386b979c8b9f17f4fd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0413-R\u0101m, Yu, 24-3501.conllu": {
+   "bytes": 78573,
+   "sha256": "c36f256a523051dca61e69a24a62196d07e347acd1b6ad56a3edd447f547acfc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0414-R\u0101m, Yu, 25-3502.conllu": {
+   "bytes": 62521,
+   "sha256": "ca5be83b4d5d90a61618c1267da28828ad6e2d9c99ef3fd70506932ce27a3325"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0415-R\u0101m, Yu, 26-3503.conllu": {
+   "bytes": 73953,
+   "sha256": "ba7ce8aba814f9f4d5c90eb9a9d14c1d1e0910a10fc47e984244e7c5171acd64"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0416-R\u0101m, Yu, 27-3504.conllu": {
+   "bytes": 46423,
+   "sha256": "118b206e562d4e0e8121f4c16b323f72e1df6fe96c007bd50c073bc5844aee69"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0417-R\u0101m, Yu, 28-3505.conllu": {
+   "bytes": 76234,
+   "sha256": "c82a89177234536e18570ae6c7c58389578493acdc712ed7b893899b150a2013"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0418-R\u0101m, Yu, 29-3506.conllu": {
+   "bytes": 40851,
+   "sha256": "f8f2f89a2ae14d6c048e3d862406fa6ca4f4c64dca2de43958cf786ca403be65"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0419-R\u0101m, Yu, 30-3507.conllu": {
+   "bytes": 54770,
+   "sha256": "72372d2aed6a7a7cf874f992fbabda1e0f579a6c9db80c7c22308c3f35685396"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0420-R\u0101m, Yu, 31-3508.conllu": {
+   "bytes": 184417,
+   "sha256": "f223ac81feb5be6c06ea361693d863bb8b880bce3c1e8fe05324101ef0b8c5f0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0421-R\u0101m, Yu, 32-3510.conllu": {
+   "bytes": 67570,
+   "sha256": "eef095fcec7fe6e3b5dcb3f6e02fb22a7a9124936b0ef7c05960db83c4dd7be7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0422-R\u0101m, Yu, 33-3511.conllu": {
+   "bytes": 99819,
+   "sha256": "5bcd586ef7412feca4de6aec7810f6bc55fba1da0773bf52277bd6a7b235045e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0423-R\u0101m, Yu, 34-3512.conllu": {
+   "bytes": 66789,
+   "sha256": "b23706abdec678f95604012f7b67166fa1a36e035dfbf6ae7b7c013774918b75"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0424-R\u0101m, Yu, 35-3513.conllu": {
+   "bytes": 57522,
+   "sha256": "26c1c5707de4a7dc987895996cfdc9a0b7d579a6c63644c085d565a39f427090"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0425-R\u0101m, Yu, 36-3514.conllu": {
+   "bytes": 93862,
+   "sha256": "e0ddb3ce6a5456aaa439ae0a75cfb8c43f4713ca8a9d78f23fe44c2f4d686473"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0426-R\u0101m, Yu, 37-3516.conllu": {
+   "bytes": 47868,
+   "sha256": "8fb2752667b5a52250093211cd150f8c6431d7065b9ba49812d4cb0f449e4caf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0427-R\u0101m, Yu, 38-3517.conllu": {
+   "bytes": 83387,
+   "sha256": "69ce2e65048ae092598ecdff2d276645a1bff70bfc6e6be228822fdb5c7f3b3e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0428-R\u0101m, Yu, 39-3518.conllu": {
+   "bytes": 71758,
+   "sha256": "06f527ff31ba13670f6d817701c814f96fccfe2444dff0cf7a352b70a6c63d23"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0429-R\u0101m, Yu, 40-3519.conllu": {
+   "bytes": 138348,
+   "sha256": "e62cd513e9950a3b70a279ee9531489f2345e2912cafc22ac443c4a860b56645"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0430-R\u0101m, Yu, 41-3521.conllu": {
+   "bytes": 78430,
+   "sha256": "3f770e8957054022f3b82adef9c171b2e403bc637fdb299807d607682b4e857d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0431-R\u0101m, Yu, 42-3522.conllu": {
+   "bytes": 81034,
+   "sha256": "705ebb604965dbca6a3116065c2771a6c10b72c6b32b96c3b48c41482effe3dd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0432-R\u0101m, Yu, 43-3525.conllu": {
+   "bytes": 57681,
+   "sha256": "07d988acdffd3e99a18494537c4b4c520bbe8448e7fe8217ab6a0bd84b2153ab"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0433-R\u0101m, Yu, 44-3526.conllu": {
+   "bytes": 83486,
+   "sha256": "edb098d2ba970ee80c4f51f6ac912ab5099b540bc1c1bb8efad96bc583ba130a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0434-R\u0101m, Yu, 45-3529.conllu": {
+   "bytes": 91584,
+   "sha256": "fb18daf2f7cad6141ad26d3053402d89afd7be774fc49a7dc7c98e61c3aef1b0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0435-R\u0101m, Yu, 46-3530.conllu": {
+   "bytes": 109786,
+   "sha256": "0c36de030704894dbc76c2a4eb7100a4beb1f40ad2ab747434e3b77d567cebd2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0436-R\u0101m, Yu, 47-3532.conllu": {
+   "bytes": 357191,
+   "sha256": "8c8be27767386734ab020915978b9d022ebe2982099b6a7a73690cf2878a58d9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0437-R\u0101m, Yu, 48-3542.conllu": {
+   "bytes": 197311,
+   "sha256": "f2b9894774d40e21fdaa3597f30180968f39f76d43c747eb166c8e513da4b97e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0438-R\u0101m, Yu, 49-3544.conllu": {
+   "bytes": 86446,
+   "sha256": "6d77515305e103e000437a62592368bc8f822e3aa3bba0d9f0d286b9e04fb0a3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0439-R\u0101m, Yu, 50-3547.conllu": {
+   "bytes": 47346,
+   "sha256": "2d33e00a189859bc2ee1127cd937d6379edc51eb63401d835307878fc515ed28"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0440-R\u0101m, Yu, 51-3548.conllu": {
+   "bytes": 105407,
+   "sha256": "de953c0c09bd180f5462a1eb340efe4b9cdd95f6915cdbb9e8d4f42b3422482b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0441-R\u0101m, Yu, 52-3549.conllu": {
+   "bytes": 79235,
+   "sha256": "69cfd698baf04eef2c31deec85c1ac28c672c9589213c540feff0e68347f21b0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0442-R\u0101m, Yu, 53-3550.conllu": {
+   "bytes": 116693,
+   "sha256": "7db2b05be79ae7c885f34718a3e028c0afb110883a42b6e408920c9a38716b68"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0443-R\u0101m, Yu, 54-3551.conllu": {
+   "bytes": 66411,
+   "sha256": "2f9bee756ab673ff8d82038728fb0a21ff723cb199bdd795f34b3e9721e98921"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0444-R\u0101m, Yu, 55-3554.conllu": {
+   "bytes": 319690,
+   "sha256": "6676f36b2fa11570b362bb79bdde2f2de4060d565982691d1900b6e0ce9ff7a9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0445-R\u0101m, Yu, 56-3557.conllu": {
+   "bytes": 42566,
+   "sha256": "ff3d2f97f439806cf584078d15ad8bd349a6de1165409f2a9f2852d98f9c2f4f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0446-R\u0101m, Yu, 57-3558.conllu": {
+   "bytes": 207200,
+   "sha256": "ce9386166ba9d316ec1d67f3a404395673ac446ee7a09a58f2fbc7a8b353beda"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0447-R\u0101m, Yu, 58-3559.conllu": {
+   "bytes": 122284,
+   "sha256": "f3d1ff9170d55d9b4a82282d35029bb247f31ca24e9c8c7342c7fb19113be16a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0448-R\u0101m, Yu, 59-3564.conllu": {
+   "bytes": 245509,
+   "sha256": "b9743e5838adf617b089622d761ad9cd8bb34f30b1b7726f2c8030bcd7341253"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0449-R\u0101m, Yu, 60-3575.conllu": {
+   "bytes": 126554,
+   "sha256": "ddaa2cd66ae8c8fe20ccbfd62a724bd15c0d5804c7bb7f512d49868816df659d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0450-R\u0101m, Yu, 61-3577.conllu": {
+   "bytes": 166009,
+   "sha256": "06742dd91b31e582a5e9e6731728f780cc9e7f2f9b589e03564f25a963e88a70"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0451-R\u0101m, Yu, 62-3580.conllu": {
+   "bytes": 110507,
+   "sha256": "f6bf41453b628f659e017426e59c931e07ec5905ddbcb3d66995b614f1a42d81"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0452-R\u0101m, Yu, 63-3582.conllu": {
+   "bytes": 117416,
+   "sha256": "51d953bf444e717fdfa0e5007962a49292bb48071d95f2a4cc92de48cd5e8ed7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0453-R\u0101m, Yu, 64-3584.conllu": {
+   "bytes": 51477,
+   "sha256": "c2c2209466f5ef2e05bbed6dcb61c4a51581ab169987bbcc9bb0e3bf9d8a742b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0454-R\u0101m, Yu, 65-3586.conllu": {
+   "bytes": 46978,
+   "sha256": "d297ddf06ca7fe44b2ed818ee353b669517877385e1f1d5c87e7262b377f507e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0455-R\u0101m, Yu, 66-3588.conllu": {
+   "bytes": 90072,
+   "sha256": "694001e82cb5ebe599f76e2d0be51df287ca078609236fbd1a5ef061d2e36d03"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0456-R\u0101m, Yu, 67-3592.conllu": {
+   "bytes": 96156,
+   "sha256": "fea6c77a2d3583a571095a0127f1538feb9f7d6772ec97e2447ae28548be31c0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0457-R\u0101m, Yu, 68-3593.conllu": {
+   "bytes": 77531,
+   "sha256": "b3b2df25bcf7c792642ff6adf7d0535f2c1bd080dab1497b256faa42810c920e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0458-R\u0101m, Yu, 69-3594.conllu": {
+   "bytes": 59013,
+   "sha256": "30cd80cfcbdf4b4adc4997f4bbc6ccb69d889fad805a5bf7395b3da9302b5c01"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0459-R\u0101m, Yu, 70-3595.conllu": {
+   "bytes": 96451,
+   "sha256": "15cf0e981e8e03530ad2ab0f8bda4c3a91ba7ed4ef8bd2972c9d3e65eb1f721b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0460-R\u0101m, Yu, 71-3598.conllu": {
+   "bytes": 51800,
+   "sha256": "b3ac6a42f6eed4cdfb0dccbfe6c9252e65967fe0702224200dd5a5ab33004308"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0461-R\u0101m, Yu, 72-3600.conllu": {
+   "bytes": 75172,
+   "sha256": "9507471b13992df1254440d42e671af39eacf925a1c8d1f243fa48b29afcb382"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0462-R\u0101m, Yu, 73-3602.conllu": {
+   "bytes": 74845,
+   "sha256": "1b913ca532c0ac4196ba2773fede79150d97863d5cf8c13d80028e5040cbdc69"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0463-R\u0101m, Yu, 74-3604.conllu": {
+   "bytes": 65549,
+   "sha256": "f106cb433b268cc9cc1d89cc9b24799ba1dcaaa4d2a5579b9e274a463235159a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0464-R\u0101m, Yu, 75-3612.conllu": {
+   "bytes": 73528,
+   "sha256": "0005838cc6224f68d5f45b6daf60c271964eb9585d1a435f0c34ab4872f6d93e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0465-R\u0101m, Yu, 76-3618.conllu": {
+   "bytes": 75727,
+   "sha256": "73bdb0a3dd4c6087e0b0f1fd035133b36f7acca7639c2b78f8ade2f7f0d36c53"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0466-R\u0101m, Yu, 77-4076.conllu": {
+   "bytes": 86591,
+   "sha256": "7631c7ce328ec3a2f8ffeeaef5d79df35bfe14412305f36e4e71fd13377ebb39"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0467-R\u0101m, Yu, 78-4077.conllu": {
+   "bytes": 121966,
+   "sha256": "3d627e959a8546b7788e525bc831fdefd0549e99fc6ff896632276afa581bee8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0468-R\u0101m, Yu, 79-4087.conllu": {
+   "bytes": 47212,
+   "sha256": "fb8abf5191c87b9117d3171dfac91f11b5177788b65b8fee962ad7738f01af44"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0469-R\u0101m, Yu, 80-4106.conllu": {
+   "bytes": 128444,
+   "sha256": "85a6e9577b31295f6769e17b35d8e8a99ecfbb82a25452b3c46b3c7edb308d68"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0470-R\u0101m, Yu, 81-4108.conllu": {
+   "bytes": 79341,
+   "sha256": "205b89b93ff5bf9038199c020b8eb35affd288b04735057ec109b87d7a8c39d2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0471-R\u0101m, Yu, 82-4124.conllu": {
+   "bytes": 84678,
+   "sha256": "a0e94d848517e6f7362108ca551cc53072601a26c26ea067a219c6f5a3425c1d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0472-R\u0101m, Yu, 83-4135.conllu": {
+   "bytes": 91655,
+   "sha256": "af0b6578f2a6378d396637a1a6b39d5a0b8ff756f7fc83d9b22ec88482c5bca4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0473-R\u0101m, Yu, 84-4138.conllu": {
+   "bytes": 72000,
+   "sha256": "778519988fc6304f3e8d3058857c55ca8ed72864f13226ac247dd2ac6fc6bcd6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0474-R\u0101m, Yu, 85-4192.conllu": {
+   "bytes": 66075,
+   "sha256": "bd4cc248687cb88d19b97e8ec4df36f81ee9952b7220b5907a13f97805c1971e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0475-R\u0101m, Yu, 86-4196.conllu": {
+   "bytes": 50644,
+   "sha256": "319e34caff281c13b39610d9ac00a5d1803990348df38dfcbf8518bf8a7c59bf"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0476-R\u0101m, Yu, 87-4200.conllu": {
+   "bytes": 103667,
+   "sha256": "bc2c9221512a6d10afdb80ab0f19f64a7bffa8cd808750719f36ce7ff5152d08"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0477-R\u0101m, Yu, 88-4204.conllu": {
+   "bytes": 133815,
+   "sha256": "ee1605faec5bcda17a3400f64774fbd32181e074075f31bca5940b0368c45fa9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0478-R\u0101m, Yu, 89-4210.conllu": {
+   "bytes": 78679,
+   "sha256": "fa4285db5d5ae7f3f02fb7c3fc8d1c30a91c9ded5f1c882fb0151efab0708ff3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0479-R\u0101m, Yu, 90-4221.conllu": {
+   "bytes": 73324,
+   "sha256": "d9fa6b0683276c976de928e387f224edee20b5b313653eaa6d255ceaeb7cd823"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0480-R\u0101m, Yu, 91-4225.conllu": {
+   "bytes": 68251,
+   "sha256": "6f2085fb5ba9fd3c455f2c422f49613677a6ac53e9606441724d84f5a9f4d5da"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0481-R\u0101m, Yu, 92-4226.conllu": {
+   "bytes": 66964,
+   "sha256": "d3311d9211be0f7e2e374abeafe468bb08b7f4c0720098ec47129345dc336412"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0482-R\u0101m, Yu, 93-4231.conllu": {
+   "bytes": 62131,
+   "sha256": "96e367523125a93dee7bb714603c2d59a53426526a8996e5699e248a9222a874"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0483-R\u0101m, Yu, 94-4233.conllu": {
+   "bytes": 65832,
+   "sha256": "be620c699460e05fb54ba5c7fce09808e30801acf3ef5d83cf50bdb0abf496ff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0484-R\u0101m, Yu, 95-4237.conllu": {
+   "bytes": 58599,
+   "sha256": "8c900d08b8990be18a9bdcd18f1630e2d29ca62559765d490fc4fecccc604ec6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0485-R\u0101m, Yu, 96-4241.conllu": {
+   "bytes": 69309,
+   "sha256": "0ba6d25d1ace83e37775fbff6d18c249a58845c30b14a25b2fd3d4a914487ca8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0486-R\u0101m, Yu, 97-4245.conllu": {
+   "bytes": 76742,
+   "sha256": "bde30242f62b54e11833fca1a55e337757feb5c92d768df4c4cce65da980d01e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0487-R\u0101m, Yu, 98-4246.conllu": {
+   "bytes": 56785,
+   "sha256": "e8b691589dedc685d926fe17058e4ef518bf966559e68d68988ca01bac19e819"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0488-R\u0101m, Yu, 99-4250.conllu": {
+   "bytes": 96791,
+   "sha256": "23b76c32ed73ba536885721c03df8bd70c0e86344cf50b31a254598f92da8c0c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0489-R\u0101m, Yu, 100-4255.conllu": {
+   "bytes": 45499,
+   "sha256": "8e23fe1f397eeed90616cf1a3ba7db289f3b38f7c76c707399b8803362c9b49c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0490-R\u0101m, Yu, 101-4266.conllu": {
+   "bytes": 90926,
+   "sha256": "1dc61ed5de4dd711aabbd4c20a8f54b049f13800957a4a637f0ea6aa0f224068"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0491-R\u0101m, Yu, 102-4275.conllu": {
+   "bytes": 76799,
+   "sha256": "02e6942a6c1fe05d3bec85ec5a3f0861f825b6cbdd5844b23b8653bf305a1ec4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0492-R\u0101m, Yu, 103-4285.conllu": {
+   "bytes": 55759,
+   "sha256": "f8b7568ba3b977176573eb6f959f6f41655fae72dca37bf15072ec302d762c84"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0493-R\u0101m, Yu, 104-4286.conllu": {
+   "bytes": 58609,
+   "sha256": "e132c8ce9263b1a5e81d1251a35f6572d0bef7412288ca6358d1d573efd30ca1"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0494-R\u0101m, Yu, 105-4302.conllu": {
+   "bytes": 64031,
+   "sha256": "1093564f9c963836717b436815a8680bed8f0d1c7f810f1da0c3a0c5ce54f519"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0495-R\u0101m, Yu, 106-4303.conllu": {
+   "bytes": 43749,
+   "sha256": "d1a944bf17a2b7a4834226bcf666a7698ffef1942c2db01d4eede9ba7fa8997a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0496-R\u0101m, Yu, 107-4335.conllu": {
+   "bytes": 77716,
+   "sha256": "9b06948a9517c94aac71ad8d1e67c7b949a948d90611597fb4b3eecc93a784ab"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0497-R\u0101m, Yu, 108-4336.conllu": {
+   "bytes": 41813,
+   "sha256": "466fff355f5b8d49909cfe378d0fca49b800ade645c1beee0ce2b5a3cc9c2e72"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0498-R\u0101m, Yu, 109-4377.conllu": {
+   "bytes": 57371,
+   "sha256": "48bf7c63d77824eb23f6d00c2c317c38d563ef88c3ff3537244b0f6a8113f47b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0499-R\u0101m, Yu, 110-4378.conllu": {
+   "bytes": 50365,
+   "sha256": "566fc3f810ec6d211c85049185187b1d2b170ab52a58eaa65fd75f6f88833ff9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0500-R\u0101m, Yu, 111-4424.conllu": {
+   "bytes": 65842,
+   "sha256": "aed562f9249973ee177108c4a951125dc92be54ec6c91be5150b2d2354da7360"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0501-R\u0101m, Yu, 112-4514.conllu": {
+   "bytes": 42451,
+   "sha256": "46f20320e4f71c7aaafb2b12fc317aae590b9e3abfa94d4424308e67d0eee774"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0502-R\u0101m, Yu, 113-4515.conllu": {
+   "bytes": 92459,
+   "sha256": "e10d46a52b7d4c98221b1003aa0572828607a5f789f9fe28443cbd6677cf0549"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0503-R\u0101m, Yu, 114-4517.conllu": {
+   "bytes": 96965,
+   "sha256": "db02a496dca5a9c7f53ce86500f0279b38a02189060fc10f10a3c120dccd6534"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0504-R\u0101m, Yu, 115-4518.conllu": {
+   "bytes": 108765,
+   "sha256": "e2ab54d463a078c8922f6775ed33b2991b526613c5a4e4cfa0d5c02bcbad2730"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0505-R\u0101m, Yu, 116-4519.conllu": {
+   "bytes": 190353,
+   "sha256": "4eef46caa35211fc18c54367d99a38f6bdd77d0840f39b92b614e715f4b3a5d2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0506-R\u0101m, Utt, 1-4538.conllu": {
+   "bytes": 59735,
+   "sha256": "bbfeedceb5011a070a594b3b3d70246a3cf3beec39e755500d2c7928773f398e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0507-R\u0101m, Utt, 2-4539.conllu": {
+   "bytes": 68083,
+   "sha256": "bcc7b594cd1d1b73cf4e7708de9ac23f6e3d4e068faa93fd93d0d4c4bd57a299"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0508-R\u0101m, Utt, 3-4540.conllu": {
+   "bytes": 71584,
+   "sha256": "56e91a04b24696136ae24ca41952fccf3ad99639a864d65f85e3f1e486ad3816"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0509-R\u0101m, Utt, 4-4544.conllu": {
+   "bytes": 68239,
+   "sha256": "b57ab92db564766b2ad1487de0e207a59cb4c62ef4b517aa4e486d59b217954e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0510-R\u0101m, Utt, 5-4545.conllu": {
+   "bytes": 96038,
+   "sha256": "fc068445b5ce07d63be5d6eae8f3556402581deb0419ba57be66b3a87305a8cd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0511-R\u0101m, Utt, 6-4547.conllu": {
+   "bytes": 122164,
+   "sha256": "4b82fd50d57ad6cd13e265cc5fb5a7bd328ec235c9f0293bfb3d8e5ea75c00be"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0512-R\u0101m, Utt, 7-4548.conllu": {
+   "bytes": 115340,
+   "sha256": "1680ea100b7acf1fa16c3c5cf76183db90fca27805a2f20c196831cd4a3079bd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0513-R\u0101m, Utt, 8-4550.conllu": {
+   "bytes": 56435,
+   "sha256": "64975e94d2cc392142b692debc1980d422cf8d25430b9d104bdb690d053b14f6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0514-R\u0101m, Utt, 9-4551.conllu": {
+   "bytes": 84465,
+   "sha256": "f1d1978248bd2f201f0a1d5bf66b2a53a983a09e754c2c9d8fdd46692296002f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0515-R\u0101m, Utt, 10-4552.conllu": {
+   "bytes": 93427,
+   "sha256": "4b329039df8d3141d2e1ae5b463c8a1400b0d00d17898aefcf44a7821e95b8c2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0516-R\u0101m, Utt, 11-4553.conllu": {
+   "bytes": 93333,
+   "sha256": "f317f84c8c4b2a41c0d714751bb652ee7081f83865034c9e7e1065aba8b9842b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0517-R\u0101m, Utt, 12-4567.conllu": {
+   "bytes": 63912,
+   "sha256": "544c065654b84a558cae210374d83e6c2a017148a42b6adf9d2596814245dad5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0518-R\u0101m, Utt, 13-4568.conllu": {
+   "bytes": 85878,
+   "sha256": "f6042565fd9fd3d2f6c86d445e0dc92dd5cc17e79814df71c33acdd9d9c0c7ff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0519-R\u0101m, Utt, 14-4569.conllu": {
+   "bytes": 54506,
+   "sha256": "e64134ed4d0d3cf2dc3f861af89cac2bb575ba1d7ce73fac37e6d84cb78f113f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0520-R\u0101m, Utt, 15-4571.conllu": {
+   "bytes": 65119,
+   "sha256": "8ef16ab790d8a5b3665f246974412b64dcab97fb3de0e7708a8c194a10b5b436"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0521-R\u0101m, Utt, 16-4572.conllu": {
+   "bytes": 65123,
+   "sha256": "f7ef30db9008d1ea671825f9b6fb83273bee3d0f8da922f144c0c2bdfe1f7eaa"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0522-R\u0101m, Utt, 17-4575.conllu": {
+   "bytes": 72537,
+   "sha256": "2cc0d45a6e6ca0dbfff8a2a5b348fb73c82e1ac12ac6a21e70947c86826a929e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0523-R\u0101m, Utt, 18-4576.conllu": {
+   "bytes": 74463,
+   "sha256": "20322ca6b7204fa55ff04406af6832d75fc90c99f3cf91adaea45bb1a25fb9c2"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0524-R\u0101m, Utt, 19-4579.conllu": {
+   "bytes": 58117,
+   "sha256": "14c5a0519c5e083dc8c1d76e3c1a2c0aa61ea78baefe45953f0e49b4f6b75926"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0525-R\u0101m, Utt, 20-4580.conllu": {
+   "bytes": 54134,
+   "sha256": "f344b347a4003122ff1b19e6904544785e3bd062329a5c84da16df9afb007db5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0526-R\u0101m, Utt, 21-4583.conllu": {
+   "bytes": 61558,
+   "sha256": "e10572a9087766c69aa9011a39b2eb0210f72e3e4b7adb9d3b0979c63f82d244"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0527-R\u0101m, Utt, 22-4584.conllu": {
+   "bytes": 95187,
+   "sha256": "1f2015c490b11f50c48884eac50c6fb5cc0dac34f3e8a921f18e899f6f0cdc97"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0528-R\u0101m, Utt, 23-4588.conllu": {
+   "bytes": 102048,
+   "sha256": "fa20cfbb6a8cf466d2c7a5ff63de3939432b0bd8e5e1ae7323af7dd1b8c8cb51"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0529-R\u0101m, Utt, 24-4591.conllu": {
+   "bytes": 77005,
+   "sha256": "c1fc385f2d6b6b775ff97824148675bbaf6ef733a1973047197e21a0cfa3ff93"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0530-R\u0101m, Utt, 25-4593.conllu": {
+   "bytes": 111075,
+   "sha256": "f5d06afea8c3811fd70cc1b69fa095085fe509ecdd14c3f8daa3f53f628cd34b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0531-R\u0101m, Utt, 26-4597.conllu": {
+   "bytes": 106676,
+   "sha256": "c71934778e26c53cccad887136c3ed3920691e368fe62f7ac082d437daab3f60"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0532-R\u0101m, Utt, 27-4601.conllu": {
+   "bytes": 88891,
+   "sha256": "a7b489b94b3c894d54c27fd720d286d05af7e071f7275dd36042a0129573a626"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0533-R\u0101m, Utt, 28-4603.conllu": {
+   "bytes": 98897,
+   "sha256": "58b2dd941e30aa112d568711190fb77ab7ccf02d7f6d74597043d93a3218d6c5"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0534-R\u0101m, Utt, 29-4610.conllu": {
+   "bytes": 92244,
+   "sha256": "796a66fac332182adff9e383af486c563ff89ea56c608cbc5ea708ff50283834"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0535-R\u0101m, Utt, 30-4617.conllu": {
+   "bytes": 95538,
+   "sha256": "fff1a886d8b1d354bac852f6df319f5ba1552f43dc5bc667d94b9686efda6674"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0536-R\u0101m, Utt, 31-4807.conllu": {
+   "bytes": 91731,
+   "sha256": "2cb746485443820c940362e42be27ff8a0b46a42e5e148a343846c500e01e7ff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0537-R\u0101m, Utt, 32-4811.conllu": {
+   "bytes": 155268,
+   "sha256": "fe1f690229ed625fe49dc34c007ea2de4c6992e54788951a88cbf8a552374219"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0538-R\u0101m, Utt, 33-4818.conllu": {
+   "bytes": 52489,
+   "sha256": "b3353de38a49e5702203cd63780163d536121e52b094953aa22641d504e23cd9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0539-R\u0101m, Utt, 34-4824.conllu": {
+   "bytes": 94056,
+   "sha256": "941af1707b1eda99d10573c56cc98c76fa186604d5d3d01a543b90411faf4b49"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0540-R\u0101m, Utt, 35-4825.conllu": {
+   "bytes": 142879,
+   "sha256": "cb64f9bdfac1e7a71e30c9d4114296b82c204e5e285fe4ae288761ca9f3c4782"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0541-R\u0101m, Utt, 36-4835.conllu": {
+   "bytes": 102803,
+   "sha256": "eaa0b9f72323f245191fb64547788945331902eea775af2c871311cd8890dc14"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0542-R\u0101m, Utt, 37-4843.conllu": {
+   "bytes": 30012,
+   "sha256": "c514b1fbae22849205f1899261e9e62630595bf1a10908cb5279dafc148257c0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0543-R\u0101m, Utt, 38-4844.conllu": {
+   "bytes": 36182,
+   "sha256": "a91bdab4584712352b8bf3e0238b3cbca7f57e44cbc56331353223935d047bda"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0544-R\u0101m, Utt, 39-4854.conllu": {
+   "bytes": 52418,
+   "sha256": "ce5b7182418f7379dfd10d9daf9b0cc099fa28f100823ba88fd108cf78c7915c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0545-R\u0101m, Utt, 40-4855.conllu": {
+   "bytes": 38813,
+   "sha256": "8acb17a855f61641b100316718485a57a5bcfcad3d54f9282bc50d2b3cb82ee9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0546-R\u0101m, Utt, 41-4868.conllu": {
+   "bytes": 55984,
+   "sha256": "01adb8c4b36fb2db878b7133903d8f60e7b483d7cb031d4c06b592ef99192f48"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0547-R\u0101m, Utt, 42-4873.conllu": {
+   "bytes": 47039,
+   "sha256": "1809909348d46059efa20d1cab4f0737418ff3632516c35b3ef6cafa707b19b9"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0548-R\u0101m, Utt, 43-4874.conllu": {
+   "bytes": 40492,
+   "sha256": "7d81de704ac6705297fb41ccb3e3e55a07cf137cc3e5763f72a724e945e1a329"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0549-R\u0101m, Utt, 44-4875.conllu": {
+   "bytes": 45888,
+   "sha256": "9346d1dceb0407b1ec30d5917f118a3875e232a102a85ae543c224769613f110"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0550-R\u0101m, Utt, 45-4881.conllu": {
+   "bytes": 59846,
+   "sha256": "cd42d5ca58a86b42ee63912f90bee6382fcd028a94ca1cf47583c0957d944e30"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0551-R\u0101m, Utt, 46-4882.conllu": {
+   "bytes": 38863,
+   "sha256": "35851095edded1232d0fd7970e58d1d579a6abea8f818f019c43295bacba79b7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0552-R\u0101m, Utt, 47-4895.conllu": {
+   "bytes": 40238,
+   "sha256": "17a4148180064f7bed46ccdd5a9a5890d447d8bb23a8aa0fee2438bd31a61b39"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0553-R\u0101m, Utt, 48-4905.conllu": {
+   "bytes": 44613,
+   "sha256": "517ea15bb924824b0b795e84eb389c28dda4e32fd32cffbab4542036300fbcf7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0554-R\u0101m, Utt, 49-4914.conllu": {
+   "bytes": 40542,
+   "sha256": "7019422d68f2159820a96ec6afbf43e45efabc8306825bbe6c61636991777416"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0555-R\u0101m, Utt, 50-4915.conllu": {
+   "bytes": 45275,
+   "sha256": "5ef2c6f4990df1f9736456096c2cf90b94b0f0b66df29af7d9d1ea3513331404"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0556-R\u0101m, Utt, 51-4922.conllu": {
+   "bytes": 35231,
+   "sha256": "18089d54c0fc464f900ee057b41b3b8ea476301c9e1d8b3468830be6563bc9ba"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0557-R\u0101m, Utt, 52-4927.conllu": {
+   "bytes": 36151,
+   "sha256": "adcb584c0caa3a058c0eb49dbbf5075045b9c4bfaf69be9b3a882f54b496c11a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0558-R\u0101m, Utt, 53-4928.conllu": {
+   "bytes": 52155,
+   "sha256": "b80d96a26ff225727828d75cc0a800bb01435f783654c6e4f13089ef8565f8ac"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0559-R\u0101m, Utt, 54-4935.conllu": {
+   "bytes": 44354,
+   "sha256": "46ffea0b119d023961d9a0da13ff8de3e2d56ef1e9adaccf84ccfb0f5fa93ee6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0560-R\u0101m, Utt, 55-4936.conllu": {
+   "bytes": 44880,
+   "sha256": "1f64fb7f75b7f02a5c045d7d77e8332a6c75f71f5c69541a4f667c818a83bcf4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0561-R\u0101m, Utt, 56-4941.conllu": {
+   "bytes": 37579,
+   "sha256": "ae3ed5145336b052acc41bdcf94c54066b6633793ba8142da7f083941e573a15"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0562-R\u0101m, Utt, 57-4952.conllu": {
+   "bytes": 75022,
+   "sha256": "2efcfb7a47a2b552832b137333fe7b6e2dad8dc9e1fb45ef458ce0053ccaa06a"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0563-R\u0101m, Utt, 58-4959.conllu": {
+   "bytes": 33869,
+   "sha256": "79c856f850bbd5c62946e14b90e9ff2220df9d5b0f3d2aa04507bf6944d531bd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0564-R\u0101m, Utt, 59-4965.conllu": {
+   "bytes": 47870,
+   "sha256": "208e143a6380aa17608009f6ee4a57302acbc66249c74b21238ff39ea269b7b6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0565-R\u0101m, Utt, 60-4966.conllu": {
+   "bytes": 41737,
+   "sha256": "a62e50d23383f9e5a54e5476412a1ebd36d6d63066b8f3a994981f31300ecdde"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0566-R\u0101m, Utt, 61-4967.conllu": {
+   "bytes": 83442,
+   "sha256": "a0a774182f82f1b37fd5c987aee6c5dcc0e0bf9bef1f1fd277aca8e335477b2d"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0567-R\u0101m, Utt, 62-4970.conllu": {
+   "bytes": 30417,
+   "sha256": "47172edbd1b8306ada54710d50ba50c7b4c0386be0f1855691d163eff8461681"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0568-R\u0101m, Utt, 63-4979.conllu": {
+   "bytes": 36788,
+   "sha256": "34dd39944069301b4b0492c215ed2f2b65c4c76016378018a864a89a07d2601c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0569-R\u0101m, Utt, 64-4985.conllu": {
+   "bytes": 33814,
+   "sha256": "5cb44915577a268d23b7360c993d33cf287bbb1bef0a82ac64450010e7d289f6"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0570-R\u0101m, Utt, 65-4986.conllu": {
+   "bytes": 57285,
+   "sha256": "2d575748c2a49c10d71513cf06c72a3dd5c8d3085a7d1b03cc0dc6a051cea6b7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0571-R\u0101m, Utt, 66-4992.conllu": {
+   "bytes": 36621,
+   "sha256": "acd5fb5194e0b77940e85ffc475bb0f249406b8952ecb5d67d02f9da2c243e71"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0572-R\u0101m, Utt, 67-4998.conllu": {
+   "bytes": 38775,
+   "sha256": "4ca22d7f9f83a0ada9431dabefe1484c67e5a89fb08547cfce412f08d7714b00"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0573-R\u0101m, Utt, 68-4999.conllu": {
+   "bytes": 36634,
+   "sha256": "0db51dc11bf28c67e3ce1ec947e70642598e07d3f1f971cc5bb9eb1e77b3909e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0574-R\u0101m, Utt, 69-5005.conllu": {
+   "bytes": 58784,
+   "sha256": "bbb00e6f4137b329a5287767e8a717b975bef3cac274b8ed2827e1c5a235fe0c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0575-R\u0101m, Utt, 70-5006.conllu": {
+   "bytes": 41322,
+   "sha256": "4fbcc1cc9a3ea56c0755ce949e9c92f6d8ffbb2ab6c779c11fc194abbdcc0ba3"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0576-R\u0101m, Utt, 71-5019.conllu": {
+   "bytes": 39313,
+   "sha256": "0a40de6e9308b95f502486f19287a21bc83860f76404cab81b2d798ab4103a0e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0577-R\u0101m, Utt, 72-5020.conllu": {
+   "bytes": 45566,
+   "sha256": "dd0ebc069c2981d5a07f9ae7866a50581b93e17a14e2796a68bdeb190aa1394f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0578-R\u0101m, Utt, 73-5031.conllu": {
+   "bytes": 39512,
+   "sha256": "14434a474712ea90969a05619a7c6309fe8399a461b3b3a7f0a32a2c761f03bc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0579-R\u0101m, Utt, 74-5041.conllu": {
+   "bytes": 40937,
+   "sha256": "62f56ddff68965ec4040a87b1ca6fa1193c83444b6dbf3cbbe995c9234495033"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0580-R\u0101m, Utt, 75-5051.conllu": {
+   "bytes": 37993,
+   "sha256": "93a9535efdd3a223cfb1164d5c483a28eca1447a6b2ef818bfe7a82dd7f4e9dd"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0581-R\u0101m, Utt, 76-5052.conllu": {
+   "bytes": 46527,
+   "sha256": "04be11c01fb73150b6878e03089d07e2cbc448faaf527d0c8b347c6b88389b25"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0582-R\u0101m, Utt, 77-5055.conllu": {
+   "bytes": 40662,
+   "sha256": "8ef3b379ebbd9025805e85fd7ac76bdd351d7f3fd73842c06679a347bd5be2cc"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0583-R\u0101m, Utt, 78-5061.conllu": {
+   "bytes": 63574,
+   "sha256": "70def993779216e748d50adc8b33e4639496cc7669812296c2a763d119f62014"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0584-R\u0101m, Utt, 79-5071.conllu": {
+   "bytes": 51654,
+   "sha256": "f472b29c2d3467f199ecdf446884b10b6b394d2a6a53f9e1ca78f7b4e1d0deac"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0585-R\u0101m, Utt, 80-5076.conllu": {
+   "bytes": 54603,
+   "sha256": "7a8458bd9ce023478cdfbedddda55f94bf4879f8d6c46205e2afce7e30ba3e2e"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0586-R\u0101m, Utt, 81-5077.conllu": {
+   "bytes": 52549,
+   "sha256": "21b0a7ae6dc899ceeff816569367ee0f629642921be18ff47d282873e59f6417"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0587-R\u0101m, Utt, 82-5078.conllu": {
+   "bytes": 40252,
+   "sha256": "01aee5f20e1994b23606600457202dd2e45b4e655afd3f255fd826099e75b800"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0588-R\u0101m, Utt, 83-5079.conllu": {
+   "bytes": 34026,
+   "sha256": "eaaf8d44e86013b99d8400232c4b0ef3a087d92b4d125eccb62ec71b714544ce"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0589-R\u0101m, Utt, 84-5080.conllu": {
+   "bytes": 34313,
+   "sha256": "ec3f5713cf59c832910e600e1c97ab15dd8fd2902c48614c6e1bfecc5cfe28f4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0590-R\u0101m, Utt, 85-5081.conllu": {
+   "bytes": 49750,
+   "sha256": "0a33b96494ff923a48bf04392d81fa19cc5010965d8211114a867ee15e591cff"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0591-R\u0101m, Utt, 86-5082.conllu": {
+   "bytes": 33089,
+   "sha256": "a3a39359dd5f13e8e3dbba9053b5d1d0ceaa89490a827509b5ac48a36b1f454c"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0592-R\u0101m, Utt, 87-5086.conllu": {
+   "bytes": 44122,
+   "sha256": "6c013cd8d580a9643246cb693b8dbe54f9c68cd3a7fbf50455c052e0645d811f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0593-R\u0101m, Utt, 88-5091.conllu": {
+   "bytes": 45416,
+   "sha256": "79d93132610d2952c0f59a0b8c8f9443c92606ce488d0537a4eaff1f112551b0"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0594-R\u0101m, Utt, 89-5092.conllu": {
+   "bytes": 31762,
+   "sha256": "8bc0ef543fea7b18f339c9c1242958de2e8a4ed5f46dbd7e18cd182ec1ad958b"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0595-R\u0101m, Utt, 90-5094.conllu": {
+   "bytes": 52483,
+   "sha256": "d5eb20e1de3b1534b5347ddeee17851442f7f771508ee8a5f2bdd906db66b6c8"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0596-R\u0101m, Utt, 91-5096.conllu": {
+   "bytes": 34803,
+   "sha256": "203ca2aef158b8e02f358af38d2dfef5ea1ff15786cbcd19c24bea0e8ef715b4"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0597-R\u0101m, Utt, 92-5099.conllu": {
+   "bytes": 35579,
+   "sha256": "866374d7342204063ec438571094004b406271f136ffb9bef7d5821ed5c63250"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0598-R\u0101m, Utt, 93-5100.conllu": {
+   "bytes": 37128,
+   "sha256": "e49a2abe2d2946c3b43a4babf77c55d8648af9d597e4113311cc258fafe08e41"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0599-R\u0101m, Utt, 94-5102.conllu": {
+   "bytes": 40958,
+   "sha256": "7f69514d934c573ad48a2aed45c07d14de2bf500ac582299a89080d1458a8213"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0600-R\u0101m, Utt, 95-5103.conllu": {
+   "bytes": 39065,
+   "sha256": "8f4d7eb71205f0eb4ae1d2c7b75759fbf55b579da9a64eb9628e3d4c0ca2bc1f"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0601-R\u0101m, Utt, 96-5105.conllu": {
+   "bytes": 39076,
+   "sha256": "4e8227dbf27653394a40229c00a7329e3615f566821b2a57ba465b3fa53526e7"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0602-R\u0101m, Utt, 97-5107.conllu": {
+   "bytes": 43140,
+   "sha256": "01b3ab5deb7cb09a287255564638b21f113e59c38168722e2f2df9fdebc2e206"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0603-R\u0101m, Utt, 98-5108.conllu": {
+   "bytes": 54572,
+   "sha256": "36ae44f0c11e325775e0bb557a192d898a3923fa40a05798ce460ccaae798114"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0604-R\u0101m, Utt, 99-5110.conllu": {
+   "bytes": 38392,
+   "sha256": "1063fcd5e800f6430f23d6f3e00bb08dbd70bb91598c368a5382f95b67049a85"
+  },
+  "sanskrit/repo/dcs/data/conllu/files/R\u0101m\u0101ya\u1e47a/R\u0101m\u0101ya\u1e47a-0605-R\u0101m, Utt, 100-5112.conllu": {
+   "bytes": 53742,
+   "sha256": "0f5cc051df79d9ec30efd34fbfbc2614e654439514c4cae035d3e65e002a8324"
+  },
+  "tamil/pmuni0028.html": {
+   "bytes": 204029,
+   "sha256": "0aa1604bfad90fb2fa9b042ba2ef84d0d9c00de57eb0438064d8ab29fe241aaa"
+  },
+  "tamil/pmuni0038.html": {
+   "bytes": 232222,
+   "sha256": "f1002097713d5d49cb2648cc4be5507d7b9ae752355b75e176bd770ec941bcae"
+  },
+  "tamil/pmuni0057.html": {
+   "bytes": 648456,
+   "sha256": "2a3ce0f3ba8837054302604eea69fcbafa459f74dc53e8a3dab3e9c7f75cf134"
+  },
+  "tamil/pmuni0063.html": {
+   "bytes": 27437,
+   "sha256": "f104b769a964df13c487f5f1c0b5d4aed026657c2f3b3a9a2606993f1504e1fe"
+  },
+  "tamil/pmuni0064.html": {
+   "bytes": 29480,
+   "sha256": "72bd712d722dbfdc77e5355f611169ef71f7164a7c26468911a58a31bbc1abd6"
+  },
+  "tamil/pmuni0067.html": {
+   "bytes": 38031,
+   "sha256": "5b3b90c520e4777c5951b740a7445883f8b2b5a26254a71620aeb7b6eb0da451"
+  },
+  "tamil/pmuni0069.html": {
+   "bytes": 54020,
+   "sha256": "f03be313c378ae665c727bcdf2d75d1c18697dd75700d83f62eec36c762e3f94"
+  },
+  "tamil/pmuni0070.html": {
+   "bytes": 23231,
+   "sha256": "0b0020ac435e534d1419e41dcb27050fbd607b46f1a2dab62c89156c1cdae691"
+  },
+  "tamil/pmuni0071.html": {
+   "bytes": 77059,
+   "sha256": "08b2e40af65909f1c186769dd602c36a56b4eb39c533410f6513a532f3c43c45"
+  },
+  "tamil/pmuni0073.html": {
+   "bytes": 29401,
+   "sha256": "1a68ffe8d785660474ac69221e393aff9bd7dd06bc946fef252e40c7c9a6ae66"
+  },
+  "tamil/pmuni0077.html": {
+   "bytes": 30258,
+   "sha256": "40c56bb1b001f7d4e540d5e9508958430e3bca5d351e524ca146eb9c83931fa0"
+  },
+  "tamil/pmuni0078.html": {
+   "bytes": 61851,
+   "sha256": "694b7db91a27370c62290881adca2f312e17c99cb080ff58b929919932be0c1d"
+  },
+  "tamil/pmuni0087.html": {
+   "bytes": 254631,
+   "sha256": "69dfe6f8ce6d2431a95d2033d0b40d6ab4620f727adbb7406483b0088e870ad6"
+  },
+  "tamil/pmuni0110.html": {
+   "bytes": 286628,
+   "sha256": "c7f37be99ead67d42d4476256bbf8fa8091964cfe7b0bc7a72d004f6cdb406dd"
+  },
+  "tamil/pmuni0221.html": {
+   "bytes": 505220,
+   "sha256": "da4b2182fca2066c3627f6c9207a01748e8e9fe75d005995d5cbb7397a263195"
+  },
+  "tamil/pmuni0229.html": {
+   "bytes": 794903,
+   "sha256": "0f2484a5b1b2df77fd43ab89a206f8f101bfa2d0161e6905f9822b08a04279cb"
+  },
+  "tamil/pmuni0296.html": {
+   "bytes": 505797,
+   "sha256": "b3aa835398de5175523e9f000942ccd1944f5885b1f74f03bcb22ecd18a00277"
+  },
+  "sumerian/cdliatf_unblocked.atf": {
+   "bytes": 86897831,
+   "sha256": "2896ec253767fa07fcaa5424af6fc25d6a047dc30b99c95f99d57ce75384d836"
+  },
+  "latin/pg218.txt": {
+   "bytes": 169899,
+   "sha256": "84ac8411841a4d8f5f4a49b6a2cd1f466917c6a5af72916d5e0b2b1ecb2f659c"
+  },
+  "latin/pg229.txt": {
+   "bytes": 61029,
+   "sha256": "d25307d3cc2cb1a1998a08de1ee9013fdcc5cbd0e79f87b1b59588344b27f1c7"
+  },
+  "latin/pg231.txt": {
+   "bytes": 124786,
+   "sha256": "4d1621b9a04e08180c120267e576a8cc05d501126a7418a50d5d0401a2d5a301"
+  },
+  "finnish/pg7000.txt": {
+   "bytes": 658382,
+   "sha256": "23e57fdc123b738f49e31a68ceef2b74b77a83baa0359ffd820f682905283631"
+  },
+  "segments/finnish.json.gz": {
+   "bytes": 486335,
+   "sha256": "82d2628c3b8a5c3aaf493442ae84b3267ba6aa228aaaadbfccc1fab62783c80b"
+  },
+  "segments/kamon.json.gz": {
+   "bytes": 81624,
+   "sha256": "82bc52306d4c9050824bd1421a8eaa737c4a946d72bb8bb325d3301043eb91ce"
+  },
+  "segments/latin.json.gz": {
+   "bytes": 293261,
+   "sha256": "499ae1bec579f28f80dc7b9bceecb82bc398baf4a11f36f64b7fe844af1e1484"
+  },
+  "segments/sanskrit.json.gz": {
+   "bytes": 1504303,
+   "sha256": "df34efabf8034fd90d51333fd4ff3ff2be18a85858088336d2d539a5adbba9eb"
+  },
+  "segments/sumerian.json.gz": {
+   "bytes": 3349699,
+   "sha256": "15c509b514486dc7bfa599b8df7abd48d0410d0d2724581366a97b599683c457"
+  },
+  "segments/tamil.json.gz": {
+   "bytes": 1372672,
+   "sha256": "4965ca501892d547cc7d442ef54c20271ce58c499dc6d8ba721b31f09b84b755"
+  }
+ }
+}
