@@ -19,8 +19,9 @@ logo-syllabic corpora. And published Indus statistics do not fix how decipherabl
 corpus is: two samplers that the published statistics cannot tell apart differ roughly three- to fivefold when a related
 language is available, and for logo-syllabic corpora only when it is the sole reference. A fifth,
 archaeological result is a prediction, not a measurement. The main solver matches the best published
-accuracy on English substitution ciphers. All limitations, including an optimistic synthetic relative,
-few source languages and post-hoc decisions, are listed.
+accuracy on English substitution ciphers. A pre-registered follow-up with real related languages (Section 4.11) finds them far less useful
+than the synthetic relative: no real relative reaches a 50% mean recovery on fresh corpora. All
+limitations, including few source languages and post-hoc decisions, are listed.
 
 ## Plain-language summary
 
@@ -675,12 +676,54 @@ script type. Their outputs on these corpora are not meaningful and are not repor
 These results support the conclusion of Section 4.1 that language detection at Indus scale is
 unresolved. They add no new failure of the plug-in entropy ratio itself.
 
+### 4.11 Real related languages (v2 follow-up)
+
+Limitation 2 says the synthetic sister is optimistic. The v2 follow-up replaces it with real relatives
+written in different texts: Dante's Italian for Latin (a descendant), Malayalam (descendant) and
+Kannada (sister) for Old Tamil, and Estonian (*Kalevipoeg*, sister) for Finnish. Scoring uses
+published sound correspondences: Grandgent (1907), Caldwell (1875) and, for Finnish-Estonian, the ten
+word pairs printed by Pajusalu (2012), which cover 13 of 27 Finnish letters, so that gold is weak.
+Methods, corpora (Indus point) and scoring before the cognate step are as in Section 3. Every
+reading was fixed in advance; the full account is the separate v2 section
+(`reports/drafts/v2_real_relatives_section_DRAFT.md`).
+
+The design had two stages. Seeds 0-5 were the development set, on which the readings were formed;
+seeds 6-11 were a confirmatory run of 240 fresh corpora, with nine readings fixed and frozen with the
+code (tag `frozen-v2.1`) before any of those corpora existed. The run had no errors, and a second run of
+24 corpora matched in 3,904 of 3,904 values.
+
+*Table 17. Confirmatory readings, seeds 6-11 (revised EM, strict score, `related` tier, 12 corpora per
+cell). "Helps" means at least 5 points above the better of two unrelated languages scored against the
+same gold, and ahead of it in at least 9 of the 12 paired corpora.*
+
+| Reading | Seeds 6-11 | Met? |
+|---|---|---|
+| Every real relative below a 50% mean | highest 40.5% (Kannada, alphabetic) | yes |
+| Estonian helps on alphabetic scripts | +17.0 points; 11 of 12 | yes |
+| Kannada helps on alphabetic scripts | +23.9 points; 11 of 12 | yes |
+| On syllabic and logo-syllabic scripts, at most 1 of 8 cells helps | 3 of 8 | **no** |
+| Every real relative below the synthetic sister | 12 of 12 non-logographic cells | yes |
+| Old Tamil alphabetic within 10 points of Ugaritic (32.0%) | 27.8% and 40.5% | yes |
+| Italian below the harsher synthetic sister, alphabetic and syllabic | 16.6% against 26.3%; 3.0% against 16.3% | yes |
+| Real relative chosen in under half of the `candidates` corpora | Italian 12, Malayalam 0, Kannada 23 of 48 | yes |
+| Runs reproduce exactly | 3,904 of 3,904 values | yes |
+
+Three points follow. First, a real relative is much less useful to these solvers than the synthetic
+sister: every real relative stays below it, and none reaches a 50% mean. Second, help is clearest on
+alphabetic scripts. Third, the prediction for the script types closest to Indus failed: on syllabic
+and logo-syllabic scripts a real relative gave measurable but small help in 3 of 8 cells (two at the
+constant-answer floor), which appears only with the corrected syllable cutter. A post-hoc check,
+declared before it ran, repeated those cells with the earlier cutter on the same corpora and found help
+in 0 of 8. No such cell exceeds 11.0% of signs. The sister-tier results of Sections 4.2-4.7 should
+therefore be read as best cases.
+
 ## 5. Limitations
 
 1. **Allograph merging.** Inventory rises only through allographs, which no tested method merges.
 2. **Sister language.** The sister keeps word order and morphology, shares source text with the
    hidden corpus (verbatim overlap 30-56% by language, corrected sister) and comes with oracle sound
-   correspondences. Its distance is a free parameter. Sister tiers are optimistic.
+   correspondences. Its distance is a free parameter. Sister tiers are optimistic: real relatives
+   score below the sister in every syllabic, logo-syllabic and alphabetic cell (Section 4.11).
 3. **Oracle script type and unit level in Task D.** Real decipherers are not told the script type.
 4. **Positive controls are partial.** The frozen EM matches the best published cipher accuracy. Rao et
    al.'s estimator, implemented post hoc, reproduces their values within about 0.1, including the
@@ -782,6 +825,9 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 26 | 8 Oct | Sproat's attested non-linguistic corpora added, with the author's permission, as a held-out control family for Tasks A and B: frozen methods, rules fit on existing Indus-point runs, no retraining. Indus bar seals excluded; Pictish reported separately. Non-linguistic systems no longer described as random; scope sentence extended to whether the script records a language at all | Post-results | 2401ca1, this revision |
 | 27 | 8 Oct | After expert comment: scope narrowed to automated methods that compare a script with known languages (Section 1, limitation 18); seals-only prediction weakened because sealings duplicate seal texts (Section 4.5); ICIT corpus size added as an unpublished reference point, not a target (Section 3.3) | Post-results | this revision |
 | 28 | 8 Oct | After the authors' supplement was pointed out: Rao et al.'s (2009) estimator implemented from it (modified Kneser-Ney bigrams, relative to a uniformly random sequence over the same number of tokens) as a separate post-hoc analysis; the entropy positive control and headline 1 re-run with it (Indus point, both calibration regimes, both seed sets, Sproat's corpora). Our statistic renamed "plug-in conditional-to-unigram entropy ratio" throughout; Rao's Indus dataset added as a reference point. Methods unchanged; headline 1 reworded after review | Post-results | this revision |
+| 29 | 11-27 Oct | v2: real related languages (Italian, Malayalam, Kannada, Estonian) on development seeds 0-5, pre-registration entries 4-10 | Pre-registered, several analyses post hoc | v2 branch |
+| 30 | 27-31 Oct | Entry 11 (syllable cutter; reachable ceiling) and entry 12 (readings for seeds 6-11) frozen at `frozen-v2.1`; final run on 240 fresh corpora; one of nine readings not met | Pre-registered | c5ad0ad, c5b071e |
+| 31 | 31 Oct | Entry 13: the earlier cutter on the final-run corpora, explaining the failed reading | Post-results | 2217fb8 |
 
 ---
 
@@ -806,6 +852,9 @@ not read; what we use from it is taken from the secondary source named.
 Berg-Kirkpatrick, T., & Klein, D. (2013). Decipherment with a million random restarts. In
 *Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing* (pp. 874-878).
 
+Caldwell, R. (1875). *A Comparative Grammar of the Dravidian or South-Indian Family of
+Languages* (2nd ed.). London. Internet Archive `in.ernet.dli.2015.459581`.
+
 Chao, A. (1984). Nonparametric estimation of the number of classes in a population. *Scandinavian
 Journal of Statistics*, 11, 265-270. (not verified)
 
@@ -819,6 +868,9 @@ Frenez, D., & Tosi, M. (2005). The Lothal sealings: Records from an Indus civili
 eastern end of the maritime trade circuits across the Arabian Sea. In M. Perna (Ed.), *Studi in Onore
 di Enrica Fiandra. Contributi di archeologia egea e vicinorientale* (pp. 65-103). Paris: Diffusion de
 Boccard. (not read; cited via Kenoyer & Meadow 2010)
+
+Grandgent, C. H. (1907). *An Introduction to Vulgar Latin*. Boston. Internet Archive
+`introductiontovu00gran`.
 
 Harris, Z. S. (1955). From phoneme to morpheme. *Language*, 31(2), 190-222. (not verified)
 
@@ -853,6 +905,10 @@ et al. 2010 and Rao 2018)
 
 Nair, A. (2026). How non-linguistic is the Indus sign system? A synthetic-baseline scorecard.
 arXiv:2604.17828 (preprint, not peer reviewed).
+
+Pajusalu, K. (2012). Phonological innovations of the Southern Finnic languages. In R. Grünthal &
+P. Kallio (eds.), *A Linguistic Map of Prehistoric Northern Europe* (Suomalais-Ugrilaisen Seuran
+Toimituksia 266, pp. 201-224). Helsinki: Société Finno-Ougrienne.
 
 Parpola, A. (1994). *Deciphering the Indus Script*. Cambridge: Cambridge University Press. (not
 read; sign count read via Rao 2018)

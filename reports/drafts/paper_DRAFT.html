@@ -24,8 +24,9 @@ logo-syllabic corpora. And published Indus statistics do not fix how decipherabl
 corpus is: two samplers that the published statistics cannot tell apart differ roughly three- to fivefold when a related
 language is available, and for logo-syllabic corpora only when it is the sole reference. A fifth,
 archaeological result is a prediction, not a measurement. The main solver matches the best published
-accuracy on English substitution ciphers. All limitations, including an optimistic synthetic relative,
-few source languages and post-hoc decisions, are listed.</p>
+accuracy on English substitution ciphers. A pre-registered follow-up with real related languages (Section 4.11) finds them far less useful
+than the synthetic relative: no real relative reaches a 50% mean recovery on fresh corpora. All
+limitations, including few source languages and post-hoc decisions, are listed.</p>
 <h2>Plain-language summary</h2>
 <p>The Indus script was used about 4,500 years ago in South Asia, and nobody can read it. Most inscriptions are four or five signs long, and no bilingual text exists. We
 asked whether existing computer methods would work on texts like these if the answer were known. We
@@ -1194,12 +1195,93 @@ called language by one or two methods.</p>
 script type. Their outputs on these corpora are not meaningful and are not reported.</p>
 <p>These results support the conclusion of Section 4.1 that language detection at Indus scale is
 unresolved. They add no new failure of the plug-in entropy ratio itself.</p>
+<h3>4.11 Real related languages (v2 follow-up)</h3>
+<p>Limitation 2 says the synthetic sister is optimistic. The v2 follow-up replaces it with real relatives
+written in different texts: Dante's Italian for Latin (a descendant), Malayalam (descendant) and
+Kannada (sister) for Old Tamil, and Estonian (<em>Kalevipoeg</em>, sister) for Finnish. Scoring uses
+published sound correspondences: Grandgent (1907), Caldwell (1875) and, for Finnish-Estonian, the ten
+word pairs printed by Pajusalu (2012), which cover 13 of 27 Finnish letters, so that gold is weak.
+Methods, corpora (Indus point) and scoring before the cognate step are as in Section 3. Every
+reading was fixed in advance; the full account is the separate v2 section
+(<code>reports/drafts/v2_real_relatives_section_DRAFT.md</code>).</p>
+<p>The design had two stages. Seeds 0-5 were the development set, on which the readings were formed;
+seeds 6-11 were a confirmatory run of 240 fresh corpora, with nine readings fixed and frozen with the
+code (tag <code>frozen-v2.1</code>) before any of those corpora existed. The run had no errors, and a second run of
+24 corpora matched in 3,904 of 3,904 values.</p>
+<p><em>Table 17. Confirmatory readings, seeds 6-11 (revised EM, strict score, <code>related</code> tier, 12 corpora per
+cell). "Helps" means at least 5 points above the better of two unrelated languages scored against the
+same gold, and ahead of it in at least 9 of the 12 paired corpora.</em></p>
+<table>
+<thead>
+<tr>
+<th>Reading</th>
+<th>Seeds 6-11</th>
+<th>Met?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every real relative below a 50% mean</td>
+<td>highest 40.5% (Kannada, alphabetic)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Estonian helps on alphabetic scripts</td>
+<td>+17.0 points; 11 of 12</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Kannada helps on alphabetic scripts</td>
+<td>+23.9 points; 11 of 12</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>On syllabic and logo-syllabic scripts, at most 1 of 8 cells helps</td>
+<td>3 of 8</td>
+<td><strong>no</strong></td>
+</tr>
+<tr>
+<td>Every real relative below the synthetic sister</td>
+<td>12 of 12 non-logographic cells</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Old Tamil alphabetic within 10 points of Ugaritic (32.0%)</td>
+<td>27.8% and 40.5%</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Italian below the harsher synthetic sister, alphabetic and syllabic</td>
+<td>16.6% against 26.3%; 3.0% against 16.3%</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Real relative chosen in under half of the <code>candidates</code> corpora</td>
+<td>Italian 12, Malayalam 0, Kannada 23 of 48</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Runs reproduce exactly</td>
+<td>3,904 of 3,904 values</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Three points follow. First, a real relative is much less useful to these solvers than the synthetic
+sister: every real relative stays below it, and none reaches a 50% mean. Second, help is clearest on
+alphabetic scripts. Third, the prediction for the script types closest to Indus failed: on syllabic
+and logo-syllabic scripts a real relative gave measurable but small help in 3 of 8 cells (two at the
+constant-answer floor), which appears only with the corrected syllable cutter. A post-hoc check,
+declared before it ran, repeated those cells with the earlier cutter on the same corpora and found help
+in 0 of 8. No such cell exceeds 11.0% of signs. The sister-tier results of Sections 4.2-4.7 should
+therefore be read as best cases.</p>
 <h2>5. Limitations</h2>
 <ol>
 <li><strong>Allograph merging.</strong> Inventory rises only through allographs, which no tested method merges.</li>
 <li><strong>Sister language.</strong> The sister keeps word order and morphology, shares source text with the
    hidden corpus (verbatim overlap 30-56% by language, corrected sister) and comes with oracle sound
-   correspondences. Its distance is a free parameter. Sister tiers are optimistic.</li>
+   correspondences. Its distance is a free parameter. Sister tiers are optimistic: real relatives
+   score below the sister in every syllabic, logo-syllabic and alphabetic cell (Section 4.11).</li>
 <li><strong>Oracle script type and unit level in Task D.</strong> Real decipherers are not told the script type.</li>
 <li><strong>Positive controls are partial.</strong> The frozen EM matches the best published cipher accuracy. Rao et
    al.'s estimator, implemented post hoc, reproduces their values within about 0.1, including the
@@ -1471,6 +1553,27 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.</p>
 <td>Post-results</td>
 <td>this revision</td>
 </tr>
+<tr>
+<td>29</td>
+<td>11-27 Oct</td>
+<td>v2: real related languages (Italian, Malayalam, Kannada, Estonian) on development seeds 0-5, pre-registration entries 4-10</td>
+<td>Pre-registered, several analyses post hoc</td>
+<td>v2 branch</td>
+</tr>
+<tr>
+<td>30</td>
+<td>27-31 Oct</td>
+<td>Entry 11 (syllable cutter; reachable ceiling) and entry 12 (readings for seeds 6-11) frozen at <code>frozen-v2.1</code>; final run on 240 fresh corpora; one of nine readings not met</td>
+<td>Pre-registered</td>
+<td>c5ad0ad, c5b071e</td>
+</tr>
+<tr>
+<td>31</td>
+<td>31 Oct</td>
+<td>Entry 13: the earlier cutter on the final-run corpora, explaining the failed reading</td>
+<td>Post-results</td>
+<td>2217fb8</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1485,6 +1588,8 @@ it in brackets, that we have not checked against the source itself. "(not read)"
 not read; what we use from it is taken from the secondary source named.</p>
 <p>Berg-Kirkpatrick, T., &amp; Klein, D. (2013). Decipherment with a million random restarts. In
 <em>Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing</em> (pp. 874-878).</p>
+<p>Caldwell, R. (1875). <em>A Comparative Grammar of the Dravidian or South-Indian Family of
+Languages</em> (2nd ed.). London. Internet Archive <code>in.ernet.dli.2015.459581</code>.</p>
 <p>Chao, A. (1984). Nonparametric estimation of the number of classes in a population. <em>Scandinavian
 Journal of Statistics</em>, 11, 265-270. (not verified)</p>
 <p>Chen, S. F., &amp; Goodman, J. (1998). Harvard University Computer Science Technical Report TR-10-98.
@@ -1495,6 +1600,8 @@ literate Harappan civilization. <em>Electronic Journal of Vedic Studies</em>, 11
 eastern end of the maritime trade circuits across the Arabian Sea. In M. Perna (Ed.), <em>Studi in Onore
 di Enrica Fiandra. Contributi di archeologia egea e vicinorientale</em> (pp. 65-103). Paris: Diffusion de
 Boccard. (not read; cited via Kenoyer &amp; Meadow 2010)</p>
+<p>Grandgent, C. H. (1907). <em>An Introduction to Vulgar Latin</em>. Boston. Internet Archive
+<code>introductiontovu00gran</code>.</p>
 <p>Harris, Z. S. (1955). From phoneme to morpheme. <em>Language</em>, 31(2), 190-222. (not verified)</p>
 <p>Kenoyer, J. M. (2020a). The origin and development of the Indus script: Insights from Harappa and
 other sites. In K. Lashari (Ed.), <em>Studies on Indus Script</em> (pp. 217-236). Karachi: National Fund for
@@ -1520,6 +1627,9 @@ Survey of India 77). New Delhi: Archaeological Survey of India. (not read; figur
 et al. 2010 and Rao 2018)</p>
 <p>Nair, A. (2026). How non-linguistic is the Indus sign system? A synthetic-baseline scorecard.
 arXiv:2604.17828 (preprint, not peer reviewed).</p>
+<p>Pajusalu, K. (2012). Phonological innovations of the Southern Finnic languages. In R. Grünthal &amp;
+P. Kallio (eds.), <em>A Linguistic Map of Prehistoric Northern Europe</em> (Suomalais-Ugrilaisen Seuran
+Toimituksia 266, pp. 201-224). Helsinki: Société Finno-Ougrienne.</p>
 <p>Parpola, A. (1994). <em>Deciphering the Indus Script</em>. Cambridge: Cambridge University Press. (not
 read; sign count read via Rao 2018)</p>
 <p>Possehl, G. L. (2002). <em>The Indus Civilization: A Contemporary Perspective</em>. Walnut Creek, CA:
