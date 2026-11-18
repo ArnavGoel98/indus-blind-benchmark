@@ -763,6 +763,13 @@ therefore be read as best cases.
 18. **Only automated, comparison-based decipherment.** The decipherment tasks score methods that
     compare an unknown script with known languages. Decipherment that analyses the script itself while
     reconstructing the language is not measured, and a low score here says nothing about it.
+19. **Old Tamil text not pinned.** The Project Madurai files behind Old Tamil were not checksummed
+    when fetched (3 Oct) and have since changed upstream. A rerun of the v2 final run on the November text
+    (17-18 Nov) reproduced every value that does not use Old Tamil exactly (0 of 340,867 differ), and
+    each of the nine readings was met or not met as in Section 4.11. The Old Tamil effect sizes moved,
+    however: Kannada's help on alphabetic scripts fell from +23.9 to +10.5 points (10 of 12 corpora),
+    and Malayalam on syllabic scripts sat exactly at the help threshold (+5.1 points, 9 of 12). Effect
+    sizes involving Old Tamil therefore depend on the version of the text and are approximate.
 
 ## 6. Blind challenge and reproducibility
 
@@ -828,6 +835,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 29 | 11-27 Oct | v2: real related languages (Italian, Malayalam, Kannada, Estonian) on development seeds 0-5, pre-registration entries 4-10 | Pre-registered, several analyses post hoc | v2 branch |
 | 30 | 27-31 Oct | Entry 11 (syllable cutter; reachable ceiling) and entry 12 (readings for seeds 6-11) frozen at `frozen-v2.1`; final run on 240 fresh corpora; one of nine readings not met | Pre-registered | c5ad0ad, c5b071e |
 | 31 | 31 Oct | Entry 13: the earlier cutter on the final-run corpora, explaining the failed reading | Post-results | 2217fb8 |
+| 32 | 17-18 Nov | Rerun of the v2 final run and C4 on `frozen-v2.1` (reproducibility check): non-Tamil values identical; Old Tamil text had changed upstream, same verdicts, smaller Kannada effect (limitation 19) | Post-results | 132ad0f |
 
 ---
 
