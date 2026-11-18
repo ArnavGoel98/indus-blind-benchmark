@@ -717,6 +717,15 @@ declared before it ran, repeated those cells with the earlier cutter on the same
 in 0 of 8. No such cell exceeds 11.0% of signs. The sister-tier results of Sections 4.2-4.7 should
 therefore be read as best cases.
 
+A further pre-registered test (entry 14) asked whether that small help recurs on fresh corpora (seeds
+12-17; Old Tamil and Finnish, syllabic and logo-syllabic, 12 corpora per cell; Old Tamil from the
+November text, limitation 19). It did not, as a pattern: only 1 of the 3 cells that helped did so
+again, against a declared 2 of 3, so the reading was not met and the earlier result is read as noise on
+top of the cutter fix. The one cell that helped again, Malayalam on syllabic scripts, did so clearly
+(10.0% against 2.9% for the better unrelated reference, ahead in 12 of 12 corpora, above its 6.0%
+constant-answer floor). The two Estonian cells fell short of the paired-win rule (8 of 12 each) and
+scored below Estonian's constant-answer floor. Kannada again did not help, and no cell exceeded 11.3%.
+
 ## 5. Limitations
 
 1. **Allograph merging.** Inventory rises only through allographs, which no tested method merges.
@@ -836,6 +845,7 @@ taken before any result are marked "pre-results". Dates are 2026, UTC.
 | 30 | 27-31 Oct | Entry 11 (syllable cutter; reachable ceiling) and entry 12 (readings for seeds 6-11) frozen at `frozen-v2.1`; final run on 240 fresh corpora; one of nine readings not met | Pre-registered | c5ad0ad, c5b071e |
 | 31 | 31 Oct | Entry 13: the earlier cutter on the final-run corpora, explaining the failed reading | Post-results | 2217fb8 |
 | 32 | 17-18 Nov | Rerun of the v2 final run and C4 on `frozen-v2.1` (reproducibility check): non-Tamil values identical; Old Tamil text had changed upstream, same verdicts, smaller Kannada effect (limitation 19) | Post-results | 132ad0f |
+| 33 | 18 Nov | Entry 14: prospective test of the entry-13 explanation on fresh seeds 12-17 (48 corpora); X1 not met (1 of 3 cells helped again), X2 and X3 met | Pre-registered (declared after entry 13, before its own run) | 12b4adf, 58e5324 |
 
 ---
 
