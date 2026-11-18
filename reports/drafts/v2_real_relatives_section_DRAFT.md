@@ -3,11 +3,12 @@
 Status: draft written 2026-10-20, revised 2026-10-21 after an audit for oversights, 2026-10-24
 with Finnish-Estonian (entry 9) and 2026-10-27 for entry 10 (no-source gold rows read as unknown; the
 synthetic sisters reframed as optimistic upper references), and 2026-11-04 for the confirmatory final run
-on fresh seeds 6-11 (entries 11-13; section v2.6a), on branch `v2`,
+on fresh seeds 6-11 (entries 11-13; section v2.6a), and 2026-11-18 for the rerun of the final run and
+the prospective test on seeds 12-17 (entry 14; section v2.6b), on branch `v2`,
 from the reports named in each paragraph. It does not change any v1 number or the v1 paper
 (`paper-v1`). Every number here is a v2 result, and every decimal in it is checked against a
 generated report (`reports/v2/cd/analysis/check_numbers.py`). Methods are frozen at `frozen-v2`
-(commit `4ce3e90`) and, for the final run, `frozen-v2.1` (commit `c5ad0ad`); pre-registration entries 1-13
+(commit `4ce3e90`) and, for the final run, `frozen-v2.1` (commit `c5ad0ad`); pre-registration entries 1-14
 are in `docs/v2_preregistration.md`; entries 10-11 changed only the v2 scoring, yardstick harness and the
 syllable cutter for real relatives. Each claim
 is labelled pre-registered, exploratory or post hoc. Nothing here is, or claims, a decipherment.
@@ -20,8 +21,13 @@ no real relative reaches a 50% mean (highest 40.5%, Kannada alphabetic); Estonia
 Kannada (+23.9) measurably help on alphabetic scripts; every real relative stays below the v1 sister.
 **One reading was not met (H3):** on syllabic and logo-syllabic scripts a real relative gave measurable
 but small help in 3 of 8 cells (two at the constant-answer floor), which appears only with the corrected
-syllable cutter (post hoc entry 13: with the old cutter, 0 of 8). The development findings below
-(seeds 0-5) stand as development results.
+syllable cutter (post hoc entry 13: with the old cutter, 0 of 8). **A prospective test on fresh seeds
+12-17 (entry 14; section v2.6b) did not confirm that explanation as a pattern:** only 1 of the 3 cells
+helped again (declared: at least 2). The one that did, Malayalam syllabic, helped clearly (+7.1; 12 of
+12); both Estonian cells fell short and scored below Estonian's constant-answer floor. A rerun of the
+final run reproduced every value that does not use Old Tamil exactly; Old Tamil's source text had
+changed upstream, which left every verdict as it was but moved Kannada alphabetic from +23.9 to +10.5
+(limitation 17). The development findings below (seeds 0-5) stand as development results.
 
 - **0 of 12** cells (3 real relatives × 4 script types) reach a 50% mean, on either seed block.
   Pre-registered (entry 6) and replicated on fresh seeds (entry 7).
@@ -62,7 +68,7 @@ syllable cutter (post hoc entry 13: with the old cutter, 0 of 8). The developmen
 | The runs are deterministic | C4 | Pre-registered | 120 of 120 identical | - |
 | Estonian measurably helps Finnish on alphabetic scripts (+20.1; 11 of 12) | Entry 9, E2 | Pre-registered (entry 9) | Confirmed on seeds 6-11 (+17.0; 11 of 12; H2a); **weak gold: 10 word pairs, 13 of 27 letters** | A fuller Finnish-Estonian gold source; another Estonian text |
 | Kannada measurably helps Old Tamil on alphabetic scripts | C1; H2b | Pre-registered (entries 8, 12) | Confirmed on seeds 6-11 (+23.9; 11 of 12) | Other unrelated references |
-| On syllabic and logo-syllabic scripts a relative helps in at most 1 of 8 cells | H3 | Pre-registered (entry 12): **not met** | 3 of 8 on seeds 6-11, two of them at the floor; 0 of 8 with the old cutter (entry 13, post hoc) | The syllable cutter; other gold tables |
+| On syllabic and logo-syllabic scripts a relative helps in at most 1 of 8 cells | H3 | Pre-registered (entry 12): **not met** | 3 of 8 on seeds 6-11, two of them at the floor; 0 of 8 with the old cutter (entry 13, post hoc); on seeds 12-17 only 1 of the 3 helped again (entry 14, pre-registered; X1 not met) | Other gold tables; more seeds |
 
 ## v2.1 Why real relatives
 
@@ -471,7 +477,8 @@ these results add one point. With these comparison-based solvers, a genuine rela
 beyond what an unrelated language or a constant answer already gives, outside alphabetic scripts.
 Inside them the added value is modest and unstable. The confirmatory run (section v2.6a) adds a
 qualification: on syllabic and logo-syllabic scripts the help is measurable but small in 3 of 8 cells,
-and only once the relative's syllables are cut correctly.
+and only once the relative's syllables are cut correctly. On fresh seeds (v2.6b) that help recurred in
+only one cell, Malayalam syllabic, so outside alphabetic scripts it is not a stable pattern.
 
 ## v2.6a Confirmatory final run on fresh seeds 6-11
 
@@ -503,6 +510,42 @@ rule the Estonian change is attributed to the fix (Estonian syllabic 6.5% with t
 the new; logo-syllabic 5.2% and 7.7%). Malayalam syllabic also falls just short with the old cutter
 (+5.7; 8 of 12), so that cell sits on the threshold. H3 stays *not met*; the check explains it and
 changes no reading. Estonian rests on the weak gold.
+
+**Rerun (2026-11-17/18).** The final run and C4 were rerun from the pinned sources
+(`reports/v2/repro/`). Every value that does not use the Old Tamil text reproduced exactly (0 of
+340,867 differ). Old Tamil's Project Madurai text had changed upstream since the original fetch, so its
+corpora are new draws: every reading was met or not met as above, but Kannada alphabetic fell from +23.9
+to +10.5 points (10 of 12) and Malayalam syllabic sat at the threshold (+5.1; 9 of 12)
+(`reports/v2/repro/rerun_comparison.md`; limitation 17).
+
+## v2.6b Prospective test of the H3 explanation on fresh seeds 12-17
+
+Pre-registered (entry 14), approved by the project owner and pushed (commit `12b4adf`) before any seed
+12-17 corpus existed. Code `frozen-v2.1`; Old Tamil from the November text. Old Tamil and Finnish,
+syllabic and logo-syllabic, samplers A and B: 48 corpora, 0 errors; 12 per cell. Same help rule as H3.
+Full tables: `reports/v2/extension/entry14.md`.
+
+| Reading | Threshold | Seeds 12-17 | Met? |
+|---|---|---|---|
+| **X1. The three cells that helped in the final run help again** | at least 2 of 3 | **1: Malayalam syllabic** | **no** |
+| X2. Neither Kannada cell helps | 0 of 2 | 0 (syllabic +1.7, logo-syllabic +0.5; 8 of 12 each) | yes |
+| X3. Every cell below 15% | 6 of 6 | 6 of 6; highest 11.3% (Estonian syllabic) | yes |
+
+| Relative | Script | Real relative | Better unrelated | Added; wins | Helps? | Floor |
+|---|---|---|---|---|---|---|
+| Malayalam | syllabic | 10.0 | Finnish, 2.9 | +7.1; 12 of 12 | yes | 6.0 |
+| Malayalam | logo-syllabic | 6.9 | Finnish, 2.5 | +4.4; 9 of 12 | no | 3.9 |
+| Kannada | syllabic | 4.6 | Finnish, 2.9 | +1.7; 8 of 12 | no | 6.0 |
+| Kannada | logo-syllabic | 3.0 | Finnish, 2.5 | +0.5; 8 of 12 | no | 3.9 |
+| Estonian (weak gold) | syllabic | 11.3 | Latin, 2.9 | +8.4; 8 of 12 | no | 12.6 |
+| Estonian (weak gold) | logo-syllabic | 6.0 | Latin, 1.2 | +4.9; 8 of 12 | no | 9.5 |
+
+*Table v2.6b. Revised EM, strict, `related_real`, mean of 12 corpora; floor = the constant-answer floor.*
+
+By the interpretation fixed in entry 14, X1 not met means the final-run H3 result is read as noise on
+top of the cutter fix. One cell is consistent across both seed blocks and both Old Tamil texts:
+Malayalam syllabic, here clearly above its floor. The Estonian gains over the unrelated reference never
+lifted the relative above Estonian's constant-answer floor, on either seed block.
 
 ## v2.7 What these results do not show
 
@@ -578,7 +621,12 @@ changes no reading. Estonian rests on the weak gold.
     hidden language's vowel set, so Estonian õ and ü and Dravidian vocalic ṛ were cut as consonants.
     Entry 11 fixed this before the final run; entry 13 shows the fix is what moved H3 (post hoc).
 16. **One confirmatory run.** The seeds 6-11 readings rest on 12 corpora per cell, and two of them
-    (H3's Malayalam cell, H7's Kannada count) sit at their thresholds.
+    (H3's Malayalam cell, H7's Kannada count) sit at their thresholds. The prospective test on seeds
+    12-17 (v2.6b) covers only the six syllabic and logo-syllabic cells.
+17. **Old Tamil text not pinned.** The Project Madurai files were not checksummed when fetched and
+    have since changed upstream; the original text is lost. A rerun reproduced every non-Tamil value
+    exactly and every verdict, but Old Tamil effect sizes moved (Kannada alphabetic +23.9 to +10.5), so
+    effect sizes involving Old Tamil are approximate. Entry 14 used the November text, now pinned.
 
 ## v2 analysis history (dated)
 
@@ -642,6 +690,11 @@ changes no reading. Estonian rests on the weak gold.
   for seeds 6-11 fixed and frozen (`frozen-v2.1`, `c5ad0ad`). Final run: 240 corpora, 0 errors; one
   restart after a container restart killed the first attempt before any corpus finished. H3 not met.
   Entry 13 (post hoc): the old cutter on the final-run corpora; H3 change attributed to the fix.
+- **2026-11-17 to 2026-11-18:** reproducibility kit (`reports/v2/repro/`: pinned library versions,
+  source and Wikisource checksums, one-command rerun). The final run and C4 rerun: 0 of 340,867
+  non-Tamil values differ; Old Tamil text found changed upstream, same verdicts. Entry 14 (option A of
+  `docs/v2_extension_PROPOSAL.md`) declared and pushed before any seed 12-17 corpus; 48 corpora, 0
+  errors; X1 not met, X2 and X3 met.
 
 ## References (this section)
 

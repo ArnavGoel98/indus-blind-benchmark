@@ -15,6 +15,8 @@ SOURCES = [*sorted((ROOT / "reports" / "v2" / "cd").glob("*.md")),
            *sorted((ROOT / "reports" / "v2" / "real_relatives").glob("*.md")),
            ROOT / "reports" / "v2" / "ugaritic" / "results.md",
            *sorted((ROOT / "reports" / "v2" / "final").glob("*.md")),
+           *sorted((ROOT / "reports" / "v2" / "extension").glob("*.md")),
+           ROOT / "reports" / "v2" / "repro" / "rerun_comparison.md",
            ROOT / "reports" / "v2" / "sister" / "anchor_corrected.md"]
 
 

@@ -168,3 +168,19 @@ relative can help and still fall below `harsh`.
 bracket of entry 4 is dropped. Real relatives are the realistic `related` tier; the synthetic sisters
 (v1 sister and `harsh`) are reported as optimistic upper references. The observations above are
 unchanged.
+
+## 4. Small help on syllabic scripts does not recur as a pattern — observed 2026-11-18 (entry 14, pre-registered)
+
+**What was expected.** Entry 13 (post hoc) explained the failed H3 reading of the final run (help in 3
+of 8 syllabic and logo-syllabic cells) by the entry-11 syllable-cutter fix. Entry 14 predicted, before
+any seed 12-17 corpus existed, that at least 2 of those 3 cells (Malayalam syllabic, Estonian syllabic,
+Estonian logo-syllabic) would help again on fresh seeds.
+
+**What happened.** Only 1 of 3 did (X1 not met; `reports/v2/extension/entry14.md`). Malayalam syllabic
+helped clearly (10.0% against 2.9% for the better unrelated reference; 12 of 12). Both Estonian cells
+fell short of the paired-win rule (8 of 12 each) and scored below Estonian's constant-answer floor, as
+they did on seeds 6-11. By the interpretation fixed in entry 14, the final-run result is read as noise
+on top of the cutter fix.
+
+**What remains.** One cell, Malayalam syllabic, helps on both seed blocks and both Old Tamil texts. No
+syllabic or logo-syllabic cell has exceeded 11.3% mean recovery.
