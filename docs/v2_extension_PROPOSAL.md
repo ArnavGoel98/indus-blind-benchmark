@@ -1,6 +1,6 @@
-# PROPOSAL (not approved): next pre-registered extension
+# PROPOSAL: next pre-registered extension (option A approved 2026-11-18; declared as entry 14)
 
-Written 2026-11-17. **Nothing here is declared or run until the project owner approves.** On approval,
+Written 2026-11-17. **Option A approved by the project owner on 2026-11-18 and declared as pre-registration entry 14; options B and C are not approved.** On approval,
 the chosen option becomes pre-registration entry 14, committed before any of its corpora is generated.
 
 ## Why another step

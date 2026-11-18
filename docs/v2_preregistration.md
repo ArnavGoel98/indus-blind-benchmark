@@ -585,3 +585,55 @@ count is recomputed with old-cutter values for these six cells and final values 
 - If both pass, it is attributed to the new seeds, not the fix.
 - If one passes, the result is reported as mixed.
 Descriptive only; no test.
+
+## 14. A prospective test of the H3 explanation on fresh seeds 12-17
+
+Declared 2026-11-18, on the project owner's approval of option A of `docs/v2_extension_PROPOSAL.md`,
+**before any seed 12-17 corpus is generated** (checked: no record, archive, report or config in the
+repository has a seed in 12-17). Committed and pushed before the run starts.
+
+**Why.** Entry 13 explained the failed H3 reading (3 of 8 syllabic and logo-syllabic cells helped) by
+the entry-11 cutter fix, but entry 13 was designed after the result, on the same corpora. This entry
+predicts, before seeing them, what fresh corpora should show if that explanation holds.
+
+**Code.** `frozen-v2.1`, unchanged. The driver `reports/v2/extension/entry14_run.py` only chooses seeds
+and cells, refuses to start unless `final_v2.check_final()` passes, and calls the same frozen functions
+as the final run with the same settings. Checked before declaration on two published final-run corpora
+(Finnish syllabic, seed 6, A; Finnish logo-syllabic, seed 7, B): related, floor, ceilings, token count
+and the Latin unrelated reference are identical to the archive; the Old Tamil unrelated reference
+differs, because its text changed (below).
+
+**Corpora.** Old Tamil and Finnish; syllabic and logo-syllabic; seeds 12-17; samplers A and B: 48 corpora,
+Indus point (2,906 texts, mean length 4.6).
+
+**Old Tamil text.** The 2026-10-03 Project Madurai text is lost (limitation 19 of the draft;
+`reports/v2/repro/README.md`). This entry uses the 2026-11-17 text, pinned in
+`reports/v2/repro/v1_sources_manifest.json`; `check_sources.py` must report no Old Tamil difference before
+the run. On that text the Malayalam syllabic cell of seeds 6-11 sat exactly at the help threshold (+5.1
+points, 9 of 12; `reports/v2/repro/rerun_comparison.md`), so X1 for that cell is close to a coin flip
+and is declared as such now.
+
+**Per corpus.** For each real relative (Malayalam and Kannada for Old Tamil; Estonian for Finnish), with
+the entry-11 cutter: `related_real` with the revised EM (3 restarts, 60 iterations), entry-10 scorer,
+strict primary; raw and reachable ceilings; the C2 floor. C1: the revised EM with each unrelated reference
+(Old Tamil: Latin, Finnish; Finnish: Latin, Old Tamil), scored against each real relative's gold. No
+synthetic, `candidates_*` or v1-sister tiers; no C3 or C4.
+
+**Helps (as entry 12, H2-H3).** A cell helps if its mean strict recovery is at least 5 points above that
+of the better unrelated reference (higher mean) and ahead of it in at least 9 of the 12 paired corpora.
+
+**Readings, fixed now (each met or not met).**
+- **X1.** Of the three cells that helped in the final run (Malayalam syllabic, Estonian syllabic,
+  Estonian logo-syllabic), at least 2 help again.
+- **X2.** Neither Kannada syllabic nor Kannada logo-syllabic helps.
+- **X3.** Every one of the six cells stays below 15% mean strict recovery.
+
+**Interpretation, fixed now.** X1 met: the H3 explanation (small real help on syllabic scripts, once
+syllables are cut correctly) is supported prospectively. X1 not met: the final-run result is read as
+noise on top of the fix, and the paper says so. X2 and X3 are checks on the size of the effect; neither
+changes the entry-12 readings, and H3 stays "not met" whatever this entry shows.
+
+**Run and report.** `python reports/v2/extension/entry14_run.py --workers 4` writes
+`runs/results/v2_e14/records.jsonl` and `reports/v2/extension/entry14.{md,json}`. Reported to the owner
+failures first, before anything enters the paper. A pipeline check on development seed 90 (sampler A,
+1 restart; `--dev`) was run before this entry; its numbers are not results and are not reported.
