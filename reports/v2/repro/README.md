@@ -32,7 +32,7 @@ This command:
 | `fetch_relatives_pinned.py`, `relatives_manifest.json` | Revision id and SHA-256 of the 239 Wikisource pages at the cutoff |
 | `recalibrate.py` | Recreates `runs/calibration*/full/` and checks 400 seed-0 statistics against the reports |
 | `compare_rerun.py` | Compares the rerun with the archive and re-evaluates H1-H8 independently of `final_summary.py` |
-| `rerun_comparison.md` | Its output for the 2026-11-17 rerun, once the rerun finishes |
+| `rerun_comparison.md` | Its output for the 2026-11-17 rerun: 0 of 340,867 exact-class values differ (C4 included); no reading changes its verdict |
 
 ## Gaps found, and what was done about them
 
@@ -83,8 +83,8 @@ What this means for the rerun:
 **3. Library versions were not recorded.**
 - `pyproject.toml` gives only lower bounds, and the versions of the original environment were not
   recorded.
-- `requirements-lock.txt` records the rerun environment. If the exact class reproduces bit for bit,
-  these versions are shown to give the archived numbers.
+- `requirements-lock.txt` records the rerun environment. The exact class reproduced bit for bit on the
+  2026-11-17 rerun, so these versions are shown to give the archived numbers.
 
 **4. Calibration files are git-ignored.**
 - Calibration is seeded, so `recalibrate.py` recreates the files, then checks them before any corpus

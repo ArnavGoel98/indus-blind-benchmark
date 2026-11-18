@@ -29,7 +29,7 @@ UN = {"latin": ["tamil", "finnish"], "tamil": ["latin", "finnish"], "finnish": [
 SC = ["logographic", "syllabic", "logosyllabic", "alphabetic"]
 H7_RELS = ("italian", "malayalam", "kannada")          # the readings document, H7 (Estonian not part of it)
 CHECK_KEYS = ("tiers", "ceiling", "floor", "unrelated", "budget", "v1_sister", "n_tokens", "family")   # section 5, as frozen
-VOLATILE = {"seconds", "commit", "elapsed", "time", "runtime_s", "wall_seconds"}
+VOLATILE = {"timing", "seconds", "commit", "elapsed", "time", "runtime_s", "wall_seconds"}
 
 
 def load_arch(name: str) -> list[dict]:
@@ -162,7 +162,7 @@ def main() -> None:
     ex_bad = sum(c["exact"][1] for c in cmp.values())
     L.append(f"- Rerun errors: {len(errors)}{' ' + str(errors) if errors else ''}.")
     L.append(f"- Exact-class values that differ: **{ex_bad:,}**" + (" (listed below)." if ex_bad else "."))
-    changed = [h for h in ra if ra[h][0] != rb[h][0]]
+    changed = [h for h in ra if h in rb and ra[h][0] != rb[h][0]]
     L.append(f"- Readings whose verdict changed on the rerun: {', '.join(changed) if changed else 'none'}.")
     L += ["", "## Exact class (must match bit for bit)", "", "| File | Corpora (archive / rerun) | Values compared | Differ |",
           "|---|---|---|---|"]
