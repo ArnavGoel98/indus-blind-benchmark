@@ -1,0 +1,79 @@
+{
+ "errors": [],
+ "readings": {
+  "X1": [
+   false,
+   "1 of 3 helped cells help again"
+  ],
+  "X2": [
+   true,
+   "Kannada syllabic: +1.7, 8 of 12; Kannada logosyllabic: +0.5, 8 of 12"
+  ],
+  "X3": [
+   true,
+   "highest 11.3"
+  ]
+ },
+ "cells": {
+  "malayalam|syllabic": {
+   "real": 10.000278141799333,
+   "best_unrel": "finnish",
+   "unrel": 2.922085372978009,
+   "added": 7.078192768821324,
+   "wins": 12,
+   "floor": 5.964337554481162,
+   "reachable": 99.65054075442792,
+   "helps": true
+  },
+  "malayalam|logosyllabic": {
+   "real": 6.903649922602804,
+   "best_unrel": "finnish",
+   "unrel": 2.512649694604026,
+   "added": 4.391000227998777,
+   "wins": 9,
+   "floor": 3.932537351828181,
+   "reachable": 73.01408113393445,
+   "helps": false
+  },
+  "kannada|syllabic": {
+   "real": 4.580573245981592,
+   "best_unrel": "finnish",
+   "unrel": 2.915233839480239,
+   "added": 1.665339406501353,
+   "wins": 8,
+   "floor": 5.964337554481162,
+   "reachable": 94.61404096106202,
+   "helps": false
+  },
+  "kannada|logosyllabic": {
+   "real": 2.9684034752345614,
+   "best_unrel": "finnish",
+   "unrel": 2.4907677731506506,
+   "added": 0.4776357020839108,
+   "wins": 8,
+   "floor": 3.932537351828181,
+   "reachable": 70.00506278587497,
+   "helps": false
+  },
+  "estonian|syllabic": {
+   "real": 11.303016525783734,
+   "best_unrel": "latin",
+   "unrel": 2.9409799316350376,
+   "added": 8.362036594148696,
+   "wins": 8,
+   "floor": 12.591346633087687,
+   "reachable": 83.17086990871195,
+   "helps": false
+  },
+  "estonian|logosyllabic": {
+   "real": 6.038387817314882,
+   "best_unrel": "latin",
+   "unrel": 1.1524377988125707,
+   "added": 4.885950018502311,
+   "wins": 8,
+   "floor": 9.456588463312535,
+   "reachable": 49.550470100372074,
+   "helps": false
+  }
+ }
+}
